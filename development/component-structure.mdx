@@ -1,0 +1,97 @@
+---
+title: Component Structure
+description: Guide to the component organization in MSP Checkmate
+---
+
+# Component Structure
+
+The MSP Checkmate application follows a feature-based component organization structure that aligns with the main navigation and business domains.
+
+## Directory Structure
+
+Components are organized into the following main categories:
+
+### Feature Components
+
+- **`company-overview/`** - Dashboard and company overview components
+- **`surveys/`** - Survey management and analysis components
+- **`goals/`** - Goals tracking and management
+- **`planner/`** - Task planning and scheduling features
+  - `timeline/` - Timeline view components
+  - `list/` - List view components
+  - `templates/` - Template management
+  - `settings/` - Planner-specific settings
+  - `report/` - Reporting components
+- **`budgets/`** - Budget management
+  - `builder/` - Budget creation and editing
+- **`calendar/`** - Calendar and meeting management
+  - `calendar-view/` - Calendar display components
+  - `my-meetings/` - Personal meeting views
+  - `list-view/` - Meeting list displays
+  - `recurring-meetings/` - Recurring meeting management
+  - `meetings/` - Core meeting components
+- **`compliance/`** - Compliance tracking and management
+  - `dashboard/` - Compliance overview
+  - `runs/` - Compliance run execution
+  - `history/` - Historical compliance data
+  - `settings/` - Compliance configuration
+- **`devices/`** - Device management components
+
+### Settings Components
+
+All settings-related components are organized under `settings/`:
+
+- **`user-settings/`** - User profile and preferences
+- **`users-roles/`** - User and role management
+- **`companies/`** - Company configuration
+- **`compliance/`** - Compliance settings (groups, checks, runs)
+- **`status-lists/`** - Status list configuration
+- **`note-templates/`** - Note template management
+- **`playbooks/`** - Playbook configuration
+- **`surveys/`** - Survey settings
+- **`integrations/`** - Third-party integrations
+- **`import-export/`** - Data import/export tools
+- **`device-types/`** - Device type configuration
+- **`tenant/`** - Tenant-level settings
+
+### Shared Components
+
+Common and cross-feature components are in `shared/`:
+
+- **`filters/`** - Reusable filter components
+- **`auth-layout/`** - Authentication layout components
+- **`reporting/`** - Shared reporting components
+- **`debug/`** - Debug and development tools
+- **`common/`** - Common utility components (alerts, dialogs, etc.)
+
+### UI Components
+
+Base UI components remain in the `ui/` directory, following the shadcn/ui pattern.
+
+## Import Examples
+
+```typescript
+// Feature components
+import { DashboardCard } from '@/components/company-overview/DashboardCard'
+import { PlannerTimeline } from '@/components/planner/timeline/PlannerTimeline'
+
+// Settings components
+import { UserSettings } from '@/components/settings/user-settings/UserSettings'
+import { CompanyManager } from '@/components/settings/companies/CompanyManager'
+
+// Shared components
+import { FilterBar } from '@/components/shared/filters/FilterBar'
+import { Alert } from '@/components/shared/common/Alert'
+
+// UI components
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+```
+
+## Best Practices
+
+1. **Feature Isolation**: Keep feature-specific components within their feature directory
+2. **Shared Wisely**: Only move components to `shared/` if they're used across multiple features
+3. **Settings Grouping**: All configuration UI belongs in `settings/`
+4. **Maintain Hierarchy**: Use subdirectories for complex features with multiple views
+5. **Consistent Naming**: Use PascalCase for component files and directories

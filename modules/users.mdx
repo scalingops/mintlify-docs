@@ -1,0 +1,274 @@
+---
+title: 'Users'
+description: 'User management, roles, and access control'
+icon: 'users'
+---
+
+## Overview
+
+The Users module provides comprehensive user management capabilities for both your internal team and client users. Control access, manage permissions, and track user activities across the platform.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="User Management" icon="user-plus">
+    Create and manage user accounts across organizations
+  </Card>
+  <Card title="Role-Based Access" icon="shield-halved">
+    Define roles and permissions for secure access control
+  </Card>
+  <Card title="Activity Tracking" icon="chart-line">
+    Monitor user activities and system access
+  </Card>
+  <Card title="Multi-Factor Auth" icon="lock">
+    Enhanced security with 2FA and SSO options
+  </Card>
+</CardGroup>
+
+## User Types
+
+### Internal Users
+Your MSP team members who manage the platform:
+- Administrators
+- Technicians
+- Service desk agents
+- Account managers
+
+### Client Users
+Client organization members with portal access:
+- IT administrators
+- Department heads
+- End users
+- Executives
+
+## User Management
+
+### Creating Users
+<Steps>
+  <Step title="Basic Information">
+    - First and last name
+    - Email address (used for login)
+    - Phone numbers
+    - Job title and department
+  </Step>
+  <Step title="Access Configuration">
+    - Assign user role
+    - Set company association
+    - Configure permissions
+    - Enable/disable features
+  </Step>
+  <Step title="Security Setup">
+    - Set temporary password
+    - Configure 2FA requirements
+    - IP restrictions (optional)
+    - Session timeout settings
+  </Step>
+</Steps>
+
+## Role Management
+
+### Default Roles
+<Tabs>
+  <Tab title="Super Admin">
+    - Full system access
+    - User management
+    - System configuration
+    - All company access
+  </Tab>
+  <Tab title="Admin">
+    - Company-level administration
+    - User management within company
+    - Configuration access
+    - Report generation
+  </Tab>
+  <Tab title="Technician">
+    - Ticket management
+    - Client communication
+    - Documentation access
+    - Time tracking
+  </Tab>
+  <Tab title="Client User">
+    - Portal access
+    - Ticket submission
+    - Report viewing
+    - Limited configuration
+  </Tab>
+</Tabs>
+
+### Custom Roles
+Create custom roles with specific permissions:
+- Module access control
+- Feature-level permissions
+- Data access restrictions
+- Action limitations
+
+## Permission System
+
+### Permission Categories
+<CardGroup cols={2}>
+  <Card title="Module Access">
+    Control which modules users can access
+  </Card>
+  <Card title="Data Permissions">
+    Define what data users can view/edit
+  </Card>
+  <Card title="Action Permissions">
+    Specify allowed actions (create, edit, delete)
+  </Card>
+  <Card title="Report Access">
+    Control report generation and viewing
+  </Card>
+</CardGroup>
+
+### Permission Inheritance
+- Company-level defaults
+- Role-based permissions
+- User-specific overrides
+- Department-based access
+
+## Security Features
+
+### Authentication Methods
+- **Email/Password**: Traditional authentication
+- **Single Sign-On (SSO)**: Integration with identity providers
+- **Multi-Factor Authentication**: SMS, TOTP, or email codes
+- **Biometric**: Fingerprint or face recognition (mobile)
+
+### Password Policies
+Configurable requirements:
+- Minimum length
+- Complexity requirements
+- Expiration periods
+- History restrictions
+- Failed attempt lockouts
+
+### Session Management
+- Configurable timeout periods
+- Concurrent session limits
+- Device tracking
+- Remote session termination
+
+## User Profiles
+
+### Profile Information
+- Personal details
+- Contact information
+- Notification preferences
+- Language and timezone
+- Avatar and customization
+
+### Skills & Certifications
+Track technician capabilities:
+- Technical skills
+- Certifications
+- Specializations
+- Training history
+
+## Activity Monitoring
+
+### Audit Logs
+Track all user actions:
+- Login/logout events
+- Configuration changes
+- Data access
+- Permission changes
+
+### Activity Reports
+<Chart>
+  User activity trends, login patterns, and system usage
+</Chart>
+
+## User Onboarding
+
+### Automated Workflows
+<Steps>
+  <Step title="Welcome Email">
+    Automated welcome message with login instructions
+  </Step>
+  <Step title="Initial Setup">
+    Guided setup wizard for new users
+  </Step>
+  <Step title="Training Resources">
+    Access to documentation and tutorials
+  </Step>
+  <Step title="Verification">
+    Account verification and security setup
+  </Step>
+</Steps>
+
+## Bulk Operations
+
+### Import/Export
+- CSV import for bulk user creation
+- Active Directory synchronization
+- LDAP integration
+- Export user lists
+
+### Batch Actions
+- Mass password resets
+- Bulk role assignments
+- Group notifications
+- Access revocation
+
+## Notifications
+
+### User Notifications
+Configurable alerts for:
+- Account changes
+- Security events
+- System announcements
+- Task assignments
+
+### Admin Notifications
+Alerts for administrators:
+- Failed login attempts
+- Permission escalations
+- Unusual activity patterns
+- License limits
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Regular Audits">
+    Perform quarterly user access reviews to ensure appropriate permissions
+  </Accordion>
+  <Accordion title="Least Privilege">
+    Grant users only the minimum permissions required for their role
+  </Accordion>
+  <Accordion title="Strong Authentication">
+    Enforce MFA for all administrative accounts
+  </Accordion>
+  <Accordion title="Deprovisioning">
+    Immediately disable accounts when users leave the organization
+  </Accordion>
+</AccordionGroup>
+
+## Integration
+
+### Directory Services
+- Active Directory
+- Azure AD
+- Google Workspace
+- LDAP
+
+### Identity Providers
+- Okta
+- Auth0
+- OneLogin
+- Custom SAML
+
+## Troubleshooting
+
+<Warning>
+  Common issues and solutions:
+  - **Login failures**: Check password, account status, and IP restrictions
+  - **Missing permissions**: Verify role assignments and inheritance
+  - **SSO problems**: Validate IdP configuration and certificates
+</Warning>
+
+## Related Modules
+
+- [Companies](/modules/companies) - Company association
+- [Settings](/modules/settings) - Security configuration
+- [Reports](/modules/reports) - User activity reports
+- [Tickets](/modules/tickets) - User ticket access

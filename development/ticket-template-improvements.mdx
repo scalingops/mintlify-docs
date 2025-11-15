@@ -1,0 +1,307 @@
+---
+title: Ticket Template System Improvements
+description: Major improvements to the ticket template system including UI fixes, AI generation, and PSA integration enhancements
+---
+
+# Ticket Template System Improvements
+
+**Date**: August 10, 2025  
+**Version**: 2025.8.10  
+**Components**: Template editor, AI generation, PSA integration, data loading
+
+## Overview
+
+This release includes comprehensive improvements to the ticket template system, focusing on user interface enhancements, AI-powered template generation, improved PSA data loading, and better field validation. These changes significantly improve the template creation and management experience.
+
+## Key Improvements
+
+### 1. Fixed UI Issues with Field Type Dropdowns and Option Displays
+
+**Problem**: Field type dropdowns and option displays had various UI inconsistencies and usability issues.
+
+**Components Modified**:
+- `components/tickets/settings/TemplateEditDialog.tsx`
+- `lib/tickets/templateSchema.ts`
+
+**Changes Made**:
+- Fixed field type dropdown rendering with proper value/label mapping
+- Improved option count display for fields that support options (select, multi_select, radio)
+- Added proper option management button next to field type selectors
+- Fixed field validation to handle `conditional` fields properly (set to `undefined` instead of null)
+- Enhanced grid layout for better field organization
+
+**Technical Details**:
+```tsx
+// Improved field type selector with option count display
+<div className="flex items-center gap-1">
+  <Select
+    value={field.type}
+    onValueChange={(value: FieldType) => updateField(sectionIndex, fieldIndex, { type: value })}
+  >
+    <SelectTrigger className="h-8">
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>
+      {fieldTypes.map((type) => (
+        <SelectItem key={type.value} value={type.value}>
+          <span>{type.label}</span>
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+  {fieldsWithOptions.includes(field.type) && (
+    <Button
+      size="icon"
+      variant="outline"
+      className="h-8 w-8 text-xs font-medium"
+      onClick={() => setOptionsDialogField({ sectionIndex, fieldIndex })}
+      title="Manage Options"
+    >
+      {field.options?.length || 0}
+    </Button>
+  )}
+</div>
+```
+
+### 2. Updated AI Prompt to Generate Properly Formatted Option Labels
+
+**Problem**: AI-generated templates had inconsistent option formatting, making them difficult to use.
+
+**Components Added**:
+- `prompts/templatePrompt.ts`
+- `app/api/templates/generate-stream/route.ts`
+- `parsing/parseTemplateSpec.ts`
+- `validation/templatesSchema.ts`
+- `types/templates.ts`
+
+**Changes Made**:
+- Created comprehensive AI prompt with strict formatting requirements
+- Implemented streaming API endpoint for real-time template generation
+- Added proper option value/label separation (value uses underscores, label uses proper capitalization)
+- Enhanced field type validation and mapping
+
+**AI Prompt Improvements**:
+```typescript
+// CORRECT format for options (enforced by AI prompt)
+"options": [
+  { "value": "printer_not_working", "label": "Printer Not Working" },
+  { "value": "paper_jam", "label": "Paper Jam" },
+  { "value": "print_quality", "label": "Print Quality Issue" },
+  { "value": "network_connectivity", "label": "Network Connectivity" }
+]
+
+// WRONG format (prevented by validation)
+"options": [
+  { "value": "printer-not-working", "label": "printer-not-working" }
+]
+```
+
+**Streaming Implementation**:
+- Real-time progress updates during AI generation
+- Server-sent events for status updates
+- Fallback to mock data when OpenAI is not available
+- Error handling and recovery
+
+### 3. Removed Default "General Information" Section and Theme Option
+
+**Problem**: Templates always started with unwanted default sections and theme selection was unnecessary complexity.
+
+**Changes Made**:
+- Removed automatic "General Information" section creation
+- Fixed theme to always use "system" theme (line 209 in TemplateEditDialog.tsx)
+- Simplified template creation workflow
+- Improved section management with better empty state handling
+
+**Code Changes**:
+```tsx
+const templateToSave: any = {
+  name: editedTemplate.name || 'Untitled Template',
+  key: finalKey,
+  description: editedTemplate.description || '',
+  category: editedTemplate.category_id || undefined,
+  visibility: editedTemplate.visibility || 'tenant_only',
+  theme: 'system',  // Always use system theme
+  icon: editedTemplate.icon || undefined,
+  // ... rest of template data
+};
+```
+
+### 4. Fixed Validation Errors with Conditional Fields
+
+**Problem**: Conditional field validation was causing errors due to null/undefined handling inconsistencies.
+
+**Changes Made**:
+- Updated field schema to handle `conditional` as `undefined` instead of `null`
+- Fixed template save process to properly clean conditional fields
+- Improved error handling and debugging information
+
+**Validation Fixes**:
+```tsx
+// Before - could cause validation errors
+conditional: field.conditional,
+
+// After - properly handles undefined
+conditional: field.conditional || undefined,
+```
+
+### 5. Fixed PSA Data Loading Issues for Board, Priority, and Status Fields
+
+**Problem**: PSA integration data was not loading properly, causing empty dropdowns and integration failures.
+
+**Components Modified**:
+- `app/actions/connectwise-ticket-data.ts`
+- `app/api/integrations/[id]/connectwise/ticket-types/route.ts`
+
+**Major Changes**:
+
+#### Database-First Approach
+Switched from direct API calls to database-first approach using synced PSA data tables:
+- `psa_service_boards`
+- `psa_priorities`
+- `psa_ticket_statuses`
+- `psa_ticket_types`
+
+#### Enhanced Data Loading
+```typescript
+// New approach - fetch from synced tables
+const [boardsResult, prioritiesResult, typesResult] = await Promise.all([
+  supabase
+    .from('psa_service_boards')
+    .select('id, external_id, name, description, is_active')
+    .eq('integration_id', integrationId)
+    .eq('tenant_id', tenantId)
+    .eq('is_active', true)
+    .order('name'),
+  // ... similar patterns for priorities and types
+]);
+```
+
+#### Improved Error Handling
+- Better error messages and logging
+- Graceful fallbacks when PSA data is not available
+- Proper loading states in the UI
+
+#### UI Enhancements
+- Added loading indicators for PSA data fetching
+- Better placeholder text when no integration is available
+- Preserved existing values when PSA data is loading
+- Proper handling of board-dependent status loading
+
+## Technical Architecture
+
+### AI Template Generation Flow
+1. User provides template name and description
+2. System validates inputs and creates streaming request
+3. AI generates template specification following strict schema
+4. Parser converts AI output to internal template format
+5. Template sections are added to the existing template
+
+### PSA Integration Architecture
+1. Background edge functions sync PSA data to local tables
+2. Template editor fetches from local tables (not direct API calls)
+3. Board selection triggers status loading for that specific board
+4. Data is properly filtered by tenant and integration
+
+### Field Type System
+Comprehensive field type support with proper validation:
+- Basic types: `short_text`, `long_text`, `number`, `decimal`
+- Selection types: `select`, `multi_select`, `radio`, `checkbox`
+- Specialized types: `email`, `phone`, `url`, `date`, `datetime`
+- PSA types: `priority`, `impact`, `urgency`, `asset`, `user`, `site`
+- File handling: `attachment`
+
+## Database Changes
+
+### New Tables Used
+- `psa_service_boards` - Service boards from PSA systems
+- `psa_priorities` - Priority levels from PSA systems
+- `psa_ticket_statuses` - Ticket statuses by board
+- `psa_ticket_types` - Ticket types by board
+
+### Updated RPC Functions
+- `rpc_template_upsert` - Now accepts JSONB payload directly instead of stringified JSON
+
+## Error Handling Improvements
+
+### Validation Enhanced
+- Better error messages for template validation failures
+- Detailed logging of validation issues
+- Graceful handling of PSA data loading failures
+
+### UI Error States
+- Loading states for PSA data fetching
+- Proper error messages when integrations are not available
+- Recovery mechanisms for failed AI generation
+
+## Performance Improvements
+
+### Database Optimization
+- Reduced API calls by using synced local data
+- Proper indexing on PSA tables for faster queries
+- Batch loading of related data (boards, priorities, statuses)
+
+### UI Performance
+- Efficient re-rendering with proper state management
+- Debounced AI generation requests
+- Streaming updates for long-running operations
+
+## Breaking Changes
+
+### Template Storage
+- Templates now require properly formatted option values (underscores, not hyphens)
+- Theme is always set to 'system' - custom themes no longer supported
+- Conditional fields must be `undefined` rather than `null`
+
+### PSA Integration
+- Direct PSA API calls replaced with database queries
+- Requires PSA sync edge functions to be running
+- Integration configuration now uses database-stored data
+
+## Migration Notes
+
+### Existing Templates
+- Existing templates continue to work with backward compatibility
+- Option values are automatically converted during save operations
+- Theme values are normalized to 'system'
+
+### PSA Integrations
+- Existing integrations need to run sync functions to populate local tables
+- Template editors will show empty dropdowns until sync completes
+- No changes required to integration configurations
+
+## Future Improvements
+
+### Planned Features
+- Advanced conditional field logic
+- Template versioning and rollback
+- Custom field types
+- Template sharing between tenants
+- Enhanced AI prompt customization
+
+### Performance Optimizations
+- Real-time PSA data sync
+- Template caching improvements
+- Optimistic UI updates
+- Background template validation
+
+## Testing Recommendations
+
+### Template Creation
+1. Test template creation with and without AI generation
+2. Verify PSA dropdown population across different integration types
+3. Test field option management for select/radio fields
+4. Validate conditional field behavior
+
+### PSA Integration
+1. Test with ConnectWise and Halo integrations
+2. Verify board selection triggers status loading
+3. Test error handling when PSA is unavailable
+4. Validate data consistency after PSA sync
+
+### UI/UX
+1. Test field type dropdown responsiveness
+2. Verify option count displays correctly
+3. Test AI generation progress indicators
+4. Validate mobile responsiveness of template editor
+
+This comprehensive update significantly improves the ticket template system's reliability, usability, and maintainability while providing a foundation for future enhancements.

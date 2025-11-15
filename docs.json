@@ -1,7 +1,7 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "MSPortal.ai Documentation",
   "colors": {
     "primary": "#16A34A",
     "light": "#07C983",
@@ -11,58 +11,207 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Release Notes",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Updates",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "release-notes/index"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "User Guides",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Getting Started",
             "pages": [
-              "api-reference/introduction"
+              "user-guides/getting-started/index",
+              "user-guides/getting-started/quick-start",
+              "user-guides/getting-started/keyboard-shortcuts",
+              "user-guides/getting-started/Onboarding-checklist",
+              "user-guides/getting-started/how-to-create-a-new-user-role"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "Training",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              {
+                "group": "Training Resources",
+                "pages": [
+                  "user-guides/training/index",
+                  "user-guides/training/how-to-enable-training",
+                  "user-guides/training/enabling-training"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Overview & Planning",
+            "pages": [
+              {
+                "group": "Company Overview",
+                "pages": [
+                  "user-guides/company-overview/index",
+                  "user-guides/company-overview/audit"
+                ]
+              },
+              {
+                "group": "Surveys",
+                "pages": [
+                  "user-guides/surveys/index"
+                ]
+              },
+              {
+                "group": "Goals",
+                "pages": [
+                  "user-guides/goals/index"
+                ]
+              },
+              {
+                "group": "Planner",
+                "pages": [
+                  "user-guides/planner/index"
+                ]
+              },
+              {
+                "group": "Budgets",
+                "pages": [
+                  "user-guides/budgets/index"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Engagement",
+            "pages": [
+              {
+                "group": "Calendar",
+                "pages": [
+                  "user-guides/calendar/index"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Service Delivery",
+            "pages": [
+              {
+                "group": "Microsoft 365",
+                "pages": [
+                  "user-guides/microsoft-365/index"
+                ]
+              },
+              {
+                "group": "Ticketing",
+                "pages": [
+                  "user-guides/ticketing/index",
+                  "user-guides/ticketing/how-to-create-a-ticket-template",
+                  "user-guides/ticketing/open-a-ticket-with-ai"
+                ]
+              },
+              {
+                "group": "Compliance",
+                "pages": [
+                  "user-guides/compliance/index",
+                  "user-guides/compliance/adding-cis-benchmarks"
+                ]
+              },
+              {
+                "group": "Devices",
+                "pages": [
+                  "user-guides/devices/index"
+                ]
+              },
+              {
+                "group": "Reporting",
+                "pages": [
+                  "user-guides/reporting/index"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Administration",
+            "pages": [
+              {
+                "group": "Settings",
+                "pages": [
+                  "user-guides/settings/index"
+                ]
+              },
+              {
+                "group": "Integrations",
+                "pages": [
+                  "user-guides/integrations/index",
+                  "user-guides/integrations/import-users",
+                  "user-guides/integrations/import-companies",
+                  "user-guides/integrations/clear-and-resync-integrations",
+                  {
+                    "group": "ConnectWise",
+                    "pages": [
+                      "user-guides/integrations/enable-connectwise-integration",
+                      "user-guides/integrations/connectwise-configure-and-service-desk",
+                      "user-guides/integrations/connectwise-opportunity-settings",
+                      "user-guides/integrations/connectwise-resync-psa-settings"
+                    ]
+                  },
+                  {
+                    "group": "Syncro",
+                    "pages": [
+                      "user-guides/integrations/enable-syncro-integration"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Admin",
+                "pages": [
+                  "user-guides/admin/index"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Modules",
+        "groups": [
+          {
+            "group": "Overview & Planning",
+            "pages": [
+              "modules/company-overview",
+              "modules/surveys",
+              "modules/goals",
+              "modules/planner",
+              "modules/budgets"
+            ]
+          },
+          {
+            "group": "Engagement",
+            "pages": [
+              "modules/calendar"
+            ]
+          },
+          {
+            "group": "Service Delivery",
+            "pages": [
+              "modules/microsoft-365",
+              "modules/ticketing",
+              "modules/compliance",
+              "modules/devices",
+              "modules/reporting"
+            ]
+          },
+          {
+            "group": "Administration",
+            "pages": [
+              "modules/settings",
+              "modules/users",
+              "modules/companies",
+              "modules/integrations",
+              "modules/admin"
             ]
           }
         ]
@@ -71,14 +220,19 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "MSPortal.ai",
+          "href": "https://msportal.ai",
+          "icon": "globe"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "Support",
+          "href": "mailto:support@msportal.ai",
+          "icon": "life-ring"
+        },
+        {
+          "anchor": "Status",
+          "href": "https://status.msportal.ai",
+          "icon": "signal"
         }
       ]
     }
@@ -87,36 +241,30 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
+  "announcement": {
+    "text": "\u00f0\u0178\u201c\u0161 Documentation is currently Work in Progress and may be incomplete or incorrect.",
+    "type": "warning"
+  },
   "navbar": {
     "links": [
       {
+        "label": "Release Notes",
+        "href": "https://docs.msportal.ai/release-notes"
+      },
+      {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@msportal.ai"
       }
     ],
     "primary": {
       "type": "button",
       "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "href": "https://app.msportal.ai"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "linkedin": "https://linkedin.com/company/msportal"
     }
   }
 }

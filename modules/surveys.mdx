@@ -1,0 +1,277 @@
+---
+title: 'Surveys'
+description: 'Create and analyze client satisfaction surveys and feedback'
+icon: 'clipboard-list'
+---
+
+## Overview
+
+The Surveys module enables you to measure client satisfaction, gather feedback, and track Net Promoter Score (NPS) across your managed companies. Create custom surveys, send them to contacts, and analyze responses to improve service delivery.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="Survey Types" icon="file-text">
+    NPS, custom satisfaction surveys, and goal-oriented surveys
+  </Card>
+  <Card title="Response Analytics" icon="chart-bar">
+    Detailed analytics with word maps and sentiment analysis
+  </Card>
+  <Card title="Contact Management" icon="users">
+    Send to specific contacts or groups
+  </Card>
+  <Card title="Goal Creation" icon="target">
+    Convert feedback into actionable goals
+  </Card>
+</CardGroup>
+
+## Survey Types
+
+### NPS Surveys
+Net Promoter Score surveys to measure customer loyalty:
+- Standard 0-10 rating scale
+- Follow-up questions for context
+- Automatic score calculation
+- Promoter/Passive/Detractor classification
+
+### Custom Surveys
+Create tailored surveys for specific needs:
+- Multiple question types (rating, text, multiple choice)
+- Conditional logic
+- Custom branding
+- Template library
+
+### Goal-Oriented Surveys
+Surveys designed to identify improvement areas:
+- Pre-configured questions for goal discovery
+- Automatic goal suggestion based on responses
+- Priority ranking capabilities
+- Direct integration with Goals module
+
+## Creating Surveys
+
+<Steps>
+  <Step title="Choose Survey Type">
+    Select NPS, Custom, or Goal-oriented survey type
+  </Step>
+  <Step title="Configure Questions">
+    Add questions and configure response options
+  </Step>
+  <Step title="Select Recipients">
+    Choose contacts or contact groups to receive the survey
+  </Step>
+  <Step title="Set Schedule">
+    Send immediately or schedule for future delivery
+  </Step>
+  <Step title="Launch Survey">
+    Review and send the survey to recipients
+  </Step>
+</Steps>
+
+## Survey Management
+
+### Survey List View
+The main surveys page displays:
+- Active and inactive surveys
+- Response rates and completion metrics
+- Send/resend options
+- Quick actions menu
+
+### Survey Status
+- **Draft**: Survey created but not sent
+- **Active**: Currently accepting responses
+- **Paused**: Temporarily stopped
+- **Completed**: No longer accepting responses
+- **Archived**: Removed from active list
+
+### Bulk Actions
+- Send reminders to non-respondents
+- Export response data
+- Clone surveys for reuse
+- Archive completed surveys
+
+## Response Collection
+
+### Distribution Methods
+- **Email**: Direct email with survey link
+- **Portal**: Available in client portal
+- **Public Link**: Shareable URL for broader distribution
+
+### Response Tracking
+- Real-time response monitoring
+- Individual response timestamps
+- Completion rates by contact
+- Reminder status tracking
+
+## Analytics & Reporting
+
+### Response Analytics
+View comprehensive analytics for each survey:
+
+#### Overview Metrics
+- Total responses
+- Response rate
+- Average completion time
+- NPS score (for NPS surveys)
+
+#### Question Analysis
+<Tabs>
+  <Tab title="Ratings">
+    - Average scores
+    - Score distribution
+    - Trend analysis
+  </Tab>
+  <Tab title="Text Responses">
+    - Word frequency analysis
+    - Sentiment scoring
+    - Key themes identification
+  </Tab>
+  <Tab title="Multiple Choice">
+    - Response distribution
+    - Most/least selected options
+    - Cross-tabulation analysis
+  </Tab>
+</Tabs>
+
+### Word Map Visualization
+Access word map view for text responses:
+- Visual representation of common terms
+- Sentiment color coding
+- Click to filter responses by term
+- Export word frequency data
+
+### Person-Level Analysis
+Drill down to individual respondent level:
+- Complete response history
+- Response patterns over time
+- Contact information
+- Follow-up action tracking
+
+## Goal Creation from Surveys
+
+### Automatic Goal Suggestions
+Based on survey responses, the system suggests goals:
+- Low-scoring areas become improvement goals
+- Frequently mentioned issues become action items
+- Positive feedback becomes maintenance goals
+
+### Manual Goal Creation
+<Steps>
+  <Step title="Review Responses">
+    Analyze survey results to identify themes
+  </Step>
+  <Step title="Select Feedback">
+    Choose specific responses to address
+  </Step>
+  <Step title="Create Goal">
+    Click "Create Goal" and define objectives
+  </Step>
+  <Step title="Link to Planner">
+    Goal automatically appears in Planner module
+  </Step>
+</Steps>
+
+## Survey Templates
+
+### System Templates
+Pre-built templates for common scenarios:
+- Quarterly Business Review
+- Service Satisfaction
+- Project Completion
+- Onboarding Experience
+
+### Custom Templates
+Save your surveys as templates:
+- Preserve question structure
+- Include scoring logic
+- Save distribution lists
+- Share across teams
+
+## Email Configuration
+
+### Email Templates
+Customize survey invitation emails:
+- Subject line customization
+- Body content with merge tags
+- Branding elements
+- Follow-up reminder templates
+
+### Merge Tags
+Available merge tags for personalization:
+- `{{contact_name}}` - Recipient's name
+- `{{company_name}}` - Company name
+- `{{survey_link}}` - Unique survey URL
+- `{{deadline}}` - Response deadline
+
+## Groups and Segmentation
+
+### Contact Groups
+Organize contacts for targeted surveys:
+- Create groups by role, company, or custom criteria
+- Save groups for reuse
+- Import/export group lists
+
+### Segmentation Options
+- By company
+- By contact role
+- By service tier
+- By location
+- Custom tags
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Survey Frequency">
+    Send NPS surveys quarterly, satisfaction surveys after major projects
+  </Accordion>
+  <Accordion title="Question Design">
+    Keep surveys short (5-10 questions) for higher completion rates
+  </Accordion>
+  <Accordion title="Follow-up">
+    Always acknowledge responses and communicate actions taken
+  </Accordion>
+  <Accordion title="Goal Creation">
+    Convert negative feedback into improvement goals within 48 hours
+  </Accordion>
+</AccordionGroup>
+
+## Settings
+
+Configure survey settings in **Settings > Surveys**:
+- Default email templates
+- Reminder schedules
+- NPS calculation methods
+- Response notification preferences
+
+## Permissions
+
+Survey module permissions:
+- `read_surveys` - View surveys and responses
+- `create_surveys` - Create new surveys
+- `send_surveys` - Send surveys to contacts
+- `delete_surveys` - Delete surveys and responses
+- `export_surveys` - Export survey data
+
+## Integration Points
+
+### Goals Module
+- Create goals from survey feedback
+- Track goal progress linked to satisfaction scores
+- Measure impact of improvements
+
+### Planner Module
+- Schedule survey campaigns
+- Plan follow-up activities
+- Track improvement initiatives
+
+### Reports Module
+- Include survey metrics in reports
+- Generate satisfaction trend reports
+- Export data for external analysis
+
+## Related Modules
+
+- [Goals](/modules/goals) - Create and track improvement goals
+- [Company Overview](/modules/company-overview) - View survey metrics on dashboard
+- [Reports](/modules/reporting) - Generate survey reports
+- [Planner](/modules/planner) - Schedule survey activities

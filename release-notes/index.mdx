@@ -1,0 +1,609 @@
+---
+title: "Release Notes"
+description: "Product updates, improvements, and upcoming features for MSPortal.ai"
+---
+
+## November 14, 2025
+
+### Multi-Year Budget Forecasting
+
+Plan ahead with confidence using our new budget forecasting feature that projects your budgets up to 5 years into the future with intelligent growth calculations and customizable adjustments.
+
+**Key Features:**
+- **Multi-Year Projections**: Forecast budgets 1-5 years ahead with automatic calculations based on current budget data
+- **Flexible Growth Models**: Set global growth percentages or customize growth rates per budget category
+- **Manual Overrides**: Override calculated projections for any category and year when you have specific plans
+- **Year-over-Year Comparisons**: Easily compare projected values across multiple years
+- **Smart Syncing**: Automatically sync from your current budget to create forecasts based on real data
+- **Category Controls**: Enable or disable automatic increases for specific budget categories
+- **Visual Indicators**: Color-coded cells show manual overrides vs. calculated projections
+
+**Budget Categories:**
+- Labor (FTE, Contractors, Benefits)
+- Technology (Software, Hardware, Cloud Services)
+- Operations (Office, Marketing, Travel, Professional Services)
+- Revenue projections
+
+**How to Use:**
+1. Navigate to Budgets → Forecast
+2. Select the number of years to project (1-5 years)
+3. Set a global increase percentage or customize per category
+4. Click "Sync from Budget" to pull current budget data
+5. Adjust individual cells as needed with manual overrides
+6. Save your forecast rules for future reference
+
+<img
+  src="/images/screenshots/Budgets/Budget Forecast.png"
+  alt="Budget forecasting with multi-year projections"
+  height="400"
+  className="rounded-lg"
+/>
+
+---
+
+### Autotask Real-Time Ticket Sync
+
+Experience faster ticket updates with our new webhook-based Autotask integration that syncs changes in real-time instead of waiting for scheduled sync intervals.
+
+**Key Improvements:**
+- **Instant Updates**: Tickets sync immediately when created or updated in Autotask (no more waiting for scheduled syncs)
+- **Real-Time Notifications**: Get notified as soon as tickets change status or are assigned
+- **Faster Client Portal**: Your clients see ticket updates instantly
+- **Reduced Sync Delays**: Webhook events trigger immediate syncs instead of waiting up to 15 minutes
+- **More Reliable**: Automatic retry logic ensures webhook deliveries succeed
+- **Better Performance**: Targeted syncs only update changed tickets, not the entire ticket list
+
+**What This Means:**
+- Changes in Autotask appear in MSPortal.ai within seconds
+- Time entries, notes, and status changes sync immediately
+- Better experience for both your team and your clients
+- More accurate real-time reporting
+
+---
+
+### Budget Forecast Reporting Block
+
+Add budget forecast visualizations to your custom reports with the new Budget Forecast reporting block.
+
+**Features:**
+- **Multi-Year Visualization**: Display budget projections for up to 5 years
+- **Category Breakdown**: Show forecast data by budget category
+- **Trend Analysis**: Visualize growth trends across forecast years
+- **Customizable Views**: Choose which categories and years to display
+- **PDF Export**: Include forecast data in PDF report exports
+
+**How to Use:**
+1. Navigate to Reporting → Custom Reports
+2. Add a "Budget Forecast" block to your report
+3. Configure which categories and years to display
+4. Position and resize the block as needed
+5. Export to PDF or share with clients
+
+---
+
+### Enhanced Planner Summary Block
+
+The Planner Summary reporting block has been enhanced with better visualizations and more detailed analytics.
+
+**Improvements:**
+- **Better Data Display**: Clearer visualization of planner items and completion status
+- **Enhanced Filtering**: Filter planner items by status, priority, or date range within the block
+- **Improved Layout**: Optimized spacing and formatting for better readability
+- **Faster Loading**: Performance improvements for reports with large numbers of planner items
+
+---
+
+## November 7, 2025
+
+### Custom Fields System
+
+A comprehensive custom fields system that allows you to extend data collection across multiple entity types, providing flexible tracking and organization capabilities.
+
+**Key Features:**
+- **Multi-Entity Support**: Create custom fields for Devices, Compliance Checks, Goals, Budgets, Planner Items, Users, and Companies
+- **20+ Field Types**: Support for text, numbers, dates, checkboxes, selects, multi-selects, radio buttons, email, phone, URL, and more
+- **User Scope Filtering**: User custom fields can be scoped to tenant-wide, company-specific, or both
+- **Bulk Operations**: Edit custom field values for multiple users or entities at once
+- **Inline Options Editing**: Manage select/multi-select/radio field options directly in the settings interface
+
+**Field Types Supported:**
+- Text: Short text, long text
+- Numeric: Number, decimal
+- Date/Time: Date, datetime
+- Contact: Email, phone, URL
+- Boolean: Checkbox
+- Selection: Select, multi-select, radio
+- Special: Priority, impact, urgency
+
+**How to Use:**
+1. Navigate to Settings → Custom Fields
+2. Select the entity type tab (Devices, Compliance, Goals, etc.)
+3. Create new fields with labels and types
+4. Custom fields automatically appear in edit dialogs for the corresponding entity types
+5. For users, choose whether fields apply to tenant users, company users, or both
+
+**Company & User Management:**
+- Bulk edit custom fields for multiple company users at once
+- Tenant and company-scoped custom fields for users
+- Custom fields support in company editing interface
+
+---
+
+### Training Certificates & LinkedIn Sharing
+
+Generate professional training certificates automatically upon course or learning path completion, with built-in LinkedIn sharing capabilities.
+
+**Key Features:**
+- **Automatic Certificate Generation**: Certificates are automatically created when users complete courses or learning paths
+- **Bulk Certificate Generation**: Generate certificates for multiple users at once from the enrollments page
+- **LinkedIn Integration**: Share certificates directly to LinkedIn
+- **Certificate Preview**: Preview certificates before downloading or sharing
+- **Download & Share**: Download certificates as PNG images or share via LinkedIn
+- **Tenant Branding**: Certificates include your tenant logo for professional branding
+- **Public Certificate Access**: Certificates can be accessed via public URLs for sharing outside the platform
+
+**Certificate Features:**
+- Professional design with course/learning path name, completion date, and user name
+- Tenant logo for branded certificates
+- Social sharing buttons for LinkedIn
+- Certificate viewer with download and share options
+
+**How to Use:**
+1. Complete a training course or learning path
+2. Certificate is automatically generated
+3. View certificate from the Training → Certificates page or enrollment details
+4. Click "Share to LinkedIn" to authenticate and post
+5. Or download the certificate as a PNG image
+
+---
+
+### Learning Path Progress Tracking & Reporting
+
+Comprehensive progress tracking and reporting for learning paths, giving you visibility into user completion rates, time spent, and performance metrics.
+
+**Key Features:**
+- **Progress Tracking**: Real-time tracking of user progress through learning paths
+- **Progress Sheets**: Detailed progress view showing individual user completion status for each course in a learning path
+- **Progress Table**: Filterable table showing all users' progress across learning paths
+- **Time Tracking**: Track time spent on courses and learning paths
+- **Average Scores**: Calculate and display average quiz scores per learning path
+- **Completion Status**: Visual indicators for completed, in-progress, and not-started courses
+- **Bulk Progress View**: View progress for multiple users at once
+
+**Reporting Capabilities:**
+- Learning path completion rates
+- User progress summaries
+- Time spent per course and learning path
+- Quiz scores and pass/fail rates
+- Enrollment status tracking
+- Progress filtering by user, company, or learning path
+
+**How to Use:**
+1. Navigate to Training → Learning Paths
+2. Select a learning path to view progress
+3. Click "View Progress" to see detailed progress sheet
+4. Use the progress table to filter and view progress across all learning paths
+5. Export progress data for reporting purposes
+
+---
+
+### Training Quiz System
+
+A complete quiz system integrated into training courses, allowing you to assess user knowledge and track quiz performance.
+
+**Key Features:**
+- **Multiple Choice Questions**: Create questions with multiple answer options
+- **Answer Tracking**: Track correct and incorrect answers per question
+- **Quiz Attempts**: Users can take quizzes multiple times with attempt history
+- **Score Calculation**: Automatic score calculation and pass/fail determination
+- **Question Management**: Add, edit, and reorder questions within courses
+- **Answer Options**: Configure multiple answer choices with correct answer designation
+- **Attempt History**: View all quiz attempts per user per course
+
+**Quiz Features:**
+- Question creation and editing interface
+- Answer option management
+- Question reordering within courses
+- Score tracking and pass/fail status
+- Attempt history per user
+
+**How to Use:**
+1. Navigate to a training course
+2. Click "Questions" tab to manage quiz questions
+3. Add questions with multiple choice answers
+4. Mark the correct answer for each question
+5. Users will see quizzes when taking courses
+6. Quiz scores are tracked and displayed in progress reports
+
+---
+
+### Company-Scoped Training Courses
+
+Enable training courses at the company level, allowing you to provide company-specific training content while maintaining tenant-wide course libraries.
+
+**Key Features:**
+- **Per-Company Courses**: Enable courses for specific companies only
+- **Tenant-Wide Courses**: Continue to support tenant-wide course enablement
+- **Dual Scoping**: Mix tenant-wide and company-specific courses in your training library
+- **Company Filtering**: Filter courses by company scope in the training manager
+- **Flexible Enrollment**: Enroll users in company-specific or tenant-wide courses
+
+**How It Works:**
+- When enabling a course, choose "Tenant-wide" or select specific companies
+- Company-scoped courses only appear for users in those companies
+- Tenant-wide courses appear for all users
+- Course enablement interface supports both scoping options
+
+---
+
+### Training Email Reminders
+
+Automated email reminder system for training enrollments, helping ensure users complete their assigned training.
+
+**Key Features:**
+- **Individual Reminders**: Send training reminders to individual users
+- **Bulk Reminders**: Send reminders to multiple users at once from the enrollments page
+- **Customizable Templates**: Email templates with course information and direct links
+- **Reminder Management**: Track and manage training reminder emails
+
+**Email Features:**
+- Professional email templates
+- Course information and links
+- User-friendly reminder content
+- Bulk sending capabilities
+
+**How to Use:**
+1. Navigate to Training → Enrollments
+2. Select one or more enrollments
+3. Click "Send Reminders" from the bulk actions menu
+4. Emails are sent automatically with course details and links
+
+---
+
+### Enhanced Training Enrollment Management
+
+Improved enrollment management with bulk actions and enhanced filtering capabilities.
+
+**Key Features:**
+- **Bulk Actions**: Select multiple enrollments and perform actions in bulk
+- **Bulk Reminders**: Send training reminders to multiple users at once
+- **Bulk Certificate Generation**: Generate certificates for multiple completed enrollments
+- **Enhanced Filtering**: Filter enrollments by status, course, user, company, and more
+- **Improved Sorting**: Better sorting options for enrollment lists
+
+---
+
+## October 31, 2025
+
+### Major Performance Enhancements
+
+We've implemented significant performance optimizations across the platform to improve speed and responsiveness, especially for large datasets.
+
+**Improved Speed:**
+- Faster page loading across all modules
+- Smooth scrolling for large lists
+- Instant search and filtering
+
+**Pages with Performance Improvements:**
+- Compliance checks list now loads 3-5x faster
+- Tickets page handles thousands of tickets smoothly
+- Devices page loads instantly
+- Goals and Training pages with improved performance
+
+---
+
+### Surveys Module Enhancements
+
+Comprehensive improvements to survey response management with better visualization and bulk operations.
+
+**Key Features:**
+- **Bulk Response Management**: Select multiple responses, apply filters, and perform actions on entire groups
+  - New bulk action toolbar with keyboard shortcuts
+  - Multi-select with checkboxes
+  - Bulk delete, export, or categorize responses
+- **Enhanced Question Cards**: Improved visualization with sentiment analysis badges and mini-bar charts
+  - Sentiment indicators (Positive, Neutral, Negative) with color coding
+  - Quick visual feedback on response distribution
+  - Better handling of text responses vs. choice responses
+- **Response Drawer**: Side panel for viewing full response details without leaving the page
+- **Smart Filtering**: Filter by date range, response type, sentiment, and more
+- **Empty States**: Helpful guidance when no data is available
+
+<img
+  src="/images/screenshots/Surveys/Survey Responses.png"
+  alt="Survey response management with bulk operations"
+  height="400"
+  className="rounded-lg"
+/>
+
+**Workflow Improvements:**
+1. Navigate to any survey and view the Responses tab
+2. Use the filter bar to narrow down responses by criteria
+3. Select multiple responses using checkboxes or keyboard shortcuts
+4. Apply bulk actions or view individual response details in the drawer
+
+---
+
+### Compliance Module Optimizations
+
+Significant performance and UX improvements to the compliance system.
+
+**Key Improvements:**
+- Instant page transitions even with thousands of compliance checks
+- Smooth infinite scroll experience
+- Added notes count and file count to compliance check listings for better visibility
+- Faster filtering and search across compliance checks
+
+---
+
+### Bug Fixes & Quality Improvements
+
+**Compliance:**
+- Fixed autosave reliability in compliance check editor to prevent data loss
+- Improved dialog interactions for better user experience
+- Enhanced permission checking for multi-company environments
+
+**Meetings:**
+- Optimized agenda item delete operations for faster performance
+- Better handling of meeting attachments and external links
+
+**Planner:**
+- Improved bulk operations for planner templates
+- Enhanced selection dialog with better UX and keyboard navigation
+
+**Tickets:**
+- Optimized ticket category and display group management
+- Better PSA settings synchronization
+- Improved Autotask ticket details panel rendering
+
+**User Management:**
+- Faster role management
+- Better content loading in user settings pages
+- Enhanced role assignment workflow
+
+---
+
+### Reporting Enhancements
+
+**New Reporting Blocks:**
+- Enhanced ticket analytics blocks with better visualization
+- Improved M365 Secure Score reporting blocks
+- Training enrollment and progress tracking blocks
+- Budget detail blocks with expanded metrics
+- Device warranty timeline blocks
+
+**Improvements:**
+- Better data visualization across all block types
+- Faster report loading
+- Enhanced customization options for reports
+- Improved PDF export quality
+
+---
+
+## October 24, 2025
+
+### External Resources Module
+
+Embed and manage external applications directly within MSPortal.ai, providing your clients with seamless access to third-party tools without leaving the platform.
+
+**Key Features:**
+- **Embed External Applications**: Display external applications directly within the platform
+- **Role-Based Access**: Control which user roles can access each external resource
+- **Per-Company URL Overrides**: Different companies can access different instances of the same resource (e.g., separate Bitwarden vaults)
+- **Bulk Operations**: Manage multiple external resources at once - delete, disable, or update permissions in bulk
+- **Company-Specific URLs**: Override the default URL for specific companies while maintaining the same resource configuration
+
+<img
+  src="/images/screenshots/External/External Resources Management.png"
+  alt="External Resources management interface with bulk actions"
+  height="400"
+  className="rounded-lg"
+/>
+
+**How It Works:**
+1. Navigate to Settings → External Resources
+2. Create a new external resource with a name, URL, and icon
+3. Assign roles that should have access
+4. Optionally configure company-specific URL overrides for multi-instance tools
+5. The resource appears in the main navigation for authorized users
+
+**Common Use Cases:**
+- **Automation Forms**: Rewst Forms, Pia Forms - Embed intake forms directly in the portal
+- **Dashboards**: BrightGauge, MSPBots - Display metrics and KPIs for clients
+- **Documentation Wikis**: ITGlue (MyGlue), Hudu, Confluence - Seamless access to documentation
+- **Custom Apps**: Any client-specific portals and internal SaaS tools
+
+---
+
+### Meeting Summary Email Workflow
+
+Transform your meeting notes into professional email summaries with AI assistance and send them directly to participants.
+
+**Key Features:**
+- **AI-Generated Summaries**: Automatically generate meeting summaries from your agenda items, notes, and action items
+- **Smart Recipient Management**: Pre-populated with meeting participants, easily add/remove recipients
+- **Rich Text Editing**: Full rich-text editor with formatting, lists, and styling options
+- **Preview & Edit**: Review and customize the AI-generated content before sending
+- **Integrated with M365**: Sends via your configured Microsoft 365 integration
+- **Action Item Tracking**: Automatically includes action items and next steps from the meeting
+
+<img
+  src="/images/screenshots/Meetings/Meeting Summary Email.png"
+  alt="Meeting summary email workflow with AI generation"
+  height="400"
+  className="rounded-lg"
+/>
+
+**Workflow:**
+1. After completing a meeting, click "Send Summary"
+2. AI generates a professional summary including key discussion points and action items
+3. Review participants and add additional recipients if needed
+4. Edit the summary content using the rich text editor
+5. Send directly from MSPortal.ai - appears in your Sent Items folder
+
+---
+
+### ConnectWise Configuration Import
+
+Import and map device configurations from ConnectWise Manage to streamline device tracking and warranty management.
+
+**Key Features:**
+- **Configuration Type Mapping**: View all configuration types from ConnectWise and map them to MSPortal.ai device types
+- **Visual Mapping Interface**: Clear UI showing ConnectWise types on the left, MSPortal.ai device types on the right
+- **Bulk Import Preview**: See exactly what will be imported before committing changes
+- **Staged Import Process**: Map configurations in stages, allowing you to organize complex device inventories
+- **Smart Defaults**: Common configuration types (Server, Workstation, Laptop) are auto-mapped when possible
+- **Integration Status Tracking**: Real-time feedback on import progress and completion status
+
+**How to Use:**
+1. Navigate to Settings → Integrations → ConnectWise
+2. Click "Import Configurations" to view unmapped configuration types
+3. For each ConnectWise configuration type, select the corresponding MSPortal.ai device type
+4. Review the import preview showing how many devices will be created
+5. Click "Import" to complete the mapping
+
+---
+
+### Compliance Bulk Generation Improvements
+
+Significantly enhanced the bulk compliance check generation system with better reliability, progress tracking, and error recovery.
+
+**Key Improvements:**
+- **Real-Time Progress**: See progress updates as compliance checks are created
+- **Live Progress Indicators**: Visual progress bar showing which check is being generated
+- **Automatic Retry**: Failed generations are automatically retried before being marked as failed
+- **Pending Review Workflow**: Generated checks are marked as "pending-review" and can be bulk-approved after review
+- **Bulk Approval Dialog**: Review and approve multiple generated checks at once with a streamlined interface
+- **Enhanced Error Handling**: Clear error messages and recovery options when generation fails
+
+**New Workflow:**
+1. Navigate to Settings → Compliance → Checks
+2. Click "Bulk Generate with AI"
+3. Enter your requirements (e.g., "NIST 800-171 controls for healthcare")
+4. Watch real-time progress as checks are generated
+5. Review the "Pending Review" banner showing how many checks need approval
+6. Click "Review Pending Checks" to bulk approve or edit generated checks
+
+---
+
+---
+
+### Bug Fixes & Quality Improvements
+
+- Fixed compliance dialog autosave to reliably save changes without data loss
+- Improved planner template management with better bulk operations
+- Enhanced text editor extensions with better formatting support
+- Fixed calendar meeting agenda view layout and styling
+- Improved device warranty timeline block data handling
+- Better error handling in ConnectWise ticket sync
+- Fixed presentation layout styling for meeting slides
+- Updated dependencies for security and stability
+
+---
+
+## October 17, 2025
+
+- **Add to Meeting across all modules**: Universal "Add to Meeting" functionality lets you link items from Compliance, Goals, Devices, Planner, Tickets, Training, Surveys, and M365 Secure Score directly to meeting agendas for streamlined QBR preparation.
+- **Learning Paths**: Create and assign learning paths for your clients. Have a client who needs HIPAA Training? No problem!
+- **Ticket resolution status stepper**: Visual configuration UI for tracking ticket lifecycle stages with customizable resolution statuses and progress indicators.
+- **Datto RMM integration**: Import and monitor devices from Datto RMM with site mapping and automated sync capabilities.
+- **Improved planner templates**: Enhanced template management with better bulk operations and company-specific template support.
+
+---
+
+## October 10, 2025
+
+- **Client Home page**: New simplified home view for client users showing their tickets, team members, and assigned training courses in one place—perfect for end-user portals.
+- **Compliance system performance upgrade**: Significantly improved performance for large numbers of compliance checks with faster loading and updates.
+- **Enhanced impersonation support**: Full impersonation capability extended to the Home page, allowing MSPs to view the exact client experience.
+- **Ticket performance improvements**: Faster ticket list loading and improved refresh behavior.
+- **Multiple UI polish improvements**: Fixed ticket modal interactions, improved budget status handling, enhanced compliance filtering, and better dark mode support.
+
+---
+
+## October 3, 2025
+
+- **Autotask PSA integration**: Full ticket sync with standardized interface, custom field handling, and new sync functions for invoices, opportunities, products, projects, and ticket notes.
+- **ConnectWise Asio integration**: Sync companies, devices, network devices, and tickets with device import mapping tool.
+- **Reporting system enhancements**: Multi-page layout support with smart drag preview, intelligent snap positioning, and new analytics blocks including ticket analytics, M365 secure score blocks, training tracking, budget details, and planner summaries.
+- **Budget management improvements**: Bulk status updates for budget line items and enhanced PDF export with optimized print layouts.
+- **Report PDF exports**: Export custom reports to PDF with all configured blocks and data visualizations.
+- **Enhanced mobile & tablet support**: Improved responsive design across all modules for better viewing on mobile and tablet devices.
+- **Integration settings improvements**: New slide-over drawer design for managing PSA integrations.
+- **Improved tickets filtering**: Enhanced filter options with dark mode support and better scoping for tenant/company visibility.
+- **Survey analysis system**: AI-powered sentiment analysis with automated daily processing and detailed survey insights.
+- **Custom domain branding**: Simplified signin flow for white-label deployments.
+- **Central SSO relay**: Unified authentication flow supporting custom domains.
+
+---
+
+## September 26, 2025
+
+- **Custom branding for white-label usage**: Upload your branding to fully white-label client-facing views.
+- **Instant custom domains**: Configure custom domains without waiting. Supports unlimited domains with no need to provision separate SSO apps per domain.
+- **Autotask integration**: Sync Tickets, Devices, Products, and Companies for a unified view.
+- **ConnectWise Asio integration**: Ingest Devices, Network Devices, Companies, and Sites with mapping.
+- **Bulk creation of Compliance Checks with AI**: Create many checks at once from high-level prompts; AI fills details and categories.
+
+<img
+  src="/images/screenshots/Compliance/Bulk Compliance Creation.png"
+  alt="Bulk Compliance Creation interface"
+  height="400"
+  className="rounded-lg"
+/>
+
+---
+
+## September 19, 2025
+
+- **Syncro integration**: Sync Tickets, Devices, Products, and Companies.
+- **Meeting presentation view (v1)**: Build a clean agenda combining Budget, Planner items, Tickets, Reports, and custom notes, optimized for on-screen presentation.
+- **Fewer clicks for Compliance and Meetings**: Streamlined navigation and actions to reduce meeting prep time.
+- **Microsoft 365 Secure Score reporting**: View Secure Score, push findings into the Planner, and get AI summaries when multiple checks are added.
+
+<img
+  src="/images/screenshots/Integrations/M365 Secure Score.png"
+  alt="Microsoft 365 Secure Score dashboard"
+  height="400"
+  className="rounded-lg"
+/>
+
+<img
+  src="/images/screenshots/Planner/Planner Automated Summaries.png"
+  alt="Automated Planner Summaries with Microsoft 365 integration"
+  height="400"
+  className="rounded-lg"
+/>
+
+- **Parent–Child company relationships**: Delegate management from a parent company across all child companies.
+- **Restricted client visibility**: Limit vCIOs and Technicians to only the clients they're assigned.
+
+---
+
+## September 12, 2025
+
+- **Meraki integration**: Pull device and network insights from Cisco Meraki.
+- **Planner Analytics page**: Measure plan completion, on-time delivery, and trends.
+
+<img
+  src="/images/screenshots/Planner/planner analytics.png"
+  alt="Planner Analytics dashboard showing completion metrics and trends"
+  height="400"
+  className="rounded-lg"
+/>
+
+- **Net Promoter Score (NPS) surveys**: Capture client sentiment with lightweight NPS campaigns.
+
+---
+
+## Coming Soon
+
+- **Meeting summaries with action items**: Receive concise summaries of meetings with clear next steps automatically captured for you.
+- **User Statistics Dashboard**: Track how many compliance checks are completed across tenants to support KPI and accountability reporting.
+- **Automatic QBR scheduling**: Send a scheduling link so clients can pick times that work for them—no more back-and-forth.
+- **vCIO and Technician capacity planning**: Forecast workload and balance team capacity for upcoming quarters.
+- **Client invoice viewing**: Allow clients to securely view their invoices in the portal.
+- **Projects dashboard**: Centralized view of project status, blockers, and owners.
+- **Rules to auto-populate your planner**: Automatically add planner items for warranty expirations, device end-of-life, or bulk-add an item to all clients with one click.
+- **Bulk Ticket Templates with AI**: Generate multiple ticket templates in one step using AI suggestions.
+- **Public API**: Programmatic access for integrations and automation.

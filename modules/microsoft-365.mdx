@@ -1,0 +1,221 @@
+---
+title: 'Microsoft 365'
+description: 'Monitor and manage Microsoft 365 security and compliance'
+icon: 'windows'
+---
+
+## Overview
+
+The Microsoft 365 module provides comprehensive monitoring and management of your clients' M365 environments. Track Secure Score, manage improvement actions, and ensure security compliance across all M365 tenants.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="Secure Score" icon="shield">
+    Monitor Microsoft Secure Score across tenants
+  </Card>
+  <Card title="Improvement Actions" icon="tasks">
+    Track and manage security improvement actions
+  </Card>
+  <Card title="Control Management" icon="sliders">
+    Detailed security control visibility
+  </Card>
+  <Card title="Multi-Tenant" icon="building">
+    Manage multiple M365 tenants from one place
+  </Card>
+</CardGroup>
+
+## Secure Score Dashboard
+
+### Score Overview
+Monitor security posture:
+- Current Secure Score
+- Maximum achievable score
+- Score percentage
+- Historical trends
+- Peer comparisons
+
+### Score Breakdown
+- Identity score
+- Data score
+- Device score
+- Apps score
+- Infrastructure score
+
+## Improvement Actions
+
+### Action Management
+The actions table displays:
+- Action name and description
+- Point value/impact
+- Implementation status
+- User impact assessment
+- Implementation difficulty
+
+### Action Categories
+- **Identity & Access**: MFA, conditional access, privileged identity
+- **Data Protection**: DLP, encryption, information protection
+- **Device Security**: Endpoint protection, compliance policies
+- **Application Security**: Cloud app security, OAuth apps
+- **Infrastructure**: Network security, audit logging
+
+### Action Status
+<Tabs>
+  <Tab title="To Address">
+    Actions not yet implemented
+  </Tab>
+  <Tab title="In Progress">
+    Actions being implemented
+  </Tab>
+  <Tab title="Completed">
+    Successfully implemented actions
+  </Tab>
+  <Tab title="Risk Accepted">
+    Actions acknowledged but not implemented
+  </Tab>
+  <Tab title="Third Party">
+    Handled by third-party solutions
+  </Tab>
+</Tabs>
+
+## Control Details
+
+### Control Information
+For each security control:
+- Control description
+- Implementation guidance
+- Prerequisites
+- Impact on users
+- Licensing requirements
+
+### Implementation Steps
+Detailed implementation guides:
+1. Prerequisites check
+2. Step-by-step instructions
+3. Verification procedures
+4. Rollback plans
+5. Documentation updates
+
+## Tenant Management
+
+### Adding Tenants
+<Steps>
+  <Step title="Navigate to Settings">
+    Go to Settings > Integrations
+  </Step>
+  <Step title="Add M365 Tenant">
+    Click "Add Microsoft 365 Tenant"
+  </Step>
+  <Step title="Authorize Access">
+    Grant required permissions
+  </Step>
+  <Step title="Configure Sync">
+    Set sync frequency and options
+  </Step>
+</Steps>
+
+### Tenant Switching
+- Quick tenant selector
+- Multi-tenant view
+- Comparison dashboards
+- Consolidated reporting
+
+## Monitoring & Alerts
+
+### Score Monitoring
+- Daily score updates
+- Trend analysis
+- Regression alerts
+- Achievement notifications
+
+### Alert Configuration
+Set alerts for:
+- Score drops
+- New recommendations
+- Critical actions
+- Compliance changes
+
+## Reporting
+
+### Secure Score Reports
+Generate reports showing:
+- Current security posture
+- Improvement opportunities
+- Implementation roadmap
+- Historical progress
+
+### Executive Summaries
+High-level reports for clients:
+- Score overview
+- Key achievements
+- Priority recommendations
+- Benchmark comparisons
+
+## Integration Features
+
+### Calendar Integration
+- Schedule implementation tasks
+- Maintenance windows
+- Review meetings
+
+### Planner Integration
+- Create planner items for actions
+- Track implementation progress
+- Resource allocation
+
+### Compliance Integration
+- Link to compliance frameworks
+- Map controls to requirements
+- Unified compliance view
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Regular Reviews">
+    Review Secure Score weekly and actions monthly
+  </Accordion>
+  <Accordion title="Prioritization">
+    Focus on high-impact, low-effort improvements first
+  </Accordion>
+  <Accordion title="Testing">
+    Test changes in pilot groups before full deployment
+  </Accordion>
+  <Accordion title="Documentation">
+    Document all changes and maintain runbooks
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+### Common Issues
+- **Sync Failures**: Check tenant permissions and connectivity
+- **Missing Actions**: Verify license requirements
+- **Score Discrepancies**: Allow 24-48 hours for updates
+- **Access Errors**: Re-authenticate tenant connection
+
+## Permissions
+
+M365 module permissions:
+- `read_m365` - View M365 data
+- `manage_m365` - Configure M365 settings
+- `sync_m365` - Trigger manual synchronization
+
+## Prerequisites
+
+### Microsoft Requirements
+- Global Admin or Security Admin role
+- Appropriate M365 licenses
+- Security Center access
+- API permissions granted
+
+### Network Requirements
+- Outbound HTTPS (443)
+- Access to Microsoft endpoints
+- Stable internet connection
+
+## Related Modules
+
+- [Compliance](/modules/compliance) - Security compliance tracking
+- [Company Overview](/modules/company-overview) - M365 metrics on dashboard
+- [Reports](/modules/reporting) - Generate M365 reports
+- [Planner](/modules/planner) - Schedule improvement actions

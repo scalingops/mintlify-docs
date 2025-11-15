@@ -1,0 +1,203 @@
+---
+title: Import/Export Data
+description: Export your data for backup or analysis and import data using CSV files
+---
+
+# Import/Export Data
+
+The import/export feature allows you to export your data in CSV format for backup, analysis, or migration purposes. You can also import data back into the system using the same CSV format.
+
+## Accessing Import/Export
+
+Navigate to **Settings → Import/Export** in the sidebar. You must have the appropriate permissions:
+- **Export**: Requires `manage_settings_export` permission
+- **Import**: Requires `manage_settings_import` permission
+
+## Supported Data Types
+
+The following data types can be exported and imported:
+
+- **Companies** - Organization information including contacts and settings
+- **Locations** - Physical locations associated with companies
+- **Devices** - IT assets and equipment
+- **Standards Checks** - Compliance check definitions (export only)
+- **Compliance Results** - Compliance assessment results  
+- **Planner Items** - Project and task planning items
+- **Goals** - Business and technical goals
+
+## Exporting Data
+
+### How to Export
+
+1. Navigate to **Settings → Import/Export**
+2. Select the **Export** tab
+3. Choose the data type you want to export
+4. Select either "All Companies" or a specific company
+5. Click **Export Data**
+
+The system will generate a CSV file and automatically download it to your computer.
+
+### Export File Format
+
+Export files include:
+- **IDs** - Unique identifiers for updating existing records
+- **Relationships** - Foreign key IDs and human-readable names
+- **Timestamps** - Creation and update times
+- **All Fields** - Complete data for each record
+
+### File Naming Convention
+
+Export files are named using this pattern:
+```
+{datatype}_export_{company}_YYYYMMDD.csv
+```
+
+For example: `devices_export_all_20250115.csv`
+
+## Importing Data
+
+### How to Import
+
+1. Navigate to **Settings → Import/Export**
+2. Select the **Import** tab
+3. Choose the data type you want to import
+4. Upload your CSV file by:
+   - Dragging and dropping onto the upload area
+   - Clicking "Browse Files" to select
+5. Select an import mode:
+   - **Create and update records** - Updates existing records (by ID) and creates new ones
+   - **Create new records only** - Skips records with existing IDs
+   - **Update existing records** - Only updates records with matching IDs
+6. Click **Import Data**
+
+### Import Templates
+
+Download templates to see the correct format for each data type. Templates include:
+- Column headers with field names
+- Example records showing proper formatting
+- ID placeholders for creating vs updating records
+
+### ID-Based Updates
+
+When importing data:
+- **Records with IDs** - System attempts to update the existing record
+- **Records without IDs** - System creates new records
+- **Invalid IDs** - System falls back to name-based matching in "both" mode
+
+## Data Type Details
+
+### Companies
+
+Fields included:
+- Basic info: name, contact details, website
+- Configuration: industry, company size, primary domain
+- Status: is_active flag
+
+### Locations
+
+Fields included:
+- Company association (ID and name)
+- Address information
+- Configuration: auto_apply_groups setting
+
+### Devices
+
+Fields included:
+- Company and location associations
+- Device type classification
+- Technical details: OS, IP, MAC address
+- Warranty information
+- Management: RMM type, manufacturer, status
+
+### Compliance Results
+
+Fields included:
+- Company and compliance check associations
+- Status and completion information
+- Public and private notes
+- Priority and flagging
+
+### Planner Items
+
+Fields included:
+- Company association
+- Task details: title, description, type, status
+- Planning: dates, hours, cost estimates
+- Metadata: fiscal year/quarter, linked items counts
+
+### Goals
+
+Fields included:
+- Company association
+- Category, status, and priority associations
+- Goal details: title, description, progress
+- Planning: quarter, year, due date
+
+## Import/Export History
+
+The system tracks all import and export operations:
+- **Operation type** - Import or Export
+- **Data type** - What was imported/exported  
+- **Status** - Processing, Completed, or Failed
+- **Records** - Number of records processed
+- **Download** - Re-download previous exports
+
+Failed operations show error details to help troubleshoot issues.
+
+## Best Practices
+
+### Before Exporting
+
+- Consider filtering by company to reduce file size
+- Export regularly for backup purposes
+- Review the data to ensure it contains what you expect
+
+### Before Importing
+
+- **Always backup first** - Export current data before importing
+- **Test with small datasets** - Verify format with a few records
+- **Check IDs** - Ensure IDs match existing records for updates
+- **Validate relationships** - Confirm referenced companies/locations exist
+
+### Data Integrity
+
+- The system validates all data during import
+- Foreign key relationships are checked
+- Required fields must be present
+- Data types must match expected formats
+
+## Troubleshooting
+
+### Common Export Issues
+
+**No data in export**
+- Verify you have data for the selected company
+- Check your permissions for the data type
+
+**Export fails**
+- Check the error message in history
+- Verify your session hasn't expired
+
+### Common Import Issues
+
+**"No data found in CSV"**
+- Ensure file is properly formatted CSV
+- Check that file isn't empty
+- Verify headers match template
+
+**Records not importing**
+- Missing required fields (e.g., company name/ID)
+- Invalid foreign key references
+- Incorrect data formats
+
+**Updates not working**
+- Verify IDs match existing records
+- Check tenant isolation (can't update other tenants' data)
+- Ensure update mode is selected
+
+## Security Notes
+
+- All operations respect tenant isolation
+- Only your tenant's data can be accessed
+- Exports include only data you have permission to view
+- Imports validate ownership before updates

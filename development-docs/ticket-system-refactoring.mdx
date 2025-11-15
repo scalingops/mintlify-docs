@@ -1,0 +1,265 @@
+# Ticket System Refactoring & Enhanced PSA Integration
+
+**Date:** September 3, 2025  
+**Version:** 1.0  
+**Author:** System Documentation  
+
+## Overview
+
+This document details the comprehensive refactoring of the ticket management system, introducing advanced PSA integration capabilities, customizable display settings, and role-based access controls. The changes represent a major architectural improvement to how tickets are displayed, managed, and synchronized across multiple PSA providers.
+
+## Key Architectural Changes
+
+### 1. New Ticket Settings Architecture
+
+The ticket settings have been completely restructured with a new modular approach:
+
+**Previous Structure:**
+```
+app/(auth)/tickets/settings/page.tsx (removed)
+```
+
+**New Structure:**
+```
+app/(auth)/settings/tickets/
+├── page.tsx                          # Main settings page with tabs
+├── display/
+│   ├── page.tsx                      # Display settings page
+│   ├── actions.ts                    # Display settings actions
+│   └── TicketDisplaySettingsForm.tsx # Display configuration form
+└── TicketDisplayGroupsManager.tsx    # Role-based display groups
+```
+
+### 2. Ticket Display Customization System
+
+#### Type System
+A comprehensive type system has been introduced in `lib/types/ticket-display-settings.ts`:
+
+```typescript
+export interface TicketDisplaySettings {
+  // Core settings
+  psa_provider: 'halo' | 'connectwise';
+  group_name: string | null;
+  group_description: string | null;
+  
+  // Section toggles
+  show_timeline: boolean;
+  show_sla: boolean;
+  show_metrics: boolean;
+  show_additional_info: boolean;
+  
+  // 50+ Halo PSA specific fields
+  halo_show_company: boolean;
+  halo_show_user_name: boolean;
+  // ... etc
+  
+  // 80+ ConnectWise specific fields  
+  cw_show_company: boolean;
+  cw_show_user_name: boolean;
+  // ... etc
+}
+```
+
+#### Provider-Specific Panels
+New dedicated components for each PSA provider:
+
+- `components/tickets/ConnectWiseTicketDetailsPanel.tsx` - Displays ConnectWise tickets with configurable field visibility
+- `components/tickets/HaloTicketDetailsPanel.tsx` - Displays Halo PSA tickets with configurable field visibility
+
+### 3. Enhanced PSA Field Management
+
+#### New Actions
+```typescript
+// app/actions/psaFields.ts
+export async function getPSAPrioritiesAction(integrationId?: string): Promise<PSAFieldsResponse>
+export async function getPSATicketStatusesAction(integrationId?: string): Promise<PSAFieldsResponse>  
+export async function getPSATicketTypesAction(integrationId?: string): Promise<PSAFieldsResponse>
+```
+
+#### Display Group Management
+```typescript
+// app/actions/ticketDisplayGroups.ts
+export async function getTicketDisplayGroupsAction(): Promise<TicketDisplayGroupsResponse>
+export async function createTicketDisplayGroupAction(data: CreateTicketDisplayGroupData): Promise<ActionResult>
+export async function updateTicketDisplayGroupAction(id: string, data: UpdateTicketDisplayGroupData): Promise<ActionResult>
+```
+
+## Major Features Implemented
+
+### 1. Role-Based Display Settings
+
+Users can now create display groups with customized field visibility rules:
+
+- **Group Management**: Create named display groups (e.g., "Technician View", "Manager View", "Customer View")
+- **Field Granularity**: Toggle visibility for 130+ fields across both PSA providers
+- **Role Assignment**: Link display groups to specific user roles
+- **Section Controls**: Show/hide entire sections (Timeline, SLA, Metrics, Additional Info)
+
+### 2. Enhanced Ticket Synchronization
+
+#### Halo PSA Improvements
+- **Complete Notes Sync**: Full implementation of Halo PSA notes synchronization (previously missing)
+- **Rich Content Support**: HTML and text content preservation
+- **Privacy Controls**: Respect private/public note settings
+- **Progress Feed Integration**: Sync from Halo's Actions API
+
+#### ConnectWise Enhancements
+- **Improved Error Handling**: Better handling of API errors and rate limits
+- **Enhanced Field Mapping**: More comprehensive field synchronization
+- **Note Threading**: Proper note threading and conversation flow
+
+### 3. Advanced Integration Management
+
+#### New Integration User Panels
+- `components/settings/companies/IntegrationUsersPanel.tsx` - Unified view of integration users
+- `components/settings/companies/IntegrationUsersScroller.tsx` - Scrollable user lists
+
+#### Enhanced Import Systems
+Major improvements to user import functionality:
+- Streamlined ConnectWise user import with better error handling
+- Enhanced Halo PSA user import with company mapping
+- Removed M365 integration (consolidated into unified import system)
+
+### 4. Form Component Framework
+
+New reusable form components in `components/forms/`:
+- Generic form validation
+- Standardized input components
+- Consistent error handling
+- Improved user experience
+
+## Database Schema Changes
+
+The database schema has undergone significant expansion (from 4KB to 1.2MB in `types/database.ts`):
+
+### New Tables
+- `ticket_display_settings` - Store customizable display configurations
+- `ticket_display_groups` - Group management for role-based settings
+- `role_display_settings` - Junction table linking roles to display settings
+- Enhanced PSA field tables (`psa_priorities`, `psa_ticket_statuses`, `psa_ticket_types`)
+
+### Enhanced Tables
+- Expanded `integration_tickets` with additional ConnectWise fields
+- Enhanced `integration_ticket_notes` with rich content support
+- Improved `integrations` table with better configuration options
+
+## API Enhancements
+
+### New Edge Functions
+```
+supabase/functions/
+├── sync-halo-psa-data/           # Complete Halo PSA data sync
+├── sync-halo-tickets-full/       # Full Halo ticket sync
+└── sync-connectwise-tickets-full/ # Enhanced ConnectWise full sync
+```
+
+### Enhanced Existing Functions
+- `sync-connectwise-tickets/` - Improved incremental sync
+- `sync-halo-tickets/` - Better error handling and field mapping
+- `halopsa-users.ts` - Enhanced user synchronization
+
+## User Experience Improvements
+
+### 1. Settings Interface
+- **Tabbed Interface**: General Settings and Display Groups in separate tabs
+- **Visual Field Toggles**: Intuitive on/off switches for field visibility
+- **Preview Mode**: Real-time preview of display changes
+- **Group Templates**: Pre-configured templates for common use cases
+
+### 2. Ticket Display
+- **Conditional Rendering**: Fields only show when enabled and contain data
+- **Organized Sections**: Logical grouping of related information
+- **Responsive Design**: Optimized for different screen sizes
+- **Performance**: Efficient rendering with minimal re-renders
+
+### 3. Integration Management
+- **Unified Interface**: Single location for all integration settings
+- **Better Feedback**: Clear status indicators and error messages
+- **Bulk Operations**: Mass import and configuration capabilities
+- **Audit Trail**: Track integration changes and sync operations
+
+## Technical Implementation Details
+
+### Field Toggle Pattern
+```typescript
+// Example from ConnectWiseTicketDetailsPanel.tsx
+{displaySettings?.cw_show_company !== false && (
+  <div className="flex items-start gap-3">
+    <Building className="h-4 w-4 text-muted-foreground mt-0.5" />
+    <div className="flex-1">
+      <p className="text-xs font-medium text-muted-foreground">Company</p>
+      <p className="text-sm font-semibold">{company?.name || "—"}</p>
+    </div>
+  </div>
+)}
+```
+
+### Accordion-Based Sections
+```typescript
+// Timeline section with conditional rendering
+{displaySettings?.show_timeline !== false && (
+  <Accordion type="single" collapsible className="w-full">
+    <AccordionItem value="timeline" className="border-b-0">
+      <AccordionTrigger className="text-xs font-semibold text-muted-foreground uppercase tracking-wider py-3 hover:no-underline">
+        Timeline
+      </AccordionTrigger>
+      <AccordionContent className="pb-4">
+        {/* Timeline content */}
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+)}
+```
+
+## Migration Notes
+
+### Breaking Changes
+- **Removed Files**: `app/(auth)/tickets/settings/page.tsx` and `components/settings/companies/ImportM365Users.client.tsx`
+- **Moved Functionality**: Ticket settings moved from tickets to settings section
+- **Database Schema**: New required tables for display settings
+
+### Upgrade Path
+1. **Database Migration**: Run new migrations for display settings tables
+2. **Default Settings**: Create default display groups for existing users
+3. **Permission Updates**: Update role permissions for new settings pages
+4. **Cache Invalidation**: Clear cached ticket display components
+
+## Performance Considerations
+
+### Optimizations Implemented
+- **Conditional Rendering**: Only render enabled fields
+- **Memoized Components**: Prevent unnecessary re-renders
+- **Efficient Queries**: Optimized database queries with proper indexing
+- **Lazy Loading**: Load display settings only when needed
+
+### Monitoring Points
+- Database query performance on display settings
+- Memory usage with large field sets
+- Sync performance with enhanced field mapping
+- User interface responsiveness
+
+## Future Enhancements
+
+### Planned Features
+- **Export/Import**: Display group configuration export/import
+- **Templates**: Industry-specific display templates
+- **Advanced Filtering**: Field-based filtering and search
+- **Mobile Optimization**: Enhanced mobile display settings
+- **Analytics**: Usage analytics for display preferences
+
+### Technical Debt
+- **Type Safety**: Further strengthen TypeScript types
+- **Testing**: Comprehensive test coverage for new components
+- **Documentation**: API documentation for new endpoints
+- **Monitoring**: Enhanced logging and monitoring
+
+## Conclusion
+
+This refactoring represents a significant advancement in the ticket management system, providing:
+
+- **Flexibility**: Unprecedented customization of ticket displays
+- **Scalability**: Support for additional PSA providers
+- **Usability**: Improved user experience and interface design
+- **Maintainability**: Better code organization and type safety
+
+The new architecture positions the system for future enhancements while maintaining backward compatibility and performance standards.

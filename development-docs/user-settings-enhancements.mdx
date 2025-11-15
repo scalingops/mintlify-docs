@@ -1,0 +1,209 @@
+---
+title: User Settings Enhancements
+description: Enhanced user profile management with email editing functionality and improved user experience
+---
+
+# User Settings Enhancements
+
+This document covers the recent enhancements to the user settings interface, including email change functionality and improved profile management.
+
+## Overview
+
+The user settings have been enhanced to provide better profile management capabilities, including the ability to change email addresses and improved handling of different authentication providers.
+
+## New Features
+
+### 1. Email Address Editing
+
+**File**: `components/settings/user-settings/ProfileTab.tsx`
+
+Key features:
+- Inline email editing with save/cancel controls
+- Proper validation and error handling
+- Support for email change confirmation flow
+- Provider-specific restrictions (Azure AD users)
+- Visual feedback for pending email changes
+
+**Implementation Details**:
+
+```tsx
+// Email editing state management
+const [isEditingEmail, setIsEditingEmail] = useState(false);
+const [editedEmail, setEditedEmail] = useState("");
+const [isUpdatingEmail, setIsUpdatingEmail] = useState(false);
+const [emailUpdatePending, setEmailUpdatePending] = useState(false);
+
+// Save email changes with proper error handling
+async function saveEmailChange() {
+  if (!editedEmail || editedEmail === user?.email) {
+    setIsEditingEmail(false);
+    return;
+  }
+
+  try {
+    setIsUpdatingEmail(true);
+    const result = await updateUserEmail(editedEmail);
+    
+    if (result.success) {
+      toast.success(result.message);
+      setIsEditingEmail(false);
+      if (result.requiresConfirmation) {
+        setEmailUpdatePending(true);
+      }
+    } else {
+      toast.error(result.message);
+    }
+  } catch (err) {
+    console.error("Error updating email:", err);
+    toast.error("Failed to update email address");
+  } finally {
+    setIsUpdatingEmail(false);
+  }
+}
+```
+
+### 2. Server Action for Email Updates
+
+**File**: `app/actions/profile.ts`
+
+New server action that:
+- Validates user authentication
+- Updates email using Supabase Auth
+- Handles confirmation requirements
+- Provides proper error responses
+- Revalidates relevant pages
+
+```tsx
+export async function updateUserEmail(newEmail: string) {
+  try {
+    const supabase = supabaseServer();
+    
+    // Get current user
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    
+    if (userError || !user) {
+      throw new Error("User not authenticated");
+    }
+
+    // Update email address
+    const { data, error } = await supabase.auth.updateUser({
+      email: newEmail
+    });
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    // Revalidate the user settings page
+    revalidatePath("/settings/user");
+    
+    return { 
+      success: true, 
+      message: "Email update initiated. Please check both your old and new email addresses for confirmation instructions.",
+      requiresConfirmation: true
+    };
+  } catch (error) {
+    console.error("Email update error:", error);
+    return { 
+      success: false, 
+      message: error instanceof Error ? error.message : "Failed to update email address" 
+    };
+  }
+}
+```
+
+## User Experience Improvements
+
+### 1. Provider-Specific Handling
+
+Different authentication providers have different capabilities:
+
+- **Azure AD Users**: Cannot change email (managed by organization)
+- **Email/Password Users**: Full email editing capability
+- **Other OAuth Providers**: Standard email change flow
+
+```tsx
+const isAzureUser =
+  user?.app_metadata?.provider === "azure" ||
+  (Array.isArray(user?.app_metadata?.providers) &&
+    user?.app_metadata?.providers.includes("azure"));
+
+// Conditional editing based on provider
+{!isEditingEmail && !isAzureUser ? (
+  <Button onClick={() => setIsEditingEmail(true)}>
+    Edit
+  </Button>
+) : null}
+```
+
+### 2. Visual Feedback
+
+- **Pending Changes**: Alert shown when email change is pending confirmation
+- **Provider Restrictions**: Information alert for Azure AD users
+- **Loading States**: Proper loading indicators during updates
+- **Error Handling**: Clear error messages for failed operations
+
+### 3. Responsive Design
+
+The profile tab uses a responsive grid layout that adapts to different screen sizes:
+
+```tsx
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+  {/* Account details */}
+</div>
+```
+
+## Security Considerations
+
+### 1. Authentication Validation
+
+All email update operations validate user authentication server-side before proceeding.
+
+### 2. Provider Restrictions
+
+Azure AD users cannot change their email address through the application, maintaining security policies.
+
+### 3. Confirmation Flow
+
+Email changes require confirmation through both old and new email addresses, following security best practices.
+
+### 4. Error Handling
+
+Proper error handling prevents information leakage while providing useful feedback to users.
+
+## Technical Architecture
+
+### 1. State Management
+
+- Local React state for form management
+- TanStack Query for server state invalidation
+- Toast notifications for user feedback
+
+### 2. Server Actions
+
+- Next.js server actions for secure server-side operations
+- Proper error boundaries and validation
+- Path revalidation for cache management
+
+### 3. Component Structure
+
+- Modular component design with clear separation of concerns
+- Reusable UI components from shadcn/ui library
+- Consistent styling and interaction patterns
+
+## Testing Considerations
+
+1. **Email Change Flow**: Test the complete email change process
+2. **Provider Restrictions**: Verify Azure AD users cannot edit email
+3. **Error Scenarios**: Test various failure modes
+4. **Responsive Design**: Verify layout on different screen sizes
+5. **Toast Notifications**: Ensure proper feedback messaging
+
+## Future Enhancements
+
+1. **Additional Profile Fields**: Support for more user profile fields
+2. **Bulk Operations**: Admin capabilities for bulk user management
+3. **Audit Trail**: Track profile changes for compliance
+4. **Advanced Validation**: Enhanced email validation and domain restrictions
+
+Last updated: August 13, 2025

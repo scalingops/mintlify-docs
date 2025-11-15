@@ -1,0 +1,253 @@
+---
+title: 'Integrations'
+description: 'Connect MSPortal.ai with external services and platforms'
+icon: 'plug'
+---
+
+## Overview
+
+The Integrations module enables you to connect MSPortal.ai with your existing tools and platforms. Integrate with PSA systems, Microsoft 365, and other services to create a unified management experience.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="PSA Integration" icon="link">
+    Connect with ConnectWise and Halo PSA
+  </Card>
+  <Card title="Microsoft 365" icon="microsoft">
+    Sync with M365 services
+  </Card>
+  <Card title="API Access" icon="code">
+    RESTful API for custom integrations
+  </Card>
+  <Card title="Webhooks" icon="webhook">
+    Real-time event notifications
+  </Card>
+</CardGroup>
+
+## PSA Integrations
+
+### ConnectWise Manage
+Full bi-directional integration:
+- **Company Sync**: Synchronize client companies
+- **Ticket Integration**: Create and update tickets
+- **Opportunity Management**: Track sales opportunities
+- **Time Entry**: Sync time tracking
+- **Contact Sync**: Maintain contact records
+
+#### Setup Process
+<Steps>
+  <Step title="Navigate to Settings">
+    Go to Settings > Integrations
+  </Step>
+  <Step title="Select ConnectWise">
+    Click "Configure ConnectWise"
+  </Step>
+  <Step title="Enter Credentials">
+    - API URL
+    - Company ID
+    - Public/Private keys
+  </Step>
+  <Step title="Configure Mappings">
+    Map fields between systems
+  </Step>
+  <Step title="Test Connection">
+    Verify connectivity
+  </Step>
+</Steps>
+
+### Halo PSA
+Complete integration features:
+- **Ticket Management**: Full ticket lifecycle
+- **Asset Synchronization**: Device and asset data
+- **Customer Sync**: Client information
+- **Opportunity Tracking**: Sales pipeline
+- **Billing Integration**: Invoice data
+
+#### Configuration
+Similar setup to ConnectWise:
+1. API endpoint configuration
+2. Authentication setup
+3. Field mapping
+4. Sync preferences
+5. Testing and validation
+
+## Microsoft 365 Integration
+
+### Available Services
+- **Azure Active Directory**: User and group sync
+- **Exchange Online**: Calendar and email
+- **Security Center**: Secure Score data
+- **Compliance Center**: Compliance metrics
+- **SharePoint**: Document management
+
+### Setup Requirements
+- Global Admin or equivalent permissions
+- Appropriate M365 licenses
+- API permissions grant
+- Tenant configuration
+
+## API Access
+
+### REST API
+Programmatic access to MSPortal.ai:
+- **Authentication**: Bearer token authentication
+- **Endpoints**: RESTful endpoints for all modules
+- **Rate Limiting**: Configurable rate limits
+- **Versioning**: API version management
+
+### API Features
+- CRUD operations on all resources
+- Bulk operations support
+- Webhook subscriptions
+- Real-time updates
+- Comprehensive documentation
+
+### Authentication
+<Steps>
+  <Step title="Generate API Key">
+    Create API key in Settings
+  </Step>
+  <Step title="Configure Scopes">
+    Set permission scopes
+  </Step>
+  <Step title="Set Rate Limits">
+    Configure usage limits
+  </Step>
+  <Step title="Test Access">
+    Verify API connectivity
+  </Step>
+</Steps>
+
+## Webhook Configuration
+
+### Event Types
+Subscribe to events:
+- **Compliance Events**: Run completions, issue creation
+- **Survey Events**: Response received, survey completed
+- **Goal Events**: Goal created, status changed
+- **Ticket Events**: Ticket updates, status changes
+- **Device Events**: Warranty expiration, refresh due
+
+### Webhook Setup
+1. Define endpoint URL
+2. Select event types
+3. Configure retry policy
+4. Set security headers
+5. Test webhook delivery
+
+## Integration Settings
+
+### Sync Configuration
+Control data synchronization:
+- Sync frequency (real-time, scheduled)
+- Field mappings
+- Conflict resolution
+- Error handling
+- Retry policies
+
+### Data Mapping
+Map fields between systems:
+- Company fields
+- Contact properties
+- Ticket statuses
+- Priority levels
+- Custom fields
+
+## Monitoring
+
+### Integration Health
+Monitor integration status:
+- Connection status
+- Last sync time
+- Error counts
+- Queue depth
+- Performance metrics
+
+### Sync Logs
+Detailed logging of:
+- Sync operations
+- Data changes
+- Errors and warnings
+- Performance data
+- Audit trail
+
+## Troubleshooting
+
+### Common Issues
+- **Authentication Failures**: Verify credentials and permissions
+- **Sync Delays**: Check network and rate limits
+- **Field Mapping Errors**: Review field configurations
+- **Data Conflicts**: Check conflict resolution settings
+
+### Diagnostic Tools
+- Connection tester
+- Sync preview
+- Log analyzer
+- Performance monitor
+- Error reports
+
+## Security
+
+### Data Protection
+- Encrypted connections (TLS)
+- Secure credential storage
+- API key rotation
+- IP whitelisting
+- Audit logging
+
+### Access Control
+- Role-based permissions
+- Scope limitations
+- API rate limiting
+- Session management
+- Multi-factor authentication
+
+## Custom Integrations
+
+### Development Options
+Build custom integrations:
+- REST API client libraries
+- Webhook receivers
+- Custom connectors
+- Middleware solutions
+- ETL pipelines
+
+### Integration Patterns
+- **Real-time Sync**: Immediate data updates
+- **Batch Processing**: Scheduled bulk operations
+- **Event-Driven**: Webhook-based triggers
+- **Polling**: Regular status checks
+- **Hybrid**: Combined approaches
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Test Thoroughly">
+    Always test integrations in a non-production environment first
+  </Accordion>
+  <Accordion title="Monitor Regularly">
+    Check integration health daily
+  </Accordion>
+  <Accordion title="Document Mappings">
+    Maintain documentation of all field mappings
+  </Accordion>
+  <Accordion title="Plan for Failures">
+    Implement proper error handling and retry logic
+  </Accordion>
+</AccordionGroup>
+
+## Permissions
+
+Integration permissions:
+- `manage_integrations` - Configure integrations
+- `view_integration_logs` - Access sync logs
+- `manage_api_keys` - Create and manage API keys
+- `configure_webhooks` - Set up webhooks
+
+## Related Modules
+
+- [Settings](/modules/settings) - Integration configuration
+- [Ticketing](/modules/ticketing) - PSA ticket sync
+- [Microsoft 365](/modules/microsoft-365) - M365 services
+- [Companies](/modules/companies) - Company synchronization

@@ -1,0 +1,307 @@
+# SCORM Architecture Improvements
+
+**Date:** 2025-01-28  
+**Version:** Latest  
+**Status:** Implemented  
+
+## Overview
+
+This document outlines the architectural improvements made to the SCORM (Sharable Content Object Reference Model) processing system. These enhancements provide robust, scalable, and reliable handling of SCORM packages within the training platform.
+
+## Architecture Overview
+
+### Before the Changes
+- Manual SCORM package extraction
+- Limited admin tools for package management
+- Basic SCORM player with minimal error handling
+- Inconsistent file naming and storage
+
+### After the Changes
+- Automated bulk SCORM extraction system
+- Comprehensive admin interface for package management
+- Enhanced SCORM player with robust error handling
+- Consistent file naming conventions and storage patterns
+
+## Core Components
+
+### 1. SCORM Package Extraction System
+
+#### Edge Function Integration
+- **Purpose**: Server-side SCORM package extraction
+- **Location**: Supabase Edge Functions (`extract-scorm-package`)
+- **Capabilities**:
+  - ZIP file decompression and extraction
+  - File upload to storage with proper content types
+  - Path normalization (spaces → underscores)
+  - Error reporting and progress tracking
+
+#### Server Actions Architecture
+```typescript
+// extract-scorm.ts - Core extraction logic
+extractScormPackageAction(zipPath: string, overwrite: boolean)
+extractAllScormPackagesAction(companyFolder: string, overwrite: boolean)
+extractScormByCourseIdAction(courseId: string, overwrite: boolean)
+```
+
+#### Key Features
+- **External URL Handling**: Downloads external SCORM packages to storage
+- **Path Normalization**: Converts spaces to underscores for consistent file paths
+- **Metadata Updates**: Tracks extraction status in course metadata
+- **Batch Processing**: Handles multiple packages efficiently
+
+### 2. SCORM Player Enhancement
+
+#### SCORM API Integration
+- **Library**: scorm-again for robust SCORM API implementation
+- **Versions Supported**: SCORM 1.2 and SCORM 2004
+- **Features**:
+  - Automatic version detection
+  - Progress tracking and persistence
+  - Score management and completion status
+  - Session time tracking
+
+#### Error Handling Strategy
+```typescript
+// Benign error suppression for codes 101 and 103
+const errorCode = (error as any)?.code;
+if (errorCode !== 101 && errorCode !== 103) {
+  console.warn("[SCORM] Terminate error:", error);
+}
+```
+
+#### Auto-Save Implementation
+- **Interval**: 30-second automatic progress saves
+- **Data Persistence**: SCORM data stored in enrollment records
+- **Cleanup**: Proper API termination on component unmount
+
+### 3. Admin Management Interface
+
+#### Component Hierarchy
+```
+AdminTrainingManager
+├── Statistics Dashboard
+├── Tabbed Interface
+│   ├── Global Courses
+│   ├── Tenant Courses
+│   └── Analytics (Future)
+└── Action Dialogs
+    ├── CreateGlobalCourseDialog
+    ├── UploadScormDialog
+    └── BulkImportDialog
+```
+
+#### Data Flow
+1. **Course Loading**: Fetches global courses via `getGlobalCoursesAction()`
+2. **Bulk Operations**: Integrates with extraction system
+3. **Real-time Updates**: Refreshes data after operations
+4. **Error Handling**: Toast notifications for user feedback
+
+### 4. Storage Architecture
+
+#### File Organization
+```
+training-content/
+├── bigger_brains/
+│   ├── scorm/
+│   │   ├── package_name.zip (original)
+│   │   └── package_name/ (extracted)
+│   │       ├── index.html
+│   │       ├── scorm_files/
+│   │       └── assets/
+└── [tenant_id]/
+    └── training/
+        └── [course_id]/
+```
+
+#### Content Type Management
+- **Automatic Detection**: Based on file extensions
+- **MIME Type Mapping**: Comprehensive content type support
+- **SCORM Compatibility**: Proper content types for SCORM assets
+
+## Implementation Details
+
+### 1. External Package Handling
+
+When processing external SCORM URLs:
+```typescript
+// Download external ZIP to storage
+const response = await fetch(zipPath, { method: 'GET' });
+const arrayBuffer = await response.arrayBuffer();
+const bytes = Buffer.from(arrayBuffer);
+
+// Upload to training-content bucket
+await admin.storage
+  .from('training-content')
+  .upload(targetKey, bytes, { 
+    contentType: 'application/zip', 
+    upsert: true 
+  });
+```
+
+### 2. Path Normalization Strategy
+
+Consistent file path handling:
+```typescript
+// Normalize spaces to underscores
+const normalizedName = baseName.replace(/\s+/g, '_').replace(/[–—]/g, '_');
+const normalizedExtractPath = storageZipPath.replace(/\.zip$/i, '').replace(/ /g, '_');
+```
+
+### 3. Metadata Tracking
+
+Course metadata structure:
+```typescript
+interface CourseMetadata {
+  package_path: string;
+  extracted: boolean;
+  extracted_at: string;
+  module_type: string;
+  launch_url: string;
+  identifier: string;
+  resources: any[];
+  organizations: any[];
+}
+```
+
+### 4. Bulk Processing Algorithm
+
+Efficient batch processing:
+```typescript
+for (const course of courses) {
+  // Check if already extracted (unless overwrite enabled)
+  if (!overwrite) {
+    const existingFiles = await checkStorageFiles(extractPath);
+    if (existingFiles.length > 0) {
+      skipCount++;
+      continue;
+    }
+  }
+  
+  // Process extraction
+  const result = await extractScormPackageAction(course.scorm_url, overwrite);
+  // Update statistics and metadata
+}
+```
+
+## Security and Performance Considerations
+
+### 1. Authentication and Authorization
+- **Admin-Only Operations**: SCORM extraction restricted to primary admins
+- **Tenant Isolation**: All operations maintain tenant boundaries
+- **Session Validation**: User authentication verified for all operations
+
+### 2. Content Security Policy (CSP)
+```typescript
+// Middleware bypass for SCORM content
+if (!pathname.startsWith("/api/training/content")) {
+  response = addCSPHeaders(response);
+}
+```
+
+**Rationale**: SCORM content requires unrestricted JavaScript execution and iframe communication.
+
+### 3. Error Handling Strategy
+- **Graceful Degradation**: Operations continue despite individual failures
+- **Comprehensive Logging**: Detailed error tracking for troubleshooting
+- **User Feedback**: Clear error messages and progress indicators
+
+### 4. Performance Optimizations
+- **Batch Operations**: Process multiple files efficiently
+- **Progress Tracking**: Real-time feedback for long-running operations
+- **Storage Efficiency**: Avoid duplicate extractions when possible
+
+## API Endpoints and Routes
+
+### 1. Training Content API
+- **Route**: `/api/training/content/[...path]`
+- **Purpose**: Serve extracted SCORM content
+- **Features**:
+  - Dynamic content type detection
+  - Supabase storage integration
+  - Proper caching headers
+
+### 2. Server Actions
+- **extract-scorm.ts**: SCORM extraction operations
+- **clean-scorm.ts**: Cleanup and maintenance operations
+- **training.ts**: General training management actions
+
+## Data Flow Diagrams
+
+### SCORM Extraction Flow
+```
+Admin Interface → extractAllScormPackagesAction
+    ↓
+Query Courses → Download ZIP Files
+    ↓
+Edge Function Call → Extract to Storage
+    ↓
+Update Metadata → Refresh UI
+```
+
+### SCORM Player Flow
+```
+Course Launch → Initialize SCORM API
+    ↓
+Load Course Content → Setup Event Listeners
+    ↓
+Track Progress → Auto-Save Data
+    ↓
+Complete/Terminate → Final Save & Cleanup
+```
+
+## Testing and Quality Assurance
+
+### 1. Error Scenarios Handled
+- Missing or corrupted ZIP files
+- Network failures during external downloads
+- Storage quota limitations
+- Invalid SCORM packages
+- API initialization failures
+
+### 2. Performance Testing
+- Bulk extraction of 100+ packages
+- Concurrent user SCORM sessions
+- Large file processing (>100MB packages)
+- Storage operation efficiency
+
+### 3. Compatibility Testing
+- SCORM 1.2 and 2004 packages
+- Various authoring tools (Articulate, Captivate, etc.)
+- Different browsers and devices
+- Mobile SCORM consumption
+
+## Monitoring and Maintenance
+
+### 1. Logging Strategy
+- **Console Logging**: Structured logs with operation context
+- **Error Tracking**: Comprehensive error information
+- **Performance Metrics**: Extraction times and success rates
+
+### 2. Maintenance Operations
+- **Cleanup Utilities**: Remove orphaned extracted files
+- **Re-extraction**: Update extracted content when needed
+- **Storage Management**: Monitor and optimize storage usage
+
+### 3. Health Checks
+- **Package Integrity**: Verify extracted content completeness
+- **API Functionality**: Test SCORM API initialization
+- **Progress Tracking**: Validate data persistence
+
+## Future Enhancements
+
+### 1. Planned Improvements
+- **Content Delivery Network (CDN)**: Faster content delivery
+- **Advanced Analytics**: Detailed SCORM interaction tracking
+- **Mobile Optimization**: Enhanced mobile SCORM experience
+- **Offline Support**: Cached content for offline learning
+
+### 2. Scalability Considerations
+- **Distributed Processing**: Multi-node extraction processing
+- **Caching Layer**: Redis-based content caching
+- **Database Optimization**: Indexed queries for large datasets
+
+## Conclusion
+
+The SCORM architecture improvements provide a robust foundation for enterprise-scale training content management. The modular design, comprehensive error handling, and scalable processing capabilities ensure reliable operation while maintaining security and performance standards.
+
+These enhancements support the platform's growth and provide administrators with powerful tools for managing training content at scale.

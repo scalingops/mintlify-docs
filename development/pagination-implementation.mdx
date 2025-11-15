@@ -1,0 +1,231 @@
+---
+title: Pagination Implementation
+description: Implementation of pagination functionality across dashboard components and data tables
+date: 2025-08-09
+version: 1.0
+---
+
+# Pagination Implementation
+
+This document details the implementation of pagination functionality across multiple components in the MSP Checkmate application to improve performance and user experience when dealing with large datasets.
+
+## Overview
+
+Pagination has been added to several key components to handle large data sets more efficiently:
+
+- **Company Overview Dashboard Cards**: CompanySummaryCard, PlannerItemsCard, RecentRunsCard
+- **Data Table Components**: Enhanced DataTableCard with built-in pagination support
+- **Company Settings**: Improved pagination controls in company management
+
+## Implementation Details
+
+### Dashboard Cards Pagination
+
+All dashboard cards now implement consistent pagination with the following features:
+
+- **Default Page Size**: 10 items per page for dashboard cards
+- **Pagination Controls**: Uses the `PaginationWithDetails` component
+- **Conditional Display**: Pagination only shows when total items exceed page size
+- **State Management**: Uses React `useState` for current page tracking
+
+#### CompanySummaryCard.tsx
+
+```typescript
+const [currentPage, setCurrentPage] = useState(1);
+const itemsPerPage = 10;
+
+// Calculate pagination
+const totalPages = Math.ceil(summary.length / itemsPerPage);
+const paginatedData = useMemo(() => {
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  return summary.slice(startIndex, endIndex);
+}, [summary, currentPage, itemsPerPage]);
+```
+
+#### PlannerItemsCard.tsx
+
+Enhanced with proper data scoping and pagination:
+
+```typescript
+const scopedItems = useMemo(() =>
+  isGlobalView
+    ? items
+    : items.filter((item) => item.company_id === selectedCompany?.id),
+  [items, selectedCompany?.id, isGlobalView],
+);
+
+const paginatedData = useMemo(() => {
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  return scopedItems.slice(startIndex, endIndex);
+}, [scopedItems, currentPage, itemsPerPage]);
+```
+
+#### RecentRunsCard.tsx
+
+Combines sorting and pagination:
+
+```typescript
+const sorted = useMemo(() => {
+  const scoped = isGlobalView
+    ? runs
+    : runs.filter((run) => run.company_id === selectedCompany?.id);
+
+  return [...scoped].sort((a, b) => {
+    const aDate = new Date(a.run_date).getTime();
+    const bDate = new Date(b.run_date).getTime();
+    const diff = sortDir === "asc" ? aDate - bDate : bDate - aDate;
+    if (diff !== 0) return diff;
+    return (a.company_name || "").localeCompare(b.company_name || "");
+  });
+}, [runs, isGlobalView, selectedCompany?.id, sortDir]);
+
+const paginatedData = useMemo(() => {
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  return sorted.slice(startIndex, endIndex);
+}, [sorted, currentPage, itemsPerPage]);
+```
+
+### DataTableCard Enhanced Pagination
+
+The `DataTableCard` component has been improved with better pagination support:
+
+#### Key Improvements
+
+1. **Always Show Pagination**: Pagination controls now always display when pagination is enabled
+2. **Proper Row Counting**: Correctly counts top-level rows only for hierarchical tables
+3. **Better Page Calculation**: Uses `Math.max(1, table.getPageCount())` to ensure at least 1 page
+
+```typescript
+{pagination && (
+  <PaginationWithDetails
+    currentPage={pageIndex + 1}
+    totalPages={Math.max(1, table.getPageCount())}
+    totalItems={table.getFilteredRowModel().rows.filter(r => r.depth === 0).length}
+    itemsPerPage={currentPageSize}
+    onPageChange={(page) =>
+      setPagination({ pageIndex: page - 1, pageSize: currentPageSize })
+    }
+    itemLabel={pagination.itemLabel || "items"}
+    className="mt-4"
+  />
+)}
+```
+
+#### Companies Settings Page
+
+Adjusted page size from 20 to 25 items per page for better screen utilization:
+
+```typescript
+pagination={{
+  pageSize: 25,
+  itemLabel: "companies",
+}}
+```
+
+### User Experience Improvements
+
+#### CompanySelector Enhanced Search
+
+Added improved search functionality with auto-focus:
+
+```typescript
+const searchInputRef = useRef<HTMLInputElement>(null);
+
+<DropdownMenuContent
+  onOpenAutoFocus={(e) => {
+    e.preventDefault();
+    searchInputRef.current?.focus();
+  }}
+>
+  <Input
+    ref={searchInputRef}
+    type="search"
+    placeholder="Search companies..."
+    // ... other props
+  />
+</DropdownMenuContent>
+```
+
+## Implementation Patterns
+
+### Consistent Pagination Structure
+
+All components follow this pattern:
+
+1. **State Management**: Use `useState` for current page
+2. **Memoized Data**: Use `useMemo` for paginated data calculation
+3. **Conditional Rendering**: Only show pagination when needed
+4. **Consistent Styling**: Use `mt-4` class for pagination spacing
+
+### Performance Considerations
+
+- **Memoization**: All data calculations are memoized to prevent unnecessary re-renders
+- **Efficient Slicing**: Data is sliced only when page or data changes
+- **Component Memoization**: Components use `React.memo` where appropriate
+
+## UI Components Used
+
+- **PaginationWithDetails**: Primary pagination component with item count display
+- **DataTableCard**: Enhanced table component with built-in pagination support
+- **ScrollShadowContainer**: For properly handling table overflow
+
+## Configuration Options
+
+### Default Page Sizes
+
+- **Dashboard Cards**: 10 items per page
+- **Data Tables**: 20-25 items per page (configurable)
+- **Company Selector**: 320px height with scroll area
+
+### Customizable Properties
+
+```typescript
+interface PaginationConfig {
+  pageSize?: number;
+  itemLabel?: string;
+  showDetails?: boolean;
+}
+```
+
+## Best Practices
+
+1. **Always Use Memoization**: Wrap expensive calculations in `useMemo`
+2. **Conditional Pagination**: Only show controls when total items exceed page size
+3. **Consistent Spacing**: Use `mt-4` class for pagination components
+4. **Proper Item Labels**: Use descriptive labels (e.g., "companies", "items", "runs")
+5. **Handle Edge Cases**: Ensure pagination works with empty data sets
+
+## Testing Considerations
+
+When testing paginated components:
+
+1. Test with data sets larger and smaller than page size
+2. Verify pagination controls appear/disappear correctly
+3. Test page navigation functionality
+4. Verify item count displays are accurate
+5. Test with filtered/sorted data
+
+## Future Enhancements
+
+Potential improvements for future iterations:
+
+1. **Virtual Scrolling**: For very large datasets
+2. **Server-Side Pagination**: For database-backed lists
+3. **Customizable Page Sizes**: Allow users to choose items per page
+4. **Keyboard Navigation**: Arrow keys for page navigation
+5. **URL State Persistence**: Remember pagination state in URL
+
+## Migration Notes
+
+When updating existing components to use pagination:
+
+1. Import required hooks: `useState`, `useMemo`
+2. Add pagination state and calculations
+3. Update data rendering to use paginated data
+4. Add pagination component with proper spacing
+5. Test with various data sizes
+
+This pagination implementation provides a consistent, performant solution across the application while maintaining good user experience and code maintainability.

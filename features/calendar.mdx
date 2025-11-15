@@ -1,0 +1,232 @@
+---
+title: Calendar & Meetings
+description: Schedule meetings, sync with Microsoft 365, and manage your team's calendar
+---
+
+# Calendar & Meetings
+
+The calendar feature provides comprehensive meeting scheduling, Microsoft 365 integration, and team coordination capabilities. You can create meetings, sync with external calendars, and configure various settings to match your organization's workflow.
+
+## Overview
+
+The calendar system includes:
+- **Meeting scheduling** with participants, templates, and reminders
+- **Microsoft 365 synchronization** for calendar events and free/busy information
+- **Work hours configuration** for smart scheduling
+- **Calendar views** (Month, Week, Day) with customizable settings
+- **Meeting templates** for recurring meeting types
+
+## Accessing the Calendar
+
+Navigate to **Calendar** in the main sidebar. The calendar opens in month view by default, showing all meetings for the current month.
+
+### Calendar Views
+
+Toggle between different views using the buttons in the top-right corner:
+- **Month View** - Overview of the entire month with compact event cards
+- **Week View** - Detailed hourly view of the current week
+- **Day View** - Focused view of a single day with hourly slots
+
+## Calendar Settings
+
+Access calendar settings by navigating to **Calendar → Settings**. These settings control default behaviors and display preferences across the entire calendar system.
+
+### Work Hours Configuration
+
+Define your organization's standard working hours:
+
+1. **Work Day Start/End**
+   - Sets the default working hours (e.g., 8:00 AM - 5:00 PM)
+   - Used by the "1 day" quick duration button
+   - Affects calendar view highlighting
+
+2. **Half Day Settings**
+   - **Morning Hours**: Default 8:00 AM - 12:00 PM
+   - **Afternoon Hours**: Default 1:00 PM - 5:00 PM
+   - Used by the "1/2 day" toggle button in meeting scheduling
+
+### General Settings
+
+#### Default Meeting Duration
+Sets the standard length for new meetings:
+- Options: 15, 30, 45, 60, 90, or 120 minutes
+- Default: 60 minutes
+- **Auto-adjustment**: When you change the start time of a meeting, the end time automatically adjusts based on this duration
+
+#### Week Start Day
+Choose how your calendar week displays:
+- **Sunday** (default) - Week runs Sunday to Saturday
+- **Monday** - Week runs Monday to Sunday
+- Affects both Month and Week view displays
+
+### Display Settings
+
+#### Show Event Details in Calendar Blocks
+Controls how synchronized calendar events from Microsoft 365 appear:
+- **Enabled**: Shows event subjects and details
+- **Disabled**: Shows only "Busy" for privacy
+
+## Creating Meetings
+
+### Quick Creation
+
+1. Click **New Meeting** button (top-right of calendar)
+2. Or click on any date/time slot in the calendar
+3. Fill in meeting details:
+   - **Title** (required)
+   - **Date & Time** with automatic duration calculation
+   - **Participants** from your organization
+   - **Location** (optional)
+   - **Description** and notes
+
+### Date & Time Features
+
+#### Automatic End Time Adjustment
+When you change the start date or time of a meeting:
+- The end time automatically updates based on your configured default meeting duration
+- Manual adjustments to the end time are preserved
+- Duration chips override any manual adjustments
+
+#### Quick Duration Buttons
+Use the quick duration chips for common meeting lengths:
+- **30 min** - Sets end time 30 minutes after start
+- **1 h** - Sets end time 1 hour after start
+- **1/2 d** - Toggles between morning and afternoon half-day slots (uses configured half-day hours)
+- **1 d** - Sets full work day using configured work hours
+
+### Meeting Templates
+
+Save time by using templates for recurring meeting types:
+1. When creating a meeting, select a template from the dropdown
+2. Meeting fields auto-populate with template values
+3. Modify as needed before saving
+
+To create templates, go to **Settings → Templates** (requires appropriate permissions).
+
+## Microsoft 365 Integration
+
+### Calendar Sync Modes
+
+Configure how your organization syncs with Microsoft 365 in **Settings → Integrations**:
+
+1. **Per User** (default)
+   - Each user connects their own Microsoft account
+   - Individual calendar sync and free/busy information
+   - Best for smaller teams or when privacy is important
+
+2. **Organization-wide**
+   - Admin configures sync for the entire organization
+   - Requires admin consent in Microsoft 365
+   - Syncs all user calendars automatically
+   - Best for larger organizations with central IT management
+
+3. **None**
+   - Disables Microsoft 365 calendar integration
+   - Only internal meetings are tracked
+
+### What Gets Synced
+
+When calendar sync is enabled:
+- **Free/busy information** for conflict detection
+- **Meeting details** (if "Show Event Details" is enabled)
+- **Attendee lists** for participant matching
+- **Meeting updates** when changed in Microsoft 365
+- **Cancellations** are reflected in both systems
+
+### Important Sync Behaviors
+
+- **Checkmate-created meetings** are not re-synced from Microsoft 365 to avoid duplication
+- **External meetings** (created in Outlook/Teams) are synced as calendar blocks
+- **Updates** to meetings are synced bidirectionally
+- **Cancellations** in either system are reflected in both
+
+## Calendar Blocks
+
+Calendar blocks represent busy time from synchronized calendars:
+- Appear as red blocks in the calendar view
+- Show "Busy" or full details based on privacy settings
+- Help identify scheduling conflicts
+- Can be toggled on/off using the eye icon in the calendar header
+
+## Conflict Detection
+
+The system automatically detects scheduling conflicts:
+- **Yellow warning icon** appears when participants have conflicting events
+- **Hover** over the icon to see conflict details
+- **Conflicts show**:
+  - Participant name
+  - Conflicting time period
+  - Event details (if available)
+
+## Filtering and Search
+
+Use the filter options to find specific meetings:
+- **Search** by meeting title or description
+- **Filter by Event Type**: Internal Meeting, Client Meeting, Interview, Training, Other
+- **Filter by Company**: Show meetings for specific companies
+- **Filter by Staff**: Show meetings for specific team members
+- **Filter by Status**: Scheduled, In Progress, Completed, Cancelled
+
+## Keyboard Shortcuts
+
+When the meeting dialog is open:
+- **Tab** - Navigate between fields
+- **Enter** - Save meeting (when in last field)
+- **Escape** - Close dialog without saving
+
+## Permissions
+
+Calendar features require specific permissions:
+- **View Calendar**: `view_calendar`
+- **Create Meetings**: `create_meetings`
+- **Edit Meetings**: `edit_meetings`
+- **Delete Meetings**: `delete_meetings`
+- **Manage Calendar Settings**: `manage_calendar_settings`
+
+## Best Practices
+
+### Scheduling Tips
+1. **Use templates** for recurring meeting types to save time
+2. **Check calendar blocks** before scheduling to avoid conflicts
+3. **Set appropriate default duration** to match your typical meeting length
+4. **Configure work hours** to reflect your team's schedule
+
+### Privacy Considerations
+1. **Disable "Show Event Details"** if calendar contains sensitive information
+2. **Use per-user sync** when team members need calendar privacy
+3. **Review permissions** to ensure appropriate access levels
+
+### Performance Tips
+1. **Toggle calendar blocks off** when not needed to improve load times
+2. **Use filters** to reduce the number of visible events
+3. **Switch to Day or Week view** for better performance with many events
+
+## Troubleshooting
+
+### Sync Issues
+If calendar events aren't syncing:
+1. Check Microsoft 365 connection in **Settings → Integrations**
+2. Verify sync mode is configured correctly
+3. Ensure user has granted calendar permissions
+4. Check for any error messages in the sync status
+
+### Missing Calendar Blocks
+If calendar blocks aren't appearing:
+1. Ensure calendar sync is enabled
+2. Toggle calendar blocks visibility (eye icon)
+3. Check that events exist in the source calendar
+4. Verify time zone settings are correct
+
+### Conflict Detection Not Working
+If conflicts aren't being detected:
+1. Ensure participants are added to the meeting
+2. Check that calendar sync is working for participants
+3. Verify calendar blocks are enabled
+4. Confirm participants have busy time in the selected period
+
+## Related Features
+
+- **[Meeting Templates](/features/templates)** - Create reusable meeting templates
+- **[Microsoft 365 Integration](/features/m365-integration)** - Configure calendar synchronization
+- **[User Management](/features/users)** - Manage calendar permissions
+- **[Import/Export](/features/import-export)** - Export meeting data for analysis

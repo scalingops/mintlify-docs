@@ -1,0 +1,269 @@
+---
+title: 'Devices'
+description: 'Track and manage client hardware assets and lifecycle'
+icon: 'laptop'
+---
+
+## Overview
+
+The Devices module provides comprehensive asset management for client hardware. Track devices throughout their lifecycle, manage warranties, plan refreshes, and maintain accurate inventory across all client organizations.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="Asset Tracking" icon="barcode">
+    Complete inventory of client devices
+  </Card>
+  <Card title="Lifecycle Management" icon="recycle">
+    Track devices from procurement to retirement
+  </Card>
+  <Card title="Warranty Tracking" icon="shield">
+    Monitor warranty status and expirations
+  </Card>
+  <Card title="Refresh Planning" icon="calendar">
+    Plan and schedule device refreshes
+  </Card>
+</CardGroup>
+
+## Device Management
+
+### Device Information
+Track comprehensive device details:
+- Device name and identifier
+- Type and model
+- Serial number
+- Asset tag
+- Purchase date
+- Warranty information
+- Assigned user
+- Location
+- Status
+
+### Device Types
+Manage various device categories:
+- **Workstations**: Desktops and laptops
+- **Servers**: Physical and virtual servers
+- **Network Equipment**: Routers, switches, firewalls
+- **Mobile Devices**: Phones and tablets
+- **Printers**: Printers and multifunction devices
+- **Peripherals**: Monitors, keyboards, accessories
+- **Custom Types**: Define your own categories
+
+## Adding Devices
+
+<Steps>
+  <Step title="Click Add Device">
+    Access device creation form
+  </Step>
+  <Step title="Enter Device Details">
+    - Device type and model
+    - Serial number
+    - Asset tag
+    - Purchase information
+  </Step>
+  <Step title="Assign to Company">
+    Select client company
+  </Step>
+  <Step title="Set User">
+    Assign to specific user if applicable
+  </Step>
+  <Step title="Save Device">
+    Device added to inventory
+  </Step>
+</Steps>
+
+### Bulk Import
+Import multiple devices:
+- CSV file upload
+- Excel import
+- PSA system sync
+- Automated discovery
+
+## Lifecycle Stages
+
+<Tabs>
+  <Tab title="Procurement">
+    Ordering and receiving
+  </Tab>
+  <Tab title="Deployment">
+    Configuration and assignment
+  </Tab>
+  <Tab title="Active">
+    In production use
+  </Tab>
+  <Tab title="Maintenance">
+    Under repair or upgrade
+  </Tab>
+  <Tab title="Retired">
+    End of life
+  </Tab>
+  <Tab title="Disposed">
+    Securely disposed
+  </Tab>
+</Tabs>
+
+## Warranty Management
+
+### Warranty Tracking
+Monitor warranty status:
+- Warranty start date
+- Expiration date
+- Coverage type
+- Service level
+- Vendor contact
+
+### Warranty Alerts
+Automated notifications for:
+- Warranties expiring in 30/60/90 days
+- Expired warranties
+- Renewal opportunities
+- Claim deadlines
+
+## Refresh Planning
+
+### Refresh Cycles
+Plan device refreshes based on:
+- Age of device
+- Performance metrics
+- Business requirements
+- Budget constraints
+- Technology standards
+
+### Refresh Scheduling
+- Create refresh projects
+- Link to planner module
+- Budget integration
+- Procurement tracking
+
+## Device Settings
+
+### Configuration
+Set up device management:
+- Device types
+- Custom fields
+- Lifecycle stages
+- Warranty providers
+- Default values
+
+### Device Type Configuration
+For each device type, define:
+- Expected lifespan
+- Refresh cycle
+- Required fields
+- Depreciation schedule
+- Maintenance intervals
+
+## Search and Filter
+
+### Search Options
+Find devices quickly:
+- Search by name
+- Serial number lookup
+- Asset tag search
+- User assignment
+- Location search
+
+### Filter Capabilities
+- By company
+- By device type
+- By status
+- By warranty status
+- By age
+- By location
+
+## Integration Points
+
+### Planner Module
+- Schedule device refreshes
+- Plan maintenance windows
+- Track deployment projects
+
+### Budgets Module
+- Device procurement budgets
+- Refresh cycle costs
+- Maintenance expenses
+
+### Compliance Module
+- Asset compliance checks
+- Security configurations
+- Patch compliance
+
+## Reporting
+
+### Device Reports
+Generate comprehensive reports:
+- Inventory summaries
+- Warranty reports
+- Refresh schedules
+- Asset valuations
+- Lifecycle analysis
+
+### Export Options
+- PDF reports
+- Excel spreadsheets
+- CSV data files
+- Asset labels
+
+## Maintenance Tracking
+
+### Maintenance Records
+Track device maintenance:
+- Service dates
+- Issue descriptions
+- Resolution details
+- Cost tracking
+- Vendor information
+
+### Preventive Maintenance
+Schedule routine maintenance:
+- Cleaning schedules
+- Update cycles
+- Performance checks
+- Component replacements
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Regular Audits">
+    Perform quarterly inventory audits
+  </Accordion>
+  <Accordion title="Warranty Monitoring">
+    Review warranty status monthly
+  </Accordion>
+  <Accordion title="Refresh Planning">
+    Plan refreshes 6-12 months in advance
+  </Accordion>
+  <Accordion title="Asset Tagging">
+    Maintain consistent asset tagging system
+  </Accordion>
+</AccordionGroup>
+
+## Security
+
+### Data Security
+- Secure asset disposal
+- Data wiping procedures
+- Certificate of destruction
+- Compliance tracking
+
+### Access Control
+- Role-based permissions
+- Audit trails
+- Change tracking
+- Approval workflows
+
+## Permissions
+
+Device module permissions:
+- `read_devices` - View device inventory
+- `create_devices` - Add new devices
+- `edit_devices` - Modify device information
+- `delete_devices` - Remove devices
+- `manage_device_settings` - Configure settings
+
+## Related Modules
+
+- [Planner](/modules/planner) - Schedule device activities
+- [Budgets](/modules/budgets) - Plan device expenses
+- [Compliance](/modules/compliance) - Device compliance checks
+- [Reports](/modules/reporting) - Generate device reports

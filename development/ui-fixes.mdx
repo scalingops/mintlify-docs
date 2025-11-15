@@ -1,0 +1,74 @@
+---
+title: UI Fixes and Improvements
+description: Documentation of UI bug fixes and improvements made to MSP Checkmate
+---
+
+# UI Fixes and Improvements
+
+This document tracks UI bug fixes and improvements made to enhance the user experience in MSP Checkmate.
+
+## Sidebar User Information Truncation Fix
+
+**Date**: August 8, 2025  
+**Component**: `components/shared/auth-layout/Sidebar/Sidebar.tsx`  
+**Issue**: Long email addresses or user names in the sidebar dropdown would cause overflow, making the dropdown extend beyond the sidebar boundaries and become non-functional.
+
+### Problem Description
+
+The sidebar component displays user information (name and email) in a dropdown menu. When users had long email addresses or full names, the text would overflow the available container space, causing the dropdown to extend beyond the sidebar's width. This created both visual issues and functional problems where the dropdown became difficult to interact with.
+
+### Solution Implemented
+
+Applied CSS text truncation techniques to ensure the user information fits within the sidebar constraints:
+
+**Changes Made**:
+1. **Container Flexibility**: Added `min-w-0 flex-1` classes to the text container div
+   - `min-w-0`: Allows the flex item to shrink below its content size
+   - `flex-1`: Makes the container take up available space while allowing truncation
+
+2. **Text Truncation**: Added `truncate` class to both user name and email spans
+   - Applies `overflow: hidden`, `text-overflow: ellipsis`, and `white-space: nowrap`
+   - Shows "..." when text is longer than available space
+
+**Applied to Both Variants**:
+- Desktop expanded sidebar (around line 282)
+- Mobile sidebar (around line 453)
+
+### Technical Details
+
+```tsx
+// Before - Text could overflow
+<div className="flex flex-col">
+  <span className="text-sm font-medium text-sidebar-inactive-text dark:text-gray-200">
+    {profile?.full_name || user.user_metadata?.full_name || user.email || "User"}
+  </span>
+  <span className="text-xs text-sidebar-category-text dark:text-gray-400">
+    {user.email || ""}
+  </span>
+</div>
+
+// After - Text truncates properly
+<div className="flex flex-col min-w-0 flex-1">
+  <span className="text-sm font-medium text-sidebar-inactive-text dark:text-gray-200 truncate">
+    {profile?.full_name || user.user_metadata?.full_name || user.email || "User"}
+  </span>
+  <span className="text-xs text-sidebar-category-text dark:text-gray-400 truncate">
+    {user.email || ""}
+  </span>
+</div>
+```
+
+### Impact
+
+- **Visual**: Sidebar maintains consistent width and visual boundaries
+- **Functional**: User dropdown remains fully clickable and accessible
+- **UX**: Long email addresses no longer break the sidebar layout
+- **Responsive**: Fix works across both desktop and mobile variants
+
+### CSS Classes Used
+
+- `min-w-0`: Sets minimum width to 0, allowing flex item to shrink
+- `flex-1`: Flex grow/shrink property for taking available space
+- `truncate`: Tailwind utility combining overflow hidden, text ellipsis, and nowrap
+
+This fix ensures a consistent and functional sidebar experience regardless of user name or email length.

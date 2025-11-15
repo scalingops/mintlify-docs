@@ -1,0 +1,171 @@
+---
+title: "AI Compliance Notes"
+description: "Generate professional client-facing notes from technical details using AI"
+---
+
+# AI Compliance Notes
+
+The AI Compliance Notes feature helps vCIOs and technicians quickly generate professional, client-facing public notes from their technical private notes using OpenAI's GPT models.
+
+## Overview
+
+When working on compliance checks, technicians often need to maintain two sets of notes:
+
+- **Private notes**: Technical details, internal observations, and detailed remediation steps
+- **Public notes**: Professional, client-facing summaries written in business language
+
+The AI Draft feature automates the creation of public notes by analyzing your private notes and generating professional summaries that:
+
+- Use clear business language without technical jargon
+- Focus on business impact and value
+- Provide actionable remediation steps
+- Maintain a professional tone without unnecessary pleasantries
+
+## Prerequisites
+
+Before using the AI compliance notes feature, ensure:
+
+1. You have private notes written for the compliance check
+2. You have permission to edit compliance checks
+
+## Using AI Draft
+
+### Generating Public Notes
+
+1. Open a compliance check dialog
+2. Navigate to the **Notes** section
+3. Enter your technical observations in the **Private Notes** field
+4. Click the **AI Draft** button next to Public Notes
+5. The AI will generate professional public notes that stream in real-time
+6. Review and edit the generated content as needed
+7. Save the compliance check
+
+<Note>
+  The AI Draft button is only enabled when private notes are present, as it uses them as the source for generating public notes.
+</Note>
+
+### Generated Content Format
+
+The AI generates notes with:
+
+- **Clear headers** using Markdown formatting
+- **Bullet points** for easy scanning
+- **Structured sections** for issue summary, impact, and remediation
+- **Concise content** limited to approximately 120 words
+- **Professional tone** without filler phrases or pleasantries
+
+## Example Output
+
+Given private notes about a firewall configuration issue, the AI might generate:
+
+```markdown
+## Security Configuration Review
+
+Your network protection requires immediate attention to maintain security standards.
+
+### Current Status
+- Firewall rules not optimally configured
+- Several unnecessary ports exposed
+- Logging incomplete for audit requirements
+
+### Business Impact
+- Increased vulnerability to security threats
+- Non-compliance with industry standards
+- Potential data exposure risk
+
+### Recommended Actions
+- Update firewall ruleset to minimize exposure
+- Enable comprehensive security logging
+- Schedule quarterly security reviews
+```
+
+### Customizing the AI Behavior
+
+The AI assistant is configured to:
+
+- Generate content suitable for client communication
+- Focus on business value and impact
+- Avoid technical jargon
+- Maintain a professional, direct tone
+- Limit output to approximately 1000 words
+
+These settings are optimized for MSP compliance reporting and cannot be customized per-user.
+
+## Best Practices
+
+### Writing Effective Private Notes
+
+To get the best results from AI generation:
+
+1. **Be specific** about technical issues found
+2. **Include context** about why issues matter
+3. **Document remediation steps** you plan to take
+4. **Note any risks or impacts** to the business
+
+### Reviewing Generated Content
+
+Always review AI-generated content before saving:
+
+- **Verify accuracy** of technical details translated to business language
+- **Ensure completeness** of recommendations
+- **Check tone** is appropriate for the specific client
+- **Add client-specific context** where needed
+- **Remove any hallucinated information** that doesn't match your findings
+
+## Limitations
+
+- Maximum output length of approximately 1000 words
+- Requires private notes to generate content
+- Generated content should always be reviewed before client delivery
+- AI may not capture client-specific terminology or preferences
+- Real-time streaming requires stable internet connection
+
+## Troubleshooting
+
+### AI Draft Button Disabled
+
+If the AI Draft button is disabled:
+
+- Ensure you have entered private notes
+- Check that you have edit permissions for the compliance check
+- Verify the check is not in historical/read-only mode
+
+### Generation Fails
+
+If content generation fails:
+
+- Ensure your internet connection is stable
+- Try reducing the length of your private notes
+
+### Content Not Appearing
+
+If generated content doesn't appear immediately:
+
+- The content streams in real-time - wait a few seconds
+- Check for any error messages in the toast notification
+- Refresh the dialog if the issue persists
+
+## Technical Details
+
+### Architecture
+
+The AI compliance notes feature uses:
+
+- **Server Actions** for secure API calls
+- **Streaming responses** for real-time content display
+- **Markdown to HTML conversion** for rich text formatting
+- **Optimistic updates** for immediate UI feedback
+
+### Security
+
+- OpenAI API calls are made server-side only
+- API keys are never exposed to the client
+- Content is streamed through secure WebSocket connections
+- All generated content is saved to your secure database
+
+### Performance
+
+- Streaming typically begins within 1-2 seconds
+- Complete generation takes 3-5 seconds for 120 words
+- Content updates are debounced to prevent excessive API calls
+- Generated content is cached until the dialog is closed

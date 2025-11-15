@@ -1,0 +1,154 @@
+---
+title: Microsoft 365 Integration
+description: Microsoft 365 secure score monitoring and calendar synchronization
+---
+
+The Microsoft 365 integration in MSPortal.ai provides security monitoring through Microsoft Secure Score and calendar synchronization capabilities.
+
+## Key Features
+
+### Currently Available
+- **Microsoft Secure Score** - Monitor and improve your Microsoft 365 security posture
+- **Calendar Sync** - Synchronize Microsoft 365 calendars with MSPortal.ai
+- **Single Sign-On (SSO)** - Seamless authentication with Microsoft 365 credentials
+- **Security Recommendations** - Actionable improvements for security configuration
+
+### Secure Score Monitoring
+
+The Secure Score feature helps you:
+- **Track Security Posture** - View your organization's current security score
+- **Review Recommendations** - See prioritized security improvements
+- **Monitor Progress** - Track score changes over time
+- **Control Details** - Deep dive into specific security controls
+- **Action Items** - View and manage security improvement actions
+
+## Getting Started
+
+### Prerequisites
+1. Microsoft 365 tenant with appropriate permissions
+2. Microsoft 365 integration enabled in MSPortal.ai
+3. Global Administrator or Security Administrator role
+
+### Initial Setup
+
+<Steps>
+  <Step title="Enable Integration">
+    Navigate to Settings → Integrations and enable Microsoft 365
+  </Step>
+  <Step title="Authenticate">
+    Sign in with Microsoft 365 administrator credentials
+  </Step>
+  <Step title="Grant Permissions">
+    Approve the required permissions for secure score access
+  </Step>
+  <Step title="Sync Data">
+    Initial sync will pull your current secure score and recommendations
+  </Step>
+</Steps>
+
+## Using Secure Score
+
+### Viewing Your Score
+
+1. Navigate to **Microsoft 365** in the sidebar
+2. The main dashboard displays:
+   - Current secure score and maximum possible score
+   - Score percentage
+   - Comparison to industry average
+   - Recent score trends
+
+### Understanding Recommendations
+
+Each security recommendation includes:
+- **Impact** - How much the action will improve your score
+- **Complexity** - Implementation difficulty
+- **User Impact** - Effect on end users
+- **Status** - Current implementation state
+
+### Taking Action
+
+1. Review the **Actions** tab for prioritized improvements
+2. Click on any action for detailed implementation steps
+3. Mark actions as completed when implemented
+4. Monitor score improvements after changes
+
+## Calendar Synchronization
+
+### Features
+- **Two-way Sync** - Changes sync between MSPortal.ai and Microsoft 365
+- **Meeting Management** - Create and manage meetings from MSPortal.ai
+- **Availability Checking** - See calendar availability across the platform
+- **Event Notifications** - Receive alerts for upcoming meetings
+
+### Setting Up Calendar Sync
+
+1. Navigate to **Calendar → Settings**
+2. Enable Microsoft 365 calendar sync
+3. Authenticate with your Microsoft account
+4. Select calendars to synchronize
+5. Configure sync frequency and preferences
+
+## Single Sign-On (SSO)
+
+SSO allows users to:
+- Sign in once with Microsoft 365 credentials
+- Access MSPortal.ai without separate passwords
+- Maintain consistent security policies
+- Simplify user management
+
+### Configuring SSO
+
+1. Navigate to **Settings → Authentication**
+2. Enable Microsoft 365 SSO
+3. Configure your Azure AD application
+4. Map user attributes
+5. Test SSO login flow
+
+## Best Practices
+
+### Security Score
+- **Regular Reviews** - Check secure score weekly
+- **Prioritize High-Impact** - Focus on actions with greatest score improvement
+- **Document Changes** - Track what security changes were implemented
+- **Monitor Trends** - Watch for score decreases that may indicate issues
+
+### Calendar Sync
+- **Selective Sync** - Only sync necessary calendars
+- **Privacy Settings** - Configure what information is visible
+- **Conflict Resolution** - Set preferences for handling sync conflicts
+
+## Troubleshooting
+
+### Common Issues
+
+**Secure Score Not Updating**
+- Verify Microsoft 365 permissions are still valid
+- Check for API throttling limits
+- Ensure network connectivity to Microsoft services
+
+**Calendar Sync Errors**
+- Re-authenticate with Microsoft 365
+- Check calendar permissions
+- Verify time zone settings match
+
+**SSO Login Failures**
+- Confirm Azure AD configuration
+- Check user account status in Microsoft 365
+- Verify SSO is enabled for the user's account
+
+## Limitations
+
+- Secure Score updates may have up to 24-hour delay
+- Calendar sync limited to primary and shared calendars
+- Some advanced security controls may not be available
+- Requires active Microsoft 365 subscription
+
+## Related Resources
+
+- [Calendar Module](../calendar/index) - Full calendar functionality
+- [Settings](../settings/index) - Configure integrations
+- [Security Best Practices](https://docs.microsoft.com/security) - Microsoft security documentation
+
+## Support
+
+For assistance with Microsoft 365 integration, contact your system administrator or MSPortal.ai support.

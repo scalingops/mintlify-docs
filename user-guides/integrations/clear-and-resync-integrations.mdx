@@ -1,0 +1,167 @@
+---
+title: Clear and Resync Integrations
+description: Learn about clear and resync integrations
+---
+
+This guide explains how to resynchronize data between MSPortal and your PSA system when you need to refresh ticket data or resolve synchronization issues.
+
+## Overview
+
+The Clear and Resync feature allows you to:
+- Perform a quick synchronization of recent changes
+- Complete a full data refresh by clearing and reimporting all tickets
+- Resolve synchronization conflicts or data inconsistencies
+- Apply configuration changes that require a full resync
+
+## When to Use Clear and Resync
+
+### Quick Sync
+Use Quick Sync when:
+- Testing new configuration changes
+- Updating recently modified tickets
+- Resolving minor sync delays
+- Refreshing data after brief connection issues
+
+### Full Clear and Resync
+Use Full Clear and Resync when:
+- Initial integration setup is complete
+- Major configuration changes have been made
+- Data inconsistencies need to be resolved
+- Switching between PSA systems
+- Recovering from extended sync failures
+
+## Prerequisites
+
+- PSA integration must be configured and enabled
+- You must have "Manage Integrations" permission
+- Ensure no critical ticket updates are in progress
+- Back up any local ticket data if needed
+
+## Steps to Resync
+
+### 1. Navigate to Integration Settings
+
+Go to [https://msportal.ai/settings/integrations](https://msportal.ai/settings/integrations)
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/34208b96-e8a0-41b7-9a44-7d101fd5d6be/ascreenshot.jpeg?tl_px=130,121&br_px=1850,1083&force_format=jpeg&q=100&width=1120.0)
+
+### 2. Access Ticket Settings
+
+Click on **Ticket Settings** in the integration menu.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/34208b96-e8a0-41b7-9a44-7d101fd5d6be/ascreenshot.jpeg?tl_px=260,173&br_px=1980,1134&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=665,277)
+
+### 3. Locate Ticket Sync Options
+
+Scroll down to the **Ticket Sync Options** section. Here you'll find two synchronization options:
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/8de8e81e-c430-4df4-83c9-57c2590efb4e/ascreenshot.jpeg?tl_px=260,179&br_px=1980,1140&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=662,276)
+
+### 4. Choose Sync Method
+
+#### Option A: Quick Sync
+- Click **Quick Sync** button
+- Synchronizes only recent changes
+- Takes 1-2 minutes typically
+- Preserves existing data
+
+#### Option B: Full Clear and Resync
+- Click **Full Clear and Resync** button
+- Completely removes all ticket data from MSPortal
+- Reimports all tickets from the PSA system
+- Takes several minutes depending on data volume
+
+> **Warning:** Full Clear and Resync will delete all local ticket data and reimport everything from your PSA. Any unsynchronized local changes will be lost.
+
+### 5. Wait for Completion
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/ae262903-5a40-4d3d-9f75-879286501b65/ascreenshot.jpeg?tl_px=260,243&br_px=1980,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=545,394)
+
+The synchronization process will:
+- Display a progress indicator
+- Show status updates as data syncs
+- Notify you when complete
+- May take several minutes for large datasets
+
+## What Gets Synchronized
+
+### Ticket Data
+- Ticket details (title, description, status)
+- Priority and categories
+- Assigned technicians
+- Company and contact associations
+- Custom fields (if configured)
+- Ticket notes and time entries
+
+### Related Data
+- Company information
+- Contact details
+- Board configurations
+- Status mappings
+- Priority settings
+
+## Post-Sync Verification
+
+After synchronization completes:
+
+1. **Check Ticket Count:** Verify the expected number of tickets appears
+2. **Review Recent Tickets:** Confirm latest tickets are present
+3. **Test Updates:** Make a small change to verify two-way sync
+4. **Check Mappings:** Ensure status and priority mappings are correct
+5. **Verify Permissions:** Confirm users can access appropriate tickets
+
+## Troubleshooting
+
+### Sync Takes Too Long
+- Check your internet connection
+- Verify PSA system is responsive
+- Consider using Quick Sync for testing
+- Contact support if sync exceeds 30 minutes
+
+### Missing Tickets After Sync
+- Verify board selection in settings
+- Check excluded status configurations
+- Ensure date range settings are correct
+- Review PSA permissions
+
+### Sync Fails to Complete
+- Check PSA API credentials
+- Verify integration is enabled
+- Review error logs for specific issues
+- Try Quick Sync before Full Clear and Resync
+
+### Data Inconsistencies
+- Perform a Full Clear and Resync
+- Check field mapping configurations
+- Verify time zone settings match
+- Review custom field mappings
+
+## Best Practices
+
+- **Schedule Full Syncs:** Perform during off-hours to minimize disruption
+- **Test First:** Use Quick Sync to test configuration changes
+- **Document Changes:** Note what prompted the resync for future reference
+- **Monitor First Sync:** Stay available during initial synchronization
+- **Regular Maintenance:** Schedule periodic full syncs (monthly/quarterly)
+
+## Performance Considerations
+
+### Quick Sync Performance
+- Typically completes in 1-3 minutes
+- Minimal system impact
+- Can be run during business hours
+
+### Full Clear and Resync Performance
+- Duration depends on ticket volume:
+  - < 1,000 tickets: 2-5 minutes
+  - 1,000-5,000 tickets: 5-15 minutes
+  - > 5,000 tickets: 15-30 minutes
+- Higher system resource usage
+- Best performed during maintenance windows
+
+## Related Articles
+
+- [Configure ConnectWise Service Desk](./connectwise-configure-and-service-desk)
+- [Enable ConnectWise Integration](./enable-connectwise-integration)
+- [ConnectWise PSA Settings Resync](./connectwise-resync-psa-settings)
+- [Troubleshooting Integration Issues](./integration-troubleshooting)

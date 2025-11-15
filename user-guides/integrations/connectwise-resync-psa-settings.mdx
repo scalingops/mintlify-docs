@@ -1,0 +1,227 @@
+---
+title: Resync ConnectWise PSA Settings
+description: Learn about resync connectwise psa settings
+---
+
+This guide explains how to resynchronize PSA configuration data between ConnectWise Manage and MSPortal when system settings have changed.
+
+## Overview
+
+The PSA Settings Resync feature updates MSPortal's cached configuration data from ConnectWise, including:
+- Service board configurations
+- Ticket priorities
+- Ticket statuses
+- Ticket types
+- Categories
+- Custom fields
+- Company types
+- Member information
+
+## When to Use PSA Resync
+
+Use this feature when:
+- You've made changes to ConnectWise configurations
+- Added or removed service boards
+- Modified ticket statuses or priorities
+- Changed ticket types or categories
+- Updated custom field definitions
+- After ConnectWise system upgrades
+- Dropdown options aren't appearing correctly
+- Initial integration setup is complete
+
+## What Gets Synchronized
+
+### Service Configuration
+- **Boards:** All service board names and settings
+- **Statuses:** Available ticket statuses per board
+- **Priorities:** Priority levels and their properties
+- **Types:** Ticket types (Service Request, Incident, etc.)
+- **Categories:** Service categories and subcategories
+
+### Business Configuration
+- **Companies:** Company types and classifications
+- **Contacts:** Contact types and roles
+- **Members:** ConnectWise member list and roles
+- **Departments:** Department structure
+- **Locations:** Service locations
+
+### Custom Configuration
+- **Custom Fields:** Field definitions and options
+- **Templates:** Service template configurations
+- **SLAs:** Service level agreement definitions
+- **Sources:** Ticket source options
+
+## Steps to Resync PSA Settings
+
+### 1. Navigate to Integration Settings
+
+Go to [https://msportal.ai/settings/integrations](https://msportal.ai/settings/integrations)
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/5c22dea9-95d5-4bf8-8ef1-18b72af1fb02/ascreenshot.jpeg?tl_px=130,121&br_px=1850,1083&force_format=jpeg&q=100&width=1120.0)
+
+### 2. Initiate PSA Data Sync
+
+Locate and click the **Sync PSA Data** button in the integration options.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/5c22dea9-95d5-4bf8-8ef1-18b72af1fb02/ascreenshot.jpeg?tl_px=260,165&br_px=1980,1126&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=700,277)
+
+### 3. Wait for Synchronization
+
+After clicking the sync button:
+- The process runs automatically in the background
+- Typical completion time: 1-2 minutes
+- A notification will appear when complete
+- The page may refresh to show updated options
+
+## Understanding the Sync Process
+
+### Phase 1: Data Collection (30 seconds)
+The system queries ConnectWise for:
+- All configuration tables
+- Current settings and options
+- Active records only
+
+### Phase 2: Data Processing (20 seconds)
+MSPortal processes the data:
+- Compares with existing cache
+- Identifies changes
+- Validates data integrity
+
+### Phase 3: Cache Update (10 seconds)
+The system updates:
+- Local configuration cache
+- Dropdown options
+- Form field choices
+- Display settings
+
+## What Doesn't Get Synchronized
+
+The PSA Settings sync does NOT include:
+- Actual ticket data (use ticket sync for this)
+- Historical data or closed tickets
+- User passwords or credentials
+- Financial information
+- Document attachments
+- Time entries (unless specifically configured)
+
+## Post-Sync Verification
+
+After synchronization completes, verify:
+
+### 1. Check Dropdown Options
+- Go to ticket creation form
+- Verify all dropdowns populate correctly
+- Check that new options appear
+
+### 2. Test Board Access
+- Navigate to ticket list
+- Confirm all boards are visible
+- Verify board filtering works
+
+### 3. Validate Status Mappings
+- Review status dropdown in tickets
+- Ensure all statuses are available
+- Check status transition rules
+
+### 4. Confirm Custom Fields
+- Open a ticket template
+- Verify custom fields appear
+- Check field validation works
+
+## Troubleshooting
+
+### Sync Doesn't Start
+- Verify ConnectWise integration is enabled
+- Check API credentials are valid
+- Ensure you have proper permissions
+- Try refreshing the page first
+
+### Missing Options After Sync
+- The item may be inactive in ConnectWise
+- Check ConnectWise permissions
+- Verify the item meets filter criteria
+- Try running sync again
+
+### Sync Takes Too Long
+- Check ConnectWise server response
+- Verify network connectivity
+- Large datasets may take longer
+- Contact support if over 5 minutes
+
+### Error Messages
+- **API Error:** Check ConnectWise API credentials
+- **Permission Denied:** Verify API key permissions
+- **Timeout:** ConnectWise server may be slow
+- **Invalid Data:** Data corruption, contact support
+
+## Best Practices
+
+### Regular Synchronization
+- Schedule monthly PSA syncs
+- Sync after major ConnectWise changes
+- Document when syncs are performed
+- Monitor for sync failures
+
+### Change Management
+- Notify users before major config changes
+- Test in off-hours when possible
+- Document what changed in ConnectWise
+- Verify critical workflows after sync
+
+### Performance Optimization
+- Avoid syncing during peak hours
+- Don't sync multiple times rapidly
+- Allow sync to complete fully
+- Clear browser cache after major syncs
+
+## Common Scenarios
+
+### Adding New Service Board
+1. Create board in ConnectWise
+2. Configure board settings
+3. Run PSA Settings sync in MSPortal
+4. Configure board in MSPortal ticket settings
+5. Test ticket creation on new board
+
+### Changing Ticket Priorities
+1. Modify priorities in ConnectWise
+2. Update any automation rules
+3. Sync PSA settings in MSPortal
+4. Verify priority mappings
+5. Test priority-based workflows
+
+### Implementing Custom Fields
+1. Create custom fields in ConnectWise
+2. Set field properties and validation
+3. Run PSA sync in MSPortal
+4. Add fields to ticket templates
+5. Test field functionality
+
+## Impact on Users
+
+During synchronization:
+- Ticket creation remains available
+- Existing tickets are unaffected
+- Dropdowns may briefly show old values
+- No downtime or service interruption
+
+After synchronization:
+- New options appear immediately
+- Removed options become unavailable
+- Form layouts may adjust
+- Cached pages may need refresh
+
+## Security Considerations
+
+- Sync only retrieves configuration data
+- No sensitive data is transferred
+- API permissions limit data access
+- All transfers are encrypted
+- Audit logs track sync activities
+
+## Related Articles
+
+- [ConnectWise Initial Setup](./enable-connectwise-integration)
+- [Configure Service Desk Settings](./connectwise-configure-and-service-desk)
+- [Clear and Resync Tickets](./Clear%20and%20Resync%20Integrations)
+- [Troubleshooting Integration Issues](./integration-troubleshooting)

@@ -1,0 +1,128 @@
+---
+title: Report Builder Module Availability
+description: Smart filtering of report blocks based on company data availability
+---
+
+# Report Builder Module Availability
+
+The report builder intelligently filters available report blocks based on whether a company has data for specific modules. This prevents users from adding empty or irrelevant blocks to their reports, creating a cleaner and more efficient report building experience.
+
+## Overview
+
+When you open the report builder for a specific company, the system automatically:
+- **Checks data availability** across all modules for that company
+- **Filters report blocks** to show only those with relevant data
+- **Always displays** core blocks like text and branding regardless of data
+- **Updates dynamically** when switching between companies
+
+## How It Works
+
+### Data Availability Checks
+
+The system checks for data in the following modules:
+
+| Module | Data Source Checked |
+|--------|--------------------|
+| **Planner** | Planner items assigned to the company |
+| **Compliance** | Compliance assignments for the company |
+| **Goals** | Goals created for the company |
+| **Surveys** | Survey invites or answers for the company |
+| **Budgets** | Budget records for the company |
+| **Devices** | Devices registered to the company |
+| **Tickets** | Integration tickets linked through imported companies |
+
+### Always Available Blocks
+
+These blocks are always shown regardless of data availability:
+- **Text blocks** - Headers, paragraphs, and formatted text
+- **Branding blocks** - Company logo and branding elements
+- **General data blocks** - Metrics, dynamic tables, and user statistics
+
+### Conditionally Available Blocks
+
+These blocks only appear when relevant data exists:
+- **Module-specific blocks** - Planner tables, compliance overviews, goal progress
+- **Visualization blocks** - Ticket charts, timeline progress, data visualizations
+- **Integration blocks** - Ticket analytics, hours worked, completion metrics
+
+## Using the Feature
+
+### Creating a Report
+
+1. Navigate to **Reporting** in the main sidebar
+2. Click **New Report** or select an existing report to edit
+3. Select a company from the company selector (if not already selected)
+4. The block palette on the left automatically updates to show only relevant blocks
+
+### Understanding Block Availability
+
+When blocks are filtered:
+- **Visible blocks** have data available for the selected company
+- **Hidden blocks** have no data and would appear empty if added
+- **Search** works within the filtered set of available blocks
+
+### Switching Companies
+
+When you switch companies while building a report:
+1. The block palette refreshes automatically
+2. Different blocks may appear/disappear based on the new company's data
+3. Already added blocks remain in the report even if they become unavailable
+
+## Technical Implementation
+
+### Database View
+
+The system uses a database view (`v_module_data_availability`) that:
+- Checks each module's tables for data presence per company
+- Returns boolean flags indicating data availability
+- Updates in real-time as data changes
+
+### Performance Optimization
+
+The availability check is:
+- **Cached** for 5 minutes to reduce database queries
+- **Company-specific** to ensure accurate filtering
+- **Lightweight** using indexed queries for fast response
+
+## Troubleshooting
+
+### All Blocks Showing
+
+If you see all blocks regardless of data:
+- Verify a company is selected (not in global view)
+- Check that the availability service is running
+- Clear browser cache and refresh the page
+
+### Expected Blocks Missing
+
+If blocks you expect to see are missing:
+- Confirm the company has data in that module
+- Check that data is properly linked to the company ID
+- For ticket blocks, ensure the company has an `imported_from` link
+
+### Performance Issues
+
+If the block palette loads slowly:
+- The availability cache may be refreshing (wait 5 seconds)
+- Check network connection to the database
+- Contact support if the issue persists
+
+## Best Practices
+
+### For Administrators
+
+- **Data Integrity**: Ensure all module data is properly linked to company IDs
+- **Integration Setup**: Configure `imported_from` links for ticket integration
+- **Regular Audits**: Verify data availability matches actual company activity
+
+### For Report Builders
+
+- **Company Selection**: Always select the target company before building
+- **Block Search**: Use search to quickly find available blocks
+- **Template Creation**: Build templates with commonly available blocks
+
+## Related Features
+
+- [Report Templates](/features/report-templates) - Create reusable report structures
+- [Company Management](/features/company-management) - Configure company settings and data
+- [Integration Setup](/features/integrations) - Connect external data sources

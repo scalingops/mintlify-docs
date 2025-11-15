@@ -1,0 +1,127 @@
+---
+title: Multi-Factor Authentication (MFA)
+description: Complete MFA implementation with enrollment dialog, QR code display, and login flow integration
+---
+
+# Multi-Factor Authentication (MFA)
+
+This document details the implementation of Multi-Factor Authentication (MFA) using Time-based One-Time Password (TOTP) for enhanced account security.
+
+## Overview
+
+The MFA system provides an additional layer of security by requiring users to verify their identity with a time-based code from an authenticator app after entering their password.
+
+## Implementation Components
+
+### 1. MFA Enrollment Dialog
+
+**File**: `components/settings/user-settings/MFAEnrollDialog.tsx`
+
+Key features:
+- QR code generation and display for easy setup
+- Manual secret entry fallback for users who cannot scan QR codes
+- Handles existing unverified factors gracefully
+- Step-by-step enrollment process with clear instructions
+- Automatic cleanup of incomplete enrollments
+
+**Usage**:
+```tsx
+<MFAEnrollDialog 
+  open={showEnrollDialog}
+  onOpenChange={setShowEnrollDialog}
+  onEnrolled={() => {
+    // Refresh MFA status
+    refetchFactors();
+  }}
+/>
+```
+
+### 2. Authentication Flow Updates
+
+**File**: `app/auth/actions.ts`
+
+Enhanced login action with MFA support:
+- Detects when MFA is required after successful password authentication
+- Creates MFA challenge automatically
+- Handles MFA verification step
+- Returns appropriate state for UI handling
+
+**File**: `app/auth/signin/sign-in-form.tsx`
+
+Updated sign-in form with:
+- Conditional MFA input display
+- Visual indicators for MFA step (Shield icon)
+- Automatic form validation (6-digit code requirement)
+- Clear navigation between login and MFA steps
+- Proper error handling for MFA failures
+
+### 3. User Flow
+
+1. **Standard Login**: User enters email and password
+2. **MFA Detection**: System checks if user has MFA enabled
+3. **Challenge Creation**: Automatic challenge generation for TOTP factor
+4. **MFA Prompt**: UI switches to MFA code input
+5. **Verification**: User enters 6-digit code from authenticator app
+6. **Access Granted**: Successful verification completes login
+
+## Technical Details
+
+### QR Code Display
+
+The QR code is displayed as a base64-encoded SVG image directly in the dialog:
+
+```tsx
+<img 
+  src={qrCode}
+  alt="MFA QR Code"
+  className="w-48 h-48 object-contain"
+/>
+```
+
+### Friendly Naming
+
+Each MFA factor gets a unique friendly name with the enrollment date:
+
+```tsx
+friendlyName: `Authenticator App - ${new Date().toISOString().slice(0, 10)}`
+```
+
+### Error Handling
+
+- Graceful handling of existing unverified factors
+- Clear error messages for verification failures
+- Automatic cleanup of incomplete enrollments
+- User option to start fresh if needed
+
+### Security Considerations
+
+- QR codes are generated server-side by Supabase
+- Secrets are only displayed during initial setup
+- Verification codes are validated server-side
+- Failed attempts are properly logged and handled
+- No sensitive data persisted in client state
+
+## Dependencies
+
+- Supabase Auth MFA functionality
+- Lucide React icons for UI elements
+- shadcn/ui components for consistent styling
+- React state management for multi-step flows
+
+## Best Practices
+
+1. **User Experience**: Clear step-by-step instructions with visual cues
+2. **Error Recovery**: Graceful handling of edge cases and failures
+3. **Security**: No client-side storage of sensitive MFA data
+4. **Accessibility**: Proper labels and descriptions for screen readers
+5. **Mobile Support**: QR codes sized appropriately for mobile scanning
+
+## Testing Considerations
+
+- Test with various authenticator apps (Google Authenticator, Authy, 1Password)
+- Verify QR code scanning works on different devices
+- Test manual secret entry as fallback
+- Validate error handling for invalid codes
+- Ensure proper cleanup of failed enrollments
+
+Last updated: August 13, 2025

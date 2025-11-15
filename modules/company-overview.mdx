@@ -1,0 +1,186 @@
+---
+title: 'Company Overview'
+description: 'Centralized dashboard for monitoring company health and performance'
+icon: 'chart-line'
+---
+
+## Overview
+
+The Company Overview module provides a comprehensive dashboard view of company health metrics, compliance status, and upcoming activities. It serves as your command center for monitoring all aspects of client management in MSPortal.ai.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="Performance Metrics" icon="gauge">
+    Real-time summary cards showing key performance indicators
+  </Card>
+  <Card title="Compliance Monitoring" icon="shield-check">
+    Track compliance issues and recent runs at a glance
+  </Card>
+  <Card title="Activity Tracking" icon="calendar-check">
+    View upcoming planner items and scheduled activities
+  </Card>
+  <Card title="Company Audit" icon="magnifying-glass">
+    Comprehensive audit view with detailed module analysis
+  </Card>
+</CardGroup>
+
+## Dashboard Components
+
+### Summary Cards
+The top section displays key metrics across different modules:
+- **Compliance Status**: Active checks, recent issues, completion rates
+- **Survey Metrics**: Response rates, NPS scores, feedback trends
+- **Goal Progress**: Active goals, completion status, milestones
+- **Ticket Volume**: Open tickets, resolution times, SLA compliance
+- **Device Status**: Total devices, warranty expirations, refresh needs
+
+### Compliance Issues Card
+Monitor critical compliance issues requiring attention:
+- Issue severity levels (Critical, High, Medium, Low)
+- Affected compliance frameworks
+- Days since detection
+- Quick links to resolution actions
+
+### Recent Runs Card
+Track recent compliance run activities:
+- Run completion status
+- Framework coverage
+- Issue discovery trends
+- Schedule adherence
+
+### Planner Items Card
+View upcoming scheduled activities:
+- Tasks due today, this week, and this month
+- Priority indicators
+- Assignment status
+- Quick access to planner module
+
+### Company Summary Card
+<Info>
+This card appears only in global view when no specific company is selected
+</Info>
+
+Displays aggregated metrics across all companies:
+- Total managed companies
+- Overall compliance health
+- Combined ticket volume
+- Multi-company trends
+
+## View Modes
+
+### Company-Specific View
+When a company is selected from the company selector:
+- Shows data filtered to selected company only
+- Displays company-specific metrics
+- Enables detailed drill-down capabilities
+
+### Global View
+When no company is selected (all companies):
+- Shows aggregated data across all companies
+- Displays Company Summary Card
+- Enables cross-company comparisons
+- Useful for MSP-wide monitoring
+
+## Company Audit
+
+Access the audit view by clicking the menu icon in the page header and selecting "Company Audit".
+
+### Audit Features
+- **Module Coverage**: Analysis of all enabled modules
+- **Data Completeness**: Identifies missing or incomplete information
+- **Activity Analysis**: Recent activity patterns and trends
+- **Recommendations**: AI-powered suggestions for improvements
+- **Export Options**: Generate audit reports in various formats
+
+### Audit Sections
+1. **Compliance Audit**: Framework coverage and check completeness
+2. **Survey Audit**: Response rates and feedback analysis
+3. **Goal Audit**: Goal setting and achievement metrics
+4. **Ticket Audit**: Service delivery performance
+5. **Device Audit**: Asset management completeness
+
+## Data Refresh
+
+### Automatic Refresh
+- Dashboard data refreshes automatically every 5 minutes
+- Real-time updates for critical metrics
+- Background sync for non-critical data
+
+### Manual Refresh
+- Click the refresh icon in the Company Overview menu
+- Force refresh specific cards using individual refresh buttons
+- Audit data can be refreshed using the "Refresh Audit" button
+
+## Filtering and Customization
+
+### Time Period Selection
+- Today, This Week, This Month, This Quarter
+- Custom date ranges
+- Year-over-year comparisons
+
+### Metric Filtering
+- Show/hide specific metric cards
+- Adjust threshold values for alerts
+- Customize card ordering
+
+### Company Filtering
+<Note>
+Company filtering is controlled by the global company selector in the top navigation bar
+</Note>
+
+## Performance Optimization
+
+The Company Overview uses several optimization techniques:
+- **Cached Data**: Frequently accessed data is cached for performance
+- **Progressive Loading**: Cards load independently to improve perceived speed
+- **Smart Refresh**: Only updates changed data to minimize network usage
+
+## Navigation
+
+### Quick Actions
+Access related modules directly from the dashboard:
+- Click compliance issues to navigate to Compliance module
+- Click planner items to open in Planner
+- Click survey metrics to view Surveys
+- Click goal progress to manage Goals
+
+### Menu Options
+The Company Overview menu (⋮) provides:
+- Navigate to Company Audit
+- Refresh dashboard data
+- Export dashboard snapshot
+- Configure dashboard preferences
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Daily Review">
+    Start each day by reviewing the Company Overview to identify priorities
+  </Accordion>
+  <Accordion title="Issue Resolution">
+    Address critical compliance issues immediately when they appear
+  </Accordion>
+  <Accordion title="Regular Audits">
+    Run company audits monthly to ensure data completeness
+  </Accordion>
+  <Accordion title="Global Monitoring">
+    Use global view weekly to monitor overall MSP performance
+  </Accordion>
+</AccordionGroup>
+
+## Permissions
+
+Access to Company Overview features requires:
+- `read_dashboard` permission for viewing
+- `read_compliance` for compliance sections
+- `read_planner` for planner items
+- `view_all_companies` for global view
+
+## Related Modules
+
+- [Compliance](/modules/compliance) - Detailed compliance management
+- [Planner](/modules/planner) - Task and schedule management
+- [Surveys](/modules/surveys) - Customer satisfaction tracking
+- [Goals](/modules/goals) - Strategic objective management
+- [Reports](/modules/reporting) - Detailed reporting and analytics

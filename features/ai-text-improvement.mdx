@@ -1,0 +1,237 @@
+---
+title: AI Text Improvement
+description: Automatically improve and polish text in WYSIWYG editors using AI
+---
+
+# AI Text Improvement
+
+The AI Text Improvement feature helps MSP professionals quickly polish and professionalize their written content across all WYSIWYG editors in the application using OpenAI's GPT models.
+
+## Overview
+
+When writing reports, documentation, or client communications, maintaining a professional and consistent tone is crucial. The AI Text Improvement feature:
+
+- **Rewrites text** for clarity, conciseness, and professionalism
+- **Fixes grammar and spelling** automatically
+- **Maintains technical accuracy** while improving readability
+- **Preserves HTML structure** including headings, lists, and formatting
+- **Uses active voice** and plain English for better comprehension
+
+## Prerequisites
+
+Before using the AI text improvement feature, ensure:
+1. Your organization has configured an OpenAI API key
+2. You have text content in a WYSIWYG editor
+3. You have permission to use AI features
+
+## Using AI Text Improvement
+
+### Improving Your Text
+
+1. Open any WYSIWYG editor in the application (reports, templates, notes, etc.)
+2. Type or paste your draft text
+3. Click the **Generate** button (star icon) in the editor toolbar
+4. The AI will process and replace your text with an improved version
+5. Review the improved text and make any necessary adjustments
+6. Save your content
+
+<Note>
+The Generate button will pulse while processing and is disabled if no text is present in the editor.
+</Note>
+
+### What Gets Improved
+
+The AI improvement process:
+- **Clarifies ambiguous language** for better understanding
+- **Removes redundancy** while preserving meaning
+- **Corrects grammar and spelling** errors
+- **Standardizes formatting** for consistency
+- **Converts to active voice** where appropriate
+- **Simplifies complex sentences** without losing technical accuracy
+- **Maintains metric measurements** if mentioned in the text
+
+## Example Transformations
+
+### Before
+```html
+<p>The server's that we checked yesterday, they wasn't configured 
+properly and this could of caused issues with the backups not 
+running like they should be.</p>
+```
+
+### After
+```html
+<p>Yesterday's server inspection revealed improper configuration 
+that prevented backups from running correctly.</p>
+```
+
+### Technical Documentation Example
+
+**Before:**
+```html
+<p>We need to basically update the firewall rules because there's 
+alot of ports that are opened that shouldn't be opened and this 
+is a security risk for the company.</p>
+```
+
+**After:**
+```html
+<p>Update firewall rules to close unnecessary open ports and 
+reduce security risk.</p>
+```
+
+## Configuration
+
+### Setting Up OpenAI Integration
+
+Add your OpenAI API key to your environment variables:
+
+```bash
+OPENAI_API_KEY=your-api-key-here
+```
+
+<Warning>
+Keep your OpenAI API key secure and never commit it to version control.
+</Warning>
+
+### Model Configuration
+
+The feature uses:
+- **Model**: GPT-4o-mini for fast, cost-effective processing
+- **Temperature**: 0.3 for consistent, professional output
+- **Max Tokens**: 2000 to handle longer text improvements
+
+## System Prompt
+
+The AI uses the following system prompt for text improvement:
+
+```text
+You are a senior technical writer for an MSP.
+Rewrite any supplied text so it is clear, concise, and professional.
+• Preserve intent and technical accuracy
+• Fix grammar, spelling, and formatting
+• Use active voice and plain English
+• Keep measurements metric if mentioned
+• Maintain any HTML structure (<h2>, <ul>, <p>, etc.) but add none that isn't needed
+• No mention of AI, no apologies, no disclaimers
+```
+
+This prompt ensures:
+- Professional MSP-appropriate language
+- Technical accuracy preservation
+- Clean output without AI artifacts
+- HTML structure maintenance
+
+## Best Practices
+
+### Writing for AI Improvement
+
+To get the best results:
+
+1. **Include all key information** in your draft, even if roughly written
+2. **Use HTML tags** for structure (headings, lists) if desired
+3. **Don't worry about grammar** - focus on getting ideas down
+4. **Be specific** about technical details that must be preserved
+
+### Reviewing AI Output
+
+Always review improved content for:
+
+- **Accuracy** of technical information
+- **Completeness** of your original message
+- **Appropriate tone** for your audience
+- **Client-specific terminology** that may need adjustment
+- **Removal of any hallucinated content** not in your original
+
+## Use Cases
+
+### Report Writing
+- Transform technical notes into executive summaries
+- Polish draft reports before client delivery
+- Standardize tone across team-written content
+
+### Template Creation
+- Improve template language for clarity
+- Ensure consistent professional tone
+- Remove ambiguity from instructions
+
+### Client Communications
+- Polish email drafts and responses
+- Improve clarity of technical explanations
+- Ensure professional tone in all communications
+
+### Documentation
+- Clean up internal documentation
+- Improve readability of procedures
+- Standardize writing style across documents
+
+## Limitations
+
+- Requires text content to improve (won't generate from scratch)
+- Maximum input/output based on token limits
+- May not preserve highly specialized formatting
+- Client-specific terminology may need manual adjustment
+- Requires stable internet connection for API calls
+
+## Troubleshooting
+
+### Generate Button Not Working
+
+If the Generate button doesn't respond:
+- Ensure you have text in the editor
+- Check that your content isn't just empty HTML tags
+- Verify you're not already processing (button will pulse)
+- Check for error messages in toast notifications
+
+### API Key Not Configured
+
+If you see an API configuration error:
+- Verify OPENAI_API_KEY is set in environment variables
+- Restart the application after adding the key
+- Check the key is valid and has available credits
+
+### Poor Quality Output
+
+If the improved text isn't satisfactory:
+- Ensure your original text has clear intent
+- Break very long content into smaller sections
+- Add more context to ambiguous statements
+- Review and manually adjust the output
+
+### Content Not Replaced
+
+If your original text remains unchanged:
+- Check for error notifications
+- Verify internet connectivity
+- Ensure the API service is available
+- Try with shorter text to test functionality
+
+## Technical Implementation
+
+### Architecture
+
+The AI text improvement feature uses:
+- **Server Actions** for secure API communication
+- **Dynamic imports** to avoid client-side bundle impact
+- **Toast notifications** for user feedback
+- **Loading states** with visual feedback (pulse animation)
+
+### Security
+
+- OpenAI API calls made server-side only
+- API keys never exposed to client
+- Input sanitization before processing
+- Error messages don't expose sensitive information
+
+### Performance
+
+- Processing typically takes 2-4 seconds
+- Uses GPT-4o-mini for optimal speed/quality balance
+- No impact on application performance when not in use
+- Graceful degradation if API is unavailable
+
+## Related Features
+
+- [AI Compliance Notes](/features/ai-compliance-notes) - Generate professional compliance notes
+- [Report Templates](/features/report-templates) - Create reusable report templates
+- [Import/Export](/features/import-export) - Bulk import and export content

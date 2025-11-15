@@ -1,0 +1,140 @@
+---
+title: "Auth User Creation Bug Fixes"
+description: "Documentation of fixes for the 'Database error creating new user' issue during company user imports"
+---
+
+# Auth User Creation Bug Fixes
+
+**Date:** August 10, 2025  
+**Affected Areas:** Company User Import, Authentication System  
+**Issue:** "Database error creating new user" during user imports
+
+## Overview
+
+This documentation covers the critical bug fixes implemented to resolve auth user creation failures during company user import processes. The main issue was occurring in the `app/actions/company-users.ts` file where auth users were being created with metadata configurations that were causing database triggers to fail.
+
+## Root Cause Analysis
+
+The original implementation had several issues:
+
+1. **User Metadata Conflicts**: Auth users were created with `user_metadata` containing `imported_from` and other fields that conflicted with database trigger expectations
+2. **Trigger Reference Issues**: Database triggers expected `user_record_id` to be in `app_metadata` to properly link auth users to public user records
+3. **Audit Log Conflicts**: The `handle_auth_user_confirmed` trigger was attempting to insert audit logs that caused constraint violations
+
+## Key Changes Implemented
+
+### 1. Removed `user_metadata` from Auth User Creation
+
+**Before:**
+```typescript
+const { data: authUser, error: authError } = await admin.auth.admin.createUser({
+  email: user.email,
+  password: randomPassword,
+  user_metadata: {
+    full_name: user.full_name,
+    imported_from: source,
+    user_record_id: user.id,  // Wrong location
+    tenant_id: user.tenant_id,
+    company_id: user.company_id,
+    role_id: roleId
+  },
+  app_metadata: {
+    company_id: user.company_id,
+    tenant_id: user.tenant_id,
+    user_type: 'company',
+    role_id: roleId
+  }
+});
+```
+
+**After:**
+```typescript
+const { data: authUser, error: authError } = await admin.auth.admin.createUser({
+  email: user.email,
+  password: randomPassword,
+  email_confirm: true,
+  app_metadata: {
+    company_id: user.company_id,
+    tenant_id: user.tenant_id,
+    user_type: 'company',
+    role_id: roleId,
+    user_record_id: user.id  // Moved to app_metadata
+  }
+});
+```
+
+### 2. Moved `user_record_id` to `app_metadata`
+
+The `user_record_id` field was moved from `user_metadata` to `app_metadata` because:
+- Database triggers (`handle_new_user`) check `app_metadata` for the user record reference
+- This field is critical for linking the auth user to the corresponding public.users record
+- `app_metadata` is the proper location for system-level metadata that triggers need to access
+
+### 3. Database Trigger Updates
+
+Based on the request description, the following trigger changes were made:
+
+#### Update to `handle_new_user` Trigger
+- Modified to check `app_metadata.user_record_id` instead of `user_metadata.user_record_id`
+- This ensures proper linking between auth users and public user records
+
+#### Simplification of `handle_auth_user_confirmed` Trigger  
+- Removed the audit_logs insert that was causing constraint violations
+- Simplified the trigger to focus on essential user confirmation logic
+- This prevents foreign key constraint errors during user creation
+
+### 4. Enhanced Error Handling
+
+The updated implementation includes:
+- Better error logging for auth user creation failures
+- Fallback logic for existing auth users
+- Direct database queries to check for existing auth users instead of relying on the admin API
+
+## Implementation Details
+
+### importCompanyUsers Function
+
+The main import function was refactored to:
+1. Create integration_users first
+2. Create public.users records with `user_id: null`
+3. Create auth users with proper metadata configuration
+4. Link auth users back to public.users records
+
+### Mass Import Support
+
+A new `importCompanyUsersForMassImport` function was added with:
+- Company-specific user processing
+- Batch auth user creation per company
+- Proper metadata configuration from the start
+
+## Benefits
+
+1. **Eliminated Import Failures**: No more "Database error creating new user" issues
+2. **Improved Reliability**: Robust error handling and fallback mechanisms  
+3. **Better Performance**: Streamlined auth user creation process
+4. **Consistent Data**: Proper linking between auth and public user records
+
+## Testing Recommendations
+
+When testing user imports:
+1. Verify auth users are created with proper `app_metadata` structure
+2. Confirm public.users records are properly linked via `user_id`
+3. Test both individual company imports and mass imports
+4. Verify existing auth users are handled correctly
+
+## Migration Notes
+
+- No data migration required for existing users
+- New imports will automatically use the corrected metadata structure  
+- Existing auth users will continue to function normally
+- The trigger updates apply to new user creations only
+
+## Related Files
+
+- `app/actions/company-users.ts` - Main import logic
+- Database triggers: `handle_new_user`, `handle_auth_user_confirmed`  
+- Migration files (mentioned in description but not tracked in current changes)
+
+---
+
+*This fix resolves critical user import issues and ensures reliable company user onboarding functionality.*

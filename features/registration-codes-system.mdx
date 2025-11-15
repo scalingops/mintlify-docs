@@ -1,0 +1,85 @@
+# Registration Codes System
+
+## Overview
+
+The Registration Codes system provides administrative control over signup processes, allowing for special offers, extended trials, and bypassed payment requirements for specific users or partner agreements.
+
+## Key Features
+
+### Administrative Management
+- Full CRUD operations for registration codes
+- Random code generation with customizable format
+- Usage tracking and limits
+- Expiration date management
+- Active/inactive status control
+
+### Code Configuration Options
+- **Custom Trial Length**: Override default 14-day trial with custom duration
+- **Payment Bypass**: Skip credit card requirement for special accounts
+- **Usage Limits**: Set maximum number of uses per code (unlimited by default)
+- **Expiration Dates**: Optional expiration for time-limited codes
+- **Description & Notes**: Internal documentation for code purpose
+
+### Integration Points
+- Seamless integration with public signup flow
+- Automatic validation during registration
+- Metadata storage in tenant records
+- Stripe subscription trial period adjustment
+
+## Implementation Details
+
+### Database Schema
+The `registration_codes` table includes:
+- `code`: Unique identifier for the registration code
+- `description`: Optional description for internal use
+- `max_uses` / `current_uses`: Usage tracking
+- `trial_days`: Custom trial period length
+- `bypass_payment`: Boolean flag to skip payment requirement
+- `is_active`: Status flag for enabling/disabling codes
+- `expires_at`: Optional expiration timestamp
+- `notes`: Additional internal documentation
+
+### Authentication Enhancement
+Updated client-side authentication checks to treat `/signup` routes as public, preventing automatic redirects to signin page during the signup process. This affects:
+- `SessionMonitor.tsx`: Added `/signup` to public page detection
+- `use-auth.ts`: Enhanced auth page detection to include signup routes
+
+### Public Signup Flow
+Enhanced the public tenant creation process to:
+1. Validate registration codes with detailed response data
+2. Apply custom trial periods from registration codes
+3. Store registration metadata in tenant records
+4. Handle payment bypass logic for Stripe subscriptions
+5. Track code usage automatically
+
+## Usage
+
+### For Administrators
+1. Navigate to `/admin/registration-codes`
+2. Create new codes with desired parameters
+3. Share codes with intended recipients
+4. Monitor usage and manage active codes
+
+### For End Users
+1. Use registration code during signup process
+2. Benefit from extended trials or payment bypass
+3. Proceed through normal onboarding flow
+
+## Security Considerations
+- Only primary administrators can manage registration codes
+- Codes are validated server-side during signup
+- Usage limits prevent abuse
+- Expiration dates provide time-bound access
+- All operations are logged and tracked
+
+## Technical Architecture
+- Server actions handle all CRUD operations
+- Admin interface provides intuitive management
+- Integration with existing Stripe billing flow
+- Tenant metadata stores registration context
+- Real-time validation and error handling
+
+---
+
+*Last Updated: September 5, 2025*
+*Feature Version: 1.0*

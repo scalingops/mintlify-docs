@@ -1,0 +1,265 @@
+---
+title: 'Ticketing'
+description: 'Manage service tickets through PSA integrations'
+icon: 'ticket'
+---
+
+## Overview
+
+The Ticketing module provides seamless integration with Professional Services Automation (PSA) platforms like ConnectWise and Halo PSA. View, manage, and create tickets directly from MSPortal.ai while maintaining synchronization with your PSA system.
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="PSA Integration" icon="plug">
+    Bi-directional sync with ConnectWise and Halo PSA
+  </Card>
+  <Card title="AI-Powered Creation" icon="sparkles">
+    Generate tickets using AI assistance
+  </Card>
+  <Card title="Template Library" icon="file-text">
+    Reusable ticket templates for common issues
+  </Card>
+  <Card title="Multi-Company" icon="building">
+    Manage tickets across all client companies
+  </Card>
+</CardGroup>
+
+## Supported PSA Platforms
+
+### ConnectWise Manage
+Full integration features:
+- Ticket synchronization
+- Status updates
+- Time entry sync
+- Board management
+- Company mapping
+
+### Halo PSA
+Complete integration with:
+- Ticket creation and updates
+- Agent assignment
+- Priority management
+- Category mapping
+- SLA tracking
+
+## Ticket Management
+
+### Viewing Tickets
+The main tickets page displays:
+- Ticket number and summary
+- Status and priority
+- Assigned technician
+- Company association
+- Last updated time
+- SLA status
+
+### Ticket Filtering
+Filter tickets by:
+- Status (Open, In Progress, Closed)
+- Priority (Critical, High, Medium, Low)
+- Company
+- Assigned technician
+- Date range
+- Board/Queue
+
+## Creating Tickets
+
+### Manual Creation
+<Steps>
+  <Step title="Click New Ticket">
+    Access ticket creation form
+  </Step>
+  <Step title="Select Company">
+    Choose the client company
+  </Step>
+  <Step title="Enter Details">
+    - Summary and description
+    - Priority and impact
+    - Category and subcategory
+    - Initial internal notes
+  </Step>
+  <Step title="Assignment">
+    - Select board/queue
+    - Assign technician
+    - Set due date
+  </Step>
+  <Step title="Create Ticket">
+    Ticket syncs to PSA system
+  </Step>
+</Steps>
+
+### AI-Powered Creation
+Use AI to generate tickets:
+1. Click "New AI Ticket"
+2. Describe the issue in natural language
+3. AI generates structured ticket
+4. Review and adjust details
+5. Submit to PSA system
+
+## Ticket Templates
+
+### Using Templates
+Speed up ticket creation with templates:
+- Select from template library
+- Auto-populate fields
+- Customize as needed
+- Save time on common issues
+
+### Template Types
+- **Incident Templates**: Common break/fix scenarios
+- **Request Templates**: Standard service requests
+- **Project Templates**: Project task tickets
+- **Maintenance Templates**: Routine maintenance tasks
+
+### Creating Templates
+<Steps>
+  <Step title="Create Sample Ticket">
+    Set up ticket with desired fields
+  </Step>
+  <Step title="Save as Template">
+    Click "Save as Template"
+  </Step>
+  <Step title="Name Template">
+    Provide descriptive name
+  </Step>
+  <Step title="Set Availability">
+    Choose personal or team template
+  </Step>
+</Steps>
+
+## PSA Synchronization
+
+### Sync Configuration
+Configure in Settings > Integrations:
+- Sync frequency (real-time or scheduled)
+- Field mappings
+- Status mappings
+- Priority mappings
+- Board/queue selection
+
+### Data Synchronization
+What syncs between systems:
+- Ticket creation and updates
+- Status changes
+- Priority updates
+- Assignment changes
+- Time entries
+- Notes and communications
+
+### Conflict Resolution
+When conflicts occur:
+- PSA system is source of truth
+- Local changes queue for retry
+- Conflict notifications sent
+- Manual resolution options
+
+## Ticket Categories
+
+### Category Management
+Organize tickets by:
+- Service type
+- Issue category
+- Department
+- Technology area
+- Custom categories
+
+### Subcategories
+Further classification with:
+- Specific issue types
+- Component identification
+- Service level
+- Resolution category
+
+## Settings
+
+### Ticket Settings
+Configure ticket behavior:
+- Default values
+- Required fields
+- Auto-assignment rules
+- Escalation triggers
+- SLA configurations
+
+### PSA Settings
+Integration-specific settings:
+- API credentials
+- Endpoint configuration
+- Sync preferences
+- Field mappings
+- Board selection
+
+## Automation
+
+### Auto-Assignment
+Rules for automatic assignment:
+- By category
+- By company
+- By priority
+- Round-robin
+- Skill-based routing
+
+### Escalation Rules
+Automatic escalation based on:
+- Time thresholds
+- SLA breaches
+- Priority changes
+- Customer responses
+
+## Reporting
+
+### Ticket Metrics
+Track key performance indicators:
+- Ticket volume
+- Resolution times
+- SLA compliance
+- First response times
+- Customer satisfaction
+
+### Reports Available
+- Open ticket summary
+- Technician performance
+- Category analysis
+- Trend reports
+- SLA reports
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Consistent Categories">
+    Use standardized categories for better reporting
+  </Accordion>
+  <Accordion title="Template Usage">
+    Create templates for repetitive ticket types
+  </Accordion>
+  <Accordion title="Regular Sync">
+    Monitor sync status to ensure data accuracy
+  </Accordion>
+  <Accordion title="SLA Monitoring">
+    Set up alerts for SLA approaching breaches
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+### Common Issues
+- **Sync Failures**: Check API credentials and connectivity
+- **Missing Tickets**: Verify board/queue filters
+- **Status Mismatches**: Review status mapping configuration
+- **Assignment Issues**: Check technician mapping
+
+## Permissions
+
+Ticketing permissions:
+- `read_tickets` - View tickets
+- `create_tickets` - Create new tickets
+- `edit_tickets` - Modify tickets
+- `delete_tickets` - Remove tickets
+- `manage_ticket_settings` - Configure ticket settings
+
+## Related Modules
+
+- [Company Overview](/modules/company-overview) - Ticket metrics on dashboard
+- [Reports](/modules/reporting) - Generate ticket reports
+- [Planner](/modules/planner) - Schedule ticket-related work
+- [Settings](/modules/settings) - Configure PSA integrations

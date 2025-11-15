@@ -1,0 +1,165 @@
+---
+title: Ticketing Integration
+description: View and analyze tickets from ConnectWise and Halo PSA
+---
+
+<Note>
+The Ticketing module requires an active integration with ConnectWise or HaloPSA. It does not provide standalone ticketing functionality.
+</Note>
+
+The Ticketing module in MSPortal.ai integrates with your existing PSA (Professional Services Automation) tools to provide ticket visibility and analytics within the platform.
+
+## Supported Integrations
+
+MSPortal.ai currently integrates with:
+- **ConnectWise Manage** - Full ticket data synchronization ([Setup Guide](../integrations/enable-connectwise-integration))
+- **HaloPSA** - Comprehensive ticket integration
+
+## Key Features
+
+- **Ticket Visibility** - View tickets from your PSA within MSPortal.ai
+- **Company Association** - See tickets linked to specific companies
+- **Analytics & Reporting** - Generate insights from ticket data
+- **Cross-Module Integration** - Reference tickets in reports and compliance
+- **Real-time Sync** - Stay updated with latest ticket information
+
+## Prerequisites
+
+Before using the Ticketing module:
+1. Have an active ConnectWise Manage or HaloPSA account
+2. Configure the PSA integration in Settings
+3. Map companies between MSPortal.ai and your PSA
+4. Verify API permissions for ticket access
+
+## Setting Up Integration
+
+### ConnectWise Integration
+
+<Steps>
+  <Step title="Navigate to Settings">
+    Go to Settings → Integrations → ConnectWise
+  </Step>
+  <Step title="Enter API Credentials">
+    Provide your ConnectWise API URL, company ID, and credentials
+  </Step>
+  <Step title="Configure Sync Settings">
+    Select which ticket types and statuses to synchronize
+  </Step>
+  <Step title="Map Companies">
+    Link MSPortal.ai companies to ConnectWise companies
+  </Step>
+  <Step title="Initial Sync">
+    Run the initial synchronization to import existing tickets
+  </Step>
+</Steps>
+
+### HaloPSA Integration
+
+<Steps>
+  <Step title="Navigate to Settings">
+    Go to Settings → Integrations → HaloPSA
+  </Step>
+  <Step title="API Configuration">
+    Enter your Halo instance URL and API credentials
+  </Step>
+  <Step title="Select Data Types">
+    Choose ticket categories to synchronize
+  </Step>
+  <Step title="Company Mapping">
+    Connect MSPortal.ai companies with Halo clients
+  </Step>
+  <Step title="Synchronize">
+    Execute initial data import
+  </Step>
+</Steps>
+
+## Using the Ticketing Module
+
+### Viewing Tickets
+
+1. Navigate to **Ticketing** in the sidebar
+2. Select a company or view all tickets
+3. Use filters to narrow results:
+   - Status (Open, Closed, Pending)
+   - Priority levels
+   - Date ranges
+   - Assigned technician
+
+### Ticket Information
+
+Each synchronized ticket displays:
+- **Ticket Number** - PSA ticket identifier
+- **Summary** - Brief description
+- **Status** - Current ticket state
+- **Priority** - Urgency level
+- **Company** - Associated client
+- **Assigned To** - Responsible technician
+- **Created/Updated** - Timestamps
+- **Time Entries** - Logged hours (if available)
+
+### Analytics & Reporting
+
+The Ticketing module provides:
+- **Ticket Volume** - Trends over time
+- **Resolution Times** - Average time to close
+- **By Company** - Ticket distribution across clients
+- **By Category** - Common issue types
+- **SLA Performance** - If SLA data is available
+
+## Integration with Other Modules
+
+### Reporting
+- Include ticket metrics in client reports
+- Show support activity alongside other KPIs
+- Generate ticket trend analyses
+
+### Company Overview
+- Display recent tickets on company dashboards
+- Show ticket counts in company health metrics
+
+### Compliance
+- Reference tickets in compliance documentation
+- Link remediation tickets to compliance issues
+
+## Best Practices
+
+- **Regular Sync** - Ensure synchronization runs frequently
+- **Company Mapping** - Keep company associations up to date
+- **Data Hygiene** - Clean up closed tickets periodically
+- **Permission Management** - Limit ticket visibility as needed
+
+## Limitations
+
+- Read-only access (ticket creation/editing must be done in PSA)
+- Sync frequency depends on API rate limits
+- Historical data limited by PSA retention policies
+- Custom fields may not all be available
+
+## Troubleshooting
+
+### Tickets Not Appearing
+- Verify integration is active in Settings
+- Check company mapping configuration
+- Ensure API credentials are valid
+- Review sync logs for errors
+
+### Sync Delays
+- Check PSA API status
+- Verify network connectivity
+- Review rate limiting settings
+- Contact support if delays persist
+
+### Missing Ticket Data
+- Confirm API permissions include ticket access
+- Check field mapping configuration
+- Verify ticket types are included in sync
+
+## Related Resources
+
+- [Integrations Setup](../integrations/index) - Configure PSA connections
+- [Reporting](../reporting/index) - Create ticket-based reports
+- [Company Overview](../company-overview/index) - View company ticket metrics
+
+## Support
+
+For assistance with ticket integration, consult your PSA documentation or contact MSPortal.ai support.
