@@ -162,6 +162,12 @@
                     "pages": [
                       "user-guides/integrations/enable-syncro-integration"
                     ]
+                  },
+                  {
+                    "group": "Autotask",
+                    "pages": [
+                      "user-guides/integrations/enable-autotask-integration"
+                    ]
                   }
                 ]
               },
