@@ -11,170 +11,275 @@ The Compliance module helps you manage regulatory compliance, track security fra
 1. Click **Compliance** in the sidebar
 2. The compliance dashboard displays your assessment overview
 
-<Frame>
-  <img src="/images/compliance/compliance-overview.png" alt="Compliance Dashboard Overview" />
-</Frame>
+## View Options
 
-## Dashboard Overview
+The compliance module offers two viewing options to suit your workflow:
 
-### Summary Cards
+### Tree View
 
-The top section displays four key metrics:
-
-| Card | Description |
-|------|-------------|
-| **Compliant** | Checks that meet requirements (green) |
-| **Not Compliant** | Checks that need attention (red) |
-| **In Progress** | Checks currently being assessed |
-| **Past Due** | Overdue assessments requiring action |
-
-### Filtering Options
-
-Use the filter bar to narrow your view:
-
-| Filter | Description |
-|--------|-------------|
-| **Search** | Find specific companies or checks |
-| **Company** | Filter by specific company |
-| **Framework** | Filter by compliance framework |
-| **Status** | Filter by compliance status |
-| **Date Range** | Filter by assessment date |
-
-## Compliance Tree Structure
-
-The compliance module uses a hierarchical tree structure to organize assessments:
-
-### Level 1: Companies
-
-Companies appear as the top level of the tree. Click the arrow to expand and see associated compliance runs.
+The tree view organizes compliance data hierarchically, making it easy to drill down from company to individual checks:
 
 <Frame>
-  <img src="/images/compliance/compliance-company-expanded.png" alt="Company with Runs Expanded" />
+  <img src="/images/compliance/compliance-tree-view.png" alt="Compliance Tree View" />
 </Frame>
 
-### Level 2: Compliance Runs
+The tree hierarchy follows this structure:
+- **Company** - Top-level organization
+  - **Compliance Run** - Assessment period or audit (e.g., "Annual Insurance Checks")
+    - **Group/Location** - Logical grouping or physical location
+      - **Individual Check** - Specific compliance requirement
 
-Each company can have multiple compliance runs representing different assessments or time periods:
+Click the expand arrow next to any item to reveal its children. Status badges show compliant (green) and non-compliant (red) counts at each level.
+
+### List View
+
+Toggle to **List** view for a flat, sortable table of all compliance checks:
+
+<Frame>
+  <img src="/images/compliance/compliance-list-view.png" alt="Compliance List View" />
+</Frame>
+
+The list view displays:
 
 | Column | Description |
 |--------|-------------|
-| **Run Name** | Name of the compliance assessment |
-| **Total Checks** | Number of checks in the run |
-| **Status Badge** | Visual indicator showing compliant/non-compliant counts |
-
-### Level 3: Locations
-
-Runs contain locations representing different areas, departments, or sites being assessed.
-
-### Level 4: Individual Checks
-
-The deepest level shows individual compliance checks with their status:
-
-<Frame>
-  <img src="/images/compliance/compliance-tree-expanded.png" alt="Full Compliance Tree Expanded" />
-</Frame>
-
-| Column | Description |
-|--------|-------------|
-| **Check Title** | Name of the compliance requirement |
-| **Status** | Compliant, Not Compliant, In Progress, or Past Due |
+| **Company** | The organization being assessed |
+| **Compliance** | The compliance run name |
+| **Group** | Location group or category |
+| **Location** | Specific site or area |
+| **Check** | The compliance requirement name |
+| **Status** | Current compliance status |
 | **Priority** | Critical, High, Medium, or Low |
-| **Due Date** | When the check must be completed |
+| **Due Date** | Target completion date |
 
-## Check Details
+Use the column headers to sort by any field, or use the filter controls to narrow results.
 
-Click any check to open the detailed view:
+## Running Compliance Checks
+
+Click **Run Checks** in the toolbar to execute compliance assessments against your companies.
 
 <Frame>
-  <img src="/images/compliance/compliance-check-detail.png" alt="Compliance Check Detail Dialog" />
+  <img src="/images/compliance/compliance-run-checks-dialog.png" alt="Run Compliance Checks Dialog" />
+</Frame>
+
+### Configuration Options
+
+| Field | Description |
+|-------|-------------|
+| **Name** | A descriptive name for this compliance run |
+| **Notes** | Optional notes about the assessment |
+| **Due Date** | When checks should be completed (1 week, 2 weeks, 30 days, 90 days, 1 year, or custom) |
+
+### Selecting Entities
+
+The left panel lets you choose what to assess:
+
+| Tab | Description |
+|-----|-------------|
+| **Companies** | Select individual companies to assess |
+| **Locations** | Choose specific locations within companies |
+| **Devices** | Target individual devices for technical checks |
+| **Device Groups** | Select groups of devices by category |
+
+Use **Select all** to include all items, or check individual items from the list.
+
+### Understanding Checks, Groups, and Templates
+
+The right panel organizes compliance requirements in a three-level hierarchy:
+
+<AccordionGroup>
+  <Accordion title="Individual Checks" icon="check">
+    Individual checks are specific compliance requirements. Each check represents a single item to verify, such as "Verify firewall rules are documented" or "Confirm MFA is enabled for admin accounts."
+
+    Select the **Individual** tab to choose specific checks to run.
+  </Accordion>
+
+  <Accordion title="Groups" icon="folder">
+    Groups organize related checks into logical categories. For example:
+    - **Network Security** - Contains checks for firewalls, segmentation, access controls
+    - **Identity Management** - Contains checks for authentication, authorization, MFA
+    - **Data Protection** - Contains checks for encryption, backup, data handling
+
+    Select the **Groups** tab to run all checks within selected groups.
+  </Accordion>
+
+  <Accordion title="Templates" icon="layer-group">
+    Templates bundle multiple groups and checks into pre-configured assessment packages. They represent complete compliance frameworks or custom assessment collections:
+    - **Annual Insurance Checks** - Standard checks for cyber insurance audits
+    - **CIS Controls v8** - Full CIS benchmark assessment
+    - **NIST CSF** - National Institute of Standards cybersecurity framework
+    - **Custom Templates** - Your organization's specific requirements
+
+    Select the **Template** tab to run entire assessment packages at once.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+**Hierarchy Tip:** Templates contain Groups, and Groups contain individual Checks. Selecting a Template automatically includes all its Groups and their Checks. This makes it easy to run comprehensive assessments without selecting hundreds of individual items.
+</Tip>
+
+### Running the Assessment
+
+1. Configure the run name, notes, and due date
+2. Select companies or other entities in the left panel
+3. Choose templates, groups, or individual checks in the right panel
+4. Click **Run compliance checks** to start the assessment
+
+## Compliance Check Details
+
+Click any check in the tree or list view to open the detailed view:
+
+<Frame>
+  <img src="/images/compliance/compliance-check-dialog.png" alt="Compliance Check Detail Dialog" />
 </Frame>
 
 ### Breadcrumb Navigation
 
-The top of the dialog shows the full path to the check:
-- Company > Run > Location Group > Location > Check
+The header shows the full path to the check:
+**Company > Compliance Run > Group > Location > Check Name**
 
-### Left Panel Information
+Click any breadcrumb segment to navigate to that level.
+
+### Left Panel: Guidance
 
 | Field | Description |
 |-------|-------------|
 | **Criticality** | How critical this check is to compliance |
 | **Frequency** | How often this check should be assessed |
-| **Score Weight** | Point value for compliance scoring |
+| **Score Weight** | Point value for compliance scoring (formula shown) |
 | **Description** | What this check validates |
-| **Why It's Important** | Business and security impact |
+| **Why It's Important** | Business and security impact of compliance |
 
-### Status and Priority
+### Center Panel: Assessment
+
+#### Status and Priority
 
 | Field | Description |
 |-------|-------------|
-| **Status** | Dropdown to set Compliant, Not Compliant, In Progress |
+| **Status** | Set to New, In Progress, Compliant, Not Compliant, or N/A |
 | **Priority** | Critical, High, Medium, or Low |
-| **Due Date** | Target completion date with date picker |
+| **Due Date** | Target completion date |
 
-### Public Notes
+#### Public Notes (Client Visible)
 
-The Public Notes section supports rich content including AI-generated assessments:
+Public notes are visible to clients in reports and portals. Use the rich text editor to document:
+- Assessment findings
+- Compliance status justification
+- Recommendations for improvement
 
-- **Summary** - Overview of the compliance requirement
-- **Business Impact** - Effect on business operations if non-compliant
-- **Remediation** - Steps to achieve compliance
-- **Validation Rules** - How compliance is verified
+Click **+ Add Template** to insert pre-written content for common scenarios.
+
+#### Private Notes (Internal Only)
+
+Private notes are visible only to your internal team. Use this for:
+- Technical implementation details
+- Internal discussions and observations
+- Assessment notes not intended for clients
+- Raw findings before client-ready documentation
+
+<Frame>
+  <img src="/images/compliance/compliance-check-with-private-notes.png" alt="Check with Private Notes" />
+</Frame>
+
+## AI Draft Feature
+
+The **AI Draft** button transforms your private notes into polished, client-ready public documentation.
+
+### How It Works
+
+1. Enter your raw assessment observations in **Private Notes**
+2. Click **AI Draft** in the Public Notes header
+3. AI generates structured documentation including:
+   - **Summary** - Clear overview of the assessment findings
+   - **Business Impact** - Why this matters to the organization
+   - **Remediation** - Actionable steps to address gaps
+
+<Frame>
+  <img src="/images/compliance/compliance-ai-draft-generated.png" alt="AI Draft Generated Content" />
+</Frame>
 
 <Tip>
-Use the AI features to automatically generate detailed compliance documentation based on the check requirements and your organization's context.
+**Best Practice:** Write detailed technical observations in Private Notes, including specific findings, device names, and technical details. AI Draft will extract the relevant information and format it professionally for client communication.
 </Tip>
 
-### Private Notes
+### Example Workflow
 
-Internal notes visible only to your team. Use this for:
-- Internal discussions
-- Technical implementation details
-- Notes not intended for audit reports
+**Private Notes (your input):**
+> Reviewed OTICS network isolation on 11/30. Firewall rules confirmed between IT and OT segments. DMZ in place for remote access via jump host. MFA enabled on all remote access points. Minor finding: One legacy PLC on subnet 10.0.50.x lacks monitoring - recommend adding to SIEM. Overall compliance: PASS with recommendations.
 
-### Additional Tabs
+**AI Draft (generated output):**
+> **Summary**
+> Your OTICS network at London HQ is logically isolated from IT systems with a functioning DMZ and jump host for remote access. Firewall rules between IT and OT segments are in place and MFA is enabled on all remote access points.
+>
+> **Business Impact**
+> - Unmonitored OT devices create blind spots during security incidents
+> - Loss of visibility into legacy systems increases risk of undetected anomalies
+>
+> **Remediation**
+> - Step 1: Your MSP to add legacy PLC (subnet 10.0.50.x) to SIEM with appropriate OT-specific logging rules
+> - Step 2: Verify SIEM is collecting baseline operational data from the PLC
 
-| Tab | Description |
-|-----|-------------|
-| **Uploads** | Attach evidence files and supporting documentation |
-| **Custom Fields** | Additional fields configured for your organization |
-| **History** | Audit trail of all changes to this check |
+## Adding Checks to Planner
+
+Compliance checks can be converted into Planner initiatives for tracking remediation work.
+
+1. Open a compliance check
+2. Click **Add to Planner** in the toolbar
+3. Configure the initiative details:
+
+<Frame>
+  <img src="/images/compliance/compliance-add-to-planner-dialog.png" alt="Add to Planner Dialog" />
+</Frame>
+
+| Field | Description |
+|-------|-------------|
+| **Due Date** | Target completion date for the initiative |
+| **Status** | Initial status (Not Started, In Progress, etc.) |
+| **Type** | Category of work (Compliance Check is auto-selected) |
+| **Business Value** | Low, Medium, High, or Critical priority |
+| **Est. Hours** | Estimated hours to complete |
+| **Est. Cost** | Estimated cost if applicable |
+| **Probability of Success** | Confidence level for completion |
+| **Relationships** | Link to related findings or other initiatives |
+| **Description** | Auto-populated from check details |
+| **Notes** | AI Draft available to generate remediation plan |
+
+Click **Save** to create the Planner initiative. The compliance check will be linked to the initiative for tracking.
+
+## Additional Tabs
+
+### Uploads Tab
+
+Attach evidence files and supporting documentation:
+- Documents (PDF, DOC, DOCX)
+- Spreadsheets (XLS, XLSX, CSV)
+- Images (PNG, JPG, GIF)
+- Text files (TXT, LOG)
+
+### Custom Fields Tab
+
+View and edit additional fields configured for your organization, such as:
+- vCIO Reviewed checkbox
+- Custom assessment criteria
+- Organization-specific metadata
+
+### History Tab
+
+Audit trail showing all changes to the check:
+- Status changes with timestamps
+- Who made each change
+- Previous values for comparison
 
 ## Status Types
 
 | Status | Description | Badge Color |
 |--------|-------------|-------------|
+| **New** | Not yet assessed | Gray |
+| **In Progress** | Currently being assessed | Blue |
 | **Compliant** | Requirement fully met | Green |
 | **Not Compliant** | Requirement not satisfied | Red |
-| **In Progress** | Currently being assessed | Blue |
 | **Past Due** | Assessment overdue | Orange |
 | **Not Applicable** | Requirement doesn't apply | Gray |
-
-## Evidence Management
-
-### Uploading Evidence
-
-<Steps>
-  <Step title="Open Check Details">
-    Click on the compliance check
-  </Step>
-  <Step title="Select Uploads Tab">
-    Navigate to the Uploads tab
-  </Step>
-  <Step title="Upload Files">
-    Drag and drop or click to upload evidence files
-  </Step>
-  <Step title="Add Description">
-    Provide context for the uploaded evidence
-  </Step>
-</Steps>
-
-### Supported File Types
-
-- Documents (PDF, DOC, DOCX)
-- Spreadsheets (XLS, XLSX, CSV)
-- Images (PNG, JPG, GIF)
-- Text files (TXT, LOG)
 
 ## Compliance Scoring
 
@@ -182,45 +287,38 @@ Internal notes visible only to your team. Use this for:
 
 Each check has a score weight that contributes to overall compliance:
 
-- **Score Weight** - Points for this check (e.g., 8.00)
+- **Score Weight** - Points for this check (calculated from criticality and multipliers)
 - **Earned Points** - Points earned when compliant
 - **Total Score** - Sum of all weighted checks
 
-### Severity Impact
+### Weight Formula
 
-Higher severity checks typically have greater score weights:
+The score weight formula is displayed on each check:
+`score = (1 + crit × mult) × priority`
 
-| Priority | Typical Weight Range |
-|----------|---------------------|
-| Critical | 8.0 - 10.0 |
-| High | 5.0 - 8.0 |
-| Medium | 2.0 - 5.0 |
-| Low | 0.5 - 2.0 |
+Where:
+- **crit** - Criticality value
+- **mult** - Organization multiplier
+- **priority** - Priority weight
 
-## Working with Compliance Runs
+## Toolbar Actions
 
-### Creating a New Run
-
-1. Click **New Run** in the toolbar
-2. Select the company and framework
-3. Configure run settings and schedule
-4. Add locations to assess
-5. Save to create the run
-
-### Managing Locations
-
-- **Add Location** - Include new areas in the assessment
-- **Edit Location** - Modify location details
-- **Remove Location** - Exclude from current run
+| Action | Description |
+|--------|-------------|
+| **Run Checks** | Execute compliance assessments |
+| **Create Ticket** | Create a support ticket from a check |
+| **Flag for Review** | Mark check for team review |
+| **Add to Planner** | Convert to Planner initiative |
+| **Compliance Menu** | Access additional compliance options |
 
 ## Best Practices
 
 ### Assessment Strategy
 
-1. **Start with Critical** - Address critical checks first
-2. **Regular Reviews** - Schedule recurring assessments
-3. **Document Everything** - Attach evidence for all checks
-4. **Track Progress** - Monitor status badges for quick overview
+1. **Use Templates** - Start with pre-built templates for standard frameworks
+2. **Schedule Regularly** - Set up recurring assessment runs
+3. **Document Thoroughly** - Use Private Notes for raw findings, AI Draft for client docs
+4. **Track in Planner** - Convert findings to initiatives for remediation tracking
 
 ### Evidence Management
 
@@ -232,13 +330,15 @@ Higher severity checks typically have greater score weights:
 ### Remediation Workflow
 
 1. Identify non-compliant checks
-2. Review remediation guidance
-3. Create action plan with due dates
-4. Implement changes
-5. Update status and attach evidence
-6. Document lessons learned
+2. Review the "Why It's Important" guidance
+3. Use AI Draft to generate remediation steps
+4. Add to Planner for tracking
+5. Implement changes and attach evidence
+6. Update status to Compliant
 
 ## Supported Frameworks
+
+The compliance module supports industry-standard frameworks. Framework checks are not included—you'll need to create your own checks and templates based on your compliance requirements.
 
 | Framework | Description |
 |-----------|-------------|
@@ -251,32 +351,9 @@ Higher severity checks typically have greater score weights:
 | **PCI DSS** | Payment card industry standards |
 | **Custom** | Your own compliance frameworks |
 
-## Troubleshooting
-
-### Checks Not Appearing
-
-- Verify the run is active
-- Check location assignments
-- Confirm framework is enabled
-- Refresh the page
-
-### Status Not Updating
-
-- Ensure you have edit permissions
-- Check for validation errors
-- Verify all required fields are complete
-- Save changes before closing
-
-### Evidence Upload Issues
-
-- Check file size limits
-- Verify supported file types
-- Ensure adequate storage quota
-- Try alternative file format
-
 ## Related Resources
 
 - [Adding CIS Benchmarks](/user-guides/compliance/adding-cis-benchmarks) - Configure CIS controls
-- [Compliance Settings](/user-guides/settings/compliance) - Framework configuration
+- [Planner](/user-guides/planner/index) - Track compliance initiatives
 - [Reporting](/user-guides/reporting/index) - Compliance reports
 - [Company Overview](/user-guides/company-overview/index) - Company compliance status

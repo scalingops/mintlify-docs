@@ -1,63 +1,151 @@
 ---
-title: Company Overview Module
-description: Centralized dashboard for managing company information and health metrics
+title: 'Company Overview'
+description: 'Monitor company health and performance metrics across all modules from a single dashboard'
+icon: 'buildings'
 ---
 
-The Company Overview module provides a comprehensive view of all companies within your MSPortal.ai tenant, offering insights into company health, setup status, and key performance indicators.
+The Company Overview provides a centralized dashboard to monitor all companies within your MSPortal.ai tenant. View key metrics, track compliance status, and quickly identify companies that need attention.
+
+![Company Overview Dashboard](/images/screenshots/company-overview-dashboard.png)
 
 ## Key Features
 
-- **Company Dashboard** - View all companies at a glance with key metrics
-- **Health Monitoring** - Track company setup completion and operational status
-- **Audit Tracking** - Monitor compliance and configuration requirements
-- **Quick Actions** - Access frequently used company management tasks
-- **Multi-Company Support** - Manage multiple companies from a single interface
+<CardGroup cols={2}>
+  <Card title="Global & Company Views" icon="globe">
+    View all companies at once or drill down into a single company's metrics
+  </Card>
+  <Card title="Summary Metrics" icon="chart-line">
+    At-a-glance counts for compliance checks, planner items, goals, and devices
+  </Card>
+  <Card title="Companies Table" icon="table">
+    Sortable list of all companies with key performance indicators
+  </Card>
+  <Card title="Recent Activity" icon="clock">
+    View latest compliance checks, compliance runs, and upcoming planner items
+  </Card>
+</CardGroup>
 
-## Getting Started
+## Accessing Company Overview
 
-Begin managing your companies effectively:
+<Steps>
+  <Step title="Navigate to Company Overview">
+    Click **Company Overview** in the left sidebar under the **Planning** section.
+  </Step>
+  <Step title="Select Global View">
+    Ensure **Global View** is selected in the top navigation to see all companies. You can also select a specific company from this dropdown to filter the view.
+  </Step>
+</Steps>
 
-1. Review the main dashboard for all company statuses
-2. Check the [Company Audit](./audit) page to ensure proper setup
-3. Configure company-specific settings and preferences
-4. Set up roles and permissions for company users
+## Summary Section
 
-## Available Guides
+The collapsible Summary section displays five key metric cards:
 
-- [Company Audit](./audit) - Understand and track company health metrics
+| Metric | Description |
+|--------|-------------|
+| **Compliance Checks** | Total compliance checks with overdue and upcoming counts |
+| **Planner Items** | Total planner items with count due in next 30 days |
+| **Strategic Goals** | Total goals with high priority count |
+| **Total Companies** | Number of companies with total locations |
+| **Total Devices** | Device count across all locations |
 
-## Common Tasks
+<Tip>Click any metric number to navigate directly to that module for more details.</Tip>
 
-- **Adding a New Company** - Set up new companies in your tenant
-- **Company Configuration** - Customize settings for each company
-- **User Assignment** - Assign users to specific companies
-- **Status Monitoring** - Track setup completion and health metrics
-- **QBR Scheduling** - Manage Quarterly Business Reviews
+## Companies Table
 
-## Dashboard Metrics
+The main table displays all companies with the following columns:
 
-The Company Overview dashboard displays:
-- **Setup Status** - Visual indicator of configuration completion
-- **Active Users** - Number of users currently active
-- **Compliance Status** - Current compliance standing
-- **Device Count** - Total managed devices
-- **Location Count** - Number of configured locations
-- **Recent Activity** - Latest actions and updates
+| Column | Description |
+|--------|-------------|
+| **Company** | Company name (click to view company details) |
+| **Locations** | Number of configured locations |
+| **Devices** | Total managed devices |
+| **Overdue Compliance** | Compliance checks past due date (highlighted in red) |
+| **Upcoming Compliance** | Compliance checks due soon |
+| **Overdue Planner** | Planner items past due date (highlighted in red) |
+| **Upcoming Planner** | Planner items due soon |
+| **Goals** | Total strategic goals |
+| **High Priority Goals** | Goals marked as high priority |
+
+<Note>Red numbers indicate items requiring immediate attention. Click any company name to view detailed information.</Note>
+
+## Single Company View
+
+Click any company name in the Companies table to view a focused dashboard for that specific company.
+
+![Single Company View](/images/screenshots/company-overview-single-company.png)
+
+The single company view displays:
+
+- **Company name** as the page heading
+- **Summary metrics** filtered to that company only (Compliance Checks, Planner Items, Strategic Goals, Total Devices)
+- **Last 5 Compliance Checks** for the selected company
+- **Last 5 Compliance Runs** for the selected company
+- **Planner Items This Quarter** for the selected company
+
+<Tip>Use the company selector dropdown in the top navigation bar to quickly switch between companies or return to Global View.</Tip>
+
+## Activity Tables
+
+Below the companies table, three activity sections provide quick insights:
+
+### Last 5 Compliance Checks
+
+Shows the most recent compliance checks across all companies with:
+- Title
+- Company
+- Status (New, In Progress, Complete)
+- Priority (clickable to change)
+- Due Date
+
+### Last 5 Compliance Runs
+
+Displays recent compliance run history showing:
+- Date
+- Run identifier
+- Status (In Progress, Complete)
+
+### Planner Items This Quarter
+
+Lists planner items due in the current quarter with:
+- Title
+- Company
+- Status
+- Due Date
+
+## Overview Menu
+
+Click the **Overview Menu** button in the top-right to access:
+
+- **Dashboard** - The main Company Overview dashboard (current view)
+- **Company Audit** - Detailed audit view for tracking company setup and health
 
 ## Best Practices
 
-- **Regular Audits** - Review the audit page weekly to maintain company health
-- **Complete Setup** - Ensure all companies meet setup requirements
-- **Documentation** - Keep company information up to date
-- **Access Control** - Regularly review user roles and permissions
+<AccordionGroup>
+  <Accordion title="Daily Monitoring">
+    Check the Summary section daily to identify companies with overdue compliance or planner items. Red numbers indicate items needing immediate attention.
+  </Accordion>
+  <Accordion title="Weekly Review">
+    Review the Companies table weekly to ensure all companies maintain healthy metrics across compliance, planning, and goals.
+  </Accordion>
+  <Accordion title="Prioritize by Color">
+    Focus first on companies showing red (overdue) numbers. These indicate missed deadlines that may impact client relationships.
+  </Accordion>
+</AccordionGroup>
 
 ## Related Resources
 
-- [User Management](../admin/index) - Manage users across companies
-- [Settings](../settings/index) - Configure company-specific settings
-- [Compliance](../compliance/index) - Track compliance requirements
-- [Reporting](../reporting/index) - Generate company reports
-
-## Need Help?
-
-For assistance with the Company Overview module, contact support@msportal.ai or consult our knowledge base for detailed guides.
+<CardGroup cols={2}>
+  <Card title="Company Audit" icon="clipboard-check" href="./audit">
+    Track company setup completion and configuration health
+  </Card>
+  <Card title="Compliance" icon="shield-check" href="../compliance">
+    Manage compliance checks and frameworks
+  </Card>
+  <Card title="Planner" icon="calendar-check" href="../planner">
+    Create and track roadmap items
+  </Card>
+  <Card title="Goals" icon="bullseye" href="../goals">
+    Set and monitor strategic goals
+  </Card>
+</CardGroup>

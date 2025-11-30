@@ -1,110 +1,239 @@
 ---
-title: Company Audit
-description: Monitor and track the health and setup status of companies in your MSPortal tenant
+title: 'Company Audit'
+description: 'Comprehensive health check for all companies across every module'
+icon: 'clipboard-check'
 ---
 
-The Company Audit page provides a comprehensive overview of each company's setup status and operational health within your MSPortal tenant. This centralized dashboard helps you quickly identify which companies are fully configured and which need attention.
+The Company Audit provides a comprehensive health assessment of all your client companies across MSPortal.ai. View audit scores, identify configuration gaps, and track company setup completion at a glance.
 
-## Understanding the Company Audit Dashboard
+![Company Audit Dashboard](/images/company-overview/audit-main-view.png)
 
-The audit dashboard displays key metrics for each company in a single view, making it easy to track setup progress and ongoing activities across your organization.
+## Accessing Company Audit
 
-### Key Metrics Displayed
+<Steps>
+  <Step title="Navigate to Company Overview">
+    Click **Company Overview** in the left sidebar under the **Planning** section.
+  </Step>
+  <Step title="Open the Overview Menu">
+    Click the **Overview Menu** button in the top-right corner of the page.
+    ![Overview Menu](/images/company-overview/audit-overview-menu.png)
+  </Step>
+  <Step title="Select Company Audit">
+    Click **Company Audit** from the dropdown menu.
+  </Step>
+</Steps>
 
-#### Company Information
-- **Company Name**: The name of each company in your tenant
-- **Setup Status**: Visual indicator showing if a company is fully configured
+## Summary Cards
 
-#### Team Management
-- **Roles**: Number of roles assigned to the company
-- **Users**: Shows active and total users (format: active/total)
-  - Active users are those who have logged in within the last 30 days
-  - Total includes all users assigned to the company
+At the top of the page, four summary cards provide an instant overview of company health:
 
-#### Business Reviews
-- **QBR Scheduled**: Indicates if a Quarterly Business Review is scheduled
-- **Next QBR**: Date of the next scheduled or confirmed QBR meeting
+| Card | Description |
+|------|-------------|
+| **Total Companies** | The total number of companies in your tenant |
+| **Well Configured** | Companies with an audit score of 80% or higher (shown in green) |
+| **Needs Attention** | Companies with an audit score between 60-79% (shown in yellow) |
+| **Critical** | Companies with an audit score below 60% (shown in red) |
 
-#### Assets and Resources
-- **Locations**: Number of locations configured for the company
-- **Devices**: Total devices registered to the company
+<Tip>Focus on companies in the "Critical" category first to ensure all clients have proper configurations in place.</Tip>
 
-#### Activity Tracking
-- **Upcoming Planner Items**: Tasks and activities scheduled for the future
-- **Upcoming Checks**: Compliance checks due in the next 30 days
-- **Surveys**: Shows survey participation (invites sent/completed)
-- **Budget**: Indicates if budget items are configured
+## Understanding Audit Scores
 
-## Setup Complete Requirements
+The audit score is calculated based on multiple factors that indicate how well a company is configured in MSPortal.ai:
 
-A company achieves "Setup Complete" status when all essential configuration steps are finished. This ensures the company can fully utilize MSPortal's features.
+| Factor | Points |
+|--------|--------|
+| Company roles assigned | 10 |
+| QBR schedule configured | 10 |
+| Users linked | 8 |
+| Locations configured | 8 |
+| Devices tracked | 8 |
+| Upcoming planner items | 5 |
+| Upcoming compliance checks | 5 |
+| Budget configured | 5 |
+| Integrations active | 5 |
 
-### Required for Setup Complete
+<Note>A higher score indicates better configuration. Scores are displayed with color-coded progress bars: green (80%+), yellow (60-79%), and red (below 60%).</Note>
 
-To achieve complete setup status, a company must have:
+## Audit Report Table
 
-1. **At least one role assigned** - Ensures proper access control and responsibilities are defined
-2. **A scheduled QBR** - Either through the business review schedule or an upcoming QBR meeting
-3. **At least one user** - The company needs active users to operate
-4. **At least one location** - Physical or logical locations must be defined
-5. **At least one device** - Devices need to be registered for management
-6. **Upcoming planner items** - Active tasks show the planner is being utilized
-7. **Upcoming compliance checks** - Compliance activities scheduled for the next 30 days
+The main audit report displays all companies with configurable columns showing key metrics across every module.
 
-## Using the Audit Page Effectively
+### Default Columns
 
-### Quick Status Check
-- Green checkmarks or "Complete" status indicate fully configured companies
-- Red indicators or "Incomplete" status show companies needing attention
-- Click on any company row to drill down into specific details
+| Column | Description |
+|--------|-------------|
+| **Company Name** | The name of the company |
+| **Audit Score** | Overall configuration health percentage |
+| **Setup Complete** | Whether the company setup wizard has been completed |
+| **Roles** | Assigned company roles (TAM, vCIO, etc.) |
+| **Locations** | Number of configured locations |
+| **Devices** | Total number of managed devices |
+| **Overdue Checks** | Compliance checks past their due date (highlighted in red) |
+| **Upcoming Checks** | Compliance checks due soon |
+| **QBR Scheduled** | Whether a QBR schedule is configured |
+| **Future Meetings** | Number of upcoming booked meetings |
+| **Overdue Planner** | Planner items past their due date |
+| **Upcoming Planner Items** | Planner items due soon |
+| **Avg NPS** | Average Net Promoter Score from surveys |
+| **Has Budget** | Whether a budget is configured |
+| **Users (Active/Total)** | Count of active users vs total users |
 
-### Identifying Issues
-When a company shows incomplete status:
-1. Review each column to identify missing components
-2. Focus on metrics showing zero or missing values
-3. Click through to the specific module to add required data
+### Customizing Columns
 
-### Best Practices
+Click the **Columns** button to show or hide columns based on your needs. Columns are organized into categories:
 
-#### Regular Reviews
-- Check the audit page weekly to ensure all companies maintain complete status
-- Address incomplete setups promptly to ensure full functionality
+![Columns Menu](/images/company-overview/audit-columns-menu.png)
 
-#### New Company Setup
-When adding a new company:
-1. Use the audit page as a checklist
-2. Work through each requirement systematically
-3. Verify "Setup Complete" status before considering the onboarding finished
+<AccordionGroup>
+  <Accordion title="Basic">
+    - Company Name
+    - Audit Score
+  </Accordion>
+  <Accordion title="Setup">
+    - Setup Complete
+    - Has Address
+    - Has Phone
+    - Has Website
+  </Accordion>
+  <Accordion title="Infrastructure">
+    - Locations
+    - Devices
+    - Active Devices
+  </Accordion>
+  <Accordion title="Compliance">
+    - Total Checks
+    - Overdue Checks
+    - Upcoming Checks
+    - Last Compliance Run
+  </Accordion>
+  <Accordion title="QBR">
+    - QBR Scheduled
+    - Next QBR
+    - Last QBR
+  </Accordion>
+  <Accordion title="Meetings">
+    - Upcoming Meetings
+    - Next Meeting
+    - Future Meetings
+  </Accordion>
+  <Accordion title="Planner">
+    - Planner Items
+    - Overdue Planner
+    - In Progress
+    - Upcoming Planner Items
+  </Accordion>
+  <Accordion title="Goals">
+    - Total Goals
+    - Incomplete Goals
+    - High Priority Goals
+  </Accordion>
+  <Accordion title="Surveys">
+    - Total Surveys
+    - Completed Surveys
+    - Last Survey
+    - Avg NPS
+  </Accordion>
+  <Accordion title="Budget">
+    - Has Budget
+    - Budget Categories
+    - Total Budget
+  </Accordion>
+  <Accordion title="Users">
+    - Users (Active/Total)
+    - Total Users
+    - Active Users
+  </Accordion>
+  <Accordion title="Integrations">
+    - Integrations
+    - Active Integrations
+  </Accordion>
+  <Accordion title="Metadata">
+    - Created
+    - Last Activity
+  </Accordion>
+</AccordionGroup>
 
-#### Monitoring Active Usage
-- Track active vs. total users to identify engagement levels
-- Review upcoming items to ensure companies are actively using the platform
-- Check survey participation rates for user engagement
+<Tip>Your column preferences are saved automatically and will persist across sessions.</Tip>
 
-## Common Questions
+## Filtering and Sorting
 
-### Why is a company showing as incomplete?
-Review each metric column to identify which requirements are missing. Common issues include:
-- No roles assigned to users
-- Missing QBR schedule
-- No upcoming compliance checks scheduled
-- Zero devices or locations configured
+### Search
 
-### How often is the audit data updated?
-The audit page refreshes data in real-time, showing the current status of all companies in your tenant.
+Use the search box to filter companies by name. Type any part of the company name to instantly filter the results.
 
-### Can I export the audit data?
-Use the export functionality (if available) to download audit data for reporting or further analysis.
+### Filter by Role
 
-### What if our company doesn't need certain features?
-While some features may not apply to every company, the setup requirements ensure baseline functionality. Contact support if you have specific exemption needs.
+Use the **Filter by Role** dropdown to show only companies where a specific person is assigned to a role. This is useful for:
+- Viewing all companies managed by a specific TAM
+- Seeing which companies a vCIO is responsible for
+- Checking workload distribution across team members
 
-## Next Steps
+### Sorting
 
-After reviewing the Company Audit:
-1. Address any incomplete company setups
-2. Schedule regular reviews of the audit page
-3. Use the metrics to track company health over time
-4. Consider setting up alerts for companies falling below complete status
+Click any column header to sort the table by that column. Click again to toggle between ascending and descending order. A sort indicator arrow shows the current sort direction.
 
-For additional assistance with company setup or audit metrics, contact support@msportal.ai.
+## Actions
+
+### Refresh Data
+
+Click the **Refresh** button to reload the audit data with the latest information from the database.
+
+### Export to CSV
+
+Click the **Export** button to download the current view (including any active filters) as a CSV file. The export includes all visible columns based on your column preferences.
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Weekly Audit Review">
+    Review the Company Audit weekly to identify companies that need attention. Focus on:
+    - Companies with low audit scores
+    - Companies missing QBR schedules
+    - Companies with no assigned roles
+  </Accordion>
+  <Accordion title="Role Assignment">
+    Ensure all companies have TAM and vCIO roles assigned. Filter by role to verify workload distribution across your team.
+  </Accordion>
+  <Accordion title="Configuration Completeness">
+    Enable additional columns like "Has Address", "Has Phone", and "Has Website" to identify companies with incomplete basic information.
+  </Accordion>
+  <Accordion title="Export for Reporting">
+    Use the Export feature to create periodic reports on company health. Filter by specific criteria before exporting to create targeted reports.
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Why is a company showing a low audit score?">
+    Review the company's configuration across all modules. Common issues include:
+    - No roles assigned to the company
+    - Missing QBR schedule
+    - No upcoming compliance checks scheduled
+    - Zero devices or locations configured
+    - No budget items set up
+  </Accordion>
+  <Accordion title="How often is the audit data updated?">
+    The audit data is refreshed when the page loads. Click the **Refresh** button to get the latest data at any time.
+  </Accordion>
+  <Accordion title="Why can't I see certain columns?">
+    Use the **Columns** button to enable additional columns. Some columns are hidden by default to keep the view manageable.
+  </Accordion>
+</AccordionGroup>
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Company Overview" icon="buildings" href="./index">
+    Return to the main Company Overview dashboard
+  </Card>
+  <Card title="Compliance" icon="shield-check" href="../compliance">
+    Manage compliance checks and frameworks
+  </Card>
+  <Card title="Planner" icon="calendar-check" href="../planner">
+    Create and track roadmap items
+  </Card>
+  <Card title="Settings: Companies" icon="building" href="../settings/companies">
+    Configure company settings and roles
+  </Card>
+</CardGroup>

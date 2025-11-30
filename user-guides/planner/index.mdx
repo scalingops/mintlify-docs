@@ -6,7 +6,7 @@ description: Organize tasks, projects, and strategic initiatives with timeline-b
 The Planner module provides a visual timeline for managing tasks, projects, and strategic initiatives across your client companies. Plan work, track progress, and align team efforts with business goals.
 
 <Frame>
-  <img src="/images/planner/planner-quarterly-view.png" alt="Planner Quarterly View" />
+  <img src="/images/planner/planner-timeline-view.png" alt="Planner Timeline View" />
 </Frame>
 
 ## Overview
@@ -40,7 +40,7 @@ The monthly view shows a detailed day-by-day breakdown for the current month. Be
   <img src="/images/planner/planner-quarterly-view.png" alt="Planner Quarterly View" />
 </Frame>
 
-The quarterly view displays three months at a time. Best for:
+The quarterly view displays four quarters at a time (Q1-Q4). Best for:
 - Medium-term project planning
 - Quarterly business reviews
 - Balancing workload across months
@@ -62,23 +62,23 @@ Use the year navigation buttons and year selector to move between years. The **T
 
 ## View Density
 
-Adjust how much information is displayed for each planner item using the View Density setting.
+Adjust how much information is displayed for each planner item using the View Density setting. This controls the column width of each time period, allowing you to see more or less detail.
 
 <Frame>
-  <img src="/images/planner/planner-view-density-menu.png" alt="View Density Options" />
+  <img src="/images/planner/planner-density-dropdown.png" alt="View Density Dropdown" />
 </Frame>
 
-| Density | Description |
-|---------|-------------|
-| **Comfortable** | Shows full item details with more spacing |
-| **Compact** | Balanced view with moderate detail (default) |
-| **Dense** | Condensed view to fit more items on screen |
+| Density | Column Width | Best For |
+|---------|--------------|----------|
+| **Comfortable** | Widest columns (220-280px) | Detailed item view with full titles |
+| **Compact** | Medium columns (190-240px) | Balanced view for everyday use (default) |
+| **Dense** | Narrow columns (160-200px) | Fitting more time periods on screen |
 
-Click the **View density** button in the toolbar to switch between density levels.
+Click the **View density** button (grid icon) in the toolbar to open the density menu and select your preferred option.
 
 ## Creating Planner Items
 
-Click the **Add Item** button to create a new planner item. You can also right-click on the timeline to add an item at a specific date.
+Click the **Add Item** button to create a new planner item. You can also click the **Add Item** button within any time period column to add an item at that specific date.
 
 ### Item Types
 
@@ -90,6 +90,7 @@ Planner items can be categorized by type:
 - Projects
 - Training
 - Compliance
+- Other
 - Custom types defined in settings
 
 ## Editing Planner Items
@@ -104,11 +105,11 @@ Click on any planner item to open the edit dialog with full details.
 
 | Field | Description |
 |-------|-------------|
-| **Title** | The name of the planner item |
+| **Title** | The name of the planner item (click to edit) |
 | **Company** | The client company this item is for |
 | **Due Date** | When the item should be completed |
 | **Status** | Current status (Not Started, In Progress, Pending Approval, Complete) |
-| **Type** | Category of work (Security Services, etc.) |
+| **Type** | Category of work (Security Services, Other, etc.) |
 | **Business Value** | Priority level (High, Medium, Low) |
 
 ### Estimates
@@ -116,25 +117,35 @@ Click on any planner item to open the edit dialog with full details.
 | Field | Description |
 |-------|-------------|
 | **Est. Hours** | Estimated hours to complete |
-| **Est. Cost** | Estimated cost for the work |
-| **Probability of Success** | Likelihood of completion (percentage) |
+| **Est. Cost** | Estimated cost for the work (in dollars) |
+| **Probability of Success** | Likelihood of completion (percentage slider) |
 
-### Relationships & Findings
+### Relationships
 
-- **Relationships** - Link to other planner items using **Add** or **Create** buttons
-- **Linked Findings** - Connect to compliance findings or security actions
+Link planner items to other entities using the **Relationships** section:
 
-### Notes & Description
+- **Goals** - Connect to company goals
+- **Compliance** - Link to compliance findings
+- **Secure Score** - Associate with Microsoft Secure Score actions
+- **Devices** - Connect to device-related work
+- **Projects** - Link to project management items
+- **Opportunities** - Associate with sales opportunities
 
-- **Description** - Detailed explanation of the work to be done
-- **Notes** - Collaborative notes visible to your team
-  - Use **AI Draft** to generate notes using AI
-  - Use **Add Template** to insert predefined content
-- **Private Notes** - Notes only visible to you
+Click **Add** to create a new relationship or link to an existing item.
+
+### Notes and Description
+
+- **Description** - Brief description of the initiative. Click **Apply Template** to populate from a template
+- **Notes** - Collaborative notes visible to your team with rich text editor
+- **Private Notes (Internal Only)** - Notes only visible to you
 
 ### Custom Fields
 
-Configure custom fields in Settings to capture additional data specific to your workflow.
+Expand the **Custom Fields** section to view and edit any custom fields configured for planner items.
+
+### File Uploads
+
+The **Uploads** section allows you to attach files to planner items. Click to upload or drag and drop files (max 10MB per file).
 
 ## Using Templates
 
@@ -143,12 +154,20 @@ Templates help you quickly populate planner items with predefined content.
 ### Applying a Template
 
 1. Open a planner item for editing
-2. Click **Add Template** in the Notes section
-3. Select a template from the available options
-4. The template content is added to your notes
+2. Click **Apply Template** in the Description section
+3. The Apply Template dialog opens
+
+<Frame>
+  <img src="/images/planner/planner-template-dialog.png" alt="Apply Template Dialog" />
+</Frame>
+
+4. **Select Template** - Choose from available templates
+5. **Fields to Apply** - Check which fields to import from the template
+6. Use **All** or **None** buttons to quickly select/deselect all fields
+7. Click **Apply Template** to apply the selected fields
 
 <Tip>
-Create templates for common project types like "QBR Preparation", "Security Assessment", or "Onboarding Checklist" to standardize your planning process.
+Create templates for common project types like QBR Preparation, Security Assessment, or Onboarding Checklist to standardize your planning process.
 </Tip>
 
 ## AI Features
@@ -162,65 +181,23 @@ Click the **Ask AI** button in the toolbar to get AI-powered assistance:
 
 ### AI Draft Notes
 
-Within the edit dialog, use **AI Draft** to automatically generate notes based on the item's context, type, and linked findings.
+Within the edit dialog, use **AI Draft** to automatically generate notes based on the item context.
 
-## Filtering & Search
+## Filtering and Search
 
-### Search
+Use the search box to find planner items by title or description. Click the **Filter** button (funnel icon) to narrow down displayed items by Company, Status, Type, or Business Value.
 
-Use the search box to find planner items by title or description.
+## Planner Menu
 
-### Filters
+Click the **Planner Menu** button to access additional views:
 
-Click the **Filter** button to narrow down displayed items by:
-- Company
-- Status
-- Type
-- Date range
-- Assigned user
-
-## Toolbar Actions
-
-| Button | Action |
-|--------|--------|
-| **Search** | Find items by text |
-| **Today** | Jump to current date |
-| **Ask AI** | Get AI assistance |
-| **Add Item** | Create new planner item |
-| **View density** | Change display density |
-| **Filter** | Filter displayed items |
-
-## Best Practices
-
-<AccordionGroup>
-  <Accordion title="Plan at the right level">
-    Use yearly view for strategic planning, quarterly for project scheduling, and monthly for detailed task management.
-  </Accordion>
-
-  <Accordion title="Link findings to planner items">
-    When compliance checks or security assessments reveal issues, create planner items linked to those findings to track remediation.
-  </Accordion>
-
-  <Accordion title="Use templates consistently">
-    Create templates for recurring work types to ensure consistent planning and nothing gets missed.
-  </Accordion>
-
-  <Accordion title="Set realistic estimates">
-    Include hours and cost estimates to help with resource planning and client communication.
-  </Accordion>
-
-  <Accordion title="Update status regularly">
-    Keep item statuses current so the team has an accurate view of work progress.
-  </Accordion>
-</AccordionGroup>
-
-## Integration Points
-
-- **Goals Module** - Link planner items to company goals
-- **Calendar Module** - Schedule meetings related to planner items
-- **Compliance Module** - Connect to compliance findings
-- **Microsoft 365** - Sync with Microsoft Planner tasks
-- **Meeting Agendas** - Add planner items to meeting agendas for client discussions
+| Option | Description |
+|--------|-------------|
+| **Timeline View** | Main planner timeline (default) |
+| **List View** | Table-based list of all planner items |
+| **Templates** | Manage planner item templates |
+| **Analytics** | View planning analytics and reports |
+| **Settings** | Configure planner settings |
 
 ## Related Resources
 
