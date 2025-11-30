@@ -1,7 +1,74 @@
 ## Prerequisites
 
-- Autotask API credentials (username and password)
+- Admin access to Autotask, or API credentials (username and password)
 - Admin access to MSPortal.ai
+
+# Create MSPortal API User in Autotask
+
+1\. Navigate to [Autotask](https://ww2.autotask.net/AutotaskOnyx/LandingPage?view=ticket-search&view-data=eyJ1cmwiOiJodHRwczovL3d3Mi5hdXRvdGFzay5uZXQvTXZjL1NlcnZpY2VEZXNrL1RpY2tldEdyaWRTZWFyY2gubXZjL0luZGV4In0%3D)
+Go to the admin area.
+Click "Account Settings & Users"
+Click here.
+Click "Security Levels"
+Here. I have already copied the default role which we will be editing to use for our API. All you need to do is copy the API system API user.
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-11-30/8e6b4d76-365d-4282-b401-67330faaf675/stack_animation.webp)
+
+
+2\. You're going to rename it to MSPortal
+Type "MSPortal"
+Scroll down to other.
+Then we will be enabling. Can create webhooks, and we will be setting it to a value of 25.
+Click this text field.
+
+![](None)
+
+
+3\. Now, we do recommend that if you are not using a certain area of our portal, That you set it as no permissions or read only. Just know that this can cause synchronization issues down the line. Ensure that you save the role.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-30/b5e426aa-485c-4217-ab36-d15905583db2/ascreenshot.jpeg?tl_px=0,138&br_px=1907,1205&force_format=jpeg&q=100&width=1120.0)
+
+
+4\. Click "Save & Close"
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-30/3e5e8c04-93bc-4ca0-87d0-26434b2d1c60/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=85,14)
+
+
+5\. Now you want to go back.
+Select Resources/Users
+Add a new API user.
+
+![](https://colony-recorder.s3.amazonaws.com/files/2025-11-30/2bfe0c53-8dd3-4b52-a381-ae362b4ccf91/stack_animation.webp)
+
+
+6\. Name the user, MSPortal. For the first name and last name integration.
+Select the Security Level you just created
+For the email address, we recommend that you have an alias on another email address internally that gets things like integration logs.
+Under primary internal location.
+Click here.
+You're going to want to select your headquarters.
+Under credentials, click Generate key and generate secret.
+Click "Generate Secret"
+It's **very, very important** that you save this information. Under integration vendor select MSPortal.ai
+Click "[MSPortal.ai](http://MSPortal.ai) -"
+Then associate your line of businesses with this as well, and then save
+
+![](None)
+
+
+7\. and close.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-30/411ae65e-7c2f-4672-9721-0beffc7dd072/ascreenshot.jpeg?tl_px=0,243&br_px=1719,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=146,459)
+
+
+8\. Click "Save & Close"
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-30/13c89b05-e0db-4b6d-ae8c-225beb897016/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=36,23)
+
+
+9\. Now you are ready to use this account and continue your configuration.
+
+![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-30/c5e5b105-2c5e-4da4-8d9e-f6940f7c3a94/ascreenshot.jpeg?tl_px=0,243&br_px=1719,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=146,467)
 
 ## Connect to Autotask
 
