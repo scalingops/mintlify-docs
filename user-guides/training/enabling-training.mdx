@@ -1,17 +1,16 @@
 ---
 title: How to Enable Training
-description: Learn about how to enable training
+description: Learn how to enable Premium training for companies and manage courses
 ---
 
-The Training module provides cybersecurity awareness training courses for your organization. This guide explains how to enable and configure training courses in MSPortal.
+The Training module provides cybersecurity awareness training courses for your organization. This guide explains how to enable training for your companies and configure available courses.
 
 ## Prerequisites
 
 - You must have "Manage Training" permission
 - Your subscription must include the Training module
-- For premium courses, additional billing must be configured
 
-## Understanding Training Options
+## Understanding Training Tiers
 
 MSPortal offers two tiers of training content:
 
@@ -21,109 +20,124 @@ MSPortal offers two tiers of training content:
 - Essential compliance training
 - No additional cost
 
-### Premium Training
-- Extended course library
+### Premium Training (Bigger Brains)
+- Extended course library with 280+ courses
 - Industry-specific content
 - Advanced security topics
-- Requires additional billing setup
+- Billed per user at enabled companies
 
-## Steps to Enable Training
+<Tip>
+Download the complete [Bigger Brains Course Catalog](http://tripletech.biz/downloads/course_catalog.pdf) to see all available premium courses.
+</Tip>
 
-### 1. Access Training Settings
+## Step 1: Enable Training for Companies
 
-Navigate to **Settings** > **Training** from the main menu.
+Before users can access premium training, you must enable it for their company.
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-01/7439f3dc-d975-406c-9be4-54cfda2c9bfa/ascreenshot.jpeg?tl_px=0,329&br_px=1376,1098&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=110,277)
+### Navigate to Companies & Locations
 
-### 2. Review Available Courses
+Go to **Settings** > **Companies** from the main menu.
 
-The Training Settings page displays all available courses. Initially, courses are disabled and must be manually enabled.
+<Frame>
+  <img src="/images/training/settings-companies-overview.png" alt="Companies and Locations page showing Training column" />
+</Frame>
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-01/c7f39d78-08c9-4b58-a9e4-aa68552896de/ascreenshot.jpeg?tl_px=771,315&br_px=2148,1084&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,276)
+The **Training** column shows the current training tier for each company:
+- **Standard** - Basic training only
+- **Premium** - Full access to Bigger Brains courses
 
-### 3. Enable Standard Courses
+### Enable Training for a Single Company
 
-To enable standard training courses:
+1. Find the company in the list
+2. Click the **...** menu button on the company row
+3. Select **Enable Premium Training**
 
-#### Option A: Enable Individual Courses
+<Frame>
+  <img src="/images/training/company-row-menu-enable-training.png" alt="Company row menu showing Enable Premium Training option" />
+</Frame>
+
+To disable premium training, use the same menu and select **Disable Premium Training**.
+
+### Enable Training for Multiple Companies (Bulk)
+
+1. Select the checkboxes next to the companies you want to update
+2. Click the **Actions** dropdown at the top of the list
+3. Select **Enable Premium Training** or **Disable Premium Training**
+
+<Frame>
+  <img src="/images/training/companies-bulk-actions-menu.png" alt="Bulk actions menu showing training options" />
+</Frame>
+
+<Note>
+Billing for premium training is calculated per user at enabled companies. When you enable Premium Training for a company, all users at that company will have access to premium courses.
+</Note>
+
+## Step 2: Manage Available Courses
+
+After enabling training for companies, configure which courses are available.
+
+### Navigate to Training Settings
+
+Go to **Settings** > **Training** from the main menu.
+
+<Frame>
+  <img src="/images/training/settings-training-overview.png" alt="Training Settings page showing course list" />
+</Frame>
+
+This page displays all available courses with:
+- **Enabled** toggle - Whether the course is available to users
+- **Course Title** - Name and description of the course
+- **Type** - Premium (Bigger Brains) or Standard
+- **Category** - Course topic area
+- **Tags** - Additional labels for filtering
+- **Duration** - Expected completion time
+- **Enrollments** - Number of users assigned
+
+### Enable Individual Courses
+
 1. Browse the course list
 2. Click the **Toggle** button next to each course you want to enable
-3. The course status will change to "Enabled"
+3. The course will become available to users at enabled companies
 
-#### Option B: Enable Multiple Courses
-1. Check the boxes next to courses you want to enable
-2. Click **Select All** to choose all visible courses
-3. Click **Actions** dropdown
-4. Select **Enable Selected**
+### Course Filters and Search
 
-![](https://colony-recorder.s3.amazonaws.com/files/2025-09-01/8af53d78-578c-4bdc-9bbf-3790e67cbab8/stack_animation.webp)
+- Use the **Search** bar to find courses by title or description
+- Filter by **Category** to view courses by topic
+- Filter by **Type** to see only Premium or Standard courses
 
-### 4. Enable Premium Courses (Optional)
+### Create Custom Courses
 
-To access the premium course library:
-
-1. Click **Show All Courses** to view premium options
-2. Review the additional courses available
-3. Click **Enable in Billing** to set up payment
-4. Check the billing agreement checkbox
-5. Confirm the subscription upgrade
-
-![](https://colony-recorder.s3.amazonaws.com/files/2025-09-01/c2968050-9d88-40bf-a4ab-99c9f88d1c7e/stack_animation.webp)
-
-> **Warning:** Disabling premium billing will immediately remove access to premium courses from your tenant.
-
-## Course Management Options
-
-### Bulk Actions
-- **Enable All:** Activate all available courses at once
-- **Disable All:** Deactivate all courses
-- **Filter by Category:** View courses by topic area
-- **Search:** Find specific courses by name
-
-### Course Configuration
-For each enabled course, you can:
-- Set enrollment requirements
-- Configure completion deadlines
-- Assign to specific user groups
-- Track completion rates
+Click **Create Course** to add your own training content alongside the standard library.
 
 ## After Enabling Training
 
-Once courses are enabled:
+Once training is configured:
 
-1. **Assign Courses:** Go to Training > Assignments to assign courses to users
-2. **Set Requirements:** Configure which courses are mandatory vs. optional
-3. **Schedule Reminders:** Set up automated reminder emails
-4. **Monitor Progress:** Track completion rates in the Training Dashboard
+1. **Assign Courses** - Go to Training > Assignments to assign courses to users
+2. **Set Requirements** - Configure which courses are mandatory vs. optional
+3. **Schedule Reminders** - Set up automated reminder emails
+4. **Monitor Progress** - Track completion rates in the Training Dashboard
 
 ## Best Practices
 
-- **Start Small:** Enable a few essential courses first
-- **Communicate:** Inform users before assigning mandatory training
-- **Set Deadlines:** Give reasonable time for course completion
-- **Regular Updates:** Review and update course selections quarterly
-- **Track Metrics:** Monitor completion rates and adjust as needed
+- **Start Small** - Enable a few essential courses first
+- **Communicate** - Inform users before assigning mandatory training
+- **Set Deadlines** - Give reasonable time for course completion
+- **Regular Updates** - Review and update course selections quarterly
+- **Track Metrics** - Monitor completion rates and adjust as needed
 
 ## Troubleshooting
 
-### Courses Not Appearing
-- Verify training is enabled in Settings
-- Check user permissions
-- Ensure billing is active for premium courses
+### Premium Courses Not Available
+- Verify Premium Training is enabled for the user's company in Settings > Companies
+- Check the Training column shows "Premium" for the company
 
 ### Users Can't Access Training
 - Confirm users have been assigned courses
 - Check role permissions include training access
 - Verify user accounts are active
 
-## Support
-
-For questions about training content or billing:
-- Email: support@msportal.ai
-- Include your tenant ID and specific course questions
-
 ## Related Articles
 
 - [Assigning Training to Users](./assigning-training)
 - [Training Reports and Analytics](./training-reports)
-- [Managing Training Compliance](./compliance-training)
