@@ -1,109 +1,141 @@
 ---
-title: Settings Module
-description: Configure and customize MSPortal.ai to meet your organization's needs
+title: Settings
+description: Configure MSPortal.ai to match your organization's needs with comprehensive settings for users, companies, integrations, and more
+icon: gear
 ---
 
-The Settings module provides centralized configuration options to customize MSPortal.ai according to your organization's requirements, preferences, and policies.
+The Settings module provides centralized configuration options to customize every aspect of MSPortal.ai. Access Settings from the sidebar under the **Admin** section to manage your tenant, users, companies, integrations, and more.
 
-## Key Features
+## Settings Navigation
 
-- **System Configuration** - Core platform settings
-- **Module Settings** - Configure individual module behavior
-- **User Preferences** - Personal and team preferences
-- **Security Settings** - Authentication and access controls
-- **Notification Management** - Email and alert configurations
-- **Customization Options** - Branding and theming
+Settings are organized into categories accessible from the left sidebar:
 
-## Getting Started
+<Frame>
+  <img src="/images/settings/settings-tenant.png" alt="Settings Navigation" />
+</Frame>
 
-1. Access Settings from the main navigation
-2. Review default configurations
-3. Customize settings for your organization
-4. Test changes in a controlled manner
-5. Document configuration decisions
+| Category | Description |
+|----------|-------------|
+| **User Profile** | Your personal profile, notifications, and preferences |
+| **Users & Roles** | Manage team members and their permission levels |
+| **Companies** | Configure client companies and their settings |
+| **Training** | Manage courses and learning content |
+| **Tickets** | Configure ticket delivery, display groups, and statuses |
+| **Compliance Checks** | Manage security compliance checks |
+| **Playbooks** | CIS benchmarks and security playbooks |
+| **External Resources** | Links to external documentation and resources |
+| **Templates** | Note templates for meetings and planner items |
+| **Custom Fields** | Create custom data fields for your workflows |
+| **Integrations** | Connect to PSA systems and third-party services |
+| **Rules** | Automation rules (coming soon) |
+| **Import/Export** | Bulk data operations with CSV files |
+| **Tenant** | Organization-wide settings and branding |
+| **Billing** | Subscription and payment management |
+
+## Quick Start
+
+<Steps>
+  <Step title="Access Settings">
+    Click **Settings** in the sidebar under the Admin section
+  </Step>
+  <Step title="Navigate Categories">
+    Use the vertical icon bar on the left to switch between settings areas
+  </Step>
+  <Step title="Make Changes">
+    Update settings as needed - most changes save automatically
+  </Step>
+  <Step title="Review Changes">
+    For critical settings like Tenant or Billing, click **Save Settings** to confirm
+  </Step>
+</Steps>
 
 ## Settings Categories
 
-### General Settings
-- **Company Information** - Organization details and branding
-- **Regional Settings** - Time zones, languages, and formats
-- **Business Hours** - Working hours and holidays
-- **Fiscal Year** - Financial period configuration
-- **Data Retention** - Archive and purge policies
+### User Management
 
-### Security Settings
-- **Authentication** - Login methods and requirements
-- **Password Policies** - Complexity and expiration rules
-- **Session Management** - Timeout and concurrent sessions
-- **IP Restrictions** - Access control by location
-- **Audit Settings** - Logging and monitoring options
+<CardGroup cols={2}>
+  <Card title="Users & Roles" icon="users" href="/user-guides/settings/users-roles">
+    Add team members, assign roles, and manage permissions across your organization
+  </Card>
+  <Card title="Companies" icon="building" href="/user-guides/settings/companies">
+    Configure client companies, locations, and company-specific settings
+  </Card>
+</CardGroup>
 
-### Communication Settings
-- **Email Configuration** - SMTP and email templates
-- **Notification Rules** - Alert triggers and recipients
-- **Integration Settings** - Third-party connections
-- **Webhook Configuration** - Event-based notifications
-- **SMS Settings** - Text message notifications
+### Operations Settings
 
-### Module-Specific Settings
-- **Compliance Settings** - Framework configurations
-- **Ticketing Settings** - SLA and workflow rules
-- **Training Settings** - Course management options
-- **Calendar Settings** - Sync and display preferences
-- **Report Settings** - Default formats and schedules
+<CardGroup cols={2}>
+  <Card title="Ticket Settings" icon="ticket" href="/user-guides/settings/tickets">
+    Configure ticket delivery methods, display groups, and allowed statuses
+  </Card>
+  <Card title="Training Settings" icon="graduation-cap" href="/user-guides/settings/training">
+    Manage courses, categories, and learning content
+  </Card>
+</CardGroup>
 
-## User Preferences
+### Security & Compliance
 
-### Personal Settings
-- **Profile Information** - Name, contact, and avatar
-- **Display Preferences** - Theme, layout, and language
-- **Notification Preferences** - Email and alert choices
-- **Dashboard Configuration** - Widget selection and layout
-- **Keyboard Shortcuts** - Custom key combinations
+<CardGroup cols={2}>
+  <Card title="Compliance Checks" icon="shield-check" href="/user-guides/settings/compliance">
+    Manage security compliance checks across frameworks
+  </Card>
+  <Card title="Playbooks" icon="book" href="/user-guides/settings/playbooks">
+    CIS security benchmarks and compliance playbooks
+  </Card>
+</CardGroup>
 
-### Team Settings
-- **Department Configuration** - Team structure and hierarchy
-- **Role Definitions** - Permissions and responsibilities
-- **Approval Workflows** - Chain of command settings
-- **Sharing Preferences** - Default visibility options
+### Customization
 
-## Best Practices
+<CardGroup cols={2}>
+  <Card title="Templates" icon="file-lines" href="/user-guides/settings/templates">
+    Create and manage note templates for meetings and tasks
+  </Card>
+  <Card title="External Resources" icon="link" href="/user-guides/settings/external">
+    Manage external documentation and resource links
+  </Card>
+</CardGroup>
 
-- **Documentation** - Record all configuration changes
-- **Testing** - Validate changes before applying globally
-- **Backup** - Export settings before major changes
-- **Review Cycle** - Periodic settings audit
-- **User Training** - Communicate setting changes
+### System Configuration
 
-## Advanced Configuration
+<CardGroup cols={2}>
+  <Card title="Integrations" icon="plug" href="/user-guides/settings/integrations">
+    Connect PSA systems like Halo, ConnectWise, Syncro, and more
+  </Card>
+  <Card title="Import/Export" icon="file-import" href="/user-guides/settings/import-export">
+    Bulk import and export data using CSV files
+  </Card>
+</CardGroup>
 
-### API Settings
-- **API Keys** - Generate and manage access tokens
-- **Rate Limits** - Configure API usage limits
-- **Webhooks** - Set up event listeners
-- **Data Export** - Configure export options
+### Administration
 
-### Custom Fields
-- **Field Creation** - Add custom data fields
-- **Validation Rules** - Set field requirements
-- **Display Options** - Control field visibility
-- **Mapping** - Connect to external systems
+<CardGroup cols={2}>
+  <Card title="Tenant Settings" icon="building-columns" href="/user-guides/settings/tenant">
+    Configure organization-wide settings, domains, and branding
+  </Card>
+  <Card title="Billing" icon="credit-card" href="/user-guides/settings/billing">
+    Manage subscriptions, payment methods, and invoices
+  </Card>
+</CardGroup>
 
-## Troubleshooting
+## Permissions
 
-Common settings issues and solutions:
-- **Login Problems** - Check authentication settings
-- **Email Issues** - Verify SMTP configuration
-- **Performance** - Review data retention policies
-- **Access Issues** - Validate permission settings
+Access to Settings is controlled by custom roles defined in **Users & Roles**. Each role can be assigned specific permissions to control access to different settings areas.
+
+Common permission patterns include:
+
+| Permission Type | Description |
+|-----------------|-------------|
+| **Full Admin Access** | Complete access to all settings including tenant and billing |
+| **Settings Management** | Access to operational settings (tickets, training, compliance) |
+| **Company Management** | Ability to configure company-specific settings |
+| **User Profile Only** | Limited to personal profile settings |
+
+<Note>
+The **Primary Admin** role always has full access to all settings. Custom roles can be configured with granular permissions in [Users & Roles](/user-guides/settings/users-roles).
+</Note>
 
 ## Related Resources
 
-- [Admin](../admin/index) - User and access management
-- [Integrations](../integrations/index) - Third-party connections
-- [Company Overview](../company-overview/index) - Organization settings
-- [Training](../training/index) - Training configuration
-
-## Need Help?
-
-For assistance with Settings configuration, contact support@msportal.ai or consult our configuration guide.
+- [Getting Started](/user-guides/getting-started/index) - Initial setup and onboarding
+- [Integrations Guide](/user-guides/integrations/index) - Detailed integration setup instructions
+- [Admin Guide](/user-guides/admin/index) - Administrative functions and user management

@@ -1,0 +1,138 @@
+---
+title: Ticket Settings
+description: Configure ticket delivery methods, display groups, and allowed statuses for your PSA integration
+icon: ticket
+---
+
+Ticket Settings control how MSPortal.ai handles tickets from your PSA system. Configure delivery methods, organize tickets into display groups, and define which statuses users can set.
+
+## Accessing Ticket Settings
+
+1. Click **Settings** in the sidebar
+2. Select the **Tickets** icon from the settings navigation
+
+## General Settings
+
+The General tab contains core ticket configuration options.
+
+<Frame>
+  <img src="/images/settings/settings-tickets-general.png" alt="Ticket General Settings" />
+</Frame>
+
+### Ticket Delivery Method
+
+Choose how tickets are delivered to end users:
+
+| Method | Description |
+|--------|-------------|
+| **Email** | Tickets sent via email notifications |
+| **Portal** | Users access tickets through the MSPortal interface |
+| **Both** | Tickets available via email and portal |
+
+### Ticket Categories
+
+Define categories to organize tickets by type:
+
+- **Support** - General technical support requests
+- **Service Request** - New service requests and changes
+- **Incident** - Urgent issues requiring immediate attention
+- **Project** - Project-related tasks and milestones
+
+<Note>
+Categories sync with your PSA system. Changes here will affect how tickets are categorized across both platforms.
+</Note>
+
+### Default Settings
+
+Configure default values for new tickets:
+
+- **Default Priority** - Initial priority level for new tickets
+- **Default Status** - Starting status when tickets are created
+- **Default Assignment** - Auto-assignment rules
+
+## Display Groups
+
+Display Groups organize how tickets appear in the MSPortal interface. This helps users quickly find relevant tickets.
+
+<Frame>
+  <img src="/images/settings/settings-tickets-display-groups.png" alt="Ticket Display Groups" />
+</Frame>
+
+### Creating Display Groups
+
+<Steps>
+  <Step title="Click Add Group">
+    Select the **+ Add Display Group** button
+  </Step>
+  <Step title="Name the Group">
+    Enter a descriptive name (e.g., "Critical Issues", "Pending Approval")
+  </Step>
+  <Step title="Set Filter Criteria">
+    Define which tickets appear in this group based on status, priority, or type
+  </Step>
+  <Step title="Configure Display Order">
+    Drag groups to reorder how they appear in the tickets view
+  </Step>
+</Steps>
+
+### Common Display Group Examples
+
+| Group Name | Filter Criteria | Use Case |
+|------------|-----------------|----------|
+| **Open Tickets** | Status = Open | All active tickets |
+| **Awaiting Response** | Status = Waiting on Customer | Tickets needing customer input |
+| **Escalated** | Priority = Critical | High-priority issues |
+| **Scheduled** | Status = Scheduled | Planned work |
+
+## Allowed Statuses
+
+Control which ticket statuses users can select when updating tickets. This ensures consistent status usage across your team.
+
+<Frame>
+  <img src="/images/settings/settings-tickets-allowed-statuses.png" alt="Ticket Allowed Statuses" />
+</Frame>
+
+### Configuring Allowed Statuses
+
+1. Review the list of available statuses from your PSA
+2. Check the statuses you want users to be able to select
+3. Uncheck statuses that should be restricted (e.g., internal-only statuses)
+
+### Status Categories
+
+Statuses are typically organized by workflow stage:
+
+- **Open Statuses** - New, In Progress, Researching
+- **Pending Statuses** - Waiting on Customer, Waiting on Vendor, Scheduled
+- **Resolved Statuses** - Resolved, Completed, Closed
+- **Cancelled Statuses** - Cancelled, Duplicate
+
+<Warning>
+Restricting statuses affects all users. Ensure your team understands which statuses are available before making changes.
+</Warning>
+
+## PSA Integration Notes
+
+Ticket settings work in conjunction with your PSA integration:
+
+- **Halo PSA** - Syncs ticket types, statuses, and priorities automatically
+- **ConnectWise** - Maps to service board configurations
+- **Autotask** - Syncs with ticket categories and queues
+- **Syncro** - Integrates with ticket types and statuses
+
+<Note>
+Some settings may be overridden by your PSA configuration. Check your [integration settings](/user-guides/integrations/index) if tickets aren't displaying as expected.
+</Note>
+
+## Best Practices
+
+1. **Start with defaults** - Use standard configurations before customizing
+2. **Test with a few users** - Validate settings work before rolling out broadly
+3. **Document changes** - Keep track of display group configurations
+4. **Sync regularly** - Ensure PSA changes are reflected in MSPortal
+
+## Related Resources
+
+- [Ticketing Module](/user-guides/ticketing/index) - Using the tickets interface
+- [Integrations](/user-guides/integrations/index) - PSA integration setup
+- [Settings Overview](/user-guides/settings/index) - All settings options

@@ -1,0 +1,122 @@
+---
+title: Compliance Checks Settings
+description: Manage security compliance checks across frameworks and standards
+icon: shield-check
+---
+
+Compliance Checks Settings allows you to manage the security compliance checks available in MSPortal.ai. Configure which checks are active, customize check parameters, and align with your clients' compliance requirements.
+
+## Accessing Compliance Checks Settings
+
+1. Click **Settings** in the sidebar
+2. Select the **Compliance Checks** icon from the settings navigation
+
+## Compliance Checks Overview
+
+The Compliance Checks page displays all available security checks.
+
+<Frame>
+  <img src="/images/settings/settings-compliance-checks.png" alt="Compliance Checks" />
+</Frame>
+
+### Check Information
+
+Each compliance check shows:
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Check name and description |
+| **Framework** | Associated compliance framework (CIS, NIST, etc.) |
+| **Category** | Check category (Identity, Data, Device, etc.) |
+| **Severity** | Impact level (Critical, High, Medium, Low) |
+| **Status** | Active or disabled |
+
+## Filtering Checks
+
+Use filters to find specific checks:
+
+- **Framework** - Filter by compliance standard
+- **Category** - Filter by check type
+- **Severity** - Filter by impact level
+- **Status** - Show only active or disabled checks
+- **Search** - Find checks by name or keyword
+
+## Compliance Frameworks
+
+MSPortal supports multiple compliance frameworks:
+
+| Framework | Description |
+|-----------|-------------|
+| **CIS Controls** | Center for Internet Security benchmarks |
+| **NIST CSF** | Cybersecurity Framework |
+| **CMMC** | Cybersecurity Maturity Model Certification |
+| **SOC 2** | Service Organization Control |
+| **ISO 27001** | Information Security Management |
+| **HIPAA** | Healthcare data protection |
+| **PCI DSS** | Payment card security |
+
+## Managing Checks
+
+### Enabling/Disabling Checks
+
+<Steps>
+  <Step title="Find the Check">
+    Use search or filters to locate the check
+  </Step>
+  <Step title="Toggle Status">
+    Click the toggle to enable or disable
+  </Step>
+  <Step title="Save Changes">
+    Changes are saved automatically
+  </Step>
+</Steps>
+
+### Bulk Actions
+
+For managing multiple checks:
+
+1. Use filters to show relevant checks
+2. Select multiple checks using checkboxes
+3. Choose bulk action (Enable All, Disable All)
+4. Confirm the action
+
+<Warning>
+Disabling compliance checks will affect compliance scores for all companies. Review impact before making bulk changes.
+</Warning>
+
+## Check Categories
+
+Checks are organized by security domain:
+
+| Category | Examples |
+|----------|----------|
+| **Identity** | MFA, password policies, privileged access |
+| **Data** | Encryption, DLP, backup policies |
+| **Device** | Endpoint protection, patch management |
+| **Network** | Firewall rules, segmentation |
+| **Application** | App permissions, secure configuration |
+| **Governance** | Policies, training, incident response |
+
+## Custom Checks
+
+You can create custom compliance checks:
+
+1. Click **Add Custom Check**
+2. Define the check name and description
+3. Assign to appropriate framework and category
+4. Set severity level
+5. Configure check criteria
+6. Save and activate
+
+## Best Practices
+
+- **Align with client needs** - Enable frameworks your clients require
+- **Start conservative** - Enable core checks first, expand gradually
+- **Review regularly** - Update checks as frameworks evolve
+- **Document exceptions** - Track why specific checks are disabled
+
+## Related Resources
+
+- [Compliance Module](/user-guides/compliance/index) - Using compliance features
+- [Playbooks Settings](/user-guides/settings/playbooks) - CIS benchmarks and guides
+- [Adding CIS Benchmarks](/user-guides/compliance/adding-cis-benchmarks) - Benchmark setup guide

@@ -1,165 +1,367 @@
 ---
-title: Ticketing Integration
-description: View and analyze tickets from ConnectWise and Halo PSA
+title: Tickets
+description: Create, view, and manage support tickets with AI assistance and customizable templates
+icon: ticket
 ---
 
+The Tickets module provides comprehensive ticket management integrated with your PSA system. Create tickets using AI assistance, manage templates, and track ticket status all from one interface.
+
 <Note>
-The Ticketing module requires an active integration with ConnectWise or HaloPSA. It does not provide standalone ticketing functionality.
+The Tickets interface adapts based on your PSA integration (ConnectWise, Halo PSA, Autotask, or Syncro). Some features and field names may vary depending on your connected PSA system.
 </Note>
 
-The Ticketing module in MSPortal.ai integrates with your existing PSA (Professional Services Automation) tools to provide ticket visibility and analytics within the platform.
+## Accessing Tickets
 
-## Supported Integrations
+1. Click **Tickets** in the sidebar
+2. The ticket list displays all tickets for the selected company
 
-MSPortal.ai currently integrates with:
-- **ConnectWise Manage** - Full ticket data synchronization ([Setup Guide](../integrations/enable-connectwise-integration))
-- **HaloPSA** - Comprehensive ticket integration
+<Frame>
+  <img src="/images/ticketing/tickets-list-overview.png" alt="Tickets List Overview" />
+</Frame>
 
-## Key Features
+## Tickets List
 
-- **Ticket Visibility** - View tickets from your PSA within MSPortal.ai
-- **Company Association** - See tickets linked to specific companies
-- **Analytics & Reporting** - Generate insights from ticket data
-- **Cross-Module Integration** - Reference tickets in reports and compliance
-- **Real-time Sync** - Stay updated with latest ticket information
+### Menu Options
 
-## Prerequisites
+Click the **Tickets Menu** dropdown to switch between views:
 
-Before using the Ticketing module:
-1. Have an active ConnectWise Manage or HaloPSA account
-2. Configure the PSA integration in Settings
-3. Map companies between MSPortal.ai and your PSA
-4. Verify API permissions for ticket access
+<Frame>
+  <img src="/images/ticketing/tickets-menu-dropdown.png" alt="Tickets Menu Dropdown" />
+</Frame>
 
-## Setting Up Integration
+| Option | Description |
+|--------|-------------|
+| **All Tickets** | View and manage all tickets |
+| **Templates** | Manage ticket templates |
 
-### ConnectWise Integration
+### Filtering Tickets
+
+Use the filter bar to find specific tickets:
+
+| Filter | Description |
+|--------|-------------|
+| **Search** | Search by ticket number, summary, or description |
+| **Status** | Filter by Open, Closed, Pending, etc. |
+| **Priority** | Filter by priority level |
+| **Assigned To** | Filter by assigned technician |
+| **Date Range** | Filter by creation or update date |
+| **Company** | Filter by associated company |
+
+### Column Preferences
+
+Customize which columns display in the tickets table:
 
 <Steps>
-  <Step title="Navigate to Settings">
-    Go to Settings → Integrations → ConnectWise
+  <Step title="Click Columns Button">
+    Click the **Columns** button in the toolbar
   </Step>
-  <Step title="Enter API Credentials">
-    Provide your ConnectWise API URL, company ID, and credentials
+  <Step title="Toggle Visibility">
+    Use the eye icons to show or hide columns
   </Step>
-  <Step title="Configure Sync Settings">
-    Select which ticket types and statuses to synchronize
-  </Step>
-  <Step title="Map Companies">
-    Link MSPortal.ai companies to ConnectWise companies
-  </Step>
-  <Step title="Initial Sync">
-    Run the initial synchronization to import existing tickets
+  <Step title="Reorder Columns">
+    Drag columns using the handle to reorder them
   </Step>
 </Steps>
 
-### HaloPSA Integration
+<Frame>
+  <img src="/images/ticketing/tickets-columns-dialog.png" alt="Column Preferences" />
+</Frame>
+
+Available columns include:
+
+| Column | Description |
+|--------|-------------|
+| **Ticket #** | Unique ticket identifier |
+| **Summary** | Brief ticket description |
+| **Status** | Current ticket state |
+| **Priority** | Urgency level |
+| **Company** | Associated client |
+| **Assigned To** | Responsible technician |
+| **Created** | Creation timestamp |
+| **Updated** | Last modified timestamp |
+| **SLA Status** | Service level agreement status |
+| **Category** | Ticket category or type |
+
+## Creating a New Ticket
+
+### Starting a New Ticket
 
 <Steps>
-  <Step title="Navigate to Settings">
-    Go to Settings → Integrations → HaloPSA
+  <Step title="Click New Ticket">
+    Click the **New Ticket** button in the top right
   </Step>
-  <Step title="API Configuration">
-    Enter your Halo instance URL and API credentials
+  <Step title="Use AI Assistant (Optional)">
+    Describe the issue in natural language or use voice input
   </Step>
-  <Step title="Select Data Types">
-    Choose ticket categories to synchronize
+  <Step title="Select Template">
+    Choose a template to pre-fill the form
   </Step>
-  <Step title="Company Mapping">
-    Connect MSPortal.ai companies with Halo clients
+  <Step title="Fill Details">
+    Complete the required fields in each section
   </Step>
-  <Step title="Synchronize">
-    Execute initial data import
+  <Step title="Submit">
+    Click **Create Ticket** to submit
   </Step>
 </Steps>
 
-## Using the Ticketing Module
+<Frame>
+  <img src="/images/ticketing/tickets-new-form.png" alt="New Ticket Form" />
+</Frame>
 
-### Viewing Tickets
+### AI Assistant
 
-1. Navigate to **Ticketing** in the sidebar
-2. Select a company or view all tickets
-3. Use filters to narrow results:
-   - Status (Open, Closed, Pending)
-   - Priority levels
-   - Date ranges
-   - Assigned technician
+The AI Assistant helps you create tickets faster:
 
-### Ticket Information
+| Feature | Description |
+|---------|-------------|
+| **Natural Language** | Describe the issue in plain English |
+| **Voice Input** | Click the microphone to dictate the issue |
+| **Auto-Fill** | AI extracts details and pre-fills form fields |
+| **Smart Suggestions** | AI suggests appropriate categories and priorities |
 
-Each synchronized ticket displays:
-- **Ticket Number** - PSA ticket identifier
-- **Summary** - Brief description
-- **Status** - Current ticket state
-- **Priority** - Urgency level
-- **Company** - Associated client
-- **Assigned To** - Responsible technician
-- **Created/Updated** - Timestamps
-- **Time Entries** - Logged hours (if available)
+<Tip>
+Use voice input for hands-free ticket creation. The AI will transcribe your description and extract key details to populate the form.
+</Tip>
 
-### Analytics & Reporting
+### Using Templates
 
-The Ticketing module provides:
-- **Ticket Volume** - Trends over time
-- **Resolution Times** - Average time to close
-- **By Company** - Ticket distribution across clients
-- **By Category** - Common issue types
-- **SLA Performance** - If SLA data is available
+Templates provide pre-configured forms for common ticket types:
 
-## Integration with Other Modules
+<Frame>
+  <img src="/images/ticketing/tickets-template-selector.png" alt="Template Selector" />
+</Frame>
 
-### Reporting
-- Include ticket metrics in client reports
-- Show support activity alongside other KPIs
-- Generate ticket trend analyses
+<Steps>
+  <Step title="Click Template Dropdown">
+    Select the **Template** dropdown in the ticket form
+  </Step>
+  <Step title="Choose Template">
+    Select from available templates like "Generic Issue", "New User Setup", etc.
+  </Step>
+  <Step title="Complete Fields">
+    Fill in the template-specific fields organized in tabs
+  </Step>
+</Steps>
 
-### Company Overview
-- Display recent tickets on company dashboards
-- Show ticket counts in company health metrics
+<Frame>
+  <img src="/images/ticketing/tickets-new-template-selected.png" alt="Template Selected" />
+</Frame>
 
-### Compliance
-- Reference tickets in compliance documentation
-- Link remediation tickets to compliance issues
+Templates organize fields into logical sections displayed as tabs:
+- **Reporter Information** - Contact details
+- **Issue Details** - Problem description
+- **Impact & Priority** - Urgency and scope
+- **Technical Triage** - Diagnostic information
+- **Internal Triage** - Internal notes and routing
+
+## Viewing Ticket Details
+
+Click any ticket in the list to view its details:
+
+<Frame>
+  <img src="/images/ticketing/tickets-detail-dialog.png" alt="Ticket Detail Dialog" />
+</Frame>
+
+### Detail Sections
+
+| Section | Description |
+|---------|-------------|
+| **Resolution Status** | Visual stepper showing progress (New → In Progress → Resolved) |
+| **Details** | Full ticket information and custom fields |
+| **Timeline** | Activity history and updates |
+| **SLA** | Service level agreement status and deadlines |
+| **Identifiers** | Ticket numbers and references |
+
+### Adding Notes
+
+To add a note or update to a ticket:
+
+<Steps>
+  <Step title="Open Ticket">
+    Click the ticket to open the detail panel
+  </Step>
+  <Step title="Click Add Note">
+    Select **Add Note** at the bottom of the panel
+  </Step>
+  <Step title="Enter Note">
+    Type your update or comment
+  </Step>
+  <Step title="Save">
+    Click to save the note to the ticket
+  </Step>
+</Steps>
+
+### Activity Log
+
+The Activity section shows:
+- Status changes
+- Notes added
+- Time entries
+- Assignments
+- Custom field updates
+
+## Managing Templates
+
+### Accessing Templates
+
+<Steps>
+  <Step title="Open Tickets Menu">
+    Click the **Tickets Menu** dropdown
+  </Step>
+  <Step title="Select Templates">
+    Choose **Templates** from the menu
+  </Step>
+</Steps>
+
+<Frame>
+  <img src="/images/ticketing/tickets-templates-list.png" alt="Templates List" />
+</Frame>
+
+### Template List
+
+The templates list shows:
+
+| Column | Description |
+|--------|-------------|
+| **Name** | Template name |
+| **Category** | Template category |
+| **Fields** | Number of fields in the template |
+| **Status** | Active or inactive |
+| **Actions** | Edit, copy, or delete |
+
+### Creating a Template
+
+<Steps>
+  <Step title="Click New Template">
+    Click the **New Template** button
+  </Step>
+  <Step title="Enter Details">
+    Provide name, category, and description
+  </Step>
+  <Step title="Add Sections">
+    Create sections to organize fields
+  </Step>
+  <Step title="Add Fields">
+    Add fields to each section
+  </Step>
+  <Step title="Configure PSA Mapping">
+    Map fields to your PSA system
+  </Step>
+  <Step title="Save">
+    Click **Save Template**
+  </Step>
+</Steps>
+
+### Template Editor
+
+<Frame>
+  <img src="/images/ticketing/tickets-template-editor.png" alt="Template Editor" />
+</Frame>
+
+#### Template Details Section
+
+| Field | Description |
+|-------|-------------|
+| **Template Name** | Display name for the template |
+| **Category** | Organizational category |
+| **Description** | Explanation of when to use this template |
+| **Active** | Toggle to enable/disable the template |
+
+#### PSA Integration Settings
+
+Configure how template fields map to your PSA:
+- Field mappings
+- Default values
+- Queue/board assignments
+- Category mappings
+
+#### Sections & Fields
+
+Organize your template with sections and fields:
+
+| Action | Description |
+|--------|-------------|
+| **Add Section** | Create a new grouping of fields |
+| **Add Field** | Add a field to a section |
+| **Collapse All** | Minimize all sections |
+| **Generate with AI** | Use AI to create template structure |
+| **Drag to Reorder** | Rearrange sections and fields |
+
+#### Field Types
+
+| Type | Description |
+|------|-------------|
+| **Text** | Single line text input |
+| **Long Text** | Multi-line text area |
+| **Email** | Email address with validation |
+| **Phone** | Phone number field |
+| **Number** | Numeric input |
+| **Date** | Date picker |
+| **Select** | Dropdown selection |
+| **Multi-Select** | Multiple choice selection |
+| **Check** | Checkbox (yes/no) |
+| **Impact** | Impact level selector |
+| **Urgency** | Urgency level selector |
+| **Priority** | Priority level selector |
+| **Upload** | File attachment |
+| **URL** | Web link field |
+
+#### Field Properties
+
+| Property | Description |
+|----------|-------------|
+| **Required** | Field must be filled |
+| **Optional** | Field can be left empty |
+| **Conditional** | Field appears based on other field values |
+
+### AI Template Generation
+
+Generate template structure using AI:
+
+<Steps>
+  <Step title="Enter Template Name">
+    Provide a descriptive template name
+  </Step>
+  <Step title="Add Description">
+    Describe the purpose and use case
+  </Step>
+  <Step title="Click Generate with AI">
+    AI will suggest sections and fields
+  </Step>
+  <Step title="Review and Customize">
+    Modify the generated structure as needed
+  </Step>
+</Steps>
+
+## PSA Integration
+
+### Supported PSA Systems
+
+| PSA | Sync Direction | Features |
+|-----|----------------|----------|
+| **ConnectWise Manage** | Bidirectional | Full ticket sync, time entries |
+| **Halo PSA** | Bidirectional | Tickets, actions, SLAs |
+| **Autotask** | Bidirectional | Tickets, notes, time |
+| **Syncro** | Bidirectional | Tickets, comments |
+
+### Synchronization
+
+Tickets automatically sync with your PSA:
+- **New tickets** created in MSPortal appear in your PSA
+- **Updates** sync bidirectionally
+- **Notes and time entries** are synchronized
+- **Status changes** reflect in both systems
 
 ## Best Practices
 
-- **Regular Sync** - Ensure synchronization runs frequently
-- **Company Mapping** - Keep company associations up to date
-- **Data Hygiene** - Clean up closed tickets periodically
-- **Permission Management** - Limit ticket visibility as needed
-
-## Limitations
-
-- Read-only access (ticket creation/editing must be done in PSA)
-- Sync frequency depends on API rate limits
-- Historical data limited by PSA retention policies
-- Custom fields may not all be available
-
-## Troubleshooting
-
-### Tickets Not Appearing
-- Verify integration is active in Settings
-- Check company mapping configuration
-- Ensure API credentials are valid
-- Review sync logs for errors
-
-### Sync Delays
-- Check PSA API status
-- Verify network connectivity
-- Review rate limiting settings
-- Contact support if delays persist
-
-### Missing Ticket Data
-- Confirm API permissions include ticket access
-- Check field mapping configuration
-- Verify ticket types are included in sync
+- **Use Templates** - Create templates for common ticket types to ensure consistency
+- **Leverage AI** - Use the AI Assistant for faster ticket creation
+- **Customize Columns** - Show only the columns you need for cleaner views
+- **Regular Review** - Periodically review and update templates
 
 ## Related Resources
 
-- [Integrations Setup](../integrations/index) - Configure PSA connections
-- [Reporting](../reporting/index) - Create ticket-based reports
-- [Company Overview](../company-overview/index) - View company ticket metrics
-
-## Support
-
-For assistance with ticket integration, consult your PSA documentation or contact MSPortal.ai support.
+- [Ticket Templates Guide](/user-guides/ticketing/how-to-create-a-ticket-template)
+- [AI Ticket Creation](/user-guides/ticketing/open-a-ticket-with-ai)
+- [Ticket Settings](/user-guides/settings/tickets)
+- [Integrations Overview](/user-guides/integrations/index)

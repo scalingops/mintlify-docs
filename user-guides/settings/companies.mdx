@@ -1,0 +1,129 @@
+---
+title: Companies Settings
+description: Configure and manage client companies, locations, and company-specific settings
+icon: building
+---
+
+Companies Settings allows you to manage all client companies in your MSPortal.ai instance. Add new companies, configure their settings, and manage company-specific configurations.
+
+## Accessing Companies Settings
+
+1. Click **Settings** in the sidebar
+2. Select the **Companies** icon from the settings navigation
+
+## Companies List
+
+The Companies page displays all client companies in your organization.
+
+<Frame>
+  <img src="/images/settings/settings-companies-list.png" alt="Companies List" />
+</Frame>
+
+### Company Information
+
+Each company entry shows:
+
+| Field | Description |
+|-------|-------------|
+| **Name** | Company name |
+| **Industry** | Business sector |
+| **Primary Contact** | Main point of contact |
+| **Status** | Active or inactive |
+| **Users** | Number of associated users |
+
+### Adding a New Company
+
+<Steps>
+  <Step title="Click Add Company">
+    Select the **+ Add Company** button
+  </Step>
+  <Step title="Enter Company Details">
+    Fill in company name, industry, and contact information
+  </Step>
+  <Step title="Configure Settings">
+    Set company-specific configurations like timezone and preferences
+  </Step>
+  <Step title="Add Contacts">
+    Add primary and secondary contacts for the company
+  </Step>
+  <Step title="Save">
+    Click **Save** to create the company
+  </Step>
+</Steps>
+
+## Company Details
+
+Click on any company to view and edit its details:
+
+### Basic Information
+- **Company Name** - Legal or display name
+- **Industry** - Business sector classification
+- **Website** - Company website URL
+- **Phone** - Main contact number
+
+### Address Information
+- **Street Address** - Physical location
+- **City, State, Postal Code** - Full address details
+- **Country** - Country of operation
+
+### Company Preferences
+- **Timezone** - Default timezone for the company
+- **Language** - Preferred language for communications
+- **Fiscal Year Start** - Financial year beginning
+
+## Contacts Management
+
+Each company can have multiple contacts:
+
+| Contact Type | Description |
+|--------------|-------------|
+| **Primary Contact** | Main point of contact for the company |
+| **Technical Contact** | IT or technical representative |
+| **Billing Contact** | Finance or billing department |
+| **Executive Contact** | C-level or decision makers |
+
+### Adding a Contact
+
+1. Navigate to the company's detail page
+2. Click **Add Contact** in the Contacts section
+3. Enter contact details (name, email, phone, title)
+4. Select the contact type
+5. Save the contact
+
+## Integration with PSA
+
+Companies sync with your connected PSA system:
+
+- **Halo PSA** - Syncs as clients
+- **ConnectWise** - Maps to company records
+- **Autotask** - Syncs with accounts
+- **Syncro** - Integrates with customers
+
+<Note>
+Changes made in your PSA will sync to MSPortal. Some fields may be read-only if managed by your PSA.
+</Note>
+
+## Company Assignments
+
+When using company restrictions (configured in Tenant Settings), users must be assigned to companies to access their data.
+
+### Assigning Users to a Company
+
+1. Open the company details
+2. Navigate to the **Assigned Users** section
+3. Click **Add User**
+4. Select users who should have access
+5. Save changes
+
+## Best Practices
+
+- **Keep information current** - Regularly update company details
+- **Verify contacts** - Ensure contact information is accurate
+- **Use consistent naming** - Establish naming conventions for companies
+- **Document relationships** - Track parent/child company relationships
+
+## Related Resources
+
+- [Company Overview Module](/user-guides/company-overview/index) - Company dashboards
+- [Users & Roles](/user-guides/settings/users-roles) - User company assignments
+- [Integrations](/user-guides/integrations/index) - PSA company sync

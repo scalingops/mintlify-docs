@@ -90,7 +90,10 @@
               {
                 "group": "Calendar",
                 "pages": [
-                  "user-guides/calendar/index"
+                  "user-guides/calendar/index",
+                  "user-guides/calendar/meetings",
+                  "user-guides/calendar/presenting",
+                  "user-guides/calendar/meeting-summaries"
                 ]
               }
             ]
@@ -139,7 +142,19 @@
               {
                 "group": "Settings",
                 "pages": [
-                  "user-guides/settings/index"
+                  "user-guides/settings/index",
+                  "user-guides/settings/users-roles",
+                  "user-guides/settings/companies",
+                  "user-guides/settings/training",
+                  "user-guides/settings/tickets",
+                  "user-guides/settings/compliance",
+                  "user-guides/settings/playbooks",
+                  "user-guides/settings/external",
+                  "user-guides/settings/templates",
+                  "user-guides/settings/integrations",
+                  "user-guides/settings/import-export",
+                  "user-guides/settings/tenant",
+                  "user-guides/settings/billing"
                 ]
               },
               {

@@ -19,6 +19,21 @@ When you navigate to **Budgets** from the sidebar, you will see the budgets list
 
 ![Budgets List](/images/budgets/budgets-list-with-new-budget.png)
 
+## Budgets Menu
+
+The **Budgets Menu** provides quick navigation between different budget-related areas:
+
+![Budgets Menu](/images/budgets/budgets-menu.png)
+
+| Menu Option | Description |
+|-------------|-------------|
+| **All Budgets** | View the main budgets list for the selected company |
+| **Products** | Manage your product catalog for budgeting |
+| **Templates** | Access budget templates for quick creation |
+| **Forecast** | Plan future budget projections |
+
+Click the **Budgets Menu** button in the top-right of any budgets page to navigate between these areas.
+
 ## Budgets Table
 
 The budgets table displays key information for each budget:
@@ -205,6 +220,142 @@ Click the **Actions** button on any budget to access:
 - **Duplicate** - Create a copy of the budget
 - **Export** - Export to PDF or other formats
 - **Delete** - Remove the budget
+
+## Products Catalog
+
+The Products area allows you to manage a centralized product catalog for use across all budgets. Access it via **Budgets Menu > Products**.
+
+![Products Catalog](/images/budgets/budgets-products.png)
+
+### Products Table
+
+The products table displays your catalog with filterable columns:
+
+| Column | Description |
+|--------|-------------|
+| **Name** | Product name (e.g., "Microsoft 365 Business Premium") |
+| **SKU** | Stock keeping unit identifier |
+| **Category** | Product category (Block Time, Managed Services, etc.) |
+| **Unit Price** | Cost per unit |
+| **Vendor** | Supplier or manufacturer (Microsoft, Tech Data, etc.) |
+| **Product Group** | Grouping for organization |
+| **Created By** | System or user who created the product |
+
+### Filtering Products
+
+Use the filter controls in each column header to quickly find products:
+- **Text filters** - Type to search by Name or SKU
+- **Dropdown filters** - Select Category, Vendor, Product Group, or Created By
+- **Price range** - Set minimum and maximum unit price
+
+### Adding Products
+
+<Steps>
+  <Step title="Click New Product">
+    Click the **+ New Product** button in the top-right corner.
+  </Step>
+  <Step title="Enter Product Details">
+    Fill in the product information:
+    - Name (required)
+    - SKU
+    - Category
+    - Unit Price
+    - Vendor
+    - Product Group
+  </Step>
+  <Step title="Save the Product">
+    Click **Save** to add the product to your catalog.
+  </Step>
+</Steps>
+
+### Importing from Integrations
+
+Click **Import from Integrations** to pull products from connected PSA systems:
+- ConnectWise Manage
+- Autotask PSA
+- HaloPSA
+
+Imported products include accurate pricing, SKUs, and vendor information.
+
+<Tip>
+Products are available tenant-wide by default, making them accessible across all company budgets. Toggle the visibility option to show tenant-wide or company-specific products.
+</Tip>
+
+## Budget Forecast
+
+The Forecast feature helps you project future budget trends based on historical data and growth assumptions. Access it via **Budgets Menu > Forecast**.
+
+![Budget Forecast](/images/budgets/budgets-forecast.png)
+
+### Forecast Settings
+
+Configure global parameters that apply to all categories:
+
+| Setting | Description |
+|---------|-------------|
+| **Base Year** | The fiscal year to use as the baseline (e.g., FY 2025) |
+| **Years to Forecast** | How many years to project (1-5 years) |
+| **Default Annual Increase (%)** | The default growth percentage applied to categories |
+| **Apply to All Categories** | Toggle to apply the default increase uniformly |
+| **Hide Empty Categories** | Hide categories with zero base values |
+
+### Forecast Categories
+
+The forecast table breaks down projections by spending category:
+
+- **Backup & DR** - Backup and disaster recovery services
+- **Cloud Services** - Cloud infrastructure and hosting
+- **Hardware** - Physical equipment and devices
+- **Managed Services** - Ongoing IT management services
+- **Other** - Miscellaneous expenses
+- **Projects** - One-time project costs
+- **Renewals** - Software and service renewals
+- **Security Services** - Cybersecurity tools and services
+- **Software** - Software licenses and subscriptions
+- **Training & Adoption** - Training and change management
+
+### Forecast Table Columns
+
+| Column | Description |
+|--------|-------------|
+| **Category** | The spending category name |
+| **Include** | Toggle to include/exclude category from forecast |
+| **Base Year** | The starting amount from the base fiscal year |
+| **FY 20XX Forecast** | Projected amount for each future year |
+| **% Increase** | Custom growth rate for this category |
+| **Use Global** | Use the global default increase percentage |
+
+### Syncing Forecast Data
+
+<Steps>
+  <Step title="Sync from Budget">
+    Click **Sync from Budget** to populate base year values from approved budgets. This pulls actual budget line items into the forecast categories.
+  </Step>
+  <Step title="Sync from Planner">
+    Click **Sync from Planner** to import planned items as forecast data. Useful for projecting costs of planned initiatives.
+  </Step>
+  <Step title="Adjust Category Values">
+    Fine-tune individual category amounts and growth percentages as needed.
+  </Step>
+  <Step title="Save Forecast">
+    Click **Save** to store your forecast configuration.
+  </Step>
+</Steps>
+
+### Understanding Projections
+
+Each forecast year shows:
+- **Projected Amount** - The calculated value based on base year and growth rate
+- **Year-over-Year Change** - The dollar amount increase from the previous year
+- **Percentage Change** - The growth rate expressed as a percentage
+
+<Tip>
+Use different growth rates for different categories to model realistic scenarios. For example, Security Services might grow at 10% while Hardware remains flat.
+</Tip>
+
+<Note>
+The Export feature is coming soon and will allow you to download forecast reports for client presentations and planning meetings.
+</Note>
 
 ## Best Practices
 

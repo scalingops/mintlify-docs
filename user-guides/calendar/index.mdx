@@ -1,73 +1,82 @@
 ---
-title: Calendar Module  
-description: Schedule, manage, and coordinate events and meetings across your organization
+title: Calendar
+description: Schedule, manage, and coordinate meetings across your client companies
 ---
 
-The Calendar module provides integrated scheduling and event management capabilities, helping teams coordinate meetings, track important dates, and manage their time effectively.
+The Calendar module helps MSPs schedule and manage client meetings, including Quarterly Business Reviews (QBRs), strategy sessions, and regular check-ins. View meetings across all companies or filter by specific clients.
 
-## Key Features
+<Frame>
+  <img src="/images/calendar/calendar-overview.png" alt="Calendar Overview" />
+</Frame>
 
-- **Event Management** - Create and manage various types of events
-- **Meeting Scheduler** - Book meetings with availability checking
-- **Resource Booking** - Reserve rooms and equipment
-- **Calendar Sync** - Integrate with Microsoft 365 and Google Calendar
-- **Recurring Events** - Set up repeating meetings and events
-- **Reminder System** - Automated notifications for upcoming events
+## Navigating the Calendar
 
-## Getting Started
+The calendar displays meetings in a monthly view by default. Each meeting shows:
+- **Meeting title** - The name of the meeting (e.g., "QBR" for Quarterly Business Reviews)
+- **Company name** - Which client the meeting is associated with
+- **Color coding** - Visual distinction between different meeting types
 
-1. Connect your calendar accounts for synchronization
-2. Set up your availability and working hours
-3. Create your first event or meeting
-4. Invite participants and book resources
-5. Manage your schedule through various calendar views
+### Viewing Options
 
-## Common Tasks
+Use the **Global View** dropdown at the top to:
+- View meetings across all companies
+- Filter to a specific company's meetings
+- See only your assigned meetings
 
-- **Scheduling Meetings** - Find optimal meeting times for all participants
-- **Creating Events** - Add company events, deadlines, and milestones
-- **Managing QBRs** - Schedule and track Quarterly Business Reviews
-- **Setting Reminders** - Configure notification preferences
-- **Sharing Calendars** - Grant visibility to team calendars
+### Quick Preview
 
-## Calendar Views
+Click any meeting on the calendar to see a preview dialog:
 
-- **Month View** - Traditional monthly calendar layout
-- **Week View** - Detailed weekly schedule
-- **Day View** - Hour-by-hour daily agenda
-- **Agenda View** - List of upcoming events
-- **Team View** - See multiple team members' schedules
+<Frame>
+  <img src="/images/calendar/meeting-preview-dialog.png" alt="Meeting Preview Dialog" />
+</Frame>
 
-## Event Types
+The preview shows:
+- **Date and time** - When the meeting is scheduled
+- **Location** - Where the meeting takes place (physical address or virtual link)
+- **Attendees** - Who's invited to the meeting
+- **Notes** - Any meeting notes or preparation materials
 
-- **Meetings** - Internal and external meetings
-- **QBRs** - Quarterly Business Reviews
-- **Training Sessions** - Scheduled training events
-- **Compliance Deadlines** - Important compliance dates
-- **Company Events** - All-hands, socials, and celebrations
+Click **Open Meeting Page** to access the full meeting details and management features.
 
-## Best Practices
+## Creating a Meeting
 
-- **Buffer Time** - Include breaks between back-to-back meetings
-- **Clear Agendas** - Add meeting purposes and agendas to invites
-- **Time Zones** - Be mindful of participants in different locations
-- **Regular Updates** - Keep calendar entries current
-- **Availability Blocks** - Mark focus time and out-of-office periods
+To create a new meeting:
 
-## Integration Features
+1. Click the **+ New Meeting** button in the top-right corner
+2. Fill in the meeting details:
+   - **Title** - Name of the meeting
+   - **Company** - Which client this meeting is for
+   - **Meeting Type** - QBR, Strategy Session, Check-in, etc.
+   - **Date and Time** - When the meeting occurs
+   - **Location** - Physical address or video call link
+   - **Attendees** - Invite participants from the company
+3. Add any initial notes or agenda items
+4. Click **Save** to create the meeting
 
-- **Microsoft 365** - Full Outlook calendar integration
-- **Google Calendar** - Sync with Google Workspace
-- **Planner Module** - Link tasks to calendar events
-- **Training Module** - Schedule training sessions
-- **Compliance Module** - Track compliance deadlines
+## Meeting Types
 
-## Related Resources
+MSPortal supports various meeting types:
 
-- [Microsoft 365](../microsoft-365/index) - Calendar synchronization settings
-- [Planner](../planner/index) - Connect tasks to events
-- [Company Overview](../company-overview/index) - View company-wide events
+| Type | Description |
+|------|-------------|
+| **QBR** | Quarterly Business Reviews - comprehensive client reviews |
+| **Strategy** | Strategic planning and roadmap discussions |
+| **Check-in** | Regular status updates and relationship touchpoints |
+| **Onboarding** | New client onboarding sessions |
+| **Training** | Client training and education sessions |
+| **Custom** | Any other meeting type you define |
 
-## Need Help?
+## Next Steps
 
-For assistance with the Calendar module, contact support@msportal.ai or review our scheduling best practices guide.
+<CardGroup cols={3}>
+  <Card title="Meeting Pages" icon="file-lines" href="/user-guides/calendar/meetings">
+    Learn how to manage meeting details, attendees, and agendas
+  </Card>
+  <Card title="Presenting" icon="presentation-screen" href="/user-guides/calendar/presenting">
+    Present meeting content professionally to clients
+  </Card>
+  <Card title="Meeting Summaries" icon="envelope" href="/user-guides/calendar/meeting-summaries">
+    Generate and send AI-powered meeting summaries
+  </Card>
+</CardGroup>

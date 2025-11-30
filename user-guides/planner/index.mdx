@@ -1,64 +1,244 @@
 ---
 title: Planner Module
-description: Organize tasks, projects, and workflows with comprehensive planning tools
+description: Organize tasks, projects, and strategic initiatives with timeline-based planning tools
 ---
 
-The Planner module provides powerful task and project management capabilities to help teams organize work, track progress, and meet deadlines efficiently.
+The Planner module provides a visual timeline for managing tasks, projects, and strategic initiatives across your client companies. Plan work, track progress, and align team efforts with business goals.
 
-## Key Features
+<Frame>
+  <img src="/images/planner/planner-quarterly-view.png" alt="Planner Quarterly View" />
+</Frame>
 
-- **Task Management** - Create, assign, and track tasks
-- **Project Planning** - Organize tasks into projects and phases
-- **Kanban Boards** - Visualize workflow with drag-and-drop boards
-- **Gantt Charts** - View project timelines and dependencies
-- **Resource Planning** - Allocate team members and resources
-- **Automated Workflows** - Set up recurring tasks and automation
+## Overview
 
-## Getting Started
+The Planner displays work items on a timeline, allowing you to:
 
-1. Create your first project or task list
-2. Add tasks with descriptions and due dates
-3. Assign tasks to team members
-4. Set priorities and dependencies
-5. Track progress through various views
+- **Plan strategic initiatives** - Schedule projects and tasks across months or years
+- **Track progress** - Monitor status and completion of planned work
+- **Allocate resources** - Estimate hours, costs, and assign to companies
+- **Link to findings** - Connect planner items to compliance findings or security actions
+- **Collaborate** - Share notes, use templates, and leverage AI assistance
 
-## Common Tasks
+## Timeline Views
 
-- **Creating Tasks** - Add new tasks with details and attachments
-- **Managing Projects** - Organize related tasks into projects
-- **Setting Dependencies** - Link related tasks and milestones
-- **Tracking Time** - Log time spent on tasks
-- **Generating Reports** - Export project status reports
+The Planner offers three timeline views to help you plan at different scales. Use the view switcher in the toolbar to change between them.
 
-## View Options
+### Monthly View
 
-- **List View** - Traditional task list with filters
-- **Board View** - Kanban-style workflow visualization
-- **Calendar View** - See tasks on a calendar
-- **Timeline View** - Gantt chart for project planning
-- **My Tasks** - Personal task dashboard
+<Frame>
+  <img src="/images/planner/planner-monthly-view.png" alt="Planner Monthly View" />
+</Frame>
+
+The monthly view shows a detailed day-by-day breakdown for the current month. Best for:
+- Short-term planning and scheduling
+- Viewing specific due dates
+- Managing immediate priorities
+
+### Quarterly View
+
+<Frame>
+  <img src="/images/planner/planner-quarterly-view.png" alt="Planner Quarterly View" />
+</Frame>
+
+The quarterly view displays three months at a time. Best for:
+- Medium-term project planning
+- Quarterly business reviews
+- Balancing workload across months
+
+### Yearly View
+
+<Frame>
+  <img src="/images/planner/planner-yearly-view.png" alt="Planner Yearly View" />
+</Frame>
+
+The yearly view shows all 12 months in a single view. Best for:
+- Long-term strategic planning
+- Annual roadmapping
+- Identifying seasonal patterns
+
+<Tip>
+Use the year navigation buttons and year selector to move between years. The **Today** button quickly returns you to the current date.
+</Tip>
+
+## View Density
+
+Adjust how much information is displayed for each planner item using the View Density setting.
+
+<Frame>
+  <img src="/images/planner/planner-view-density-menu.png" alt="View Density Options" />
+</Frame>
+
+| Density | Description |
+|---------|-------------|
+| **Comfortable** | Shows full item details with more spacing |
+| **Compact** | Balanced view with moderate detail (default) |
+| **Dense** | Condensed view to fit more items on screen |
+
+Click the **View density** button in the toolbar to switch between density levels.
+
+## Creating Planner Items
+
+Click the **Add Item** button to create a new planner item. You can also right-click on the timeline to add an item at a specific date.
+
+### Item Types
+
+Planner items can be categorized by type:
+
+- Security Services
+- Managed Services
+- Professional Services
+- Projects
+- Training
+- Compliance
+- Custom types defined in settings
+
+## Editing Planner Items
+
+Click on any planner item to open the edit dialog with full details.
+
+<Frame>
+  <img src="/images/planner/planner-edit-dialog.png" alt="Planner Item Edit Dialog" />
+</Frame>
+
+### Basic Information
+
+| Field | Description |
+|-------|-------------|
+| **Title** | The name of the planner item |
+| **Company** | The client company this item is for |
+| **Due Date** | When the item should be completed |
+| **Status** | Current status (Not Started, In Progress, Pending Approval, Complete) |
+| **Type** | Category of work (Security Services, etc.) |
+| **Business Value** | Priority level (High, Medium, Low) |
+
+### Estimates
+
+| Field | Description |
+|-------|-------------|
+| **Est. Hours** | Estimated hours to complete |
+| **Est. Cost** | Estimated cost for the work |
+| **Probability of Success** | Likelihood of completion (percentage) |
+
+### Relationships & Findings
+
+- **Relationships** - Link to other planner items using **Add** or **Create** buttons
+- **Linked Findings** - Connect to compliance findings or security actions
+
+### Notes & Description
+
+- **Description** - Detailed explanation of the work to be done
+- **Notes** - Collaborative notes visible to your team
+  - Use **AI Draft** to generate notes using AI
+  - Use **Add Template** to insert predefined content
+- **Private Notes** - Notes only visible to you
+
+### Custom Fields
+
+Configure custom fields in Settings to capture additional data specific to your workflow.
+
+## Using Templates
+
+Templates help you quickly populate planner items with predefined content.
+
+### Applying a Template
+
+1. Open a planner item for editing
+2. Click **Add Template** in the Notes section
+3. Select a template from the available options
+4. The template content is added to your notes
+
+<Tip>
+Create templates for common project types like "QBR Preparation", "Security Assessment", or "Onboarding Checklist" to standardize your planning process.
+</Tip>
+
+## AI Features
+
+### Ask AI
+
+Click the **Ask AI** button in the toolbar to get AI-powered assistance:
+- Generate project plans
+- Suggest tasks based on company context
+- Draft descriptions and notes
+
+### AI Draft Notes
+
+Within the edit dialog, use **AI Draft** to automatically generate notes based on the item's context, type, and linked findings.
+
+## Filtering & Search
+
+### Search
+
+Use the search box to find planner items by title or description.
+
+### Filters
+
+Click the **Filter** button to narrow down displayed items by:
+- Company
+- Status
+- Type
+- Date range
+- Assigned user
+
+## Toolbar Actions
+
+| Button | Action |
+|--------|--------|
+| **Search** | Find items by text |
+| **Today** | Jump to current date |
+| **Ask AI** | Get AI assistance |
+| **Add Item** | Create new planner item |
+| **View density** | Change display density |
+| **Filter** | Filter displayed items |
 
 ## Best Practices
 
-- **Clear Descriptions** - Provide detailed task requirements
-- **Realistic Deadlines** - Set achievable due dates
-- **Regular Updates** - Keep task status current
-- **Priority Management** - Focus on high-impact tasks
-- **Team Communication** - Use comments for collaboration
+<AccordionGroup>
+  <Accordion title="Plan at the right level">
+    Use yearly view for strategic planning, quarterly for project scheduling, and monthly for detailed task management.
+  </Accordion>
+
+  <Accordion title="Link findings to planner items">
+    When compliance checks or security assessments reveal issues, create planner items linked to those findings to track remediation.
+  </Accordion>
+
+  <Accordion title="Use templates consistently">
+    Create templates for recurring work types to ensure consistent planning and nothing gets missed.
+  </Accordion>
+
+  <Accordion title="Set realistic estimates">
+    Include hours and cost estimates to help with resource planning and client communication.
+  </Accordion>
+
+  <Accordion title="Update status regularly">
+    Keep item statuses current so the team has an accurate view of work progress.
+  </Accordion>
+</AccordionGroup>
 
 ## Integration Points
 
-- **Goals Module** - Link tasks to strategic goals
-- **Calendar Module** - Sync tasks with calendar events
-- **Reporting Module** - Generate project analytics
-- **Microsoft 365** - Integrate with Microsoft Planner
+- **Goals Module** - Link planner items to company goals
+- **Calendar Module** - Schedule meetings related to planner items
+- **Compliance Module** - Connect to compliance findings
+- **Microsoft 365** - Sync with Microsoft Planner tasks
+- **Meeting Agendas** - Add planner items to meeting agendas for client discussions
 
 ## Related Resources
 
-- [Goals](../goals/index) - Connect tasks to objectives
-- [Calendar](../calendar/index) - Schedule task-related meetings
-- [Reporting](../reporting/index) - Analyze project performance
+<CardGroup cols={2}>
+  <Card title="Goals" icon="bullseye" href="/user-guides/goals/index">
+    Connect planner items to strategic objectives
+  </Card>
+  <Card title="Calendar" icon="calendar" href="/user-guides/calendar/index">
+    Schedule meetings for planner items
+  </Card>
+  <Card title="Compliance" icon="shield-check" href="/user-guides/compliance/index">
+    Link findings to planned remediation
+  </Card>
+  <Card title="Settings" icon="gear" href="/user-guides/settings/index">
+    Configure planner item types and templates
+  </Card>
+</CardGroup>
 
 ## Need Help?
 
-For assistance with the Planner module, contact support@msportal.ai or review our project management guides.
+For assistance with the Planner module, contact support@msportal.ai.

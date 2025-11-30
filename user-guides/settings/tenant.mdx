@@ -1,0 +1,133 @@
+---
+title: Tenant Settings
+description: Configure organization-wide settings, custom domains, and branding
+icon: building-columns
+---
+
+Tenant Settings controls organization-wide configuration including company details, custom domains, branding, and security options. Only Primary Admins can access these settings.
+
+## Accessing Tenant Settings
+
+1. Click **Settings** in the sidebar
+2. Select the **Tenant** icon from the settings navigation
+
+## Tenant Settings Overview
+
+<Frame>
+  <img src="/images/settings/settings-tenant.png" alt="Tenant Settings" />
+</Frame>
+
+## Tenant Details
+
+Basic organization information:
+
+| Field | Description |
+|-------|-------------|
+| **Company Name** | Your organization's display name |
+| **Billing Email** | Email for billing notifications |
+| **Primary Admin** | Main administrator contact |
+
+## Address & Preferences
+
+### Company Address
+- **Street Address** - Physical location
+- **City, State/Province** - Location details
+- **Postal Code** - ZIP or postal code
+- **Country** - Country of operation
+
+### Timezone
+Select your organization's default timezone. This affects:
+- Scheduled reports
+- Meeting times
+- Audit timestamps
+- User default timezone
+
+## Tenant Security Settings
+
+### Restrict to Assigned Companies
+
+When enabled:
+- Users only see data for companies they're explicitly assigned to
+- Improves data isolation between teams
+- Requires company assignments in user management
+
+<Note>
+Roles with **Bypass Company Restrictions** enabled will still have access to all companies.
+</Note>
+
+### Advanced Settings
+
+Additional security and configuration options for enterprise deployments.
+
+## Custom Domains
+
+Configure custom domains to access MSPortal with your own branding:
+
+### Adding a Custom Domain
+
+<Steps>
+  <Step title="Enter Domain">
+    Type your custom domain (e.g., `portal.yourcompany.com`)
+  </Step>
+  <Step title="Copy CNAME Target">
+    Copy the provided CNAME target value
+  </Step>
+  <Step title="Update DNS">
+    Add a CNAME record with your DNS provider pointing to the target
+  </Step>
+  <Step title="Verify Domain">
+    Click **Re-check** to verify DNS propagation
+  </Step>
+  <Step title="Set Primary">
+    Optionally mark as primary domain
+  </Step>
+</Steps>
+
+### Domain Status
+
+| Status | Meaning |
+|--------|---------|
+| **Active** | Domain is verified and working |
+| **Pending** | Waiting for DNS verification |
+| **Error** | DNS configuration issue |
+
+## Enhanced Branding
+
+Customize your organization's branding:
+
+### Logo Options
+
+| Logo Type | Size | Used For |
+|-----------|------|----------|
+| **Primary Logo (Light)** | 140×32px | Expanded sidebar (light mode) |
+| **Small Icon (Light)** | 32×32px | Collapsed sidebar (light mode) |
+| **Primary Logo (Dark)** | 140×32px | Expanded sidebar (dark mode) |
+| **Small Icon (Dark)** | 32×32px | Collapsed sidebar (dark mode) |
+| **Favicon** | 32×32px | Browser tab icon |
+| **Reporting Logo** | Varies | PDF reports and exports |
+
+### Upload Guidelines
+
+- **Format** - PNG or SVG recommended
+- **Background** - Transparent backgrounds work best
+- **Quality** - High resolution for crisp display
+- **Theme-aware** - Upload separate light/dark versions
+
+### Live Preview
+
+Use the preview panel to see how your branding appears:
+- **Desktop view** - Full sidebar with logo
+- **Mobile view** - Collapsed icon view
+
+## Best Practices
+
+- **Complete all branding** - Upload all logo variants for consistent appearance
+- **Test custom domains** - Verify domains work before sharing with users
+- **Document settings** - Record configuration for disaster recovery
+- **Review periodically** - Update branding when company details change
+
+## Related Resources
+
+- [Billing Settings](/user-guides/settings/billing) - Subscription management
+- [Users & Roles](/user-guides/settings/users-roles) - User permissions
+- [Settings Overview](/user-guides/settings/index) - All settings options

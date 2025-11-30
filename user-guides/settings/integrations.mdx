@@ -1,0 +1,106 @@
+---
+title: Integrations Settings
+description: Connect PSA systems and third-party services to MSPortal.ai
+icon: plug
+---
+
+Integrations Settings allows you to connect MSPortal.ai to your PSA (Professional Services Automation) system and other third-party services.
+
+## Accessing Integrations Settings
+
+1. Click **Settings** in the sidebar
+2. Select the **Integrations** icon from the settings navigation
+
+## Integrations Overview
+
+<Frame>
+  <img src="/images/settings/settings-integrations.png" alt="Integrations Settings" />
+</Frame>
+
+MSPortal.ai supports integration with major PSA platforms:
+
+| Integration | Description |
+|-------------|-------------|
+| **Halo PSA** | Full ticketing, company, and user sync |
+| **ConnectWise Manage** | Tickets, companies, and service boards |
+| **Autotask** | Account and ticket synchronization |
+| **Syncro** | Customer and ticket integration |
+| **NinjaRMM** | Device and monitoring data |
+| **Microsoft 365** | Secure Score and tenant management |
+| **Stripe** | Billing and payment processing |
+| **Bigger Brains** | Training content and courses |
+
+## Connecting an Integration
+
+<Steps>
+  <Step title="Select Integration">
+    Click on the integration you want to configure
+  </Step>
+  <Step title="Enter Credentials">
+    Provide API keys, client ID/secret, or other required credentials
+  </Step>
+  <Step title="Configure Options">
+    Set sync preferences and mapping options
+  </Step>
+  <Step title="Test Connection">
+    Click **Test** to verify the connection works
+  </Step>
+  <Step title="Enable Sync">
+    Turn on automatic synchronization
+  </Step>
+</Steps>
+
+## PSA Integrations
+
+### What Syncs
+
+| Data Type | Direction | Notes |
+|-----------|-----------|-------|
+| **Companies** | PSA → MSPortal | Client/account records |
+| **Contacts** | PSA → MSPortal | Company contacts |
+| **Users** | Bidirectional | Technician accounts |
+| **Tickets** | Bidirectional | Service tickets |
+
+### Sync Options
+
+- **Auto-sync interval** - How often data syncs (5, 15, 30 minutes)
+- **Initial import** - Import existing records on first connect
+- **Selective sync** - Choose which record types to sync
+
+## Integration Status
+
+Each integration shows:
+
+| Status | Meaning |
+|--------|---------|
+| **Connected** | Active and syncing |
+| **Disconnected** | Credentials removed or expired |
+| **Error** | Connection issue requiring attention |
+| **Syncing** | Currently synchronizing data |
+
+## Troubleshooting
+
+### Connection Issues
+
+1. Verify API credentials are correct
+2. Check that required permissions are granted
+3. Ensure your PSA subscription includes API access
+4. Review firewall/network settings
+
+### Sync Problems
+
+1. Check the sync logs for errors
+2. Verify field mappings are correct
+3. Look for duplicate records
+4. Contact support if issues persist
+
+<Note>
+For detailed setup instructions for each integration, see the [Integrations Guide](/user-guides/integrations/index).
+</Note>
+
+## Related Resources
+
+- [Enable ConnectWise](/user-guides/integrations/enable-connectwise-integration)
+- [Enable Syncro](/user-guides/integrations/enable-syncro-integration)
+- [Enable Autotask](/user-guides/integrations/enable-autotask-integration)
+- [Import Companies](/user-guides/integrations/import-companies)

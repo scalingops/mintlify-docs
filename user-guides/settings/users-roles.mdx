@@ -1,0 +1,189 @@
+---
+title: Users & Roles
+description: Manage team members and create custom roles with granular permissions
+icon: users
+---
+
+Users & Roles settings allow you to manage your team members, create custom roles, and assign granular permissions to control access across MSPortal.ai.
+
+## Accessing Users & Roles
+
+1. Click **Settings** in the sidebar
+2. Select the **Users & Roles** icon from the settings navigation
+
+## Users Tab
+
+The Users tab displays all team members in your organization.
+
+<Frame>
+  <img src="/images/settings/settings-users-roles-list.png" alt="Users List" />
+</Frame>
+
+### User Information
+
+Each user entry shows:
+
+| Field | Description |
+|-------|-------------|
+| **Name** | User's full name |
+| **Email** | Login email address |
+| **Role** | Assigned custom role |
+| **Status** | Active or inactive |
+| **Last Login** | Most recent login timestamp |
+
+### Adding a New User
+
+<Steps>
+  <Step title="Click Add User">
+    Select the **+ Add User** button in the top right
+  </Step>
+  <Step title="Enter User Details">
+    Fill in the user's name, email address, and other required information
+  </Step>
+  <Step title="Assign a Role">
+    Select a custom role to define the user's permissions
+  </Step>
+  <Step title="Assign Companies">
+    If "Restrict to Assigned Companies" is enabled, select which companies this user can access
+  </Step>
+  <Step title="Send Invitation">
+    Click **Save** to send an invitation email to the new user
+  </Step>
+</Steps>
+
+### Editing Users
+
+Click on any user row to edit their details:
+
+- Update profile information
+- Change assigned role
+- Modify company assignments
+- Deactivate or reactivate the account
+
+## Roles Tab
+
+The Roles tab allows you to create and manage custom roles with specific permissions.
+
+<Frame>
+  <img src="/images/settings/settings-users-roles-tab.png" alt="Roles Tab" />
+</Frame>
+
+### Understanding Roles
+
+Roles define what actions users can perform in MSPortal.ai. Each role is a collection of permissions that can be assigned to users.
+
+<Note>
+The **Primary Admin** role is a system role that cannot be deleted or modified. It always has full access to all features.
+</Note>
+
+### Creating a Custom Role
+
+<Steps>
+  <Step title="Click Add Role">
+    Select the **+ Add Role** button
+  </Step>
+  <Step title="Name the Role">
+    Enter a descriptive name (e.g., "Support Technician", "Account Manager")
+  </Step>
+  <Step title="Set Permissions">
+    Check the permissions this role should have access to
+  </Step>
+  <Step title="Save the Role">
+    Click **Save** to create the role
+  </Step>
+</Steps>
+
+### RBAC Permissions
+
+Roles use a granular Role-Based Access Control (RBAC) system. Each role has three permission levels for every resource:
+
+<Frame>
+  <img src="/images/settings/settings-roles-edit-dialog.png" alt="Role Edit Dialog showing RBAC permissions" />
+</Frame>
+
+| Permission Level | Description |
+|------------------|-------------|
+| **Read** | View data and access the page |
+| **Write** | Create and edit records |
+| **Manage** | Full control including delete and settings |
+
+### Permission Sections
+
+Permissions are organized into three sections:
+
+**Main Navigation** - Access to core application pages:
+- Dashboard, Surveys, Goals, Planner, Budgets
+- Calendar, Meetings, Notifications
+- M365, Tickets, Compliance, Training
+- Devices, Reporting, External
+
+**Settings** - Access to configuration areas:
+- Users, Roles, Companies
+- Training, Tickets, Compliance settings
+- Templates, Playbooks, Integrations
+- Import/Export, Tenant, Billing
+
+**Other** - Special permissions:
+- Impersonate (start user impersonation)
+- Types management
+
+### Role Options
+
+| Option | Description |
+|--------|-------------|
+| **Default Role** | Automatically assign to new users |
+| **Bypass Company Restrictions** | Access all companies regardless of tenant restrictions |
+
+### Example Role Configurations
+
+| Role Name | Typical Permissions |
+|-----------|---------------------|
+| **Support Tech** | Read/Write on Tickets, Devices; Read on Company Overview |
+| **Account Manager** | Manage on Calendar, Budgets; Read/Write on Reports |
+| **Compliance Admin** | Manage on Compliance, Playbooks; Read on Reports |
+| **Training Admin** | Manage on Training; Read on Company Overview |
+
+## Company Assignments
+
+When "Restrict to Assigned Companies" is enabled in [Tenant Settings](/user-guides/settings/tenant), users only see data for companies they're assigned to.
+
+### Assigning Companies to Users
+
+1. Edit a user from the Users tab
+2. Navigate to the **Company Assignments** section
+3. Select the companies this user should have access to
+4. Save changes
+
+<Warning>
+If a user has no company assignments when restrictions are enabled, they won't be able to see any company data.
+</Warning>
+
+## Best Practices
+
+### Role Design
+- **Start simple** - Create a few broad roles before adding specialized ones
+- **Use descriptive names** - Role names should indicate the user's function
+- **Document permissions** - Maintain a reference of what each role can do
+
+### User Management
+- **Regular audits** - Review user access periodically
+- **Deactivate vs delete** - Deactivate users who leave to preserve audit trails
+- **Least privilege** - Assign the minimum permissions needed for each role
+
+## Troubleshooting
+
+### User Can't Access a Feature
+1. Check the user's assigned role
+2. Verify the role has the required permission
+3. If using company restrictions, ensure the user is assigned to relevant companies
+
+### Role Changes Not Taking Effect
+1. Ask the user to log out and back in
+2. Clear browser cache if issues persist
+3. Verify the role was saved successfully
+
+## Related Resources
+
+- [Settings Overview](/user-guides/settings/index) - All settings options
+- [Tenant Settings](/user-guides/settings/tenant) - Company restriction settings
+- [Getting Started](/user-guides/getting-started/how-to-create-a-new-user-role) - Role creation guide

@@ -1,0 +1,131 @@
+---
+title: Import/Export Settings
+description: Bulk import and export data using CSV files
+icon: file-import
+---
+
+Import/Export Settings allows you to perform bulk data operations using CSV files. Import new records or export existing data for backup or analysis.
+
+## Accessing Import/Export Settings
+
+1. Click **Settings** in the sidebar
+2. Select the **Import/Export** icon from the settings navigation
+
+## Import/Export Overview
+
+<Frame>
+  <img src="/images/settings/settings-import-export.png" alt="Import/Export Settings" />
+</Frame>
+
+## Import Data
+
+### Supported Import Types
+
+| Data Type | Template Available | Notes |
+|-----------|-------------------|-------|
+| **Companies** | Yes | Client company records |
+| **Contacts** | Yes | Company contacts |
+| **Users** | Yes | Team member accounts |
+| **Devices** | Yes | Device inventory |
+| **Goals** | Yes | Company goals |
+
+### Import Process
+
+<Steps>
+  <Step title="Download Template">
+    Click **Download Template** for the data type you want to import
+  </Step>
+  <Step title="Fill in Data">
+    Open the CSV template and add your data following the column format
+  </Step>
+  <Step title="Upload File">
+    Click **Import** and select your completed CSV file
+  </Step>
+  <Step title="Map Fields">
+    Verify the column mapping matches your data
+  </Step>
+  <Step title="Review & Confirm">
+    Preview the import and confirm to process
+  </Step>
+</Steps>
+
+### CSV Template Format
+
+Templates include:
+- **Required columns** - Fields that must have values
+- **Optional columns** - Fields that can be left empty
+- **Example row** - Sample data showing expected format
+- **Instructions** - Notes on formatting requirements
+
+<Warning>
+Always use the provided templates. Custom CSV formats may cause import errors.
+</Warning>
+
+## Export Data
+
+### Export Options
+
+| Data Type | Formats | Includes |
+|-----------|---------|----------|
+| **Companies** | CSV | All company fields |
+| **Contacts** | CSV | Contact details with company links |
+| **Users** | CSV | User accounts and roles |
+| **Devices** | CSV | Device inventory |
+| **Compliance** | CSV | Compliance status and history |
+
+### Export Process
+
+<Steps>
+  <Step title="Select Data Type">
+    Choose what data to export
+  </Step>
+  <Step title="Apply Filters (Optional)">
+    Filter to export only specific records
+  </Step>
+  <Step title="Click Export">
+    Generate and download the CSV file
+  </Step>
+</Steps>
+
+## Import History
+
+View past imports:
+
+| Field | Description |
+|-------|-------------|
+| **Date** | When the import was performed |
+| **Type** | What data type was imported |
+| **Records** | Number of records processed |
+| **Status** | Success, partial, or failed |
+| **User** | Who performed the import |
+
+## Best Practices
+
+### Before Importing
+- **Backup first** - Export existing data before major imports
+- **Test with small batches** - Try a few records before bulk import
+- **Clean your data** - Remove duplicates and fix formatting issues
+- **Use templates** - Always start with the provided CSV templates
+
+### Data Quality
+- **Consistent formatting** - Use same date/phone formats throughout
+- **Required fields** - Ensure all required columns have values
+- **Unique identifiers** - Avoid duplicate IDs or email addresses
+- **UTF-8 encoding** - Save CSV files with UTF-8 encoding
+
+## Troubleshooting
+
+### Common Import Errors
+
+| Error | Solution |
+|-------|----------|
+| **Missing required field** | Fill in all required columns |
+| **Invalid format** | Check date/phone number formatting |
+| **Duplicate record** | Remove or update the existing record |
+| **File too large** | Split into smaller files |
+
+## Related Resources
+
+- [Import Companies](/user-guides/integrations/import-companies)
+- [Import Users](/user-guides/integrations/import-users)
+- [Settings Overview](/user-guides/settings/index)

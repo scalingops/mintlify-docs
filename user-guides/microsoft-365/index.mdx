@@ -1,154 +1,252 @@
 ---
-title: Microsoft 365 Integration
-description: Microsoft 365 secure score monitoring and calendar synchronization
+title: Microsoft 365 Secure Score
+description: Monitor and improve your Microsoft 365 security posture with actionable recommendations
+icon: shield-check
 ---
 
-The Microsoft 365 integration in MSPortal.ai provides security monitoring through Microsoft Secure Score and calendar synchronization capabilities.
+The Microsoft 365 module provides comprehensive security monitoring through Microsoft Secure Score. Track your organization's security posture, view recommendations, and create action plans to improve your security configuration.
 
-## Key Features
+## Accessing M365 Secure Score
 
-### Currently Available
-- **Microsoft Secure Score** - Monitor and improve your Microsoft 365 security posture
-- **Calendar Sync** - Synchronize Microsoft 365 calendars with MSPortal.ai
-- **Single Sign-On (SSO)** - Seamless authentication with Microsoft 365 credentials
-- **Security Recommendations** - Actionable improvements for security configuration
+1. Click **Microsoft 365** in the sidebar
+2. The Secure Score dashboard displays your security metrics and controls
 
-### Secure Score Monitoring
+<Frame>
+  <img src="/images/microsoft-365/m365-secure-score-overview.png" alt="M365 Secure Score Overview" />
+</Frame>
 
-The Secure Score feature helps you:
-- **Track Security Posture** - View your organization's current security score
-- **Review Recommendations** - See prioritized security improvements
-- **Monitor Progress** - Track score changes over time
-- **Control Details** - Deep dive into specific security controls
-- **Action Items** - View and manage security improvement actions
+## Summary Dashboard
 
-## Getting Started
+The summary section displays four key metrics:
 
-### Prerequisites
-1. Microsoft 365 tenant with appropriate permissions
-2. Microsoft 365 integration enabled in MSPortal.ai
-3. Global Administrator or Security Administrator role
+| Metric | Description |
+|--------|-------------|
+| **Secure Score** | Points achieved out of total available (e.g., 53/64) |
+| **Score Percentage** | Overall progress percentage with visual progress bar |
+| **Industry Comparison** | How your score compares to industry average |
+| **30-Day Trend** | Score change over the past month |
 
-### Initial Setup
+<Tip>
+The Industry Comparison shows how your organization compares to similar organizations. A positive difference means you're ahead of the average.
+</Tip>
+
+### Collapsing the Summary
+
+Click the **Collapse Summary** button to minimize the summary cards and focus on the controls list.
+
+## Security Controls
+
+### Controls Table
+
+The controls table lists all security recommendations with:
+
+| Column | Description |
+|--------|-------------|
+| **Title** | Name of the security control |
+| **Company** | Associated Microsoft tenant |
+| **Category** | Control category (Identity, Apps, Data) |
+| **Service** | Microsoft service (AzureAD, MS Teams, Exchange) |
+| **Severity** | Critical, High, Medium, or Low |
+| **Max Points** | Points available if implemented |
+| **Status** | Open, Completed, or In Progress |
+
+### Sorting and Filtering
+
+- **Sort by column** - Click column headers to sort
+- **Search** - Use the search box to find specific controls
+- **Filter** - Click the filter icon to apply filters
+
+### Severity Levels
+
+| Severity | Description |
+|----------|-------------|
+| **Critical** | High-impact security issues requiring immediate attention |
+| **High** | Important security gaps that should be prioritized |
+| **Medium** | Moderate security improvements |
+| **Low** | Minor enhancements for comprehensive security |
+
+## Control Details
+
+Click any control row to view detailed information:
+
+<Frame>
+  <img src="/images/microsoft-365/m365-control-details.png" alt="Control Details Panel" />
+</Frame>
+
+### Details Section
+
+| Field | Description |
+|-------|-------------|
+| **Status** | Current implementation state |
+| **Max Points** | Score points available |
+| **Service** | Microsoft service affected |
+| **Category** | Control category |
+| **Severity** | Risk level |
+| **Implementation Cost** | Effort required (Low, Medium, High) |
+
+### Remediation Steps
+
+Each control includes step-by-step remediation instructions:
+
+1. Specific actions to take
+2. Portal navigation paths
+3. Settings to configure
+4. Verification steps
+
+### Impact Information
+
+| Field | Description |
+|-------|-------------|
+| **User Impact** | Effect on end users (Low, Medium, High) |
+| **Remediation Impact** | Overall impact of implementing the fix |
+
+### Recent Scores
+
+View historical score data for the control to track progress over time.
+
+## Taking Action
+
+### Add to Planner
+
+Create a planner task to track implementation:
 
 <Steps>
-  <Step title="Enable Integration">
-    Navigate to Settings → Integrations and enable Microsoft 365
+  <Step title="Click Add to Planner">
+    From the control details panel, click **Add to Planner**
   </Step>
-  <Step title="Authenticate">
-    Sign in with Microsoft 365 administrator credentials
+  <Step title="Review Pre-filled Data">
+    The dialog pre-populates with control information
   </Step>
-  <Step title="Grant Permissions">
-    Approve the required permissions for secure score access
+  <Step title="Configure Task Details">
+    Set due date, status, business value, and estimates
   </Step>
-  <Step title="Sync Data">
-    Initial sync will pull your current secure score and recommendations
+  <Step title="Use AI Draft">
+    Click **AI Draft** to generate a comprehensive summary
+  </Step>
+  <Step title="Save">
+    Click **Save** to create the planner task
   </Step>
 </Steps>
 
-## Using Secure Score
+<Frame>
+  <img src="/images/microsoft-365/m365-add-to-planner-dialog.png" alt="Add to Planner Dialog" />
+</Frame>
 
-### Viewing Your Score
+#### Planner Task Fields
 
-1. Navigate to **Microsoft 365** in the sidebar
-2. The main dashboard displays:
-   - Current secure score and maximum possible score
-   - Score percentage
-   - Comparison to industry average
-   - Recent score trends
+| Field | Description |
+|-------|-------------|
+| **Company** | Associated company |
+| **Title** | Editable task title |
+| **Due Date** | Target completion date |
+| **Status** | Not Started, In Progress, Completed |
+| **Type** | Task categorization |
+| **Business Value** | High, Medium, Low |
+| **Est. Hours** | Estimated implementation time |
+| **Est. Cost** | Estimated implementation cost |
+| **Probability of Success** | Confidence slider (0-100%) |
 
-### Understanding Recommendations
+#### Using AI Draft
 
-Each security recommendation includes:
-- **Impact** - How much the action will improve your score
-- **Complexity** - Implementation difficulty
-- **User Impact** - Effect on end users
-- **Status** - Current implementation state
+The **AI Draft** feature automatically generates professional notes:
 
-### Taking Action
+<Frame>
+  <img src="/images/microsoft-365/m365-planner-ai-draft.png" alt="AI Draft Feature" />
+</Frame>
 
-1. Review the **Actions** tab for prioritized improvements
-2. Click on any action for detailed implementation steps
-3. Mark actions as completed when implemented
-4. Monitor score improvements after changes
+AI Draft creates:
+- **Summary** - Clear description of what needs to be done
+- **Why This Matters** - Security, compliance, and risk reduction benefits
+- **Next Steps** - Actionable implementation checklist
+- **Estimated Time** - Suggested implementation duration
 
-## Calendar Synchronization
+#### Relationships
 
-### Features
-- **Two-way Sync** - Changes sync between MSPortal.ai and Microsoft 365
-- **Meeting Management** - Create and manage meetings from MSPortal.ai
-- **Availability Checking** - See calendar availability across the platform
-- **Event Notifications** - Receive alerts for upcoming meetings
+Link the task to:
+- **Linked Findings** - Related security controls
+- **Goals** - Strategic objectives
+- **Compliance Items** - Regulatory requirements
 
-### Setting Up Calendar Sync
+### Add to Meeting
 
-1. Navigate to **Calendar → Settings**
-2. Enable Microsoft 365 calendar sync
-3. Authenticate with your Microsoft account
-4. Select calendars to synchronize
-5. Configure sync frequency and preferences
+Add the control to an upcoming meeting agenda:
 
-## Single Sign-On (SSO)
+<Steps>
+  <Step title="Click Add to Meeting">
+    From the control details, click **Add to Meeting**
+  </Step>
+  <Step title="Select Meeting">
+    Choose an existing or create a new meeting
+  </Step>
+  <Step title="Configure Agenda Item">
+    Set discussion time and presenter
+  </Step>
+</Steps>
 
-SSO allows users to:
-- Sign in once with Microsoft 365 credentials
-- Access MSPortal.ai without separate passwords
-- Maintain consistent security policies
-- Simplify user management
+### Open in Portal
 
-### Configuring SSO
+Click **Open in Portal** to navigate directly to the Microsoft admin portal where you can implement the fix.
 
-1. Navigate to **Settings → Authentication**
-2. Enable Microsoft 365 SSO
-3. Configure your Azure AD application
-4. Map user attributes
-5. Test SSO login flow
+## Bulk Actions
+
+### Selecting Multiple Controls
+
+1. Use the checkbox next to each control to select
+2. Click **Select All** to select all visible controls
+3. Use bulk actions to process multiple controls at once
 
 ## Best Practices
 
-### Security Score
-- **Regular Reviews** - Check secure score weekly
-- **Prioritize High-Impact** - Focus on actions with greatest score improvement
-- **Document Changes** - Track what security changes were implemented
-- **Monitor Trends** - Watch for score decreases that may indicate issues
+### Prioritization Strategy
 
-### Calendar Sync
-- **Selective Sync** - Only sync necessary calendars
-- **Privacy Settings** - Configure what information is visible
-- **Conflict Resolution** - Set preferences for handling sync conflicts
+1. **Start with Critical** - Address Critical severity items first
+2. **High-Point Items** - Focus on controls with highest point values
+3. **Low Implementation Cost** - Quick wins with minimal effort
+4. **User Impact Consideration** - Balance security with user experience
+
+### Regular Reviews
+
+- **Weekly** - Review Critical and High severity items
+- **Monthly** - Assess overall score progress
+- **Quarterly** - Comprehensive security posture review
+
+### Documentation
+
+- Create planner tasks for all implementations
+- Use AI Draft to document remediation plans
+- Track score changes after implementations
+
+## Prerequisites
+
+Before using M365 Secure Score:
+
+1. **Microsoft 365 Integration** - Enable in Settings → Integrations
+2. **Permissions** - Global Administrator or Security Administrator role
+3. **Tenant Access** - Valid Microsoft 365 subscription
 
 ## Troubleshooting
 
-### Common Issues
+### Score Not Updating
 
-**Secure Score Not Updating**
-- Verify Microsoft 365 permissions are still valid
-- Check for API throttling limits
-- Ensure network connectivity to Microsoft services
+- Microsoft Secure Score updates may have up to 24-hour delay
+- Verify integration permissions are still valid
+- Check Microsoft 365 service health status
 
-**Calendar Sync Errors**
-- Re-authenticate with Microsoft 365
-- Check calendar permissions
-- Verify time zone settings match
+### Controls Not Loading
 
-**SSO Login Failures**
-- Confirm Azure AD configuration
-- Check user account status in Microsoft 365
-- Verify SSO is enabled for the user's account
+- Refresh the page
+- Check network connectivity
+- Re-authenticate the Microsoft 365 integration
 
-## Limitations
+### Implementation Not Reflected
 
-- Secure Score updates may have up to 24-hour delay
-- Calendar sync limited to primary and shared calendars
-- Some advanced security controls may not be available
-- Requires active Microsoft 365 subscription
+- Allow 24-48 hours for Microsoft to detect changes
+- Verify the configuration was applied to all users/groups
+- Check for policy conflicts
 
 ## Related Resources
 
-- [Calendar Module](../calendar/index) - Full calendar functionality
-- [Settings](../settings/index) - Configure integrations
-- [Security Best Practices](https://docs.microsoft.com/security) - Microsoft security documentation
-
-## Support
-
-For assistance with Microsoft 365 integration, contact your system administrator or MSPortal.ai support.
+- [Calendar Module](/user-guides/calendar/index) - Meeting scheduling
+- [Planner Module](/user-guides/planner/index) - Task management
+- [Compliance Module](/user-guides/compliance/index) - Compliance tracking
+- [Settings - Integrations](/user-guides/settings/integrations) - Integration configuration

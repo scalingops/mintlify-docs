@@ -1,91 +1,278 @@
 ---
-title: Reporting Module
-description: Generate insights and analytics across all MSPortal.ai modules
+title: Reporting
+description: Build and share professional reports with drag-and-drop blocks
+icon: chart-pie
 ---
 
-The Reporting module provides powerful analytics and reporting capabilities to help you gain insights, track performance, and make data-driven decisions across your organization.
+The Reporting module lets you create professional reports by combining data blocks from across MSPortal.ai. Build QBR presentations, compliance summaries, budget forecasts, and more with the visual report builder.
 
-## Key Features
+## Accessing Reports
 
-- **Custom Reports** - Build reports tailored to your needs
-- **Pre-built Templates** - Library of ready-to-use reports
-- **Real-time Dashboards** - Live data visualization
-- **Scheduled Reports** - Automated report generation and distribution
-- **Data Export** - PDF export for professional sharing
-- **Cross-module Analytics** - Combine data from multiple modules
+1. Click **Reporting** in the sidebar
+2. The reports list displays all your saved reports
 
-## Getting Started
+<Frame>
+  <img src="/images/reporting/reporting-overview.png" alt="Reports List Overview" />
+</Frame>
 
-1. Explore pre-built report templates
-2. Customize reports to match your requirements
-3. Create dashboards for key metrics
-4. Schedule automated report delivery
-5. Share reports with stakeholders
+## Reports List
 
-## Report Categories
+### Reports Table
 
-### Operational Reports
-- **Service Desk Performance** - Ticket metrics and SLA compliance
-- **Device Inventory** - Asset status and utilization
-- **User Activity** - Login patterns and system usage
-- **Project Status** - Task completion and timelines
+The reports table displays:
 
-### Financial Reports
-- **Budget Analysis** - Actual vs. planned spending
-- **Cost Centers** - Department expense tracking
-- **License Utilization** - Software license optimization
-- **ROI Analysis** - Return on investment metrics
+| Column | Description |
+|--------|-------------|
+| **Report Title** | Name of the report |
+| **Company** | Associated company |
+| **Creator** | User who created the report |
+| **Created** | Creation date |
+| **Blocks** | Number of content blocks in the report |
+| **Type** | Report category (Quarterly Report, etc.) |
+| **Actions** | Edit, duplicate, delete options |
 
-### Compliance Reports
-- **Audit Reports** - Compliance status by framework
-- **Security Posture** - Security metrics and incidents
-- **Training Compliance** - Training completion rates
-- **Policy Adherence** - Policy compliance tracking
+### Filtering and Search
 
-### Strategic Reports
-- **Goal Progress** - OKR and goal achievement
-- **Company Health** - Overall organizational metrics
-- **Survey Results** - Feedback analysis and trends
-- **QBR Reports** - Quarterly business review packages
+- **Search** - Find reports by title
+- **Filter** - Click the filter icon to narrow results
+- **Sort** - Click column headers to sort
 
-## Dashboard Features
+## Viewing a Report
 
-- **Widget Library** - Charts, graphs, tables, and KPIs
-- **Drag-and-Drop** - Customizable dashboard layouts
-- **Real-time Updates** - Live data refresh
-- **Drill-down** - Interactive data exploration
-- **Mobile Responsive** - Access from any device
+Click any report to view its contents:
+
+<Frame>
+  <img src="/images/reporting/reporting-report-view.png" alt="Report Viewer" />
+</Frame>
+
+### Report Header
+
+| Element | Description |
+|---------|-------------|
+| **Back** | Return to reports list |
+| **Title** | Report name and company |
+| **Date Range** | Data period covered |
+| **Edit Report** | Open in report builder |
+| **Print/Export PDF** | Generate PDF for sharing |
+
+### Report Content
+
+Reports display content blocks in a paginated format:
+- **Text blocks** - Headings, paragraphs, AI-generated summaries
+- **Data blocks** - Charts, tables, metrics from MSPortal modules
+- **Branding** - Company logos and styling
+
+## Creating a New Report
+
+<Steps>
+  <Step title="Click New Report">
+    Click the **New Report** button in the toolbar
+  </Step>
+  <Step title="Configure Metadata">
+    Set report type, company, and description
+  </Step>
+  <Step title="Set Date Range">
+    Define the data period for the report
+  </Step>
+  <Step title="Add Blocks">
+    Drag content blocks onto report pages
+  </Step>
+  <Step title="Save">
+    Press Ctrl+S or click Save to store the report
+  </Step>
+</Steps>
+
+## Report Builder
+
+The report builder provides a visual editor for creating reports:
+
+<Frame>
+  <img src="/images/reporting/reporting-builder.png" alt="Report Builder Interface" />
+</Frame>
+
+### Report Metadata
+
+Configure basic report information:
+
+| Field | Description |
+|-------|-------------|
+| **Report Title** | Editable report name |
+| **Version** | Version number for tracking changes |
+| **Type** | Category (Quarterly Report, Monthly Summary, etc.) |
+| **Company** | Associated company for data filtering |
+| **Description** | Brief summary of report contents |
+
+### Date Controls
+
+| Field | Description |
+|-------|-------------|
+| **Date Range** | Start and end dates for data |
+| **Quick Dates** | Preset ranges (This Quarter, Last Month, YTD) |
+
+### Display Settings
+
+| Setting | Description |
+|---------|-------------|
+| **Page Format** | Letter 4x8, A4, or custom layouts |
+| **Show Grid** | Display alignment grid for positioning |
+| **Show Cards** | Enable card styling on blocks |
+| **Applied Blocks** | View list of blocks used in report |
+
+## Content Blocks
+
+### Text Blocks
+
+| Block | Description |
+|-------|-------------|
+| **Heading** | Large title text for sections |
+| **Text** | Paragraph text with rich formatting |
+
+### Branding
+
+| Block | Description |
+|-------|-------------|
+| **Company Logo** | Insert your organization's logo |
+
+### Planner Blocks
+
+| Block | Description |
+|-------|-------------|
+| **Roadmap Timeline** | Visual timeline of planned items |
+| **Planner Table** | Table view of planner tasks |
+| **Planner Summary** | AI-generated executive summary |
+
+### Compliance Blocks
+
+| Block | Description |
+|-------|-------------|
+| **Compliance Score Overview** | Overall compliance grade and metrics |
+| **Compliance Breakdown** | Score by compliance group |
+| **Compliance Progress Over Time** | Historical compliance trend chart |
+| **Non-Compliance Items List** | Detailed list of failing checks |
+| **Compliance Report** | Full compliance summary |
+
+### Goals Blocks
+
+| Block | Description |
+|-------|-------------|
+| **Goals** | Company goals with progress bars |
+
+### Budget Blocks
+
+| Block | Description |
+|-------|-------------|
+| **Budget Detail** | Full budget breakdown with line items |
+| **Budget Forecast** | Multi-year budget projection chart |
+
+### Device Blocks
+
+| Block | Description |
+|-------|-------------|
+| **Device Warranties** | Warranty status summary |
+| **Device Inventory** | Device list and counts |
+| **Warranty Timeline** | Upcoming warranty expirations |
+
+## Working with Pages
+
+### Page Management
+
+- **Add Page** - Click "+ Add Page" to create new pages
+- **Delete Page** - Click the trash icon on a page header
+- **Page Numbers** - Pages are numbered automatically
+
+### Block Positioning
+
+- **Drag and Drop** - Move blocks to position them
+- **Resize** - Drag block edges to resize
+- **Grid Alignment** - Enable grid for precise positioning
+- **Split Across Pages** - Large blocks can span multiple pages
+
+## Report Actions
+
+### Saving Reports
+
+- **Auto-save** - Changes save automatically
+- **Manual Save** - Press Ctrl+S or click Save
+- **Version Tracking** - Version numbers track changes
+
+### Exporting Reports
+
+<Steps>
+  <Step title="Open Report">
+    View the report you want to export
+  </Step>
+  <Step title="Click Print/Export PDF">
+    Select the export button in the header
+  </Step>
+  <Step title="Configure Options">
+    Set page size and orientation if needed
+  </Step>
+  <Step title="Download">
+    Save the PDF to your device
+  </Step>
+</Steps>
+
+### Sharing Reports
+
+- **PDF Export** - Share as professional PDF documents
+- **Direct Link** - Share report URL with team members
+- **Meeting Integration** - Add reports to meeting agendas
+
+## Report Types
+
+| Type | Use Case |
+|------|----------|
+| **Quarterly Report (QBR)** | Quarterly business reviews with clients |
+| **Monthly Summary** | Regular status updates |
+| **Compliance Report** | Audit and compliance documentation |
+| **Budget Review** | Financial planning and tracking |
+| **Custom** | Any specialized reporting need |
 
 ## Best Practices
 
-- **Define KPIs** - Identify key performance indicators
-- **Regular Reviews** - Schedule periodic report reviews
-- **Data Accuracy** - Validate data sources regularly
-- **Stakeholder Input** - Gather feedback on report usefulness
-- **Version Control** - Track report modifications
+### Report Design
 
-## Advanced Features
+1. **Start with Purpose** - Define what the report should communicate
+2. **Use Summaries** - Include AI-generated executive summaries
+3. **Balance Content** - Mix charts, tables, and text
+4. **Logical Flow** - Organize from overview to details
 
-### Report Builder
-- **Visual Designer** - Drag-and-drop report creation
-- **Data Sources** - Connect multiple data points
-- **Filters** - Dynamic filtering options
-- **Calculations** - Custom formulas and metrics
-- **Formatting** - Professional report styling
+### Data Freshness
 
-### Distribution Options
-- **Email Delivery** - Automated email distribution
-- **Portal Access** - Share via MSPortal.ai
-- **API Access** - Programmatic report generation
-- **Embedding** - Include reports in other applications
+- Reports pull live data when viewed
+- Export PDFs to capture point-in-time snapshots
+- Set appropriate date ranges for the reporting period
+
+### Branding
+
+- Upload company logo in Tenant Settings
+- Logo appears automatically in report headers
+- Consistent branding across all exported PDFs
+
+## Troubleshooting
+
+### Blocks Not Loading
+
+- Verify the company has data for the selected date range
+- Check that integrations are connected and synced
+- Refresh the page and try again
+
+### Export Issues
+
+- Ensure all blocks have finished loading
+- Try a smaller date range for large reports
+- Check browser pop-up settings for downloads
+
+### Missing Data
+
+- Verify date range includes relevant data
+- Check company selection matches data source
+- Ensure required modules are enabled
 
 ## Related Resources
 
-- [Company Overview](../company-overview/index) - Executive dashboards
-- [Compliance](../compliance/index) - Compliance reporting
-- [Budgets](../budgets/index) - Financial analytics
-- [Goals](../goals/index) - Performance tracking
-
-## Need Help?
-
-For assistance with the Reporting module, contact support@msportal.ai or consult our report builder documentation.
+- [Company Overview](/user-guides/company-overview/index) - Dashboard metrics
+- [Compliance](/user-guides/compliance/index) - Compliance data source
+- [Budgets](/user-guides/budgets/index) - Budget data source
+- [Goals](/user-guides/goals/index) - Goals data source
+- [Planner](/user-guides/planner/index) - Planner data source
