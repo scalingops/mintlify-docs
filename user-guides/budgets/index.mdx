@@ -1,65 +1,259 @@
 ---
-title: Budgets Module
-description: Manage financial planning, tracking, and reporting for your organization
+title: Budgets
+description: Create, manage, and track IT budgets with strategic planning integration in MSPortal.ai
+icon: calculator
 ---
 
-The Budgets module provides comprehensive financial management tools to help organizations plan, track, and optimize their spending across departments and projects.
+The Budgets module helps MSPs create and manage IT budgets for their clients. Build budgets by importing items from Planner, linking strategic goals, and adding products from your PSA. Track approval status and export professional budget documents.
 
-## Key Features
+![Budget View](/images/budgets/budget-view.png)
 
-- **Budget Creation** - Build detailed budgets with multiple categories
-- **Expense Tracking** - Monitor actual spending against budgets
-- **Forecasting** - Project future expenses based on trends
-- **Approval Workflows** - Manage budget approval processes
-- **Variance Analysis** - Compare actuals to budgeted amounts
-- **Multi-Year Planning** - Create long-term financial plans
+## Overview
 
-## Getting Started
+When you navigate to **Budgets** from the sidebar, you will see the budgets list for the selected company which includes:
 
-1. Set up your fiscal year and budget periods
-2. Create budget categories and line items
-3. Allocate funds across departments
-4. Track expenses and revenues
-5. Monitor budget performance through dashboards
+- **Search Bar** - Filter budgets by title
+- **Create New Budget** - Start building a new budget
+- **Budgets Table** - View all budgets with status, totals, and approval breakdown
+- **Bulk Actions** - Select multiple budgets for batch operations
 
-## Common Tasks
+![Budgets List](/images/budgets/budgets-list-with-new-budget.png)
 
-- **Creating Budgets** - Build annual or project-based budgets
-- **Recording Expenses** - Log actual spending
-- **Approving Requests** - Review and approve budget items
-- **Generating Reports** - Create financial reports
-- **Adjusting Allocations** - Reallocate funds as needed
+## Budgets Table
 
-## Budget Types
+The budgets table displays key information for each budget:
 
-- **Operating Budgets** - Day-to-day operational expenses
-- **Capital Budgets** - Long-term asset investments
-- **Project Budgets** - Specific project allocations
-- **Department Budgets** - Team-specific financial plans
-- **Emergency Funds** - Contingency reserves
+| Column | Description |
+|--------|-------------|
+| **Budget Title** | Name of the budget (click to edit) |
+| **Fiscal Year** | The fiscal year the budget applies to |
+| **Status** | Current status: Draft, Pending Approval, Approved, or Archived |
+| **Pending** | Total value of line items awaiting approval |
+| **Rejected** | Total value of rejected line items |
+| **Approved** | Total value of approved line items |
+| **Total** | Grand total of all line items |
+| **Last Modified** | When the budget was last updated |
 
-## Financial Controls
+## Creating a Budget
 
-- **Spending Limits** - Set thresholds and alerts
-- **Approval Chains** - Multi-level approval workflows
-- **Audit Trails** - Track all budget changes
-- **Access Controls** - Role-based permissions
-- **Compliance Checks** - Ensure policy adherence
+<Steps>
+  <Step title="Navigate to Budgets">
+    Select a company from the company selector, then click **Budgets** in the sidebar.
+  </Step>
+  <Step title="Click Create New Budget">
+    Click the **+ Create New Budget** button in the top right corner.
+  </Step>
+  <Step title="Configure Budget Details">
+    Fill in the budget header information:
+    - **Budget Title** - A descriptive name (e.g., "IT Infrastructure 2026")
+    - **Author** - The person responsible for the budget
+    - **Status** - Set initial status (typically Draft)
+    - **Fiscal Year** - Select the target year
+    - **Period Type** - Choose Annual, Quarterly, or Monthly
+    - **Currency** - Select the currency (USD, EUR, etc.)
+    - **Notes** - Add internal notes (not shown on exports)
+  </Step>
+  <Step title="Add Line Items">
+    Build your budget by adding items from three sources:
+    - **Planner Items** - Import tasks from your Planner
+    - **Products and Services** - Add products from your PSA
+    - **Strategic Goals** - Link goals to budget items
+  </Step>
+  <Step title="Save the Budget">
+    Click **Save** to save your budget. You will see a confirmation message.
+  </Step>
+</Steps>
+
+![Create Budget Form](/images/budgets/budget-saved.png)
+
+## Adding Budget Line Items
+
+The budget builder provides three panels for importing items into your budget:
+
+### Planner Items
+
+Import items directly from your company Planner. Each planner item shows:
+- Task name and icon
+- Due date and status
+- Estimated cost (if set)
+
+Click the **+** button next to any planner item to add it as a budget line item.
+
+### Products and Services
+
+Add products from your PSA or manually created products. Products display:
+- Product name
+- SKU (if available)
+- Vendor
+- Category
+- Unit price
+
+Toggle the **all** checkbox to see products from all tenants or just the current company.
+
+### Strategic Goals
+
+Link strategic goals to your budget for alignment with company objectives. Goals show:
+- Goal title
+- Priority badge (High, Medium, Low)
+- Target date and status
+
+<Tip>
+Linking goals to budget items helps demonstrate how IT spending supports strategic business objectives during budget reviews.
+</Tip>
+
+## Budget Line Items Table
+
+Once items are added, they appear in the Budget Line Items table:
+
+| Column | Description |
+|--------|-------------|
+| **Type** | Line item type: SW (Software), HW (Hardware), LB (Labour), OT (Other) |
+| **Details** | Item name and linked source (Planner, Product, or Goal) |
+| **Quantity** | Number of units |
+| **Unit Price** | Cost per unit |
+| **Total** | Line total (Quantity x Unit Price) |
+| **Category** | Budget category for grouping |
+| **Actions** | Edit or delete the line item |
+
+### Budget Totals
+
+The totals section shows spending breakdown by type:
+- **Software** - Total software costs
+- **Hardware** - Total hardware costs
+- **Labour** - Total labour costs
+- **Other** - Other expenses
+- **Grand Total** - Sum of all line items
+
+## Viewing a Budget
+
+To view a budget in read-only presentation mode:
+
+1. Click the **Actions** button on any budget row
+2. Select **View**
+3. The Budget View page displays a clean summary with:
+   - Budget title and status
+   - Company, fiscal year, period, and currency
+   - Summary cards showing Total, Approved, and Pending amounts
+   - Line items table with status indicators
+
+![Budget View](/images/budgets/budget-view.png)
+
+### Export Options
+
+From the Budget View, you can:
+- **Print** - Print the budget directly
+- **Export PDF** - Download a professional PDF document
+
+## Budget Statuses
+
+Budgets progress through these status stages:
+
+| Status | Description |
+|--------|-------------|
+| **Draft** | Budget is being created or edited |
+| **Pending Approval** | Budget submitted for review |
+| **Approved** | Budget has been approved and locked |
+| **Archived** | Budget is no longer active |
+
+<Warning>
+Once a budget is marked as **Approved**, it becomes locked and cannot be edited. Create a duplicate if you need to make changes.
+</Warning>
+
+## Line Item Statuses
+
+Individual line items also have approval statuses:
+
+| Status | Color | Description |
+|--------|-------|-------------|
+| **Pending** | Yellow | Awaiting approval |
+| **Approved** | Green | Item has been approved |
+| **Rejected** | Red | Item was rejected |
+
+## Managing Budgets
+
+### Editing a Budget
+
+1. Click on the budget title in the table, or
+2. Click **Actions** then **Edit**
+3. Make your changes
+4. Click **Save**
+
+### Duplicating a Budget
+
+To create a copy of an existing budget:
+
+1. Click **Actions** then **Duplicate**
+2. A new budget is created with "(Copy)" appended to the title
+3. Edit as needed
+
+### Deleting a Budget
+
+1. Click **Actions** then **Delete**
+2. Confirm the deletion
+
+<Warning>
+Deleting a budget is permanent and cannot be undone.
+</Warning>
+
+## Budget Actions Menu
+
+Click the **Actions** button on any budget to access:
+
+- **View** - Open read-only presentation mode
+- **Edit** - Open the budget editor
+- **Update Statuses** - Change approval status of line items
+- **Duplicate** - Create a copy of the budget
+- **Export** - Export to PDF or other formats
+- **Delete** - Remove the budget
 
 ## Best Practices
 
-- **Regular Reviews** - Monthly budget vs. actual analysis
-- **Accurate Forecasting** - Use historical data for projections
-- **Timely Updates** - Record expenses promptly
-- **Clear Documentation** - Document budget decisions
-- **Stakeholder Communication** - Share budget status regularly
+<Check>
+- Create budgets well before the fiscal year begins
+- Link budgets to strategic goals for alignment visibility
+- Use categories to organize line items by type
+- Update line item statuses as approvals are received
+- Export PDF versions for client presentations
+- Archive completed budgets rather than deleting them
+</Check>
+
+<Warning>
+Avoid these common pitfalls:
+- Creating budgets without linking to planner items or goals
+- Leaving budgets in Draft status indefinitely
+- Not updating line item statuses after approval decisions
+- Deleting budgets instead of archiving for audit trails
+</Warning>
+
+## Integrations
+
+### Planner Integration
+
+Budgets integrate with the Planner module to:
+- Import planner items as budget line items
+- Maintain links between budget items and tasks
+- Show estimated costs from planner items
+
+### Goals Integration
+
+Link strategic goals to demonstrate:
+- How IT spending supports business objectives
+- Alignment between budgets and company strategy
+- Progress on goal-related expenditures
+
+### PSA Integration
+
+Products from connected PSAs (ConnectWise, Autotask, HaloPSA) are available:
+- Import products with accurate pricing
+- Maintain product SKUs and categories
+- Access vendor information
 
 ## Related Resources
 
-- [Reporting](../reporting/index) - Generate financial reports
-- [Company Overview](../company-overview/index) - View company financial health
-- [Compliance](../compliance/index) - Meet financial compliance requirements
+- [Planner](/user-guides/planner/index) - Manage tasks and link to budgets
+- [Goals](/user-guides/goals/index) - Set strategic objectives
+- [Company Overview](/user-guides/company-overview/index) - View company budget status
 
 ## Need Help?
 
-For assistance with the Budgets module, contact support@msportal.ai or consult our financial management guides.
+For assistance with the Budgets module, contact support@msportal.ai.
