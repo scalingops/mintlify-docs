@@ -1,55 +1,121 @@
 ---
 title: Training Module
 description: Comprehensive training and learning management system for your organization
+icon: graduation-cap
 ---
 
 The Training module in MSPortal.ai provides a complete learning management system to help your organization deliver, track, and manage employee training programs.
 
+<Frame>
+  <img src="/images/training/training-overview.png" alt="Training Module Overview" />
+</Frame>
+
 ## Key Features
 
-- **Course Management** - Access a library of pre-built courses or create custom training content
+- **Course Library** - Access a catalog of pre-built courses or custom training content
 - **Progress Tracking** - Monitor individual and team training completion rates
+- **Learning Paths** - Create structured training programs with multiple courses
 - **Certifications** - Track compliance certifications and renewal dates
 - **Reporting** - Generate detailed training reports for compliance and auditing
-- **Automated Assignments** - Automatically assign training based on roles or departments
+
+## Accessing the Training Module
+
+Navigate to **Training** from the main sidebar navigation. The Training Menu provides quick access to all training features:
+
+<Frame>
+  <img src="/images/training/training-menu-dropdown.png" alt="Training Menu" />
+</Frame>
+
+### Menu Options
+
+| Option | Description | Permission Required |
+|--------|-------------|---------------------|
+| Course Library | Browse and enroll in available courses | All users |
+| My Training | View your enrolled courses and progress | All users |
+| All Enrollments | View all user enrollments across organization | Manage Training |
+| Learning Paths | Create and manage learning paths | Write Training |
+| Reports & Analytics | Access training reports and metrics | Write Training |
 
 ## Getting Started
 
-New to the Training module? Start here:
-
-1. [Enable Training](./how-to-enable-training) - Learn how to activate and configure training for your organization
-2. Review available course catalog
-3. Assign training to users or groups
-4. Track progress through the dashboard
+<Steps>
+  <Step title="Browse Course Library">
+    Navigate to **Training > Course Library** to see all available courses. You can filter by category, search by name, or switch between grid and list views.
+  </Step>
+  <Step title="Enroll in a Course">
+    Click on any course card to view details, then click **Enroll** to add it to your training. Enrolled courses appear in **My Training**.
+  </Step>
+  <Step title="Complete Training">
+    Open an enrolled course and work through the content. Your progress is automatically tracked and saved.
+  </Step>
+</Steps>
 
 ## Common Tasks
 
-- **Assigning Training** - Quickly assign courses to individuals or teams
-- **Tracking Compliance** - Monitor mandatory training completion
-- **Generating Reports** - Export training data for compliance audits
-- **Managing Certifications** - Track expiration dates and renewals
+### Enrolling in a Course
 
-## Premium Features
+<Steps>
+  <Step title="Find a Course">
+    Browse the Course Library or use the search bar to find specific training topics.
+  </Step>
+  <Step title="View Course Details">
+    Click on a course card to see the description, duration, and any prerequisites.
+  </Step>
+  <Step title="Click Enroll">
+    Click the **Enroll** button to add the course to your training queue.
+  </Step>
+</Steps>
 
-Premium training subscriptions include:
-- Extended course library with specialized content
-- Custom course creation tools
-- Advanced reporting and analytics
-- Integration with third-party training providers
-- SCORM compliance support
+<Tip>
+You can also be enrolled in courses automatically through Learning Paths assigned by your administrator.
+</Tip>
+
+### Taking a Course
+
+Once enrolled, courses can be accessed from **My Training**. The course player supports multiple content types:
+
+<Frame>
+  <img src="/images/training/course-player.png" alt="Course Player" />
+</Frame>
+
+**Supported Content Types:**
+- **SCORM Packages** - Interactive e-learning content with progress tracking
+- **Video Courses** - Video-based training with completion tracking
+- **Documents** - PDF and document-based training materials
+
+**Player Features:**
+- Progress bar showing completion percentage
+- Session time tracking
+- Fullscreen mode for focused learning
+- Automatic progress saving
+
+### Working with Learning Paths
+
+Learning Paths allow administrators to create structured training programs by grouping multiple courses together.
+
+<Frame>
+  <img src="/images/training/learning-paths-overview.png" alt="Learning Paths Overview" />
+</Frame>
+
+## Related Guides
+
+<CardGroup cols={2}>
+  <Card title="Enable Training" href="./how-to-enable-training" icon="toggle-on">
+    Learn how to activate training for your organization
+  </Card>
+  <Card title="Learning Paths" href="./learning-paths" icon="route">
+    Create and manage learning paths
+  </Card>
+</CardGroup>
 
 ## Best Practices
 
+<Check>
 - **Regular Reviews** - Schedule monthly reviews of training completion rates
-- **Automated Reminders** - Set up automatic notifications for incomplete training
-- **Role-Based Assignment** - Use role-based rules to automatically assign relevant training
+- **Automated Assignments** - Use Learning Paths to automatically assign training to new users
+- **Role-Based Training** - Assign training based on job roles and departments
 - **Compliance Tracking** - Maintain audit trails for regulatory requirements
-
-## Related Resources
-
-- [Training Settings](../settings/index) - Configure training module settings
-- [User Management](../admin/index) - Manage user access and roles
-- [Reporting](../reporting/index) - Generate training reports
+</Check>
 
 ## Need Help?
 

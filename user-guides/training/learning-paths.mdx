@@ -1,0 +1,194 @@
+---
+title: Learning Paths
+description: Create and manage structured training programs with Learning Paths
+icon: route
+---
+
+Learning Paths allow you to create structured training programs by grouping multiple courses into a single, organized curriculum. Users assigned to a Learning Path are automatically enrolled in all associated courses.
+
+## Prerequisites
+
+Before creating Learning Paths, ensure you have:
+
+- **Write Training** permission
+- Courses available in your Course Library
+
+## Accessing Learning Paths
+
+Navigate to **Training** and click the **Training Menu** dropdown. Select **Learning Paths** to access the Learning Paths management area.
+
+<Frame>
+  <img src="/images/training/learning-paths-overview.png" alt="Learning Paths Overview" />
+</Frame>
+
+The Learning Paths page includes three tabs:
+
+| Tab | Description |
+|-----|-------------|
+| Learning Paths | View and manage all learning paths |
+| User Groups | Manage groups for bulk user assignments |
+| Templates | Access pre-built learning path templates |
+
+## Creating a Learning Path
+
+<Steps>
+  <Step title="Click Create Learning Path">
+    From the Learning Paths tab, click the **Create Learning Path** button.
+  </Step>
+  <Step title="Configure Basic Details">
+    Fill in the learning path details:
+
+    <Frame>
+      <img src="/images/training/create-learning-path-dialog.png" alt="Create Learning Path Dialog" />
+    </Frame>
+
+    - **Title** - Name of the learning path (e.g., "HIPAA Compliance Training")
+    - **Description** - Optional description of the learning path purpose
+    - **Tenant-Wide** - Toggle to make available across all companies
+    - **Company** - Select specific company if not tenant-wide
+    - **Mandatory** - Toggle to mark training as required
+    - **Target Roles** - Select which user roles should receive this training
+    - **Target Departments** - Select which departments should receive this training
+  </Step>
+  <Step title="Save the Learning Path">
+    Click **Create** to save the learning path. You'll be redirected to edit the path and add courses.
+  </Step>
+</Steps>
+
+## Editing a Learning Path
+
+### Adding Courses
+
+<Steps>
+  <Step title="Open the Learning Path">
+    Click on any learning path row to open the edit dialog.
+  </Step>
+  <Step title="Go to Courses Tab">
+    Click the **Courses** tab to manage course assignments.
+
+    <Frame>
+      <img src="/images/training/edit-learning-path-courses.png" alt="Edit Learning Path - Courses Tab" />
+    </Frame>
+  </Step>
+  <Step title="Add Courses">
+    - Browse **Available Courses** on the left panel
+    - Select one or more courses by clicking on them
+    - Click **Add Selected** to move them to **Assigned Courses**
+  </Step>
+  <Step title="Remove Courses">
+    To remove courses, select them from **Assigned Courses** and click **Remove**.
+  </Step>
+  <Step title="Save Changes">
+    Click **Save Changes** to update the learning path.
+  </Step>
+</Steps>
+
+<Tip>
+The order of courses in the Assigned Courses list determines the recommended completion order for users.
+</Tip>
+
+### Assigning Users
+
+<Steps>
+  <Step title="Go to Assignments Tab">
+    Click the **Assignments** tab in the edit dialog.
+
+    <Frame>
+      <img src="/images/training/edit-learning-path-assignments.png" alt="Edit Learning Path - Assignments Tab" />
+    </Frame>
+  </Step>
+  <Step title="Select Users or Groups">
+    Toggle between **Users** and **Groups** tabs in the Available panel:
+    - **Users** - Assign individual users
+    - **Groups** - Assign entire user groups at once
+  </Step>
+  <Step title="Add Assignments">
+    - Select users or groups from the Available list
+    - Click **Add Selected** to assign them to the learning path
+  </Step>
+  <Step title="Remove Assignments">
+    To remove assignments, select from the Assigned list and click **Remove**.
+  </Step>
+  <Step title="Save Changes">
+    Click **Save Changes** to apply the assignments.
+  </Step>
+</Steps>
+
+<Warning>
+When you assign users to a Learning Path, they are automatically enrolled in all courses within that path. Removing a user from a Learning Path does not remove their course enrollments.
+</Warning>
+
+## Learning Path Settings
+
+### Mandatory Training
+
+When a Learning Path is marked as **Mandatory**:
+
+- Assigned users receive notifications about required training
+- Progress is tracked in compliance reports
+- Managers can view mandatory training completion status
+
+### Target Roles and Departments
+
+Use targeting to automatically assign training:
+
+- **Target Roles** - Users with matching roles are automatically assigned
+- **Target Departments** - Users in matching departments are automatically assigned
+- Users can match either criteria to receive the training
+
+## User Groups
+
+User Groups simplify bulk assignments by allowing you to create named collections of users.
+
+### Creating a User Group
+
+1. Navigate to **Learning Paths > User Groups** tab
+2. Click **Create Group**
+3. Enter a group name (e.g., "New Hires Q1")
+4. Add users to the group
+5. Click **Save**
+
+### Using Groups in Assignments
+
+When assigning users to a Learning Path, switch to the **Groups** tab to see all available groups. Selecting a group assigns all members at once.
+
+## Best Practices
+
+<Check>
+- **Logical Grouping** - Group courses by topic or compliance requirement
+- **Progressive Difficulty** - Order courses from foundational to advanced
+- **Regular Updates** - Review and update learning paths quarterly
+- **Clear Naming** - Use descriptive names like "2024 Security Awareness Training"
+- **Use Groups** - Create user groups for common assignment patterns
+</Check>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Users not seeing assigned courses">
+    **Symptoms:** Users report they don't see courses from an assigned Learning Path.
+
+    **Solution:**
+    1. Verify the user is in the Assignments list
+    2. Check that courses are added to the Learning Path
+    3. Ensure the user has access to Training module
+
+    **Prevention:** Test assignments with a sample user before bulk rollout.
+  </Accordion>
+
+  <Accordion title="Cannot create Learning Path">
+    **Symptoms:** Create button is disabled or shows error.
+
+    **Solution:**
+    1. Verify you have **Write Training** permission
+    2. Check that Title field is not empty
+    3. Select a company if not using Tenant-Wide option
+
+    **Prevention:** Ensure proper permissions are assigned to training administrators.
+  </Accordion>
+</AccordionGroup>
+
+## Related Resources
+
+- [Training Module Overview](./index) - Main training documentation
+- [Enable Training](./how-to-enable-training) - Initial training setup
