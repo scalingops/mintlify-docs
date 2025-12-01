@@ -1,82 +1,225 @@
 ---
-title: Devices Module
-description: Manage and monitor all IT assets and devices across your organization
+title: 'Devices'
+description: 'Track and manage IT assets across your organization'
+icon: 'computer'
 ---
 
-The Devices module provides comprehensive IT asset management capabilities to track, manage, and monitor all hardware devices across your organization.
+The Devices module provides a centralized inventory of all IT assets across your managed companies. Track devices, manage warranty information, and integrate with tools like Syncro, Asio, and Cisco Meraki.
+
+![Devices Overview](/images/devices/devices-overview.png)
 
 ## Key Features
 
-- **Asset Inventory** - Complete database of all IT assets
-- **Device Lifecycle** - Track devices from procurement to disposal
-- **Remote Management** - Monitor and manage devices remotely
-- **Software Inventory** - Track installed applications
-- **Warranty Tracking** - Monitor warranty and support contracts
-- **Automated Discovery** - Automatic device detection and inventory
+<CardGroup cols={2}>
+  <Card title="Device Inventory" icon="list">
+    Maintain a comprehensive list of all devices with key information like manufacturer, model, serial number, and IP address.
+  </Card>
+  <Card title="Warranty Tracking" icon="shield-check">
+    Track warranty start and end dates with automatic status indicators for expired warranties.
+  </Card>
+  <Card title="Integration Sync" icon="rotate">
+    Automatically sync devices from Syncro, Asio, and Cisco Meraki integrations.
+  </Card>
+  <Card title="Custom Fields" icon="sliders">
+    Add custom fields to track additional device information specific to your needs.
+  </Card>
+</CardGroup>
 
 ## Getting Started
 
-1. Configure device categories and types
-2. Import existing device inventory
-3. Set up automated discovery agents
-4. Define device policies and standards
-5. Monitor device health through dashboards
+### Prerequisites
 
-## Common Tasks
+- Access to the Devices module (requires appropriate permissions)
+- Optional: Integration with Syncro, Asio, or Meraki for automatic device sync
 
-- **Adding Devices** - Register new hardware assets
-- **Assigning Devices** - Allocate devices to users
-- **Tracking Status** - Monitor device health and availability
-- **Managing Software** - Track installed applications and licenses
-- **Scheduling Maintenance** - Plan device updates and repairs
+### Accessing Devices
 
-## Device Categories
+1. Click **Devices** in the sidebar under Operations
+2. The device list displays all devices across your managed companies
+3. Use the company selector in the header to filter by specific company
 
-- **Workstations** - Desktop and laptop computers
-- **Mobile Devices** - Phones and tablets
-- **Servers** - Physical and virtual servers
-- **Network Equipment** - Routers, switches, and access points
-- **Peripherals** - Printers, scanners, and accessories
-- **IoT Devices** - Smart devices and sensors
+## Working with Devices
 
-## Asset Lifecycle Management
+### Viewing the Device List
 
-1. **Procurement** - Purchase and receive new devices
-2. **Deployment** - Configure and assign to users
-3. **Active Use** - Monitor performance and health
-4. **Maintenance** - Updates, repairs, and upgrades
-5. **Retirement** - Decommission and dispose properly
+The device list displays the following information:
 
-## Monitoring Features
+| Column | Description |
+|--------|-------------|
+| **Name** | Device hostname or friendly name |
+| **Company** | The company the device belongs to |
+| **Device Type** | Category (Workstation, Server, Appliance, etc.) |
+| **Manufacturer** | Device manufacturer (Lenovo, Dell, Cisco, etc.) |
+| **Model** | Device model number |
+| **Integration** | Source of the device (Manual, Syncro, Asio, Meraki) |
+| **IP Address** | Current IP address |
+| **Serial Number** | Device serial number |
+| **Warranty End** | Warranty expiration date with status indicator |
 
-- **Health Metrics** - CPU, memory, disk usage
-- **Performance Tracking** - Response times and availability
-- **Security Status** - Patch levels and compliance
-- **Alert Management** - Proactive issue detection
-- **Usage Analytics** - Device utilization reports
+### Filtering and Sorting
+
+You can filter the device list using the filter controls in each column header:
+
+- **Name, Company, Model, IP Address, Serial Number**: Type to search
+- **Device Type, Manufacturer, Integration**: Select from dropdown options
+- **Warranty End**: Filter by date range
+
+Click any column header to sort by that column.
+
+### Adding a Device
+
+<Steps>
+  <Step title="Click Add Device">
+    Click the **Add Device** button in the top-right corner.
+
+    ![Add Device Sheet](/images/devices/devices-add-device-sheet.png)
+  </Step>
+  <Step title="Enter Device Information">
+    Fill in the device details:
+    - **Name** (required): Device hostname or friendly name
+    - **Device Type**: Select the category
+    - **Manufacturer**: Choose from the list or search
+    - **Company**: Select the owning company
+    - **Location**: Optionally assign to a company location
+    - **OS**: Operating system
+    - **IP Address**: Current IP address
+    - **MAC Address**: Network interface MAC
+    - **Serial Number**: Device serial number
+    - **Warranty Start/End**: Warranty coverage dates
+    - **Status**: Current device status
+    - **Auto Apply Groups**: Enable automatic group assignment
+  </Step>
+  <Step title="Save the Device">
+    Click **Add Device** to save.
+  </Step>
+</Steps>
+
+### Editing a Device
+
+<Steps>
+  <Step title="Open the Device">
+    Click on a device name in the list to open the edit panel.
+
+    ![Edit Device Sheet](/images/devices/devices-edit-device-sheet.png)
+  </Step>
+  <Step title="Update Information">
+    Modify any of the device fields. The edit panel shows:
+    - **Device Details**: Basic information like name, type, manufacturer
+    - **Warranty**: Start/end dates with active/expired status badge
+    - **Custom Fields**: Any custom fields configured for devices
+  </Step>
+  <Step title="Save Changes">
+    Click **Update Device** to save your changes.
+  </Step>
+</Steps>
+
+### Device Actions
+
+Click the three-dot menu at the end of any device row to access actions:
+
+![Device Actions Menu](/images/devices/devices-actions-menu.png)
+
+- **Edit**: Open the device edit panel
+- **Add to Planner**: Schedule warranty renewals or maintenance tasks
+- **Add to Meeting**: Include device in a client meeting agenda
+- **Delete**: Remove the device from inventory
+
+<Note>
+Devices synced from integrations (Syncro, Asio, Meraki) may have limited editing options for fields that are automatically synchronized.
+</Note>
+
+### Bulk Actions
+
+Select multiple devices using the checkboxes to perform bulk operations:
+
+1. Check the boxes next to devices you want to select
+2. A bulk actions menu appears in the header
+3. Available bulk actions include:
+   - **Add to Planner**: Schedule multiple devices for review
+   - **Add to Meeting**: Add multiple devices to a meeting agenda
+   - **Delete**: Remove multiple devices
+
+<Warning>
+Bulk delete permanently removes selected devices. This action cannot be undone.
+</Warning>
+
+## Integration Sources
+
+Devices can come from multiple sources:
+
+| Source | Description |
+|--------|-------------|
+| **Manual** | Devices added directly through the MSPortal interface |
+| **Syncro** | Devices synced from Syncro RMM integration |
+| **Asio** | Devices synced from Asio network discovery |
+| **Meraki** | Devices synced from Cisco Meraki dashboard |
+
+### Meraki Devices
+
+Devices imported from Cisco Meraki have special features:
+
+- **Meraki badge**: Indicated in the device type column
+- **Read-only synced fields**: Name, model, manufacturer, serial number, and other fields sync automatically
+- **Additional actions**:
+  - **Open in Meraki**: Jump directly to the device in Meraki dashboard
+  - **Refresh Status**: Manually refresh device status from Meraki
+- **Meraki Information section**: View network name, WAN IPs, tags, and other Meraki-specific metadata
+
+<Tip>
+For Meraki devices, you can still edit warranty dates, company assignment, location, and custom fields even though core device details are synced from Meraki.
+</Tip>
+
+## Warranty Management
+
+The Devices module helps you track warranty coverage:
+
+- **Active Warranty**: Green "Active" badge when warranty end date is in the future
+- **Expired Warranty**: Red "Expired" badge when warranty has passed
+- **No Warranty**: No badge shown if warranty dates aren't set
+
+### Planning Warranty Renewals
+
+Use the **Add to Planner** action to create tasks for upcoming warranty renewals:
+
+1. Click the device's action menu
+2. Select **Add to Planner**
+3. The planner will automatically suggest a due date based on the warranty end date (default: 30 days before expiration)
+4. Customize the task details and save
+
+## Custom Fields
+
+Add custom fields to track additional device information:
+
+1. Navigate to **Settings** > **Custom Fields**
+2. Create fields for the "Device" entity type
+3. Custom fields appear in the edit panel under "Custom Fields"
+
+Common custom fields for devices:
+- Purchase Date
+- End of Life Date
+- Asset Tag
+- Physical Location
+- Support Contract Number
 
 ## Best Practices
 
-- **Regular Audits** - Verify physical inventory quarterly
-- **Standardization** - Maintain approved device models
-- **Documentation** - Keep detailed device records
-- **Preventive Maintenance** - Schedule regular updates
-- **Security Updates** - Apply patches promptly
-
-## Integration Points
-
-- **Ticketing Module** - Link devices to support tickets
-- **Microsoft 365** - Sync with Intune and Azure AD
-- **Compliance Module** - Device security compliance
-- **Reporting Module** - Asset analytics and reports
+<AccordionGroup>
+  <Accordion title="Regular Inventory Reviews">
+    Schedule quarterly reviews of your device inventory to ensure accuracy. Use the company filter to review one client at a time.
+  </Accordion>
+  <Accordion title="Warranty Tracking">
+    Keep warranty dates updated and use the Planner integration to create renewal reminders 30-60 days before expiration.
+  </Accordion>
+  <Accordion title="Integration Setup">
+    Configure Syncro, Asio, or Meraki integrations to automatically populate device data and reduce manual entry.
+  </Accordion>
+  <Accordion title="Custom Fields for Compliance">
+    Use custom fields to track compliance-related information like purchase date, depreciation schedule, or disposal requirements.
+  </Accordion>
+</AccordionGroup>
 
 ## Related Resources
 
-- [Ticketing](../ticketing/index) - Device support requests
-- [Compliance](../compliance/index) - Device security requirements
-- [Microsoft 365](../microsoft-365/index) - Cloud device management
-- [Reporting](../reporting/index) - Device analytics
-
-## Need Help?
-
-For assistance with the Devices module, contact support@msportal.ai or review our asset management best practices.
+- [Planner](/user-guides/planner/index) - Schedule device maintenance and warranty renewals
+- [Calendar](/user-guides/calendar/index) - View scheduled device-related meetings
+- [Settings](/user-guides/settings/index) - Configure custom fields and integrations
