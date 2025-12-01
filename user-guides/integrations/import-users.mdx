@@ -1,119 +1,174 @@
 ---
 title: Import Users
-description: Learn how to import users from your PSA integration into MSPortal.ai
+description: Learn how to import users from your integrations into MSPortal.ai
 ---
 
-This guide explains how to import users from your PSA integration (ConnectWise Manage, HaloPSA, or Syncro) into MSPortal.ai. You can import users individually or in bulk, and link them to existing MSPortal.ai users.
+This guide explains how to import users from your integrations into MSPortal.ai. The import process is consistent across all supported integrations, allowing you to bring in team members individually or in bulk.
 
+## Supported Integrations
+
+MSPortal.ai supports importing users from the following integrations:
+
+| Integration | User Type |
+|-------------|-----------|
+| ConnectWise Manage | Members (Users) |
+| Halo PSA | Agents |
+| Autotask PSA | Resources |
+| Syncro | Technicians |
+| Microsoft 365 | Users |
+
+<Note>
+The import process is the same regardless of which integration you use. The screenshots in this guide show ConnectWise Manage, but the steps apply to all integrations.
+</Note>
 
 ## Prerequisites
 
-- At least one PSA integration must be configured (ConnectWise Manage, HaloPSA, or Syncro)
-- User roles must be created in MSPortal
-- You must have "Manage Users" permission
+- At least one integration must be configured and active
+- User roles must be created in MSPortal.ai
+- You must have the **Manage Users** permission
 
-## Steps
+## Import Users from Settings
 
-### 1. Navigate to Integrations Settings
+### 1. Navigate to Users & Roles Settings
 
-Go to [https://msportal.ai/settings/integrations](https://msportal.ai/settings/integrations)
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/279d628a-e176-4ecd-b8c2-0b2ca6df26d4/ascreenshot.jpeg?tl_px=130,121&br_px=1850,1083&force_format=jpeg&q=100&width=1120.0)
-
-
-### 2. Access Users and Roles
-
-From the Settings menu, click on **Users and Roles**.
+Go to **Settings** → **Users & Roles** in the main navigation.
 
 ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/279d628a-e176-4ecd-b8c2-0b2ca6df26d4/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=292,120)
 
 
-### 3. Open Import Dialog
+### 2. Open Import Dialog
 
-Click the **Import** button and select **Import from ConnectWise Manage** from the dropdown menu.
+Click the **Import** button and select your integration from the dropdown menu (e.g., **Import from ConnectWise Manage**, **Import from Halo PSA**, etc.).
 
 ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/6f7bdffe-01c2-4b46-997e-6bd15830aac9/ascreenshot.jpeg?tl_px=260,0&br_px=1980,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=692,132)
 
 
-### 4. Review Available Users
+### 3. Review Available Users
 
-The import dialog displays all users from ConnectWise Manage in two columns:
-- **Left column:** Available users to import
-- **Right column:** Import preview and settings
+The import dialog displays all users from your integration. You'll see:
+- User name and email address
+- Job title (if available)
+- Last sync date
+- Link status (whether already linked to an MSPortal.ai user)
 
 ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/41f8620a-2f84-43ac-b5a0-464a7893625d/ascreenshot.jpeg?tl_px=260,0&br_px=1980,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=654,165)
 
 
-### 5. Select Users to Import
+### 4. Select Users to Import
 
 Select users to import by:
-- Clicking individual users to select them one by one
-- Using Ctrl+Click (Windows) or Cmd+Click (Mac) to select multiple users
-- Using the search box to filter users by name
+- Clicking individual checkboxes to select users one by one
+- Using the header checkbox to select all unlinked users
+- Using the search box to filter users by name or email
+
+<Tip>
+Use the **Show Unlinked Only** button to filter the list to users who haven't been imported yet.
+</Tip>
 
 ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/8a0cc949-5715-4de9-a3eb-a275c9d7c3e1/ascreenshot.jpeg?tl_px=0,217&br_px=1719,1178&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=245,276)
 
 
-### 6. Link to Existing Users (Optional)
+### 5. Link to Existing Users (Optional)
 
-For users who already exist in MSPortal (like your primary admin account):
+For users who already exist in MSPortal.ai (such as your admin account):
 
-1. Select the ConnectWise user from the left panel
-2. In the right panel, click the **Link to Existing User** dropdown
-3. Select the matching MSPortal user
-4. This will sync the ConnectWise data with the existing account instead of creating a duplicate
+1. Find the user in the list
+2. Click the **Link User** dropdown in that row
+3. Select the matching MSPortal.ai user
+4. This links the integration record to the existing account instead of creating a duplicate
 
 ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/1416d54b-dbc1-429f-a061-8dac5e0e0802/ascreenshot.jpeg?tl_px=0,138&br_px=1719,1099&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=246,277)
 
 
-### 7. Configure Import Settings
+### 6. Select a Role
 
-For each selected user, configure:
-
-- **Role:** Select the appropriate MSPortal role
-- **Department:** Assign to a department (optional)
-- **Send Welcome Email:** Check to send login credentials
+Choose the MSPortal.ai role to assign to all imported users using the **Role for imported users** dropdown.
 
 ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/f72fb09a-e6bf-42b3-a095-75ece7bd0d1c/ascreenshot.jpeg?tl_px=260,243&br_px=1980,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=729,285)
 
 
-### 8. Add Missing Email Addresses
+### 7. Add Missing Email Addresses
 
-> **Important:** All users must have email addresses in MSPortal. If a ConnectWise user lacks an email address:
+<Warning>
+All users must have email addresses to be imported. Users without email addresses cannot be selected.
+</Warning>
 
-1. Click on the user in the import preview
+If a user lacks an email address:
+
+1. Find the user in the list (they'll have an empty email input field)
 2. Enter their email address in the **Email** field
-3. The email will be saved with their MSPortal account
+3. The email will be saved with their MSPortal.ai account
 
 ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-04/af58d92d-571c-4150-aff6-ac1cb02512b8/ascreenshot.jpeg?tl_px=0,154&br_px=1719,1115&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=477,277)
 
-### 9. Complete the Import
 
-Once all settings are configured:
+### 8. Complete the Import
 
-1. Review the import summary
-2. Click the **Import Users** button
+1. Review the number of selected users shown on the **Import Selected** button
+2. Click **Import Selected**
 3. Wait for the confirmation message
 4. Imported users will appear in your Users list
 
 ## Post-Import Tasks
 
-- Verify imported users have the correct roles and permissions
-- Send welcome emails if not done during import
-- Configure any user-specific settings or preferences
-- Set up two-factor authentication for admin users
+After importing users:
+
+- **Verify roles**: Confirm imported users have the correct roles and permissions
+- **Send welcome emails**: If not done during import, send login credentials manually
+- **Configure preferences**: Set up any user-specific settings
+- **Enable 2FA**: Set up two-factor authentication for admin users
 
 ## Troubleshooting
 
 ### Common Issues
 
-- **Missing users:** Ensure the ConnectWise integration has proper API permissions
-- **Email required error:** All users must have valid email addresses
-- **Role not selected:** Each user must be assigned to a role before import
-- **Duplicate user error:** User may already exist - use the link feature instead
+| Issue | Solution |
+|-------|----------|
+| **Missing users** | Verify your integration has proper API permissions and the users are active in the source system |
+| **Email required error** | All users must have valid email addresses. Add email addresses using the input field in the list |
+| **Role not selected** | Select a role from the dropdown before clicking Import |
+| **Duplicate user error** | The user may already exist. Use the **Link User** feature to connect accounts |
+| **Cannot select user** | The user is either already linked or missing an email address |
+
+### Integration-Specific Notes
+
+<AccordionGroup>
+  <Accordion title="ConnectWise Manage">
+    - Only active members are shown in the import list
+    - Users are synced by their Member ID
+    - Email addresses are pulled from the member's primary email field
+  </Accordion>
+
+  <Accordion title="Halo PSA">
+    - Only agents (support staff) are available for import
+    - Client contacts are managed separately through company users
+    - Agent status must be active in Halo PSA
+  </Accordion>
+
+  <Accordion title="Autotask PSA">
+    - Resources (technicians) are available for import
+    - Resource must have an active status in Autotask
+    - Email synchronization uses the resource's primary email
+  </Accordion>
+
+  <Accordion title="Syncro">
+    - Technicians are available for import
+    - User must be active in your Syncro account
+    - Ensure API permissions include user read access
+  </Accordion>
+
+  <Accordion title="Microsoft 365">
+    - Available when importing company users
+    - Syncs users from your connected M365 tenant
+    - Requires active Microsoft 365 integration per company
+  </Accordion>
+</AccordionGroup>
 
 ## Related Articles
 
-- [How to Create a New User Role](./How%20to%20Create%20a%20New%20User%20Role)
-- [Managing User Permissions](../settings/user-permissions)
-- [ConnectWise Integration Setup](../integrations/enable-connectwise-integration)
+- [How to Create a New User Role](../getting-started/how-to-create-a-new-user-role)
+- [Users & Roles Settings](../settings/users-roles)
+- [Import Companies](./import-companies)
+- [ConnectWise Integration Setup](./enable-connectwise-integration)
+- [Syncro Integration Setup](./enable-syncro-integration)
+- [Autotask Integration Setup](./enable-autotask-integration)
