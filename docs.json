@@ -196,47 +196,6 @@
           }
         ]
       },
-      {
-        "tab": "Modules",
-        "groups": [
-          {
-            "group": "Overview & Planning",
-            "pages": [
-              "modules/company-overview",
-              "modules/surveys",
-              "modules/goals",
-              "modules/planner",
-              "modules/budgets"
-            ]
-          },
-          {
-            "group": "Engagement",
-            "pages": [
-              "modules/calendar"
-            ]
-          },
-          {
-            "group": "Service Delivery",
-            "pages": [
-              "modules/microsoft-365",
-              "modules/ticketing",
-              "modules/compliance",
-              "modules/devices",
-              "modules/reporting"
-            ]
-          },
-          {
-            "group": "Administration",
-            "pages": [
-              "modules/settings",
-              "modules/users",
-              "modules/companies",
-              "modules/integrations",
-              "modules/admin"
-            ]
-          }
-        ]
-      }
     ],
     "global": {
       "anchors": [
