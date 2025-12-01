@@ -11,17 +11,6 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Release Notes",
-        "groups": [
-          {
-            "group": "Updates",
-            "pages": [
-              "release-notes/index"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "Docs",
         "groups": [
           {
@@ -176,6 +165,17 @@
                   "user-guides/settings/billing"
                 ]
               }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Release Notes",
+        "groups": [
+          {
+            "group": "Updates",
+            "pages": [
+              "release-notes/index"
             ]
           }
         ]
