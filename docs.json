@@ -35,19 +35,6 @@
             ]
           },
           {
-            "group": "Training",
-            "pages": [
-              {
-                "group": "Training Resources",
-                "pages": [
-                  "user-guides/training/index",
-                  "user-guides/training/enabling-training",
-                  "user-guides/training/learning-paths"
-                ]
-              }
-            ]
-          },
-          {
             "group": "Overview & Planning",
             "pages": [
               {
@@ -55,6 +42,15 @@
                 "pages": [
                   "user-guides/company-overview/index",
                   "user-guides/company-overview/audit"
+                ]
+              },
+              {
+                "group": "Calendar",
+                "pages": [
+                  "user-guides/calendar/index",
+                  "user-guides/calendar/meetings",
+                  "user-guides/calendar/presenting",
+                  "user-guides/calendar/meeting-summaries"
                 ]
               },
               {
@@ -84,22 +80,16 @@
             ]
           },
           {
-            "group": "Engagement",
-            "pages": [
-              {
-                "group": "Calendar",
-                "pages": [
-                  "user-guides/calendar/index",
-                  "user-guides/calendar/meetings",
-                  "user-guides/calendar/presenting",
-                  "user-guides/calendar/meeting-summaries"
-                ]
-              }
-            ]
-          },
-          {
             "group": "Service Delivery",
             "pages": [
+              {
+                "group": "Training",
+                "pages": [
+                  "user-guides/training/index",
+                  "user-guides/training/enabling-training",
+                  "user-guides/training/learning-paths"
+                ]
+              },
               {
                 "group": "Microsoft 365",
                 "pages": [
@@ -136,6 +126,36 @@
             ]
           },
           {
+            "group": "Integrations",
+            "pages": [
+              "user-guides/integrations/index",
+              "user-guides/integrations/import-users",
+              "user-guides/integrations/import-companies",
+              "user-guides/integrations/clear-and-resync-integrations",
+              {
+                "group": "ConnectWise",
+                "pages": [
+                  "user-guides/integrations/enable-connectwise-integration",
+                  "user-guides/integrations/connectwise-configure-and-service-desk",
+                  "user-guides/integrations/connectwise-opportunity-settings",
+                  "user-guides/integrations/connectwise-resync-psa-settings"
+                ]
+              },
+              {
+                "group": "Syncro",
+                "pages": [
+                  "user-guides/integrations/enable-syncro-integration"
+                ]
+              },
+              {
+                "group": "Autotask",
+                "pages": [
+                  "user-guides/integrations/enable-autotask-integration"
+                ]
+              }
+            ]
+          },
+          {
             "group": "Administration",
             "pages": [
               {
@@ -154,42 +174,6 @@
                   "user-guides/settings/import-export",
                   "user-guides/settings/tenant",
                   "user-guides/settings/billing"
-                ]
-              },
-              {
-                "group": "Integrations",
-                "pages": [
-                  "user-guides/integrations/index",
-                  "user-guides/integrations/import-users",
-                  "user-guides/integrations/import-companies",
-                  "user-guides/integrations/clear-and-resync-integrations",
-                  {
-                    "group": "ConnectWise",
-                    "pages": [
-                      "user-guides/integrations/enable-connectwise-integration",
-                      "user-guides/integrations/connectwise-configure-and-service-desk",
-                      "user-guides/integrations/connectwise-opportunity-settings",
-                      "user-guides/integrations/connectwise-resync-psa-settings"
-                    ]
-                  },
-                  {
-                    "group": "Syncro",
-                    "pages": [
-                      "user-guides/integrations/enable-syncro-integration"
-                    ]
-                  },
-                  {
-                    "group": "Autotask",
-                    "pages": [
-                      "user-guides/integrations/enable-autotask-integration"
-                    ]
-                  }
-                ]
-              },
-              {
-                "group": "Admin",
-                "pages": [
-                  "user-guides/admin/index"
                 ]
               }
             ]
