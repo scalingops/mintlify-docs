@@ -1,0 +1,166 @@
+---
+title: 'Configure Halo PSA Integration'
+description: 'Connect your Halo PSA instance to MSPortal.ai for ticket sync, CRM, and opportunity management'
+icon: 'plug'
+---
+
+This guide walks you through connecting your Halo PSA instance to MSPortal.ai.
+
+## Prerequisites
+
+- Administrator access to your Halo PSA instance
+- Access to MSPortal.ai with integration management permissions
+
+## Setup Steps
+
+<Steps>
+  <Step title="Log in to Halo PSA">
+    Navigate to your Halo PSA instance and log in with an administrator account.
+
+    ![Halo PSA Login](https://colony-recorder.s3.amazonaws.com/files/2025-12-08/5fff56a0-9e96-40e0-994a-2b9a404de3b7/stack_animation.webp)
+  </Step>
+
+  <Step title="Open Integrations">
+    Click **Integrations** in the navigation menu.
+
+    ![Click Integrations](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/a3ec20a0-304a-43e1-9a06-765959a91331/ascreenshot.jpeg?tl_px=0,339&br_px=1548,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=85,494)
+  </Step>
+
+  <Step title="Create API Application">
+    1. Click **View Applications**
+    2. Create a new application named "MSPortal.ai"
+    3. Select **Client ID and Secret (Services)** as the authentication method
+    4. Save your **Client ID** and **Client Secret** - you'll need these later
+    5. Select an agent for the API user (we recommend creating a dedicated MSPortal service account)
+
+    ![View Applications](https://colony-recorder.s3.amazonaws.com/files/2025-12-08/40c555cd-f58c-47f3-b369-58a1a9940717/stack_animation.webp)
+
+    <Warning>
+      Make sure to save your Client ID and Client Secret immediately. The secret cannot be retrieved after creation.
+    </Warning>
+  </Step>
+
+  <Step title="Configure Permissions">
+    Click **Permissions** and configure the API permissions as shown in the table below.
+
+    <Accordion title="Required API Permissions">
+      | Permission | Enabled |
+      |------------|---------|
+      | `all` | No |
+      | `all:standard` | No |
+      | `admin` | No |
+      | `all:teams` | No |
+      | `admin:webhooks` | No |
+      | `read:tickets` | **Yes** |
+      | `edit:tickets` | **Yes** |
+      | `read:calendar` | **Yes** |
+      | `edit:calendar` | **Yes** |
+      | `read:customers` | **Yes** |
+      | `edit:customers` | No |
+      | `read:crm` | **Yes** |
+      | `edit:crm` | **Yes** |
+      | `read:contracts` | **Yes** |
+      | `edit:contracts` | No |
+      | `read:suppliers` | No |
+      | `edit:suppliers` | No |
+      | `read:items` | **Yes** |
+      | `edit:items` | No |
+      | `read:projects` | **Yes** |
+      | `edit:projects` | **Yes** |
+      | `read:sales` | **Yes** |
+      | `edit:sales` | **Yes** |
+      | `read:quotes` | **Yes** |
+      | `edit:quotes` | No |
+      | `read:sos` | No |
+      | `edit:sos` | No |
+      | `read:pos` | No |
+      | `edit:pos` | No |
+      | `read:invoices` | No |
+      | `edit:invoices` | No |
+      | `read:reporting` | No |
+      | `edit:reporting` | No |
+      | `read:timesheets` | No |
+      | `editMine:timesheets` | No |
+      | `edit:timesheets` | No |
+      | `read:softwarelicensing` | **Yes** |
+      | `edit:softwarelicensing` | No |
+      | `read:software` | No |
+      | `edit:software` | No |
+      | `read:kb` | No |
+      | `edit:kb` | No |
+      | `read:assets` | No |
+      | `edit:assets` | No |
+      | `read:distributionlists` | No |
+      | `edit:distributionlists` | No |
+      | `read:mailcampaign` | No |
+      | `edit:mailcampaign` | No |
+      | `access:chat` | No |
+      | `access:adpasswordreset` | No |
+      | `read:events` | No |
+      | `edit:events` | No |
+    </Accordion>
+  </Step>
+
+  <Step title="Configure CORS Whitelist">
+    1. Click **Security**
+    2. Add `app.msportal.ai` to the CORS whitelist
+    3. Click **Submit** to save
+
+    ![Security Settings](https://colony-recorder.s3.amazonaws.com/files/2025-12-08/8e3aefc3-50bd-4967-b2b3-56b00baad2dd/stack_animation.webp)
+  </Step>
+
+  <Step title="Connect in MSPortal.ai">
+    1. In MSPortal.ai, navigate to **Settings** → **Integrations**
+    2. Click the **Halo PSA** integration card
+    3. Enter your **Client ID** and **Client Secret**
+    4. Enter your Halo PSA instance URL
+
+    ![MSPortal Integration Settings](https://colony-recorder.s3.amazonaws.com/files/2025-12-08/7cc63143-2d64-4c93-b193-7e609eb74d58/stack_animation.webp)
+  </Step>
+
+  <Step title="Test the Connection">
+    Click **Test Connection** to verify everything is configured correctly.
+
+    ![Test Connection](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/6ce82c62-bd0d-41bc-9589-2f8538a5199e/ascreenshot.jpeg?tl_px=187,243&br_px=1906,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=532,343)
+
+    You'll see a success notification in the top-right corner when the connection is successful.
+
+    ![Success Notification](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/0ab9eee3-b317-40f1-bb7b-803ba98b0c73/ascreenshot.jpeg?tl_px=187,0&br_px=1906,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=955,16)
+
+    Click **Save** to save your credentials.
+
+    ![Save Settings](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/f7517b63-46a3-44b6-b121-5b3e188c34e9/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=471,250)
+  </Step>
+
+  <Step title="Configure Sync Settings">
+    Navigate to the **Sync Settings** tab to configure:
+
+    - **Queues**: Select which ticket queues to sync with MSPortal.ai
+    - **Status Rules**: Configure how ticket statuses map between systems
+    - **Resolution Statuses**: Select statuses to link to the Resolution Status Stepper on the ticket menu
+
+    ![Sync Settings](https://colony-recorder.s3.amazonaws.com/files/2025-12-08/2ce2d3b8-4825-4ac1-947f-f0205b92bc24/stack_animation.webp)
+
+    <Tip>
+      If you've made large-scale changes, click **Clear and Resync** to delete all synced tickets from MSPortal.ai and perform a fresh sync.
+    </Tip>
+  </Step>
+
+  <Step title="Configure Opportunity Settings">
+    Navigate to the **Opportunity Settings** tab to configure how sales opportunities sync between Halo PSA and MSPortal.ai.
+
+    ![Opportunity Settings](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/8c38e5d0-394e-4668-9f8e-9ca85fd5d84a/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=431,255)
+
+    Click **Save Settings** when complete.
+
+    ![Save Opportunity Settings](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/34b5aa8b-4e7b-4804-9bec-8805999fb3de/ascreenshot.jpeg?tl_px=187,243&br_px=1906,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=599,327)
+  </Step>
+</Steps>
+
+## Next Steps
+
+Once your integration is configured, MSPortal.ai will begin syncing data from Halo PSA. You can:
+
+- View synced tickets in the **Tickets** module
+- Access customer data in the **Companies** module
+- Manage opportunities in the **Sales** module
