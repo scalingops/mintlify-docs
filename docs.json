@@ -141,6 +141,12 @@
                 "pages": [
                   "user-guides/integrations/enable-autotask-integration"
                 ]
+              },
+              {
+                "group": "Halo PSA",
+                "pages": [
+                  "user-guides/integrations/enable-halo-integration"
+                ]
               }
             ]
           },
