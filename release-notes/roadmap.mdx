@@ -7,6 +7,27 @@ We're constantly working to improve MSPortal.ai. Here's what's on our roadmap:
 
 ## In Active Development
 
+### Public API
+
+Programmatic access to your MSPortal data for integrations and automation. The Public API v1 provides RESTful endpoints with Bearer token authentication, scoped permissions, and comprehensive documentation via Swagger UI.
+
+**Available endpoints:**
+- **Companies** - List, create, update, and delete companies
+- **Compliance** - Manage compliance runs, assigned checks, groups, and templates
+- **Reports** - Create, update, and generate reports programmatically
+- **Dashboards** - Manage external dashboards and set company-specific URLs
+
+**Key features:**
+- Bearer token authentication with API keys
+- Granular scope-based permissions (e.g., `companies.read`, `dashboards.write`)
+- Rate limiting with configurable limits per API key
+- Interactive Swagger UI documentation at `/api/public/v1/docs`
+- OpenAPI 3.0 specification at `/api/public/v1/openapi`
+
+<Note>
+API keys can be created in **Settings → Integrations → API Access**. Each key can be assigned specific scopes to control what data it can access.
+</Note>
+
 ### Automation Rules
 
 A powerful rules engine for automating tasks across MSPortal.ai. Create rules with conditions and actions to auto-populate planner items, send notifications, create tickets, and more—all based on events like warranty expirations, compliance check failures, or scheduled triggers.
@@ -39,9 +60,6 @@ Allow clients to securely view their invoices in the portal.
 
 ### Projects Dashboard
 Centralized view of project status, blockers, and owners.
-
-### Public API
-Programmatic access for integrations and automation.
 
 ---
 
