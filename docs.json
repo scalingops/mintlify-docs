@@ -177,7 +177,7 @@
       },
       {
         "tab": "API Reference",
-        "openapi": "https://staging.msportal.ai/api/public/v1/openapi"
+        "openapi": "/openapi.json"
       },
       {
         "tab": "Release Notes",
