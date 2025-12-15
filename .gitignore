@@ -1,0 +1,5 @@
+node_modules/
+.mintlify/
+package.json
+package-lock.json
+openapi.json
