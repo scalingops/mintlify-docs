@@ -176,6 +176,10 @@
         ]
       },
       {
+        "tab": "API Reference",
+        "openapi": "https://staging.msportal.ai/api/public/v1/openapi"
+      },
+      {
         "tab": "Release Notes",
         "groups": [
           {
