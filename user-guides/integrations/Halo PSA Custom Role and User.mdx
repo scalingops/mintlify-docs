@@ -1,0 +1,129 @@
+---
+title: 'Create Custom Halo PSA Role and API User'
+description: 'Set up a dedicated MSPortal role and API-only agent in Halo PSA for secure integration'
+icon: 'user-shield'
+---
+
+This guide walks you through creating a dedicated role and API-only agent in Halo PSA for the MSPortal.ai integration. Using a custom role with specific permissions ensures a secure, least-privilege connection.
+
+## Prerequisites
+
+Before creating the custom role and user:
+
+- Administrator access to your Halo PSA instance
+- Access to Configuration area in Halo PSA
+- Completed the initial [Halo PSA Integration setup](/user-guides/integrations/enable-halo-integration) (Client ID and Secret created)
+
+<Info>
+Creating a dedicated MSPortal role and API-only agent is **recommended** for security best practices. This ensures the integration has only the permissions it needs and provides clear audit trails.
+</Info>
+
+## Create the MSPortal Role
+
+<Steps>
+  <Step title="Navigate to Agent Roles">
+    In Halo PSA, go to **Configuration** → **Teams & Agents** → **Roles**.
+
+    ![Navigate to Roles](https://colony-recorder.s3.amazonaws.com/files/2025-12-16/158beb82-87a4-4d6e-bd98-0d10ca022cb2/stack_animation.webp)
+  </Step>
+
+  <Step title="Create New Role">
+    1. Click **New**
+    2. Enter **MSPortal** as the role name
+    3. Click **Submit**
+  </Step>
+
+  <Step title="Configure Role Permissions">
+    Under the **Permissions** section, configure the following settings:
+
+    **General Permissions:**
+    | Permission | Setting |
+    |------------|---------|
+    | Default Access Level | **Read and Modify** |
+    | Can Edit All Appointments | **Yes** |
+    | Can Add All Appointments | **Yes** |
+    | Can View All Appointments | **Yes** |
+    | Allow Use of All Ticket Types | **Yes** |
+
+    **Module Permissions:**
+    | Module | Setting |
+    |--------|---------|
+    | Tickets | **Read and Modify** |
+    | Customers | **Read Only** |
+    | CRM/Opportunities | **Read and Modify** |
+    | Contracts | **Read Only** |
+    | Projects | **Read and Modify** |
+    | Reporting | **No** |
+
+    **Restrictions:**
+    | Setting | Value |
+    |---------|-------|
+    | Restrict to Own Customers | **No** |
+    | Can Access Admin Area | **Yes** |
+
+    ![Role Permissions](https://colony-recorder.s3.amazonaws.com/files/2025-12-16/9cdf2e26-232a-49a1-bd24-88fc7be0a04b/stack_animation.webp)
+  </Step>
+
+  <Step title="Save the Role">
+    Click **Submit** to save the new role.
+  </Step>
+</Steps>
+
+## Create the API-Only Agent
+
+<Steps>
+  <Step title="Navigate to Agents">
+    Go to **Configuration** → **Teams & Agents** → **Agents**.
+
+    ![Navigate to Agents](https://colony-recorder.s3.amazonaws.com/files/2025-12-16/efce8d3a-7c8b-42e6-909f-b69bb70253bc/stack_animation.webp)
+  </Step>
+
+  <Step title="Create New Agent">
+    1. Click **New**
+    2. Enter **MSPortal** as the agent name
+    3. Check **Is an API-only Agent**
+    4. Select **MSPortal** from the **Role** dropdown
+
+    <Tip>
+    API-only agents don't require a password or email address since they're used exclusively for API access.
+    </Tip>
+  </Step>
+
+  <Step title="Save the Agent">
+    Click **Submit** to create the agent.
+  </Step>
+</Steps>
+
+## Link the Agent to Your API Application
+
+After creating the role and agent, update your API application to use this new agent:
+
+<Steps>
+  <Step title="Open API Applications">
+    Navigate to **Configuration** → **Integrations** → **Halo PSA API** → **View Applications**.
+  </Step>
+
+  <Step title="Edit MSPortal Application">
+    Find the **MSPortal.ai** application you created during the initial integration setup.
+  </Step>
+
+  <Step title="Update Agent Assignment">
+    In the **Agent** dropdown, select the **MSPortal** API-only agent you just created.
+  </Step>
+
+  <Step title="Save Changes">
+    Click **Submit** to save the updated application settings.
+  </Step>
+</Steps>
+
+## Next Steps
+
+Your Halo PSA integration is now configured with a dedicated role and API-only agent. Return to MSPortal.ai to:
+
+- Test the connection in **Settings** → **Integrations** → **Halo PSA**
+- Configure sync settings for tickets and opportunities
+- Verify data is syncing correctly
+
+<Card title="Configure Halo PSA Integration" icon="plug" href="/user-guides/integrations/enable-halo-integration">
+  Complete guide to connecting Halo PSA with MSPortal.ai
+</Card>

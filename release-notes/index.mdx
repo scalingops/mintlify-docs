@@ -3,6 +3,141 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## December 19, 2025 - Year End Release 🎉
+
+We're ending 2025 with our biggest release yet! This update delivers three major features we've been building toward all year: a comprehensive **Public API**, the full launch of **Automation Rules**, and **two brand-new dashboards** that give you instant visibility into your work and client health. Thank you for an incredible year—here's to making 2026 even better!
+
+### Public API v1
+
+Programmatic access to your MSPortal data is finally here! The Public API v1 provides RESTful endpoints for integrating MSPortal with your existing tools, building custom workflows, and automating data exchange.
+
+**What You Can Access:**
+- **Companies & Contacts**: Full CRUD operations for your client database
+- **Tickets**: Query tickets with advanced filtering, sorting, and search
+- **Training**: Manage courses, enrollments, and certificates programmatically
+- **Compliance**: Access compliance runs, checks, groups, and templates
+- **Budgets**: Create and manage budgets with line items and forecasting
+- **Calendar & Meetings**: Schedule and manage client meetings
+- **Goals & Planner**: Manage strategic goals and planning items
+- **Devices**: Query device inventory and warranty information
+- **Surveys**: Create surveys and access responses with analytics
+- **Reports**: Generate and schedule reports via API
+- **Dashboards**: Manage external dashboards and company-specific URLs
+- **Automation Rules**: Create and manage automation rules programmatically
+- **Analytics**: Access audit logs, training metrics, and portfolio analytics
+
+**Key Features:**
+- **80+ Endpoints** across 16 resource categories
+- **Bearer Token Authentication** with API keys generated in Settings
+- **Permission-Based Access**: API access respects your existing user permissions
+- **Rate Limiting**: Built-in protection with generous limits
+- **Interactive Documentation**: Swagger UI at `/api/public/v1/docs` with "Try It Out" functionality
+- **OpenAPI 3.0 Spec**: Machine-readable specification for easy integration
+
+<Note>
+Create API keys in **Settings → Integrations → API Access**. API keys inherit your user permissions, so you'll have access to the same data you can see in the portal.
+</Note>
+
+---
+
+### Automation Rules
+
+The wait is over! Automation Rules is now live for all users. Create intelligent workflows that automatically manage tasks, send communications, and keep your MSP running smoothly—without lifting a finger.
+
+**Trigger Types:**
+- **Date Threshold**: Fire when dates approach (warranty expiry, contract renewal, meeting reminder)
+- **Scheduled**: Run on cron schedules (daily reports, weekly reviews, hourly checks)
+- **Field Change**: React when data changes (status updates, priority shifts)
+- **Data Absence**: Alert when nothing happens (stalled tickets, inactive accounts)
+
+**What You Can Automate:**
+- **Send Emails**: Template-based emails with dynamic variables to contacts, users, or roles
+- **Create Planner Items**: Auto-generate tasks with due dates and business value
+- **Open PSA Tickets**: Create tickets in Halo, ConnectWise, Autotask, or Syncro
+- **Send In-App Alerts**: Real-time notifications to users or role members
+- **Update Fields**: Automatically modify entity data
+- **AI Transform**: Generate meeting agendas, summaries, and reminders with AI
+
+**Enterprise Features:**
+- **Approval Workflows**: Require review before sending emails or creating tickets
+- **Batch Processing**: Aggregate multiple triggers into single actions ("50 devices need warranty review" instead of 50 separate alerts)
+- **Complex Conditions**: Build sophisticated rules with AND/OR logic and nested groups
+- **Execution Logging**: Full audit trail of every rule execution with success/failure status
+- **Dry-Run Testing**: Test rules against real data before going live
+
+**Meeting Automation** (New!):
+- Automatically send meeting agenda emails before QBRs
+- Create follow-up tasks when meetings complete
+- Alert team members before important client calls
+- Transform meeting notes into professional summaries
+
+<Tip>
+Start simple! Create a rule to alert you when device warranties expire within 90 days. Once comfortable, explore approval workflows and AI transforms.
+</Tip>
+
+---
+
+### New MSP Dashboard
+
+Your new home base. The MSP Dashboard gives you instant visibility into everything that needs your attention across all your assigned companies.
+
+**Your Companies at a Glance:**
+- See all companies you're assigned to with your role (vCIO, Technician, etc.)
+- Quick-access cards to jump directly to any client
+
+**Personal Widgets:**
+- **My Assigned Tickets**: Tickets assigned to you with priority and age tracking
+- **Overdue Compliance**: Compliance checks that need attention across your clients
+- **Upcoming Meetings**: Your scheduled meetings for the next 14 days
+- **Device Alerts**: Offline devices and expiring warranties across your portfolio
+- **Training Summary**: Training completion status across companies
+- **Secure Scores**: Microsoft 365 Secure Scores at a glance
+
+---
+
+### New Company Overview Dashboard
+
+A completely redesigned company page that gives you instant visibility into client health. See everything that matters at a glance—from tickets and compliance to training progress and upcoming meetings.
+
+**Summary Metrics Bar:**
+Seven key metrics displayed at the top of every company page:
+- **Devices**: Total device count
+- **Users**: Active user count
+- **Open Tickets**: Current ticket volume (color-coded for urgency)
+- **Upcoming Meetings**: 14-day forward look
+- **Training Progress**: Completion percentage with visual progress bar
+- **Incomplete Goals**: Strategic goals pending completion
+- **Upcoming Compliance**: 30-day compliance due window
+
+**Dashboard Widgets:**
+- **Recent Compliance**: Last 10 completed checks with status indicators
+- **Open Tickets**: Priority-sorted with days-open tracking
+- **Device Alerts**: Combined offline devices and expiring warranties
+- **Strategic Goals**: Incomplete goals with priority badges and due dates
+- **Training Progress**: Enrollment completion with overdue highlighting
+- **Upcoming Meetings**: Next 14 days with event type badges
+- **Recent Reports**: Quick access to generated reports
+- **Planner Items**: Active planning items sorted by due date
+
+**Global View Mode:**
+View aggregated data across all your assigned companies, or filter to specific clients. Perfect for vCIOs managing multiple accounts who need a bird's-eye view.
+
+---
+
+### What's New Component
+
+Never miss an update! A new "What's New" section on your dashboard highlights the latest features and improvements. Stay informed about new capabilities as they're released without having to check the release notes manually.
+
+---
+
+### Improvements
+
+- **Dark Mode**: Resolved various dark mode styling inconsistencies
+- **Feedback System**: You can now include screenshots when submitting feedback
+- **Meeting Scheduling**: Fixed edge cases in meeting scheduling
+
+---
+
 ## December 12, 2025
 
 ### Multi-Dashboard System
@@ -81,16 +216,6 @@ The dashboard editor has been completely rebuilt with a more intuitive drag-and-
 
 - **AI Home Page Assistant**: Get instant answers about your data with the new AI-powered chat assistant on your home page. Ask questions about clients, tickets, compliance status, and more—the assistant provides intelligent responses based on your MSPortal.ai data.
 - **Settings Customization Section**: New customization options in settings allow you to personalize your MSPortal.ai experience with your preferred configurations.
-
-### Coming Soon: Automation Rules
-
-We've been building a powerful automation rules engine that will enable you to automate repetitive tasks across MSPortal.ai. The infrastructure is in place with a multi-step wizard editor for creating rules, condition builders, and action configurations. This feature will be enabled for all users soon—stay tuned for the official launch!
-
-**Preview of Automation Rules capabilities:**
-- Create rules with multiple conditions and actions
-- Trigger automations based on events like ticket creation, compliance check updates, or scheduled times
-- Automated notifications and task creation
-- Server-side search for company selection in rule conditions
 
 ### Improvements
 
