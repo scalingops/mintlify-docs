@@ -145,7 +145,8 @@
               {
                 "group": "Halo PSA",
                 "pages": [
-                  "user-guides/integrations/enable-halo-integration"
+                  "user-guides/integrations/enable-halo-integration",
+                  "user-guides/integrations/Halo PSA Custom Role and User"
                 ]
               }
             ]
