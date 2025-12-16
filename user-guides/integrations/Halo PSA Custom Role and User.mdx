@@ -168,25 +168,37 @@ Creating a dedicated MSPortal role and API-only agent is **recommended** for sec
 
 ## Link the Agent to Your API Application
 
-After creating the role and agent, update your API application to use this new agent:
+<Tabs>
+  <Tab title="Existing API Application">
+    If you've already created an API application for MSPortal.ai, update it to use your new agent:
 
-<Steps>
-  <Step title="Open API Applications">
-    Navigate to **Configuration** → **Integrations** → **Halo PSA API** → **View Applications**.
-  </Step>
+    <Steps>
+      <Step title="Open API Applications">
+        Navigate to **Configuration** → **Integrations** → **Halo PSA API** → **View Applications**.
+      </Step>
 
-  <Step title="Edit MSPortal Application">
-    Find the **MSPortal.ai** application you created during the initial integration setup.
-  </Step>
+      <Step title="Edit MSPortal Application">
+        Find the **MSPortal.ai** application you created during the initial integration setup.
+      </Step>
 
-  <Step title="Update Agent Assignment">
-    In the **Agent** dropdown, select the **MSPortal** API-only agent you just created.
-  </Step>
+      <Step title="Update Agent Assignment">
+        In the **Agent** dropdown, select the **MSPortal** API-only agent you just created.
+      </Step>
 
-  <Step title="Save Changes">
-    Click **Submit** to save the updated application settings.
-  </Step>
-</Steps>
+      <Step title="Save Changes">
+        Click **Submit** to save the updated application settings.
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="New Integration Setup">
+    If you haven't configured the Halo PSA integration yet, follow the complete setup guide. When you reach the step to select an agent, choose the **MSPortal** API-only agent you just created.
+
+    <Card title="Configure Halo PSA Integration" icon="plug" href="/user-guides/integrations/enable-halo-integration">
+      Complete guide to connecting Halo PSA with MSPortal.ai
+    </Card>
+  </Tab>
+</Tabs>
 
 ## Next Steps
 
