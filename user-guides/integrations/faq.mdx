@@ -1,0 +1,98 @@
+---
+title: Integrations FAQ
+description: Common questions and troubleshooting for MSPortal.ai integrations
+---
+
+Find answers to frequently asked questions about integrations, data syncing, and troubleshooting common issues.
+
+## Why aren't my tickets syncing?
+
+If your tickets aren't appearing in MSPortal, check these common issues:
+
+<Steps>
+  <Step title="Import Companies First">
+    Tickets are linked to companies. Before tickets can sync, you must import your companies from your PSA.
+
+    Go to **Settings > Companies** and ensure your companies have been imported. See the [Import Companies guide](/user-guides/integrations/import-companies) for detailed instructions.
+  </Step>
+
+  <Step title="Select Queues to Sync">
+    Open your PSA integration settings and configure the **Ticket Settings**. You must select which ticket queues/boards to sync.
+
+    - **ConnectWise**: Select Service Boards in [Ticket Settings](/user-guides/integrations/connectwise-configure-and-service-desk)
+    - **Autotask**: Select Queues in Ticket Settings
+    - **Halo PSA**: Select Ticket Types in Ticket Settings
+    - **Syncro**: Tickets sync automatically once the integration is connected
+  </Step>
+
+  <Step title="Verify Integration Status">
+    Ensure your PSA integration shows as **Active** on the Integrations page (`/settings/integrations`).
+
+    If the status shows as disconnected or errored, your API credentials may have expired or been revoked. Reconnect the integration with fresh credentials.
+  </Step>
+</Steps>
+
+<Tip>
+After making configuration changes, use the **Sync Now** button on your integration card to trigger an immediate sync rather than waiting for the scheduled sync.
+</Tip>
+
+## How often do syncs happen?
+
+MSPortal syncs data from your integrations on regular schedules:
+
+| Data Type | Sync Frequency | Notes |
+|-----------|----------------|-------|
+| **Tickets** | Every 30 minutes | Incremental sync of recent changes |
+| **Companies & Contacts** | Every 30 minutes | Full sync of company data |
+| **Users & Resources** | Every 30 minutes | PSA technicians and resources |
+| **PSA Reference Data** | Every 30 minutes | Ticket types, priorities, statuses, etc. |
+| **Devices (RMM)** | Every 30 minutes | Device inventory from Datto, Asio, Syncro |
+| **Microsoft 365 Secure Score** | Every 30 minutes | Security posture metrics |
+
+<Info>
+**Autotask Webhooks**: If you've enabled webhooks for your Autotask integration, ticket updates are received in near real-time rather than waiting for the scheduled sync.
+</Info>
+
+## I made a change in my PSA and it's not showing up
+
+Changes made in your PSA will appear in MSPortal after the next scheduled sync (typically within 30 minutes).
+
+If you need the changes immediately:
+
+<CardGroup cols={2}>
+  <Card title="Wait for Auto-Sync" icon="clock">
+    Most data syncs every 30 minutes automatically. Simply wait for the next sync cycle.
+  </Card>
+  <Card title="Force Manual Sync" icon="rotate">
+    Click the **refresh icon** on your integration card at `/settings/integrations` to trigger an immediate sync.
+  </Card>
+</CardGroup>
+
+<Warning>
+Manual syncs are rate-limited. If you've recently triggered a sync, you may need to wait a few minutes before triggering another.
+</Warning>
+
+## My integration shows as disconnected
+
+If your integration status shows as disconnected or has an error:
+
+1. **Check API Credentials** - API keys or secrets may have expired or been rotated in your PSA
+2. **Verify Permissions** - Ensure the API user has the required permissions (see integration-specific guides)
+3. **Check Rate Limits** - Some PSAs have API rate limits that may temporarily block requests
+4. **Reconnect** - Try disconnecting and reconnecting the integration with fresh credentials
+
+## Related Resources
+
+- [Import Companies](/user-guides/integrations/import-companies) - How to import companies from your PSA
+- [Import Users](/user-guides/integrations/import-users) - Sync PSA users with MSPortal
+- [Clear and Resync](/user-guides/integrations/clear-and-resync-integrations) - How to perform a full data resync
+- [Integration Settings](/user-guides/settings/integrations) - Configure integration options
+
+## Need More Help?
+
+If you're still experiencing issues after following this guide, contact [support@msportal.ai](mailto:support@msportal.ai) with:
+
+- Your PSA type (ConnectWise, Autotask, Halo, or Syncro)
+- A description of the issue
+- Any error messages you're seeing
+- Steps you've already tried
