@@ -36,30 +36,102 @@ Creating a dedicated MSPortal role and API-only agent is **recommended** for sec
   <Step title="Configure Role Permissions">
     Under the **Permissions** section, configure the following settings:
 
-    **General Permissions:**
-    | Permission | Setting |
-    |------------|---------|
-    | Default Access Level | **Read and Modify** |
-    | Can Edit All Appointments | **Yes** |
-    | Can Add All Appointments | **Yes** |
-    | Can View All Appointments | **Yes** |
-    | Allow Use of All Ticket Types | **Yes** |
+    <AccordionGroup>
+      <Accordion title="General Permissions">
+        | Permission | Setting |
+        |------------|---------|
+        | Is a HaloPSA Administrator | Not set |
+        | Editing of own Preferences | Not set |
+        | Editing of own Notifications | Not set |
+      </Accordion>
 
-    **Module Permissions:**
-    | Module | Setting |
-    |--------|---------|
-    | Tickets | **Read and Modify** |
-    | Customers | **Read Only** |
-    | CRM/Opportunities | **Read and Modify** |
-    | Contracts | **Read Only** |
-    | Projects | **Read and Modify** |
-    | Reporting | **No** |
+      <Accordion title="Feature Access">
+        | Module | Access Level |
+        |--------|--------------|
+        | Tickets | **Read and Modify** |
+        | Customers | **Read and Modify** |
+        | Users | **Read and Modify** |
+        | CRM | **Read and Modify** |
+        | Assets | **Read, Modify and Delete** |
+        | Calendars and Appointments | **Read and Modify** |
+        | Knowledge Base | **Read, Modify and Delete** |
+        | Suppliers | **Read and Modify** |
+        | Products | **Read and Modify** |
+        | Sales | **Read and Modify** |
+        | Quotations | **Read and Modify** |
+        | Sales Orders | **Read, Modify and Delete** |
+        | Purchase Orders | **Read and Modify** |
+        | Billing Details | **Read and Modify** |
+        | Invoices | **Read, Create, Modify and Delete** |
+        | Reporting | **Read and Modify** |
+        | Customer Agreements | **Read and Modify** |
+        | Supplier Agreements | **Read and Modify** |
+        | Service Catalogue | **Read and Modify** |
+        | Software Releases | **Read and Modify** |
+        | Timesheets | **Read and Modify (All)** |
+        | Software Licencing | **Read and Modify** |
+        | Segments | **Read and Modify** |
+        | Documents | Not set |
+        | Mail Campaign | **Read and Modify** |
+        | Event Management | Not set |
+      </Accordion>
 
-    **Restrictions:**
-    | Setting | Value |
-    |---------|-------|
-    | Restrict to Own Customers | **No** |
-    | Can Access Admin Area | **Yes** |
+      <Accordion title="Tickets Permissions">
+        | Permission | Setting |
+        |------------|---------|
+        | Can add new Tickets | **Yes** |
+        | Can edit closed Tickets | **Yes** |
+        | Can view Unassigned Tickets | **Yes** |
+        | Can view Tickets assigned to other Agents | **Yes** |
+        | Can change a Ticket's Ticket Type | **Yes** |
+        | Can Re-assign Tickets | **Yes** |
+        | Can Edit Advanced Ticket Details | **Yes** |
+        | Editing of Actions | **Can Edit All Actions** |
+        | Can manually adjust billing time allocation per action | **All** |
+        | Can recalculate billing against Tickets | **Yes** |
+        | Can Delete Tickets | **No** |
+        | Can assign to Agents in Teams the Agent is not a member of | **Yes** |
+        | Can Edit Tickets Which Are Not Assigned To Them | **Yes** |
+        | Can override maximum priority escalation at ticket type level | **Yes** |
+        | Can Override Ticket Review Processing | **Yes** |
+        | Can use the Treat as Spam button | **Yes** |
+        | Can export tickets | **Yes** |
+        | Can always update Ticket Statuses outside of actions | **Yes** |
+        | Can remove To-Do items | **Yes** |
+      </Accordion>
+
+      <Accordion title="Calendars and Appointments Permissions">
+        | Permission | Setting |
+        |------------|---------|
+        | Editing of Appointments | **Can Edit All Appointments** |
+        | Adding New Appointments | **Can Add All Appointments** |
+        | Visibility of Appointments | **Can View All Appointments** |
+        | Deleting of Appointments | **Can Delete All Appointments** |
+      </Accordion>
+
+      <Accordion title="Restrictions">
+        | Restriction | Setting |
+        |-------------|---------|
+        | Allow use of all Ticket Types | **Yes** |
+        | Allow use of all Customers | **Yes** |
+        | Customer Group Override | Not set |
+        | Allow use of all Asset Types | **Yes** |
+        | Allow use of all Asset Fields | **Yes** |
+      </Accordion>
+
+      <Accordion title="Billing Permissions">
+        | Permission | Setting |
+        |------------|---------|
+        | Can View Item Costs | **Read Only** |
+        | Can View Item Prices | **Read Only** |
+        | Can View Product SKU | **Read Only** |
+        | Can View Agent Costs | **No** |
+      </Accordion>
+
+      <Accordion title="Configuration Permissions">
+        All configuration permissions should be set to **Not set** (disabled). The MSPortal integration does not require configuration access.
+      </Accordion>
+    </AccordionGroup>
 
     ![Role Permissions](https://colony-recorder.s3.amazonaws.com/files/2025-12-16/9cdf2e26-232a-49a1-bd24-88fc7be0a04b/stack_animation.webp)
   </Step>
