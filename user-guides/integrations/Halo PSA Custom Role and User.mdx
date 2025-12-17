@@ -163,6 +163,34 @@ Creating a dedicated MSPortal role and API-only agent is **recommended** for sec
   </Step>
 </Steps>
 
+## Assign Departments and Teams to the Role
+
+<Warning>
+This step is required for the MSPortal integration to access tickets, customers, and other data. The API agent will only be able to see data from departments and teams assigned to the role.
+</Warning>
+
+<Steps>
+  <Step title="Open the MSPortal Role">
+    Go to **Configuration** → **Teams & Agents** → **Roles**, then click on the **MSPortal** role to edit it.
+  </Step>
+
+  <Step title="Navigate to Departments & Teams Tab">
+    Click on the **Departments & Teams** tab within the role settings.
+  </Step>
+
+  <Step title="Add Departments and Teams">
+    Add all the departments and teams that you want MSPortal to have access to:
+
+    1. Add each department whose data should be visible in MSPortal
+    2. Add each team whose tickets and data should be visible in MSPortal
+    3. Click **Submit** to save the role
+  </Step>
+</Steps>
+
+<Info>
+If you skip this step, the MSPortal integration may not be able to see tickets, customers, or other data associated with those departments and teams.
+</Info>
+
 ## Link the Agent to Your API Application
 
 <Tabs>
