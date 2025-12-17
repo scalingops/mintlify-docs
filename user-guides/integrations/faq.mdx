@@ -42,7 +42,7 @@ MSPortal syncs data from your integrations on regular schedules:
 
 | Data Type | Sync Frequency | Notes |
 |-----------|----------------|-------|
-| **Tickets** | Every 30 minutes | Incremental sync of recent changes |
+| **Tickets** | Every 15 minutes | Incremental sync of recent changes |
 | **Companies & Contacts** | Every 30 minutes | Full sync of company data |
 | **Users & Resources** | Every 30 minutes | PSA technicians and resources |
 | **PSA Reference Data** | Every 30 minutes | Ticket types, priorities, statuses, etc. |
@@ -55,13 +55,13 @@ MSPortal syncs data from your integrations on regular schedules:
 
 ## I made a change in my PSA and it's not showing up
 
-Changes made in your PSA will appear in MSPortal after the next scheduled sync (typically within 30 minutes).
+Changes made in your PSA will appear in MSPortal after the next scheduled sync (typically within 15-30 minutes depending on data type).
 
 If you need the changes immediately:
 
 <CardGroup cols={2}>
   <Card title="Wait for Auto-Sync" icon="clock">
-    Most data syncs every 30 minutes automatically. Simply wait for the next sync cycle.
+    Tickets sync every 15 minutes; other data syncs every 30 minutes. Simply wait for the next sync cycle.
   </Card>
   <Card title="Force Manual Sync" icon="rotate">
     Click the **refresh icon** on your integration card at `/settings/integrations` to trigger an immediate sync.
