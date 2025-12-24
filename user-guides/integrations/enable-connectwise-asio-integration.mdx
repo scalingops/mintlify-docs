@@ -1,0 +1,181 @@
+---
+title: Enable ConnectWise Asio Integration
+description: Step-by-step guide to set up ConnectWise Asio (RMM) integration with MSPortal for device monitoring and management
+---
+
+## Overview
+
+ConnectWise Asio (formerly ConnectWise RMM) provides cloud-native remote monitoring and management capabilities. This integration enables MSPortal to sync devices, hypervisors, network devices, and company data from your Asio environment.
+
+## Prerequisites
+
+Before you begin, ensure you have:
+- Admin access to ConnectWise Asio (RMM)
+- Admin access to MSPortal
+- Companies already imported from your PSA (ConnectWise Manage, Autotask, etc.)
+
+<Note>
+The Asio integration syncs devices to companies that already exist in MSPortal. Import your companies from your PSA integration first before setting up Asio.
+</Note>
+
+---
+
+## Part 1: Configure ConnectWise Asio
+
+### Step 1: Access API Settings
+
+1. Login to ConnectWise Asio (RMM) as an Admin
+2. Navigate to **Integrations > API Access**
+
+### Step 2: Generate API Credentials
+
+1. Click **Generate API Access** (or **+ Add** if you already have existing API keys)
+2. Enter **API Key Name**: `MSPortal`
+3. Configure the following scopes:
+
+<AccordionGroup>
+  <Accordion title="Required API Scopes">
+    | Scope | Permission |
+    |-------|------------|
+    | Platform - Agent | Read |
+    | Platform - Assets | Read |
+    | Platform - Companies | Read |
+    | Platform - Custom Fields values | Read |
+    | Platform - DataMapping | Read |
+    | Platform - DeviceGroups | Read |
+    | Platform - Devices | Read |
+    | Platform - Sites | Read |
+    | Platform - Tickets | Create |
+    | Platform - Tickets | Read |
+    | Platform - Tickets | Update |
+  </Accordion>
+</AccordionGroup>
+
+4. Click **Save** to generate the API credentials
+5. **Important:** Copy the **API Key** and **API Secret** immediately - these cannot be retrieved again after closing the dialog
+
+---
+
+## Part 2: Connect MSPortal
+
+### Step 1: Open Integration Settings
+
+1. In MSPortal, navigate to **Settings > Integrations**
+2. Find **ConnectWise Asio** in the integrations list
+3. Click **Configure**
+
+### Step 2: Enter Credentials
+
+In the connection dialog, enter your ConnectWise Asio API credentials:
+
+| Field | Description |
+|-------|-------------|
+| **API Key** | The API key generated in Step 2 |
+| **API Secret** | The API secret generated in Step 2 |
+
+### Step 3: Test Connection
+
+Click **Test Connection** to verify your credentials. You should see a green "Connected" indicator if successful.
+
+If the connection fails:
+- Verify your API Key and Secret are copied correctly
+- Confirm all required scopes are enabled for the API key
+- Check that your Asio account has admin privileges
+
+### Step 4: Save the Integration
+
+Click **Connect** to save the integration settings.
+
+---
+
+## Part 3: Map Companies
+
+Before importing devices, you need to map your Asio companies to MSPortal companies.
+
+### Step 1: Navigate to Company Import
+
+1. Go to **Settings > Companies**
+2. Click **Import**
+3. Select **Import from ConnectWise Asio**
+
+### Step 2: Map Companies
+
+The import dialog displays companies from Asio alongside your existing MSPortal companies:
+
+1. Review the company list from Asio
+2. For each Asio company, select the corresponding MSPortal company to map it to
+3. Click **Import** to save the mappings
+
+<Tip>
+Companies should already exist in MSPortal from your PSA integration (ConnectWise Manage, Autotask, etc.). The Asio import maps RMM companies to these existing companies rather than creating new ones.
+</Tip>
+
+---
+
+## Part 4: Import Devices
+
+After mapping companies, you can import devices from Asio.
+
+<Warning>
+Wait a few hours after mapping companies before importing devices. This allows the initial sync to complete and populate the staging area with device data.
+</Warning>
+
+### Step 1: Access Device Import
+
+1. Navigate to **Settings > Integrations**
+2. Find the ConnectWise Asio integration
+3. Click **Import Devices from Staging**
+
+### Step 2: Review and Import
+
+The import dialog displays devices that are ready to import:
+
+- Only devices from mapped companies appear in the staging list
+- Unmapped company devices are not shown until their companies are mapped
+- Review the device list and click **Import** to add them to MSPortal
+
+<Note>
+Devices are continuously synced from Asio after the initial import. New devices will appear in the staging area as they are detected in your Asio environment.
+</Note>
+
+---
+
+## What Gets Synced
+
+| Data Type | Sync Direction | Description |
+|-----------|----------------|-------------|
+| Companies | Asio → MSPortal | Company/site information for mapping |
+| Devices | Asio → MSPortal | Endpoints, workstations, and managed devices |
+| Hypervisors | Asio → MSPortal | Virtual infrastructure hosts |
+| Network Devices | Asio → MSPortal | Routers, switches, and network infrastructure |
+| Device Groups | Asio → MSPortal | Device organization and grouping |
+| Custom Fields | Asio → MSPortal | Custom field values assigned to devices |
+
+---
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Connection test fails | Verify API Key and Secret are correct; ensure all required scopes are enabled |
+| No companies in import list | Check that the API key has "Companies - Read" scope enabled |
+| No devices in staging | Wait a few hours for initial sync; verify companies are mapped correctly |
+| Devices missing for some companies | Ensure those companies are mapped in Settings > Companies |
+| Permission errors | Verify your Asio account has admin privileges |
+
+---
+
+## Next Steps
+
+After connecting Asio, you can:
+
+- View synced devices in the **Devices** module
+- Build reports using device data
+- Set up compliance checks against your device inventory
+- Monitor hypervisors and network devices alongside endpoints
+
+## Related Resources
+
+- [Import Companies](./import-companies) - General company import guide
+- [Devices Module](/user-guides/devices/index) - Managing devices in MSPortal
+- [Clear and Resync Integrations](./clear-and-resync-integrations) - Troubleshooting sync issues

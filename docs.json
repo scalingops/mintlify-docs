@@ -126,6 +126,7 @@
                 "group": "ConnectWise",
                 "pages": [
                   "user-guides/integrations/enable-connectwise-integration",
+                  "user-guides/integrations/enable-connectwise-asio-integration",
                   "user-guides/integrations/connectwise-configure-and-service-desk",
                   "user-guides/integrations/connectwise-opportunity-settings",
                   "user-guides/integrations/connectwise-resync-psa-settings"
@@ -219,7 +220,7 @@
     "dark": "/logo/dark.svg"
   },
   "announcement": {
-    "text": "\u00f0\u0178\u201c\u0161 Documentation is currently Work in Progress and may be incomplete or incorrect.",
+    "text": "ðŸ“š Documentation is currently Work in Progress and may be incomplete or incorrect.",
     "type": "warning"
   },
   "navbar": {
