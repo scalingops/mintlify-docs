@@ -7,15 +7,14 @@ description: Step-by-step guide to set up and configure ConnectWise Manage integ
 
 Before you begin, ensure you have:
 - Admin access to both ConnectWise Manage and MSPortal
-- Your ConnectWise company ID
-- Access to create API members in ConnectWise
+- Your ConnectWise company ID (visible on the ConnectWise login screen)
+- Access to create API members and security roles in ConnectWise
 
-## Part 1: Configure ConnectWise
+## Part 1: Configure ConnectWise Manage
 
 ### Step 1: Access System Settings
-Login to ConnectWise, and navigate to the System menu to begin configuring the integration settings.
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/15ed32cd-4d06-4942-8e64-4e4ca40039df/ascreenshot.jpeg?tl_px=0,548&br_px=1376,1318&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=18,523)
+Login to ConnectWise Manage and navigate to **System > Security Roles** to create a new security role for the MSPortal integration.
 
 ### Step 2: Create Security Role
 
@@ -119,186 +118,102 @@ Create a security role named "MSPortal" with the following permissions. These pe
 
 Click **Save and Close** to finalize the security role settings.
 
-![](https://colony-recorder.s3.amazonaws.com/files/2025-08-29/f8b71d62-89ca-4333-9df7-7f606ac4844a/stack_animation.webp)
-
 ### Step 3: Create API Member
-Create an API account named "MSPortal" that will be used for the integration authentication.
 
-![](https://colony-recorder.s3.amazonaws.com/files/2025-08-29/7b02ebf4-5b95-47c8-8c0a-876286656b43/stack_animation.webp)
+1. Navigate to **System > Members**
+2. Click the **API Members** tab
+3. Click **+** to create a new API member
+4. Name it "MSPortal"
+5. Select the **MSPortal** security role you created in Step 2
+6. Enter your **Business Unit** and **Location**
+7. Click **Save**
 
-### Step 4: Configure API Account and Generate Keys
-1. Select the Role ID you created in Step 2
-2. Enter your Business Unit and Location
-3. Click Save
-4. Navigate to API Keys at the top of the page
-5. Click the Plus icon to add a new key
-6. Name it "MSPortal" and click Save
+### Step 4: Generate API Keys
 
-**Important:** Copy the Public Key and Private Key immediately after generation. These keys cannot be retrieved again after you close this window.
+1. With the API member open, click the **API Keys** tab
+2. Click **+** to add a new key
+3. Name it "MSPortal" and click **Save**
+4. **Important:** Copy the **Public Key** and **Private Key** immediately - these cannot be retrieved again after closing
 
-![](https://colony-recorder.s3.amazonaws.com/files/2025-08-29/9c90e65c-ed8c-46e5-a39c-7e87b5fae9f6/stack_animation.webp)
+---
 
-## Part 2: Configure MSPortal Integration
+## Part 2: Connect MSPortal
 
-### Step 5: Access MSPortal Settings
-In MSPortal, navigate to Settings, then Integrations to access the integration configuration page.
+### Step 1: Open Integration Settings
 
-![](https://colony-recorder.s3.amazonaws.com/files/2025-08-29/06c99e4f-893a-4e37-bd79-50489f0da240/stack_animation.webp)
+1. In MSPortal, navigate to **Settings > Integrations**
+2. Find **ConnectWise Manage** in the integrations list
+3. Click **Configure**
 
-### Step 6: Configure ConnectWise Connection
-Click the edit button beside ConnectWise Manage to open the configuration dialog.
+### Step 2: Enter Credentials
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/97fad39a-79fe-4f11-89ff-6170a42d1358/ascreenshot.jpeg?tl_px=1040,313&br_px=2416,1082&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=528,277)
+In the connection dialog, enter your ConnectWise API credentials:
 
-### Step 7: Enter Connection Details
-1. Enter your ConnectWise domain (without https:// or trailing slash)
-   - Example: `yourcompany.connectwise.com`
-2. Enter your Company ID (visible on the ConnectWise login screen)
-3. Paste the Public Key from Step 4
-4. Paste the Private Key from Step 4
-5. Click "Test Connection" to verify the setup
-6. Once you see "Connected" status, click "Connect" to save
+| Field | Description | Example |
+|-------|-------------|---------|
+| **FQDN** | Your ConnectWise domain | `na.myconnectwise.net` or `aus.myconnectwise.net` |
+| **Company ID** | Your company identifier (shown on login screen) | `YourCompanyID` |
+| **Public Key** | API public key from Step 4 | `abc123...` |
+| **Private Key** | API private key from Step 4 | `xyz789...` |
 
-![](https://colony-recorder.s3.amazonaws.com/files/2025-08-29/3a38160b-2597-4a7d-a58c-2994a7d09a5e/stack_animation.webp)
+<Note>
+**FQDN Examples:**
+- Cloud-hosted: `na.myconnectwise.net`, `aus.myconnectwise.net`, `eu.myconnectwise.net`
+- On-premise: `cw.yourcompany.com` (without https://)
+</Note>
 
-## Part 3: Configure Sync Settings
+### Step 3: Test Connection
 
-### Step 8: Access Sync Configuration
-Navigate to Settings in MSPortal.
+Click **Test Connection** to verify your credentials. You should see a green "Connected" indicator if successful.
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/b3a3023c-c6b7-4998-af5a-6ac18b2fc945/File.jpeg?tl_px=1040,250&br_px=2416,1019&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=526,276)
+If the connection fails:
+- Verify your FQDN is correct (no https:// prefix)
+- Check that your Company ID matches exactly
+- Confirm the API keys are copied correctly
+- Ensure the API member has the correct security role assigned
 
-### Step 9: Open Sync Configuration
-Click "Sync Configuration" to access the synchronization settings.
+### Step 4: Configure Sync Settings
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/a3044a51-118c-40b7-92cf-6285ddf0ec09/File.jpeg?tl_px=723,2&br_px=2099,771&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=523,277)
+After a successful connection test, click the **Sync Configuration** tab to customize what data syncs:
 
-### Step 10-12: Configure Company and Contact Sync
-Navigate through the Sync Configuration options to set up:
-- Company synchronization preferences
-- Contact synchronization settings
-- Field mapping between MSPortal and ConnectWise
+| Setting | Description |
+|---------|-------------|
+| **Skip Inactive Companies** | Only sync active companies (recommended) |
+| **Exclude Company Types** | Select company types to exclude from sync |
+| **Exclude Company Statuses** | Select company statuses to exclude from sync |
+| **Exclude Opportunity Types** | Select opportunity types to exclude from sync |
+| **Exclude Project Types** | Select project types to exclude from sync |
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/bfbd72aa-59d1-4c81-8a35-72eb9253efb8/File.jpeg?tl_px=218,151&br_px=1594,920&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,277)
+### Step 5: Complete Setup
 
-### Step 13: Save Sync Configuration
-After configuring all sync options, click "Save" to apply the settings.
+Click **Connect** to save the integration and begin the initial sync.
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/cf043a3c-5049-423a-973d-8b11c087762c/File.jpeg?tl_px=847,548&br_px=2224,1318&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,465)
+---
 
-## Part 4: Configure Ticket Settings
+## Next Steps
 
-### Step 14: Access Ticket Settings
-Navigate to the Ticket Settings section to configure ticket synchronization.
+After connecting, you can configure additional settings:
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/2285f6ff-22f5-4082-ad6d-0a2c0c0f22c3/File.jpeg?tl_px=932,250&br_px=2308,1019&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=523,276)
-
-### Step 15: Enable Ticket Sync
-Toggle "Enable Ticket Sync" to activate ticket synchronization between MSPortal and ConnectWise.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/c327e843-995d-4718-8813-c1d002175021/File.jpeg?tl_px=184,0&br_px=1561,769&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,233)
-
-### Step 16: Select Service Boards
-Choose which ConnectWise service boards should sync with MSPortal. You can select multiple boards based on your workflow requirements.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/356bada1-8c8a-4897-80a3-7ec6a4dff06e/File.jpeg?tl_px=258,72&br_px=1634,841&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,277)
-
-### Step 17-18: Select other sync settings
-Choose specific statuses or types to sync into MSPortal.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/728021de-2869-4283-a7b6-c87021ede078/File.jpeg?tl_px=288,207&br_px=1665,976&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,277)
-
-### Step 19-22: Configure Ticket Default Settings
-Configure default settings for tickets created from MSPortal:
-- Default ticket type (Service, Project, etc.)
-- Default ticket subtype
-- Default priority level
-- Default service location
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/df3505b8-0def-4d99-ba19-6efaca5e1738/File.jpeg?tl_px=495,17&br_px=1871,786&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,277)
-
-### Step 23: Configure Waiting Status
-Select which ConnectWise ticket statuses should be considered "waiting" statuses. This helps MSPortal understand when tickets are awaiting customer response.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/b53fb4cb-c185-4cd5-a8c0-ab6dac249a8b/File.jpeg?tl_px=294,373&br_px=1670,1142&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,277)
-
-### Step 24-29: Configure Additional Ticket Settings
-Continue configuring ticket settings including:
-- Closed status mapping
-- Resolution status mapping
-- Ticket source configuration
-- Default technician assignment
-- Time entry settings
-- Notification preferences
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/347e4fb0-dffb-44e6-9407-3913a4571df4/File.jpeg?tl_px=334,327&br_px=1710,1096&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,277)
-
-### Step 30: Perform Initial Sync
-Click "Full Sync" to perform the initial synchronization between MSPortal and ConnectWise.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/db62abb2-e919-40e1-8011-6d378f69a448/File.jpeg?tl_px=589,548&br_px=1966,1318&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,458)
-
-### Step 31: Confirm Full Sync
-Click "Delete All & Sync" to clear any existing data and perform a fresh synchronization. This ensures a clean start for the integration.
-
-**Warning:** This will remove all existing synced data in MSPortal and re-sync from ConnectWise.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/878e8181-74dd-4174-9350-6c61bc982cf2/File.jpeg?tl_px=682,502&br_px=2058,1271&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,277)
-
-### Step 32: Save Ticket Settings
-Click "Save Settings" to apply all ticket configuration settings.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/f7f84ef4-79f6-44dc-ae03-830002e5e816/File.jpeg?tl_px=813,548&br_px=2189,1318&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=523,448)
-
-## Part 5: Configure Opportunity Settings (Optional)
-
-### Step 33: Access Opportunity Settings
-Navigate to Opportunity Settings if you want to sync sales opportunities between systems.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/5c9f797c-4721-4eff-9be4-da776613f776/File.jpeg?tl_px=873,252&br_px=2249,1021&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=523,277)
-
-### Step 34: Configure Default Stage
-Select the default opportunity stage for new opportunities created from MSPortal. This determines where new opportunities enter your sales pipeline.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/00edb495-10be-47c7-8ab5-de2087dd9819/File.jpeg?tl_px=353,0&br_px=1729,769&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,249)
-
-### Step 35: Select Opportunity Type
-Choose the default opportunity type that best matches your sales process.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/6da488ea-1fbb-46fe-8cd6-7ba65a536212/File.jpeg?tl_px=328,5&br_px=1704,774&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,277)
-
-### Step 36: Select Fallback Sales Rep
-Choose a fallback sales representative who will be assigned to opportunities when the primary assignment cannot be determined. This ensures all opportunities have an owner.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/9f8e46e4-2e2d-4553-a389-604679c661b4/File.jpeg?tl_px=331,548&br_px=1707,1318&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,386)
-
-### Step 37: Configure Additional Opportunity Settings
-Set up any additional opportunity configuration options such as:
-- Probability percentages
-- Revenue recognition settings
-- Forecast categories
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/63b01d0d-f21e-47ad-88af-7eeaf4f47bbe/File.jpeg?tl_px=361,548&br_px=1737,1318&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,294)
-
-### Step 38: Save Opportunity Settings
-Click "Save Settings" to finalize the opportunity configuration.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-08-29/159e983c-73ad-4e54-a68e-c5177ba18bbf/File.jpeg?tl_px=760,548&br_px=2137,1318&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=524,459)
-
-## Verification and Testing
-
-After completing the configuration:
-
-1. **Test Ticket Creation**: Create a test ticket in MSPortal and verify it appears in ConnectWise
-2. **Test Bidirectional Sync**: Update the ticket in ConnectWise and confirm changes appear in MSPortal
-3. **Verify Company/Contact Sync**: Check that companies and contacts are properly synchronized
-4. **Monitor Sync Logs**: Review integration logs for any errors or warnings
+- [Configure Service Desk Settings](./connectwise-configure-and-service-desk) - Set up ticket sync, boards, and statuses
+- [Configure Opportunity Settings](./connectwise-opportunity-settings) - Set up opportunity sync and sales pipeline
+- [Re-sync PSA Settings](./connectwise-resync-psa-settings) - Refresh configuration data from ConnectWise
 
 ## Troubleshooting
 
-Common issues and solutions:
+| Issue | Solution |
+|-------|----------|
+| Connection test fails | Verify FQDN format, Company ID, and API keys are correct |
+| Missing companies after sync | Check if company types or statuses are excluded in sync settings |
+| Permission errors | Verify the API member has the MSPortal security role assigned |
+| Sync not starting | Ensure the integration shows "Connected" status before syncing |
 
-- **Connection Test Fails**: Verify your domain URL, company ID, and API keys are correct
-- **Tickets Not Syncing**: Check that ticket sync is enabled and boards are properly selected
-- **Missing Data**: Ensure the API user has appropriate permissions in ConnectWise
-- **Sync Delays**: Initial sync may take several minutes depending on data volume
+## Managing the Integration
+
+To update credentials or sync settings after initial setup:
+
+1. Navigate to **Settings > Integrations**
+2. Click **Manage** under ConnectWise Manage
+3. Update settings as needed
+4. Click **Save**
+
+To disconnect the integration, click **Delete** in the manage dialog.

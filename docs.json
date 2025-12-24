@@ -243,5 +243,11 @@
     "socials": {
       "linkedin": "https://linkedin.com/company/msportal"
     }
-  }
+  },
+  "redirects": [
+    {
+      "source": "/user-guides/enable-connectwise-integration",
+      "destination": "/user-guides/integrations/enable-connectwise-integration"
+    }
+  ]
 }
