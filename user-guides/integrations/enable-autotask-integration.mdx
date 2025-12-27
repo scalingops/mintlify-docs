@@ -1,234 +1,356 @@
+---
+title: 'Configure Autotask PSA Integration'
+description: 'Connect your Autotask PSA instance to MSPortal.ai using the step-by-step setup wizard'
+icon: 'plug'
+---
+
+This guide walks you through connecting your Autotask PSA instance to MSPortal.ai using our streamlined setup wizard.
+
 ## Prerequisites
 
-- Admin access to Autotask, or API credentials (username and password)
-- Admin access to MSPortal.ai
+- Admin access to Autotask, or API credentials (username and secret)
+- Admin access to MSPortal.ai with integration management permissions
 
-# Create MSPortal API User in Autotask
+## Part 1: Configure Autotask PSA
 
-1\. Navigate to [Autotask](https://ww2.autotask.net/AutotaskOnyx/LandingPage?view=ticket-search&view-data=eyJ1cmwiOiJodHRwczovL3d3Mi5hdXRvdGFzay5uZXQvTXZjL1NlcnZpY2VEZXNrL1RpY2tldEdyaWRTZWFyY2gubXZjL0luZGV4In0%3D)
-Go to the admin area.
-Click "Account Settings & Users"
-Click here.
-Click "Security Levels"
-Here. I have already copied the default role which we will be editing to use for our API. All you need to do is copy the API system API user.
+Before connecting to MSPortal.ai, you need to create an API user and security role in Autotask.
 
-![](https://colony-recorder.s3.amazonaws.com/files/2025-11-30/8e6b4d76-365d-4282-b401-67330faaf675/stack_animation.webp)
+### Create Security Role
 
+<Steps>
+  <Step title="Access Security Settings">
+    1. Navigate to [Autotask](https://ww2.autotask.net)
+    2. Go to the Admin area
+    3. Click **Account Settings & Users**
+    4. Click **Security Levels**
+  </Step>
 
-2\. You're going to rename it to MSPortal
-Type "MSPortal"
-Scroll down to other.
-Then we will be enabling. Can create webhooks, and we will be setting it to a value of 25.
-Click this text field.
+  <Step title="Create MSPortal Security Role">
+    1. Copy the default **API User (system)** role
+    2. Rename it to **MSPortal**
+    3. Scroll down to **Other** and enable:
+       - **Can create webhooks**: Yes
+       - Set webhook limit to **25**
 
-![](None)
+    <Note>
+      We recommend setting unused areas to "No permissions" or "Read only" to follow the principle of least privilege. However, this may cause synchronization issues if you later enable those features.
+    </Note>
+  </Step>
 
+  <Step title="Save the Role">
+    Click **Save & Close** to finalize the security role settings.
+  </Step>
+</Steps>
 
-3\. Now, we do recommend that if you are not using a certain area of our portal, That you set it as no permissions or read only. Just know that this can cause synchronization issues down the line. Ensure that you save the role.
+### Create API User
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-30/b5e426aa-485c-4217-ab36-d15905583db2/ascreenshot.jpeg?tl_px=0,138&br_px=1907,1205&force_format=jpeg&q=100&width=1120.0)
+<Steps>
+  <Step title="Navigate to Users">
+    1. Go back to **Account Settings & Users**
+    2. Select **Resources/Users**
+    3. Click to add a new **API user**
+  </Step>
 
+  <Step title="Configure API User">
+    Fill in the following details:
 
-4\. Click "Save & Close"
+    | Field | Value |
+    |-------|-------|
+    | **First Name** | MSPortal |
+    | **Last Name** | Integration |
+    | **Security Level** | MSPortal (the role you created) |
+    | **Email Address** | Use an internal alias for receiving integration logs |
+    | **Primary Internal Location** | Select your headquarters |
+    | **Integration Vendor** | MSPortal.ai |
+  </Step>
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-30/3e5e8c04-93bc-4ca0-87d0-26434b2d1c60/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=85,14)
+  <Step title="Generate API Credentials">
+    1. Under **Credentials**, click **Generate Key**
+    2. Click **Generate Secret**
+    3. **Important:** Save the API username and secret immediately - the secret cannot be retrieved later
 
+    <Warning>
+      Make sure to copy and save your API credentials before closing this dialog. The secret cannot be viewed again after creation.
+    </Warning>
+  </Step>
 
-5\. Now you want to go back.
-Select Resources/Users
-Add a new API user.
+  <Step title="Associate Lines of Business">
+    Associate the appropriate lines of business with the API user, then click **Save & Close**.
+  </Step>
+</Steps>
 
-![](https://colony-recorder.s3.amazonaws.com/files/2025-11-30/2bfe0c53-8dd3-4b52-a381-ae362b4ccf91/stack_animation.webp)
+---
 
+## Part 2: MSPortal Setup Wizard
 
-6\. Name the user, MSPortal. For the first name and last name integration.
-Select the Security Level you just created
-For the email address, we recommend that you have an alias on another email address internally that gets things like integration logs.
-Under primary internal location.
-Click here.
-You're going to want to select your headquarters.
-Under credentials, click Generate key and generate secret.
-Click "Generate Secret"
-It's **very, very important** that you save this information. Under integration vendor select MSPortal.ai
-Click "[MSPortal.ai](http://MSPortal.ai) -"
-Then associate your line of businesses with this as well, and then save
+MSPortal.ai provides a guided setup wizard that walks you through connecting and configuring your Autotask integration in 4 easy steps.
 
-![](None)
-
-
-7\. and close.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-30/411ae65e-7c2f-4672-9721-0beffc7dd072/ascreenshot.jpeg?tl_px=0,243&br_px=1719,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=146,459)
-
-
-8\. Click "Save & Close"
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-30/13c89b05-e0db-4b6d-ae8c-225beb897016/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=36,23)
-
-
-9\. Now you are ready to use this account and continue your configuration.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-30/c5e5b105-2c5e-4da4-8d9e-f6940f7c3a94/ascreenshot.jpeg?tl_px=0,243&br_px=1719,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=146,467)
-
-## Connect to Autotask
+### Starting the Wizard
 
 <Steps>
   <Step title="Navigate to Integrations">
-    Go to **Settings** > **Integrations** at [https://app.msportal.ai/settings/integrations](https://app.msportal.ai/settings/integrations) and click **Edit** on the Autotask integration.
-
-    ![](https://colony-recorder.s3.amazonaws.com/files/2025-11-25/318e5616-448f-42de-9b9e-01dd308ebe35/stack_animation.webp)
+    In MSPortal.ai, go to **Settings** > **Integrations**.
   </Step>
 
-  <Step title="Enter API Credentials">
-    Enter your Autotask API username and password, then click **Test Connection** to verify the credentials.
-
-    ![](https://colony-recorder.s3.amazonaws.com/files/2025-11-25/4747ff71-b59d-47c1-b1ac-86926bb54b38/stack_animation.webp)
-  </Step>
-
-  <Step title="Verify Connection">
-    You should see a "Connection successful!" message. Click **Save** to store your credentials.
-
-    ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-23/31c8071b-9f58-41a2-ab35-4c4afcf6170c/ascreenshot.jpeg?tl_px=187,0&br_px=1906,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=914,-2)
+  <Step title="Start Setup">
+    Find the **Autotask PSA** integration card and click **Configure** to launch the setup wizard.
   </Step>
 </Steps>
 
-## Configure Sync Settings
+---
+
+### Step 1: Connect
+
+Enter your Autotask API credentials to establish the connection.
 
 <Steps>
-  <Step title="Open Sync Settings">
-    After saving your credentials, click **Edit** on the sync settings section.
+  <Step title="Enter API Credentials">
+    Fill in the following fields:
 
-    ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-23/9d131f73-fc53-4029-8751-24e31fd56103/ascreenshot.jpeg?tl_px=187,243&br_px=1906,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=660,311)
+    | Field | Description |
+    |-------|-------------|
+    | **API Username** | Your Autotask API user email (e.g., `api.user@yourdomain.com`) |
+    | **API Secret** | The API secret generated for your API user |
   </Step>
 
-  <Step title="Configure Sync Options">
-    Configure the following settings:
-
-    - **Default Role**: Select a role for imported contacts. If you plan to import all contacts, we recommend choosing a role with minimal permissions (basic ticket creation only).
-    - **Excluded Ticket Statuses**: Select any ticket statuses you do not want to sync.
-    - **Status Stepper**: In the top right, map statuses to each stage of the Status Stepper shown on tickets.
-    - **Fallback Resource**: Set a fallback resource for users with incorrect usernames or users imported from Office 365 that aren't linked to Autotask.
-    - **Default Note Type**: Select the note type used when creating notes from tickets. We recommend "Client Portal Note".
-
-    After configuring, click **Sync Now** to start the initial sync.
+  <Step title="Test Connection">
+    Click **Test Connection** to verify your credentials. You'll see a green "Connected" status when successful.
 
     <Note>
-      Use **Clear and Resync** to fully delete and restart the ticket sync. This is useful if you've added new exclusions.
+      If the connection fails, verify your API username and secret are correct and that the API user has the MSPortal security role assigned.
     </Note>
+  </Step>
 
-    ![](https://colony-recorder.s3.amazonaws.com/files/2025-11-25/c512b5ad-5deb-4fc8-9991-13be460d0ac6/stack_animation.webp)
+  <Step title="Proceed">
+    Once connected, click **Next** to continue to sync configuration.
   </Step>
 </Steps>
 
-## Configure Opportunity Settings
+---
+
+### Step 2: Sync
+
+Configure what data to sync from Autotask and set up automatic contact import.
 
 <Steps>
-  <Step title="Open Opportunity Settings">
-    Click **Edit** on the opportunity settings section.
+  <Step title="Configure Data Sync Options">
+    Enable or disable the following sync options:
 
-    ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-23/1543341f-f0e9-497f-8da6-8ff26e18488c/ascreenshot.jpeg?tl_px=187,243&br_px=1906,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=623,308)
+    | Option | Description |
+    |--------|-------------|
+    | **Sync Users** | Sync user/contact data from Autotask |
+    | **Sync Companies** | Sync company/account data from Autotask |
+    | **Enable Ticket Sync** | Sync tickets from Autotask |
+    | **Enable Opportunity Sync** | Sync opportunities from Autotask |
   </Step>
 
-  <Step title="Set Opportunity Defaults">
-    Configure the following:
+  <Step title="Configure Contact Auto-Import">
+    If you want contacts to be automatically imported when companies are added:
 
-    - **Fallback Owner**: The owner assigned to opportunities when the user doesn't have an Autotask account.
-    - **Default Category, Stage, and Status**: Default values for new opportunities.
-    - **Projected Close Date**: Number of days from the start date in the planner.
-
-    Click **Save** when finished.
-
-    ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-23/6ffb006c-a6ce-4a3c-bd01-2ac06f058f5f/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=452,107)
-
-    ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-23/ad905baf-1229-47c5-ba28-933fe7b2397c/ascreenshot.jpeg?tl_px=187,243&br_px=1906,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=663,474)
-  </Step>
-</Steps>
-
-## Additional Sync Options
-
-The integration settings page includes additional options:
-
-- **Sync PSA Data**: Manually sync boards, priority statuses, or types without waiting for the daily automatic sync.
-- **Refresh**: Clears the last sync time for all Autotask settings, triggering a sync on the next cycle (every minute).
-- **Provision Autotask Webhooks**: Webhooks are configured automatically to sync ticket and company changes instantly. Use this button to re-provision webhooks if they were removed from Autotask or aren't working as expected.
-
-![](https://colony-recorder.s3.amazonaws.com/files/2025-11-25/e60d2a38-c35d-41d9-ac59-0f197484c2ed/stack_animation.webp)
-
-## Configure Ticket Settings
-
-<Steps>
-  <Step title="Open Ticket Settings">
-    Navigate to **Settings** > **Tickets** and set the **Delivery Method** to **PSA**.
-
-    ![](https://colony-recorder.s3.amazonaws.com/files/2025-11-25/ebd49f7c-c214-4e92-96ba-07ab19203a74/stack_animation.webp)
-  </Step>
-
-  <Step title="Select Autotask as PSA Provider">
-    Ensure **Autotask** is selected as your PSA provider.
-
-    ![](https://colony-recorder.s3.amazonaws.com/files/2025-11-25/98f20786-62ff-4b3f-9434-92997fa4832c/stack_animation.webp)
-  </Step>
-
-  <Step title="Configure Ticket Categories">
-    Set up ticket categories and map them to your Autotask ticket types. You can:
-
-    - Edit existing categories to link them to your PSA types
-    - Remove categories you don't need
-    - Set **Ticket Defaults** at the bottom for tickets created from compliance tasks or automation
+    1. Enable **Auto-Import** to automatically create user accounts for active contacts
+    2. Select a **Default Role for Imported Contacts** (e.g., Viewer)
 
     <Tip>
-      Ticket defaults are also used as the starting point for new ticket templates, making template creation faster.
+      We recommend choosing a role with minimal permissions (basic ticket creation only) if you plan to import all contacts.
     </Tip>
+  </Step>
 
-    ![](https://colony-recorder.s3.amazonaws.com/files/2025-11-25/78d3ab0d-d744-4a1b-a3dd-a18fae751ff9/stack_animation.webp)
+  <Step title="Configure Ticket Sync Scope">
+    Define which tickets to sync:
+
+    | Setting | Description |
+    |---------|-------------|
+    | **Queues to Sync** | Select which Autotask queues' tickets to sync |
+    | **Categories** | Select ticket categories to include in sync |
+    | **Exclude Statuses** | Select ticket statuses to exclude from sync |
+
+    <Info>
+      When you proceed to the next step, data sync will begin in the background. This may take a few minutes depending on the amount of data in your Autotask account.
+    </Info>
+  </Step>
+
+  <Step title="Proceed">
+    Click **Next** to continue to ticket and opportunity configuration.
   </Step>
 </Steps>
 
-## Configure Display Groups
+---
+
+### Step 3: Configure
+
+Set up ticket status mapping and opportunity defaults.
+
+#### Ticket Settings
+
+<Steps>
+  <Step title="Configure Status Settings">
+    | Setting | Description |
+    |---------|-------------|
+    | **Closed Statuses** | Select statuses that indicate a ticket is closed |
+    | **Client Comment Status** | Status to set when a client comments on a ticket |
+  </Step>
+
+  <Step title="Configure Resolution Status Stepper">
+    The Resolution Status Stepper provides a visual indicator of ticket progress. Map your Autotask statuses to each stage:
+
+    | Stage | Description |
+    |-------|-------------|
+    | **New** | Tickets that are newly created or not yet triaged |
+    | **Triaged** | Tickets that have been reviewed and categorized |
+    | **Working** | Tickets actively being worked on |
+    | **Waiting** | Tickets waiting for customer response or external input |
+    | **Resolved** | Tickets that have been completed |
+
+    <Tip>
+      You can map multiple Autotask statuses to each stage. The stepper will show the appropriate stage based on the ticket's current status.
+    </Tip>
+  </Step>
+
+  <Step title="Sync Actions">
+    Use these buttons to manage ticket sync:
+
+    | Action | Description |
+    |--------|-------------|
+    | **Quick Sync** | Trigger an immediate sync of ticket data |
+    | **Clear & Resync** | Delete all synced tickets and perform a fresh sync (useful after major configuration changes) |
+  </Step>
+</Steps>
+
+#### Opportunity Settings
+
+<Steps>
+  <Step title="Configure Opportunity Defaults">
+    Set default values for opportunities created from MSPortal:
+
+    | Setting | Description |
+    |---------|-------------|
+    | **Fallback Owner** | The owner assigned to opportunities when the user doesn't have an Autotask account |
+    | **Default Stage** | The starting stage for new opportunities |
+    | **Default Category** | Default category for new opportunities |
+    | **Projected Close Days** | Number of days from start date for projected close |
+
+    <Note>
+      Opportunity sync can be enabled or disabled in the Sync step. These settings only apply when opportunity sync is enabled.
+    </Note>
+  </Step>
+
+  <Step title="Proceed">
+    Click **Next** to continue to the import step.
+  </Step>
+</Steps>
+
+---
+
+### Step 4: Import (Optional)
+
+Import users and companies from Autotask. This step is optional - you can skip it and import later from the respective settings pages.
+
+<Tabs>
+  <Tab title="Import Users">
+    Import resources (your MSP staff) from Autotask to create user accounts.
+
+    1. Enable **Import Users Now**
+    2. Select users from the list to create accounts for
+    3. Choose a default role for imported users
+
+    <Note>
+      Client contacts are not imported here. They can be managed via Company settings after companies are imported.
+    </Note>
+  </Tab>
+
+  <Tab title="Import Companies">
+    Import accounts from Autotask to sync their data.
+
+    1. Enable **Import Companies Now**
+    2. Select companies to import or link to existing MSPortal companies
+
+    <Tip>
+      Companies will sync automatically based on your sync settings. Use this option if you want to import specific companies immediately.
+    </Tip>
+  </Tab>
+</Tabs>
+
+---
+
+### Complete Setup
+
+Click **Complete Setup** to finish the wizard. Your Autotask integration is now configured!
+
+<Note>
+You can return to the setup wizard at any time by clicking **Configure** on the Autotask integration card. The wizard will resume with your current settings.
+</Note>
+
+---
+
+## Managing Your Integration
+
+After setup, you can manage your integration from **Settings** > **Integrations**:
+
+- **Configure**: Re-open the setup wizard to modify settings
+- **Resync**: Trigger a manual sync of data
+- **Sync PSA Data**: Refresh configuration data (boards, statuses, types) from Autotask
+
+### Webhook Management
+
+MSPortal automatically provisions webhooks in Autotask to sync ticket and company changes instantly. If webhooks stop working:
+
+1. Navigate to **Settings** > **Integrations**
+2. Click the **Provision Autotask Webhooks** button to re-provision them
+
+---
+
+## Additional Configuration
+
+After completing the wizard, you may want to configure additional settings:
+
+### Configure Ticket Settings
+
+Navigate to **Settings** > **Tickets** to:
+
+1. Set the **Delivery Method** to **PSA**
+2. Ensure **Autotask** is selected as your PSA provider
+3. Configure ticket categories and map them to Autotask ticket types
+4. Set **Ticket Defaults** for tickets created from compliance tasks or automation
+
+<Tip>
+  Ticket defaults are also used as the starting point for new ticket templates, making template creation faster.
+</Tip>
+
+### Configure Display Groups
 
 Display groups control which ticket fields users can see based on their role.
 
-<Steps>
-  <Step title="Create a Display Group">
-    Click **Create Group** to add a new display group.
+1. Navigate to **Settings** > **Tickets**
+2. Scroll to **Display Groups** and click **Create Group**
+3. Configure:
+   - Name for the display group
+   - Select **Autotask** as the PSA provider
+   - Assign roles that should use this display group
+   - Select which fields are visible
 
-    ![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-11-23/e0a07015-040b-43ba-a26c-1747b097ce14/ascreenshot.jpeg?tl_px=0,243&br_px=1719,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=518,308)
-  </Step>
+<Warning>
+  Only grant access to information users need for their role. Follow the principle of least privilege.
+</Warning>
 
-  <Step title="Configure Group Settings">
-    - Enter a name for the display group
-    - Select **Autotask** as the PSA provider
-    - Assign roles that should use this display group
-    - Select which fields are visible to users in this group
+### Configure Allowed Statuses
 
-    <Warning>
-      Only grant access to information users need for their role. You can select individual fields or use quick-select options like "All in Basic Information".
-    </Warning>
+Set which ticket statuses users can select when updating tickets:
 
-    ![](https://colony-recorder.s3.amazonaws.com/files/2025-11-25/fb65ae93-daec-49a7-b29b-43e980e6d8ef/stack_animation.webp)
+1. Navigate to **Settings** > **Tickets**
+2. Configure status permissions for each display group
 
-    ![](https://colony-recorder.s3.amazonaws.com/files/2025-11-25/47281ad7-26e0-4465-9c7c-6d3512ad2d24/stack_animation.webp)
-  </Step>
-</Steps>
+<Tip>
+  We recommend preventing users from closing tickets directly. Instead, use a "Ready for Review" status to ensure tickets are reviewed before closure.
+</Tip>
 
-## Configure Allowed Statuses
+---
 
-Set which ticket statuses users can select when updating tickets.
+## Troubleshooting
 
-<Steps>
-  <Step title="Configure Status Permissions">
-    Select the statuses users are allowed to change tickets to.
-
-    <Tip>
-      We recommend preventing users from closing tickets directly. Instead, use a "Ready for Review" status to ensure tickets are reviewed before closure.
-    </Tip>
-
-    You can also add approval workflows by including statuses like "Approved" and "Denied".
-
-    Click **Save** when finished.
-
-    ![](https://colony-recorder.s3.amazonaws.com/files/2025-11-25/88d64471-c68d-4542-9b15-f686ba0e9007/stack_animation.webp)
-  </Step>
-</Steps>
-
-Your Autotask integration is now fully configured!
+| Issue | Solution |
+|-------|----------|
+| Connection test fails | Verify your API username and secret are correct. Ensure the API user has the MSPortal security role. |
+| Tickets not syncing | Check that the correct queues and categories are selected in Ticket Sync Scope. |
+| Webhooks not working | Click "Provision Autotask Webhooks" to re-provision them. Ensure your API user can create webhooks. |
+| Missing data | Verify the API user has appropriate permissions in the MSPortal security role. |
+| Contacts not importing | Verify Auto-Import is enabled and a default role is selected in the Sync step. |

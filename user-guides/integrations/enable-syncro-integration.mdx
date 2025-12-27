@@ -1,111 +1,306 @@
 ---
-title: Enable Syncro Integration
-description: Learn about enable syncro integration
+title: 'Configure Syncro Integration'
+description: 'Connect your Syncro instance to MSPortal.ai using the step-by-step setup wizard'
+icon: 'plug'
 ---
 
-## Overview
-This guide will walk you through the process of configuring the Syncro integration with MSPortal. The integration requires an API key from your Syncro account with specific permissions.
+This guide walks you through connecting your Syncro instance to MSPortal.ai using our streamlined setup wizard.
 
 ## Prerequisites
+
 - Active Syncro account with administrative access
-- MSPortal account with integration permissions
+- MSPortal.ai account with integration management permissions
 
-## Configuration Steps
+## Part 1: Configure Syncro
 
-### Step 1: Access MSPortal Integration Settings
-Navigate to [https://msportal.ai/settings/integrations](https://msportal.ai/settings/integrations) and click the gear icon next to the Syncro integration.
+Before connecting to MSPortal.ai, you need to create an API token in Syncro with specific permissions.
 
-![](https://colony-recorder.s3.amazonaws.com/files/2025-09-19/58747858-5f04-43b9-b089-b3c43493b9bb/stack_animation.webp)
+### Create API Token
 
-### Step 2: Open Syncro Administration Portal
-Log into your Syncro account and access the administration portal.
+<Steps>
+  <Step title="Access Syncro Administration">
+    Log into your Syncro account and access the administration portal.
+  </Step>
 
-![](https://colony-recorder.s3.amazonaws.com/files/2025-09-19/400e0b26-00dd-40b0-ae93-773209c67eb9/stack_animation.webp)
+  <Step title="Navigate to API Tokens">
+    Scroll to the bottom of the administration portal to locate the **API Tokens** section.
+  </Step>
 
-### Step 3: Navigate to API Tokens
-Scroll to the bottom of the administration portal to locate the API Tokens section.
+  <Step title="Create New Token">
+    Click **New Token** to begin creating your API token.
+  </Step>
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-19/c71de32a-d02e-4e4e-8d2d-ab8da9050ace/ascreenshot.jpeg?tl_px=0,227&br_px=1719,1189&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=102,437)
+  <Step title="Configure Token Settings">
+    1. **Name**: Enter a descriptive name (e.g., "MSPortal Integration")
+    2. **Expiration**: Set the expiration date to at least one year in the future
+    3. **Permissions**: Select **Custom Permissions** and enable all permissions listed below
 
-### Step 4: Create New API Token
-Click the "New Token" button to begin creating your API token.
+    <Warning>
+      Save your API token immediately after creation. You cannot retrieve it again once you leave this page.
+    </Warning>
+  </Step>
+</Steps>
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-19/ff07341b-183f-445f-9f8b-7288a063cec3/ascreenshot.jpeg?tl_px=187,0&br_px=1906,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=938,101)
-
-### Step 5: Select Custom Permissions
-Choose "Custom Permissions" to configure specific access rights for the integration.
-
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-19/321f7b41-dfe9-4f7f-bddc-e447b979df4f/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=254,247)
-
-### Step 6: Configure Token Settings
-1. **Name**: Enter a descriptive name for your token (e.g., "MSPortal Integration")
-2. **Expiration**: Set the expiration date to at least one year in the future
-3. **Permissions**: Select all permissions from the list below
-
-**Important**: Save your API token immediately after creation. You cannot retrieve it again once you leave this page.
-
-## Required Permissions
+### Required Permissions
 
 Select the following permissions for the API token:
 
-### Asset Management
-- Assets - View Details
-- Assets - List/Search
-- Assets - Edit
-- Assets - Create
+<AccordionGroup>
+  <Accordion title="Asset Management">
+    - Assets - View Details
+    - Assets - List/Search
+    - Assets - Edit
+    - Assets - Create
+  </Accordion>
 
-### Customer Management
-- Customers - List/Search
-- Customers - View Detail
-- Customers - View Total Invoiced
-- Contacts - Import
+  <Accordion title="Customer Management">
+    - Customers - List/Search
+    - Customers - View Detail
+    - Customers - View Total Invoiced
+    - Contacts - Import
+  </Accordion>
 
-### Tickets & Support
-- Tickets - List/Search
-- Tickets - View Details
-- Tickets - View 'Their Ticket' Details (assigned to them)
-- Tickets - Create
-- Tickets - Edit
-- Tickets - Use Ticket Charges
-- Ticket Comments - New
-- Ticket Canned Responses - Manage
-- Ticket Custom Fields - Manage
-- Ticket SLA - Edit
-- Ticket Worksheets - Manage
-- Ticket Timers - Overview
+  <Accordion title="Tickets & Support">
+    - Tickets - List/Search
+    - Tickets - View Details
+    - Tickets - View 'Their Ticket' Details (assigned to them)
+    - Tickets - Create
+    - Tickets - Edit
+    - Tickets - Use Ticket Charges
+    - Ticket Comments - New
+    - Ticket Canned Responses - Manage
+    - Ticket Custom Fields - Manage
+    - Ticket SLA - Edit
+    - Ticket Worksheets - Manage
+    - Ticket Timers - Overview
+  </Accordion>
 
-### Financial
-- Invoices - List/Search
-- Invoices - View Details
-- Estimates - List/Search
-- Estimates - View Details
-- Estimates - Create
-- Estimates - Edit
-- Payments - View List
-- Recurring Invoices - List
+  <Accordion title="Financial">
+    - Invoices - List/Search
+    - Invoices - View Details
+    - Estimates - List/Search
+    - Estimates - View Details
+    - Estimates - Create
+    - Estimates - Edit
+    - Payments - View List
+    - Recurring Invoices - List
+  </Accordion>
 
-### Other Operations
-- Appointments - View All (see-own never restricted)
-- Contracts - List/Search
-- Products - List/Search
-- Pending Orders - View All
-- Vendors - List
-- Warranties - List
-- Warranties - View Details
-- Documentation - Allow Usage
-- Timelogs - Manage
-- RMM Alerts - List
+  <Accordion title="Other Operations">
+    - Appointments - View All (see-own never restricted)
+    - Contracts - List/Search
+    - Products - List/Search
+    - Pending Orders - View All
+    - Vendors - List
+    - Warranties - List
+    - Warranties - View Details
+    - Documentation - Allow Usage
+    - Timelogs - Manage
+    - RMM Alerts - List
+  </Accordion>
+</AccordionGroup>
 
-## Step 7: Complete Integration Setup
+---
 
-### Add Token to MSPortal
-1. Copy the generated API token from Syncro
-2. Return to MSPortal integration settings
-3. Paste the token into the API key field
-4. Enter your Syncro domain name
-5. Click "Save" to activate the integration
+## Part 2: MSPortal Setup Wizard
 
-![](https://colony-recorder.s3.amazonaws.com/files/2025-09-19/76c9550b-d460-4f68-aca1-cca0783bbd92/stack_animation.webp)
+MSPortal.ai provides a guided setup wizard that walks you through connecting and configuring your Syncro integration in 4 easy steps.
+
+### Starting the Wizard
+
+<Steps>
+  <Step title="Navigate to Integrations">
+    In MSPortal.ai, go to **Settings** > **Integrations**.
+  </Step>
+
+  <Step title="Start Setup">
+    Find the **Syncro** integration card and click **Configure** to launch the setup wizard.
+  </Step>
+</Steps>
+
+---
+
+### Step 1: Connect
+
+Enter your Syncro API credentials to establish the connection.
+
+<Steps>
+  <Step title="Enter API Credentials">
+    Fill in the following fields:
+
+    | Field | Description | Example |
+    |-------|-------------|---------|
+    | **Syncro Subdomain** | Your Syncro subdomain (from yourcompany.syncromsp.com) | `yourcompany` |
+    | **API Key** | The API token you created in Syncro | `your-api-token` |
+
+    <Note>
+      Enter only the subdomain portion. For example, if your Syncro URL is `acme.syncromsp.com`, enter just `acme`.
+    </Note>
+  </Step>
+
+  <Step title="Test Connection">
+    Click **Test Connection** to verify your credentials. You'll see a green "Connected" status when successful.
+
+    If the connection fails:
+    - Verify your subdomain is correct (just the subdomain, not the full URL)
+    - Check that your API key is copied correctly
+    - Ensure the API token has all required permissions
+    - Verify the API token hasn't expired
+  </Step>
+
+  <Step title="Proceed">
+    Once connected, click **Next** to continue to sync configuration.
+  </Step>
+</Steps>
+
+---
+
+### Step 2: Sync
+
+Configure what data to sync from Syncro and set up automatic contact import.
+
+<Steps>
+  <Step title="Configure Data Sync Options">
+    Enable or disable the following sync options:
+
+    | Option | Description |
+    |--------|-------------|
+    | **Sync Users** | Sync user/contact data from Syncro |
+    | **Sync Companies** | Sync customer data from Syncro |
+    | **Enable Ticket Sync** | Sync tickets from Syncro |
+
+    <Note>
+      Syncro does not support opportunity sync. Use the Planner module in MSPortal to manage sales opportunities separately.
+    </Note>
+  </Step>
+
+  <Step title="Configure Contact Auto-Import">
+    If you want contacts to be automatically imported when companies are added:
+
+    1. Enable **Auto-Import** to automatically create user accounts for active contacts
+    2. Select a **Default Role for Imported Contacts** (e.g., Viewer)
+
+    <Tip>
+      All auto-imported contacts will be assigned the selected role. You can change individual user roles later in Settings > Users.
+    </Tip>
+  </Step>
+
+  <Step title="Configure Ticket Sync Scope">
+    Define which tickets to sync:
+
+    | Setting | Description |
+    |---------|-------------|
+    | **Exclude Statuses** | Select ticket statuses to exclude from sync (e.g., Closed, Resolved) |
+
+    <Info>
+      When you proceed to the next step, data sync will begin in the background. This may take a few minutes depending on the amount of data in your Syncro account.
+    </Info>
+  </Step>
+
+  <Step title="Proceed">
+    Click **Next** to continue to ticket configuration.
+  </Step>
+</Steps>
+
+---
+
+### Step 3: Configure
+
+Set up ticket status mapping.
+
+#### Ticket Settings
+
+<Steps>
+  <Step title="Configure Status Settings">
+    | Setting | Description |
+    |---------|-------------|
+    | **Closed Statuses** | Select statuses that indicate a ticket is closed |
+    | **Client Comment Status** | Status to set when a client comments on a ticket |
+  </Step>
+
+  <Step title="Configure Resolution Status Stepper">
+    The Resolution Status Stepper provides a visual indicator of ticket progress. Map your Syncro statuses to each stage:
+
+    | Stage | Description |
+    |-------|-------------|
+    | **New** | Tickets that are newly created or not yet triaged |
+    | **Triaged** | Tickets that have been reviewed and categorized |
+    | **Working** | Tickets actively being worked on |
+    | **Waiting** | Tickets waiting for customer response or external input |
+    | **Resolved** | Tickets that have been completed |
+
+    <Tip>
+      You can map multiple Syncro statuses to each stage. The stepper will show the appropriate stage based on the ticket's current status.
+    </Tip>
+  </Step>
+
+  <Step title="Sync Actions">
+    Use these buttons to manage ticket sync:
+
+    | Action | Description |
+    |--------|-------------|
+    | **Quick Sync** | Trigger an immediate sync of ticket data |
+    | **Clear & Resync** | Delete all synced tickets and perform a fresh sync (useful after major configuration changes) |
+  </Step>
+
+  <Step title="Proceed">
+    Click **Next** to continue to the import step.
+  </Step>
+</Steps>
+
+---
+
+### Step 4: Import (Optional)
+
+Import users and companies from Syncro. This step is optional - you can skip it and import later from the respective settings pages.
+
+<Tabs>
+  <Tab title="Import Users">
+    Import users from Syncro to create user accounts.
+
+    1. Enable **Import Users Now**
+    2. Select users from the list to create accounts for
+    3. Choose a default role for imported users
+
+    <Note>
+      Client contacts are not imported here. They can be managed via Company settings after companies are imported.
+    </Note>
+  </Tab>
+
+  <Tab title="Import Companies">
+    Import customers from Syncro to sync their data.
+
+    1. Enable **Import Companies Now**
+    2. Select companies to import or link to existing MSPortal companies
+
+    <Tip>
+      Companies will sync automatically based on your sync settings. Use this option if you want to import specific companies immediately.
+    </Tip>
+  </Tab>
+</Tabs>
+
+---
+
+### Complete Setup
+
+Click **Complete Setup** to finish the wizard. Your Syncro integration is now configured!
+
+<Note>
+You can return to the setup wizard at any time by clicking **Configure** on the Syncro integration card. The wizard will resume with your current settings.
+</Note>
+
+---
+
+## Managing Your Integration
+
+After setup, you can manage your integration from **Settings** > **Integrations**:
+
+- **Configure**: Re-open the setup wizard to modify settings
+- **Resync**: Trigger a manual sync of data
+- **Sync PSA Data**: Refresh configuration data from Syncro
+- **Import Devices**: Import devices/assets from Syncro
+
+---
 
 ## Synchronization Process
 
@@ -117,21 +312,24 @@ Select the following permissions for the API token:
 ### Manual Sync
 To force an immediate synchronization of specific data types, use the refresh button in the integration settings.
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-19/981ea464-c9ac-452b-ae90-f2d3c52397c4/ascreenshot.jpeg?tl_px=530,72&br_px=1907,841&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=735,277)
+---
 
 ## Important Notes
 
 - **Token Security**: Store your API token securely. If compromised, immediately revoke it in Syncro and generate a new one
 - **Sync Timing**: Initial synchronization may take several minutes depending on data volume
 - **Dependencies**: Devices and certain settings require customer data to be imported first
+- **No Opportunities**: Syncro does not support opportunities. Use MSPortal's Planner module for sales tracking
+
+---
 
 ## Troubleshooting
 
-If synchronization issues occur:
-1. Verify all required permissions are enabled
-2. Check the API token hasn't expired
-3. Ensure your Syncro domain is correctly entered
-4. Use the refresh button to trigger manual synchronization
-5. Contact support if issues persist
-
-
+| Issue | Solution |
+|-------|----------|
+| Connection test fails | Verify your subdomain (no full URL) and API key are correct |
+| Token expired | Generate a new token in Syncro and update the integration |
+| Permissions error | Ensure all required permissions are enabled on the API token |
+| Tickets not syncing | Check that ticket statuses aren't excluded in sync settings |
+| Contacts not importing | Verify Auto-Import is enabled and a default role is selected in the Sync step |
+| Devices not appearing | Ensure customers have been imported first, then trigger device import |

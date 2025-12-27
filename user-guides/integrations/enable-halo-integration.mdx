@@ -1,10 +1,10 @@
 ---
 title: 'Configure Halo PSA Integration'
-description: 'Connect your Halo PSA instance to MSPortal.ai for ticket sync, CRM, and opportunity management'
+description: 'Connect your Halo PSA instance to MSPortal.ai using the step-by-step setup wizard'
 icon: 'plug'
 ---
 
-This guide walks you through connecting your Halo PSA instance to MSPortal.ai.
+This guide walks you through connecting your Halo PSA instance to MSPortal.ai using our streamlined setup wizard.
 
 ## Prerequisites
 
@@ -12,29 +12,25 @@ This guide walks you through connecting your Halo PSA instance to MSPortal.ai.
 - Access to MSPortal.ai with integration management permissions
 - (Recommended) [Custom MSPortal role and API-only agent](/user-guides/integrations/Halo%20PSA%20Custom%20Role%20and%20User) created in Halo PSA
 
-## Setup Steps
+## Part 1: Configure Halo PSA
+
+Before connecting to MSPortal.ai, you need to create an API application in Halo PSA.
 
 <Steps>
   <Step title="Log in to Halo PSA">
     Navigate to your Halo PSA instance and log in with an administrator account.
-
-    ![Halo PSA Login](https://colony-recorder.s3.amazonaws.com/files/2025-12-08/5fff56a0-9e96-40e0-994a-2b9a404de3b7/stack_animation.webp)
   </Step>
 
   <Step title="Open Integrations">
-    Click **Integrations** in the navigation menu.
-
-    ![Click Integrations](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/a3ec20a0-304a-43e1-9a06-765959a91331/ascreenshot.jpeg?tl_px=0,339&br_px=1548,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=85,494)
+    Click **Configuration** in the navigation menu, then select **Integrations** > **API**.
   </Step>
 
   <Step title="Create API Application">
     1. Click **View Applications**
     2. Create a new application named "MSPortal.ai"
     3. Select **Client ID and Secret (Services)** as the authentication method
-    4. Save your **Client ID** and **Client Secret** - you'll need these later
+    4. Save your **Client ID** and **Client Secret** - you'll need these in the wizard
     5. Select your **MSPortal** API-only agent (see [Create Custom Halo PSA Role and API User](/user-guides/integrations/Halo%20PSA%20Custom%20Role%20and%20User) to set this up)
-
-    ![View Applications](https://colony-recorder.s3.amazonaws.com/files/2025-12-08/40c555cd-f58c-47f3-b369-58a1a9940717/stack_animation.webp)
 
     <Warning>
       Make sure to save your Client ID and Client Secret immediately. The secret cannot be retrieved after creation.
@@ -106,63 +102,232 @@ This guide walks you through connecting your Halo PSA instance to MSPortal.ai.
     1. Click **Security**
     2. Add `app.msportal.ai` to the CORS whitelist
     3. Click **Submit** to save
-
-    ![Security Settings](https://colony-recorder.s3.amazonaws.com/files/2025-12-08/8e3aefc3-50bd-4967-b2b3-56b00baad2dd/stack_animation.webp)
-  </Step>
-
-  <Step title="Connect in MSPortal.ai">
-    1. In MSPortal.ai, navigate to **Settings** → **Integrations**
-    2. Click the **Halo PSA** integration card
-    3. Enter your **Client ID** and **Client Secret**
-    4. Enter your Halo PSA instance URL
-
-    ![MSPortal Integration Settings](https://colony-recorder.s3.amazonaws.com/files/2025-12-08/7cc63143-2d64-4c93-b193-7e609eb74d58/stack_animation.webp)
-  </Step>
-
-  <Step title="Test the Connection">
-    Click **Test Connection** to verify everything is configured correctly.
-
-    ![Test Connection](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/6ce82c62-bd0d-41bc-9589-2f8538a5199e/ascreenshot.jpeg?tl_px=187,243&br_px=1906,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=532,343)
-
-    You'll see a success notification in the top-right corner when the connection is successful.
-
-    ![Success Notification](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/0ab9eee3-b317-40f1-bb7b-803ba98b0c73/ascreenshot.jpeg?tl_px=187,0&br_px=1906,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=955,16)
-
-    Click **Save** to save your credentials.
-
-    ![Save Settings](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/f7517b63-46a3-44b6-b121-5b3e188c34e9/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=471,250)
-  </Step>
-
-  <Step title="Configure Sync Settings">
-    Navigate to the **Sync Settings** tab to configure:
-
-    - **Queues**: Select which ticket queues to sync with MSPortal.ai
-    - **Status Rules**: Configure how ticket statuses map between systems
-    - **Resolution Statuses**: Select statuses to link to the Resolution Status Stepper on the ticket menu
-
-    ![Sync Settings](https://colony-recorder.s3.amazonaws.com/files/2025-12-08/2ce2d3b8-4825-4ac1-947f-f0205b92bc24/stack_animation.webp)
-
-    <Tip>
-      If you've made large-scale changes, click **Clear and Resync** to delete all synced tickets from MSPortal.ai and perform a fresh sync.
-    </Tip>
-  </Step>
-
-  <Step title="Configure Opportunity Settings">
-    Navigate to the **Opportunity Settings** tab to configure how sales opportunities sync between Halo PSA and MSPortal.ai.
-
-    ![Opportunity Settings](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/8c38e5d0-394e-4668-9f8e-9ca85fd5d84a/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=431,255)
-
-    Click **Save Settings** when complete.
-
-    ![Save Opportunity Settings](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-12-08/34b5aa8b-4e7b-4804-9bec-8805999fb3de/ascreenshot.jpeg?tl_px=187,243&br_px=1906,1205&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=599,327)
   </Step>
 </Steps>
 
-## Next Steps
+---
 
-Once your integration is configured, MSPortal.ai will begin syncing data from Halo PSA. You can:
+## Part 2: MSPortal Setup Wizard
+
+MSPortal.ai provides a guided setup wizard that walks you through connecting and configuring your Halo PSA integration in 4 easy steps.
+
+### Starting the Wizard
+
+<Steps>
+  <Step title="Navigate to Integrations">
+    In MSPortal.ai, go to **Settings** > **Integrations**.
+  </Step>
+
+  <Step title="Start Setup">
+    Find the **Halo** integration card and click **Configure** to launch the setup wizard.
+  </Step>
+</Steps>
+
+---
+
+### Step 1: Connect
+
+Enter your Halo PSA API credentials to establish the connection.
+
+<Steps>
+  <Step title="Enter API Credentials">
+    Fill in the following fields:
+
+    | Field | Description |
+    |-------|-------------|
+    | **Halo URL** | Your Halo PSA instance URL (e.g., `https://yourhalo.halopsa.com`) |
+    | **Client ID** | The Client ID from your Halo API application |
+    | **Client Secret** | The Client Secret from your Halo API application |
+  </Step>
+
+  <Step title="Test Connection">
+    Click **Test Connection** to verify your credentials. You'll see a green "Connected" status when successful.
+
+    <Note>
+      If the connection fails, double-check your credentials and ensure the CORS whitelist includes `app.msportal.ai`.
+    </Note>
+  </Step>
+
+  <Step title="Proceed">
+    Once connected, click **Next** to continue to sync configuration.
+  </Step>
+</Steps>
+
+---
+
+### Step 2: Sync
+
+Configure what data to sync from Halo PSA and set up automatic contact import.
+
+<Steps>
+  <Step title="Configure Data Sync Options">
+    Enable or disable the following sync options:
+
+    | Option | Description |
+    |--------|-------------|
+    | **Sync Users** | Sync user/contact data from Halo PSA |
+    | **Sync Companies** | Sync company/client data from Halo PSA |
+    | **Enable Ticket Sync** | Sync tickets from Halo PSA |
+    | **Enable Opportunity Sync** | Sync opportunities from Halo PSA |
+  </Step>
+
+  <Step title="Configure Contact Auto-Import">
+    If you want contacts to be automatically imported when companies are added:
+
+    1. Enable **Auto-Import** to automatically create user accounts for active contacts
+    2. Select a **Default Role for Imported Contacts** (e.g., Viewer)
+
+    <Tip>
+      All auto-imported contacts will be assigned the selected role. You can change individual user roles later in Settings > Users.
+    </Tip>
+  </Step>
+
+  <Step title="Configure Ticket Sync Scope">
+    Define which tickets to sync:
+
+    | Setting | Description |
+    |---------|-------------|
+    | **Teams to Sync** | Select which Halo teams' tickets to sync (only tickets from selected teams will appear in MSPortal) |
+    | **Exclude Statuses** | Select ticket statuses to exclude from sync (e.g., Closed, Cancelled) |
+
+    <Info>
+      When you proceed to the next step, data sync will begin in the background. This may take a few minutes depending on the amount of data in your Halo PSA account.
+    </Info>
+  </Step>
+
+  <Step title="Proceed">
+    Click **Next** to continue to ticket and opportunity configuration.
+  </Step>
+</Steps>
+
+---
+
+### Step 3: Configure
+
+Set up ticket status mapping and opportunity defaults.
+
+#### Ticket Settings
+
+<Steps>
+  <Step title="Configure Status Settings">
+    | Setting | Description |
+    |---------|-------------|
+    | **Closed Statuses** | Select statuses that indicate a ticket is closed |
+    | **Client Comment Status** | Status to set when a client comments on a ticket (e.g., "Updated") |
+  </Step>
+
+  <Step title="Configure Resolution Status Stepper">
+    The Resolution Status Stepper provides a visual indicator of ticket progress. Map your Halo statuses to each stage:
+
+    | Stage | Description |
+    |-------|-------------|
+    | **New** | Tickets that are newly created or not yet triaged |
+    | **Triaged** | Tickets that have been reviewed and categorized |
+    | **Working** | Tickets actively being worked on |
+    | **Waiting** | Tickets waiting for customer response or external input |
+    | **Resolved** | Tickets that have been completed |
+
+    <Tip>
+      You can map multiple Halo statuses to each stage. The stepper will show the appropriate stage based on the ticket's current status.
+    </Tip>
+  </Step>
+
+  <Step title="Sync Actions">
+    Use these buttons to manage ticket sync:
+
+    | Action | Description |
+    |--------|-------------|
+    | **Quick Sync** | Trigger an immediate sync of ticket data |
+    | **Clear & Resync** | Delete all synced tickets and perform a fresh sync (useful after major configuration changes) |
+  </Step>
+</Steps>
+
+#### Opportunity Settings
+
+<Steps>
+  <Step title="Configure Opportunity Defaults">
+    Set default values for opportunities created from MSPortal:
+
+    | Setting | Description |
+    |---------|-------------|
+    | **Default Workflow** | The Halo workflow to use for new opportunities |
+    | **Default Conversion Probability** | Starting probability percentage for new opportunities |
+
+    <Note>
+      Opportunity sync can be enabled or disabled in the Sync step. These settings only apply when opportunity sync is enabled.
+    </Note>
+  </Step>
+
+  <Step title="Proceed">
+    Click **Next** to continue to the import step.
+  </Step>
+</Steps>
+
+---
+
+### Step 4: Import (Optional)
+
+Import users and companies from Halo PSA. This step is optional - you can skip it and import later from the respective settings pages.
+
+<Tabs>
+  <Tab title="Import Users">
+    Import technicians and agents (your MSP staff) from Halo PSA to create user accounts.
+
+    1. Enable **Import Users Now**
+    2. Select users from the list to create accounts for
+    3. Choose a default role for imported users
+
+    <Note>
+      Client contacts are not imported here. They can be managed via Company settings after companies are imported.
+    </Note>
+  </Tab>
+
+  <Tab title="Import Companies">
+    Import companies from Halo PSA to sync their data.
+
+    1. Enable **Import Companies Now**
+    2. Select companies to import or link to existing MSPortal companies
+
+    <Tip>
+      Companies will sync automatically based on your sync settings. Use this option if you want to import specific companies immediately.
+    </Tip>
+  </Tab>
+</Tabs>
+
+---
+
+### Complete Setup
+
+Click **Complete Setup** to finish the wizard. Your Halo PSA integration is now configured!
+
+<Note>
+You can return to the setup wizard at any time by clicking **Configure** on the Halo integration card. The wizard will resume with your current settings.
+</Note>
+
+---
+
+## Managing Your Integration
+
+After setup, you can manage your integration from **Settings** > **Integrations**:
+
+- **Configure**: Re-open the setup wizard to modify settings
+- **Resync**: Trigger a manual sync of data
+- **Sync PSA Data**: Refresh configuration data from Halo PSA
+
+### Additional Features
+
+Once your integration is configured, MSPortal.ai will sync data from Halo PSA. You can:
 
 - View synced tickets in the **Tickets** module
 - Access customer data in the **Companies** module
 - Create opportunities from the **Planner** module
 - Link projects to planner items
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Connection test fails | Verify your Halo URL, Client ID, and Client Secret are correct. Ensure `app.msportal.ai` is in the CORS whitelist. |
+| Tickets not syncing | Check that the correct teams are selected in Ticket Sync Scope and that ticket statuses aren't excluded. |
+| Contacts not importing | Verify Auto-Import is enabled and a default role is selected in the Sync step. |
+| Permission errors | Review the API permissions in Halo PSA and ensure all required permissions are enabled. |

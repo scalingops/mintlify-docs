@@ -1,192 +1,393 @@
 ---
-title: Enable ConnectWise Integration
-description: Step-by-step guide to set up and configure ConnectWise Manage integration with MSPortal for ticket synchronization and opportunity management
+title: 'Configure ConnectWise Manage Integration'
+description: 'Connect your ConnectWise Manage instance to MSPortal.ai using the step-by-step setup wizard'
+icon: 'plug'
 ---
+
+This guide walks you through connecting your ConnectWise Manage instance to MSPortal.ai using our streamlined setup wizard.
 
 ## Prerequisites
 
 Before you begin, ensure you have:
-- Admin access to both ConnectWise Manage and MSPortal
+- Admin access to both ConnectWise Manage and MSPortal.ai
 - Your ConnectWise company ID (visible on the ConnectWise login screen)
 - Access to create API members and security roles in ConnectWise
 
 ## Part 1: Configure ConnectWise Manage
 
-### Step 1: Access System Settings
+Before connecting to MSPortal.ai, you need to create an API member and security role in ConnectWise.
 
-Login to ConnectWise Manage and navigate to **System > Security Roles** to create a new security role for the MSPortal integration.
+### Create Security Role
 
-### Step 2: Create Security Role
+<Steps>
+  <Step title="Access System Settings">
+    Login to ConnectWise Manage and navigate to **System > Security Roles**.
+  </Step>
 
-Create a security role named "MSPortal" with the following permissions. These permissions enable MSPortal to sync companies, contacts, tickets, opportunities, agreements, and related data.
+  <Step title="Create Security Role">
+    Create a security role named "MSPortal" with the following permissions. These permissions enable MSPortal to sync companies, contacts, tickets, opportunities, agreements, and related data.
 
-<AccordionGroup>
-  <Accordion title="Companies">
-    | Permission | Add | Edit | Delete | Inquire |
-    |------------|-----|------|--------|---------|
-    | Company Maintenance | All | None | None | All |
-    | Company/Contact Group Maintenance | All | All | None | All |
-    | Configurations | All | All | None | All |
-    | Contacts | All | All | None | All |
-    | CRM / Sales Activities | All | All | None | All |
-    | Manage Attachments | All | All | None | All |
-    | Notes | All | None | None | All |
-    | Reports | All | All | None | All |
-    | Surveys | All | All | None | All |
-    | Team Members | All | None | None | All |
-  </Accordion>
+    <AccordionGroup>
+      <Accordion title="Companies">
+        | Permission | Add | Edit | Delete | Inquire |
+        |------------|-----|------|--------|---------|
+        | Company Maintenance | All | None | None | All |
+        | Company/Contact Group Maintenance | All | All | None | All |
+        | Configurations | All | All | None | All |
+        | Contacts | All | All | None | All |
+        | CRM / Sales Activities | All | All | None | All |
+        | Manage Attachments | All | All | None | All |
+        | Notes | All | None | None | All |
+        | Reports | All | All | None | All |
+        | Surveys | All | All | None | All |
+        | Team Members | All | None | None | All |
+      </Accordion>
 
-  <Accordion title="Finance">
-    | Permission | Add | Edit | Delete | Inquire |
-    |------------|-----|------|--------|---------|
-    | Agreement Invoicing | All | None | None | All |
-    | Agreements | All | All | None | All |
-    | Billing View Time | All | None | None | All |
-    | Invoice Approval | All | None | None | All |
-    | Invoicing | All | None | None | All |
-    | Reports | All | All | None | All |
-  </Accordion>
+      <Accordion title="Finance">
+        | Permission | Add | Edit | Delete | Inquire |
+        |------------|-----|------|--------|---------|
+        | Agreement Invoicing | All | None | None | All |
+        | Agreements | All | All | None | All |
+        | Billing View Time | All | None | None | All |
+        | Invoice Approval | All | None | None | All |
+        | Invoicing | All | None | None | All |
+        | Reports | All | All | None | All |
+      </Accordion>
 
-  <Accordion title="Procurement">
-    | Permission | Add | Edit | Delete | Inquire |
-    |------------|-----|------|--------|---------|
-    | Inventory Adjustments | None | None | None | All |
-    | Inventory Transfers | None | None | None | All |
-    | Product Billable Option | None | None | None | All |
-    | Product Catalog | All | All | None | All |
-    | Products | All | All | None | All |
-    | Purchase Orders | All | All | None | All |
-    | Purchasing Approvals | All | All | None | All |
-    | Purchasing Demand | All | All | None | All |
-    | Serial Number Search | None | None | None | All |
-  </Accordion>
+      <Accordion title="Procurement">
+        | Permission | Add | Edit | Delete | Inquire |
+        |------------|-----|------|--------|---------|
+        | Inventory Adjustments | None | None | None | All |
+        | Inventory Transfers | None | None | None | All |
+        | Product Billable Option | None | None | None | All |
+        | Product Catalog | All | All | None | All |
+        | Products | All | All | None | All |
+        | Purchase Orders | All | All | None | All |
+        | Purchasing Approvals | All | All | None | All |
+        | Purchasing Demand | All | All | None | All |
+        | Serial Number Search | None | None | None | All |
+      </Accordion>
 
-  <Accordion title="Projects">
-    | Permission | Add | Edit | Delete | Inquire |
-    |------------|-----|------|--------|---------|
-    | Project Finance | None | None | None | All |
-    | Project Headers | None | None | None | All |
-    | Project Notes | None | None | None | All |
-    | Project Phase | None | None | None | All |
-    | Project Product | None | None | None | All |
-    | Project Reports | None | None | None | All |
-    | Project Scheduling | None | None | None | All |
-    | Project Teams | None | None | None | All |
-    | Project Ticket Tasks | None | None | None | All |
-    | Project Tickets | All | All | None | All |
-  </Accordion>
+      <Accordion title="Projects">
+        | Permission | Add | Edit | Delete | Inquire |
+        |------------|-----|------|--------|---------|
+        | Project Finance | None | None | None | All |
+        | Project Headers | None | None | None | All |
+        | Project Notes | None | None | None | All |
+        | Project Phase | None | None | None | All |
+        | Project Product | None | None | None | All |
+        | Project Reports | None | None | None | All |
+        | Project Scheduling | None | None | None | All |
+        | Project Teams | None | None | None | All |
+        | Project Ticket Tasks | None | None | None | All |
+        | Project Tickets | All | All | None | All |
+      </Accordion>
 
-  <Accordion title="Sales">
-    | Permission | Add | Edit | Delete | Inquire |
-    |------------|-----|------|--------|---------|
-    | Closed Opportunity | All | All | All | All |
-    | Opportunity | All | All | All | All |
-    | Opportunity Finance | All | All | All | All |
-    | Sales Orders | All | All | None | All |
-  </Accordion>
+      <Accordion title="Sales">
+        | Permission | Add | Edit | Delete | Inquire |
+        |------------|-----|------|--------|---------|
+        | Closed Opportunity | All | All | All | All |
+        | Opportunity | All | All | All | All |
+        | Opportunity Finance | All | All | All | All |
+        | Sales Orders | All | All | None | All |
+      </Accordion>
 
-  <Accordion title="Service Desk">
-    | Permission | Add | Edit | Delete | Inquire |
-    |------------|-----|------|--------|---------|
-    | Change Approvals | All | All | None | All |
-    | Close Service Tickets | All | All | None | All |
-    | Reports | All | All | None | All |
-    | Resource Scheduling | All | All | None | All |
-    | Service Ticket - Dependencies | All | All | All | All |
-    | Service Tickets | All | All | None | All |
-    | Ticket Templates | None | None | None | All |
-  </Accordion>
+      <Accordion title="Service Desk">
+        | Permission | Add | Edit | Delete | Inquire |
+        |------------|-----|------|--------|---------|
+        | Change Approvals | All | All | None | All |
+        | Close Service Tickets | All | All | None | All |
+        | Reports | All | All | None | All |
+        | Resource Scheduling | All | All | None | All |
+        | Service Ticket - Dependencies | All | All | All | All |
+        | Service Tickets | All | All | None | All |
+        | Ticket Templates | None | None | None | All |
+      </Accordion>
 
-  <Accordion title="System">
-    | Permission | Add | Edit | Delete | Inquire |
-    |------------|-----|------|--------|---------|
-    | API Report | All | All | None | All |
-    | Custom Menu Entry | All | All | None | All |
-    | Data Import | All | All | None | All |
-    | Member Maintenance | All | All | None | All |
-    | My Company | All | All | None | All |
-    | Report Writer | None | None | None | All |
-    | Table Setup | All | All | None | All |
-  </Accordion>
+      <Accordion title="System">
+        | Permission | Add | Edit | Delete | Inquire |
+        |------------|-----|------|--------|---------|
+        | API Report | All | All | None | All |
+        | Custom Menu Entry | All | All | None | All |
+        | Data Import | All | All | None | All |
+        | Member Maintenance | All | All | None | All |
+        | My Company | All | All | None | All |
+        | Report Writer | None | None | None | All |
+        | Table Setup | All | All | None | All |
+      </Accordion>
 
-  <Accordion title="Time and Expense">
-    | Permission | Add | Edit | Delete | Inquire |
-    |------------|-----|------|--------|---------|
-    | Time Entry | All | All | None | All |
-  </Accordion>
-</AccordionGroup>
+      <Accordion title="Time and Expense">
+        | Permission | Add | Edit | Delete | Inquire |
+        |------------|-----|------|--------|---------|
+        | Time Entry | All | All | None | All |
+      </Accordion>
+    </AccordionGroup>
 
-Click **Save and Close** to finalize the security role settings.
+    Click **Save and Close** to finalize the security role settings.
+  </Step>
+</Steps>
 
-### Step 3: Create API Member
+### Create API Member
 
-1. Navigate to **System > Members**
-2. Click the **API Members** tab
-3. Click **+** to create a new API member
-4. Name it "MSPortal"
-5. Select the **MSPortal** security role you created in Step 2
-6. Enter your **Business Unit** and **Location**
-7. Click **Save**
+<Steps>
+  <Step title="Navigate to API Members">
+    1. Go to **System > Members**
+    2. Click the **API Members** tab
+    3. Click **+** to create a new API member
+  </Step>
 
-### Step 4: Generate API Keys
+  <Step title="Configure API Member">
+    1. Name it "MSPortal"
+    2. Select the **MSPortal** security role you created
+    3. Enter your **Business Unit** and **Location**
+    4. Click **Save**
+  </Step>
 
-1. With the API member open, click the **API Keys** tab
-2. Click **+** to add a new key
-3. Name it "MSPortal" and click **Save**
-4. **Important:** Copy the **Public Key** and **Private Key** immediately - these cannot be retrieved again after closing
+  <Step title="Generate API Keys">
+    1. With the API member open, click the **API Keys** tab
+    2. Click **+** to add a new key
+    3. Name it "MSPortal" and click **Save**
+    4. **Important:** Copy the **Public Key** and **Private Key** immediately
+
+    <Warning>
+      The API keys cannot be retrieved again after closing this dialog. Make sure to save them securely before proceeding.
+    </Warning>
+  </Step>
+</Steps>
 
 ---
 
-## Part 2: Connect MSPortal
+## Part 2: MSPortal Setup Wizard
 
-### Step 1: Open Integration Settings
+MSPortal.ai provides a guided setup wizard that walks you through connecting and configuring your ConnectWise Manage integration in 4 easy steps.
 
-1. In MSPortal, navigate to **Settings > Integrations**
-2. Find **ConnectWise Manage** in the integrations list
-3. Click **Configure**
+### Starting the Wizard
 
-### Step 2: Enter Credentials
+<Steps>
+  <Step title="Navigate to Integrations">
+    In MSPortal.ai, go to **Settings** > **Integrations**.
+  </Step>
 
-In the connection dialog, enter your ConnectWise API credentials:
+  <Step title="Start Setup">
+    Find the **ConnectWise Manage** integration card and click **Configure** to launch the setup wizard.
+  </Step>
+</Steps>
 
-| Field | Description | Example |
-|-------|-------------|---------|
-| **FQDN** | Your ConnectWise domain | `na.myconnectwise.net` or `aus.myconnectwise.net` |
-| **Company ID** | Your company identifier (shown on login screen) | `YourCompanyID` |
-| **Public Key** | API public key from Step 4 | `abc123...` |
-| **Private Key** | API private key from Step 4 | `xyz789...` |
+---
+
+### Step 1: Connect
+
+Enter your ConnectWise API credentials to establish the connection.
+
+<Steps>
+  <Step title="Enter API Credentials">
+    Fill in the following fields:
+
+    | Field | Description | Example |
+    |-------|-------------|---------|
+    | **API URL** | Your ConnectWise API URL | `na.myconnectwise.net` or `eu.myconnectwise.net` |
+    | **Company ID** | Your company identifier (shown on login screen) | `YourCompanyID` |
+    | **Public Key** | API public key from API member | `abc123...` |
+    | **Private Key** | API private key from API member | `xyz789...` |
+
+    <Note>
+      **API URL Examples:**
+      - Cloud-hosted: `na.myconnectwise.net`, `aus.myconnectwise.net`, `eu.myconnectwise.net`
+      - On-premise: `cw.yourcompany.com` (without https://)
+    </Note>
+  </Step>
+
+  <Step title="Test Connection">
+    Click **Test Connection** to verify your credentials. You'll see a green "Connected" status when successful.
+
+    If the connection fails:
+    - Verify your API URL is correct (no https:// prefix)
+    - Check that your Company ID matches exactly
+    - Confirm the API keys are copied correctly
+    - Ensure the API member has the correct security role assigned
+  </Step>
+
+  <Step title="Proceed">
+    Once connected, click **Next** to continue to sync configuration.
+  </Step>
+</Steps>
+
+---
+
+### Step 2: Sync
+
+Configure what data to sync from ConnectWise and set up company filters.
+
+<Steps>
+  <Step title="Configure Data Sync Options">
+    Enable or disable the following sync options:
+
+    | Option | Description |
+    |--------|-------------|
+    | **Sync Users** | Sync member data from ConnectWise |
+    | **Sync Companies** | Sync company data from ConnectWise |
+    | **Enable Ticket Sync** | Sync service tickets from ConnectWise |
+    | **Enable Opportunity Sync** | Sync opportunities from ConnectWise |
+  </Step>
+
+  <Step title="Configure Contact Auto-Import">
+    If you want contacts to be automatically imported when companies are added:
+
+    1. Enable **Auto-Import** to automatically create user accounts for active contacts
+    2. Select a **Default Role for Imported Contacts** (e.g., Viewer)
+
+    <Tip>
+      We recommend choosing a role with minimal permissions if you plan to import all contacts.
+    </Tip>
+  </Step>
+
+  <Step title="Configure Company Filters">
+    ConnectWise has additional filtering options for company sync:
+
+    | Setting | Description |
+    |---------|-------------|
+    | **Skip Inactive Companies** | Only sync active companies (recommended) |
+    | **Exclude Company Types** | Select company types to exclude from sync |
+    | **Exclude Company Statuses** | Select company statuses to exclude from sync |
+    | **Exclude Opportunity Types** | Select opportunity types to exclude from sync |
+    | **Exclude Project Types** | Select project types to exclude from sync |
+  </Step>
+
+  <Step title="Configure Ticket Sync Scope">
+    Define which tickets to sync:
+
+    | Setting | Description |
+    |---------|-------------|
+    | **Boards to Sync** | Select which ConnectWise service boards' tickets to sync |
+    | **Exclude Statuses** | Select ticket statuses to exclude from sync |
+
+    <Info>
+      When you proceed to the next step, data sync will begin in the background. This may take a few minutes depending on the amount of data in your ConnectWise instance.
+    </Info>
+  </Step>
+
+  <Step title="Proceed">
+    Click **Next** to continue to ticket and opportunity configuration.
+  </Step>
+</Steps>
+
+---
+
+### Step 3: Configure
+
+Set up ticket status mapping and opportunity defaults.
+
+#### Ticket Settings
+
+<Steps>
+  <Step title="Configure Status Settings">
+    | Setting | Description |
+    |---------|-------------|
+    | **Closed Statuses** | Select statuses that indicate a ticket is closed |
+    | **Client Comment Status** | Status to set when a client comments on a ticket |
+  </Step>
+
+  <Step title="Configure Resolution Status Stepper">
+    The Resolution Status Stepper provides a visual indicator of ticket progress. Map your ConnectWise statuses to each stage:
+
+    | Stage | Description |
+    |-------|-------------|
+    | **New** | Tickets that are newly created or not yet triaged |
+    | **Triaged** | Tickets that have been reviewed and categorized |
+    | **Working** | Tickets actively being worked on |
+    | **Waiting** | Tickets waiting for customer response or external input |
+    | **Resolved** | Tickets that have been completed |
+
+    <Tip>
+      You can map multiple ConnectWise statuses to each stage. The stepper will show the appropriate stage based on the ticket's current status.
+    </Tip>
+  </Step>
+
+  <Step title="Sync Actions">
+    Use these buttons to manage ticket sync:
+
+    | Action | Description |
+    |--------|-------------|
+    | **Quick Sync** | Trigger an immediate sync of ticket data |
+    | **Clear & Resync** | Delete all synced tickets and perform a fresh sync (useful after major configuration changes) |
+  </Step>
+</Steps>
+
+#### Opportunity Settings
+
+<Steps>
+  <Step title="Configure Opportunity Defaults">
+    Set default values for opportunities created from MSPortal:
+
+    | Setting | Description |
+    |---------|-------------|
+    | **Default Stage** | The starting stage for new opportunities |
+    | **Default Status** | The default status for new opportunities |
+    | **Default Type** | The default opportunity type |
+    | **Default Probability** | Starting win probability for new opportunities |
+    | **Fallback Sales Rep** | Sales rep assigned when the user doesn't have a ConnectWise account |
+
+    <Note>
+      Opportunity sync can be enabled or disabled in the Sync step. These settings only apply when opportunity sync is enabled.
+    </Note>
+  </Step>
+
+  <Step title="Proceed">
+    Click **Next** to continue to the import step.
+  </Step>
+</Steps>
+
+---
+
+### Step 4: Import (Optional)
+
+Import users and companies from ConnectWise. This step is optional - you can skip it and import later from the respective settings pages.
+
+<Tabs>
+  <Tab title="Import Users">
+    Import members (your MSP staff) from ConnectWise to create user accounts.
+
+    1. Enable **Import Users Now**
+    2. Select users from the list to create accounts for
+    3. Choose a default role for imported users
+
+    <Note>
+      Client contacts are not imported here. They can be managed via Company settings after companies are imported.
+    </Note>
+  </Tab>
+
+  <Tab title="Import Companies">
+    Import companies from ConnectWise to sync their data.
+
+    1. Enable **Import Companies Now**
+    2. Select companies to import or link to existing MSPortal companies
+
+    <Tip>
+      Companies will sync automatically based on your sync settings and filters. Use this option if you want to import specific companies immediately.
+    </Tip>
+  </Tab>
+</Tabs>
+
+---
+
+### Complete Setup
+
+Click **Complete Setup** to finish the wizard. Your ConnectWise Manage integration is now configured!
 
 <Note>
-**FQDN Examples:**
-- Cloud-hosted: `na.myconnectwise.net`, `aus.myconnectwise.net`, `eu.myconnectwise.net`
-- On-premise: `cw.yourcompany.com` (without https://)
+You can return to the setup wizard at any time by clicking **Configure** on the ConnectWise Manage integration card. The wizard will resume with your current settings.
 </Note>
 
-### Step 3: Test Connection
+---
 
-Click **Test Connection** to verify your credentials. You should see a green "Connected" indicator if successful.
+## Managing Your Integration
 
-If the connection fails:
-- Verify your FQDN is correct (no https:// prefix)
-- Check that your Company ID matches exactly
-- Confirm the API keys are copied correctly
-- Ensure the API member has the correct security role assigned
+After setup, you can manage your integration from **Settings** > **Integrations**:
 
-### Step 4: Configure Sync Settings
-
-After a successful connection test, click the **Sync Configuration** tab to customize what data syncs:
-
-| Setting | Description |
-|---------|-------------|
-| **Skip Inactive Companies** | Only sync active companies (recommended) |
-| **Exclude Company Types** | Select company types to exclude from sync |
-| **Exclude Company Statuses** | Select company statuses to exclude from sync |
-| **Exclude Opportunity Types** | Select opportunity types to exclude from sync |
-| **Exclude Project Types** | Select project types to exclude from sync |
-
-### Step 5: Complete Setup
-
-Click **Connect** to save the integration and begin the initial sync.
+- **Configure**: Re-open the setup wizard to modify settings
+- **Resync**: Trigger a manual sync of data
+- **Sync PSA Data**: Refresh configuration data (boards, statuses, types) from ConnectWise
+- **Import Configurations**: Import device configurations from ConnectWise
 
 ---
 
@@ -198,22 +399,15 @@ After connecting, you can configure additional settings:
 - [Configure Opportunity Settings](./connectwise-opportunity-settings) - Set up opportunity sync and sales pipeline
 - [Re-sync PSA Settings](./connectwise-resync-psa-settings) - Refresh configuration data from ConnectWise
 
+---
+
 ## Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
-| Connection test fails | Verify FQDN format, Company ID, and API keys are correct |
+| Connection test fails | Verify API URL format (no https://), Company ID, and API keys are correct |
 | Missing companies after sync | Check if company types or statuses are excluded in sync settings |
 | Permission errors | Verify the API member has the MSPortal security role assigned |
 | Sync not starting | Ensure the integration shows "Connected" status before syncing |
-
-## Managing the Integration
-
-To update credentials or sync settings after initial setup:
-
-1. Navigate to **Settings > Integrations**
-2. Click **Manage** under ConnectWise Manage
-3. Update settings as needed
-4. Click **Save**
-
-To disconnect the integration, click **Delete** in the manage dialog.
+| Tickets from wrong boards | Verify the correct boards are selected in Ticket Sync Scope |
+| Contacts not importing | Verify Auto-Import is enabled and a default role is selected in the Sync step |
