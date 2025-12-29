@@ -127,8 +127,6 @@
                 "pages": [
                   "user-guides/integrations/enable-connectwise-integration",
                   "user-guides/integrations/enable-connectwise-asio-integration",
-                  "user-guides/integrations/connectwise-configure-and-service-desk",
-                  "user-guides/integrations/connectwise-opportunity-settings",
                   "user-guides/integrations/connectwise-resync-psa-settings"
                 ]
               },
