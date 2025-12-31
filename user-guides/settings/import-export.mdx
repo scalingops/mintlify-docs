@@ -4,128 +4,246 @@ description: Bulk import and export data using CSV files
 icon: file-import
 ---
 
-Import/Export Settings allows you to perform bulk data operations using CSV files. Import new records or export existing data for backup or analysis.
+Import/Export Settings allows you to perform bulk data operations using CSV files. Import new records or export existing data for backup, analysis, or migration purposes.
 
 ## Accessing Import/Export Settings
 
 1. Click **Settings** in the sidebar
 2. Select the **Import/Export** icon from the settings navigation
 
-## Import/Export Overview
+## Permissions
 
-<Frame>
-  <img src="/images/settings/settings-import-export.png" alt="Import/Export Settings" />
-</Frame>
+Import/Export requires specific permissions:
+
+| Permission | Access |
+|------------|--------|
+| **manage_settings_import** | Access to import data |
+| **manage_settings_export** | Access to export data |
+
+<Note>
+If you can only see one tab (Import or Export), you have permission for that specific operation only.
+</Note>
 
 ## Import Data
 
 ### Supported Import Types
 
-| Data Type | Template Available | Notes |
-|-----------|-------------------|-------|
-| **Companies** | Yes | Client company records |
-| **Contacts** | Yes | Company contacts |
-| **Users** | Yes | Team member accounts |
-| **Devices** | Yes | Device inventory |
-| **Goals** | Yes | Company goals |
+| Data Type | Description |
+|-----------|-------------|
+| **Companies** | Client company records with ticketing defaults |
+| **Locations** | Company location information |
+| **Devices** | Device inventory records |
+| **Standards** | Standards/compliance check definitions |
+| **Planner** | Planner items and roadmap entries |
+| **Goals** | Strategic goals for companies |
+| **Company Roles** | User-to-company role assignments |
 
 ### Import Process
 
 <Steps>
-  <Step title="Download Template">
-    Click **Download Template** for the data type you want to import
+  <Step title="Select Data Type">
+    Choose the type of data you want to import from the dropdown menu.
   </Step>
-  <Step title="Fill in Data">
-    Open the CSV template and add your data following the column format
+  <Step title="Upload CSV File">
+    Either drag and drop your CSV file onto the upload area, or click **Browse Files** to select a file.
   </Step>
-  <Step title="Upload File">
-    Click **Import** and select your completed CSV file
+  <Step title="Choose Import Mode">
+    Select how to handle existing records:
+    - **Create and update records**: Creates new records and updates existing ones
+    - **Create new records only**: Only adds new records, skips existing
+    - **Update existing records**: Only updates existing records, skips new
   </Step>
-  <Step title="Map Fields">
-    Verify the column mapping matches your data
-  </Step>
-  <Step title="Review & Confirm">
-    Preview the import and confirm to process
+  <Step title="Import Data">
+    Click **Import Data** to process the file.
   </Step>
 </Steps>
 
-### CSV Template Format
+### Import Modes Explained
 
-Templates include:
-- **Required columns** - Fields that must have values
-- **Optional columns** - Fields that can be left empty
-- **Example row** - Sample data showing expected format
-- **Instructions** - Notes on formatting requirements
+| Mode | New Records | Existing Records |
+|------|-------------|------------------|
+| **Create and update** | Created | Updated |
+| **Create only** | Created | Skipped |
+| **Update only** | Skipped | Updated |
 
-<Warning>
-Always use the provided templates. Custom CSV formats may cause import errors.
-</Warning>
+<Tip>
+Use "Create and update" for initial imports and migrations. Use "Update only" when modifying existing data without adding new records.
+</Tip>
 
 ## Export Data
 
-### Export Options
+### Supported Export Types
 
-| Data Type | Formats | Includes |
-|-----------|---------|----------|
-| **Companies** | CSV | All company fields |
-| **Contacts** | CSV | Contact details with company links |
-| **Users** | CSV | User accounts and roles |
-| **Devices** | CSV | Device inventory |
-| **Compliance** | CSV | Compliance status and history |
+| Data Type | Description |
+|-----------|-------------|
+| **Companies** | Company records with all configured fields |
+| **Locations** | Location details linked to companies |
+| **Devices** | Device inventory with specifications |
+| **Standards** | Standards check definitions |
+| **Compliance** | Compliance results and status history |
+| **Planner** | Planner items and roadmap data |
+| **Goals** | Strategic goals and progress |
+| **Company Roles** | User assignments to company roles |
 
 ### Export Process
 
 <Steps>
   <Step title="Select Data Type">
-    Choose what data to export
+    Choose what data to export from the dropdown.
   </Step>
-  <Step title="Apply Filters (Optional)">
-    Filter to export only specific records
+  <Step title="Select Company Scope">
+    Choose to export:
+    - **All Companies**: Export data for all companies
+    - **Specific Company**: Select a single company from the dropdown
   </Step>
-  <Step title="Click Export">
-    Generate and download the CSV file
+  <Step title="Export Data">
+    Click **Export Data** to generate and download the CSV file.
   </Step>
 </Steps>
 
-## Import History
+### Export File Naming
 
-View past imports:
+Exported files are automatically named with the format:
 
-| Field | Description |
-|-------|-------------|
-| **Date** | When the import was performed |
-| **Type** | What data type was imported |
-| **Records** | Number of records processed |
-| **Status** | Success, partial, or failed |
-| **User** | Who performed the import |
+```
+{datatype}_export_{company}_{date}.csv
+```
+
+Example: `companies_export_all_20251230.csv`
+
+## Download Templates
+
+Import templates provide the correct column structure for each data type. Always use templates to ensure your data imports correctly.
+
+### Available Templates
+
+<CardGroup cols={3}>
+  <Card title="Companies" icon="building">
+    Client companies with PSA defaults (board, priority, status)
+  </Card>
+  <Card title="Locations" icon="location-dot">
+    Company locations with addresses
+  </Card>
+  <Card title="Devices" icon="desktop">
+    Device inventory records
+  </Card>
+  <Card title="Standards" icon="clipboard-check">
+    Compliance standards definitions
+  </Card>
+  <Card title="Planner" icon="calendar">
+    Roadmap and planner items
+  </Card>
+  <Card title="Goals" icon="bullseye">
+    Strategic goals
+  </Card>
+  <Card title="Company Roles" icon="user-tag">
+    User-to-company role assignments
+  </Card>
+</CardGroup>
+
+### Template Structure
+
+Each template includes:
+
+- **Required columns** with asterisks (*)
+- **Optional columns** that can be left empty
+- **Example row** showing expected data format
+- **Column headers** matching expected field names
+
+<Warning>
+Custom CSV formats may cause import errors. Always start with the provided templates.
+</Warning>
+
+## CSV Format Requirements
+
+### General Requirements
+
+| Requirement | Description |
+|-------------|-------------|
+| **Encoding** | UTF-8 (required for special characters) |
+| **Delimiter** | Comma (,) |
+| **Headers** | First row must contain column headers |
+| **Line Endings** | Windows (CRLF) or Unix (LF) both supported |
+
+### Data Formatting
+
+| Data Type | Format | Example |
+|-----------|--------|---------|
+| **Dates** | YYYY-MM-DD | 2025-12-30 |
+| **Phone Numbers** | Any format | +1 (555) 123-4567 |
+| **Boolean** | true/false or 1/0 | true |
+| **Empty Values** | Leave blank | |
+
+<Tip>
+When editing CSV files, use a spreadsheet application like Excel or Google Sheets. Save as CSV (UTF-8) when done.
+</Tip>
 
 ## Best Practices
 
 ### Before Importing
-- **Backup first** - Export existing data before major imports
-- **Test with small batches** - Try a few records before bulk import
-- **Clean your data** - Remove duplicates and fix formatting issues
-- **Use templates** - Always start with the provided CSV templates
+
+<AccordionGroup>
+  <Accordion title="Backup First">
+    Export existing data before major imports. This allows you to restore if something goes wrong.
+  </Accordion>
+  <Accordion title="Test with Small Batches">
+    Import a few records first to verify formatting. Fix any issues before importing the full dataset.
+  </Accordion>
+  <Accordion title="Clean Your Data">
+    Remove duplicates, fix inconsistent formatting, and validate required fields before importing.
+  </Accordion>
+  <Accordion title="Use Templates">
+    Always start with downloaded templates rather than creating CSV files from scratch.
+  </Accordion>
+</AccordionGroup>
 
 ### Data Quality
-- **Consistent formatting** - Use same date/phone formats throughout
-- **Required fields** - Ensure all required columns have values
-- **Unique identifiers** - Avoid duplicate IDs or email addresses
-- **UTF-8 encoding** - Save CSV files with UTF-8 encoding
+
+- **Consistent formatting**: Use the same date and phone formats throughout
+- **Required fields**: Ensure all required columns have values
+- **Unique identifiers**: Avoid duplicate IDs or email addresses
+- **Valid references**: Company IDs and other references must exist in the system
 
 ## Troubleshooting
 
 ### Common Import Errors
 
-| Error | Solution |
-|-------|----------|
-| **Missing required field** | Fill in all required columns |
-| **Invalid format** | Check date/phone number formatting |
-| **Duplicate record** | Remove or update the existing record |
-| **File too large** | Split into smaller files |
+| Error | Cause | Solution |
+|-------|-------|----------|
+| **Missing required field** | Required column is empty | Fill in all required columns |
+| **Invalid format** | Date/number format incorrect | Use YYYY-MM-DD for dates |
+| **Duplicate record** | Record already exists | Use "Update only" mode or remove duplicate |
+| **File too large** | CSV exceeds size limit | Split into smaller files |
+| **Invalid reference** | Company/user ID doesn't exist | Verify referenced records exist |
+| **Encoding error** | Wrong file encoding | Save as UTF-8 |
+
+### File Not Uploading
+
+- Ensure the file extension is `.csv`
+- Check file size is under the limit
+- Try saving the file with UTF-8 encoding
+- Verify the file isn't open in another application
+
+### Records Not Importing
+
+- Check that required columns have values
+- Verify date formats match YYYY-MM-DD
+- Ensure referenced IDs (company, user) exist
+- Review the import results for specific error messages
 
 ## Related Resources
 
-- [Import Companies](/user-guides/integrations/import-companies)
-- [Import Users](/user-guides/integrations/import-users)
-- [Settings Overview](/user-guides/settings/index)
+<CardGroup cols={2}>
+  <Card title="Import Companies" icon="building" href="/user-guides/integrations/import-companies">
+    Detailed guide for importing company records
+  </Card>
+  <Card title="Import Users" icon="users" href="/user-guides/integrations/import-users">
+    Guide for importing user accounts
+  </Card>
+  <Card title="Settings Overview" icon="gear" href="/user-guides/settings/index">
+    All settings configuration options
+  </Card>
+  <Card title="Companies Settings" icon="buildings" href="/user-guides/settings/companies">
+    Configure company defaults and fields
+  </Card>
+</CardGroup>
