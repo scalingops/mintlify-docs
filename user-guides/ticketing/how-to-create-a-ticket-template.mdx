@@ -80,74 +80,179 @@ Configure default PSA values for tickets created from this template:
 
 Control which companies can see and use this template:
 
-- By default, templates are visible to all companies
-- Add specific companies to restrict visibility
-- Search and select companies from the list
-- Remove companies to revoke access
+**Default Visibility Setting:**
 
-<Tip>Use company visibility to create specialized templates for specific clients while keeping them hidden from others.</Tip>
+At the top of the visibility section, configure the default behavior for new companies:
+- **Enabled (default)**: New companies automatically have access to this template
+- **Disabled**: New companies must be manually enabled
+
+**Per-Company Controls:**
+
+Each company can be individually toggled on or off:
+- Search for companies using the search box
+- Toggle the switch to enable or disable access
+- Companies with branches are highlighted with a branch indicator
+
+**Bulk Actions:**
+
+| Action | Description |
+|--------|-------------|
+| **Enable All** | Grant access to all companies |
+| **Disable All** | Revoke access from all companies |
+| **Enable All Except Branched** | Enable for all companies that don't have a custom branch (recommended when using branches) |
+
+<Tip>
+When using company branches, click **Enable All Except Branched** to ensure companies with custom branches use their branch while all other companies use the parent template.
+</Tip>
+
+<Note>
+Companies with branches are shown with an orange branch badge. These companies will use their branch version regardless of whether the parent template is enabled for them.
+</Note>
 
 ### Company Branches
 
 Create company-specific versions of a template with customized fields and settings.
 
 <Info>
-Company branches allow you to customize a template for specific companies while keeping the parent template as the default for all other companies.
+Company branches allow you to customize a template for specific companies while keeping the parent template as the default for all other companies. Branches inherit the parent template structure but can have different fields, labels, help text, and PSA routing.
 </Info>
+
+**When to Use Branches:**
+
+- A client needs additional custom fields not relevant to other companies
+- A client requires different PSA routing (different board, queue, or priority)
+- A client wants simplified fields with some sections hidden
+- A client needs different field labels or terminology
 
 **Creating a Branch:**
 
 <Steps>
   <Step title="Expand Company Branches">
-    Click the **Company Branches** accordion section.
+    Click the **Company Branches** accordion section in the template editor.
   </Step>
   <Step title="Click Create Branch">
-    Click the **Create Branch** button.
+    Click the **Create Branch** button in the top-right of the section.
   </Step>
-  <Step title="Select Company">
-    Search and select the company that needs a customized version.
+  <Step title="Search and Select Company">
+    Use the search box to find the company, then click to select it. Companies that already have branches are not shown.
   </Step>
   <Step title="Create & Edit">
-    Click **Create & Edit** to create the branch and open it for editing.
+    Click **Create & Edit** to create a full copy of the template and open it for editing.
   </Step>
 </Steps>
+
+**Editing a Branch:**
+
+When editing a branch, you can:
+- Add, remove, or modify fields and sections
+- Change field labels, help text, and default values
+- Configure different PSA routing settings
+- Give the branch a custom name (optional)
+
+The branch is a complete, independent copy of the parent template. Changes to the parent template do not affect existing branches.
 
 **Managing Branches:**
 
 | Action | Description |
 |--------|-------------|
-| **Edit Branch** | Click the external link icon to open and edit a branch |
-| **Delete Branch** | Click the trash icon and confirm to remove a branch |
-| **View Status** | See whether each branch is active or inactive |
+| **Edit Branch** | Click the external link icon to open the branch in the template editor |
+| **Delete Branch** | Click the trash icon, then confirm. The company reverts to the parent template |
+| **View Status** | Inactive branches are labeled with a badge |
+
+**Viewing Branches from the Template List:**
+
+In the Templates table, templates with branches show an expandable row. Click the chevron to see all company branches for that template, including:
+- Branch name and company name
+- Number of companies with visibility enabled/disabled
+- Quick actions to edit or delete each branch
 
 <Warning>
-Deleting a branch is permanent. The company will revert to using the parent template.
+Deleting a branch is permanent and cannot be undone. The company will immediately revert to using the parent template.
 </Warning>
 
 ### Import / Export
 
-Export templates for backup or sharing, or import templates from JSON/CSV files.
+Export templates for backup or sharing, or import templates from JSON/CSV files. Access the Import/Export dialog from the accordion section in the template editor or from the row actions menu in the templates list.
 
 **Export Options:**
 
-| Format | Use Case |
-|--------|----------|
-| **JSON** | Complete template backup including all sections, fields, rules, and optionally branches |
-| **CSV** | Bulk editing field labels, help text, and options in a spreadsheet |
+<Tabs>
+  <Tab title="JSON Export">
+    Complete template backup including all sections, fields, rules, PSA defaults, and optionally company branches.
+
+    **Includes:**
+    - Template name, key, description, category
+    - All sections and fields with their configuration
+    - Conditional rules and validation settings
+    - PSA default values (board, priority, status, type)
+    - Company branches (optional)
+
+    **Use Cases:**
+    - Backup before making major changes
+    - Share templates between tenants
+    - Version control for template configurations
+  </Tab>
+  <Tab title="CSV Export">
+    Spreadsheet format for bulk editing field properties.
+
+    **Includes:**
+    - Section and field identifiers
+    - Field labels, help text, placeholders
+    - Default values and options
+    - Field ordering
+
+    **Use Cases:**
+    - Bulk editing field labels in Excel or Google Sheets
+    - Reviewing all fields in a flat format
+    - Translating templates to different languages
+  </Tab>
+</Tabs>
 
 **Import Options:**
 
-| Format | Use Case |
-|--------|----------|
-| **JSON** | Create new templates or replace existing ones |
-| **CSV** | Update existing field properties without changing structure |
+<Tabs>
+  <Tab title="JSON Import">
+    Create new templates or replace existing ones from a JSON file.
 
-<Accordion title="JSON Import Options">
-  - **Replace existing**: Overwrites all content of an existing template
-  - **Create new**: Creates a new template (fails if key already exists)
-  - **Generate New Key**: Adds timestamp to avoid conflicts
-  - **Include Branches**: Import company branches (requires matching companies)
-</Accordion>
+    **Import Modes:**
+    - **Replace existing**: Overwrites all content of an existing template with the same key
+    - **Create new**: Creates a new template (fails if the key already exists)
+
+    **Options:**
+    - **Generate New Key**: Adds a timestamp suffix to avoid key conflicts
+    - **Include Branches**: Import company branches (requires matching company names in your tenant)
+
+    **Diff Preview:**
+    When importing to an existing template, a preview shows:
+    - Added sections and fields (green)
+    - Modified sections and fields (yellow)
+    - Removed sections and fields (red)
+
+    Review the diff before confirming to understand exactly what will change.
+  </Tab>
+  <Tab title="CSV Import">
+    Update existing field properties from a CSV file.
+
+    **Requirements:**
+    - Template must already exist (CSV cannot create templates)
+    - CSV must include the template key column for validation
+
+    **Updates:**
+    - Field labels and help text
+    - Placeholder text
+    - Default values
+    - Dropdown/multi-select options
+
+    **Preserves:**
+    - Template structure (sections and field types)
+    - Conditional rules
+    - PSA mappings
+  </Tab>
+</Tabs>
+
+<Tip>
+Export templates to JSON before making major changes. You can always import the backup to restore the previous version.
+</Tip>
 
 ## Sections & Fields
 
