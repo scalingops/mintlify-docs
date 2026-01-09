@@ -82,7 +82,9 @@
               {
                 "group": "Microsoft 365",
                 "pages": [
-                  "user-guides/microsoft-365/index"
+                  "user-guides/microsoft-365/index",
+                  "user-guides/microsoft-365/licenses",
+                  "user-guides/microsoft-365/domains"
                 ]
               },
               {

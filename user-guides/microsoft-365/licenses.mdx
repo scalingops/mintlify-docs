@@ -1,0 +1,217 @@
+---
+title: M365 Licenses
+description: Monitor Microsoft 365 license usage, assignments, and utilization across your organization
+icon: id-card
+---
+
+The M365 Licenses module provides comprehensive visibility into your Microsoft 365 license inventory. Track license utilization, identify unused licenses, and view which users are assigned to each license type.
+
+## Accessing M365 Licenses
+
+1. Click **Microsoft 365** in the sidebar
+2. Select the **Licenses** tab from the navigation tabs
+
+## Summary Dashboard
+
+The summary section displays four key metrics about your license inventory:
+
+| Metric | Description |
+|--------|-------------|
+| **License SKUs** | Number of unique license types across your organization |
+| **Total Purchased** | Total number of licenses available for assignment |
+| **In Use** | Number of licenses currently assigned, with utilization percentage |
+| **Companies** | Number of companies with M365 licenses configured |
+
+<Tip>
+Click **Collapse Summary** to minimize the summary cards and focus on the licenses table.
+</Tip>
+
+## Licenses Table
+
+### Table Columns
+
+The licenses table displays all your Microsoft 365 licenses with the following information:
+
+| Column | Description |
+|--------|-------------|
+| **License** | License name and SKU part number |
+| **Company** | Associated company (visible in global view) |
+| **Used** | Number of licenses currently assigned |
+| **Available** | Total licenses purchased |
+| **Utilization** | Visual progress bar showing usage percentage |
+| **Status** | License status (Enabled, Warning, Suspended, etc.) |
+
+### Utilization Indicators
+
+The utilization progress bar is color-coded to help identify licenses that may need attention:
+
+| Color | Utilization | Action |
+|-------|-------------|--------|
+| **Green** | Below 75% | Healthy utilization |
+| **Yellow** | 75% - 89% | Approaching capacity |
+| **Red** | 90% or above | Near or at capacity |
+
+### Quick Filters
+
+Use the quick filter buttons above the table to focus on relevant licenses:
+
+- **Free/Trial** - Toggle to show or hide free and trial licenses (hidden by default)
+- **10k+ Units** - Toggle to show or hide licenses with 10,000 or more units (hidden by default)
+
+Each filter button displays a badge showing how many items are currently hidden.
+
+<Note>
+Hiding free/trial and large allocation licenses helps you focus on paid licenses that require active management.
+</Note>
+
+### Sorting and Filtering
+
+- **Sort** - Click any column header to sort the table
+- **Search** - Use the search box to find specific licenses by name or SKU
+- **Column Filters** - Click the filter icon on columns to apply specific filters
+- **Company Filter** - Multi-select dropdown to filter by one or more companies
+
+### Exporting Data
+
+Users with the **manage_m365** permission can export license data:
+
+1. Click the **Export** button in the table toolbar
+2. Choose your export format
+3. The export includes license name, SKU, usage counts, utilization, and status
+
+## License Details
+
+Click any license row to open the details panel with comprehensive information.
+
+### Usage Statistics
+
+The details panel displays:
+
+| Metric | Description |
+|--------|-------------|
+| **Utilization** | Progress bar showing percentage of licenses in use |
+| **Used** | Number of licenses currently assigned to users |
+| **Total** | Total licenses purchased |
+| **Available** | Licenses available for assignment |
+| **Warnings** | Licenses in warning or suspended state |
+
+### Included Services
+
+Each license includes various service plans. The details panel shows all services included with the license, such as:
+
+- Exchange Online
+- SharePoint Online
+- Microsoft Teams
+- OneDrive for Business
+- And more, depending on the license type
+
+Click **Show more** to view all included services if there are more than 10.
+
+### Assigned Users
+
+View all users assigned to the selected license:
+
+- User display name and avatar initial
+- User principal name (email)
+- Paginated list with **Load more** button for large assignments
+
+<Tip>
+The assigned users section shows the total count of users with this license, making it easy to verify utilization numbers.
+</Tip>
+
+### Last Synced
+
+The footer of the details panel shows when the license data was last synchronized from Microsoft 365.
+
+## Company Context
+
+The licenses view adapts based on your current context:
+
+| View | Behavior |
+|------|----------|
+| **Global View** | Shows licenses from all companies, Company column visible |
+| **Company View** | Shows licenses for the selected company only |
+
+Switch between views using the company selector in the main navigation.
+
+## Prerequisites
+
+Before using M365 Licenses:
+
+1. **Microsoft 365 Integration** - Enable in Settings > Integrations for each company
+2. **Azure AD Permissions** - The integration requires appropriate Graph API permissions
+3. **User Permissions** - Requires access to the M365 module
+
+## Troubleshooting
+
+### Licenses Not Showing
+
+<AccordionGroup>
+  <Accordion title="No licenses appear in the table">
+    **Possible causes:**
+    - M365 integration not configured for any companies
+    - Integration credentials expired or invalid
+    - Initial sync has not completed
+
+    **Solution:**
+    1. Verify M365 integration is active in Settings > Integrations
+    2. Click **Sync** to trigger a fresh data pull
+    3. Wait a few minutes for the sync to complete
+  </Accordion>
+
+  <Accordion title="License counts seem incorrect">
+    **Possible causes:**
+    - Data not recently synced
+    - Quick filters hiding some licenses
+
+    **Solution:**
+    1. Check if quick filters are active (Free/Trial or 10k+ Units)
+    2. Click **Sync** to refresh data from Microsoft 365
+    3. Allow up to 24 hours for Microsoft to reflect recent changes
+  </Accordion>
+
+  <Accordion title="Cannot see assigned users">
+    **Possible causes:**
+    - User license sync not enabled
+    - Large number of users still loading
+
+    **Solution:**
+    1. Wait for the loading spinner to complete
+    2. Click **Load more** if additional users exist
+    3. Verify user sync is enabled in integration settings
+  </Accordion>
+</AccordionGroup>
+
+### Sync Issues
+
+| Issue | Cause | Solution |
+|-------|-------|----------|
+| Sync button stays on "Syncing..." | Background job running | Wait for completion or check job status |
+| "No M365 integrations configured" | No active integrations | Configure M365 integration in Settings |
+| Sync completes but data unchanged | Microsoft API delay | Wait 15-30 minutes and try again |
+
+## Best Practices
+
+### License Optimization
+
+1. **Review High Utilization** - Licenses at 90%+ may need additional purchases
+2. **Identify Unused Licenses** - Low utilization licenses may be candidates for reallocation
+3. **Monitor Warnings** - Address licenses in Warning or Suspended status promptly
+
+### Regular Monitoring
+
+- **Weekly** - Review utilization trends for high-value licenses
+- **Monthly** - Audit license assignments across companies
+- **Quarterly** - Comprehensive license optimization review
+
+### Data Freshness
+
+- Sync data regularly to maintain accurate utilization metrics
+- Schedule syncs after major user provisioning or deprovisioning events
+- Check the "Last synced" timestamp in license details for data currency
+
+## Related Resources
+
+- [M365 Secure Score](/user-guides/microsoft-365/index) - Security posture monitoring
+- [Settings - Integrations](/user-guides/settings/integrations) - Configure M365 integration
+- [Reporting](/user-guides/reporting/index) - Create license utilization reports

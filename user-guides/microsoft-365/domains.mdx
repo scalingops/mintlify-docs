@@ -1,0 +1,176 @@
+---
+title: M365 Domains
+description: View and manage verified domains across your Microsoft 365 tenants
+icon: globe
+---
+
+The M365 Domains module provides visibility into the domains registered and verified across your Microsoft 365 tenants. Track domain verification status, authentication types, and associated services for each domain.
+
+## Accessing M365 Domains
+
+1. Click **Microsoft 365** in the sidebar
+2. Select the **Domains** tab from the navigation tabs
+
+## Summary Dashboard
+
+The summary section displays four key metrics about your domains:
+
+| Metric | Description |
+|--------|-------------|
+| **Total Domains** | Number of registered domains across all companies |
+| **Verified** | Number of verified domains with percentage |
+| **Default Domain** | The primary domain for your organization |
+| **Companies** | Number of companies with M365 domains configured |
+
+<Tip>
+Click **Collapse Summary** to minimize the summary cards and focus on the domains table.
+</Tip>
+
+## Domains Table
+
+### Table Columns
+
+The domains table displays all registered domains with the following information:
+
+| Column | Description |
+|--------|-------------|
+| **Domain** | Domain name with indicators for default and initial domains |
+| **Company** | Associated company (visible in global view) |
+| **Default** | Whether this is the default domain for the tenant |
+| **Verified** | Domain verification status |
+| **Services** | Microsoft 365 services enabled for the domain |
+| **Auth Type** | Authentication type (Managed or Federated) |
+
+### Domain Indicators
+
+Domains may display special indicators:
+
+| Indicator | Meaning |
+|-----------|---------|
+| **Star icon** | This is the default domain for the tenant |
+| **Initial badge** | This is the initial `.onmicrosoft.com` domain |
+
+### Verification Status
+
+| Status | Description |
+|--------|-------------|
+| **Verified** | Domain ownership has been confirmed via DNS records |
+| **Unverified** | Domain is registered but not yet verified |
+
+<Note>
+Unverified domains cannot be used for email or other Microsoft 365 services until verification is complete.
+</Note>
+
+### Authentication Types
+
+| Type | Description |
+|------|-------------|
+| **Managed** | Authentication handled directly by Microsoft 365 |
+| **Federated** | Authentication handled by an external identity provider (e.g., ADFS) |
+
+### Services
+
+The Services column shows which Microsoft 365 services are enabled for each domain:
+
+- **Email** - Exchange Online email routing
+- **OfficeCommunicationsOnline** - Microsoft Teams and Skype
+- **Intune** - Device management
+- **SharePoint** - SharePoint Online sites
+
+If a domain has more than three services, a badge shows the count of additional services.
+
+### Sorting and Filtering
+
+- **Sort** - Click any column header to sort the table
+- **Search** - Use the search box to find specific domains
+- **Company Filter** - Multi-select dropdown to filter by one or more companies
+- **Default Filter** - Filter to show only default or non-default domains
+- **Verified Filter** - Filter by verification status
+- **Auth Type Filter** - Filter by authentication type
+
+### Exporting Data
+
+Users with the **manage_m365** permission can export domain data:
+
+1. Click the **Export** button in the table toolbar
+2. Choose your export format
+3. The export includes domain name, company, verification status, authentication type, and services
+
+## Company Context
+
+The domains view adapts based on your current context:
+
+| View | Behavior |
+|------|----------|
+| **Global View** | Shows domains from all companies, Company column visible |
+| **Company View** | Shows domains for the selected company only |
+
+Switch between views using the company selector in the main navigation.
+
+## Prerequisites
+
+Before using M365 Domains:
+
+1. **Microsoft 365 Integration** - Enable in Settings > Integrations for each company
+2. **Azure AD Permissions** - The integration requires appropriate Graph API permissions
+3. **User Permissions** - Requires access to the M365 module
+
+## Troubleshooting
+
+### Domains Not Showing
+
+<AccordionGroup>
+  <Accordion title="No domains appear in the table">
+    **Possible causes:**
+    - M365 integration not configured for any companies
+    - Integration credentials expired or invalid
+    - Initial sync has not completed
+
+    **Solution:**
+    1. Verify M365 integration is active in Settings > Integrations
+    2. Wait for the automatic sync to complete
+    3. Check integration permissions in Azure AD
+  </Accordion>
+
+  <Accordion title="Domain shows as unverified">
+    **Possible causes:**
+    - DNS verification records not configured
+    - DNS propagation not complete
+    - Verification record removed
+
+    **Solution:**
+    1. Check DNS records in your domain registrar
+    2. Verify TXT or MX records match Microsoft requirements
+    3. Allow up to 72 hours for DNS propagation
+  </Accordion>
+
+  <Accordion title="Services column shows unexpected values">
+    **Possible causes:**
+    - Domain not configured for all services
+    - Service configuration changed in Microsoft 365
+
+    **Solution:**
+    1. Review domain configuration in Microsoft 365 admin center
+    2. Wait for automatic sync to update the data
+  </Accordion>
+</AccordionGroup>
+
+## Best Practices
+
+### Domain Management
+
+1. **Verify Custom Domains** - Ensure all custom domains are verified to enable full functionality
+2. **Review Default Domain** - Confirm the correct domain is set as default for each tenant
+3. **Monitor Authentication** - Track federated vs. managed authentication for security auditing
+
+### Regular Monitoring
+
+- **Monthly** - Review domain verification status across all companies
+- **Quarterly** - Audit domain authentication types and service configurations
+- **As Needed** - Check domains when adding new companies or tenants
+
+## Related Resources
+
+- [M365 Secure Score](/user-guides/microsoft-365/index) - Security posture monitoring
+- [M365 Licenses](/user-guides/microsoft-365/licenses) - License usage monitoring
+- [Settings - Integrations](/user-guides/settings/integrations) - Configure M365 integration
