@@ -1,10 +1,10 @@
 ---
 title: How to Create a Ticket Template
-description: Learn about how to create a ticket template
+description: Learn how to create, customize, and manage ticket templates with company branches and import/export
+icon: file-lines
 ---
 
-Ticket templates streamline repetitive ticket creation by providing pre-configured forms with custom fields. This guide shows you how to create templates using AI assistance or manual configuration.
-
+Ticket templates streamline repetitive ticket creation by providing pre-configured forms with custom fields. This guide covers creating templates using AI assistance or manual configuration, managing company-specific branches, and importing/exporting templates.
 
 ## Prerequisites
 
@@ -12,182 +12,381 @@ Ticket templates streamline repetitive ticket creation by providing pre-configur
 - PSA integration should be configured if using external ticketing systems
 - Categories should be set up in Ticket Settings
 
-## Steps
+## Creating a New Template
 
-### 1. Navigate to Tickets Module
+<Steps>
+  <Step title="Navigate to Templates">
+    Go to **Tickets** in the sidebar, click the menu button, and select **Templates**.
+  </Step>
+  <Step title="Click New Template">
+    Click the **New Template** button in the top-right corner.
+  </Step>
+  <Step title="Configure Template Details">
+    Fill in the basic information:
+    - **Template Name**: A descriptive name (e.g., "New Employee Setup")
+    - **Category**: Select from available categories
+    - **Description**: Brief explanation of when to use this template
+    - **Active Status**: Toggle whether the template is available for use
+  </Step>
+</Steps>
 
-Go to [https://msportal.ai/tickets](https://msportal.ai/tickets)
+## Template Configuration Sections
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-02/91f5f237-b1de-4115-8d9d-8891e78de469/ascreenshot.jpeg?tl_px=93,121&br_px=1813,1083&force_format=jpeg&q=100&width=1120.0)
+The template editor is organized into expandable accordion sections:
 
+### Template Details
 
-### 2. Access Templates
+Configure the basic template information:
 
-Click on the **Tickets** menu in the top navigation, then select **Templates** from the dropdown.
+| Field | Description |
+|-------|-------------|
+| **Template Name** | Display name shown when selecting the template |
+| **Category** | Group templates by type (Incident, Service Request, etc.) |
+| **Description** | Help text explaining when to use this template |
+| **Active Status** | Whether the template is available for users |
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-02/daeb7e57-dcf7-4388-8d7c-70ccb3253b65/ascreenshot.jpeg?tl_px=187,0&br_px=1906,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=904,106)
+### PSA Integration Settings
 
+Configure default PSA values for tickets created from this template:
 
-### 3. Review Existing Templates
+<Tabs>
+  <Tab title="ConnectWise">
+    - **Service Board**: Select the board for tickets
+    - **Default Priority**: Set initial priority level
+    - **Default Status**: Set initial status
+    - **Ticket Type**: Select type classification
+    - **Ticket Subtype**: Select subtype (if applicable)
+  </Tab>
+  <Tab title="Autotask">
+    - **Queue**: Select the ticket queue
+    - **Default Priority**: Set initial priority level
+    - **Default Status**: Set initial status
+    - **Ticket Type**: Select type classification
+    - **Ticket Category**: Select category
+  </Tab>
+  <Tab title="Halo PSA">
+    - **Team/Queue**: Select the team or queue
+    - **Default Priority**: Set initial priority level
+    - **Default Status**: Set initial status
+    - **Halo Category**: Select Halo-specific category
+    - **Halo Impact**: Set impact level
+    - **Halo Urgency**: Set urgency level
+  </Tab>
+</Tabs>
 
-The Templates page displays all existing ticket templates. You can:
-- View active and inactive templates
-- Edit existing templates
-- Duplicate templates as a starting point
-- Delete unused templates
+<Note>PSA settings are only available after configuring your PSA integration in Settings.</Note>
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-02/c3d2a88d-1a27-48e7-af87-928f46ebdbda/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=481,230)
+### Company Visibility
 
+Control which companies can see and use this template:
 
-### 4. Create New Template
+**Default Visibility Setting:**
 
-Click the **New Template** button to open the template creation form.
+At the top of the visibility section, configure the default behavior for new companies:
+- **Enabled (default)**: New companies automatically have access to this template
+- **Disabled**: New companies must be manually enabled
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-02/0223fb2a-034c-4467-b762-01e0365fc4dc/ascreenshot.jpeg?tl_px=187,0&br_px=1906,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=799,48)
+**Per-Company Controls:**
 
+Each company can be individually toggled on or off:
+- Search for companies using the search box
+- Toggle the switch to enable or disable access
+- Companies with branches are highlighted with a branch indicator
 
-### 5. Configure Basic Template Settings
+**Bulk Actions:**
 
-#### Template Information
-- **Name:** Enter a descriptive name (e.g., "New Employee Setup", "Password Reset")
-- **Description:** Provide a brief description of when to use this template
-- **Category:** Select from available categories
-- **Active Status:** Toggle whether the template is immediately available for use
+| Action | Description |
+|--------|-------------|
+| **Enable All** | Grant access to all companies |
+| **Disable All** | Revoke access from all companies |
+| **Enable All Except Branched** | Enable for all companies that don't have a custom branch (recommended when using branches) |
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-02/4f70acdb-af6f-43e0-96e2-96694c850729/ascreenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=484,275)
+<Tip>
+When using company branches, click **Enable All Except Branched** to ensure companies with custom branches use their branch while all other companies use the parent template.
+</Tip>
 
+<Note>
+Companies with branches are shown with an orange branch badge. These companies will use their branch version regardless of whether the parent template is enabled for them.
+</Note>
 
-#### Category Selection
+### Company Branches
 
-Select an appropriate category from the dropdown:
-- **Incident** - For break/fix issues
-- **Service Request** - For standard requests
-- **Change Request** - For changes to systems
-- **Problem** - For root cause analysis
-- **Task** - For project work
+Create company-specific versions of a template with customized fields and settings.
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-02/73febb3c-7c24-4803-b88d-2799f7da8602/ascreenshot.jpeg?tl_px=0,107&br_px=1719,1068&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=488,277)
+<Info>
+Company branches allow you to customize a template for specific companies while keeping the parent template as the default for all other companies. Branches inherit the parent template structure but can have different fields, labels, help text, and PSA routing.
+</Info>
 
+**When to Use Branches:**
 
-### 6. Configure PSA Integration Settings (if applicable)
+- A client needs additional custom fields not relevant to other companies
+- A client requires different PSA routing (different board, queue, or priority)
+- A client wants simplified fields with some sections hidden
+- A client needs different field labels or terminology
 
-If you have a PSA integration configured:
+**Creating a Branch:**
 
+<Steps>
+  <Step title="Expand Company Branches">
+    Click the **Company Branches** accordion section in the template editor.
+  </Step>
+  <Step title="Click Create Branch">
+    Click the **Create Branch** button in the top-right of the section.
+  </Step>
+  <Step title="Search and Select Company">
+    Use the search box to find the company, then click to select it. Companies that already have branches are not shown.
+  </Step>
+  <Step title="Create & Edit">
+    Click **Create & Edit** to create a full copy of the template and open it for editing.
+  </Step>
+</Steps>
 
-#### ConnectWise Settings
-- **Board:** Select the service board
-- **Type:** Choose ticket type
-- **Priority:** Set default priority (Low, Medium, High, Critical)
-- **Status:** Set initial status
+**Editing a Branch:**
 
-#### Halo PSA Settings
-- **Ticket Type:** Select from Halo ticket types
-- **Priority:** Set priority level
-- **Category:** Choose Halo category
+When editing a branch, you can:
+- Add, remove, or modify fields and sections
+- Change field labels, help text, and default values
+- Configure different PSA routing settings
+- Give the branch a custom name (optional)
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-02/6c39531b-618a-48a5-b838-1e629d24af97/ascreenshot.jpeg?tl_px=187,98&br_px=1906,1059&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=813,276)
+The branch is a complete, independent copy of the parent template. Changes to the parent template do not affect existing branches.
 
+**Managing Branches:**
 
-### 7. Generate Template with AI (Recommended)
+| Action | Description |
+|--------|-------------|
+| **Edit Branch** | Click the external link icon to open the branch in the template editor |
+| **Delete Branch** | Click the trash icon, then confirm. The company reverts to the parent template |
+| **View Status** | Inactive branches are labeled with a badge |
 
-Click the **Generate with AI** button to automatically create custom fields based on your template name and description.
+**Viewing Branches from the Template List:**
 
-> **Note:** AI generation typically takes 1-2 minutes. The AI will:
-> - Create relevant custom fields
-> - Set appropriate field types
-> - Add dropdown options for selection fields
-> - Configure field requirements
+In the Templates table, templates with branches show an expandable row. Click the chevron to see all company branches for that template, including:
+- Branch name and company name
+- Number of companies with visibility enabled/disabled
+- Quick actions to edit or delete each branch
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-02/1ffe1e4b-6132-4c42-9082-7016b8536f41/ascreenshot.jpeg?tl_px=187,130&br_px=1906,1091&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=827,277)
+<Warning>
+Deleting a branch is permanent and cannot be undone. The company will immediately revert to using the parent template.
+</Warning>
 
+### Import / Export
 
-### 8. Review and Customize Generated Fields
+Export templates for backup or sharing, or import templates from JSON/CSV files. Access the Import/Export dialog from the accordion section in the template editor or from the row actions menu in the templates list.
 
-After AI generation completes, review the created fields. The system will highlight fields that need review.
+**Export Options:**
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-02/5027d176-9075-4663-bb8e-4fc6adad156f/ascreenshot.jpeg?tl_px=187,108&br_px=1906,1069&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=988,276)
+<Tabs>
+  <Tab title="JSON Export">
+    Complete template backup including all sections, fields, rules, PSA defaults, and optionally company branches.
 
+    **Includes:**
+    - Template name, key, description, category
+    - All sections and fields with their configuration
+    - Conditional rules and validation settings
+    - PSA default values (board, priority, status, type)
+    - Company branches (optional)
 
-#### Field Types Available
-- **Text Field:** Single-line text input
-- **Text Area:** Multi-line text input
-- **Dropdown:** Single selection from list
-- **Multi-select:** Multiple selections
-- **Date:** Date picker
-- **Number:** Numeric input
-- **Checkbox:** Yes/No selection
-- **User Select:** Choose from users list
+    **Use Cases:**
+    - Backup before making major changes
+    - Share templates between tenants
+    - Version control for template configurations
+  </Tab>
+  <Tab title="CSV Export">
+    Spreadsheet format for bulk editing field properties.
 
-![](https://ajeuwbhvhr.cloudimg.io/https://colony-recorder.s3.amazonaws.com/files/2025-09-02/be689775-c3be-4744-8f43-0c47422ca0be/ascreenshot.jpeg?tl_px=0,4&br_px=1719,965&force_format=jpeg&q=100&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=451,277)
+    **Includes:**
+    - Section and field identifiers
+    - Field labels, help text, placeholders
+    - Default values and options
+    - Field ordering
 
+    **Use Cases:**
+    - Bulk editing field labels in Excel or Google Sheets
+    - Reviewing all fields in a flat format
+    - Translating templates to different languages
+  </Tab>
+</Tabs>
 
-#### Customizing Fields
+**Import Options:**
 
-For each field, you can:
-- **Edit Field Name:** Click the field name to rename
-- **Change Field Type:** Select from the dropdown
-- **Set Required:** Toggle the required checkbox
-- **Add Options:** For dropdowns/multi-selects, add or remove options
-- **Reorder Fields:** Drag and drop to rearrange
-- **Delete Fields:** Click the trash icon to remove
+<Tabs>
+  <Tab title="JSON Import">
+    Create new templates or replace existing ones from a JSON file.
 
-#### Adding Custom Sections
+    **Import Modes:**
+    - **Replace existing**: Overwrites all content of an existing template with the same key
+    - **Create new**: Creates a new template (fails if the key already exists)
 
-Click **Add Section** to create logical groupings:
+    **Options:**
+    - **Generate New Key**: Adds a timestamp suffix to avoid key conflicts
+    - **Include Branches**: Import company branches (requires matching company names in your tenant)
+
+    **Diff Preview:**
+    When importing to an existing template, a preview shows:
+    - Added sections and fields (green)
+    - Modified sections and fields (yellow)
+    - Removed sections and fields (red)
+
+    Review the diff before confirming to understand exactly what will change.
+  </Tab>
+  <Tab title="CSV Import">
+    Update existing field properties from a CSV file.
+
+    **Requirements:**
+    - Template must already exist (CSV cannot create templates)
+    - CSV must include the template key column for validation
+
+    **Updates:**
+    - Field labels and help text
+    - Placeholder text
+    - Default values
+    - Dropdown/multi-select options
+
+    **Preserves:**
+    - Template structure (sections and field types)
+    - Conditional rules
+    - PSA mappings
+  </Tab>
+</Tabs>
+
+<Tip>
+Export templates to JSON before making major changes. You can always import the backup to restore the previous version.
+</Tip>
+
+## Sections & Fields
+
+### Adding Sections
+
+Click **Add Section** to create logical groupings of fields:
+
 - Employee Information
 - Hardware Requirements
 - Software Requirements
 - Access Requirements
-- Additional Notes
 
+### Adding Fields
 
-### 9. Save the Template
+Within each section, click **Add Field** to create a new field.
 
-Once satisfied with the configuration:
+**Available Field Types:**
 
-1. Review all fields and settings
-2. Click **Save Template**
-3. The template will appear in your templates list
-4. If marked as active, it's immediately available for use
+| Type | Description |
+|------|-------------|
+| **Short Text** | Single-line text input |
+| **Long Text** | Multi-line text area |
+| **Dropdown** | Single selection from options |
+| **Multi-select** | Multiple selections from options |
+| **Date** | Date picker |
+| **Number** | Numeric input |
+| **Checkbox** | Yes/No toggle |
+| **User Select** | Choose from users list |
+| **File Upload** | File attachment |
 
-## Using the Template
+**Field Properties:**
 
-Once saved, the template can be used:
+| Property | Description |
+|----------|-------------|
+| **Label** | Display name for the field |
+| **Key** | Internal identifier (auto-generated) |
+| **Help Text** | Guidance shown below the field |
+| **Required** | Never, Always, or Conditional |
+| **Default Value** | Pre-filled value |
+| **Options** | Choices for dropdown/multi-select |
 
-1. Go to **Tickets** > **New Ticket**
-2. Select your template from the dropdown
-3. Fill in the custom fields
-4. Submit the ticket
+### Conditional Fields
+
+Make fields appear based on other field values:
+
+<Steps>
+  <Step title="Set Required to Conditional">
+    Change the field's Required setting to "Conditional".
+  </Step>
+  <Step title="Select Trigger Field">
+    Choose which field triggers this field's visibility.
+  </Step>
+  <Step title="Set Trigger Value">
+    Define what value makes this field appear.
+  </Step>
+</Steps>
+
+### Reordering
+
+- **Drag sections** to reorder their position
+- **Drag fields** within sections to reorder
+- Click **Collapse All** to minimize sections while organizing
+
+## Using AI to Generate Templates
+
+<Steps>
+  <Step title="Open AI Designer">
+    Click the floating purple **AI** button on the right side of the screen.
+  </Step>
+  <Step title="Describe Your Template">
+    Type a description of what the template should do, e.g., "Create a template for new employee onboarding that captures hardware needs, software requirements, and access permissions."
+  </Step>
+  <Step title="Review Generated Fields">
+    The AI will create sections and fields based on your description.
+  </Step>
+  <Step title="Customize as Needed">
+    Modify, add, or remove fields to match your exact requirements.
+  </Step>
+</Steps>
+
+<Tip>
+The AI designer works iteratively. You can request changes like "Add a section for emergency contacts" and it will modify the existing template.
+</Tip>
+
+## Saving and Activating
+
+1. Review all sections and fields
+2. Ensure PSA settings are configured if using integrations
+3. Click **Save Template**
+4. Enable the **Active** toggle to make the template available
 
 ## Best Practices
 
-- **Test Before Activating:** Create templates as inactive first, test them, then activate
-- **Use Descriptive Names:** Make template names clear and searchable
-- **Regular Reviews:** Periodically review and update templates
-- **Document Requirements:** Include help text for complex fields
-- **Standardize Options:** Use consistent dropdown values across templates
-
-## Common Template Examples
-
-- **New Employee Onboarding**
-- **Equipment Request**
-- **Software Installation**
-- **Access Request**
-- **Password Reset**
-- **System Change Request**
-- **Incident Report**
+<AccordionGroup>
+  <Accordion title="Use Descriptive Names">
+    Name templates clearly so users can quickly identify the right one. Include the purpose in the name (e.g., "Password Reset - Standard" vs "Password Reset - VIP").
+  </Accordion>
+  <Accordion title="Group Related Fields">
+    Organize fields into logical sections. Users can collapse sections they don't need, making long forms more manageable.
+  </Accordion>
+  <Accordion title="Use Conditional Fields">
+    Reduce form clutter by showing fields only when relevant. For example, show "Manager Approval" only when the request is over a certain budget.
+  </Accordion>
+  <Accordion title="Test Before Activating">
+    Create templates as inactive, test with a few tickets, then activate once you're confident the fields capture the right information.
+  </Accordion>
+  <Accordion title="Use Branches Sparingly">
+    Only create company branches when there are significant differences. Minor variations can often be handled with conditional fields.
+  </Accordion>
+</AccordionGroup>
 
 ## Troubleshooting
 
-- **AI Generation Fails:** Check your internet connection and try again
-- **Fields Not Saving:** Ensure all required fields have valid values
-- **Template Not Appearing:** Verify the template is marked as active
-- **PSA Sync Issues:** Check integration settings and credentials
+| Issue | Solution |
+|-------|----------|
+| **Template not appearing** | Verify the template is marked as Active |
+| **Conditional field not showing** | Check the trigger field and value are correctly configured |
+| **PSA fields not loading** | Verify your PSA integration is connected and synced |
+| **Branch not saving** | Ensure you have permission to manage templates |
+| **Import fails** | Check JSON format matches export format; CSV requires existing template |
 
-## Related Articles
+## Related Resources
 
-- [Ticket Settings Configuration](../settings/ticket-settings)
-- [PSA Integration Setup](../integrations/connectwise-configure-and-service-desk)
-- [Managing Ticket Workflows](./ticket-workflows)
-
-
+<CardGroup cols={2}>
+  <Card title="Ticket Settings" icon="gear" href="/user-guides/settings/tickets">
+    Configure categories, defaults, and ticket behavior
+  </Card>
+  <Card title="Open Tickets with AI" icon="sparkles" href="./open-a-ticket-with-ai">
+    Use AI to quickly create tickets from descriptions
+  </Card>
+  <Card title="Import/Export Settings" icon="file-import" href="/user-guides/settings/import-export">
+    Bulk import and export data
+  </Card>
+  <Card title="ConnectWise Integration" icon="plug" href="/user-guides/integrations/enable-connectwise-integration">
+    Set up PSA integration for ticket sync
+  </Card>
+</CardGroup>

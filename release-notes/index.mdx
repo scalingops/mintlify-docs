@@ -55,6 +55,68 @@ Company locations now sync with ConnectWise Manage sites for better site-to-loca
 
 ---
 
+## January 2, 2026
+
+### Ticket Template Branching & Customization
+
+Create company-specific versions of your ticket templates without duplicating the entire template. Branches let you customize templates for individual clients while maintaining a single parent template for everyone else.
+
+**Key Features:**
+- **Company Branches**: Create a full copy of any template customized for a specific company with different fields, labels, or PSA routing
+- **Independent Editing**: Each branch is fully editable—add sections, modify fields, change help text, or configure different PSA defaults
+- **Smart Visibility**: Control which companies can see which templates, with bulk actions and default visibility for new companies
+- **Branch Indicators**: Easily identify templates with branches in the templates list with expandable rows showing all company branches
+
+**Use Cases:**
+- Customize a "New Employee Setup" template with client-specific software requirements
+- Route tickets to different PSA boards or queues per company
+- Simplify templates for clients who need fewer fields
+- Use different terminology for different industries
+
+---
+
+### Template Import & Export
+
+Export and import ticket templates in JSON or CSV format for backup, sharing, and bulk editing.
+
+**JSON Format:**
+- Complete template backup including sections, fields, rules, and PSA settings
+- Optionally include company branches in the export
+- **Diff Preview**: When importing to an existing template, see exactly what will change—added fields in green, modified in yellow, removed in red
+- Import options: Replace existing, create new, or generate a new key to avoid conflicts
+
+**CSV Format:**
+- Spreadsheet-friendly format for bulk editing field labels, help text, and options
+- Edit in Excel or Google Sheets, then re-import to apply changes
+- Preserves template structure while updating field properties
+
+<Tip>
+Export templates to JSON before making major changes. You can always import the backup to restore the previous version if needed.
+</Tip>
+
+---
+
+### Enhanced Company Visibility Controls
+
+Fine-grained control over which companies can access each template.
+
+**New Features:**
+- **Default Visibility Setting**: Configure whether new companies automatically have access to a template or must be manually enabled
+- **Enable All Except Branched**: One-click action to enable a template for all companies that don't have a custom branch (perfect when using branching)
+- **Branch Indicators**: Companies with branches are highlighted so you know they'll use their branch version
+- **Bulk Actions**: Enable All, Disable All, and smart filtering options
+
+---
+
+### Improvements
+
+- **Templates in Settings**: Template management has moved from the Tickets menu to **Settings → Tickets → Templates** for better organization
+- **Expandable Template Rows**: Templates with branches show an expandable row in the list to view all branches at a glance
+- **Branch Management**: Edit, delete, and manage branches directly from the templates table
+- **Cleaner Template Editor**: Reorganized accordion sections for template details, PSA settings, visibility, branches, and import/export
+
+---
+
 ## December 29, 2025
 
 ### Microsoft 365 Licensing & Domains

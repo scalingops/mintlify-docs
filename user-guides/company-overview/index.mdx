@@ -1,135 +1,187 @@
 ---
 title: 'Company Overview'
-description: 'Monitor company health and performance metrics across all modules from a single dashboard'
+description: 'Monitor company health and performance metrics across all modules from a centralized dashboard'
 icon: 'buildings'
 ---
 
-The Company Overview provides a centralized dashboard to monitor all companies within your MSPortal.ai tenant. View key metrics, track compliance status, and quickly identify companies that need attention.
-
-![Company Overview Dashboard](/images/screenshots/company-overview-dashboard.png)
+The Company Overview provides a centralized dashboard to monitor all companies within your MSPortal.ai tenant. View key metrics, track compliance status, manage tickets, and quickly identify companies that need attention.
 
 ## Key Features
 
 <CardGroup cols={2}>
   <Card title="Global & Company Views" icon="globe">
-    View all companies at once or drill down into a single company's metrics
+    View aggregated metrics across all companies or drill down into a single company's dashboard
   </Card>
   <Card title="Summary Metrics" icon="chart-line">
-    At-a-glance counts for compliance checks, planner items, goals, and devices
+    At-a-glance counts for tickets, compliance, planner items, goals, and devices
   </Card>
-  <Card title="Companies Table" icon="table">
-    Sortable list of all companies with key performance indicators
+  <Card title="Widget Dashboard" icon="grid-2">
+    Interactive widgets for compliance, tickets, devices, planner, goals, training, reports, and meetings
   </Card>
-  <Card title="Recent Activity" icon="clock">
-    View latest compliance checks, compliance runs, and upcoming planner items
+  <Card title="Quick Navigation" icon="arrow-pointer">
+    Click any metric or widget item to navigate directly to the relevant module
   </Card>
 </CardGroup>
 
 ## Accessing Company Overview
 
 <Steps>
-  <Step title="Navigate to Company Overview">
-    Click **Company Overview** in the left sidebar under the **Planning** section.
+  <Step title="Navigate to Company">
+    Click **Company** in the left sidebar.
   </Step>
-  <Step title="Select Global View">
-    Ensure **Global View** is selected in the top navigation to see all companies. You can also select a specific company from this dropdown to filter the view.
+  <Step title="Choose View Mode">
+    Use the company selector dropdown at the top to:
+    - **Global View**: See aggregated metrics for all companies
+    - **Assigned View**: See metrics for companies assigned to you
+    - **Single Company**: Select a specific company to view its dashboard
   </Step>
 </Steps>
 
-## Summary Section
+## Summary Metrics
 
-The collapsible Summary section displays five key metric cards:
+The top of the dashboard displays key summary metrics:
 
 | Metric | Description |
 |--------|-------------|
-| **Compliance Checks** | Total compliance checks with overdue and upcoming counts |
-| **Planner Items** | Total planner items with count due in next 30 days |
-| **Strategic Goals** | Total goals with high priority count |
-| **Total Companies** | Number of companies with total locations |
-| **Total Devices** | Device count across all locations |
+| **Open Tickets** | Total open tickets across all or selected company |
+| **Planner Items** | Total planner items with upcoming count |
+| **Incomplete Goals** | Goals not yet completed |
+| **Upcoming Meetings** | Scheduled meetings count |
+| **Reports** | Total reports available |
 
-<Tip>Click any metric number to navigate directly to that module for more details.</Tip>
+<Tip>Click any metric card to navigate directly to that module for more details.</Tip>
 
-## Companies Table
+## Dashboard Widgets
 
-The main table displays all companies with the following columns:
+The dashboard displays interactive widgets organized in a responsive grid layout:
 
-| Column | Description |
-|--------|-------------|
-| **Company** | Company name (click to view company details) |
-| **Locations** | Number of configured locations |
-| **Devices** | Total managed devices |
-| **Overdue Compliance** | Compliance checks past due date (highlighted in red) |
-| **Upcoming Compliance** | Compliance checks due soon |
-| **Overdue Planner** | Planner items past due date (highlighted in red) |
-| **Upcoming Planner** | Planner items due soon |
-| **Goals** | Total strategic goals |
-| **High Priority Goals** | Goals marked as high priority |
+### Compliance Widget
 
-<Note>Red numbers indicate items requiring immediate attention. Click any company name to view detailed information.</Note>
+Displays recent compliance checks with:
+- Check name and company
+- Status indicator (Pass, Fail, Pending)
+- Due date and priority
+- Quick link to view check details
+
+### Tickets Widget
+
+Shows current open tickets:
+- Ticket summary and company
+- Priority and status
+- Created date
+- Direct link to ticket details
+
+### Devices Widget
+
+Highlights devices with alerts:
+- Device name and type
+- Alert status and severity
+- Company association
+- Quick access to device details
+
+### Planner Widget
+
+Displays upcoming planner items:
+- Item title and company
+- Due date and status
+- Priority level
+- Link to planner module
+
+### Goals Widget
+
+Shows strategic goals:
+- Goal title and company
+- Progress status
+- Target completion date
+- Navigate to goals module
+
+### Training Widget
+
+Summarizes training status:
+- Completion rates
+- Courses in progress
+- Overdue assignments
+- Link to training dashboard
+
+### Reports Widget
+
+Lists recent and scheduled reports:
+- Report name and type
+- Last run date
+- Status
+- Quick access to run or view
+
+### Meetings Widget
+
+Shows upcoming meetings:
+- Meeting title
+- Date and time
+- Company association
+- Link to calendar
+
+## Global View
+
+When viewing in Global mode:
+
+- All widgets aggregate data across all companies
+- Summary metrics show totals for your entire tenant
+- Items are sorted by priority and due date
+- Company names appear on each item for context
+
+<Note>
+Global view is ideal for MSP managers and administrators who need to monitor all client activity at once.
+</Note>
 
 ## Single Company View
 
-Click any company name in the Companies table to view a focused dashboard for that specific company.
+Click any company name or select a company from the dropdown to view its dedicated dashboard:
 
-![Single Company View](/images/screenshots/company-overview-single-company.png)
+- All widgets filter to show only that company's data
+- Summary metrics reflect only the selected company
+- Company name appears in the page header
+- Navigation respects company context when clicking into modules
 
-The single company view displays:
+### Navigating Between Companies
 
-- **Company name** as the page heading
-- **Summary metrics** filtered to that company only (Compliance Checks, Planner Items, Strategic Goals, Total Devices)
-- **Last 5 Compliance Checks** for the selected company
-- **Last 5 Compliance Runs** for the selected company
-- **Planner Items This Quarter** for the selected company
+- Use the company selector dropdown to switch companies
+- Select "Global" to return to the aggregated view
+- Select "Assigned" to see only companies assigned to you
+- Click a different company name in any widget to switch to that company
 
-<Tip>Use the company selector dropdown in the top navigation bar to quickly switch between companies or return to Global View.</Tip>
+## Widget Interactions
 
-## Activity Tables
+Each widget supports:
 
-Below the companies table, three activity sections provide quick insights:
+| Interaction | Action |
+|-------------|--------|
+| **Click item** | Navigate to item details |
+| **View All link** | Go to the full module list |
+| **Hover** | See additional details tooltip |
+| **Company link** | Switch to that company's view |
 
-### Last 5 Compliance Checks
+## Company Scope Events
 
-Shows the most recent compliance checks across all companies with:
-- Title
-- Company
-- Status (New, In Progress, Complete)
-- Priority (clickable to change)
-- Due Date
+The dashboard responds to company scope changes:
 
-### Last 5 Compliance Runs
-
-Displays recent compliance run history showing:
-- Date
-- Run identifier
-- Status (In Progress, Complete)
-
-### Planner Items This Quarter
-
-Lists planner items due in the current quarter with:
-- Title
-- Company
-- Status
-- Due Date
-
-## Overview Menu
-
-Click the **Overview Menu** button in the top-right to access:
-
-- **Dashboard** - The main Company Overview dashboard (current view)
-- **Company Audit** - Detailed audit view for tracking company setup and health
+- Switching from Global to Single Company view reloads the dashboard
+- The URL updates to reflect the selected company (`/company/{id}`)
+- All widgets refresh with the new company context
+- Other modules remember your company selection
 
 ## Best Practices
 
 <AccordionGroup>
   <Accordion title="Daily Monitoring">
-    Check the Summary section daily to identify companies with overdue compliance or planner items. Red numbers indicate items needing immediate attention.
+    Start your day on the Global view to identify companies needing immediate attention. Look for overdue compliance checks, open tickets, and upcoming planner items.
   </Accordion>
-  <Accordion title="Weekly Review">
-    Review the Companies table weekly to ensure all companies maintain healthy metrics across compliance, planning, and goals.
+  <Accordion title="Company Check-ins">
+    Before client meetings, switch to that company's view to review their current status across all modules.
   </Accordion>
-  <Accordion title="Prioritize by Color">
-    Focus first on companies showing red (overdue) numbers. These indicate missed deadlines that may impact client relationships.
+  <Accordion title="Priority Focus">
+    Widgets highlight high-priority items. Address red/urgent indicators first before moving to routine tasks.
+  </Accordion>
+  <Accordion title="Use Quick Navigation">
+    Click directly into items from widgets to take action. This is faster than navigating through menus.
   </Accordion>
 </AccordionGroup>
 
@@ -142,10 +194,16 @@ Click the **Overview Menu** button in the top-right to access:
   <Card title="Compliance" icon="shield-check" href="../compliance">
     Manage compliance checks and frameworks
   </Card>
+  <Card title="Tickets" icon="ticket" href="../ticketing">
+    View and manage support tickets
+  </Card>
   <Card title="Planner" icon="calendar-check" href="../planner">
     Create and track roadmap items
   </Card>
   <Card title="Goals" icon="bullseye" href="../goals">
     Set and monitor strategic goals
+  </Card>
+  <Card title="Training" icon="graduation-cap" href="../training">
+    Manage security awareness training
   </Card>
 </CardGroup>
