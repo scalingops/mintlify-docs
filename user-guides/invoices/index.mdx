@@ -1,0 +1,163 @@
+---
+title: 'Invoices'
+description: 'View and manage ConnectWise invoices within MSPortal.ai'
+icon: 'file-invoice-dollar'
+---
+
+## Overview
+
+The Invoices module displays invoice data synced from your ConnectWise PSA integration. View invoice details, track payment status, download PDFs, and add invoices to meetings or planner items for easy follow-up.
+
+<Note>
+Invoices are synced from ConnectWise PSA. You must have an active ConnectWise integration configured to see invoice data.
+</Note>
+
+## Getting Started
+
+### Prerequisites
+
+- ConnectWise PSA integration enabled and synced
+- Appropriate user permissions to view invoices
+
+### Accessing Invoices
+
+Navigate to **Invoices** from the main sidebar to view your invoice list.
+
+## Understanding the Interface
+
+The Invoices page displays a data table with the following information:
+
+- **Invoice #**: Unique invoice identifier (click to view PDF)
+- **Reference**: Invoice reference text
+- **Company**: The company associated with the invoice
+- **Type**: Invoice type (e.g., Standard, Agreement)
+- **Status**: Current invoice status
+- **Date**: Invoice creation date
+- **Due Date**: Payment due date (overdue invoices are highlighted in red)
+- **Total**: Invoice total amount
+
+### Column Visibility
+
+Click the column toggle button to show/hide additional columns:
+- Subtotal
+- Balance
+- Payments
+- Sales Tax
+- Terms
+- Bill To
+- PO #
+- Sent status
+- Synced timestamp
+
+## Common Tasks
+
+### Viewing Invoice PDFs
+
+<Steps>
+  <Step title="Find the Invoice">
+    Locate the invoice in the data table using filters or search
+  </Step>
+  <Step title="Open PDF Viewer">
+    Click the **Invoice #** link, or click the row menu (three dots) and select **View PDF**
+  </Step>
+  <Step title="Review or Download">
+    The PDF viewer dialog opens with the invoice document. Use browser controls to download or print.
+  </Step>
+</Steps>
+
+### Filtering Invoices
+
+Use the column header filters to narrow down your invoice list:
+
+1. **By Status**: Filter to see only open, paid, or specific status invoices
+2. **By Type**: Filter by invoice type
+3. **By Company**: Select one or more companies from the multiselect dropdown
+4. **By Invoice #**: Type to search by invoice number
+5. **By Reference**: Search by reference text
+6. **By PO #**: Search by purchase order number
+
+### Bulk Download
+
+Download multiple invoices at once as a ZIP file:
+
+<Steps>
+  <Step title="Select Invoices">
+    Use the checkboxes to select the invoices you want to download
+  </Step>
+  <Step title="Click Download">
+    Click the **Download X invoices** button that appears in the header
+  </Step>
+  <Step title="Save ZIP File">
+    A ZIP file containing all selected invoice PDFs will be downloaded to your computer
+  </Step>
+</Steps>
+
+### Adding Invoices to Meetings
+
+Add an invoice as a meeting agenda item for client discussions:
+
+<Steps>
+  <Step title="Open Invoice Menu">
+    Click the three-dot menu on the invoice row
+  </Step>
+  <Step title="Select Add to Meeting">
+    Choose **Add to Meeting** from the dropdown
+  </Step>
+  <Step title="Select or Create Meeting">
+    Choose an existing meeting or create a new one. The invoice details will be added as an agenda item.
+  </Step>
+</Steps>
+
+<Tip>
+Adding invoices to meetings is useful for QBR discussions or billing conversations with clients.
+</Tip>
+
+### Adding Invoices to Planner
+
+Create a planner task to follow up on an invoice:
+
+<Steps>
+  <Step title="Open Invoice Menu">
+    Click the three-dot menu on the invoice row
+  </Step>
+  <Step title="Select Add to Planner">
+    Choose **Add to Planner** from the dropdown
+  </Step>
+  <Step title="Configure Task">
+    Set the task details including due date and priority
+  </Step>
+</Steps>
+
+## Understanding Invoice Status
+
+| Status | Description |
+|--------|-------------|
+| Open | Invoice has been sent and awaiting payment |
+| Paid | Invoice has been fully paid |
+| Closed | Invoice is closed (may be paid, voided, or cancelled) |
+| Void | Invoice has been voided |
+
+<Warning>
+Overdue invoices (past due date with remaining balance) are highlighted with a warning indicator in the Due Date column.
+</Warning>
+
+## Sorting and Pagination
+
+- Click any column header to sort by that column
+- Click again to reverse the sort direction
+- Use the pagination controls at the bottom to navigate between pages
+- Invoice data is sorted by Invoice # (descending) by default
+
+## Best Practices
+
+- **Regular Review**: Check the invoices page regularly to monitor overdue payments
+- **Use Filters**: Take advantage of status and company filters to focus on relevant invoices
+- **Meeting Integration**: Add outstanding invoices to client meetings for proactive billing discussions
+- **Planner Tasks**: Create planner items for invoice follow-ups to ensure nothing slips through
+
+## Related Resources
+
+- [Company Overview](/user-guides/company-overview/index) - View company-level financial summaries
+- [Calendar](/user-guides/calendar/index) - Schedule meetings and add invoice agenda items
+- [Planner](/user-guides/planner/index) - Manage tasks including invoice follow-ups
+- [ConnectWise Integration](/user-guides/integrations/enable-connectwise-integration) - Configure invoice sync

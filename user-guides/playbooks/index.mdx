@@ -1,0 +1,163 @@
+---
+title: 'Playbooks'
+description: 'Apply standardized compliance templates to quickly implement security frameworks and regulations'
+icon: 'book'
+---
+
+Playbooks are pre-built compliance templates that help you quickly deploy industry-standard security frameworks and regulatory requirements to your companies. Instead of manually creating compliance checks, apply a playbook to instantly populate your Compliance module with best-practice controls.
+
+## Overview
+
+Playbooks provide:
+
+- Pre-configured compliance check templates
+- Coverage of major security frameworks and regulations
+- One-click application to any company
+- Consistent implementation across your organization
+
+## Available Playbooks
+
+MSPortal includes playbooks for common security frameworks and regulations:
+
+<CardGroup cols={2}>
+  <Card title="CIS Controls v8 Basic" icon="shield-check">
+    Essential security measures for organizations with limited resources
+  </Card>
+  <Card title="HIPAA Security Rule" icon="hospital">
+    Healthcare compliance requirements for protected health information
+  </Card>
+  <Card title="NIST Cybersecurity Framework" icon="building-columns">
+    Industry-standard cyber risk management framework
+  </Card>
+  <Card title="PCI DSS Essentials" icon="credit-card">
+    Payment card industry data security standards
+  </Card>
+  <Card title="Microsoft 365 Security" icon="microsoft">
+    Cloud security best practices for M365 environments
+  </Card>
+  <Card title="SOC 2 Type II Readiness" icon="certificate">
+    Service organization audit compliance preparation
+  </Card>
+  <Card title="ISO 27001 Foundation" icon="globe">
+    Information security management system controls
+  </Card>
+  <Card title="GDPR Data Protection" icon="user-shield">
+    EU data protection regulation essentials
+  </Card>
+  <Card title="Remote Workforce Security" icon="house-laptop">
+    Controls for hybrid and remote work environments
+  </Card>
+  <Card title="Small Business Fundamentals" icon="building">
+    Foundational cybersecurity for SMBs
+  </Card>
+</CardGroup>
+
+## Playbook Contents
+
+Each playbook contains multiple compliance checks (typically 10-30), with each check including:
+
+| Component | Description |
+|-----------|-------------|
+| **Title** | Clear description of the control |
+| **Category** | Classification (e.g., Access Control, Asset Management) |
+| **Priority** | High, Medium, or Low importance |
+| **Why Important** | Business justification for the control |
+| **Guidance** | Implementation recommendations |
+
+## Browsing Playbooks
+
+<Steps>
+  <Step title="Navigate to Playbooks">
+    Click **Playbooks** in the main sidebar to open the Playbooks Library.
+  </Step>
+  <Step title="Browse or Search">
+    Use the search bar to find playbooks by name, or browse the card grid.
+  </Step>
+  <Step title="Filter by Category">
+    Filter playbooks by type:
+    - Security Framework
+    - Regulation
+    - Best Practice
+    - Technology Specific
+    - General
+  </Step>
+  <Step title="Filter by Industry">
+    Narrow results by industry focus:
+    - Healthcare
+    - Finance
+    - Retail
+    - General
+  </Step>
+</Steps>
+
+## Applying a Playbook
+
+<Steps>
+  <Step title="Select a Playbook">
+    Click **View & Apply to Company** on any playbook card.
+  </Step>
+  <Step title="Review Checks">
+    A modal displays all checks included in the playbook. Review the controls to ensure they're appropriate for your needs.
+  </Step>
+  <Step title="Choose a Company">
+    Select the company you want to apply the playbook to from the dropdown.
+  </Step>
+  <Step title="Apply">
+    Click **Apply to Company** to add all checks to that company's Compliance module.
+  </Step>
+</Steps>
+
+<Tip>
+After applying a playbook, navigate to **Compliance** to see the newly created checks and begin tracking their status.
+</Tip>
+
+## Bulk Application
+
+For applying multiple playbooks or managing playbooks at scale, use **Settings > Playbooks**:
+
+1. Navigate to **Settings > Playbooks**
+2. View all playbooks in a table format
+3. Select one or more playbooks using checkboxes
+4. Click **Add** to apply selected playbooks
+5. Choose which status list to assign the checks to
+
+## Playbook Categories
+
+| Category | Description |
+|----------|-------------|
+| **Security Framework** | Industry-standard security control sets (CIS, NIST) |
+| **Regulation** | Compliance with specific laws or regulations (HIPAA, GDPR, PCI DSS) |
+| **Best Practice** | General security recommendations |
+| **Technology Specific** | Controls for specific platforms (Microsoft 365) |
+| **General** | Broad applicability across organizations |
+
+## What Happens When You Apply
+
+When you apply a playbook to a company:
+
+1. All checks from the playbook are copied to the company's **Compliance** module
+2. Checks are assigned to your selected status tracking list
+3. Each check starts with an initial status ready for assessment
+4. You can then track, update, and report on compliance status
+
+<Note>
+Playbooks create copies of checks. Changes to a playbook after application do not affect previously applied checks.
+</Note>
+
+## Permissions
+
+| Permission | Capability |
+|------------|------------|
+| `read_settings_playbooks` | View available playbooks |
+| `manage_settings_playbooks` | Apply playbooks to companies |
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Compliance" icon="clipboard-check" href="/user-guides/compliance/index">
+    Manage and track compliance checks
+  </Card>
+  <Card title="Playbook Settings" icon="gear" href="/user-guides/settings/playbooks">
+    Configure playbook options
+  </Card>
+</CardGroup>

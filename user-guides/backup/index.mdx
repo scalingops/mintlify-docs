@@ -1,0 +1,173 @@
+---
+title: 'Backup'
+description: 'Monitor backup status and protection across all devices and Microsoft 365 services'
+icon: 'shield-check'
+---
+
+## Overview
+
+The Backup module provides a centralized view of backup protection status across your managed devices and Microsoft 365 services. Monitor backup health, identify at-risk systems, and track storage usage through the Cove Backup integration.
+
+<Note>
+The Backup module requires an active Cove Backup integration. Configure your integration in **Settings > Integrations** to see backup data.
+</Note>
+
+## Getting Started
+
+### Prerequisites
+
+- Cove Backup integration enabled and synced
+- Appropriate user permissions to view backup data
+
+### Accessing Backup
+
+Navigate to **Backup** from the main sidebar. The module has three main sections accessible via tabs:
+- **Dashboard**: Overview of backup health metrics
+- **Devices**: Detailed device backup status
+- **Microsoft 365**: Exchange, OneDrive, SharePoint, and Teams backup status
+
+## Dashboard
+
+The Dashboard provides a high-level view of your backup protection status.
+
+### Protection Status Cards
+
+Monitor the overall health of your backup environment with four status cards:
+
+| Status | Description |
+|--------|-------------|
+| **Protected** | Devices with successful recent backups |
+| **Warning** | Devices with backup issues that need attention |
+| **Failed** | Devices where backups have failed |
+| **Unprotected** | Devices without backup protection |
+
+### Storage Usage
+
+View total backup storage consumption across all protected devices and services.
+
+## Devices Tab
+
+The Devices tab shows detailed backup status for all monitored workstations, servers, and other devices.
+
+### Device Backup Information
+
+For each device, you can view:
+- Device name and type
+- Company assignment
+- Last successful backup timestamp
+- Backup status (Protected, Warning, Failed, Unprotected)
+- Storage consumption
+
+### Filtering Devices
+
+Use filters to focus on specific devices:
+- Filter by company to see backups for a specific client
+- Filter by status to identify problem areas
+- Search by device name
+
+## Microsoft 365 Tab
+
+The Microsoft 365 tab displays backup status for cloud services:
+
+- **Exchange**: Email and calendar backup
+- **OneDrive**: Personal file storage backup
+- **SharePoint**: Team sites and document libraries
+- **Teams**: Teams data and conversations
+
+### M365 Backup Details
+
+For each user or service, view:
+- User/service name
+- Associated company
+- Last backup timestamp
+- Items backed up
+- Storage used
+
+## Common Tasks
+
+### Syncing Backup Data
+
+<Steps>
+  <Step title="Click Sync Button">
+    Click the **Sync** button in the page header to refresh backup data from Cove
+  </Step>
+  <Step title="Wait for Sync">
+    The button will show "Syncing..." while data is being refreshed
+  </Step>
+  <Step title="Review Updated Data">
+    Once complete, the page will display the latest backup information
+  </Step>
+</Steps>
+
+<Tip>
+Backup data is synced automatically on a regular schedule. Use manual sync when you need the most current information.
+</Tip>
+
+### Identifying At-Risk Devices
+
+<Steps>
+  <Step title="Go to Dashboard">
+    Start on the Dashboard tab to see overall status
+  </Step>
+  <Step title="Check Failed/Warning Cards">
+    Note the counts for Failed and Warning devices
+  </Step>
+  <Step title="Navigate to Devices">
+    Click the Devices tab and filter by "Failed" or "Warning" status
+  </Step>
+  <Step title="Review and Take Action">
+    For each at-risk device, investigate the cause and remediate
+  </Step>
+</Steps>
+
+### Monitoring Storage
+
+View storage consumption at multiple levels:
+- **Dashboard**: Total storage across all backups
+- **Devices Tab**: Per-device storage breakdown
+- **M365 Tab**: Per-user/service storage for cloud backups
+
+## Understanding Backup Status
+
+| Status | Color | Action Required |
+|--------|-------|-----------------|
+| Protected | Green | None - backups are healthy |
+| Warning | Amber | Review - backup may be stale or incomplete |
+| Failed | Red | Urgent - backup failures need immediate attention |
+| Unprotected | Gray | Consider - device may need backup protection |
+
+<Warning>
+Failed backups should be investigated promptly. Extended periods without successful backups increase data loss risk.
+</Warning>
+
+## Best Practices
+
+- **Daily Review**: Check the Dashboard daily to catch backup issues early
+- **Address Warnings**: Don't ignore warning status - investigate before they become failures
+- **Storage Planning**: Monitor storage trends to plan for capacity needs
+- **Document Exceptions**: Keep notes on any intentionally unprotected devices
+
+## Troubleshooting
+
+### No Backup Data Showing
+
+If the backup pages show no data:
+
+1. Verify your Cove Backup integration is active in **Settings > Integrations**
+2. Check that the integration has completed its initial sync
+3. Click the **Sync** button to refresh data manually
+4. If issues persist, check the integration status for error messages
+
+### Stale Backup Data
+
+If data appears outdated:
+
+1. Click the **Sync** button to trigger a manual refresh
+2. Check the "Last backup check" timestamp on the Dashboard
+3. Verify the Cove integration credentials are still valid
+
+## Related Resources
+
+- [Cove Backup Integration](/user-guides/integrations/enable-cove-backup-integration) - Configure the Cove integration
+- [Company Overview](/user-guides/company-overview/index) - View company-level backup summaries
+- [Devices](/user-guides/devices/index) - Manage devices across your organization

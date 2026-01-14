@@ -1,0 +1,215 @@
+---
+title: 'Projects'
+description: 'Track and manage your PSA projects with enhanced visibility and collaboration tools'
+icon: 'folder-open'
+---
+
+The Projects module provides a centralized dashboard to view, manage, and monitor all your projects synced from your PSA (Professional Services Automation) platform. It displays your PSA project data while adding powerful tracking, health monitoring, and communication features.
+
+## Overview
+
+Projects in MSPortal are automatically synced from your connected PSA integration (ConnectWise, Autotask, Halo PSA, or Syncro). The module enhances your PSA data with:
+
+- Visual health status tracking
+- Client action management
+- Weekly update posting
+- Deliverable and milestone tracking
+- Team contact assignments
+
+<Note>
+Projects are synced from your PSA integration. If no projects appear, ensure your PSA integration is configured in **Settings > Integrations**.
+</Note>
+
+## Projects Dashboard
+
+The main dashboard displays all your projects with at-a-glance metrics.
+
+### Summary Cards
+
+At the top of the dashboard, summary cards show:
+
+- **Total Projects** - All projects in your portfolio
+- **In Progress** - Active projects currently being worked on
+- **Completed** - Successfully finished projects
+- **On Hold** - Paused projects
+- **Overdue** - Projects past their due date
+- **Over Budget** - Projects exceeding estimated hours
+
+### View Options
+
+Toggle between two display modes:
+
+- **Grid View** - Card-based layout showing project details visually
+- **List View** - Compact table format for scanning many projects quickly
+
+### Filtering Projects
+
+Use the search bar and filters to find specific projects:
+
+- **Search** - Find projects by name
+- **Status Filter** - Filter by Not Started, In Progress, On Hold, Completed, or Cancelled
+
+## Project Cards
+
+Each project card displays key information at a glance:
+
+<CardGroup cols={2}>
+  <Card title="Status & Health" icon="heart-pulse">
+    Color-coded status badges and health indicators (On Track, At Risk, Behind, Completed)
+  </Card>
+  <Card title="Progress Tracking" icon="chart-line">
+    Visual progress bar showing percentage of hours completed vs. estimated
+  </Card>
+  <Card title="Timeline" icon="calendar">
+    Start and due dates with a visual indicator showing timeline progress
+  </Card>
+  <Card title="Hours & Budget" icon="clock">
+    Estimated vs. actual hours with variance indicators (green = under, red = over)
+  </Card>
+</CardGroup>
+
+## Project Details
+
+Click any project card to view the full project details. The detail view includes multiple tabs:
+
+### Overview Tab
+
+The main summary showing:
+
+- **Project Outcome** - The objective and description
+- **Current Phase** - Where the project stands in its lifecycle
+- **Contacts** - MSP lead and client sponsor with email links
+- **Latest Update** - Most recent weekly status update
+- **Milestone Progress** - Visual tracker of milestone completion
+- **Deliverables Summary** - Status of project deliverables
+
+### Timeline Tab
+
+A Gantt-style visualization showing:
+
+- Milestone dates and status
+- Phase progression
+- Key dates and deadlines
+
+### Updates Tab
+
+Weekly project updates containing:
+
+- What was done
+- What's next
+- Current risks
+- Decisions made
+
+Updates can be marked as client-visible or internal-only.
+
+### Decisions Tab
+
+Track pending client actions:
+
+- **Approvals** - Items awaiting client sign-off
+- **Questions** - Topics needing client input
+- **Access Requests** - Credentials or system access needed
+- **Scheduling** - Meetings or sessions to arrange
+- **Decisions** - Scope or direction choices pending
+
+### Deliverables Tab
+
+Track project deliverables through their lifecycle:
+
+- Planned
+- In Progress
+- In Review
+- Complete
+
+Each deliverable shows due dates, status, and any attached files.
+
+### Budget Tab
+
+Financial overview including:
+
+- Revenue tracking
+- Cost analysis
+- Budget variance
+
+<Info>
+The Budget and Phases tabs are only visible if enabled in your project settings.
+</Info>
+
+## Project Health Status
+
+MSPortal automatically calculates project health based on:
+
+- Days remaining vs. work completed
+- Hours variance from estimate
+- Overdue status
+
+Health statuses include:
+
+| Status | Meaning |
+|--------|---------|
+| **On Track** | Project progressing well |
+| **At Risk** | Minor concerns - approaching deadline or moderately over budget |
+| **Behind** | Critical issues requiring attention |
+| **Completed** | Project finished |
+
+You can manually override the calculated health status and provide a reason.
+
+## Editing Projects
+
+Users with project management permissions can edit project details:
+
+<Steps>
+  <Step title="Open Project Details">
+    Click on a project card to open the detail view.
+  </Step>
+  <Step title="Click Edit Details">
+    Click the **Edit Details** button in the project header.
+  </Step>
+  <Step title="Update Information">
+    Modify the outcome, phase, health status, contacts, deliverables, milestones, or client actions.
+  </Step>
+  <Step title="Save Changes">
+    Click **Save** to apply your changes.
+  </Step>
+</Steps>
+
+## Configuring Project Display
+
+Customize what information appears on project cards in **Settings > Projects**.
+
+### Section Visibility
+
+Toggle visibility of:
+
+- Timeline display
+- Progress metrics
+- Financial data
+- Hours information
+- Dates
+- PSA Phases
+
+### Status Mapping
+
+Map your PSA's project statuses to MSPortal display statuses:
+
+- Define which PSA statuses appear as "Not Started," "In Progress," "On Hold," "Completed," or "Cancelled"
+- Customize how statuses are grouped and displayed
+
+## Permissions
+
+| Permission | Capability |
+|------------|------------|
+| `read_projects` | View projects and project details |
+| `write_projects` | Edit project information and post updates |
+| `manage_projects` | Full project management including settings |
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Project Settings" icon="gear" href="/user-guides/settings/projects">
+    Configure project display options
+  </Card>
+  <Card title="Integrations" icon="plug" href="/user-guides/integrations/index">
+    Set up PSA integration to sync projects
+  </Card>
+</CardGroup>

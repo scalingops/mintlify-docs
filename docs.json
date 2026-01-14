@@ -55,6 +55,12 @@
                 ]
               },
               {
+                "group": "Notifications",
+                "pages": [
+                  "user-guides/notifications/index"
+                ]
+              },
+              {
                 "group": "Planner",
                 "pages": [
                   "user-guides/planner/index"
@@ -64,6 +70,12 @@
                 "group": "Budgets",
                 "pages": [
                   "user-guides/budgets/index"
+                ]
+              },
+              {
+                "group": "Invoices",
+                "pages": [
+                  "user-guides/invoices/index"
                 ]
               }
             ]
@@ -103,9 +115,33 @@
                 ]
               },
               {
+                "group": "Playbooks",
+                "pages": [
+                  "user-guides/playbooks/index"
+                ]
+              },
+              {
+                "group": "Projects",
+                "pages": [
+                  "user-guides/projects/index"
+                ]
+              },
+              {
+                "group": "Dashboards",
+                "pages": [
+                  "user-guides/dashboards/index"
+                ]
+              },
+              {
                 "group": "Devices",
                 "pages": [
                   "user-guides/devices/index"
+                ]
+              },
+              {
+                "group": "Backup",
+                "pages": [
+                  "user-guides/backup/index"
                 ]
               },
               {
