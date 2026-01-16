@@ -192,6 +192,12 @@
                 "pages": [
                   "user-guides/integrations/enable-cove-backup-integration"
                 ]
+              },
+              {
+                "group": "Datto RMM",
+                "pages": [
+                  "user-guides/integrations/enable-datto-rmm-integration"
+                ]
               }
             ]
           },
