@@ -1,57 +1,383 @@
 ---
-title: Surveys Module
-description: Create, distribute, and analyze surveys for feedback and assessment
+title: 'Surveys'
+description: 'Create and send NPS and custom surveys, organize recipients into groups, and analyze feedback with AI-powered insights'
+icon: 'chart-bar'
 ---
 
-The Surveys module enables you to gather valuable feedback from employees, customers, and stakeholders through customizable surveys and assessments.
-
-## Key Features
-
-- **Survey Builder** - Create custom surveys with various question types
-- **Template Library** - Use pre-built survey templates for common scenarios
-- **Distribution Management** - Send surveys via email or share links
-- **Response Tracking** - Monitor completion rates in real-time
-- **Analytics Dashboard** - Analyze results with built-in reporting tools
-- **Automated Reminders** - Schedule follow-ups for incomplete surveys
+The Surveys module helps you collect feedback from clients through Net Promoter Score (NPS) surveys and custom questionnaires. Use AI to design surveys, organize recipients into groups, and analyze responses with sentiment analysis.
 
 ## Getting Started
 
-1. Choose a survey template or create a custom survey
-2. Configure questions and response options
-3. Select your target audience
-4. Distribute the survey
-5. Monitor responses and analyze results
+### Prerequisites
 
-## Common Tasks
+Before creating surveys, ensure you have:
 
-- **Creating Surveys** - Build surveys using the drag-and-drop editor
-- **Managing Distribution** - Send surveys to specific groups or individuals
-- **Tracking Responses** - Monitor real-time completion rates
-- **Generating Reports** - Export survey results for analysis
-- **Following Up** - Send reminders to non-respondents
+- Access to the **Surveys** module in your navigation
+- The `manage_surveys` permission to create and send surveys
+- At least one company or contact in your database to receive surveys
 
-## Survey Types
+### Accessing Surveys
 
-- **Employee Satisfaction** - Measure team morale and engagement
-- **Customer Feedback** - Collect client satisfaction data
-- **Training Assessment** - Evaluate training effectiveness
-- **Compliance Surveys** - Gather required compliance information
-- **360 Reviews** - Conduct comprehensive performance evaluations
+Navigate to **Surveys** from the main sidebar. You'll see:
+
+- **All Surveys**: List of all NPS and custom surveys with status, response rates, and version history
+- **Groups**: Recipient groups for targeted survey distribution
+- **Settings**: Default NPS configuration and email templates
+
+## Creating a Survey
+
+Surveys are created using a 3-step wizard that guides you through design, recipient selection, and scheduling.
+
+### Step 1: Create Your Survey
+
+<Steps>
+  <Step title="Start the Survey Wizard">
+    Click **New Survey** from the Surveys page. You'll enter the survey creation wizard.
+  </Step>
+  <Step title="Choose Survey Type">
+    Select between two survey types:
+
+    - **NPS Survey** (Recommended): Measures customer loyalty with a 0-10 scale question. Best for tracking satisfaction over time.
+    - **General Survey**: Create custom surveys with multiple question types for detailed feedback.
+  </Step>
+  <Step title="Configure Survey Details">
+    Enter your survey information:
+
+    - **Title**: A descriptive name (e.g., "Customer Satisfaction Survey Q1 2025")
+    - **Description**: Brief context about the survey's purpose
+    - **Introduction Text**: Optional message displayed at the top of the survey
+  </Step>
+</Steps>
+
+### NPS Survey Configuration
+
+For NPS surveys, configure these additional options:
+
+- **NPS Question**: The main question recipients answer (default: "How likely are you to recommend us to a friend or colleague?")
+- **Rating Style**: Choose how ratings appear to recipients:
+  - **Numeric (0-10)**: Traditional NPS scale with color-coded numbers
+  - **Stars**: 5-star rating system
+  - **Emoji**: Emoji faces from sad to happy
+  - **Dogs**: Fun dog illustrations for a lighter approach
+- **Thank You Message**: Shown after submission
+
+<Accordion title="Review Link Prompts">
+  Enable review prompts to encourage promoters (high scorers) to leave public reviews:
+
+  1. Toggle **Enable Review Prompts**
+  2. Set the **Minimum Score** to show links (default: 9)
+  3. Add URLs for review platforms:
+     - Google Reviews
+     - Trustpilot
+     - G2
+     - Capterra
+</Accordion>
+
+### General Survey Configuration
+
+For custom surveys, build your questionnaire:
+
+<Steps>
+  <Step title="Add Questions">
+    Click **Add Question** to create a new question. Each question includes:
+
+    - **Question Text**: What you're asking
+    - **Type**: Short text, long text, single choice, multiple choice, or rating
+    - **Required**: Whether the question must be answered
+    - **Help Text**: Optional guidance for respondents
+  </Step>
+  <Step title="Configure Choice Questions">
+    For single choice or multiple choice questions, enter each option on a new line in the Options field.
+  </Step>
+  <Step title="Reorder Questions">
+    Use the up/down arrows to reorder questions. Click the expand arrow to edit question details.
+  </Step>
+</Steps>
+
+### Using AI to Design Surveys
+
+Click the **purple sparkle button** on the right side of the screen to open the AI Survey Designer.
+
+<Steps>
+  <Step title="Describe Your Survey">
+    Type what kind of survey you want to create. For example:
+    - "Add questions about service quality and response times"
+    - "Create follow-up questions about our support team"
+    - "Add questions to understand what features customers want"
+  </Step>
+  <Step title="Review Suggestions">
+    AI generates questions based on your description. Review the suggested changes in the diff preview.
+  </Step>
+  <Step title="Accept or Reject Changes">
+    Accept all changes, reject specific suggestions, or go back to refine your request.
+  </Step>
+</Steps>
+
+<Tip>
+Use the prompt helpers below the chat input for quick suggestions like "Add a question about..." or "Make the survey more conversational."
+</Tip>
+
+## Step 2: Assign Recipients
+
+Choose who receives your survey:
+
+### Targeting Options
+
+- **All Clients**: Send to every active contact with a valid email. Requires confirmation checkbox.
+- **Survey Groups**: Select from pre-configured recipient groups (see Survey Groups below)
+- **Specific Companies**: Choose individual companies to survey their contacts
+- **Manual Entry**: Add individual email addresses
+
+<Note>
+When selecting **Survey Groups**, you can also add individual recipients manually at the bottom of the selection panel.
+</Note>
+
+The recipient count updates in real-time as you make selections.
+
+## Step 3: Review & Send
+
+Configure delivery options and send your survey.
+
+### Email Settings
+
+- **Email Subject**: The subject line recipients see
+- **Email Template**: Select a pre-configured template or create a new one
+
+### Schedule Options
+
+<CardGroup cols={3}>
+  <Card title="Send Now" icon="paper-plane">
+    Immediately deliver the survey to all recipients
+  </Card>
+  <Card title="Schedule" icon="calendar">
+    Set a specific date and time for delivery
+  </Card>
+  <Card title="Recurring" icon="repeat">
+    Automatically send on a schedule (weekly, monthly, quarterly, yearly)
+  </Card>
+</CardGroup>
+
+### Reminder Settings
+
+Toggle **Send Reminder** to automatically follow up with recipients who haven't responded. Set the number of days after the initial send.
+
+### Saving and Sending
+
+- **Save Draft**: Save your progress without sending
+- **Save as New Version**: When editing an existing survey, create a new version
+- **Send Survey**: Deliver the survey to recipients
+
+## Survey Groups
+
+Survey Groups let you organize recipients for targeted, repeatable survey distribution.
+
+### Creating a Group
+
+<Steps>
+  <Step title="Navigate to Groups">
+    Go to **Surveys > Groups** and click **New Group**.
+  </Step>
+  <Step title="Configure Group Details">
+    Enter:
+    - **Name**: Descriptive group name
+    - **Description**: Purpose of this group
+    - **Color**: Visual identifier
+    - **Status**: Active or Inactive
+  </Step>
+  <Step title="Add Members">
+    Manually add contacts to the group.
+  </Step>
+</Steps>
+
+### Using Rules for Automatic Membership
+
+Groups can automatically include contacts based on rules:
+
+<Steps>
+  <Step title="Open Rules Dialog">
+    From the group's action menu, select **Manage Rules**.
+  </Step>
+  <Step title="Configure Rules">
+    Set criteria like:
+    - Company membership
+    - Contact role or title
+    - Custom field values
+  </Step>
+  <Step title="Apply Rules">
+    Click **Apply Rules Now** to update membership based on current data.
+
+    Enable **Auto-Update** to automatically adjust membership when rules change.
+  </Step>
+</Steps>
+
+<Warning>
+Applying rules will **remove** contacts who no longer match the criteria. This cannot be undone.
+</Warning>
+
+## Viewing Survey Results
+
+### Survey Dashboard
+
+Click any survey to view its results. The dashboard shows:
+
+- **Response Rate**: Invites sent vs. responses received
+- **Questions View**: Individual question responses and aggregated data
+- **Respondents View**: List of who responded with their answers
+- **Word Map**: Visual representation of common words in text responses
+
+### AI Analysis
+
+Run AI-powered analysis on survey responses:
+
+<Steps>
+  <Step title="Open Analysis Tab">
+    Navigate to the **Analysis** tab on a survey's detail page.
+  </Step>
+  <Step title="Set Date Range (Optional)">
+    Filter responses by date range for targeted analysis.
+  </Step>
+  <Step title="Run Analysis">
+    Click **Run now** to generate insights. This may take a moment.
+  </Step>
+</Steps>
+
+The analysis provides:
+
+- **Overall Sentiment**: A sentiment score with color-coded indicator
+- **Key Themes**: Recurring topics with weight, description, and supporting evidence
+- **Follow-up Questions**: AI-suggested questions for deeper understanding
+
+<Tip>
+Click **Create Goal** next to any theme to create a follow-up action item directly from the analysis.
+</Tip>
+
+## Survey Settings
+
+Configure default behaviors and email templates in **Surveys > Settings**.
+
+### NPS Defaults
+
+Settings that apply to new NPS surveys by default:
+
+- **Automatic Survey Sending**: Enable scheduled survey automation
+- **Allow Anonymous Responses**: Let recipients respond without identification
+- **Require Comment for Detractors**: Force feedback from low scorers (0-6)
+- **Default Follow-up Delay**: Hours before sending follow-up emails
+- **Default Thank You Message**: Standard completion message
+
+### Default Review Platform Links
+
+Pre-configure review platform URLs that will be available when creating NPS surveys:
+
+- Google Reviews
+- Yelp
+- Facebook Reviews
+- Trustpilot
+- G2
+- Capterra
+- Custom platform
+
+### Email Templates
+
+Create reusable email templates for survey invitations:
+
+<Steps>
+  <Step title="Create Template">
+    Click **Create Template** in the Email Templates tab.
+  </Step>
+  <Step title="Configure Template">
+    Set:
+    - **Name**: Template identifier
+    - **Subject**: Default email subject
+    - **HTML Body**: Rich formatted email content
+    - **Text Body**: Plain text fallback
+    - **Variables**: Dynamic fields like `{{recipient_name}}` or `{{survey_link}}`
+  </Step>
+  <Step title="Preview and Save">
+    Use the preview button to see how the email will appear, then save.
+  </Step>
+</Steps>
+
+## Managing Surveys
+
+### Survey List Actions
+
+From the survey list, use the action menu (three dots) to:
+
+- **View Analytics/Results**: See response data
+- **Edit Survey**: Modify and create a new version
+- **Manage Recipients** (NPS only): Update who receives the survey
+- **Send Now** (NPS only): Immediately send to recipients
+- **Activate/Deactivate**: Toggle survey status
+- **Delete**: Permanently remove the survey
+
+### Survey Versions
+
+When you edit an existing survey, a new version is created automatically. This preserves historical data from previous versions.
+
+- Versions are displayed as "v1", "v2", etc.
+- Multiple versions are grouped in the list with an expand/collapse control
+- The latest version shows a green badge
 
 ## Best Practices
 
-- **Keep It Short** - Limit surveys to 10-15 questions for better completion rates
-- **Clear Questions** - Use simple, unambiguous language
-- **Test First** - Preview surveys before distribution
-- **Timely Follow-up** - Send reminders within 3-5 days
-- **Share Results** - Communicate findings back to participants when appropriate
+<CardGroup cols={2}>
+  <Card title="Keep Surveys Short" icon="clock">
+    Aim for 5-10 questions maximum. Shorter surveys have higher completion rates.
+  </Card>
+  <Card title="Use Clear Language" icon="message">
+    Write questions that are easy to understand. Avoid jargon or ambiguous terms.
+  </Card>
+  <Card title="Test Before Sending" icon="flask">
+    Preview your survey and send a test to yourself first.
+  </Card>
+  <Card title="Follow Up Promptly" icon="bell">
+    Enable reminders to catch non-respondents within 3-5 days.
+  </Card>
+</CardGroup>
+
+### NPS Best Practices
+
+- **Score Threshold for Reviews**: Only show review links to promoters (9-10 scores) to avoid negative public reviews
+- **Consistent Timing**: Send NPS surveys at regular intervals to track trends
+- **Act on Feedback**: Use the AI analysis to identify actionable themes
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Survey not sending to recipients">
+    **Check:**
+    1. Survey status is **Active**
+    2. Recipients have valid email addresses
+    3. You selected recipients in Step 2 of the wizard
+    4. For NPS surveys, click **Send Now** from the action menu
+  </Accordion>
+
+  <Accordion title="Recipients not receiving emails">
+    **Check:**
+    1. Verify email addresses are correct
+    2. Check spam/junk folders
+    3. Ensure your email sending is configured in Settings
+    4. Contact support if issues persist
+  </Accordion>
+
+  <Accordion title="AI Analysis not generating">
+    **Check:**
+    1. Survey has at least one response
+    2. Selected company has responses (if filtering by company)
+    3. Wait a moment - analysis can take 30-60 seconds for large surveys
+  </Accordion>
+
+  <Accordion title="Survey Groups not updating membership">
+    **Check:**
+    1. Rules are properly configured
+    2. Click **Apply Rules Now** to manually trigger updates
+    3. Ensure contacts match the rule criteria
+  </Accordion>
+</AccordionGroup>
 
 ## Related Resources
 
-- [Email Templates](../settings/index) - Configure survey invitation templates
-- [Reporting](../reporting/index) - Advanced survey analytics
-- [Users & Roles](../settings/users-roles) - Manage survey participants
-
-## Need Help?
-
-For assistance with the Surveys module, contact support@msportal.ai or refer to our survey best practices guide.
+- [Email Settings](/user-guides/settings/email) - Configure email sending
+- [Contacts](/user-guides/contacts) - Manage survey recipients
+- [Companies](/user-guides/companies) - Organize contacts by company
