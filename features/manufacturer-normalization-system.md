@@ -194,7 +194,7 @@ const manufacturerOptions = getManufacturerOptions();
 
 ### Accuracy Metrics
 - **Coverage**: 95%+ of common manufacturer variations
-- **False Positives**: <1% (returns null for unknown inputs)
+- **False Positives**: Under 1% (returns null for unknown inputs)
 - **Consistency**: 100% reproducible results
 
 ## Error Handling

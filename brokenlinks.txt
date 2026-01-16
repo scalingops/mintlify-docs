@@ -1,0 +1,316 @@
+found 197 broken links in 59 files
+
+essentials\images.mdx
+ ⎿  /writing-content/embed
+
+essentials\settings.mdx
+ ⎿  /api-playground/demo
+ ⎿  /api-playground/demo
+
+features\ai-text-improvement.mdx
+ ⎿  /modules/reporting
+
+features\calendar.mdx
+ ⎿  /modules/calendar
+ ⎿  /modules/microsoft-365
+ ⎿  /modules/users
+
+features\report-builder-module-availability.mdx
+ ⎿  /modules/reporting
+ ⎿  /modules/companies
+ ⎿  /modules/integrations
+
+index.mdx
+ ⎿  /user-guides/getting-started/quick-start
+ ⎿  /modules/company-overview
+ ⎿  /user-guides/getting-started/index
+ ⎿  /api-reference/introduction
+ ⎿  /modules/company-overview
+ ⎿  /modules/surveys
+ ⎿  /modules/goals
+ ⎿  /modules/planner
+ ⎿  /modules/budgets
+ ⎿  /modules/compliance
+ ⎿  /modules/ticketing
+ ⎿  /modules/devices
+ ⎿  /modules/reporting
+ ⎿  /modules/microsoft-365
+ ⎿  /modules/settings
+ ⎿  /modules/integrations
+
+quickstart.mdx
+ ⎿  /api-reference/introduction
+
+user-guides\backup\index.mdx
+ ⎿  /user-guides/integrations/enable-cove-backup-integration
+ ⎿  /user-guides/company-overview/index
+ ⎿  /user-guides/devices/index
+
+user-guides\budgets\index.mdx
+ ⎿  /user-guides/planner/index
+ ⎿  /user-guides/goals/index
+ ⎿  /user-guides/company-overview/index
+
+user-guides\calendar\index.mdx
+ ⎿  /user-guides/calendar/meetings
+ ⎿  /user-guides/calendar/presenting
+ ⎿  /user-guides/calendar/meeting-summaries
+
+user-guides\calendar\meeting-summaries.mdx
+ ⎿  /user-guides/calendar/meetings
+ ⎿  /user-guides/integrations/index
+
+user-guides\calendar\meetings.mdx
+ ⎿  /user-guides/calendar/presenting
+ ⎿  /user-guides/calendar/meeting-summaries
+
+user-guides\calendar\presenting.mdx
+ ⎿  /user-guides/calendar/meeting-summaries
+ ⎿  /user-guides/calendar/meetings
+
+user-guides\company-overview\audit.mdx
+ ⎿  ./index
+ ⎿  ../settings/companies
+
+user-guides\compliance\index.mdx
+ ⎿  /user-guides/compliance/adding-cis-benchmarks
+ ⎿  /user-guides/planner/index
+ ⎿  /user-guides/company-overview/index
+
+user-guides\dashboards\index.mdx
+ ⎿  /user-guides/settings/dashboards
+
+user-guides\devices\index.mdx
+ ⎿  /user-guides/planner/index
+ ⎿  /user-guides/calendar/index
+
+user-guides\getting-started\how-to-create-a-new-user-role.mdx
+ ⎿  /user-guides/integrations/import-users
+
+user-guides\getting-started\index.mdx
+ ⎿  /user-guides/getting-started/quick-start
+ ⎿  /user-guides/company-overview/index
+ ⎿  /user-guides/surveys/index
+ ⎿  /user-guides/goals/index
+ ⎿  /user-guides/planner/index
+ ⎿  /user-guides/budgets/index
+ ⎿  /user-guides/calendar/index
+ ⎿  /user-guides/microsoft-365/index
+ ⎿  /user-guides/ticketing/index
+ ⎿  /user-guides/compliance/index
+ ⎿  /user-guides/devices/index
+ ⎿  /user-guides/integrations/index
+ ⎿  /user-guides/getting-started/Onboarding-checklist
+ ⎿  /user-guides/getting-started/keyboard-shortcuts
+
+user-guides\getting-started\quick-start.mdx
+ ⎿  /user-guides/getting-started/keyboard-shortcuts
+ ⎿  /user-guides/getting-started/index
+ ⎿  /user-guides/getting-started/Onboarding-checklist
+ ⎿  /user-guides/getting-started/Onboarding-checklist
+ ⎿  /user-guides/getting-started/index
+
+user-guides\goals\index.mdx
+ ⎿  /user-guides/planner/index
+ ⎿  /user-guides/company-overview/index
+
+user-guides\integrations\clear-and-resync-integrations.mdx
+ ⎿  ./connectwise-configure-and-service-desk
+ ⎿  ./enable-connectwise-integration
+ ⎿  ./integration-troubleshooting
+
+user-guides\integrations\connectwise-resync-psa-settings.mdx
+ ⎿  ./enable-connectwise-integration
+ ⎿  ./connectwise-configure-and-service-desk
+ ⎿  ./Clear%20and%20Resync%20Integrations
+ ⎿  ./integration-troubleshooting
+
+user-guides\integrations\enable-connectwise-asio-integration.mdx
+ ⎿  ./import-companies
+ ⎿  /user-guides/devices/index
+ ⎿  ./clear-and-resync-integrations
+
+user-guides\integrations\enable-connectwise-integration.mdx
+ ⎿  ./connectwise-configure-and-service-desk
+ ⎿  ./connectwise-opportunity-settings
+
+user-guides\integrations\enable-halo-integration.mdx
+ ⎿  /user-guides/integrations/Halo%20PSA%20Custom%20Role%20and%20User
+ ⎿  /user-guides/integrations/Halo%20PSA%20Custom%20Role%20and%20User
+
+user-guides\integrations\faq.mdx
+ ⎿  /user-guides/integrations/import-companies
+ ⎿  /user-guides/integrations/connectwise-configure-and-service-desk
+ ⎿  /user-guides/integrations/import-companies
+ ⎿  /user-guides/integrations/import-users
+ ⎿  /user-guides/integrations/clear-and-resync-integrations
+ ⎿  /user-guides/settings/integrations
+
+user-guides\integrations\Halo PSA Custom Role and User.mdx
+ ⎿  /user-guides/integrations/enable-halo-integration
+ ⎿  /user-guides/integrations/enable-halo-integration
+
+user-guides\integrations\import-users.mdx
+ ⎿  ../getting-started/how-to-create-a-new-user-role
+ ⎿  ./import-companies
+ ⎿  ./enable-connectwise-integration
+ ⎿  ./enable-syncro-integration
+ ⎿  ./enable-autotask-integration
+
+user-guides\integrations\index.mdx
+ ⎿  enable-connectwise-integration
+ ⎿  /user-guides/integrations/enable-halo-integration
+ ⎿  enable-autotask-integration
+ ⎿  enable-syncro-integration
+ ⎿  ../microsoft-365/index
+ ⎿  /api-reference/introduction
+
+user-guides\invoices\index.mdx
+ ⎿  /user-guides/company-overview/index
+ ⎿  /user-guides/calendar/index
+ ⎿  /user-guides/planner/index
+ ⎿  /user-guides/integrations/enable-connectwise-integration
+
+user-guides\microsoft-365\domains.mdx
+ ⎿  /user-guides/microsoft-365/index
+ ⎿  /user-guides/microsoft-365/licenses
+ ⎿  /user-guides/settings/integrations
+
+user-guides\microsoft-365\index.mdx
+ ⎿  /user-guides/microsoft-365/licenses
+ ⎿  /user-guides/microsoft-365/domains
+ ⎿  /user-guides/calendar/index
+ ⎿  /user-guides/planner/index
+ ⎿  /user-guides/compliance/index
+ ⎿  /user-guides/settings/integrations
+
+user-guides\microsoft-365\licenses.mdx
+ ⎿  /user-guides/microsoft-365/index
+ ⎿  /user-guides/settings/integrations
+
+user-guides\notifications\index.mdx
+ ⎿  /user-guides/company-overview/index
+
+user-guides\planner\index.mdx
+ ⎿  /user-guides/goals/index
+ ⎿  /user-guides/calendar/index
+ ⎿  /user-guides/compliance/index
+
+user-guides\playbooks\index.mdx
+ ⎿  /user-guides/compliance/index
+ ⎿  /user-guides/settings/playbooks
+
+user-guides\projects\index.mdx
+ ⎿  /user-guides/settings/projects
+ ⎿  /user-guides/integrations/index
+
+user-guides\reporting\index.mdx
+ ⎿  /user-guides/company-overview/index
+ ⎿  /user-guides/compliance/index
+ ⎿  /user-guides/budgets/index
+ ⎿  /user-guides/goals/index
+ ⎿  /user-guides/planner/index
+
+user-guides\settings\billing.mdx
+ ⎿  /user-guides/settings/tenant
+
+user-guides\settings\companies.mdx
+ ⎿  /user-guides/company-overview/index
+ ⎿  /user-guides/integrations/index
+
+user-guides\settings\compliance.mdx
+ ⎿  /user-guides/compliance/index
+ ⎿  /user-guides/settings/playbooks
+ ⎿  /user-guides/compliance/adding-cis-benchmarks
+
+user-guides\settings\external.mdx
+ ⎿  /modules/external
+
+user-guides\settings\import-export.mdx
+ ⎿  /user-guides/integrations/import-companies
+ ⎿  /user-guides/integrations/import-users
+ ⎿  /user-guides/settings/companies
+
+user-guides\settings\index.mdx
+ ⎿  /user-guides/settings/companies
+ ⎿  /user-guides/settings/tickets
+ ⎿  /user-guides/settings/training
+ ⎿  /user-guides/settings/compliance
+ ⎿  /user-guides/settings/playbooks
+ ⎿  /user-guides/settings/templates
+ ⎿  /user-guides/settings/external
+ ⎿  /user-guides/settings/integrations
+ ⎿  /user-guides/settings/import-export
+ ⎿  /user-guides/settings/tenant
+ ⎿  /user-guides/settings/billing
+ ⎿  /user-guides/getting-started/index
+ ⎿  /user-guides/integrations/index
+
+user-guides\settings\integrations.mdx
+ ⎿  /user-guides/integrations/index
+ ⎿  /user-guides/integrations/enable-connectwise-integration
+ ⎿  /user-guides/integrations/enable-syncro-integration
+ ⎿  /user-guides/integrations/enable-autotask-integration
+ ⎿  /user-guides/integrations/import-companies
+
+user-guides\settings\playbooks.mdx
+ ⎿  /user-guides/compliance/index
+ ⎿  /user-guides/settings/compliance
+ ⎿  /user-guides/compliance/adding-cis-benchmarks
+
+user-guides\settings\templates.mdx
+ ⎿  /user-guides/calendar/index
+ ⎿  /user-guides/planner/index
+
+user-guides\settings\tenant.mdx
+ ⎿  /user-guides/settings/billing
+
+user-guides\settings\tickets.mdx
+ ⎿  /user-guides/integrations/index
+ ⎿  /user-guides/ticketing/index
+ ⎿  /user-guides/integrations/index
+
+user-guides\settings\training.mdx
+ ⎿  /user-guides/settings/billing
+ ⎿  /user-guides/training/enabling-training
+
+user-guides\settings\users-roles.mdx
+ ⎿  /user-guides/settings/tenant
+ ⎿  /user-guides/settings/tenant
+ ⎿  /user-guides/getting-started/how-to-create-a-new-user-role
+
+user-guides\ticketing\how-to-create-a-ticket-template.mdx
+ ⎿  /user-guides/settings/tickets
+ ⎿  ./open-a-ticket-with-ai
+ ⎿  /user-guides/settings/import-export
+ ⎿  /user-guides/integrations/enable-connectwise-integration
+
+user-guides\ticketing\index.mdx
+ ⎿  /user-guides/ticketing/how-to-create-a-ticket-template
+ ⎿  /user-guides/ticketing/open-a-ticket-with-ai
+ ⎿  /user-guides/settings/tickets
+ ⎿  /user-guides/integrations/index
+
+user-guides\ticketing\open-a-ticket-with-ai.mdx
+ ⎿  ./how%20to%20create%20a%20ticket%20template
+ ⎿  ./manual-ticket-creation
+ ⎿  ./ticket-templates
+ ⎿  ./ticket-troubleshooting
+
+user-guides\training\enabling-training.mdx
+ ⎿  ./assigning-training
+ ⎿  ./training-reports
+
+user-guides\training\index.mdx
+ ⎿  ./how-to-enable-training
+
+user-guides\training\learning-paths.mdx
+ ⎿  ./how-to-enable-training
+
+user-guides\USER_GUIDE_TEMPLATE.mdx
+ ⎿  /modules/[module-1]
+ ⎿  /modules/[module-2]
+ ⎿  /modules/[module-3]
+ ⎿  /modules/[module-name]
+ ⎿  /api-reference/[relevant-api]
+ ⎿  /user-guides/settings-guide#[module-name]
