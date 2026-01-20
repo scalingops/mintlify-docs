@@ -216,6 +216,7 @@
                   "user-guides/settings/playbooks",
                   "user-guides/settings/external",
                   "user-guides/settings/templates",
+                  "user-guides/settings/email",
                   "user-guides/settings/integrations",
                   "user-guides/settings/import-export",
                   "user-guides/settings/tenant",
