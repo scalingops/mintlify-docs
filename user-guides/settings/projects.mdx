@@ -1,0 +1,191 @@
+---
+title: 'Project Settings'
+description: 'Configure project display options, status mappings, and feature visibility'
+icon: 'folder-gear'
+---
+
+The Project Settings page allows you to customize how projects are displayed throughout MSPortal. Control which information appears on project cards, configure status column mappings for kanban boards, and enable or disable project features.
+
+Navigate to **Settings > Projects** to access these options.
+
+## Section Visibility
+
+Control which major sections appear in the Projects module by toggling these options:
+
+| Section | Description |
+|---------|-------------|
+| **Timeline** | Show project timeline with start and due dates |
+| **Progress** | Show progress bars and completion percentage |
+| **Hours** | Show estimated and actual hours |
+| **Financials** | Show revenue and budget information |
+| **Details** | Show project summary and description |
+| **PSA Phases** | Show phases synced from your PSA system |
+| **Project Tickets** | Show tickets under phases (requires PSA Phases) |
+| **Time Entries** | Show time entries under tickets (requires Tickets) |
+
+<Note>
+Some sections have dependencies. For example, **Project Tickets** requires **PSA Phases** to be enabled, and **Time Entries** requires **Project Tickets** to be enabled.
+</Note>
+
+### Kanban Settings
+
+<Info>
+The ticket-level Kanban feature is currently in development and available only in development environments.
+</Info>
+
+When the Kanban feature is enabled, you can configure:
+
+- **Show Kanban** - Enable/disable the Kanban tab in project details
+- **Group By** - Default grouping for ticket columns (Status, Technician, or Priority)
+- **Density** - Default card density (Comfortable, Compact, or Dense)
+
+## Field Visibility
+
+Fine-tune which fields appear on project cards with these toggles:
+
+<AccordionGroup>
+  <Accordion title="Basic Information">
+    - **Project Name** - The project title
+    - **Company** - The client company name
+    - **Status** - Project lifecycle status badge
+    - **Summary** - Project description text
+    - **Project Lead** - Assigned project manager
+  </Accordion>
+  <Accordion title="Progress Fields">
+    - **Progress %** - Completion percentage
+    - **Estimated Hours** - Budgeted hours
+    - **Actual Hours** - Hours worked
+    - **Hours Variance** - Difference between estimated and actual (under/over)
+  </Accordion>
+  <Accordion title="Timeline Fields">
+    - **Start Date** - Project start date
+    - **Due Date** - Project deadline
+    - **Timeline Comparison** - Visual progress indicator on timeline
+    - **Last Changed** - When the project was last updated
+  </Accordion>
+  <Accordion title="Financial Fields">
+    - **Estimated Revenue** - Projected revenue
+    - **Actual Revenue** - Revenue earned
+    - **Revenue Variance** - Difference between estimated and actual
+  </Accordion>
+</AccordionGroup>
+
+### Live Preview
+
+As you toggle field visibility options, the **Live Preview** card on the right side of the page updates in real-time. This shows you exactly how project cards will appear with your current settings.
+
+## Status Mapping
+
+MSPortal uses status mappings to organize projects into kanban columns. There are two separate mapping configurations:
+
+### Project Kanban Columns
+
+This mapping controls how **project lifecycle statuses** (from your PSA) map to display columns on the main Projects dashboard kanban.
+
+**Default Column Groups:**
+- Not Started
+- In Progress
+- On Hold
+- Completed
+- Cancelled
+
+<Steps>
+  <Step title="View Current Mappings">
+    The **Project Kanban Columns** section shows each column and which PSA statuses are assigned to it.
+  </Step>
+  <Step title="Add Statuses to a Column">
+    Click on a column to expand it. Use the dropdown to select PSA statuses that should appear in that column.
+  </Step>
+  <Step title="Set Default Status">
+    For each column, you can set a **default status**. When you drag a project to that column and only one status is available, this status will be applied automatically.
+  </Step>
+  <Step title="Remove Statuses">
+    Click the **X** next to any status to remove it from the column mapping.
+  </Step>
+</Steps>
+
+<Tip>
+You can add the same status to only one column. If a status is already mapped to another column, it won't appear in the dropdown for other columns.
+</Tip>
+
+### Ticket Kanban Columns
+
+This mapping controls how **ticket statuses** (from your PSA service boards) map to columns in the project-level ticket kanban view.
+
+<Note>
+This is separate from the project status mapping because tickets use different status values than projects. For example, ticket statuses might include "New," "Scheduled," "In Progress," "Waiting Customer," while project statuses might be "Planning," "Active," "On Hold."
+</Note>
+
+The configuration works the same as project status mapping:
+
+1. Each column can have multiple ticket statuses mapped to it
+2. Set a default status for auto-selection when dragging
+3. Unmapped statuses can be added dynamically when moving tickets
+
+## Managing Status Mappings
+
+### Adding New Statuses
+
+When a new status appears in your PSA that isn't mapped to any column:
+
+1. The status will appear in the **Unmapped Statuses** list
+2. Drag or select it to add it to the appropriate column
+3. Save your changes
+
+### Auto-Add Unmapped Statuses
+
+When you drag a project or ticket to a column that doesn't have the required status mapped:
+
+1. MSPortal detects the unmapped status
+2. If you have settings permissions, you'll be prompted to add the status to the column
+3. Choose **Yes** to add it automatically, or **No** to just move the item this once
+
+This helps keep your mappings up-to-date as new statuses are created in your PSA.
+
+## Resetting to Defaults
+
+Click the **Reset to Defaults** button to restore all project display settings to their original values. This will:
+
+- Re-enable all section and field visibility toggles
+- Reset status mappings to default configurations
+- Reset kanban settings to defaults
+
+<Warning>
+Resetting to defaults cannot be undone. Make sure you want to clear all customizations before clicking this button.
+</Warning>
+
+## Permissions
+
+| Permission | Capability |
+|------------|------------|
+| `read_settings_projects` | View project display settings |
+| `write_settings_projects` | Modify project display settings |
+| `manage_settings_projects` | Full access including status mapping |
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Start Simple" icon="seedling">
+    Begin with default settings and customize as you learn what information your team needs most.
+  </Card>
+  <Card title="Match Your Workflow" icon="diagram-project">
+    Map PSA statuses to columns that match how your team actually works and thinks about project stages.
+  </Card>
+  <Card title="Set Defaults" icon="bullseye">
+    Configure default statuses for each column to speed up drag-and-drop operations.
+  </Card>
+  <Card title="Keep It Clean" icon="broom">
+    Hide fields that your team doesn't use to reduce visual clutter on project cards.
+  </Card>
+</CardGroup>
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Projects Overview" icon="folder-open" href="/user-guides/projects/index">
+    Learn how to use the Projects module
+  </Card>
+  <Card title="Integrations" icon="plug" href="/user-guides/integrations/index">
+    Set up your PSA integration to sync projects
+  </Card>
+</CardGroup>
