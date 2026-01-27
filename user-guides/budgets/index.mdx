@@ -42,12 +42,16 @@ The budgets table displays key information for each budget:
 |--------|-------------|
 | **Budget Title** | Name of the budget (click to edit) |
 | **Fiscal Year** | The fiscal year the budget applies to |
-| **Status** | Current status: Draft, Pending Approval, Approved, or Archived |
-| **Pending** | Total value of line items awaiting approval |
-| **Rejected** | Total value of rejected line items |
-| **Approved** | Total value of approved line items |
-| **Total** | Grand total of all line items |
+| **Status** | Overall budget status: Draft, Pending Approval, Approved, or Obsolete |
+| **Pending** | Sum of line items with "Pending" status |
+| **Rejected** | Sum of line items with "Rejected" status |
+| **Approved** | Sum of line items with "Approved" status |
+| **Total** | Grand total of all line items (regardless of status) |
 | **Last Modified** | When the budget was last updated |
+
+<Note>
+The **Pending**, **Rejected**, and **Approved** columns show the monetary totals of line items grouped by their individual status. This helps you quickly see how much of the budget has been approved versus what's still pending review.
+</Note>
 
 ## Creating a Budget
 
@@ -123,12 +127,44 @@ Once items are added, they appear in the Budget Line Items table:
 | Column | Description |
 |--------|-------------|
 | **Type** | Line item type: SW (Software), HW (Hardware), LB (Labour), OT (Other) |
-| **Details** | Item name and linked source (Planner, Product, or Goal) |
+| **Details** | Item name and linked source (Planner, Product, Goal, or Device) |
 | **Quantity** | Number of units |
 | **Unit Price** | Cost per unit |
 | **Total** | Line total (Quantity x Unit Price) |
 | **Category** | Budget category for grouping |
-| **Actions** | Edit or delete the line item |
+| **Status** | Line item approval status (Draft, Pending, Approved, Rejected) |
+| **Actions** | Edit, reorder, or delete the line item |
+
+### Line Item Fields
+
+Each line item supports the following fields:
+
+| Field | Description |
+|-------|-------------|
+| **Description** | Name or description of the line item |
+| **Type** | Software, Hardware, Labour, or Other |
+| **Quantity** | Number of units |
+| **Unit Price** | Cost per unit |
+| **Category** | Category for organizing items (from planner item types) |
+| **Status** | Approval status: Draft, Pending, Approved, or Rejected |
+| **Recurrence** | One-Time or recurring expense |
+| **Term (Months)** | Duration in months for recurring items |
+| **Annualized Cost** | Calculated annual cost for recurring items |
+| **Notes** | Additional notes for the line item |
+| **Linked Item** | Optional link to a Planner item, Goal, or Device |
+
+### Linked Items
+
+Line items can be linked to other entities for traceability:
+
+| Link Type | Description |
+|-----------|-------------|
+| **Planner** | Links to a task in the Planner module |
+| **Goal** | Links to a strategic goal |
+| **Device** | Links to a device from the asset inventory |
+| **Other** | Generic linkage for custom items |
+
+Linked items display a badge showing the source, and clicking the link navigates to the original item.
 
 ### Budget Totals
 
@@ -163,26 +199,105 @@ From the Budget View, you can:
 
 Budgets progress through these status stages:
 
-| Status | Description |
-|--------|-------------|
-| **Draft** | Budget is being created or edited |
-| **Pending Approval** | Budget submitted for review |
-| **Approved** | Budget has been approved and locked |
-| **Archived** | Budget is no longer active |
+| Status | Description | Editable |
+|--------|-------------|----------|
+| **Draft** | Budget is being created or edited | Yes |
+| **Pending Approval** | Budget submitted for review | Yes |
+| **Approved** | Budget has been approved and permanently locked | No |
+| **Obsolete** | Budget is archived and no longer active | No |
+
+## Budget Lock (Approval)
+
+When you change a budget's status to **Approved**, a confirmation dialog appears warning that this action is permanent.
 
 <Warning>
-Once a budget is marked as **Approved**, it becomes locked and cannot be edited. Create a duplicate if you need to make changes.
+**Approval permanently locks the budget.** Once approved:
+- All budget header fields become read-only (title, fiscal year, currency, notes, etc.)
+- Line items cannot be added, edited, deleted, or reordered
+- Line item statuses cannot be changed
+- **This action cannot be undone**
 </Warning>
+
+### What Happens When You Lock a Budget
+
+The lock affects the entire budget:
+
+| Action | Locked Budget |
+|--------|---------------|
+| Edit budget title/details | Disabled |
+| Add new line items | Disabled |
+| Edit existing line items | Disabled |
+| Delete line items | Disabled |
+| Reorder line items | Disabled |
+| Change line item status | Disabled |
+| Duplicate budget | **Allowed** |
+| Export/Print | **Allowed** |
+
+### Making Changes After Approval
+
+If you need to make changes to an approved budget:
+
+<Steps>
+  <Step title="Duplicate the Budget">
+    Click **Actions** > **Duplicate** on the approved budget.
+  </Step>
+  <Step title="Edit the Copy">
+    The duplicate is created in **Draft** status with "(Copy)" appended to the title.
+  </Step>
+  <Step title="Make Your Changes">
+    Edit the duplicate as needed.
+  </Step>
+  <Step title="Mark Original as Obsolete">
+    Optionally change the original budget to **Obsolete** status to indicate it has been superseded.
+  </Step>
+</Steps>
+
+<Tip>
+Keep approved budgets as historical records. Use the Obsolete status to archive superseded budgets while maintaining an audit trail.
+</Tip>
 
 ## Line Item Statuses
 
-Individual line items also have approval statuses:
+Individual line items have their own approval statuses, separate from the overall budget status:
 
 | Status | Color | Description |
 |--------|-------|-------------|
+| **Draft** | Gray | Item is being prepared |
 | **Pending** | Yellow | Awaiting approval |
 | **Approved** | Green | Item has been approved |
 | **Rejected** | Red | Item was rejected |
+
+### Changing Line Item Status
+
+To change the status of individual line items:
+
+<Steps>
+  <Step title="Open the Budget">
+    Click on the budget to open it in edit mode.
+  </Step>
+  <Step title="Find the Status Column">
+    In the line items table, locate the **Status** column.
+  </Step>
+  <Step title="Click the Status Badge">
+    Click the colored status badge to open the status dropdown.
+  </Step>
+  <Step title="Select New Status">
+    Choose the new status from the dropdown. The change saves automatically.
+  </Step>
+</Steps>
+
+<Note>
+Line item statuses can only be changed when the budget is in **Draft** or **Pending Approval** status. Once a budget is **Approved**, all line item statuses are locked.
+</Note>
+
+### Bulk Status Updates
+
+To update multiple line item statuses at once:
+
+1. Click **Actions** on the budget row in the list view
+2. Select **Update Statuses**
+3. Select the items you want to update
+4. Choose the new status to apply
 
 ## Managing Budgets
 
@@ -365,15 +480,19 @@ The Export feature is coming soon and will allow you to download forecast report
 - Use categories to organize line items by type
 - Update line item statuses as approvals are received
 - Export PDF versions for client presentations
-- Archive completed budgets rather than deleting them
+- Use **Obsolete** status for superseded budgets rather than deleting them
+- Review all line items before approving a budget (approval is permanent)
+- Use recurring items with term months for subscriptions to calculate annualized costs
 </Check>
 
 <Warning>
 Avoid these common pitfalls:
+- **Approving too early** - Once approved, budgets cannot be edited; ensure all items are finalized
 - Creating budgets without linking to planner items or goals
 - Leaving budgets in Draft status indefinitely
 - Not updating line item statuses after approval decisions
-- Deleting budgets instead of archiving for audit trails
+- Deleting budgets instead of marking them Obsolete for audit trails
+- Forgetting to set recurrence and term for subscription items
 </Warning>
 
 ## Integrations

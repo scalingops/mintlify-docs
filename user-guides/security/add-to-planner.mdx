@@ -1,0 +1,205 @@
+---
+title: 'Adding Security Items to Planner'
+description: 'Convert compliance events, vulnerabilities, and endpoints into actionable planner items'
+icon: 'calendar-plus'
+---
+
+The Security module integrates directly with the Planner, allowing you to convert security findings into tracked work items. This helps you manage remediation efforts, assign priorities, and maintain visibility into security-related projects.
+
+## Overview
+
+You can add three types of Cork security data to the Planner:
+
+<CardGroup cols={3}>
+  <Card title="Compliance Events" icon="shield-check">
+    Convert compliance findings into remediation tasks
+  </Card>
+  <Card title="Vulnerabilities" icon="bug">
+    Create work items for vulnerability patching
+  </Card>
+  <Card title="Endpoints" icon="desktop">
+    Plan security work for specific devices
+  </Card>
+</CardGroup>
+
+## Adding Items to Planner
+
+<Steps>
+  <Step title="Navigate to Security">
+    Go to the Security module by clicking **Cork** in the sidebar.
+  </Step>
+  <Step title="Select the Tab">
+    Choose the appropriate tab:
+    - **Compliance** for compliance events
+    - **Vulnerabilities** for software vulnerabilities
+    - **Endpoints** for device-related work
+  </Step>
+  <Step title="Select Items">
+    Click the checkbox next to each item you want to add. You can select multiple items to create a single planner item that tracks all of them.
+  </Step>
+  <Step title="Click Add to Planner">
+    Click the **Bulk Actions** dropdown in the header and select **Add to Planner**.
+  </Step>
+  <Step title="Review and Customize">
+    The planner item dialog opens with pre-filled information:
+    - **Title** - Auto-generated based on selected items
+    - **Description** - Summary of what needs to be addressed
+    - **Business Value** - Automatically set based on severity
+    - **Private Notes** - Detailed information about each selected item
+  </Step>
+  <Step title="Save the Planner Item">
+    Customize any fields as needed, then click **Save** to create the planner item.
+  </Step>
+</Steps>
+
+## What Gets Synced to Planner
+
+When you add Cork items to the Planner, the following information is automatically included:
+
+### Compliance Events
+
+| Field | Planner Mapping |
+|-------|-----------------|
+| Event Type | Included in title and private notes |
+| Entity Name | Added to private notes |
+| At Risk Status | Sets business value to "High" if at risk |
+| Resolved Status | Noted in private notes |
+| Created Date | Added to private notes |
+
+### Vulnerabilities
+
+| Field | Planner Mapping |
+|-------|-----------------|
+| CVE ID | Used as title for single items |
+| Software Product | Included in description and notes |
+| Software Vendor | Added to private notes |
+| CVSS Score | Added to private notes |
+| Priority | Critical/Accelerated sets "High" business value |
+| Known Exploited | Highlighted in private notes |
+
+### Endpoints
+
+| Field | Planner Mapping |
+|-------|-----------------|
+| Device Name | Used as title for single items |
+| Hostname | Added to private notes |
+| Operating System | Included in private notes |
+| IP Addresses | Listed in private notes |
+| Last Seen Date | Added to private notes |
+
+## Automatic Business Value Assignment
+
+The Planner automatically sets the **Business Value** based on the severity of selected items:
+
+| Condition | Business Value |
+|-----------|----------------|
+| Vulnerabilities with Critical or Accelerated priority | **High** |
+| Compliance events marked as At Risk | **High** |
+| All other items | **Medium** |
+
+<Tip>
+You can always adjust the business value in the planner item dialog before saving.
+</Tip>
+
+## Single vs. Multiple Items
+
+### Single Item Selection
+
+When you select a single item, the planner entry is tailored to that specific finding:
+
+- **Title**: The specific CVE ID, event type, or device name
+- **Description**: Focused description of that single item
+- **Notes**: Detailed information about the specific item
+
+### Multiple Item Selection
+
+When you select multiple items, they're grouped into a single planner item:
+
+- **Title**: "Cork [Type] (N items)" format (e.g., "Cork Vulnerabilities (5 items)")
+- **Description**: Summary stating how many items are included
+- **Private Notes**: Each item is listed separately with a divider
+
+<Note>
+All selected items must be for the same company. If you need to create planner items for multiple companies, select items from one company at a time.
+</Note>
+
+## Viewing Linked Cork Items
+
+After creating a planner item with Cork data, you can view the linked security items:
+
+<Steps>
+  <Step title="Open the Planner Item">
+    Navigate to **Planner** and click on the item you created.
+  </Step>
+  <Step title="View Relationships">
+    In the edit dialog, expand the **Relationships** section to see linked Cork items:
+    - **Cork Vulnerabilities** - Linked CVEs
+    - **Cork Endpoints** - Linked devices
+    - **Cork Compliance Events** - Linked compliance findings
+  </Step>
+</Steps>
+
+## Best Practices
+
+### Grouping Related Items
+
+Consider grouping related items together:
+
+- **Same software vulnerabilities** - Group CVEs for the same software product
+- **Same device issues** - Group compliance events affecting the same endpoint
+- **Same remediation action** - Items that can be fixed with a single action
+
+### Using Private Notes
+
+Private notes contain the technical details from Cork and are not visible to clients. Use the **Public Notes** field if you need to share information with stakeholders.
+
+### Prioritization
+
+Focus on items that should be prioritized:
+
+1. **Known Exploited Vulnerabilities** - Active threats requiring immediate action
+2. **Critical Priority** - High CVSS scores or severe compliance gaps
+3. **At Risk Compliance Events** - Items flagged as requiring attention
+
+## Workflow Example
+
+Here's a typical workflow for managing security remediation:
+
+<Steps>
+  <Step title="Review Vulnerabilities">
+    Go to **Cork > Vulnerabilities** and filter for **Known Exploited** or **Critical** priority.
+  </Step>
+  <Step title="Select and Plan">
+    Select the high-priority vulnerabilities for a specific company and click **Add to Planner**.
+  </Step>
+  <Step title="Customize the Item">
+    Set an appropriate due date, estimate hours for remediation, and add any additional context.
+  </Step>
+  <Step title="Track Progress">
+    Use the Planner to track remediation progress, update status, and mark items complete when patched.
+  </Step>
+  <Step title="Report to Client">
+    Include security metrics in client reports using the Report Builder's security blocks.
+  </Step>
+</Steps>
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Security Module" icon="shield-halved" href="/user-guides/security/index">
+    Overview of the Security module
+  </Card>
+  <Card title="Planner" icon="calendar-days" href="/user-guides/planner/index">
+    Managing planner items
+  </Card>
+  <Card title="Cork Integration" icon="plug" href="/user-guides/integrations/enable-cork-integration">
+    Setting up Cork integration
+  </Card>
+  <Card title="Reporting" icon="chart-bar" href="/user-guides/reporting/index">
+    Creating client reports
+  </Card>
+</CardGroup>
+
+## Need Help?
+
+For assistance with adding security items to the Planner, contact support@msportal.ai.

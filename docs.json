@@ -145,6 +145,13 @@
                 ]
               },
               {
+                "group": "Security (Cork)",
+                "pages": [
+                  "user-guides/security/index",
+                  "user-guides/security/add-to-planner"
+                ]
+              },
+              {
                 "group": "Reporting",
                 "pages": [
                   "user-guides/reporting/index"
@@ -197,6 +204,12 @@
                 "group": "Datto RMM",
                 "pages": [
                   "user-guides/integrations/enable-datto-rmm-integration"
+                ]
+              },
+              {
+                "group": "Cork",
+                "pages": [
+                  "user-guides/integrations/enable-cork-integration"
                 ]
               }
             ]

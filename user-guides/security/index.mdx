@@ -1,0 +1,168 @@
+---
+title: 'Security Module'
+description: 'Monitor compliance events, vulnerabilities, and endpoints from your Cork integration'
+icon: 'shield-halved'
+---
+
+The Security module displays data synced from your Cork integration, giving you a centralized view of compliance events, software vulnerabilities, and endpoint information across all your managed clients.
+
+## Overview
+
+The Security module is organized into three main tabs:
+
+<CardGroup cols={3}>
+  <Card title="Compliance" icon="shield-check">
+    View security compliance events and alerts from your clients
+  </Card>
+  <Card title="Vulnerabilities" icon="bug">
+    Track software vulnerabilities with CVE details and CVSS scores
+  </Card>
+  <Card title="Endpoints" icon="desktop">
+    Monitor devices and endpoints across your client base
+  </Card>
+</CardGroup>
+
+## Accessing the Security Module
+
+<Steps>
+  <Step title="Navigate to Security">
+    Click **Cork** in the main sidebar to access the Security module.
+  </Step>
+  <Step title="Select a Tab">
+    Use the tabs at the top to switch between **Compliance**, **Vulnerabilities**, and **Endpoints** views.
+  </Step>
+  <Step title="Filter by Company">
+    Use the company selector in the header to view data for a specific company or all companies.
+  </Step>
+</Steps>
+
+## Prerequisites
+
+Before using the Security module, you must:
+
+1. **Set up the Cork integration** - Connect your Cork account via **Settings > Integrations**
+2. **Map clients to companies** - Link your Cork clients to MSPortal companies
+3. **Run initial sync** - Allow the initial data sync to complete
+
+<Note>
+Data is automatically synced from Cork on a regular schedule. Compliance events sync every 30 minutes, and other data types sync hourly.
+</Note>
+
+## Compliance Tab
+
+The Compliance tab displays security compliance events from Cork, including alerts and findings that require attention.
+
+### Filtering Compliance Events
+
+Use the filters to narrow down compliance events:
+
+| Filter | Description |
+|--------|-------------|
+| **Company** | Filter by specific company |
+| **Event Type** | Filter by compliance event category |
+| **At Risk** | Show only events marked as "at risk" |
+| **Resolved** | Filter by resolved/unresolved status |
+| **Date Range** | Filter by when the event was created |
+
+### Understanding Compliance Events
+
+Each compliance event includes:
+
+- **Event Type** - The category of compliance finding
+- **Entity** - The affected device, inbox, or domain
+- **Status** - Whether the item is at risk or OK
+- **Resolved** - Whether the issue has been addressed
+- **Created Date** - When Cork first detected the issue
+
+## Vulnerabilities Tab
+
+The Vulnerabilities tab shows software vulnerabilities detected across your client endpoints, complete with CVE identifiers and severity scores.
+
+### Vulnerability Details
+
+Each vulnerability entry includes:
+
+| Field | Description |
+|-------|-------------|
+| **CVE ID** | The Common Vulnerabilities and Exposures identifier |
+| **Software** | The affected software product and version |
+| **CVSS Score** | Severity score from 0.0 to 10.0 |
+| **Priority** | Cork's recommended remediation priority (Critical, Accelerated, Routine) |
+| **Known Exploited** | Whether this vulnerability is actively being exploited in the wild |
+
+### Filtering Vulnerabilities
+
+Available filters include:
+
+- **Search** - Find vulnerabilities by CVE ID or software name
+- **Company** - Filter by specific company
+- **Priority** - Filter by Critical, Accelerated, or Routine
+- **Known Exploited** - Show only actively exploited vulnerabilities
+- **CVSS Range** - Filter by minimum/maximum CVSS score
+
+<Warning>
+Vulnerabilities marked as **Known Exploited** should be prioritized for immediate remediation as they are actively being targeted by attackers.
+</Warning>
+
+## Endpoints Tab
+
+The Endpoints tab provides visibility into all devices and endpoints synced from Cork.
+
+### Endpoint Information
+
+Each endpoint entry displays:
+
+- **Device Name** - The name of the device
+- **Hostname** - The network hostname
+- **Operating System** - OS type and version
+- **IP Addresses** - Network addresses
+- **Last Seen** - When Cork last received data from this endpoint
+- **Company** - The associated client company
+
+### Filtering Endpoints
+
+Use the search bar to find endpoints by:
+- Device name
+- Hostname
+- IP address
+
+## Bulk Actions
+
+You can select multiple items across any tab to perform bulk actions:
+
+<Steps>
+  <Step title="Select Items">
+    Click the checkbox next to items you want to act on, or use the header checkbox to select all visible items.
+  </Step>
+  <Step title="Open Bulk Actions">
+    When items are selected, a **Bulk Actions** dropdown appears in the header.
+  </Step>
+  <Step title="Choose Action">
+    Select an action like **Add to Planner** to create work items for the selected security findings.
+  </Step>
+</Steps>
+
+## Adding Items to Planner
+
+Convert security findings into actionable work items by adding them to the Planner. See the [Adding Security Items to Planner](/user-guides/security/add-to-planner) guide for detailed instructions.
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Cork Integration Setup" icon="plug" href="/user-guides/integrations/enable-cork-integration">
+    Connect your Cork account to MSPortal
+  </Card>
+  <Card title="Add to Planner" icon="calendar-plus" href="/user-guides/security/add-to-planner">
+    Convert security findings into planned work
+  </Card>
+  <Card title="Planner" icon="calendar-days" href="/user-guides/planner/index">
+    Manage and track planned security work
+  </Card>
+  <Card title="Reporting" icon="chart-bar" href="/user-guides/reporting/index">
+    Include security data in client reports
+  </Card>
+</CardGroup>
+
+## Need Help?
+
+For assistance with the Security module, contact support@msportal.ai.
