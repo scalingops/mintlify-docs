@@ -110,6 +110,69 @@ Click **View all invoices** to see complete billing history with options to:
 - Filter by date range
 - Export billing reports
 
+## What Happens if Payment Fails?
+
+<Warning>
+If your payment fails or subscription lapses, your MSP team members will be placed in **read-only mode** until payment is resolved.
+</Warning>
+
+### Read-Only Mode for MSP Team
+
+When your account enters a billing-restricted state, the following occurs:
+
+| Who | Impact |
+|-----|--------|
+| **MSP Team Members** | Read-only access - can view all data but cannot create, edit, or delete |
+| **Your Client Users** | **No impact** - continue working normally with full access |
+| **Primary Admin** | Can still access Billing Settings to resolve payment issues |
+
+### What MSP Team Members Can Do in Read-Only Mode
+
+- View all dashboards, reports, and data
+- Access company and user information
+- Review tickets, projects, and compliance status
+- Export data and run reports
+
+### What MSP Team Members Cannot Do
+
+- Create new records (tickets, projects, meetings, etc.)
+- Edit existing data
+- Delete any records
+- Modify settings or configurations
+- Make changes to client companies
+
+### Billing Status Types
+
+| Status | Description | Access Level |
+|--------|-------------|--------------|
+| **Active** | Subscription is current and paid | Full access |
+| **Trialing** | Free trial period | Full access |
+| **Past Due** | Payment failed, grace period | Read-only for MSP team |
+| **Unpaid** | Multiple payment failures | Read-only for MSP team |
+| **Canceled** | Subscription canceled | Read-only for MSP team |
+| **Incomplete** | Setup not finished | Read-only for MSP team |
+
+### How to Restore Full Access
+
+<Steps>
+  <Step title="Access Billing Settings">
+    Primary Admins can always access **Settings > Billing** even in read-only mode
+  </Step>
+  <Step title="Update Payment Method">
+    Add a new card or update your existing payment information
+  </Step>
+  <Step title="Retry Payment">
+    Process the outstanding payment
+  </Step>
+  <Step title="Access Restored">
+    Once payment succeeds, full access is immediately restored for all MSP team members
+  </Step>
+</Steps>
+
+<Tip>
+Your client users are never affected by your billing status. They can continue using MSPortal normally even if your MSP team is in read-only mode.
+</Tip>
+
 ## Billing FAQs
 
 ### When am I charged?
@@ -123,6 +186,15 @@ Contact support to cancel your subscription. You'll retain access until the end 
 
 ### What payment methods are accepted?
 MSPortal accepts major credit cards through Stripe, including Visa, Mastercard, and American Express.
+
+### What happens to my data if I don't pay?
+Your data is never deleted due to billing issues. MSP team members are placed in read-only mode but can still access all existing data. Your client users continue to have full access. Once payment is resolved, full access is restored immediately.
+
+### Why can my clients still work when my team can't?
+MSPortal prioritizes your client experience. Your clients (company users) are never impacted by your MSP's billing status. This ensures continuity of service for the end users you support.
+
+### I'm an admin but can't make changes - what do I do?
+If you're a Primary Admin and see a billing restriction message, navigate to **Settings > Billing** to update your payment method. This menu item is always accessible regardless of billing status.
 
 ## Related Resources
 
