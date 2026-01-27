@@ -1,0 +1,77 @@
+---
+title: "Email Domain"
+sidebarTitle: "12. Email Domain"
+description: "Configure your email domain for sending notifications"
+icon: "envelope"
+---
+
+The Email Domain step configures MSPortal to send emails from your own domain instead of the default MSPortal domain. This improves email deliverability and presents a professional appearance to your clients.
+
+## Why Verify Your Domain?
+
+- **Better Deliverability** - Emails are less likely to be marked as spam
+- **Professional Appearance** - Emails come from your domain (e.g., `notifications@yourmsp.com`)
+- **Brand Consistency** - Reinforces your brand with every notification
+
+## What You'll Configure
+
+- **Email Domain** - The domain to send emails from
+- **DNS Records** - SPF, DKIM, and verification records
+- **Sender Address** - The "from" address for notifications
+
+## Steps to Complete
+
+<Steps>
+  <Step title="Navigate to Email Settings">
+    Click **Go to Settings** in the onboarding wizard, or go to **Settings > Email**.
+  </Step>
+  <Step title="Add Your Domain">
+    Enter the domain you want to send emails from (e.g., `yourmsp.com`).
+  </Step>
+  <Step title="Add DNS Records">
+    MSPortal will provide DNS records that need to be added to your domain. These typically include:
+    - **SPF Record** - Authorizes MSPortal to send email on your behalf
+    - **DKIM Record** - Provides email authentication
+    - **Verification Record** - Proves domain ownership
+  </Step>
+  <Step title="Verify Domain">
+    After adding the DNS records, click **Verify Domain**. DNS propagation can take up to 48 hours, but usually completes within a few hours.
+  </Step>
+  <Step title="Configure Sender Address">
+    Once verified, set up your preferred sender address (e.g., `support@yourmsp.com`).
+  </Step>
+</Steps>
+
+## DNS Record Examples
+
+Here's what the DNS records typically look like:
+
+```
+# SPF Record (TXT)
+Type: TXT
+Name: @
+Value: v=spf1 include:_spf.msportal.ai ~all
+
+# DKIM Record (TXT)
+Type: TXT
+Name: msportal._domainkey
+Value: [provided by MSPortal]
+
+# Verification Record (TXT)
+Type: TXT
+Name: _msportal-verify
+Value: [provided by MSPortal]
+```
+
+## Auto-Completion
+
+This step is **automatically marked as complete** when:
+- At least one email domain is verified
+
+<Note>
+  If you don't have access to your DNS settings, you may need to involve your domain administrator or skip this step temporarily.
+</Note>
+
+## Related Documentation
+
+- [Email Settings](/user-guides/settings/email) - Full email configuration guide

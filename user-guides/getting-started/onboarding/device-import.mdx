@@ -1,0 +1,69 @@
+---
+title: "Device Import"
+sidebarTitle: "11. Device Import"
+description: "Review and import devices from your RMM"
+icon: "server"
+---
+
+The Device Import step lets you review devices synced from your RMM and import them into MSPortal. You can map devices to companies and configure how they're organized.
+
+<Note>
+  This step only appears if you selected an RMM integration. It becomes available after the initial RMM sync completes.
+</Note>
+
+## What You'll Do
+
+- **Review Synced Devices** - See all devices pulled from your RMM
+- **Map to Companies** - Associate devices with the correct client companies
+- **Import Devices** - Bring devices into MSPortal's device inventory
+- **Configure Device Types** - Set up device categorization
+
+## Steps to Complete
+
+<Steps>
+  <Step title="Wait for RMM Sync">
+    If the initial sync is still in progress, the wizard will show a waiting indicator. This ensures your devices are available for review.
+  </Step>
+  <Step title="Navigate to Device Import">
+    Click **Go to Settings** in the onboarding wizard. You'll be taken to the device staging area for your RMM integration.
+  </Step>
+  <Step title="Review Staged Devices">
+    Browse the list of devices synced from your RMM. Check that device details look correct.
+  </Step>
+  <Step title="Map Devices to Companies">
+    For devices that aren't automatically matched, select the correct company from the dropdown.
+  </Step>
+  <Step title="Import Devices">
+    Select the devices you want to import and click **Import Selected** or **Import All**.
+  </Step>
+</Steps>
+
+## Automatic Company Matching
+
+MSPortal attempts to automatically match devices to companies based on:
+- Site/location names in your RMM
+- Company names in your PSA (if connected)
+- Previous manual mappings
+
+Devices that can't be automatically matched will need manual assignment.
+
+## Device Types
+
+During import, devices are categorized by type:
+- **Workstation** - Desktop computers and laptops
+- **Server** - Physical and virtual servers
+- **Network** - Routers, switches, firewalls
+- **Other** - Printers, UPS, and other devices
+
+## Manual Completion
+
+This step requires **manual completion**. Click **Mark Complete** in the wizard when you've finished importing your devices.
+
+<Tip>
+  You don't need to import all devices at once. You can import in batches and return to import more later.
+</Tip>
+
+## Related Documentation
+
+- [Devices Overview](/user-guides/devices/index) - Device management guide
+- [Integrations Settings](/user-guides/settings/integrations) - Manage your integrations

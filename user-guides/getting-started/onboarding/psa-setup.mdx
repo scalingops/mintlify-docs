@@ -1,0 +1,78 @@
+---
+title: "PSA Integration"
+sidebarTitle: "8. PSA Integration"
+description: "Connect your PSA to sync companies, tickets, and contacts"
+icon: "ticket"
+---
+
+The PSA Integration step connects MSPortal to your Professional Services Automation system. This enables automatic synchronization of companies, contacts, tickets, and more.
+
+<Note>
+  This step only appears if you selected that you need a PSA integration in the Integration Selection step.
+</Note>
+
+## What Gets Synced
+
+Depending on your PSA, MSPortal can sync:
+
+- **Companies** - Your client list with details
+- **Contacts** - Client contacts and their information
+- **Tickets** - Support tickets and their status
+- **Time Entries** - Billable time tracking
+- **Contracts/Agreements** - Service agreements
+
+## Steps to Complete
+
+<Steps>
+  <Step title="Navigate to Integration Setup">
+    Click **Go to Settings** in the onboarding wizard. You'll be taken to the setup page for your selected PSA.
+  </Step>
+  <Step title="Enter API Credentials">
+    Provide the API credentials required by your PSA. Each PSA has different requirements.
+  </Step>
+  <Step title="Test Connection">
+    Click **Test Connection** to verify your credentials work correctly.
+  </Step>
+  <Step title="Configure Sync Settings">
+    Choose what data to sync and how often.
+  </Step>
+  <Step title="Start Initial Sync">
+    Click **Connect** or **Save** to activate the integration. An initial sync will begin automatically.
+  </Step>
+</Steps>
+
+## PSA-Specific Guides
+
+For detailed setup instructions, see the guide for your PSA:
+
+<CardGroup cols={2}>
+  <Card title="HaloPSA" href="/user-guides/integrations/enable-halo-integration" icon="ticket">
+    Setup guide for HaloPSA integration
+  </Card>
+  <Card title="ConnectWise Manage" href="/user-guides/integrations/enable-connectwise-integration" icon="ticket">
+    Setup guide for ConnectWise Manage
+  </Card>
+  <Card title="Autotask" href="/user-guides/integrations/enable-autotask-integration" icon="ticket">
+    Setup guide for Autotask integration
+  </Card>
+  <Card title="Syncro" href="/user-guides/integrations/enable-syncro-integration" icon="ticket">
+    Setup guide for Syncro integration
+  </Card>
+</CardGroup>
+
+## Auto-Completion
+
+This step is **automatically marked as complete** when:
+- An active PSA integration exists for your tenant
+
+## Initial Sync Time
+
+<Warning>
+  The initial sync may take several minutes depending on the amount of data in your PSA. The next step (Ticket Settings) will wait for the sync to complete before becoming available.
+</Warning>
+
+## Related Documentation
+
+- [Integrations Settings](/user-guides/settings/integrations) - Manage your integrations
+- [Import Companies](/user-guides/integrations/import-companies) - Company import guide
+- [Clear and Resync](/user-guides/integrations/clear-and-resync-integrations) - Troubleshooting sync issues

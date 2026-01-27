@@ -1,0 +1,78 @@
+---
+title: "Company Permission Groups"
+sidebarTitle: "5. Permission Groups"
+description: "Set up permission groups for client company users"
+icon: "shield"
+---
+
+Company Permission Groups define what your clients' users can access when they log into MSPortal. These groups determine which modules, data, and actions are available to company users.
+
+## Understanding Permission Groups
+
+Permission groups are different from tenant roles:
+- **Tenant Roles** - For your internal MSP team
+- **Permission Groups** - For your clients' users (company users)
+
+## What You'll Configure
+
+- **Group Names** - Create groups like "Full Access", "Limited Access", "View Only"
+- **Module Access** - Which modules company users can see
+- **Data Visibility** - What data within each module is visible
+- **Action Permissions** - What actions users can take (view, edit, etc.)
+
+## Steps to Complete
+
+<Steps>
+  <Step title="Navigate to Permission Groups">
+    Click **Go to Settings** in the onboarding wizard, or go to **Settings > Companies > Permissions**.
+  </Step>
+  <Step title="Review Default Groups">
+    MSPortal includes default permission groups. Review these to understand the structure.
+  </Step>
+  <Step title="Create Custom Groups (Optional)">
+    Click **Add Permission Group** to create a new group for specific client needs.
+  </Step>
+  <Step title="Configure Module Access">
+    For each group, enable or disable access to modules like Tickets, Devices, Training, etc.
+  </Step>
+  <Step title="Save Changes">
+    Click **Save** after configuring each permission group.
+  </Step>
+</Steps>
+
+## Common Permission Group Examples
+
+<CardGroup cols={2}>
+  <Card title="Full Access" icon="lock-open">
+    Access to all available modules. Can view and manage their company's data.
+  </Card>
+  <Card title="Standard User" icon="user">
+    Access to tickets, training, and basic features. Cannot manage company settings.
+  </Card>
+  <Card title="Training Only" icon="graduation-cap">
+    Limited to training courses and compliance acknowledgments.
+  </Card>
+  <Card title="View Only" icon="eye">
+    Can view information but cannot create or modify anything.
+  </Card>
+</CardGroup>
+
+## Available Modules for Company Users
+
+- **Tickets** - Submit and view support tickets
+- **Training** - Access training courses and track progress
+- **Devices** - View device inventory (if enabled)
+- **Compliance** - View compliance status and complete tasks
+- **Dashboard** - Access company dashboard
+
+## Manual Completion
+
+This step requires **manual completion**. Click **Mark Complete** in the wizard when you've finished setting up your permission groups.
+
+<Tip>
+  Start with fewer, broader permission groups. You can always create more specific groups later as you understand your clients' needs.
+</Tip>
+
+## Related Documentation
+
+- [Companies Settings](/user-guides/settings/companies) - Full companies settings reference

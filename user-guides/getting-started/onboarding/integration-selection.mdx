@@ -1,0 +1,86 @@
+---
+title: "Integration Selection"
+sidebarTitle: "7. Integration Selection"
+description: "Choose which integrations you need for your MSP"
+icon: "puzzle-piece"
+---
+
+The Integration Selection step helps you identify which tools you want to connect to MSPortal. Based on your selections, the wizard will guide you through setting up each integration.
+
+## What You'll Choose
+
+- **PSA (Professional Services Automation)** - For syncing companies, tickets, and contacts
+- **RMM (Remote Monitoring & Management)** - For syncing devices and monitoring data
+
+## Supported Integrations
+
+### PSA Integrations
+
+<CardGroup cols={2}>
+  <Card title="HaloPSA" icon="ticket">
+    Full integration with companies, tickets, contacts, and time entries.
+  </Card>
+  <Card title="ConnectWise Manage" icon="ticket">
+    Sync companies, tickets, contacts, and configurations.
+  </Card>
+  <Card title="Autotask" icon="ticket">
+    Import companies, contacts, and tickets from Autotask.
+  </Card>
+  <Card title="Syncro" icon="ticket">
+    Unified PSA/RMM integration with Syncro.
+  </Card>
+</CardGroup>
+
+### RMM Integrations
+
+<CardGroup cols={2}>
+  <Card title="Datto RMM" icon="server">
+    Import devices and sites from Datto RMM.
+  </Card>
+  <Card title="ConnectWise ASIO" icon="server">
+    Sync device configurations from ConnectWise.
+  </Card>
+  <Card title="Syncro" icon="server">
+    Device sync included with Syncro PSA integration.
+  </Card>
+</CardGroup>
+
+## Steps to Complete
+
+<Steps>
+  <Step title="Open Integration Selection">
+    When you reach this step, a dialog will appear asking about your integration needs.
+  </Step>
+  <Step title="Select PSA Need">
+    Choose whether you need to connect a PSA system. If yes, select your PSA provider from the list.
+  </Step>
+  <Step title="Select RMM Need">
+    Choose whether you need to connect an RMM system. If yes, select your RMM provider from the list.
+  </Step>
+  <Step title="Confirm Selections">
+    Click **Continue** to save your selections. The wizard will add the appropriate integration steps.
+  </Step>
+</Steps>
+
+## Conditional Steps
+
+Based on your selections:
+
+| Selection | Steps Added |
+|-----------|-------------|
+| PSA needed | PSA Setup → Ticket Settings |
+| RMM needed | RMM Setup → Device Import |
+| Neither | Skip directly to Email Domain setup |
+
+## Manual Completion
+
+This step requires **manual completion** through the selection dialog. Once you've made your choices and clicked Continue, the step is marked complete.
+
+<Tip>
+  If you're unsure, you can skip integrations during onboarding and set them up later through **Settings > Integrations**.
+</Tip>
+
+## Related Documentation
+
+- [Integrations Overview](/user-guides/integrations/index) - Full integrations guide
+- [Integration FAQ](/user-guides/integrations/faq) - Common integration questions

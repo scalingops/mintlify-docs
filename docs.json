@@ -20,7 +20,29 @@
               "user-guides/getting-started/quick-start",
               "user-guides/getting-started/keyboard-shortcuts",
               "user-guides/getting-started/Onboarding-checklist",
-              "user-guides/getting-started/how-to-create-a-new-user-role"
+              "user-guides/getting-started/how-to-create-a-new-user-role",
+              {
+                "group": "Onboarding Wizard",
+                "pages": [
+                  "user-guides/getting-started/onboarding/index",
+                  "user-guides/getting-started/onboarding/tenant-details",
+                  "user-guides/getting-started/onboarding/ai-settings",
+                  "user-guides/getting-started/onboarding/branding",
+                  "user-guides/getting-started/onboarding/tenant-roles",
+                  "user-guides/getting-started/onboarding/company-permission-groups",
+                  "user-guides/getting-started/onboarding/company-roles",
+                  "user-guides/getting-started/onboarding/integration-selection",
+                  "user-guides/getting-started/onboarding/psa-setup",
+                  "user-guides/getting-started/onboarding/ticket-settings",
+                  "user-guides/getting-started/onboarding/rmm-setup",
+                  "user-guides/getting-started/onboarding/device-import",
+                  "user-guides/getting-started/onboarding/email-domain",
+                  "user-guides/getting-started/onboarding/training",
+                  "user-guides/getting-started/onboarding/billing",
+                  "user-guides/getting-started/onboarding/company-m365",
+                  "user-guides/getting-started/onboarding/company-users"
+                ]
+              }
             ]
           },
           {

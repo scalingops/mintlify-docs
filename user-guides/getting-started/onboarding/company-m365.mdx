@@ -1,0 +1,81 @@
+---
+title: "Company M365 Setup"
+sidebarTitle: "15. Company M365"
+description: "Connect Microsoft 365 for your client companies"
+icon: "cloud"
+---
+
+The Company M365 Setup step guides you through connecting Microsoft 365 tenants for your client companies. This enables user synchronization, license management, and security features.
+
+## What You'll Configure
+
+- **M365 Connection** - Link a company to their Microsoft 365 tenant
+- **User Sync** - Automatically import users from Azure AD/Entra ID
+- **License Visibility** - View M365 license assignments
+- **Security Features** - Enable Secure Score monitoring (if applicable)
+
+## Steps to Complete
+
+<Steps>
+  <Step title="Navigate to Companies">
+    Click **Go to Settings** in the onboarding wizard, or go to **Settings > Companies**.
+  </Step>
+  <Step title="Select a Company">
+    Click on a company that you want to connect to Microsoft 365.
+  </Step>
+  <Step title="Go to M365 Tab">
+    On the company detail page, click the **Microsoft 365** tab.
+  </Step>
+  <Step title="Initiate Connection">
+    Click **Connect Microsoft 365**. This will redirect to Microsoft's authentication flow.
+  </Step>
+  <Step title="Grant Permissions">
+    Sign in with an administrator account from the client's M365 tenant and approve the requested permissions.
+  </Step>
+  <Step title="Configure Sync Settings">
+    Once connected, configure which users to sync and how often.
+  </Step>
+</Steps>
+
+## Required Permissions
+
+To connect M365, you need consent from an administrator in the client's tenant. The permissions requested include:
+
+- **User.Read.All** - Read user profiles
+- **Directory.Read.All** - Read directory data
+- **Organization.Read.All** - Read organization info
+
+<Note>
+  The client's M365 administrator must approve these permissions. You may need to coordinate with your client contact to complete this step.
+</Note>
+
+## Benefits of M365 Connection
+
+<CardGroup cols={2}>
+  <Card title="User Sync" icon="users">
+    Automatically import and update users from Azure AD.
+  </Card>
+  <Card title="License Management" icon="key">
+    View M365 license assignments and availability.
+  </Card>
+  <Card title="Secure Score" icon="shield-check">
+    Monitor Microsoft Secure Score for security insights.
+  </Card>
+  <Card title="Domain Info" icon="globe">
+    See verified domains and email configuration.
+  </Card>
+</CardGroup>
+
+## Manual Completion
+
+This step requires **manual completion**. Click **Mark Complete** in the wizard when you've connected M365 for at least one company.
+
+<Tip>
+  You don't need to connect M365 for every company during onboarding. Start with one or two companies to learn the process, then connect others as needed.
+</Tip>
+
+## Related Documentation
+
+- [Microsoft 365 Overview](/user-guides/microsoft-365/index) - Full M365 guide
+- [M365 Licenses](/user-guides/microsoft-365/licenses) - License management
+- [M365 Domains](/user-guides/microsoft-365/domains) - Domain configuration

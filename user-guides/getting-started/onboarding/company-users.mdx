@@ -1,0 +1,97 @@
+---
+title: "Company Users"
+sidebarTitle: "16. Company Users"
+description: "Import and manage users for your client companies"
+icon: "users"
+---
+
+The Company Users step helps you import and manage users for your client companies. These are the end users at your client organizations who will access the MSPortal client portal.
+
+## What You'll Configure
+
+- **User Import** - Bring users in from M365 or your PSA
+- **User Assignments** - Assign users to companies and roles
+- **Portal Access** - Enable or disable portal login for users
+- **User Details** - Configure user information and preferences
+
+## Steps to Complete
+
+<Steps>
+  <Step title="Navigate to Company Users">
+    Click **Go to Settings** in the onboarding wizard, or go to **Settings > Companies > Users**.
+  </Step>
+  <Step title="Review Existing Users">
+    If you've connected M365 or a PSA, some users may already be imported. Review the list to see what's been synced.
+  </Step>
+  <Step title="Import Additional Users">
+    Click **Import Users** to bring in users from:
+    - Microsoft 365 (Azure AD/Entra ID)
+    - Your PSA system
+    - Manual entry
+  </Step>
+  <Step title="Assign Roles">
+    For each user, assign an appropriate company role (Admin, Manager, User, etc.).
+  </Step>
+  <Step title="Enable Portal Access">
+    For users who need to log in to the portal, enable their portal access and send invitations.
+  </Step>
+</Steps>
+
+## User Import Sources
+
+<Tabs>
+  <Tab title="From M365">
+    If a company has M365 connected, you can import users directly from Azure AD:
+    1. Select the company
+    2. Click **Import from M365**
+    3. Choose which users to import
+    4. Assign roles and enable access as needed
+  </Tab>
+  <Tab title="From PSA">
+    If you have a PSA connected, you can import contacts as users:
+    1. Click **Import from PSA**
+    2. Select contacts to import
+    3. Map them to the correct company
+    4. Assign roles
+  </Tab>
+  <Tab title="Manual Entry">
+    Add users individually:
+    1. Click **Add User**
+    2. Enter name, email, and other details
+    3. Select the company and role
+    4. Send an invitation email
+  </Tab>
+</Tabs>
+
+## User Roles
+
+Company users are assigned roles that determine their permissions:
+
+| Role | Description |
+|------|-------------|
+| **Admin** | Full access to company data, can manage other users |
+| **Manager** | Access to most features, limited user management |
+| **User** | Standard access for submitting tickets and viewing info |
+| **Training Only** | Limited to training courses |
+
+## Portal Access
+
+Users with portal access enabled can:
+- Log in to the MSPortal client portal
+- Submit and view support tickets
+- Complete training courses
+- View company dashboards (based on permissions)
+
+## Manual Completion
+
+This step requires **manual completion**. Click **Mark Complete** in the wizard when you've finished setting up users for your client companies.
+
+<Tip>
+  Start with key contacts at each company—the people who will submit tickets or need training. You can always add more users later.
+</Tip>
+
+## Related Documentation
+
+- [Companies Settings](/user-guides/settings/companies) - Company management reference
+- [Import Users](/user-guides/integrations/import-users) - User import guide
+- [Company Roles](/user-guides/getting-started/onboarding/company-roles) - Role configuration

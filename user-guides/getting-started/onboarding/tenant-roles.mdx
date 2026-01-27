@@ -1,0 +1,74 @@
+---
+title: "Tenant Roles"
+sidebarTitle: "4. Tenant Roles"
+description: "Configure roles and permissions for your team members"
+icon: "users"
+---
+
+The Tenant Roles step lets you define roles for your internal team members (MSP staff). Each role determines what features and data a team member can access within MSPortal.
+
+## What You'll Configure
+
+- **Role Names** - Define roles like Admin, Technician, Sales, etc.
+- **Permissions** - Specify what each role can view, create, edit, and delete
+- **Default Role** - Set which role new users receive by default
+
+## Steps to Complete
+
+<Steps>
+  <Step title="Navigate to Roles Settings">
+    Click **Go to Settings** in the onboarding wizard, or go to **Settings > Users** and click the **Roles** tab.
+  </Step>
+  <Step title="Review Default Roles">
+    MSPortal includes default roles to get you started. Review these to understand the permission structure.
+  </Step>
+  <Step title="Create Custom Roles (Optional)">
+    Click **Add Role** to create a new role. Give it a descriptive name and configure its permissions.
+  </Step>
+  <Step title="Configure Permissions">
+    For each role, enable or disable permissions across different modules (Tickets, Devices, Compliance, etc.).
+  </Step>
+  <Step title="Save Changes">
+    Click **Save** after configuring each role.
+  </Step>
+</Steps>
+
+## Common Role Examples
+
+<CardGroup cols={2}>
+  <Card title="Administrator" icon="shield">
+    Full access to all features and settings. Can manage users and configure integrations.
+  </Card>
+  <Card title="Technician" icon="screwdriver-wrench">
+    Access to tickets, devices, and compliance. Cannot manage settings or billing.
+  </Card>
+  <Card title="Sales/Account Manager" icon="handshake">
+    Access to companies, contacts, and meetings. Limited access to technical features.
+  </Card>
+  <Card title="Read-Only" icon="eye">
+    Can view data but cannot make changes. Useful for reporting and oversight roles.
+  </Card>
+</CardGroup>
+
+## Permission Categories
+
+Permissions are organized by module:
+- **Tickets** - View, create, edit, delete tickets
+- **Devices** - View and manage device inventory
+- **Compliance** - Run scans and view compliance status
+- **Companies** - Manage client companies and contacts
+- **Training** - Manage training courses and enrollments
+- **Settings** - Access to configuration and administration
+
+## Manual Completion
+
+This step requires **manual completion**. Click **Mark Complete** in the wizard when you've finished configuring your roles.
+
+<Warning>
+  Be careful with admin permissions. Only give full administrative access to users who need to manage system settings.
+</Warning>
+
+## Related Documentation
+
+- [Users & Roles Settings](/user-guides/settings/users-roles) - Full users and roles reference
+- [How to Create a New User Role](/user-guides/getting-started/how-to-create-a-new-user-role) - Step-by-step role creation guide

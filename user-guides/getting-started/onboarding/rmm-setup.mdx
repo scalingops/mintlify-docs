@@ -1,0 +1,74 @@
+---
+title: "RMM Integration"
+sidebarTitle: "10. RMM Integration"
+description: "Connect your RMM to sync devices and monitoring data"
+icon: "desktop"
+---
+
+The RMM Integration step connects MSPortal to your Remote Monitoring and Management system. This enables automatic synchronization of devices, sites, and monitoring data.
+
+<Note>
+  This step only appears if you selected that you need an RMM integration in the Integration Selection step.
+</Note>
+
+## What Gets Synced
+
+Depending on your RMM, MSPortal can sync:
+
+- **Devices** - Computers, servers, and network devices
+- **Sites/Locations** - Client sites and their device groups
+- **Device Details** - Hardware, software, and status information
+- **Alerts** - Monitoring alerts and their status
+
+## Steps to Complete
+
+<Steps>
+  <Step title="Navigate to Integration Setup">
+    Click **Go to Settings** in the onboarding wizard. You'll be taken to the setup page for your selected RMM.
+  </Step>
+  <Step title="Enter API Credentials">
+    Provide the API credentials required by your RMM. Each RMM has different requirements.
+  </Step>
+  <Step title="Test Connection">
+    Click **Test Connection** to verify your credentials work correctly.
+  </Step>
+  <Step title="Configure Sync Settings">
+    Choose what data to sync and how often.
+  </Step>
+  <Step title="Start Initial Sync">
+    Click **Connect** or **Save** to activate the integration. An initial sync will begin automatically.
+  </Step>
+</Steps>
+
+## RMM-Specific Guides
+
+For detailed setup instructions, see the guide for your RMM:
+
+<CardGroup cols={2}>
+  <Card title="Datto RMM" href="/user-guides/integrations/enable-datto-rmm-integration" icon="server">
+    Setup guide for Datto RMM integration
+  </Card>
+  <Card title="ConnectWise ASIO" href="/user-guides/integrations/enable-connectwise-asio-integration" icon="server">
+    Setup guide for ConnectWise ASIO
+  </Card>
+  <Card title="Syncro" href="/user-guides/integrations/enable-syncro-integration" icon="server">
+    Setup guide for Syncro (includes RMM)
+  </Card>
+</CardGroup>
+
+## Auto-Completion
+
+This step is **automatically marked as complete** when:
+- An active RMM integration exists for your tenant
+
+## Initial Sync Time
+
+<Warning>
+  The initial sync may take several minutes depending on the number of devices in your RMM. The next step (Device Import) will wait for the sync to complete before becoming available.
+</Warning>
+
+## Related Documentation
+
+- [Integrations Settings](/user-guides/settings/integrations) - Manage your integrations
+- [Devices Overview](/user-guides/devices/index) - Device management guide
+- [Clear and Resync](/user-guides/integrations/clear-and-resync-integrations) - Troubleshooting sync issues
