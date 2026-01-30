@@ -1,0 +1,172 @@
+---
+title: 'Quotes'
+description: 'View and manage your Quoter quotes directly inside MSPortal.ai'
+icon: 'file-invoice-dollar'
+---
+
+The Quotes module brings your [Quoter](https://www.quoter.com) quotes into MSPortal.ai, giving you a centralized view of all proposals alongside your other client data. Quotes sync automatically from Quoter every 4 hours, so your team always has up-to-date pricing and proposal information without switching between tools.
+
+<Note>
+  Quotes in MSPortal.ai are **read-only**. All quote creation and editing is done in Quoter. MSPortal.ai syncs and displays your quotes so you can reference them alongside company data, meetings, and other modules.
+</Note>
+
+## Key Features
+
+<CardGroup cols={2}>
+  <Card title="Centralized Quote View" icon="table">
+    Browse all quotes with filtering by stage, company, owner, date range, and more.
+  </Card>
+  <Card title="Detailed Pricing Breakdown" icon="calculator">
+    View monthly, annual, quarterly, semi-annual, one-time, and upfront pricing for each quote.
+  </Card>
+  <Card title="Line Item Details" icon="list-check">
+    See individual line items with SKU, quantity, unit price, billing frequency, and optional selections.
+  </Card>
+  <Card title="Meeting Integration" icon="calendar">
+    Add quotes directly to meeting agendas so your team can discuss proposals during client reviews.
+  </Card>
+</CardGroup>
+
+---
+
+## Prerequisites
+
+Before using the Quotes module, you need:
+
+- An active [Quoter](https://www.quoter.com) account with API access
+- The **Quoter integration** configured in MSPortal.ai (see [Set Up Quoter Integration](/user-guides/quotes/setup))
+- The **read_quotes** permission assigned to your role
+
+---
+
+## Viewing Quotes
+
+### Quotes List
+
+Navigate to **Quotes** in the main sidebar to see all synced quotes.
+
+The quotes table displays:
+
+| Column | Description |
+|--------|-------------|
+| **Quote #** | The quote number from Quoter (links to Quoter if subdomain is configured) |
+| **Name** | The quote name or title |
+| **Company** | The mapped MSPortal company |
+| **Stage** | Current quote stage (e.g., Draft, Sent, Won, Lost, Expired) |
+| **Owner** | The quote owner from Quoter |
+| **Monthly** | Monthly recurring total |
+| **Annual** | Annual recurring total |
+| **One-Time** | One-time charges total |
+| **Created** | Date the quote was created |
+
+### Filtering and Search
+
+Use the filter bar above the table to narrow down your quotes:
+
+- **Search** - Search by quote name, number, billing organization, or owner name
+- **Stage** - Filter by quote stage (Draft, Sent, Won, Lost, Expired, etc.)
+- **Company** - Multi-select filter to show quotes for specific companies
+- **Quote #** - Filter by quote number
+- **Owner** - Filter by quote owner name
+- **Created Date** - Filter by date range (Today, This Week, This Month, This Quarter, Last Quarter, This Year, Last Year)
+
+### Quote Stages
+
+Quotes display color-coded stage badges:
+
+| Stage | Color | Meaning |
+|-------|-------|---------|
+| **Won** | Green | Quote was accepted by the client |
+| **Sent / Published** | Blue | Quote has been sent to the client |
+| **Expired / Lost** | Red | Quote expired or was rejected |
+| **Draft / Other** | Gray | Quote is still in draft or other status |
+
+---
+
+## Viewing Quote Details
+
+Click any quote in the list to open the detail view. The detail page shows:
+
+### Header Information
+
+- Quote name, stage, and draft/flagged status
+- Quote number
+- Company name
+- Owner name
+- Created date
+- Won date and expiration date (when applicable)
+- Tags
+- Internal notes (displayed in a highlighted callout)
+
+### Pricing Breakdown
+
+The detail view shows up to six pricing cards based on the quote's billing structure:
+
+<CardGroup cols={3}>
+  <Card title="Monthly" icon="calendar-days">
+    Subtotal, discount, tax, and total for monthly recurring charges.
+  </Card>
+  <Card title="Annual" icon="calendar">
+    Subtotal, discount, tax, and total for annual recurring charges.
+  </Card>
+  <Card title="Quarterly" icon="calendar-week">
+    Subtotal, discount, tax, and total for quarterly charges.
+  </Card>
+  <Card title="Semi-Annual" icon="calendar-range">
+    Subtotal, discount, tax, and total for semi-annual charges.
+  </Card>
+  <Card title="One-Time" icon="credit-card">
+    Subtotal, discount, tax, and total for one-time charges.
+  </Card>
+  <Card title="Upfront" icon="money-bill">
+    Subtotal, discount, tax, and total for upfront charges.
+  </Card>
+</CardGroup>
+
+### Line Items
+
+Below the pricing summary, a table lists every line item on the quote:
+
+| Column | Description |
+|--------|-------------|
+| **Name** | Product or service name |
+| **SKU** | Product SKU identifier |
+| **Qty** | Quantity |
+| **Unit Price** | Price per unit |
+| **Total** | Line total |
+| **Billing Frequency** | How often this item is billed |
+| **Optional / Selected** | Whether the item is optional and if the client selected it |
+
+---
+
+## Quote Actions
+
+### Open in Quoter
+
+From the quotes list, click the **actions menu** (three dots) on any row and select **Open in Quoter** to jump directly to that quote in your Quoter account. This requires a Quoter subdomain to be configured during integration setup.
+
+### Add to Meeting
+
+Select **Add to Meeting** from the actions menu to attach a quote to an upcoming meeting agenda. This is useful for discussing proposals during quarterly business reviews or client check-ins.
+
+---
+
+## How Sync Works
+
+- Quotes sync automatically from Quoter **every 4 hours**
+- The sync pulls all quotes and their line items from the Quoter API
+- Quotes are automatically mapped to MSPortal companies when a matching PSA opportunity is found
+- Company mapping can also be configured manually during integration setup
+- You can trigger a manual sync from **Settings > Integrations** on the Quoter integration card
+
+<Info>
+  If you just created a quote in Quoter and don't see it yet, you can trigger a manual sync from the integration settings rather than waiting for the next automatic sync.
+</Info>
+
+---
+
+## Related Guides
+
+- [Set Up Quoter Integration](/user-guides/quotes/setup) - Connect your Quoter account to MSPortal.ai
+- [Calendar & Meetings](/user-guides/calendar/index) - Learn about meeting agendas where quotes can be added
+- [Integrations Overview](/user-guides/integrations/index) - General integration setup guidance

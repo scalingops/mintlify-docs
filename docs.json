@@ -99,6 +99,13 @@
                 "pages": [
                   "user-guides/invoices/index"
                 ]
+              },
+              {
+                "group": "Quotes",
+                "pages": [
+                  "user-guides/quotes/index",
+                  "user-guides/quotes/setup"
+                ]
               }
             ]
           },
@@ -178,6 +185,13 @@
                 "pages": [
                   "user-guides/reporting/index"
                 ]
+              },
+              {
+                "group": "Licensing",
+                "pages": [
+                  "user-guides/licensing/index",
+                  "user-guides/licensing/setup"
+                ]
               }
             ]
           },
@@ -232,6 +246,18 @@
                 "group": "Cork",
                 "pages": [
                   "user-guides/integrations/enable-cork-integration"
+                ]
+              },
+              {
+                "group": "Pax8",
+                "pages": [
+                  "user-guides/licensing/setup"
+                ]
+              },
+              {
+                "group": "Quoter",
+                "pages": [
+                  "user-guides/quotes/setup"
                 ]
               }
             ]

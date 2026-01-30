@@ -1,0 +1,177 @@
+---
+title: 'Set Up Quoter Integration'
+description: 'Connect your Quoter account to MSPortal.ai to sync quotes and proposals'
+icon: 'plug'
+---
+
+This guide walks you through connecting your Quoter (by ScalePad) account to MSPortal.ai. Once connected, your quotes will sync automatically every 4 hours, giving your team a centralized view of all proposals alongside company data, meetings, and other modules.
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- An active [Quoter](https://www.quoter.com) account
+- API credentials (Client ID and Client Secret) from your Quoter account
+- Your Quoter subdomain (the part before `.quoter.com` in your account URL)
+- Admin access to MSPortal.ai with the **manage_settings_integrations** permission
+
+<Info>
+  To obtain your Quoter API credentials, log in to your Quoter account and navigate to your account settings or contact Quoter support for API access.
+</Info>
+
+---
+
+## Setup Wizard
+
+MSPortal.ai provides a guided wizard to connect and configure your Quoter integration.
+
+### Starting the Wizard
+
+<Steps>
+  <Step title="Navigate to Integrations">
+    In MSPortal.ai, go to **Settings > Integrations**.
+  </Step>
+
+  <Step title="Find the Quoter Card">
+    Locate the **Quoter** integration card in the integrations grid. Click **Configure** to launch the setup wizard.
+  </Step>
+</Steps>
+
+---
+
+### Step 1: Connect
+
+Enter your Quoter API credentials to establish the connection.
+
+<Steps>
+  <Step title="Enter API Credentials">
+    Fill in the following fields:
+
+    | Field | Description |
+    |-------|-------------|
+    | **Client ID** | Your Quoter API Client ID |
+    | **Client Secret** | Your Quoter API Client Secret |
+
+    <Warning>
+      Keep your API credentials secure. They are stored encrypted in MSPortal.ai's vault and are never exposed after initial entry.
+    </Warning>
+  </Step>
+
+  <Step title="Test Connection">
+    Click **Test Connection** to verify your credentials. MSPortal.ai will authenticate with the Quoter API using OAuth and confirm the connection.
+
+    If the connection fails:
+    - Verify your Client ID and Client Secret are copied correctly
+    - Confirm your Quoter account has API access enabled
+    - Check that your Quoter subscription includes API access
+  </Step>
+
+  <Step title="Proceed">
+    Once connected, click **Next** to continue to company mapping.
+  </Step>
+</Steps>
+
+---
+
+### Step 2: Map Companies
+
+Map your Quoter clients to MSPortal companies so quotes are associated with the correct company records.
+
+<Steps>
+  <Step title="Review Quoter Clients">
+    MSPortal.ai displays a list of all clients from your Quoter account. Each client needs to be mapped to an existing MSPortal company.
+  </Step>
+
+  <Step title="Use Quick Match">
+    Click **Quick Match** to let MSPortal.ai automatically suggest mappings based on company name similarity. The system uses intelligent matching to find the best fit for each Quoter client.
+
+    - Matches are ranked by confidence score
+    - Review suggested mappings before confirming
+    - You can adjust or override any suggestion
+  </Step>
+
+  <Step title="Manual Mapping">
+    For clients that weren't matched automatically, use the dropdown next to each client to manually select the corresponding MSPortal company.
+
+    <Tip>
+      If a Quoter client doesn't have a corresponding MSPortal company yet, you can create the company first in **Settings > Companies** and then return to complete the mapping.
+    </Tip>
+  </Step>
+
+  <Step title="Save Mappings">
+    Click **Save** to confirm your company mappings. You can update these at any time by returning to the integration settings.
+  </Step>
+</Steps>
+
+---
+
+### Step 3: Complete
+
+<Steps>
+  <Step title="Configure Quoter Subdomain">
+    Enter your **Quoter subdomain** - this is the part before `.quoter.com` in your Quoter URL.
+
+    For example, if you access Quoter at `https://yourcompany.quoter.com`, enter `yourcompany`.
+
+    | Field | Description | Example |
+    |-------|-------------|---------|
+    | **Subdomain** | Your Quoter subdomain | `yourcompany` |
+
+    <Note>
+      The subdomain is used to generate direct links from MSPortal.ai to your quotes in Quoter. Without it, the "Open in Quoter" action won't be available.
+    </Note>
+  </Step>
+
+  <Step title="Complete Setup">
+    Click **Complete** to finish the wizard. MSPortal.ai will trigger an initial sync of your quotes in the background.
+  </Step>
+</Steps>
+
+---
+
+## After Setup
+
+Once the integration is active:
+
+- **Automatic sync** runs every 4 hours, pulling new and updated quotes from Quoter
+- **Quotes** appear in the **Quotes** module in the main sidebar
+- **Company mapping** ensures quotes are linked to the correct MSPortal companies
+- **PSA linking** automatically associates quotes with companies when matching PSA opportunity IDs are found (ConnectWise, Autotask, Halo, HubSpot, Kaseya, Pipedrive, Salesforce)
+
+---
+
+## Managing the Integration
+
+After setup, you can manage your Quoter integration from **Settings > Integrations**:
+
+| Action | Description |
+|--------|-------------|
+| **Configure** | Re-open the setup wizard to modify credentials, mappings, or subdomain |
+| **Sync Quotes** | Trigger a manual sync of quotes from Quoter |
+| **Update Mappings** | Re-map Quoter clients to MSPortal companies |
+| **Remove Integration** | Disconnect Quoter and remove synced data |
+
+<Warning>
+  Removing the integration will delete all synced quote data from MSPortal.ai. This action cannot be undone. Your quotes in Quoter are not affected.
+</Warning>
+
+---
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Connection test fails | Verify Client ID and Client Secret are correct and that your Quoter account has API access |
+| Quotes not appearing | Check that the initial sync has completed; trigger a manual sync from integration settings |
+| Quotes not linked to companies | Verify company mappings in the integration wizard or run Quick Match again |
+| "Open in Quoter" not working | Ensure the Quoter subdomain is configured in the integration settings |
+| Stale quote data | Trigger a manual sync; automatic sync runs every 4 hours |
+| Missing line items | Line items sync alongside quotes; trigger a manual sync if they're missing |
+
+---
+
+## Next Steps
+
+- [Quotes Overview](/user-guides/quotes/index) - Learn how to browse, filter, and use your synced quotes
+- [Calendar & Meetings](/user-guides/calendar/index) - Add quotes to meeting agendas for client reviews
+- [Integrations Overview](/user-guides/integrations/index) - Manage all your integrations

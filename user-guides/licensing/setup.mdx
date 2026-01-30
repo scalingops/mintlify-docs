@@ -1,0 +1,192 @@
+---
+title: 'Set Up Pax8 Integration'
+description: 'Connect your Pax8 distributor account to MSPortal.ai to manage licensing and subscriptions'
+icon: 'plug'
+---
+
+This guide walks you through connecting your Pax8 distributor account to MSPortal.ai. Once connected, your products, subscriptions, and company data sync automatically, enabling the full Licensing module with approval workflows, catalog management, and client self-service.
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- An active [Pax8](https://www.pax8.com) partner account
+- Admin access to MSPortal.ai with the **manage_licensing** permission
+- Companies already set up in MSPortal (to map Pax8 companies to)
+
+---
+
+## Setup Wizard
+
+MSPortal.ai provides a guided 3-step wizard to connect and configure your Pax8 integration.
+
+### Starting the Wizard
+
+<Steps>
+  <Step title="Navigate to Integrations">
+    In MSPortal.ai, go to **Settings > Integrations**.
+  </Step>
+
+  <Step title="Find the Pax8 Card">
+    Locate the **Pax8** integration card in the integrations grid. Click **Configure** to launch the setup wizard.
+  </Step>
+</Steps>
+
+---
+
+### Step 1: Connect
+
+Authenticate with Pax8 using OAuth to establish a secure connection.
+
+<Steps>
+  <Step title="Start OAuth Flow">
+    Click **Connect to Pax8**. You will be redirected to the Pax8 login page to authorize MSPortal.ai.
+  </Step>
+
+  <Step title="Authorize Access">
+    Log in to your Pax8 account and approve the authorization request. Pax8 will redirect you back to MSPortal.ai.
+
+    <Note>
+      MSPortal.ai uses OAuth for secure authentication. Your Pax8 credentials are never stored directly -- only encrypted access tokens are saved in the vault.
+    </Note>
+  </Step>
+
+  <Step title="Connection Confirmed">
+    Once authorized, you'll see a confirmation that the connection was successful. MSPortal.ai automatically triggers an initial sync of your Pax8 companies and products in the background.
+
+    If the connection fails:
+    - Ensure you have admin access to your Pax8 account
+    - Check that your Pax8 account has API access enabled
+    - Try the authorization flow again
+  </Step>
+
+  <Step title="Proceed">
+    Click **Next** to continue to company mapping.
+  </Step>
+</Steps>
+
+---
+
+### Step 2: Map Companies
+
+Map your Pax8 companies to MSPortal companies so subscriptions are associated with the correct company records.
+
+<Steps>
+  <Step title="Wait for Company Sync">
+    After connecting, MSPortal.ai fetches your Pax8 companies in the background. The list populates automatically once the sync completes.
+  </Step>
+
+  <Step title="Use Quick Match">
+    Click **Quick Match** to automatically suggest mappings based on company name similarity.
+
+    - The system uses a 40% confidence threshold by default
+    - Suggested matches appear as pending badges on each row
+    - Review all suggestions before saving
+
+    <Tip>
+      Quick Match works best when your Pax8 and MSPortal company names are similar. Companies with very different names will need manual mapping.
+    </Tip>
+  </Step>
+
+  <Step title="Manual Mapping">
+    For companies that weren't matched automatically:
+
+    1. Find the Pax8 company in the list
+    2. Use the dropdown to search for and select the corresponding MSPortal company
+    3. Repeat for each unmapped company
+
+    Use the filter options to focus on specific companies:
+    - **All** - Show all Pax8 companies
+    - **Mapped Only** - Show companies already linked
+    - **Unmapped Only** - Show companies that still need mapping
+  </Step>
+
+  <Step title="Save Mappings">
+    Click **Save All** to persist your company mappings.
+
+    <Warning>
+      You must map at least one company before proceeding. Only subscriptions from mapped companies will sync to the Licensing module.
+    </Warning>
+  </Step>
+
+  <Step title="Proceed">
+    Click **Next** to continue to the final step.
+  </Step>
+</Steps>
+
+---
+
+### Step 3: Complete
+
+<Steps>
+  <Step title="Trigger Subscription Sync">
+    MSPortal.ai triggers a sync of subscriptions from Pax8 for all mapped companies. This runs in the background.
+  </Step>
+
+  <Step title="Review Sync Schedule">
+    The completion page shows the automatic sync schedule:
+
+    | Data Type | Frequency |
+    |-----------|-----------|
+    | **Companies** | Every 4 hours |
+    | **Subscriptions** | Hourly |
+    | **Products** | Daily |
+  </Step>
+
+  <Step title="Complete Setup">
+    Click **Complete** to finish the wizard. You can now access the Licensing module to configure approval workflows, catalog visibility, and self-service rules.
+  </Step>
+</Steps>
+
+---
+
+## After Setup
+
+Once the integration is active:
+
+- **Subscriptions** appear in the Licensing module for all mapped companies
+- **Products** populate the catalog settings for visibility and featuring
+- **Approval workflows** can be configured in **Settings > Licensing > Approval**
+- **Self-service rules** can be set per subscription in **Settings > Licensing > Self-Service**
+
+<Info>
+  If you add new companies in Pax8 later, return to the integration settings to map them. New companies won't sync subscriptions until they're mapped to an MSPortal company.
+</Info>
+
+---
+
+## Managing the Integration
+
+After setup, manage your Pax8 integration from **Settings > Integrations**:
+
+| Action | Description |
+|--------|-------------|
+| **Configure** | Re-open the setup wizard to update mappings or re-authenticate |
+| **Sync Companies** | Trigger a manual company sync |
+| **Sync Subscriptions** | Trigger a manual subscription sync |
+| **Sync Products** | Trigger a manual product catalog sync |
+| **Remove Integration** | Disconnect Pax8 and remove synced data |
+
+<Warning>
+  Removing the integration will delete all synced subscription, product, and company mapping data from MSPortal.ai. Existing Pax8 subscriptions are not affected.
+</Warning>
+
+---
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| OAuth redirect fails | Ensure your browser allows popups from MSPortal.ai; try a different browser |
+| No companies appear after connecting | Wait for the background sync to complete; try triggering a manual sync |
+| Subscriptions missing | Verify the Pax8 company is mapped to an MSPortal company; only mapped companies sync |
+| Products not showing in catalog | Products sync daily; trigger a manual product sync from integration settings |
+| Token expired errors | Re-authenticate by opening the integration wizard and re-connecting on Step 1 |
+| Stale subscription data | Trigger a manual subscription sync; automatic sync runs hourly |
+
+---
+
+## Next Steps
+
+- [Licensing Overview](/user-guides/licensing/index) - Configure approval workflows, catalog, and self-service
+- [Integrations Overview](/user-guides/integrations/index) - Manage all your integrations
