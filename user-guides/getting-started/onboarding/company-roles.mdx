@@ -1,17 +1,29 @@
 ---
 title: "Company Roles"
 sidebarTitle: "6. Company Roles"
-description: "Define roles for client company users"
+description: "Define organizational job titles for client company users"
 icon: "user-cog"
 ---
 
-Company Roles work with Permission Groups to control what your clients' users can do in MSPortal. While Permission Groups define module access, Roles provide a way to assign multiple permission settings to users easily.
+Company Roles let you define job function labels for your clients' users, such as "Account Manager", "Technician", or "Help Desk". Roles are used for organization and reporting — they do **not** control portal access.
+
+## Understanding Roles vs Permission Groups
+
+<Warning>
+Roles and Permission Groups serve different purposes. Do not confuse them.
+</Warning>
+
+| Concept | Purpose | Controls Access? |
+|---------|---------|-----------------|
+| **Roles** (this step) | Describe a person's job function | No |
+| **Permission Groups** ([previous step](/user-guides/getting-started/onboarding/company-permission-groups)) | Control what a user can see and do | Yes |
+
+A company user is assigned **both** a Role and a Permission Group independently. For example, two users might both have the role "Account Manager" but different permission groups — one with "Full Access" and another with "View Only".
 
 ## What You'll Configure
 
-- **Role Names** - Create roles like "Admin", "Manager", "User"
-- **Permission Group Assignment** - Link roles to permission groups
-- **Default Role** - Set which role new company users receive
+- **Role Names** - Create roles like "Account Manager", "Technician", "Help Desk"
+- **Descriptions** - Optional descriptions explaining each role's purpose
 
 ## Steps to Complete
 
@@ -20,49 +32,33 @@ Company Roles work with Permission Groups to control what your clients' users ca
     Click **Go to Settings** in the onboarding wizard, or go to **Settings > Companies > Roles**.
   </Step>
   <Step title="Review Default Roles">
-    MSPortal includes default company roles. Review these to understand how they're configured.
+    MSPortal includes default company roles. Review these to understand the structure.
   </Step>
   <Step title="Create Custom Roles (Optional)">
-    Click **Add Role** to create a new role for specific client needs.
-  </Step>
-  <Step title="Assign Permission Groups">
-    Link each role to the appropriate permission group(s).
-  </Step>
-  <Step title="Set Default Role">
-    Choose which role is automatically assigned to new company users.
+    Click **Add Role** to create a new role for specific client needs. Enter a name and optional description.
   </Step>
 </Steps>
 
 ## Common Company Role Examples
 
 <CardGroup cols={3}>
-  <Card title="Admin" icon="user-shield">
-    Full access to company data and can manage other users.
+  <Card title="Account Manager" icon="user-tie">
+    Primary business contact responsible for the client relationship.
   </Card>
-  <Card title="Manager" icon="user-tie">
-    Access to most features with some administrative capabilities.
+  <Card title="Technician" icon="wrench">
+    Technical staff who handle IT issues and infrastructure.
   </Card>
-  <Card title="User" icon="user">
-    Standard access for day-to-day tasks like submitting tickets.
+  <Card title="Help Desk" icon="headset">
+    Front-line support staff who handle day-to-day requests.
   </Card>
 </CardGroup>
-
-## How Roles and Permission Groups Work Together
-
-```
-Company User → Assigned Role → Permission Group → Module Access
-     │              │                  │               │
-   "John"      "Manager"        "Standard Access"   Tickets, Training, Devices
-```
-
-When you add a user to a company, you assign them a role. That role determines their permission group, which controls what they can see and do.
 
 ## Manual Completion
 
 This step requires **manual completion**. Click **Mark Complete** in the wizard when you've finished setting up your company roles.
 
 <Note>
-  Company roles are different from tenant roles. Company roles are for your clients' users, while tenant roles are for your internal MSP staff.
+Company roles are for your **clients' users**. Your internal MSP team roles are configured in **Settings > Users & Roles**.
 </Note>
 
 ## Related Documentation

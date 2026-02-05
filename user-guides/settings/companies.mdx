@@ -1,23 +1,38 @@
 ---
 title: Companies Settings
-description: Configure and manage client companies, locations, and company-specific settings
+description: Manage client companies, users, roles, and permission groups
 icon: building
 ---
 
-Companies Settings allows you to manage all client companies in your MSPortal.ai instance. Add new companies, configure their settings, and manage company-specific configurations.
+Companies Settings is the central hub for managing your client companies and their users. It contains four tabs: **Companies**, **Users**, **Roles**, and **Permissions**.
 
 ## Accessing Companies Settings
 
 1. Click **Settings** in the sidebar
 2. Select the **Companies** icon from the settings navigation
 
-## Companies List
+## Tab Overview
 
-The Companies page displays all client companies in your organization.
+<CardGroup cols={2}>
+  <Card title="Companies" icon="building">
+    Manage your client company list, details, integrations, and company groups.
+  </Card>
+  <Card title="Users" icon="users">
+    View and manage all company users across every company in one place.
+  </Card>
+  <Card title="Roles" icon="shield">
+    Define organizational job titles like Account Manager or Technician.
+  </Card>
+  <Card title="Permissions" icon="user-cog">
+    Create permission groups that control what company users can access in the portal.
+  </Card>
+</CardGroup>
 
-<Frame>
-  <img src="/images/settings/settings-companies-list.png" alt="Companies List" />
-</Frame>
+---
+
+## Companies Tab
+
+The Companies tab displays all client companies in your organization with filtering, sorting, and bulk actions.
 
 ### Company Information
 
@@ -25,105 +40,306 @@ Each company entry shows:
 
 | Field | Description |
 |-------|-------------|
-| **Name** | Company name |
+| **Name** | Company name with parent/child and import source indicators |
+| **Status** | Active or Inactive |
 | **Industry** | Business sector |
-| **Primary Contact** | Main point of contact |
-| **Status** | Active or inactive |
-| **Users** | Number of associated users |
+| **Integrations** | Connected PSA/RMM badges (ConnectWise, Halo, Autotask, Syncro, Asio, Cove) |
+| **Groups** | Assigned company groups |
+| **Training** | Premium or Standard training tier |
+| **M365** | Microsoft 365 connection status |
+| **Contact** | Primary contact name or email |
+
+### Filtering and Searching
+
+Use the built-in filters to narrow down companies:
+
+- **Search** - Filter by company name
+- **Status** - Active or Inactive
+- **Industry** - Business sector
+- **Integrations** - Filter by connected integration (multi-select)
+- **Groups** - Filter by company group (multi-select)
 
 ### Adding a New Company
 
 <Steps>
   <Step title="Click Add Company">
-    Select the **+ Add Company** button
+    Select the **Add Company** button in the top right.
   </Step>
   <Step title="Enter Company Details">
-    Fill in company name, industry, and contact information
+    Fill in the company name, industry, and contact information.
   </Step>
   <Step title="Configure Settings">
-    Set company-specific configurations like timezone and preferences
-  </Step>
-  <Step title="Add Contacts">
-    Add primary and secondary contacts for the company
+    Set company-specific configurations like timezone and preferences.
   </Step>
   <Step title="Save">
-    Click **Save** to create the company
+    Click **Save** to create the company.
   </Step>
 </Steps>
 
-## Company Details
+### Importing Companies
 
-Click on any company to view and edit its details:
-
-### Basic Information
-- **Company Name** - Legal or display name
-- **Industry** - Business sector classification
-- **Website** - Company website URL
-- **Phone** - Main contact number
-
-### Address Information
-- **Street Address** - Physical location
-- **City, State, Postal Code** - Full address details
-- **Country** - Country of operation
-
-### Company Preferences
-- **Timezone** - Default timezone for the company
-- **Language** - Preferred language for communications
-- **Fiscal Year Start** - Financial year beginning
-
-## Contacts Management
-
-Each company can have multiple contacts:
-
-| Contact Type | Description |
-|--------------|-------------|
-| **Primary Contact** | Main point of contact for the company |
-| **Technical Contact** | IT or technical representative |
-| **Billing Contact** | Finance or billing department |
-| **Executive Contact** | C-level or decision makers |
-
-### Adding a Contact
-
-1. Navigate to the company's detail page
-2. Click **Add Contact** in the Contacts section
-3. Enter contact details (name, email, phone, title)
-4. Select the contact type
-5. Save the contact
-
-## Integration with PSA
-
-Companies sync with your connected PSA system:
-
-- **Halo PSA** - Syncs as clients
-- **ConnectWise** - Maps to company records
-- **Autotask** - Syncs with accounts
-- **Syncro** - Integrates with customers
+Click the **Import** button to import companies from your connected integrations (Halo PSA, ConnectWise, Autotask, Syncro, or Asio).
 
 <Note>
-Changes made in your PSA will sync to MSPortal. Some fields may be read-only if managed by your PSA.
+Changes made in your PSA will sync to MSPortal. Some fields may be read-only if managed by your PSA integration.
 </Note>
 
-## Company Assignments
+### Bulk Actions
 
-When using company restrictions (configured in Tenant Settings), users must be assigned to companies to access their data.
+Select multiple companies using the checkboxes to perform bulk operations:
 
-### Assigning Users to a Company
+- **Assign Roles** - Set account manager or other staff roles for selected companies
+- **Set Parent Company** - Establish parent/child company relationships
+- **Set Company Groups** - Organize companies into groups
+- **Enable/Disable Premium Training** - Toggle Bigger Brains premium training access
 
-1. Open the company details
-2. Navigate to the **Assigned Users** section
-3. Click **Add User**
-4. Select users who should have access
-5. Save changes
+### Per-Company Actions
+
+Click the actions menu on any company row to:
+
+- **View Details & Users** - Open the company detail page
+- **Edit Company** - Update company information
+- **Create Location** - Add a physical location
+- **Import Users** - Pull users from connected integrations
+- **Delete Company** - Remove the company (requires manage permission)
+
+---
+
+## Users Tab
+
+The Users tab provides a consolidated view of all company users across every company, with powerful filtering and bulk management capabilities.
+
+<Note>
+Company users are your **clients' users** — the end users at each company who access their own portal. These are separate from your internal MSP team members managed in **Settings > Users & Roles**.
+</Note>
+
+### User Information
+
+Each user entry shows:
+
+| Field | Description |
+|-------|-------------|
+| **User** | Avatar, full name, and job title |
+| **Email** | User email address |
+| **Company** | Which company the user belongs to |
+| **Permissions Group** | The permission group assigned to this user |
+| **Source** | How the user was added (Manual, ConnectWise, Halo, Microsoft 365, Autotask) |
+| **Status** | Active or Inactive |
+| **Last Synced** | Last synchronization date from integration |
+
+### Filtering and Searching
+
+- **Search** - Filter by name or email
+- **Company** - Filter by company (multi-select)
+- **Permissions Group** - Filter by assigned permission group
+- **Source** - Filter by import source
+- **Status** - Active or Inactive
+
+### Bulk Actions
+
+Select multiple users using the checkboxes to:
+
+- **Update Permissions Group** - Change the permission group for all selected users
+- **Edit Custom Fields** - Batch update custom fields across selected users
+- **Remove Access** - Remove portal access and block re-import for selected users
+
+### Per-User Actions
+
+Click the actions menu on any user to:
+
+- **Edit User** - Change permissions, custom fields, or details
+- **Send Welcome Email** - Send or resend a portal invitation
+- **Impersonate** - View the portal as this user (requires impersonate permission)
+- **Remove Access** - Revoke access and block re-import from integrations
+
+---
+
+## Roles Tab
+
+The Roles tab lets you define **organizational job titles** for your company users, such as "Account Manager", "Technician", or "Help Desk".
+
+<Warning>
+**Roles are not the same as Permissions.** Roles are simple labels that describe a person's job function. They do **not** control what a user can see or do — that is handled by [Permission Groups](#permissions-tab). See [Understanding the Difference](#understanding-the-difference-roles-vs-permissions) below.
+</Warning>
+
+### What Roles Are For
+
+Roles help you categorize and organize company users by their job function. They are useful for:
+
+- **Reporting** - Filter and group users by role in reports
+- **Organization** - Quickly understand who does what at each company
+- **Communication** - Identify the right contact for different types of issues
+
+### Managing Roles
+
+| Column | Description |
+|--------|-------------|
+| **Role Name** | The name of the role (e.g., "Account Manager") |
+| **Description** | Optional description of the role's purpose |
+
+### Creating a Role
+
+<Steps>
+  <Step title="Click Add Role">
+    Select the **Add Role** button.
+  </Step>
+  <Step title="Enter Details">
+    Provide a role name and optional description.
+  </Step>
+  <Step title="Save">
+    Click **Save** to create the role.
+  </Step>
+</Steps>
+
+Roles can be edited or deleted from the actions column in the table.
+
+---
+
+## Permissions Tab
+
+The Permissions tab is where you create and manage **Permission Groups** that control what company users can access and do within their company's portal.
+
+### What Permission Groups Control
+
+Permission groups determine:
+
+- **Which modules** a company user can see (Tickets, Training, Devices, Compliance, etc.)
+- **What actions** they can take within each module (Read, Write, or Manage)
+- **Which ticket display groups** they have access to
+
+### Permission Levels
+
+Each module supports three levels of access:
+
+| Level | Description |
+|-------|-------------|
+| **Read** | View data only |
+| **Write** | Create and edit records |
+| **Manage** | Full control including delete |
+
+<Tip>
+Selecting **Manage** automatically enables Read and Write for that module. Selecting **Write** automatically enables Read.
+</Tip>
+
+### Global vs Custom Groups
+
+| Type | Description |
+|------|-------------|
+| **Global** | Built-in permission groups provided by MSPortal. These can be viewed but not edited or deleted. |
+| **Custom** | Permission groups you create. Fully editable and deletable. |
+
+### Creating a Permission Group
+
+<Steps>
+  <Step title="Click Create Permission Group">
+    Select the **Create Permission Group** button.
+  </Step>
+  <Step title="Name and Describe">
+    Enter a name (e.g., "Standard User") and optional description.
+  </Step>
+  <Step title="Configure Permissions">
+    Check the permissions for each module. Permissions are organized by resource (Tickets, Meetings, Goals, Training, etc.).
+  </Step>
+  <Step title="Set as Default (Optional)">
+    Enable **Default Role** if this group should be automatically assigned to new company users.
+  </Step>
+  <Step title="Assign Ticket Display Group (Optional)">
+    Select which ticket display group this permission group has access to.
+  </Step>
+  <Step title="Save">
+    Click **Save** to create the permission group.
+  </Step>
+</Steps>
+
+### Common Permission Group Examples
+
+<CardGroup cols={2}>
+  <Card title="Full Access" icon="lock-open">
+    Access to all available modules. Can view and manage their company's data.
+  </Card>
+  <Card title="Standard User" icon="user">
+    Access to tickets, training, and basic features. Cannot manage company settings.
+  </Card>
+  <Card title="Training Only" icon="graduation-cap">
+    Limited to training courses and compliance acknowledgments.
+  </Card>
+  <Card title="View Only" icon="eye">
+    Can view information but cannot create or modify anything.
+  </Card>
+</CardGroup>
+
+---
+
+## Understanding the Difference: Roles vs Permissions
+
+This is an important distinction that affects how you organize and secure your company users.
+
+<Tabs>
+  <Tab title="Roles">
+    ### Company Roles
+
+    **Purpose:** Describe who someone is — their job function.
+
+    - Simple labels with a name and description
+    - Used for organization, reporting, and identification
+    - Do **not** grant or restrict any access
+    - Examples: "Account Manager", "Technician", "Help Desk", "CFO"
+
+    **Think of it as:** A job title on a business card.
+  </Tab>
+  <Tab title="Permission Groups">
+    ### Permission Groups
+
+    **Purpose:** Control what someone can do in the portal.
+
+    - Define module-level access (Read, Write, Manage)
+    - Control which features and data a user can see
+    - Include ticket display group assignments
+    - Examples: "Full Access", "Standard User", "Training Only", "View Only"
+
+    **Think of it as:** A security badge that opens specific doors.
+  </Tab>
+</Tabs>
+
+### How They Work Together
+
+A company user is assigned **both** a Role and a Permission Group:
+
+| Concept | Set In | Controls | Example |
+|---------|--------|----------|---------|
+| **Role** | Roles tab | Organization and reporting | "Account Manager" |
+| **Permission Group** | Permissions tab | Portal access and actions | "Full Access" |
+
+For example, a user might have the role **Account Manager** (describing their job) and the permission group **Full Access** (granting them access to all modules). Another user might also be an **Account Manager** but with a **View Only** permission group if they only need to review information.
+
+<Note>
+Roles and Permission Groups are independent. Changing a user's role does not affect their permissions, and changing their permission group does not affect their role.
+</Note>
+
+---
+
+## Required Permissions
+
+To manage Companies Settings, your tenant role needs:
+
+| Permission Level | Capabilities |
+|------------------|-------------|
+| **Read** (`read_settings_companies`) | View companies, users, roles, and permission groups |
+| **Write** (`write_settings_companies`) | Create and edit companies, users, roles, and permission groups |
+| **Manage** (`manage_settings_companies`) | All of the above, plus delete |
 
 ## Best Practices
 
-- **Keep information current** - Regularly update company details
-- **Verify contacts** - Ensure contact information is accurate
-- **Use consistent naming** - Establish naming conventions for companies
-- **Document relationships** - Track parent/child company relationships
+- **Start with fewer permission groups** - Create broad groups first, then add specific ones as needed
+- **Use roles for reporting** - Assign roles consistently to enable useful reporting by job function
+- **Review permissions regularly** - Audit permission groups periodically to ensure appropriate access
+- **Keep company data current** - Regularly update company details and verify contacts
+- **Use consistent naming** - Establish naming conventions for companies, roles, and permission groups
 
 ## Related Resources
 
-- [Company Overview Module](/user-guides/company-overview/index) - Company dashboards
-- [Users & Roles](/user-guides/settings/users-roles) - User company assignments
-- [Integrations](/user-guides/integrations/index) - PSA company sync
+- [Users & Roles](/user-guides/settings/users-roles) - Manage your internal MSP team roles
+- [Company Overview](/user-guides/company-overview/index) - Company dashboards
+- [Integrations](/user-guides/integrations/index) - PSA and RMM company sync
+- [Onboarding: Permission Groups](/user-guides/getting-started/onboarding/company-permission-groups) - Initial permission group setup
+- [Onboarding: Company Roles](/user-guides/getting-started/onboarding/company-roles) - Initial role setup

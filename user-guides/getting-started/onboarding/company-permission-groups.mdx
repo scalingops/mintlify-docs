@@ -1,7 +1,7 @@
 ---
 title: "Company Permission Groups"
 sidebarTitle: "5. Permission Groups"
-description: "Set up permission groups for client company users"
+description: "Set up permission groups to control what company users can access"
 icon: "shield"
 ---
 
@@ -9,16 +9,25 @@ Company Permission Groups define what your clients' users can access when they l
 
 ## Understanding Permission Groups
 
-Permission groups are different from tenant roles:
-- **Tenant Roles** - For your internal MSP team
-- **Permission Groups** - For your clients' users (company users)
+Permission Groups are different from both tenant roles and company roles:
+
+| Concept | For | Purpose |
+|---------|-----|---------|
+| **Tenant Roles** | Your internal MSP team | Control staff access to MSPortal features |
+| **Permission Groups** | Your clients' users | Control company user access to the portal |
+| **Company Roles** | Your clients' users | Organizational labels (job titles) — do **not** control access |
+
+<Note>
+Permission Groups control access. [Company Roles](/user-guides/getting-started/onboarding/company-roles) are just organizational labels. A user is assigned both independently.
+</Note>
 
 ## What You'll Configure
 
-- **Group Names** - Create groups like "Full Access", "Limited Access", "View Only"
-- **Module Access** - Which modules company users can see
-- **Data Visibility** - What data within each module is visible
-- **Action Permissions** - What actions users can take (view, edit, etc.)
+- **Group Names** - Create groups like "Full Access", "Standard User", "View Only"
+- **Module Access** - Which modules company users can see (Tickets, Training, Devices, etc.)
+- **Permission Levels** - What actions users can take: Read, Write, or Manage
+- **Ticket Display Groups** - Which ticket categories are visible to this group
+- **Default Group** - Which group is automatically assigned to new users
 
 ## Steps to Complete
 
@@ -27,18 +36,28 @@ Permission groups are different from tenant roles:
     Click **Go to Settings** in the onboarding wizard, or go to **Settings > Companies > Permissions**.
   </Step>
   <Step title="Review Default Groups">
-    MSPortal includes default permission groups. Review these to understand the structure.
+    MSPortal includes built-in global permission groups. Review these to understand the structure.
   </Step>
   <Step title="Create Custom Groups (Optional)">
-    Click **Add Permission Group** to create a new group for specific client needs.
+    Click **Create Permission Group** to create a new group for specific client needs.
   </Step>
   <Step title="Configure Module Access">
-    For each group, enable or disable access to modules like Tickets, Devices, Training, etc.
+    For each group, select the permission level (Read, Write, or Manage) for each module.
   </Step>
   <Step title="Save Changes">
     Click **Save** after configuring each permission group.
   </Step>
 </Steps>
+
+## Permission Levels
+
+Each module supports three levels of access:
+
+| Level | Description |
+|-------|-------------|
+| **Read** | View data only |
+| **Write** | Create and edit records (includes Read) |
+| **Manage** | Full control including delete (includes Read and Write) |
 
 ## Common Permission Group Examples
 
@@ -64,15 +83,18 @@ Permission groups are different from tenant roles:
 - **Devices** - View device inventory (if enabled)
 - **Compliance** - View compliance status and complete tasks
 - **Dashboard** - Access company dashboard
+- **Meetings** - View and manage meetings
+- **Goals** - View and track goals
 
 ## Manual Completion
 
 This step requires **manual completion**. Click **Mark Complete** in the wizard when you've finished setting up your permission groups.
 
 <Tip>
-  Start with fewer, broader permission groups. You can always create more specific groups later as you understand your clients' needs.
+Start with fewer, broader permission groups. You can always create more specific groups later as you understand your clients' needs.
 </Tip>
 
 ## Related Documentation
 
-- [Companies Settings](/user-guides/settings/companies) - Full companies settings reference
+- [Companies Settings](/user-guides/settings/companies) - Full companies settings reference including all four tabs
+- [Company Roles](/user-guides/getting-started/onboarding/company-roles) - Organizational role setup (next step)
