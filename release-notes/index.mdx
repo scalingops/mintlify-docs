@@ -3,6 +3,68 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## February 6, 2026
+
+### AI-Powered Narrative Reports
+
+Generate professional, AI-written reports for your clients using real data from across MSPortal. The new Full Report wizard walks you through selecting a report type, configuring content sources, and generating a polished narrative document — ready to share.
+
+**Key Features:**
+- **14+ Data Sources**: Pull from tickets, devices, compliance, M365 licenses, training, meetings, projects, budgets, planner, backup, goals, surveys, documents, and company context
+- **Multiple Report Types**: QBR, Weekly, Monthly, Security Review, Ticket Deep Dive, and Custom reports
+- **AI Generation with Editing**: AI writes the full report, then you refine it in a rich editor with an AI sidebar for further adjustments
+- **AI Notes for MSPs**: See AI-generated notes about data gaps, assumptions, and suggestions — visible only to you, not your clients
+- **AI Report Builder Sidebar**: The AI sidebar is also available in the block-based report builder — describe what you need and AI picks the right blocks and headers for your report
+
+---
+
+### Licensing Storefront
+
+A new storefront experience for managing vendor subscriptions, starting with Pax8 as the first supported vendor.
+
+**Key Features:**
+- **Subscriptions Dashboard**: View all subscriptions with filtering by status, product, and company
+- **Azure Usage Tracking**: Monitor Azure consumption with cost breakdowns by product and company
+- **Request & Get Price**: Submit subscription change requests and pull live pricing for any company in real time
+- **Storefront Settings**: Configure approval workflows, quantity change thresholds, and self-service controls per company
+- **Subscription Details**: View provisioning status, billing terms, and commitment details for any subscription
+
+---
+
+### Unified Groups System
+
+A flexible grouping system for organizing users across training and surveys, with support for rule-based automatic membership.
+
+**Key Features:**
+- **Training & Survey Groups**: Create groups scoped to individual companies or your entire tenant
+- **M365 Group Sync**: Use your existing Microsoft 365 groups as membership sources — sync users directly from Entra ID groups
+- **Rule-Based Membership**: Define include/exclude rules with AND/OR logic to auto-populate groups based on company, role, or M365 group
+- **Manual & Automatic Sync**: Manage members manually or let rules keep groups updated automatically
+
+---
+
+### Also:
+
+- **Ticket Template Static Subjects**: Set a pre-defined subject line on ticket templates that auto-fills when users create tickets, with an optional lock so it cannot be changed
+- **Company AI Home Settings**: Per-company toggle to enable or disable the AI-powered home page experience, with a tenant-level global override
+
+---
+
+### Improvements
+
+- **M365 License Blocks**: Free and trial licenses are now automatically filtered from license reporting blocks for cleaner data
+- **Report Data Performance**: All report data fetched in a single optimized database call for significantly faster generation
+- **Report Scheduling**: Improved reliability for scheduled report delivery
+
+### Bug Fixes
+
+- **Report Autosave**: Fixed an issue where autosave was not triggering on reports
+- **Datto RMM Sync**: Fixed sync issues from Datto RMM
+- **Session Handling**: Fixed an issue where idle sessions would cause unexpected errors on Reports and other pages with images
+- **Ticket Conditional Fields**: Fixed a bug where conditional fields were included in PSA ticket submissions even when their conditions were not met
+
+---
+
 ## January 30, 2026
 
 ### Quoter Integration
