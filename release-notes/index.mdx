@@ -3,6 +3,52 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## February 10, 2026
+
+### Template Variables & Dynamic Subjects
+
+Ticket template subjects can now include dynamic variables that resolve to field values at submission time. Use `{{field_key}}` placeholders in your static subject to automatically insert user-selected values like employee names, departments, or locations into the ticket title.
+
+**Key Features:**
+- **Variable Picker**: Click-to-insert UI in the template editor shows all available fields from your template sections
+- **Entity Name Resolution**: Variables referencing users, devices, locations, or projects resolve to human-readable names instead of IDs
+- **Live Preview**: New preview panel in the template editor shows exactly how the form will look to end users
+
+---
+
+### Priority Override Rules
+
+Automatically override the PSA ticket priority based on field values during submission. Define condition-based rules on any template — the first matching rule wins, so you can escalate priority when a date field is within 24 hours or a specific option is selected.
+
+**Key Features:**
+- **Conditional Rules**: Match on any template field using operators like equals, within hours, greater than, includes, and more
+- **Rule Ordering**: Rules evaluate top-to-bottom; place the most urgent rule first
+- **Per-Template Configuration**: Enable or disable overrides independently on each template
+
+---
+
+### Voice Input for AI Chat
+
+Dictate messages to the AI assistant using your microphone. A new mic button appears in the AI chat input when speech recognition is supported by your browser.
+
+---
+
+### ConnectWise Ticket Description Fix
+
+ConnectWise ticket descriptions now display reliably in the ticket detail modal. The system correctly extracts the initial description from ConnectWise notes (using the description flag) instead of relying on the often-empty ticket field, and syncs notes from the API before opening the modal for the first time.
+
+---
+
+### Improvements
+
+- **AI SDK Compatibility**: Updated all AI calls to the latest Vercel AI SDK conventions for continued compatibility
+- **Time Entry Dates**: Fixed a timezone issue where time entry dates could shift by one day depending on your browser timezone
+- **Activity Feed**: Description note now pins to the bottom of the activity timeline for clearer reading order
+- **Report Pages**: Increased server timeout for report pages to prevent timeouts on complex reports
+- **Template Field Keys**: New fields auto-generate URL-safe keys from the label, with a visible key display and variable reference hint
+
+---
+
 ## February 6, 2026
 
 ### AI-Powered Narrative Reports
