@@ -1,0 +1,84 @@
+---
+title: 'Client Onboarding'
+description: 'Streamline client onboarding with customizable templates, task tracking, and secure credential exchange'
+icon: 'rocket'
+---
+
+## Overview
+
+The Client Onboarding module helps you create structured onboarding experiences for new clients. Build reusable templates with phases, tasks, and automated workflows — then generate personalized onboarding portals for each client.
+
+<CardGroup cols={2}>
+  <Card title="Onboarding Templates" icon="layer-group">
+    Create reusable templates with phases, tasks, checklists, surveys, and document requests
+  </Card>
+  <Card title="Client Portal" icon="browser">
+    Branded portal where clients complete tasks, upload documents, and submit credentials securely
+  </Card>
+  <Card title="Secure Credential Handoff" icon="shield-halved" href="/user-guides/onboarding/secure-credential-handoff">
+    Military-grade encryption for credential exchange with one-time reveal and automatic deletion
+  </Card>
+  <Card title="Task Automation" icon="wand-magic-sparkles">
+    Automated reminders, dependency tracking, and status updates throughout the onboarding process
+  </Card>
+</CardGroup>
+
+## Key Features
+
+### Onboarding Templates
+
+Build reusable onboarding templates in **Settings > Onboarding**. Templates can include:
+
+- **Phases** to organize tasks into logical groups (e.g., "Discovery", "Setup", "Go-Live")
+- **Task types**: document uploads, credential handoffs, surveys, meetings, checklists, approvals, and signatures
+- **Dependencies** between tasks so they unlock in the right order
+- **Automated emails** to invite clients and send reminders
+
+### Client Portal
+
+Each onboarding generates a personalized, branded portal for your client. Clients can:
+
+- View their onboarding progress across all phases
+- Complete assigned tasks (upload files, fill out surveys, submit credentials)
+- See what's coming next and what's waiting on your team
+- Access the portal securely via an emailed magic link — no account creation needed
+
+### Admin Dashboard
+
+Manage all onboardings from the company's onboarding tab:
+
+- Track progress across all phases and tasks
+- View submitted documents and survey responses
+- Reveal credentials securely (one-time access)
+- Add comments and communicate with your team
+- Bulk-complete internal tasks
+
+## Getting Started
+
+<Steps>
+  <Step title="Create a Template">
+    Navigate to **Settings > Onboarding** and click **New Template**. Add phases and tasks to build your onboarding workflow.
+  </Step>
+  <Step title="Start an Onboarding">
+    Go to a company's page, click the **Onboarding** tab, and click **New Onboarding**. Select a template and customize it for the client.
+  </Step>
+  <Step title="Invite the Client">
+    Add client contacts and send the invitation email. Clients receive a secure link to their personalized portal.
+  </Step>
+  <Step title="Track Progress">
+    Monitor task completion, review submissions, and manage the onboarding from the admin dashboard.
+  </Step>
+</Steps>
+
+## Permissions
+
+| Permission | Access Level |
+|-----------|-------------|
+| `read_settings_onboarding` | View onboarding portals and templates |
+| `write_settings_onboarding` | Create/edit portals, reveal credentials, manage tasks |
+| `manage_settings_onboarding` | Full access including template management and deletion |
+
+## Related Resources
+
+- [Secure Credential Handoff](/user-guides/onboarding/secure-credential-handoff) — How credentials are protected
+- [Settings](/user-guides/settings/index) — General settings configuration
