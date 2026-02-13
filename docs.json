@@ -116,6 +116,7 @@
                 "group": "Client Onboarding",
                 "pages": [
                   "user-guides/client-onboarding/index",
+                  "user-guides/client-onboarding/quick-start",
                   "user-guides/client-onboarding/templates",
                   "user-guides/client-onboarding/managing-portals",
                   "user-guides/client-onboarding/client-portal"
