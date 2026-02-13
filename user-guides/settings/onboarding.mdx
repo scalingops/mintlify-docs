@@ -1,0 +1,57 @@
+---
+title: 'Onboarding Settings'
+description: 'Configure templates, checklists, and portal settings for client onboarding'
+icon: 'clipboard-check'
+---
+
+The onboarding settings area is where you build and manage onboarding templates, checklist templates, and configure portal defaults.
+
+<Note>
+Client onboarding must be enabled at the tenant level before these settings appear. Contact your account administrator to enable it.
+</Note>
+
+## Accessing Onboarding Settings
+
+Navigate to **Settings > Onboarding**. The settings area has two tabs:
+
+### Templates Tab
+
+Manage your onboarding templates:
+
+- **View all templates** with name, description, phase count, and task count
+- **Create new templates** with the template builder
+- **Edit existing templates** to update phases and tasks
+- **Duplicate templates** to create variants
+- **Archive/unarchive templates** to manage your library
+- **Import/export templates** as JSON for backup or sharing
+
+See the [Templates guide](/user-guides/client-onboarding/templates) for detailed instructions on building templates.
+
+### Checklists Tab
+
+Manage reusable checklist templates:
+
+- **Create checklists** with named items that can be attached to any task
+- **Edit checklist items** — add, remove, or reorder items
+- **Archive checklists** you no longer need
+
+Checklists are attached to tasks in the template builder and appear as checkable sub-items during onboarding.
+
+## Permissions
+
+| Permission | Capability |
+|------------|------------|
+| `read_settings_onboarding` | View templates, checklists, and onboarding settings |
+| `write_settings_onboarding` | Create, edit, and manage templates and checklists |
+| `manage_settings_onboarding` | Full administrative access to onboarding settings |
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Client Onboarding Overview" icon="clipboard-check" href="/user-guides/client-onboarding/index">
+    Complete overview of the onboarding system
+  </Card>
+  <Card title="Templates Guide" icon="copy" href="/user-guides/client-onboarding/templates">
+    Detailed guide to building onboarding templates
+  </Card>
+</CardGroup>

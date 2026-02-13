@@ -1,0 +1,191 @@
+---
+title: 'Client Portal'
+description: 'What your clients see and how they interact with their onboarding portal'
+icon: 'browser'
+---
+
+The client portal is a branded, secure experience where your clients complete onboarding tasks, upload documents, sign agreements, and track progress. Clients access their portal via a secure invite link and email verification — no account or password required.
+
+<Note>
+This page describes the experience from the **client's perspective**. Share this with your team so everyone understands what clients see when they interact with the portal.
+</Note>
+
+## Accessing the Portal
+
+Clients receive an email invitation with a secure link to their portal. Access uses a two-step verification process:
+
+1. The client clicks their unique invite link
+2. They're prompted to verify their email address — a magic link is sent to the email on file
+3. After clicking the magic link, a 24-hour session is created (automatically refreshed while active)
+4. They land on their portal homepage showing progress and pending tasks
+
+<Info>
+The email verification step ensures that only the intended recipient can access the portal, even if the invite link is forwarded. Verification codes expire after 30 minutes, and clients can request up to 5 codes per session.
+</Info>
+
+<Warning>
+Each access link is unique per contact. Links should not be shared between people — each contact needs their own invitation.
+</Warning>
+
+## Portal Layout
+
+The client portal has four main sections, accessible via tabs:
+
+### Your Tasks
+
+Shows all tasks assigned to the client, organized by phase. Each task displays:
+
+- Task title and description
+- Evidence type badge (what action is needed)
+- Status indicator (pending, in progress, completed, blocked)
+- Due date (if set)
+
+Clients complete tasks by providing the required evidence — filling forms, uploading files, signing documents, etc.
+
+### Our Progress
+
+A full timeline view showing **both** MSP and client tasks across all phases. This gives clients transparency into the overall onboarding progress, including what your team is working on.
+
+### Documents
+
+A dedicated section for file uploads. Shows all requested documents with their current status:
+
+- **Requested** — Waiting for upload
+- **Uploaded** — Submitted, awaiting review
+- **Approved** — Reviewed and accepted
+- **Rejected** — Needs to be re-uploaded (with reviewer notes)
+
+### Approvals
+
+Formal approve/reject decisions. Each approval item shows:
+
+- Description of what needs to be decided
+- Optional supporting document to review
+- Approve or reject buttons with optional comments
+
+## Completing Tasks
+
+Each task type has a specific interaction in the client portal:
+
+### Standard Tasks
+
+Click **Mark Complete** to finish the task. Optionally add notes or evidence text.
+
+### Meeting Tasks
+
+Once your MSP schedules a meeting:
+
+- The meeting date, time, and duration are displayed
+- A **Join Meeting** link appears (if a meeting URL was provided)
+- A **Download Calendar Invite** button lets clients add it to their calendar
+
+### Document Upload Tasks
+
+Click the upload area or drag and drop files. Uploaded documents enter the review queue where your MSP team approves or rejects them.
+
+### Signature Tasks
+
+1. Review any attached document (if provided)
+2. Draw your signature on the signature pad
+3. Click **Submit Signature**
+
+The signature is recorded along with the signer's name, email, IP address, and timestamp.
+
+### Credential Handoff
+
+<Tabs>
+  <Tab title="Single Mode">
+    Fill in the credential fields:
+    - Username
+    - Password (with show/hide toggle)
+    - API Key (if applicable)
+    - Notes
+
+    Click **Submit Credentials** to securely send them to your MSP.
+  </Tab>
+  <Tab title="Bulk Mode">
+    Either paste credential text directly or upload a file (up to 10 MB) containing multiple credentials.
+
+    Click **Submit** to send everything securely.
+  </Tab>
+</Tabs>
+
+<Info>
+Submitted credentials are encrypted. Once submitted, they cannot be viewed by the client — only the MSP team can reveal them.
+</Info>
+
+### Secure File Drop
+
+Upload sensitive files that the MSP team can download securely. Files include time-based expiration tracking. Clients can delete submitted files before they're downloaded.
+
+### Training Tasks
+
+<Tabs>
+  <Tab title="Video Training">
+    Watch the embedded video (YouTube, Vimeo, or Loom) directly in the portal. Mark the task complete when finished.
+  </Tab>
+  <Tab title="In-Person Training">
+    View the training instructions and schedule details. Your MSP team marks this complete after the session.
+  </Tab>
+</Tabs>
+
+### Survey / Form Tasks
+
+Complete the embedded survey or form directly in the portal. Question types include short text, long text, single select, multiple select, and rating scales.
+
+### Checklist Tasks
+
+Check off individual items in the checklist. Both the client and MSP staff can check items. The task shows overall checklist progress.
+
+### Approval Tasks
+
+Review the description and any attached documents, then click **Approve** or **Reject**. Optionally add comments explaining your decision.
+
+## Asking Questions
+
+Clients can ask questions to your MSP team at any time by clicking the **Ask a Question** button. Questions are:
+
+- Delivered to your team via email notification
+- Recorded in the portal's activity feed
+- Visible to your team in the onboarding admin view
+
+## Task Comments
+
+Clients can participate in discussion threads on individual tasks. Comments are visible to both the client and MSP team, enabling back-and-forth communication without leaving the portal.
+
+## Progress Tracking
+
+The portal header shows an overall progress bar indicating what percentage of tasks are complete. The **Our Progress** tab provides a phase-by-phase timeline showing:
+
+- Phase names and status (pending, in progress, completed)
+- Visual indicators for the current phase
+- Completed phases with checkmarks
+
+## Portal Branding
+
+The client portal can be customized with your MSP's branding:
+
+- **Logo** — Your company logo displayed in the portal header
+- **Accent Color** — Applied to buttons, progress bars, and interactive elements
+- **Welcome Message** — Custom text displayed on the portal landing page
+- **Company Display Name** — How your MSP name appears to the client
+
+<Tip>
+Configure portal branding in **Settings > Onboarding** to apply it across all new portals.
+</Tip>
+
+## Security
+
+The client portal uses several security measures:
+
+| Feature | Description |
+|---------|-------------|
+| **Token-based access** | Each contact gets a unique, hashed access token |
+| **Email verification** | Contacts must verify their email via magic link before accessing the portal |
+| **24-hour sessions** | Sessions expire after 24 hours with automatic sliding renewal |
+| **No account required** | Clients don't need to create an account or remember a password |
+| **Credential encryption** | Submitted credentials are securely stored |
+| **Signature verification** | Digital signatures include content hash, IP address, and timestamp |
+| **File expiration** | Secure file drops include time-based access expiration |
+| **Access tracking** | Every portal access is logged with timestamp and IP |
+| **Revocable access** | MSP admins can revoke a contact's access instantly |

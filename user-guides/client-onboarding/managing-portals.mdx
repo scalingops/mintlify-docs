@@ -1,0 +1,267 @@
+---
+title: 'Managing Portals'
+description: 'Launch onboarding portals for clients, track progress, manage tasks, and communicate with contacts'
+icon: 'bars-progress'
+---
+
+Portals are active onboarding instances launched for a specific company. When you create a portal from a template, it copies the template's phases and tasks into a live workspace where you track progress, communicate with clients, and manage the onboarding process.
+
+## Launching a Portal
+
+<Steps>
+  <Step title="Open the Company Page">
+    Navigate to the company you want to onboard and click the **Onboarding** tab.
+  </Step>
+  <Step title="Start Onboarding">
+    Click **Start Onboarding**. Select a template from the dropdown — this determines the phases, tasks, and structure of the portal.
+  </Step>
+  <Step title="Add Client Contacts">
+    Add the client contacts who will access the portal. Enter their name, email, and role. Mark one contact as **Primary**.
+  </Step>
+  <Step title="Activate the Portal">
+    Click **Start Portal** to activate it. This generates secure access links for each contact and optionally sends invite emails.
+  </Step>
+</Steps>
+
+<Note>
+You can also create a portal in **Draft** mode first, make adjustments to tasks and phases, and activate it later when ready.
+</Note>
+
+## Portal Lifecycle
+
+Portals move through these stages:
+
+| Status | Description |
+|--------|-------------|
+| **Draft** | Being configured, not yet visible to clients |
+| **Active** | Live — clients can access and complete tasks |
+| **Completed** | All phases and tasks finished |
+| **Converted** | Migrated to your permanent systems (optional final step) |
+| **Archived** | Historical record, no longer active |
+
+## The Onboarding Tab
+
+The company onboarding page has four tabs for managing the portal:
+
+### Overview Tab
+
+The main dashboard showing:
+
+- **Portal status** with progress percentage
+- **Phase-by-phase progress bars** showing completion
+- **Task summary** with counts by status
+- **Quick actions** for managing the portal lifecycle
+
+### Tasks Tab
+
+The primary workspace for managing onboarding tasks.
+
+#### Status Legend
+
+At the top, a legend shows the four task statuses with their icons:
+
+- **Pending** (circle) — Not yet started
+- **In Progress** (clock) — Work underway
+- **Completed** (checkmark) — Done
+- **Blocked** (lock) — Waiting on a dependency
+
+<Tip>
+Click a task's status icon to cycle it forward (pending → in progress → completed). Right-click to choose any status from a dropdown menu.
+</Tip>
+
+#### Phase Accordions
+
+Tasks are grouped by phase in expandable accordions. Each phase header shows:
+
+- Phase name and status badge
+- Task completion count (e.g., "3 of 7 completed")
+- Progress bar
+
+Click a phase to expand it and see all tasks within.
+
+#### Task Rows
+
+Each task row displays:
+
+- **Status icon** — Click to update, right-click for all options
+- **Task title** — With evidence type badge (signature, credentials, meeting, etc.)
+- **Owner badge** — MSP or Client
+- **Due date** — Red if overdue, amber if due within 3 days
+- **Assigned user** — Who is responsible
+- **Priority indicator** — For high and critical tasks
+
+Click a task row to expand its detail panel, which shows:
+
+- Evidence content (signatures, credentials, uploaded files, survey responses)
+- Task description
+- Comment thread for discussion
+- Checklist items (if attached)
+
+#### Task Assignment
+
+Assign tasks to MSP team members individually:
+
+<Steps>
+  <Step title="Click the Assignee Area">
+    Click the assignee name or "Unassigned" on any task row.
+  </Step>
+  <Step title="Select a User">
+    Search and select a team member from the dropdown.
+  </Step>
+</Steps>
+
+For bulk reassignment, click **Reassign** in the toolbar to enter selection mode. Use checkboxes (with shift-click for range selection) to select multiple tasks, then assign them all at once.
+
+#### Sending Task Emails
+
+Send task summary emails to client contacts:
+
+- **Send All Tasks** — Emails a complete summary of all tasks with status and due dates
+- **Send Phase Tasks** — Emails tasks for a specific phase only
+- **Send Task Reminder** — Send a reminder for an individual task
+
+Each email includes task descriptions, status badges, due dates, and a link back to the portal.
+
+### Documents Tab
+
+The document triage inbox where you review files uploaded by clients.
+
+- **Filter by status** — View all, pending review, approved, or rejected documents
+- **Search** — Find documents by name or phase
+- **Review actions** — Click a document to approve or reject it with optional notes
+- **Download** — Download the original uploaded file
+
+### Activity Tab
+
+A complete audit trail of every portal event, with server-side search and type filtering.
+
+Events tracked include:
+
+- Portal and phase status changes
+- Task completions and assignments
+- Document uploads, approvals, and rejections
+- Contact access and invitations
+- Signatures and credential submissions
+- Meeting scheduling
+- Comments and questions
+
+Use the **search bar** to find events by description, actor name, or email. Use the **type filter** dropdown to show only specific event categories (Portal, Phase, Task, Document, Contact, etc.).
+
+## Contact Management
+
+Manage who has access to the client portal.
+
+### Adding Contacts
+
+<Steps>
+  <Step title="Open the Contact List">
+    In the portal overview, find the contacts section.
+  </Step>
+  <Step title="Add a Contact">
+    Click **Add Contact** and enter the contact's name, email, and role.
+  </Step>
+  <Step title="Send Invite">
+    Click **Send Invite** to email the contact their secure access link.
+  </Step>
+</Steps>
+
+### Contact Roles
+
+Assign roles to help identify each contact's responsibility:
+
+- Primary Contact
+- IT Contact
+- Decision Maker
+- Finance Contact
+- Office Manager
+
+### Managing Access
+
+- **Resend Invite** — Send the access link again if the contact lost it
+- **Revoke Access** — Immediately disable a contact's portal access
+- **Regenerate Token** — Create a new access link (invalidates the old one)
+
+Contact activity is tracked — you can see when each contact last accessed the portal and how many times.
+
+## Meeting Scheduling
+
+Schedule meetings directly from meeting-type tasks.
+
+<Steps>
+  <Step title="Click Schedule Meeting">
+    On a meeting task, click **Schedule Meeting**.
+  </Step>
+  <Step title="Set Meeting Details">
+    Enter the date, time, duration, and optional description. Add a meeting link if using a specific platform.
+  </Step>
+  <Step title="Select Attendees">
+    Choose from portal contacts and optionally add external attendees by email.
+  </Step>
+  <Step title="Send Invitations">
+    Click **Schedule** to send calendar invitations (ICS) via email to all attendees.
+  </Step>
+</Steps>
+
+## Credential & Signature Review
+
+### Reviewing Credentials
+
+When a client submits credentials through a credential handoff task:
+
+1. Open the task detail panel
+2. Click **Reveal Credentials** to view the submitted values
+3. Credentials auto-hide after 5 minutes for security
+4. For bulk submissions, download the uploaded file
+
+### Reviewing Signatures
+
+When a client signs a signature task:
+
+1. Open the task detail panel to view the signature image
+2. See signer details: name, email, IP address, and timestamp
+3. If a document was attached, the signed document is also available
+
+## Completing a Portal
+
+When all tasks and phases are complete:
+
+<Steps>
+  <Step title="Review Completion">
+    Verify all tasks show as completed and all documents are approved.
+  </Step>
+  <Step title="Complete the Portal">
+    Click **Complete Portal** in the overview actions. This marks the portal as finished.
+  </Step>
+  <Step title="Convert (Optional)">
+    If this client is now fully set up in your systems, click **Convert** to mark the portal as converted — a final status indicating the client has been migrated to your permanent tooling.
+  </Step>
+</Steps>
+
+## Dashboard Integration
+
+Your MSP dashboard shows onboarding information in two places:
+
+- **Active Onboarding Banner** — Quick-link pills showing each active portal with company name, portal name, and a progress bar. Click to jump directly to the portal.
+- **My Onboarding Tasks Widget** — A card showing your personally assigned onboarding tasks across all active portals, ordered by phase and task order. Click any task to go to its portal.
+
+Both are visible only when you have onboarding permissions and there are active portals.
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Start with a draft">
+    Create portals in draft mode first. Review the tasks, adjust descriptions for the specific client, and add contacts before activating. This avoids sending premature invitations.
+  </Accordion>
+  <Accordion title="Assign tasks early">
+    Assign MSP tasks to specific team members as soon as the portal goes active. This ensures tasks appear in everyone's dashboard widget.
+  </Accordion>
+  <Accordion title="Use the activity feed">
+    Check the activity feed regularly to stay informed about client progress. You can see exactly when contacts access the portal and complete tasks.
+  </Accordion>
+  <Accordion title="Send task summaries proactively">
+    Don't wait for clients to log in. Use the email features to send task summaries and reminders, especially for overdue items.
+  </Accordion>
+  <Accordion title="Review documents promptly">
+    Clients see document status in their portal. Leaving documents in "pending review" for too long creates a poor experience — aim to review within 24 hours.
+  </Accordion>
+</AccordionGroup>

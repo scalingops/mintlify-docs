@@ -1,0 +1,242 @@
+---
+title: 'Onboarding Templates'
+description: 'Build reusable onboarding blueprints with phases, tasks, documents, surveys, and automation hooks'
+icon: 'copy'
+---
+
+Templates are reusable blueprints that define your onboarding process. Each template contains phases (workflow stages) and tasks (individual action items) that get copied into a portal when you launch onboarding for a client.
+
+## Creating a Template
+
+<Steps>
+  <Step title="Navigate to Templates">
+    Go to **Settings > Onboarding > Templates** and click **New Template**.
+  </Step>
+  <Step title="Set Template Details">
+    Enter a **name**, optional **description**, and **tags** for organization. Set the **estimated duration** to help plan timelines.
+  </Step>
+  <Step title="Add Phases">
+    Click **Add Phase** to create workflow stages. Each phase represents a logical grouping of tasks (e.g., "Discovery", "Setup", "Training", "Go Live"). Drag phases to reorder them.
+  </Step>
+  <Step title="Add Tasks to Phases">
+    Click **Add Item** within a phase to create tasks. Configure each task's type, ownership, and evidence requirements.
+  </Step>
+  <Step title="Save">
+    Click **Save** to save your template. It's now available when launching portals.
+  </Step>
+</Steps>
+
+## Phases
+
+Phases are the major stages of your onboarding workflow. They execute sequentially and provide visual progress tracking for both your team and the client.
+
+Each phase has:
+
+- **Name** — A descriptive label (e.g., "Network Discovery", "Migration", "Training")
+- **Description** — Optional details about the phase's purpose
+- **Order** — Drag to reorder phases within the template
+- **Estimated Duration** — Expected time to complete
+
+<Tip>
+Keep phases high-level (3–6 per template works well). Use tasks within phases for the detailed steps.
+</Tip>
+
+## Task Types
+
+Each task can collect a specific type of evidence or require a particular action. Set the **evidence type** when creating a task.
+
+### Standard Task
+
+A basic task with optional text evidence. The assignee marks it complete, optionally providing notes.
+
+**Use for:** General action items, internal setup steps, verification tasks
+
+### Meeting
+
+Schedule a meeting directly from the task. Generates calendar invitations with ICS attachments and sends email invitations to selected attendees.
+
+**Use for:** Kickoff calls, discovery sessions, training walkthroughs
+
+### Document Upload
+
+Request specific documents from the client. Documents go through an upload → review → approve/reject workflow.
+
+**Use for:** Insurance certificates, network diagrams, vendor contracts, existing IT documentation
+
+### Digital Signature
+
+Collect a digital signature from the client using a built-in signature pad. Optionally attach a PDF document for the client to review before signing.
+
+**Use for:** Service agreements, acceptable use policies, authorization forms
+
+### Credential Handoff
+
+Securely collect credentials from the client. Supports two modes:
+
+- **Single mode** — Username, password, API key, and notes fields
+- **Bulk mode** — Text paste or file upload for multiple credentials at once
+
+Submitted credentials are encrypted and auto-hide after 5 minutes when revealed by MSP staff.
+
+**Use for:** Admin passwords, VPN credentials, vendor logins, API keys
+
+### Secure File Drop
+
+Allows clients to upload files that expire after download. Includes time-based expiration tracking and secure download links.
+
+**Use for:** Sensitive configuration files, license keys, security certificates
+
+### Training
+
+Embed training content directly in the task. Supports two modes:
+
+- **Video mode** — Embed videos from YouTube, Vimeo, or Loom with auto-parsed embed URLs
+- **In-person mode** — Instructions for scheduled training sessions
+
+**Use for:** Security awareness training, platform walkthroughs, tool-specific training
+
+### Survey / Form
+
+Link a survey or form from your Surveys module. Clients complete the survey inline within the portal.
+
+**Use for:** IT environment questionnaires, user inventories, preference surveys, needs assessments
+
+### Approval
+
+Request a formal approve/reject decision from the client. Optionally attach a supporting document for context.
+
+**Use for:** Budget approvals, scope sign-offs, design approvals, change requests
+
+### Checklist
+
+Attach a checklist template with granular sub-items. Both MSP staff and clients can check off individual items.
+
+**Use for:** Server setup verification, workstation deployment steps, migration readiness checks
+
+## Task Configuration
+
+Beyond the evidence type, each task has several configuration options:
+
+| Setting | Description |
+|---------|-------------|
+| **Title** | The task name displayed to both MSP and client |
+| **Description** | Detailed instructions or context |
+| **Owner** | Who is responsible: **MSP** (your team) or **Client** |
+| **Priority** | Low, Normal, High, or Critical |
+| **Due Date Logic** | Offset from phase start, portal start, or dependency completion |
+| **Dependencies** | Block this task until another task is completed |
+| **Category** | Optional tag for organizing tasks |
+| **Milestone** | Flag important tasks as milestones |
+
+### Task Dependencies
+
+Tasks can depend on other tasks. A dependent task appears as "blocked" until its prerequisite is completed. This ensures tasks execute in the correct order.
+
+<Steps>
+  <Step title="Open the Dependency Picker">
+    When editing a task, click **Add Dependency**.
+  </Step>
+  <Step title="Select Prerequisites">
+    Choose one or more tasks from any phase that must complete before this task unblocks.
+  </Step>
+  <Step title="Save">
+    The task will show as blocked in the portal until all dependencies are met.
+  </Step>
+</Steps>
+
+### Task Ownership
+
+Each task is owned by either the **MSP** or the **Client**:
+
+- **MSP tasks** appear under "Our Progress" in the client portal and are managed by your team
+- **Client tasks** appear under "Your Tasks" in the client portal and require client action
+
+## Documents, Surveys, and Approvals
+
+In addition to tasks, phases can contain:
+
+- **Documents** — Specific files to request from clients (with allowed file type restrictions)
+- **Surveys** — Linked survey templates from the Surveys module
+- **Approvals** — Formal approve/reject items with optional supporting documents
+
+These appear in dedicated sections of the client portal alongside tasks.
+
+## AI Template Designer
+
+Generate complete onboarding templates using AI. Describe your onboarding process in plain language and AI creates the phases, tasks, and structure for you.
+
+<Steps>
+  <Step title="Open the AI Sidebar">
+    In the template builder, click the **AI** button to open the AI design sidebar.
+  </Step>
+  <Step title="Describe Your Process">
+    Type a description like "Create an onboarding template for a 50-person law firm migrating from on-prem Exchange to Microsoft 365" or "Add a security hardening phase with MFA enrollment and endpoint protection tasks."
+  </Step>
+  <Step title="Review the Diff">
+    AI generates proposed changes shown in a diff preview. Review each change — added phases, tasks, and configuration.
+  </Step>
+  <Step title="Apply or Adjust">
+    Click **Apply** to accept the changes, or continue the conversation to refine. You can undo the last AI application if needed.
+  </Step>
+</Steps>
+
+<Tip>
+The AI designer works best when you provide context about the client type, size, and specific requirements. You can also ask it to modify an existing template — for example, "Add a compliance documentation phase after the migration phase."
+</Tip>
+
+## Import & Export
+
+Share templates across tenants or back them up using JSON import/export.
+
+- **Export** — Click the **⋯** menu on a template and select **Export**. Downloads a JSON file containing the complete template structure.
+- **Import** — On the templates list page, click **Import** and upload a JSON template file. Review the imported structure before saving.
+
+## Checklist Templates
+
+Checklist templates are reusable sets of sub-items that can be attached to any task.
+
+<Steps>
+  <Step title="Navigate to Checklists">
+    Go to **Settings > Onboarding > Checklists**.
+  </Step>
+  <Step title="Create a Checklist">
+    Click **New Checklist**, give it a name and description, then add individual items with labels and ordering.
+  </Step>
+  <Step title="Attach to Tasks">
+    When configuring a task in the template builder, select a checklist template. The checklist items will appear as checkable sub-items within the task.
+  </Step>
+</Steps>
+
+## Template Management
+
+### Archiving Templates
+
+Archive templates you no longer need. Archived templates are hidden from the template list but can be restored at any time. Existing portals using archived templates are not affected.
+
+### Duplicating Templates
+
+Duplicate a template to create a variant. Click the **⋯** menu on any template and select **Duplicate** to create an identical copy you can modify independently.
+
+### Change History
+
+The template builder tracks changes over time. View the change history to see when modifications were made and by whom.
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Keep templates focused">
+    Create separate templates for different client types (e.g., "SMB Onboarding", "Enterprise Migration", "M365 Setup Only") rather than one massive template with optional phases.
+  </Accordion>
+  <Accordion title="Use dependencies strategically">
+    Only add dependencies where order truly matters. Over-blocking tasks creates unnecessary bottlenecks for clients.
+  </Accordion>
+  <Accordion title="Balance MSP and client tasks">
+    Don't put all the work on the client. Include MSP-owned tasks so clients can see your team's progress too — it builds trust and transparency.
+  </Accordion>
+  <Accordion title="Add clear descriptions">
+    Write task descriptions from the client's perspective. Instead of "Provide AD credentials," write "Please provide your Active Directory administrator username and password so we can begin the migration."
+  </Accordion>
+  <Accordion title="Use the AI designer for first drafts">
+    Start with AI to generate a baseline template, then customize it to match your exact process. This is much faster than building from scratch.
+  </Accordion>
+</AccordionGroup>

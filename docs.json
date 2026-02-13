@@ -113,6 +113,15 @@
             "group": "Service Delivery",
             "pages": [
               {
+                "group": "Client Onboarding",
+                "pages": [
+                  "user-guides/client-onboarding/index",
+                  "user-guides/client-onboarding/templates",
+                  "user-guides/client-onboarding/managing-portals",
+                  "user-guides/client-onboarding/client-portal"
+                ]
+              },
+              {
                 "group": "Training",
                 "pages": [
                   "user-guides/training/index",
@@ -277,6 +286,7 @@
                   "user-guides/settings/compliance",
                   "user-guides/settings/playbooks",
                   "user-guides/settings/external",
+                  "user-guides/settings/onboarding",
                   "user-guides/settings/templates",
                   "user-guides/settings/email",
                   "user-guides/settings/integrations",
