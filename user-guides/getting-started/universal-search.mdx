@@ -1,0 +1,122 @@
+---
+title: 'Universal Search'
+description: 'Find anything in MSPortal instantly with the Cmd+K command palette'
+icon: 'magnifying-glass'
+---
+
+## Overview
+
+Universal Search is a command palette that lets you find anything in MSPortal from a single search bar. Press **Cmd+K** (Mac) or **Ctrl+K** (Windows/Linux) from anywhere in the app to open it, type your query, and jump directly to the result.
+
+## Opening Universal Search
+
+There are two ways to open Universal Search:
+
+<Tabs>
+  <Tab title="Keyboard Shortcut">
+    Press **Cmd+K** (Mac) or **Ctrl+K** (Windows/Linux) from any page in MSPortal. Press it again to close.
+  </Tab>
+  <Tab title="Search Button">
+    Click the **search icon** in the top navigation bar.
+  </Tab>
+</Tabs>
+
+## Searching
+
+Start typing in the search bar and results appear automatically as you type. Results are grouped by category with icons so you can quickly identify what you're looking at.
+
+### Navigating Results
+
+| Action | Key | Description |
+|--------|-----|-------------|
+| Move down | `↓` | Highlight the next result |
+| Move up | `↑` | Highlight the previous result |
+| Select | `Enter` | Navigate to the highlighted result |
+| Close | `Esc` | Close the search palette |
+
+<Tip>
+You can also click any result to navigate to it, or right-click to open it in a new tab.
+</Tip>
+
+## What You Can Search
+
+Universal Search covers 14 categories across MSPortal:
+
+<CardGroup cols={2}>
+  <Card title="Navigation" icon="arrow-right">
+    Jump to any page or settings screen by name
+  </Card>
+  <Card title="Tickets" icon="ticket">
+    Find tickets by title, status, or company name
+  </Card>
+  <Card title="Companies" icon="building">
+    Look up clients by company name
+  </Card>
+  <Card title="Devices" icon="laptop">
+    Search hardware by device name or type
+  </Card>
+  <Card title="Training" icon="book-open">
+    Find courses by title or course type
+  </Card>
+  <Card title="Compliance" icon="shield-check">
+    Search checks and assignments by title or status
+  </Card>
+  <Card title="Projects" icon="folder-kanban">
+    Locate projects by name or status
+  </Card>
+  <Card title="Budgets" icon="landmark">
+    Find budgets by title, fiscal year, or status
+  </Card>
+  <Card title="Invoices" icon="receipt">
+    Search invoices by number, reference, or total
+  </Card>
+  <Card title="Backups" icon="hard-drive">
+    Find Cove backup devices by name or status
+  </Card>
+  <Card title="Security" icon="shield">
+    Search Cork vulnerabilities, compliance events, and endpoints
+  </Card>
+  <Card title="Goals" icon="bullseye">
+    Look up goals by title or status
+  </Card>
+  <Card title="Planner" icon="calendar">
+    Find planner items by title or status
+  </Card>
+  <Card title="Notes" icon="file-lines">
+    Full-text search across all note content (Deep Search only)
+  </Card>
+</CardGroup>
+
+<Note>
+**Backups** and **Security** categories only appear if you have the Cove Backup or Cork Security integrations enabled. Categories are also filtered based on your user permissions — you'll only see results you have access to.
+</Note>
+
+## Deep Search
+
+Toggle **Deep Search** mode by clicking the sparkle button at the bottom of the search palette. Deep Search enables full-text search across all note content in MSPortal, including:
+
+- Ticket notes
+- Meeting notes
+- Planner item notes
+- Project notes
+
+When Deep Search finds a match in a note, the result shows a snippet preview of the matching text and links directly to the parent item (the ticket, meeting, planner item, or project the note belongs to).
+
+<Info>
+Your Deep Search preference is remembered between sessions — toggle it once and it stays on until you turn it off.
+</Info>
+
+## Company Scoping
+
+Search results automatically respect your currently selected companies. If you have specific companies selected in the company filter, Universal Search only returns results from those companies.
+
+## Permissions
+
+Universal Search respects your user permissions. You will only see results from categories your role has access to. For example, if your role doesn't include compliance permissions, compliance results won't appear in search.
+
+## Tips
+
+- **Use short, specific terms** for the fastest results — searching "acme" is more effective than "acme corporation LLC"
+- **Navigate to pages quickly** by typing the page name, like "settings" or "training"
+- **Enable Deep Search** when you need to find something mentioned in a note but can't remember which ticket or meeting it was in
+- **Right-click a result** to open it in a new browser tab while keeping your current page open

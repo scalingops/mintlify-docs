@@ -18,6 +18,7 @@
             "pages": [
               "user-guides/getting-started/index",
               "user-guides/getting-started/quick-start",
+              "user-guides/getting-started/universal-search",
               "user-guides/getting-started/keyboard-shortcuts",
               "user-guides/getting-started/Onboarding-checklist",
               "user-guides/getting-started/how-to-create-a-new-user-role",
