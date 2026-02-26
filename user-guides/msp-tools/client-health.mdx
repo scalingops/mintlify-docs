@@ -1,0 +1,295 @@
+---
+title: 'Client Health'
+description: 'Monitor customer success with health scores across 8 dimensions, risk classification, and trend tracking'
+icon: 'heart-pulse'
+---
+
+Client Health provides a comprehensive health scoring system that tells you exactly where to focus your resources. Every company in your portfolio receives a health score from 0 to 100, calculated across 8 dimensions using data from your connected integrations.
+
+## Overview
+
+The Client Health dashboard shows all your companies in a sortable, filterable table with their health scores, risk levels, and individual dimension scores. At a glance, you can identify which companies need attention and which are thriving.
+
+### Key Features
+
+<CardGroup cols={2}>
+  <Card title="8-Dimension Scoring" icon="chart-radar">
+    Health scores computed across Service Quality, Engagement, Financial, Sales, Projects, Tool Stack, Environment, and Operational dimensions.
+  </Card>
+  <Card title="Risk Classification" icon="shield">
+    Companies automatically categorized as Thriving, Healthy, At Risk, or Critical based on their overall health score.
+  </Card>
+  <Card title="Trend Tracking" icon="chart-line">
+    Daily snapshots track score changes over time with 180-day trend charts and improvement/decline indicators.
+  </Card>
+  <Card title="Spotlight" icon="lightbulb">
+    Automatically highlights companies that need attention and those that have improved the most.
+  </Card>
+</CardGroup>
+
+## Dashboard
+
+Navigate to **Client Health** in the main sidebar to open the dashboard.
+
+### Summary Cards
+
+At the top of the dashboard, summary cards provide a portfolio-wide snapshot:
+
+- **Avg Health Score** - The average health score across all companies
+- **Avg NPS** - Average Net Promoter Score from surveys
+- **Tool Stack** - Average tool stack deployment percentage
+- **Companies** - Total number of companies being tracked
+
+Below the averages, colored pills show the distribution of companies across risk levels:
+- **Thriving** (green) - Companies performing well across all dimensions
+- **Healthy** (blue) - Companies in good standing with minor areas for improvement
+- **At Risk** (yellow) - Companies showing concerning trends that need attention
+- **Critical** (red) - Companies requiring immediate intervention
+
+### Spotlight Section
+
+The Spotlight section highlights two important groups:
+
+- **Needs Attention** - Companies whose health scores have declined the most recently
+- **Most Improved** - Companies whose scores have improved the most
+
+This helps you quickly see who's trending in the wrong direction without scanning the full table.
+
+### Company Table
+
+The main table shows one row per company with the following default columns:
+
+| Column | Description |
+|--------|-------------|
+| **Company** | Company name (filterable) |
+| **Health Score** | Overall score from 0-100 with color indicator |
+| **Risk Level** | Thriving, Healthy, At Risk, or Critical (multi-select filter) |
+| **Service Quality** | Dimension score based on ticket metrics |
+| **Engagement** | Dimension score based on meeting and contact frequency |
+| **Financial** | Dimension score based on profitability and payment behavior |
+| **Sales** | Dimension score based on pipeline and win rates |
+| **Projects** | Dimension score based on project activity |
+| **Tool Stack** | Dimension score based on deployment percentage |
+| **Environment** | Dimension score based on device and user metrics |
+| **Operational** | Dimension score based on planner tasks and goal completion |
+
+<Tip>
+Click the column visibility button to show additional columns including Trend, Days Since Contact, Tickets (90d), NPS, Overdue Invoices, Tool Stack %, and 20+ other detailed metrics.
+</Tip>
+
+### Refreshing Scores
+
+Scores refresh automatically every day at 2:00 AM UTC. To trigger an immediate refresh:
+
+1. Click **Refresh Scores** in the top-right corner of the dashboard
+2. The button shows "Refreshing..." with a spinner while the background task runs
+3. When complete, a toast notification shows "Refreshed X companies"
+4. The table automatically updates with the new scores
+
+## Company Detail View
+
+Click any company row to open its detailed health analysis. The detail page includes:
+
+### Summary Cards
+
+Four cards at the top show key indicators:
+
+1. **Health Score** - Current score with a progress bar and breakdown tooltip
+2. **Risk Level** - Current classification with colored badge
+3. **Days Since Contact** - Days since the last interaction (highlights red when over 30 days)
+4. **Tool Stack Compliance** - Deployment percentage of tracked tools
+
+### Dimension Breakdown
+
+A table showing each of the 8 dimensions with:
+
+- Dimension name and icon
+- Current score (0-100)
+- Visual progress bar
+- Weight (how much this dimension contributes to the overall score)
+
+### Health Trend Chart
+
+A 180-day line chart showing how the company's health score has changed over time. Use this to identify long-term trends and the impact of your interventions.
+
+### Raw Metrics
+
+Detailed metric cards organized by dimension, showing the actual underlying data:
+
+**Service Quality:**
+- Tickets (90d) - Number of tickets in the last 90 days
+- Avg Days to Close - Average resolution time
+- Avg Hours/Ticket - Average labor hours per ticket
+- Escalation Rate - Percentage of tickets that were escalated
+
+**Engagement:**
+- Days Since Meeting - Days since the last scheduled meeting
+- Meetings (90d) - Number of meetings in the last 90 days
+- Missed Meeting % - Percentage of meetings that were missed
+- Latest NPS - Most recent Net Promoter Score
+
+**Financial:**
+- Profitability - Financial grade (A-F) and numeric score
+- Overdue Invoices - Count of unpaid invoices past due
+- Outstanding - Total outstanding invoice amount
+- Avg Days to Pay - Average payment turnaround time
+- Days Since Payment - Days since the last payment was received
+
+**Sales:**
+- Pipeline Value - Total value of open opportunities
+- Won Revenue (365d) - Revenue from closed-won quotes in the last year
+- Opportunities (90d) - Number of quotes in the last 90 days
+- Open Opportunities - Current open quote count
+- Win % - Quote win rate
+- Days Since Opportunity - Days since the last quote was created
+
+**Environment:**
+- Device Count - Total managed devices
+- Active Users - Percentage of active users
+
+**Operational:**
+- Overdue Tasks - Count of overdue planner items and compliance assignments
+- Goal Completion - Percentage of goals completed
+
+## The 8 Health Dimensions
+
+Each dimension measures a different aspect of the client relationship. Scores are computed using a percentile-based system that compares each company against your portfolio.
+
+### Service Quality
+
+Measures how effectively you're resolving support issues.
+
+| Metric | Weight | What It Measures |
+|--------|--------|-----------------|
+| Resolution Time | 40% | Average days to close tickets (lower is better) |
+| Hours Per Ticket | 35% | Average labor hours per ticket (lower is better) |
+| Escalation Rate | 25% | Percentage of escalated tickets (lower is better) |
+
+### Engagement
+
+Measures the strength and frequency of your client interactions.
+
+| Metric | Weight | What It Measures |
+|--------|--------|-----------------|
+| Service Engagement | 34% | Days since last contact (fewer is better) |
+| Proactive Engagement | 33% | Days since last meeting (fewer is better) |
+| NPS Score | 33% | Net Promoter Score from surveys (higher is better) |
+
+### Financial
+
+Measures the financial health and profitability of the relationship.
+
+| Metric | Weight | What It Measures |
+|--------|--------|-----------------|
+| Profitability | 50% | Financial grade/score from Financial Reporting |
+| Late Invoices | 30% | Count of overdue invoices (fewer is better) |
+| Days to Pay | 20% | Average invoice payment time (fewer is better) |
+
+### Sales
+
+Measures pipeline activity and revenue growth potential.
+
+| Metric | Weight | What It Measures |
+|--------|--------|-----------------|
+| Opportunity Recency | 60% | Days since last quote (fewer is better) |
+| Win Rate | 40% | Quote win percentage (higher is better) |
+
+### Projects
+
+Measures project engagement and activity.
+
+| Metric | What It Measures |
+|--------|-----------------|
+| Project Count (365d) | Number of projects in the last year |
+| Project Recency | How recently the last project was active |
+
+### Tool Stack
+
+Measures how completely the company has adopted your recommended tools.
+
+| Metric | What It Measures |
+|--------|-----------------|
+| Deployment Percentage | Ratio of deployed required tools to total required tools |
+
+<Tip>
+The Tool Stack dimension score is a direct linear mapping of deployment percentage. A company with 80% of required tools deployed scores 80 on this dimension.
+</Tip>
+
+### Environment
+
+Measures the technical health of the company's environment.
+
+| Metric | Weight | What It Measures |
+|--------|--------|-----------------|
+| Device Count | 60% | Total managed devices (more indicates larger engagement) |
+| Active User % | 40% | Percentage of users actively using managed services |
+
+### Operational
+
+Measures how well day-to-day operations are running.
+
+| Metric | Weight | What It Measures |
+|--------|--------|-----------------|
+| Overdue Tasks | 50% | Count of overdue planner items and compliance assignments (fewer is better) |
+| Goal Completion | 50% | Percentage of company goals completed (higher is better) |
+
+## Configuring Health Scoring
+
+Navigate to **Settings > MSP Tools > Scoring** to configure which dimensions are included in health score calculations.
+
+### Enabling/Disabling Dimensions
+
+Each of the 8 dimensions can be toggled on or off:
+
+- **Enabled dimensions** contribute their weighted score to the overall health score
+- **Disabled dimensions** are excluded from calculations entirely
+- When a dimension is disabled, its weight is redistributed proportionally across the remaining enabled dimensions
+
+<Warning>
+Changes to scoring configuration affect all companies immediately. The next refresh cycle (or manual refresh) will recalculate scores with the new configuration.
+</Warning>
+
+### When to Disable Dimensions
+
+Consider disabling a dimension when:
+
+- You don't have the data source connected (e.g., disable Sales if you don't track quotes)
+- A dimension isn't relevant to your business model
+- You want to focus scoring on specific areas
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Review critical companies weekly">
+    Filter the dashboard by **Critical** risk level and review each company's detail page. Look at the Negative Drivers section to understand what's pulling scores down.
+  </Accordion>
+  <Accordion title="Use the Spotlight section daily">
+    Check the Needs Attention list each morning to catch companies that are declining before they become critical.
+  </Accordion>
+  <Accordion title="Track trends over time">
+    Individual score snapshots are less useful than trends. Use the 180-day trend chart on detail pages to see whether your interventions are working.
+  </Accordion>
+  <Accordion title="Connect all available integrations">
+    The more data sources you connect, the more accurate health scores become. Missing data results in dimensions being scored as N/A.
+  </Accordion>
+  <Accordion title="Calibrate scoring to your business">
+    If certain dimensions consistently produce unexpected results, consider disabling them or adjusting your thresholds. The goal is for the score to match your intuition about client health.
+  </Accordion>
+</AccordionGroup>
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="MSP Tools Overview" icon="heart-pulse" href="./index">
+    Overview of all MSP Tools features
+  </Card>
+  <Card title="Tool Stack" icon="wrench" href="./tool-stack">
+    Manage tool deployments that feed into the Tool Stack dimension
+  </Card>
+  <Card title="Financial Reporting" icon="dollar-sign" href="./financial-reporting">
+    Revenue analysis that feeds into the Financial dimension
+  </Card>
+  <Card title="Planner" icon="list-check" href="/user-guides/planner/index">
+    Manage tasks that feed into the Operational dimension
+  </Card>
+</CardGroup>

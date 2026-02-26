@@ -1,0 +1,222 @@
+---
+title: 'Tool Stack'
+description: 'Track tool deployments across your client base with a compliance matrix and automatic planner integration'
+icon: 'wrench'
+---
+
+Tool Stack gives you a bird's-eye view of which tools each company in your portfolio has deployed. Define your recommended technology stack, then track deployment status across all companies using a compliance matrix that automatically creates planner items for tracking.
+
+## Overview
+
+<CardGroup cols={2}>
+  <Card title="Compliance Matrix" icon="table-cells">
+    A grid view showing every company against every tool in your stack, with color-coded deployment statuses.
+  </Card>
+  <Card title="Planner Integration" icon="list-check">
+    Automatically creates planner items when tools are synced to companies, so deployment tasks appear in your team's workflow.
+  </Card>
+  <Card title="Category Organization" icon="folder">
+    Group tools into categories like Security, Backup, Cloud, and Monitoring for clear organization.
+  </Card>
+  <Card title="Health Score Integration" icon="heart-pulse">
+    Tool deployment percentages feed directly into the Client Health Tool Stack dimension score.
+  </Card>
+</CardGroup>
+
+## Setting Up Your Tool Stack
+
+Before using the compliance matrix, you need to define the categories and tools you want to track.
+
+### Managing Categories
+
+Navigate to **Settings > MSP Tools > Tool Stack** to manage your tool stack.
+
+<Steps>
+  <Step title="Create a category">
+    Click **Add Category** to create a new tool category (e.g., Security, Backup, Cloud, Monitoring).
+  </Step>
+  <Step title="Configure the category">
+    Click the edit button on the category header to set:
+    - **Description** - Optional description of what this category covers
+    - **Planner Type** - Links to a planner item type for automatic categorization of created tasks
+    - **Icon** - Choose an icon to represent this category
+  </Step>
+  <Step title="Add tools to the category">
+    Click **Add Item** within the category to create individual tool entries.
+  </Step>
+</Steps>
+
+### Managing Tool Items
+
+Each tool item has the following fields:
+
+| Field | Description |
+|-------|-------------|
+| **Name** | The name of the tool (e.g., "SentinelOne EDR", "Veeam Backup") |
+| **Vendor** | The vendor name (e.g., "SentinelOne", "Veeam") |
+| **Description** | Optional description of the tool's purpose |
+| **Default Price** | The default cost used when creating planner items (shown as a dollar amount) |
+| **Required** | Whether this tool is mandatory for all companies |
+
+<Tip>
+Mark tools as **Required** when they're part of your standard stack that every company should have. Only required tools count toward the Tool Stack health dimension score.
+</Tip>
+
+The settings page shows summary counters at the top:
+- Total number of categories
+- Total number of items
+- Number of required items
+
+### Syncing to Companies
+
+After defining your tool stack, you need to sync it to your companies to create tracking records.
+
+<Steps>
+  <Step title="Click Sync All Companies">
+    Click the **Sync All Companies** button at the top of the Tool Stack settings page.
+  </Step>
+  <Step title="Review the confirmation">
+    A dialog shows what will happen:
+    - How many items across how many categories will be synced
+    - Existing company statuses (deployed, in progress, etc.) will **not** be overwritten
+    - A planner item is created for each new tracking row
+    - The sync runs as a background task
+  </Step>
+  <Step title="Confirm the sync">
+    Click **Sync All Companies** in the dialog to start the background task.
+  </Step>
+</Steps>
+
+<Note>
+Syncing is non-destructive. It only creates new tracking records and planner items where they don't already exist. Companies that already have a status for a tool will not be affected.
+</Note>
+
+New tool items are also automatically synced to companies when you add them.
+
+## Using the Compliance Matrix
+
+The compliance matrix is accessed from the **Planner** section in the sidebar, under the **Tool Stack** tab.
+
+### Reading the Matrix
+
+The matrix displays:
+
+- **Rows** - One row per company
+- **Columns** - Tool items grouped by category (category names appear as group headers)
+- **Cells** - Color-coded status indicators
+
+### Status Indicators
+
+Each cell shows one of four statuses:
+
+| Status | Symbol | Color | Meaning |
+|--------|--------|-------|---------|
+| **Deployed** | Checkmark | Green | Tool is fully deployed and operational |
+| **In Progress** | Circle | Amber | Deployment is underway |
+| **Not Started** | X | Gray | Tool has not been deployed yet |
+| **N/A** | Dash | Light gray | Tool is not applicable to this company |
+
+### Summary Statistics
+
+At the top of the matrix, summary statistics show:
+- Total number of companies being tracked
+- Overall deployment percentage across all companies
+- Count of deployed items vs total items
+
+### Updating Statuses
+
+To change a tool's deployment status for a company:
+
+1. Right-click (or long-press on mobile) the cell you want to update
+2. Select from the context menu:
+   - **Mark Deployed** - Tool is fully deployed
+   - **Mark In Progress** - Deployment has started
+   - **Mark Not Started** - Reset to not started
+   - **Mark N/A** - Mark as not applicable
+
+A success toast confirms the update: "Marked as [status]".
+
+### Searching Companies
+
+Use the search field at the top of the matrix (placeholder: "Search companies...") to filter the company list. This is helpful when you need to quickly find a specific company's tool status.
+
+## Planner Integration
+
+When tool stack items are synced to companies, MSPortal automatically creates corresponding planner items. This means every tool deployment appears as a trackable task in the Planner.
+
+### How It Works
+
+1. When a tool item is synced to a company, a **planner item** is created with:
+   - Title matching the tool name
+   - Due date set to the end of the current month
+   - Business value set to "Medium"
+   - Cost estimate from the tool's default price
+   - Source marked as "Tool Stack"
+
+2. The planner item and tool stack tracking record are linked, so:
+   - Updating the tool stack status updates the linked planner item
+   - The planner item shows the tool stack source
+
+3. You can view and manage these items in the regular Planner views (list, timeline, monthly).
+
+<Tip>
+Filter the Planner by source "Tool Stack" to see all tool deployment tasks across your portfolio.
+</Tip>
+
+### Deleting Tool Items
+
+When deleting a tool item that has linked planner items:
+
+- A warning shows how many linked planner items will be deleted
+- You must type the item name to confirm deletion
+- Both the tool tracking records and linked planner items are permanently removed
+
+## Impact on Health Scores
+
+The Tool Stack deployment percentage directly feeds into the **Tool Stack dimension** of Client Health scores:
+
+- Only **required** tools count toward the health dimension
+- The score is a linear mapping: 80% deployed = 80 dimension score
+- Companies with no required tools show N/A for this dimension
+
+This creates a direct incentive to drive tool standardization across your client base.
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Start with your core stack">
+    Begin by adding the 5-10 tools that every company should have (EDR, backup, email security, etc.). Mark these as Required. Add recommended but optional tools later.
+  </Accordion>
+  <Accordion title="Use categories to organize logically">
+    Group tools by function (Security, Backup, Productivity, Monitoring) rather than by vendor. This makes the compliance matrix easier to read.
+  </Accordion>
+  <Accordion title="Set realistic default prices">
+    The default price is used when creating planner items. Set it to the typical per-company cost so your planner accurately reflects deployment budgets.
+  </Accordion>
+  <Accordion title="Link categories to planner types">
+    Set the Planner Type on each category so that automatically created planner items are properly categorized and appear in the right views.
+  </Accordion>
+  <Accordion title="Review the matrix weekly">
+    Use the compliance matrix in your weekly team meetings to track deployment progress. Filter by Not Started to identify gaps.
+  </Accordion>
+  <Accordion title="Use N/A strategically">
+    Mark tools as N/A for companies where they genuinely don't apply (e.g., a backup tool for a company that uses a different backup solution you support). Don't use N/A to hide gaps.
+  </Accordion>
+</AccordionGroup>
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="MSP Tools Overview" icon="heart-pulse" href="./index">
+    Overview of all MSP Tools features
+  </Card>
+  <Card title="Client Health" icon="heart-pulse" href="./client-health">
+    See how tool stack scores feed into overall health
+  </Card>
+  <Card title="Planner" icon="list-check" href="/user-guides/planner/index">
+    Manage planner items created by Tool Stack
+  </Card>
+  <Card title="Financial Reporting" icon="dollar-sign" href="./financial-reporting">
+    Analyze revenue and profitability per company
+  </Card>
+</CardGroup>

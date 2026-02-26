@@ -1,0 +1,203 @@
+---
+title: 'Financial Reporting'
+description: 'Analyze revenue classification, profitability metrics, and financial grading across your client portfolio'
+icon: 'dollar-sign'
+---
+
+Financial Reporting gives you clear visibility into the profitability of every client relationship. It classifies revenue from your PSA into meaningful categories, calculates key financial metrics, and assigns letter grades so you can instantly spot your most and least profitable accounts.
+
+## Overview
+
+<CardGroup cols={2}>
+  <Card title="Revenue Classification" icon="tags">
+    Map PSA product types to revenue categories (managed recurring, non-recurring, other recurring) for accurate financial analysis.
+  </Card>
+  <Card title="Financial Grading" icon="graduation-cap">
+    A-F letter grades based on three key profitability metrics, weighted and scored automatically.
+  </Card>
+  <Card title="Flexible Periods" icon="calendar">
+    View metrics for the current month, trailing 3 months, year-to-date, or any specific historical month.
+  </Card>
+  <Card title="Health Score Integration" icon="heart-pulse">
+    Financial grades feed directly into the Client Health Financial dimension score.
+  </Card>
+</CardGroup>
+
+## Financial Dashboard
+
+The Financial Reporting dashboard shows a table with one row per company and key financial metrics as columns.
+
+### Columns
+
+| Column | Description |
+|--------|-------------|
+| **Company** | Company name (filterable) |
+| **Grade** | Letter grade A through F based on profitability (filterable) |
+| **Managed Revenue** | Total recurring revenue from managed service contracts |
+| **Support Hours** | Time spent on reactive support from configured service boards |
+| **Endpoints** | Managed device or user count based on your chosen endpoint model |
+| **Reactive Hrs/Endpoint** | Support hours divided by endpoint count - how much reactive work each endpoint generates |
+| **Effective Hourly Rate** | Managed revenue divided by support hours - what you're actually earning per hour |
+| **All-in Seat Price** | Total managed revenue divided by endpoints - your true per-seat economics |
+
+### Period Selection
+
+Use the period selector to choose the time range for financial calculations:
+
+- **Current Month** - Data for the current calendar month
+- **Trailing 3 Months** (default) - Averaged over the last 3 months for smoother trends
+- **Year to Date** - Cumulative data from January 1st of the current year
+- **Specific months** - The last 6 months are available as individual month selections
+
+<Tip>
+The Trailing 3 Months view is recommended for day-to-day analysis because it smooths out monthly variations and gives a more stable picture of profitability.
+</Tip>
+
+## Financial Grading System
+
+Every company receives a letter grade (A through F) based on three weighted metrics:
+
+| Metric | Weight | Scoring Thresholds |
+|--------|--------|--------------------|
+| **Reactive Hrs/Endpoint** | 33% | <0.33 = 100, <0.50 = 80, <0.75 = 60, <1.0 = 40, 1.0+ = 20 |
+| **Effective Hourly Rate** | 34% | $200+ = 100, $150+ = 80, $100+ = 60, $75+ = 40, <$75 = 20 |
+| **All-in Seat Price** | 33% | $200+ = 100, $150+ = 80, $100+ = 60, $75+ = 40, <$75 = 20 |
+
+The weighted scores are combined into a composite score, which maps to a grade:
+
+| Grade | Score Range | Meaning |
+|-------|-------------|---------|
+| **A** | 80-100 | Highly profitable - excellent unit economics |
+| **B** | 60-79 | Profitable - solid financial performance |
+| **C** | 40-59 | Moderate - room for improvement |
+| **D** | 20-39 | Below target - needs attention |
+| **F** | 0-19 | Unprofitable - requires immediate review |
+
+<Tip>
+Hover over any company's grade to see a detailed breakdown showing the individual metric values, scores, and weights that produced the grade.
+</Tip>
+
+### Metric Explanations
+
+**Reactive Hours per Endpoint** measures how much unplanned support each managed device or user generates. Lower is better - it means your proactive management is reducing break/fix work.
+
+**Effective Hourly Rate** shows what you're actually earning per hour of support labor. Higher is better - it means your recurring revenue adequately covers your support costs.
+
+**All-in Seat Price** represents the total monthly revenue per endpoint. Higher is better - it reflects the full value of your managed services per unit.
+
+## Setting Up Revenue Categories
+
+Navigate to **Settings > MSP Tools > Financial Reporting** to configure how PSA data is classified.
+
+### Revenue Category Mappings
+
+Financial Reporting needs to know which PSA product types represent managed services revenue vs. one-time project revenue. The settings page shows product classifications detected from your connected PSA integration.
+
+**Revenue Categories:**
+
+| Category | Description |
+|----------|-------------|
+| **Managed Recurring** | Recurring revenue from managed service contracts (e.g., per-seat agreements, monthly monitoring fees) |
+| **Non-Recurring** | One-time or project-based revenue (e.g., hardware sales, migration projects) |
+| **Other Recurring** | Other recurring revenue that isn't core managed services (e.g., software resale, support plans) |
+
+### Configuring Mappings
+
+<Steps>
+  <Step title="Navigate to Financial Reporting settings">
+    Go to **Settings > MSP Tools > Financial Reporting**.
+  </Step>
+  <Step title="Review detected classifications">
+    The page shows product types or billing item types automatically detected from your PSA integration.
+  </Step>
+  <Step title="Assign revenue categories">
+    For each product type, select the appropriate revenue category from the dropdown (Managed Recurring, Non-Recurring, or Other Recurring).
+  </Step>
+  <Step title="Save your mappings">
+    Save the configuration. Financial metrics will reflect the new mappings on the next data refresh.
+  </Step>
+</Steps>
+
+### PSA-Specific Configuration
+
+The classification options vary by PSA provider:
+
+<Tabs>
+  <Tab title="ConnectWise">
+    ConnectWise uses **Product Types** and **Product Classes** to categorize billing items. The settings page shows all detected product type/class combinations and lets you map each to a revenue category.
+  </Tab>
+  <Tab title="Autotask">
+    Autotask uses **Billing Item Types** and **Sub Types** to categorize line items. The settings page shows all detected type/sub-type combinations and lets you map each to a revenue category.
+  </Tab>
+</Tabs>
+
+<Warning>
+Revenue category mappings must be configured before Financial Reporting shows meaningful data. Without mappings, the system cannot distinguish managed revenue from project revenue.
+</Warning>
+
+## Impact on Health Scores
+
+The financial grade directly feeds into the **Financial dimension** of Client Health scores:
+
+- The numeric score underlying the grade (0-100) becomes the Profitability sub-metric
+- Profitability carries 50% weight within the Financial dimension
+- The remaining 50% comes from Late Invoices (30%) and Days to Pay (20%)
+
+This means improving a company's financial grade directly improves their overall health score.
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Map all product types during initial setup">
+    Take time to correctly classify every product type from your PSA. Incorrect mappings will skew all financial metrics and grades.
+  </Accordion>
+  <Accordion title="Review D and F grades monthly">
+    Companies with D or F grades are costing you money. Use the detailed metrics to understand why - is it too many reactive hours, or is the contract price too low?
+  </Accordion>
+  <Accordion title="Use Trailing 3 Months for strategic decisions">
+    Single-month data can be misleading due to project spikes or seasonal variations. The trailing 3-month view gives a more reliable picture for strategic planning.
+  </Accordion>
+  <Accordion title="Compare Reactive Hrs/Endpoint across companies">
+    This metric is the best indicator of how well your proactive management is working. Companies with high reactive hours per endpoint may need better monitoring, patching, or training.
+  </Accordion>
+  <Accordion title="Track grade changes over time">
+    Use Client Health's trend chart to see if financial interventions (price increases, stack optimization, proactive maintenance) are actually improving profitability.
+  </Accordion>
+  <Accordion title="Review after adding new PSA product types">
+    When you create new product types in your PSA, remember to map them in Financial Reporting settings. Unmapped types are excluded from calculations.
+  </Accordion>
+</AccordionGroup>
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Financial metrics show $0 or are empty">
+    Check that you've configured revenue category mappings in **Settings > MSP Tools > Financial Reporting**. Without mappings, the system cannot calculate managed revenue.
+  </Accordion>
+  <Accordion title="Grade seems wrong for a company">
+    Hover over the grade to see the detailed breakdown. Check if any individual metric is pulling the score down. Also verify that the correct PSA product types are mapped to Managed Recurring.
+  </Accordion>
+  <Accordion title="Endpoint count seems incorrect">
+    The endpoint count comes from your connected RMM or device data. Verify that devices are synced and assigned to the correct company.
+  </Accordion>
+  <Accordion title="Support hours don't match expectations">
+    Support hours are pulled from configured service boards in your PSA. Check which service boards are included in your integration settings.
+  </Accordion>
+</AccordionGroup>
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="MSP Tools Overview" icon="heart-pulse" href="./index">
+    Overview of all MSP Tools features
+  </Card>
+  <Card title="Client Health" icon="heart-pulse" href="./client-health">
+    See how financial grades feed into overall health scores
+  </Card>
+  <Card title="Tool Stack" icon="wrench" href="./tool-stack">
+    Track tool deployments across your client base
+  </Card>
+  <Card title="Integrations" icon="plug" href="/user-guides/integrations/index">
+    Configure PSA integrations that provide financial data
+  </Card>
+</CardGroup>

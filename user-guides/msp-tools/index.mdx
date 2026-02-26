@@ -1,0 +1,127 @@
+---
+title: 'MSP Tools'
+description: 'Monitor client health, track tool deployments, and analyze financial performance across your managed services portfolio'
+icon: 'heart-pulse'
+---
+
+MSP Tools is a suite of analytics and management features purpose-built for MSP operations. It gives you clear visibility into three critical areas of your business: **Client Health**, **Tool Stack**, and **Financial Reporting**.
+
+<CardGroup cols={3}>
+  <Card title="Client Health" icon="heart-pulse" href="./client-health">
+    Health scores across 8 dimensions with risk classification, trend tracking, and detailed per-company breakdowns.
+  </Card>
+  <Card title="Tool Stack" icon="wrench" href="./tool-stack">
+    Compliance matrix showing which tools each company has deployed, with automatic planner item creation for tracking.
+  </Card>
+  <Card title="Financial Reporting" icon="dollar-sign" href="./financial-reporting">
+    Revenue classification, profitability analysis, and financial grading for every client relationship.
+  </Card>
+</CardGroup>
+
+## How MSP Tools Work Together
+
+The three areas of MSP Tools share data and feed into each other to give you a complete picture of every client relationship:
+
+- **Tool Stack** deployment percentages feed directly into the **Client Health** Tool Stack dimension score
+- **Financial Reporting** grades feed into the **Client Health** Financial dimension score
+- **Client Health** aggregates data from your PSA, RMM, meetings, compliance, and other integrated systems into a single health score
+
+This means when you improve a company's tool stack coverage or financial health, their overall health score updates automatically.
+
+## Data Sources
+
+MSP Tools pulls data from across your connected integrations:
+
+| Data Source | What It Provides |
+|-------------|-----------------|
+| **PSA** (ConnectWise, Autotask, Halo, Syncro) | Tickets, invoices, projects, quotes, contacts |
+| **RMM** (Datto, etc.) | Device counts, active user percentages |
+| **Meetings** | Meeting frequency, days since last contact |
+| **Compliance** | Overdue compliance items |
+| **Planner** | Overdue planner tasks, goal completion |
+| **Tool Stack** | Tool deployment percentages |
+| **Surveys** | NPS scores |
+
+<Note>
+MSP Tools requires at least one PSA integration to be connected. Additional integrations (RMM, backup, etc.) enrich the data and improve the accuracy of health scores.
+</Note>
+
+## Daily Data Refresh
+
+MSP Tools automatically refreshes all metrics **daily at 2:00 AM UTC**. During each refresh cycle:
+
+1. Raw data is pulled from all connected integrations
+2. Per-company metrics are computed and stored (40+ metrics per company)
+3. Health scores are calculated based on your scoring configuration
+4. A daily snapshot is saved for trend tracking (retained for 2 years)
+
+You can also trigger a manual refresh at any time from the Client Health page by clicking **Refresh Scores**.
+
+## Accessing MSP Tools
+
+MSP Tools appears in the main sidebar under **MSP Tools**:
+
+- **Client Health** - Main dashboard with health scores for all companies
+- **Tool Stack** - Compliance matrix under the Planner section
+- **Financial Reporting** - Revenue and profitability analysis
+
+Configuration for each area is available in **Settings** under the **MSP Tools** group:
+
+- **Scoring** - Configure which health dimensions are active
+- **Tool Stack** - Manage tool categories and items
+- **Financial Reporting** - Map PSA product types to revenue categories
+
+## Prerequisites
+
+<Steps>
+  <Step title="Enable the feature">
+    MSP Tools must be enabled for your tenant. Contact support if you don't see it in your sidebar.
+  </Step>
+  <Step title="Connect a PSA integration">
+    At minimum, connect your PSA (ConnectWise, Autotask, Halo PSA, or Syncro) to populate ticket, invoice, and contact data.
+  </Step>
+  <Step title="Configure your tool stack">
+    Navigate to **Settings > MSP Tools > Tool Stack** to define the categories and tools you want to track across your client base.
+  </Step>
+  <Step title="Set up revenue mappings">
+    Navigate to **Settings > MSP Tools > Financial Reporting** to map your PSA product types to revenue categories.
+  </Step>
+</Steps>
+
+## Permissions
+
+Access to MSP Tools is controlled by role-based permissions:
+
+| Permission | What It Controls |
+|-----------|-----------------|
+| `read_customer_success` | View the Client Health dashboard and company details |
+| `read_tool_stack` | View the Tool Stack compliance matrix |
+| `manage_tool_stack` | Update tool deployment statuses for companies |
+| `read_financial_reporting` | View the Financial Reporting dashboard |
+| `read_settings_client_health` | View health scoring configuration |
+| `manage_settings_client_health` | Modify health scoring configuration |
+| `read_settings_tool_stack` | View tool stack settings |
+| `manage_settings_tool_stack` | Create, edit, and delete tool categories and items |
+| `read_settings_financial_reporting` | View revenue category mappings |
+| `manage_settings_financial_reporting` | Modify revenue category mappings |
+
+<Tip>
+Assign permissions through **Settings > Users & Roles**. You can create custom roles that combine read-only access to some areas with management access to others.
+</Tip>
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Client Health" icon="heart-pulse" href="./client-health">
+    Detailed guide to health scoring and company analysis
+  </Card>
+  <Card title="Tool Stack" icon="wrench" href="./tool-stack">
+    Guide to managing tool deployments and compliance tracking
+  </Card>
+  <Card title="Financial Reporting" icon="dollar-sign" href="./financial-reporting">
+    Guide to revenue classification and profitability analysis
+  </Card>
+  <Card title="Planner" icon="list-check" href="/user-guides/planner/index">
+    Learn about planner items created by Tool Stack
+  </Card>
+</CardGroup>
