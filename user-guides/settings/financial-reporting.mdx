@@ -1,0 +1,159 @@
+---
+title: Financial Reporting Settings
+description: Configure revenue categories and the reporting model for financial profitability analysis
+icon: dollar-sign
+---
+
+Financial Reporting Settings let you control how PSA data is classified into revenue categories and how profitability metrics are calculated. The settings page has two tabs: **Revenue Categories** and **Reporting Model**.
+
+## Accessing Financial Reporting Settings
+
+1. Click **Settings** in the sidebar
+2. Under the **MSP Tools** group, select **Financial Reporting**
+
+## Revenue Categories Tab
+
+The Revenue Categories tab maps your PSA product types and billing items to revenue categories. This classification drives all financial metrics and grading.
+
+### Revenue Categories
+
+| Category | Description |
+|----------|-------------|
+| **Managed Recurring** | Recurring revenue from managed service contracts (e.g., per-seat agreements, monthly monitoring) |
+| **Non-Recurring** | One-time or project-based revenue (e.g., hardware sales, migration projects) |
+| **Other Recurring** | Other recurring revenue that is not core managed services (e.g., software resale, support plans) |
+| **Product Revenue** | Revenue from product sales |
+
+### Configuring Mappings
+
+<Steps>
+  <Step title="Navigate to Financial Reporting settings">
+    Go to **Settings > MSP Tools > Financial Reporting** and select the **Revenue Categories** tab.
+  </Step>
+  <Step title="Review detected classifications">
+    The page shows product types or billing item types automatically detected from your connected PSA integration, grouped by provider.
+  </Step>
+  <Step title="Assign revenue categories">
+    For each product type, select the appropriate revenue category from the dropdown. Items left as **Uncategorized** are excluded from financial calculations.
+  </Step>
+  <Step title="Save your mappings">
+    Click **Save** to apply the changes. Financial metrics will reflect the new mappings on the next data refresh.
+  </Step>
+</Steps>
+
+### Summary Cards
+
+Three summary cards at the top of the tab show:
+
+- **Total Types** - Total number of detected product type classifications
+- **Categorized** - How many have been assigned a revenue category
+- **Uncategorized** - How many still need to be mapped (shown as a warning if greater than zero)
+
+### PSA-Specific Classifications
+
+The classification structure varies by PSA provider:
+
+<Tabs>
+  <Tab title="ConnectWise">
+    ConnectWise uses **Product Types** and **Product Classes** to categorize billing items. The settings page shows all detected type/class combinations with item counts.
+  </Tab>
+  <Tab title="Autotask">
+    Autotask uses **Billing Item Types** and **Sub Types** to categorize line items. The settings page shows all detected type/sub-type combinations with item counts.
+  </Tab>
+  <Tab title="Halo PSA">
+    Halo PSA uses **Asset Type Names** to categorize recurring items. The settings page shows all detected asset types with item counts.
+  </Tab>
+</Tabs>
+
+<Warning>
+Revenue category mappings must be configured before Financial Reporting shows meaningful data. Without mappings, the system cannot distinguish managed revenue from project revenue.
+</Warning>
+
+## Reporting Model Tab
+
+The Reporting Model tab configures how endpoints are counted and how financial profitability thresholds are set.
+
+### Target Seat Price
+
+Set a custom target for your all-in seat price. This adjusts the grade thresholds used in financial scoring.
+
+| Grade | Default Threshold | With Custom Target |
+|-------|------------------|--------------------|
+| **A** | $200+ | Scales based on target |
+| **B** | $150+ | Scales based on target |
+| **C** | $100+ | Scales based on target |
+| **D** | $75+ | Scales based on target |
+| **F** | Below $75 | Scales based on target |
+
+<Tip>
+Leave this blank to use the default thresholds. Set a custom value if your market or service model has different pricing norms.
+</Tip>
+
+### Endpoint Model
+
+Choose how endpoints are counted for per-seat calculations. This affects **Reactive Hrs/Endpoint** and **All-in Seat Price** metrics.
+
+| Model | Description |
+|-------|-------------|
+| **Per Device** | Count managed devices as endpoints |
+| **Per User** | Count users associated with each company |
+| **Hybrid** | Set endpoint counting rules per company type |
+
+#### Hybrid Endpoint Rules
+
+When using the Hybrid model, you can set different counting methods for different company types:
+
+<Steps>
+  <Step title="Select Hybrid as the endpoint model">
+    Choose **Hybrid** from the endpoint model options.
+  </Step>
+  <Step title="Set a default fallback">
+    Select the default endpoint source for company types without a specific rule.
+  </Step>
+  <Step title="Configure per-type rules">
+    For each company type (pulled from your PSA), select the endpoint source:
+    - **Use Default** - Falls back to the default setting
+    - **Per Device** - Count devices for this company type
+    - **Per User** - Count users for this company type
+    - **Greater of Both** - Use whichever count is higher
+  </Step>
+</Steps>
+
+<Tip>
+Hybrid mode is useful when you have a mix of company types. For example, you might count per-device for companies with large device fleets but per-user for companies where you manage user-based services.
+</Tip>
+
+### Managed Device Types
+
+When using Per Device or Hybrid endpoint models, select which device types count as managed endpoints.
+
+Only devices matching the selected types are included in per-endpoint calculations. This lets you exclude device types that are not part of your managed services (e.g., network infrastructure, printers).
+
+### Support Hour Boards
+
+Select which PSA service boards contribute to the **Support Hours** metric. Only time entries from selected boards count as reactive support hours.
+
+<Tip>
+Select only your reactive support boards. Exclude project boards, internal boards, and pre-sales boards to get an accurate picture of break/fix support costs.
+</Tip>
+
+## Permissions
+
+| Permission | Access Level |
+|-----------|--------------|
+| `read_settings_financial_reporting` | View revenue categories and reporting model configuration |
+| `manage_settings_financial_reporting` | Modify revenue categories and reporting model configuration |
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Financial Reporting" icon="dollar-sign" href="/user-guides/msp-tools/financial-reporting">
+    View financial metrics and grading for your client portfolio
+  </Card>
+  <Card title="Client Health" icon="heart-pulse" href="/user-guides/msp-tools/client-health">
+    See how financial grades feed into overall health scores
+  </Card>
+  <Card title="MSP Tools Overview" icon="heart-pulse" href="/user-guides/msp-tools/index">
+    Overview of all MSP Tools features
+  </Card>
+</CardGroup>

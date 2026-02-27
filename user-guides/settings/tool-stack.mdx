@@ -1,0 +1,131 @@
+---
+title: Tool Stack Settings
+description: Define your recommended technology stack and track tool deployment across client companies
+icon: wrench
+---
+
+Tool Stack Settings let you define the categories and tools that make up your recommended technology stack. Once configured, you can track which tools are deployed at each company and generate planner items for missing deployments.
+
+## Accessing Tool Stack Settings
+
+1. Click **Settings** in the sidebar
+2. Under the **MSP Tools** group, select **Tool Stack**
+
+## Categories
+
+Categories are groups of related tools (e.g., "Endpoint Protection", "Backup", "Monitoring"). Each category contains one or more tool items.
+
+### Creating a Category
+
+<Steps>
+  <Step title="Click Add Category">
+    Use the **+ Add Category** button at the top of the page.
+  </Step>
+  <Step title="Name the category">
+    Click the category name to edit it inline (e.g., "Endpoint Protection").
+  </Step>
+  <Step title="Configure details">
+    Click the category settings to set:
+    - **Description** - What this category covers
+    - **Icon** - Visual icon for the category
+    - **Planner Type** - Link to a planner item type so missing tools automatically create planner tasks
+  </Step>
+</Steps>
+
+### Category Options
+
+| Setting | Description |
+|---------|-------------|
+| **Name** | Category name, editable inline |
+| **Description** | Brief explanation of what tools belong in this category |
+| **Icon** | Visual icon displayed next to the category |
+| **Planner Type** | Links the category to a planner item type for automatic task creation |
+
+## Tool Items
+
+Each category contains tool items representing specific products or services.
+
+### Adding a Tool Item
+
+<Steps>
+  <Step title="Expand a category">
+    Click a category to expand it.
+  </Step>
+  <Step title="Click Add Item">
+    Use the **+ Add Item** button within the category.
+  </Step>
+  <Step title="Configure the tool">
+    Fill in the tool details: name, vendor, default price, and whether it's required.
+  </Step>
+</Steps>
+
+### Tool Item Options
+
+| Setting | Description |
+|---------|-------------|
+| **Name** | Tool name (e.g., "SentinelOne", "Acronis Backup") |
+| **Vendor** | Optional vendor name |
+| **Default Price** | Default monthly price per unit |
+| **Required** | Whether this tool is required for full compliance. Required tools affect the Tool Stack health dimension score. |
+| **Description** | Optional description of the tool |
+
+<Tip>
+Mark tools as **Required** to include them in health score calculations. Companies missing required tools will receive lower Tool Stack dimension scores.
+</Tip>
+
+## Syncing to Companies
+
+After configuring your tool stack, you need to sync it to your companies so you can start tracking deployments.
+
+### Sync All Companies
+
+The **Sync All** button creates tool tracking records for every active company. This is useful during initial setup or when adding new categories.
+
+<Steps>
+  <Step title="Click Sync All">
+    Click the **Sync All Companies** button in the header.
+  </Step>
+  <Step title="Review the confirmation">
+    A dialog explains:
+    - All active companies will receive the tool stack
+    - Existing deployment statuses will not be overwritten
+    - The sync runs as a background task
+  </Step>
+  <Step title="Confirm">
+    Click **Confirm** to start the sync. Progress is shown in the header.
+  </Step>
+</Steps>
+
+<Warning>
+Syncing creates planner items for companies missing required tools (if the category is linked to a planner type). This can generate a large number of planner items across your tenant.
+</Warning>
+
+## Deleting Categories and Items
+
+When deleting a category or tool item that has linked planner items, you will be asked to type the name to confirm deletion. This prevents accidental removal of items that have active tracking data.
+
+<Note>
+Deleting a tool item removes its tracking records and any linked planner items across all companies.
+</Note>
+
+## Auto-Save
+
+Changes to category names, descriptions, icons, and tool item fields are saved automatically with a short delay. You do not need to click a save button for inline edits.
+
+## Permissions
+
+| Permission | Access Level |
+|-----------|--------------|
+| `read_settings_tool_stack` | View tool stack configuration |
+| `manage_settings_tool_stack` | Create, edit, and delete categories and items |
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Tool Stack" icon="wrench" href="/user-guides/msp-tools/tool-stack">
+    Track tool deployments across your client base
+  </Card>
+  <Card title="MSP Tools Overview" icon="heart-pulse" href="/user-guides/msp-tools/index">
+    Overview of all MSP Tools features
+  </Card>
+</CardGroup>

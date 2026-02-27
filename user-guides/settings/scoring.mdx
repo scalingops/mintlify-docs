@@ -1,0 +1,78 @@
+---
+title: Health Score Configuration
+description: Choose which dimensions are included in the customer success health score
+icon: heart-pulse
+---
+
+Health Score Configuration lets you control which dimensions factor into each company's overall health score. Enable or disable dimensions to match what matters most to your MSP.
+
+## Accessing Scoring Settings
+
+1. Click **Settings** in the sidebar
+2. Under the **MSP Tools** group, select **Scoring**
+
+## Dimensions
+
+The health score is composed of up to 8 dimensions. Each dimension can be toggled on or off. Disabled dimensions are excluded from the overall score calculation, and their weight is redistributed across the remaining enabled dimensions.
+
+| Dimension | What It Measures |
+|-----------|-----------------|
+| **Service Quality** | Ticket resolution time, hours per ticket, and escalation rate |
+| **Engagement** | Last contact recency, meeting frequency, and NPS scores |
+| **Financial** | Overdue invoice count and average days to pay |
+| **Sales** | Opportunity recency and quote win rate |
+| **Projects** | Active project count and project recency over the last year |
+| **Tool Stack** | Percentage of required tools deployed at the company |
+| **Environment** | Device count and active user percentage across managed devices |
+| **Operational** | Overdue planner tasks and goal completion percentage |
+
+## Configuring Dimensions
+
+<Steps>
+  <Step title="Navigate to Scoring settings">
+    Go to **Settings > MSP Tools > Scoring**.
+  </Step>
+  <Step title="Review dimensions">
+    Each dimension displays its name, description, and a toggle switch.
+  </Step>
+  <Step title="Enable or disable dimensions">
+    Toggle each dimension on or off based on what you want included in the health score. A summary at the bottom shows how many of the 8 dimensions are enabled.
+  </Step>
+  <Step title="Save changes">
+    Click **Save** in the header to apply your changes.
+  </Step>
+</Steps>
+
+<Tip>
+Start with all dimensions enabled, then disable any that don't apply to your business. For example, if you don't track compliance, disable the Operational dimension to avoid penalizing companies for missing data.
+</Tip>
+
+## How Dimensions Affect Health Scores
+
+When a dimension is enabled, it contributes its weighted score to the overall health grade. When disabled:
+
+- The dimension is excluded from the score calculation entirely
+- Its weight is redistributed proportionally across remaining dimensions
+- Company health scores are recalculated on the next daily refresh (2:00 AM UTC)
+
+<Note>
+Changes to dimension settings take effect on the next daily health score refresh. Existing scores remain unchanged until then.
+</Note>
+
+## Permissions
+
+| Permission | Access Level |
+|-----------|--------------|
+| `read_settings_client_health` | View scoring configuration |
+| `manage_settings_client_health` | Modify scoring configuration |
+
+## Related Resources
+
+<CardGroup cols={2}>
+  <Card title="Client Health" icon="heart-pulse" href="/user-guides/msp-tools/client-health">
+    See how health scores are calculated and displayed
+  </Card>
+  <Card title="MSP Tools Overview" icon="heart-pulse" href="/user-guides/msp-tools/index">
+    Overview of all MSP Tools features
+  </Card>
+</CardGroup>

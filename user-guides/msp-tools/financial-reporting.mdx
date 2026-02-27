@@ -6,6 +6,26 @@ icon: 'dollar-sign'
 
 Financial Reporting gives you clear visibility into the profitability of every client relationship. It classifies revenue from your PSA into meaningful categories, calculates key financial metrics, and assigns letter grades so you can instantly spot your most and least profitable accounts.
 
+## Prerequisites
+
+Financial Reporting relies on data from three PSA sync processes. All three must be enabled in your PSA integration settings before financial metrics will populate.
+
+<Steps>
+  <Step title="Enable Time Entry Sync">
+    Time entries provide the support hours data used to calculate **Reactive Hrs/Endpoint** and **Effective Hourly Rate**. Enable time entry sync in your PSA integration settings (**Settings > Integrations > [Your PSA]**).
+  </Step>
+  <Step title="Enable Invoice Sync">
+    Invoices provide the revenue data that gets classified into managed recurring, non-recurring, and other recurring categories. Enable invoice sync in your PSA integration settings.
+  </Step>
+  <Step title="Enable Contracts Sync">
+    Contracts (called Agreements in ConnectWise) provide the recurring revenue and managed service agreement data. Enable contracts sync in your PSA integration settings.
+  </Step>
+</Steps>
+
+<Warning>
+If any of these syncs are disabled, Financial Reporting will show incomplete or missing data. After enabling them, allow one full sync cycle to complete before reviewing financial metrics.
+</Warning>
+
 ## Overview
 
 <CardGroup cols={2}>
