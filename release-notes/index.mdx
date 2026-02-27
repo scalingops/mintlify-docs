@@ -52,6 +52,39 @@ Configure all three areas in **Settings > MSP Tools**:
 - **Tool Stack**: Define categories and tools, set default prices, mark items as required
 - **Financial Reporting**: Map PSA product types to revenue categories
 
+### Halo PSA Invoice Sync
+
+Full invoice integration for Halo PSA is now live. Invoices sync automatically from your Halo instance and are available to view, filter, and download directly within MSPortal.
+
+**Key Features:**
+- **Invoice List**: View all synced invoices with filtering by company, status, and date range
+- **PDF Downloads**: Download invoice PDFs directly from the invoice detail sidebar
+- **Inline Viewing**: Preview invoice details without leaving MSPortal
+
+### Halo PSA Project Sync
+
+Projects from Halo PSA now sync automatically into the Projects module, giving you full visibility into project status alongside your other data.
+
+**Key Features:**
+- **Automatic Sync**: Projects sync on the same schedule as your other Halo data
+- **Phase & Budget Tracking**: View project phases, budgets, and progress
+- **Status Tracking**: Monitor project status directly from the Projects dashboard
+
+### Updated Halo PSA Permissions
+
+<Warning>
+If you are using the Halo PSA integration, please update your API application permissions. The following permissions are now **required**:
+
+- `read:invoices` — **Yes**
+- `edit:invoices` — **Yes**
+- `read:timesheets` — **Yes**
+- `read:contracts` — **Yes** (was already required)
+
+Additionally, if you are using the [recommended custom role](/user-guides/integrations/Halo%20PSA%20Custom%20Role%20and%20User), ensure the **Invoices** access level is set to **Read, Create, Modify and Delete**.
+
+See the [Configure Halo PSA Integration](/user-guides/integrations/enable-halo-integration) guide for the full updated permissions table.
+</Warning>
+
 ---
 
 ## February 18, 2026
