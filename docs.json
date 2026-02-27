@@ -113,15 +113,10 @@
           {
             "group": "MSP Tools",
             "pages": [
-              {
-                "group": "MSP Tools",
-                "pages": [
-                  "user-guides/msp-tools/index",
-                  "user-guides/msp-tools/client-health",
-                  "user-guides/msp-tools/tool-stack",
-                  "user-guides/msp-tools/financial-reporting"
-                ]
-              }
+              "user-guides/msp-tools/index",
+              "user-guides/msp-tools/client-health",
+              "user-guides/msp-tools/tool-stack",
+              "user-guides/msp-tools/financial-reporting"
             ]
           },
           {
