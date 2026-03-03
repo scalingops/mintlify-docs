@@ -1,0 +1,454 @@
+---
+title: 'Configure IT Glue Integration'
+description: 'Connect your IT Glue instance to MSPortal.ai to sync documentation, flexible assets, passwords, and checklists'
+icon: 'book'
+---
+
+This guide walks you through connecting your IT Glue documentation platform to MSPortal.ai using our streamlined 4-step setup wizard.
+
+## Overview
+
+IT Glue is a leading IT documentation platform used by MSPs to centralize knowledge, track assets, and manage credentials. By integrating IT Glue with MSPortal.ai, you can:
+
+- Access IT Glue documentation and flexible assets directly from MSPortal
+- View passwords securely with full audit logging on every reveal
+- Sync checklists for operational tracking
+- Control which documentation types and password categories are shared per company
+
+<Warning>
+  Only one documentation integration can be active at a time. If you currently have Hudu connected, you must remove it before enabling IT Glue (and vice versa).
+</Warning>
+
+## Prerequisites
+
+- Active IT Glue account with administrative access to generate API keys
+- MSPortal.ai account with integration management permissions
+- Companies already set up in MSPortal (from your PSA integration or manually created)
+
+<Note>
+  The IT Glue integration maps organizations to existing companies in MSPortal. Import your companies from your PSA integration first, or create them manually before setting up IT Glue.
+</Note>
+
+---
+
+## Part 1: Generate API Credentials in IT Glue
+
+Before connecting to MSPortal, you need to create an API key in IT Glue.
+
+<Steps>
+  <Step title="Log into IT Glue">
+    Access your IT Glue account. Note which region your account uses -- this is visible in your URL:
+
+    | URL | Region |
+    |-----|--------|
+    | `app.itglue.com` | United States (US) |
+    | `app.eu.itglue.com` | Europe (EU) |
+  </Step>
+
+  <Step title="Navigate to API Settings">
+    Go to **Account > API Keys** in the IT Glue dashboard.
+  </Step>
+
+  <Step title="Generate a New API Key">
+    Click **Generate API Key** and provide a descriptive name such as `MSPortal Integration`.
+
+    <Tip>
+      Use a descriptive name so you can identify this key later if you need to rotate or revoke it.
+    </Tip>
+  </Step>
+
+  <Step title="Copy the API Key">
+    After generating the key, copy it immediately and store it securely.
+
+    <Warning>
+      **Copy the API key now!** IT Glue will not display the full key again after you leave this page. If you lose it, you will need to generate a new one.
+    </Warning>
+  </Step>
+</Steps>
+
+### Required Information
+
+Before proceeding to MSPortal, ensure you have the following:
+
+| Information | Description |
+|-------------|-------------|
+| **Region** | US or EU (based on your IT Glue URL) |
+| **API Key** | The key you just generated |
+
+---
+
+## Part 2: MSPortal Setup Wizard
+
+MSPortal.ai provides a guided 4-step wizard to connect and configure your IT Glue integration.
+
+### Starting the Wizard
+
+<Steps>
+  <Step title="Navigate to Integrations">
+    In MSPortal.ai, go to **Settings > Integrations**.
+  </Step>
+
+  <Step title="Start Setup">
+    Find the **IT Glue** integration card and click **Configure** to launch the setup wizard.
+  </Step>
+</Steps>
+
+---
+
+### Step 1: Connect
+
+Enter your IT Glue region and API key to establish the connection.
+
+<Steps>
+  <Step title="Select Your Region">
+    Choose the region that matches your IT Glue account from the dropdown:
+    - **US** (United States)
+    - **EU** (Europe)
+
+    <Tip>
+      If you are unsure which region you are on, check your IT Glue URL. For example, `app.eu.itglue.com` indicates the EU region.
+    </Tip>
+  </Step>
+
+  <Step title="Enter API Key">
+    Paste your IT Glue API key into the **API Key** field.
+
+    <Note>
+      Your API key is stored securely using encrypted vault storage. It is never exposed in logs or API responses.
+    </Note>
+  </Step>
+
+  <Step title="Test Connection">
+    Click **Test Connection** to verify your credentials. You will see a green success message when the connection is established.
+
+    If the connection fails:
+    - Verify you selected the correct region for your IT Glue account
+    - Check that the API key is copied correctly without extra spaces
+    - Ensure the API key has not been revoked in IT Glue
+    - Confirm your IT Glue account has API access enabled
+  </Step>
+
+  <Step title="Create Integration">
+    Once the connection test passes, click **Create Integration** to save your credentials and proceed.
+  </Step>
+</Steps>
+
+---
+
+### Step 2: Map Organizations
+
+Map your IT Glue organizations to MSPortal companies. This determines which documentation, passwords, and checklists sync to which company.
+
+<Steps>
+  <Step title="Review Organization List">
+    After connecting, MSPortal fetches your organizations from IT Glue. The mapping table displays:
+
+    - **IT Glue Organization** - The name of the organization in IT Glue
+    - **Mapped To** - The corresponding MSPortal company (if mapped)
+  </Step>
+
+  <Step title="Use Quick Match (Recommended)">
+    Click **Quick Match** to automatically map IT Glue organizations to MSPortal companies. Quick Match uses two strategies:
+
+    1. **PSA ID cross-referencing** - If your IT Glue organizations have a PSA ID, it matches against the external company IDs from your connected PSA integration
+    2. **Case-insensitive name matching** - Organizations with matching names (ignoring case and whitespace) are matched automatically
+
+    <Tip>
+      Quick Match is most effective when your IT Glue organizations share the same names or PSA IDs as your MSPortal companies. Review the results and adjust any incorrect mappings.
+    </Tip>
+  </Step>
+
+  <Step title="Manual Mapping">
+    For organizations that were not automatically matched:
+
+    1. Find the organization in the list
+    2. Click the **Select company** dropdown in the "Mapped To" column
+    3. Search for and select the correct MSPortal company
+
+    To remove a mapping, click the **X** button next to the company badge.
+  </Step>
+
+  <Step title="Filter Organizations">
+    Use the filter dropdown to view:
+    - **All** - Show all synced organizations
+    - **Mapped** - Show only organizations linked to companies
+    - **Unmapped** - Show organizations that still need mapping
+  </Step>
+
+  <Step title="Proceed">
+    Once you have mapped the organizations you need, click **Next** to continue.
+
+    <Info>
+      Only data from mapped organizations will be accessible in MSPortal. You can return to add more mappings at any time.
+    </Info>
+  </Step>
+</Steps>
+
+---
+
+### Step 3: Documentation Config
+
+Choose which types of IT Glue documentation to sync into MSPortal. This step is optional -- you can skip it and configure later.
+
+<Steps>
+  <Step title="Review Available Documentation Types">
+    MSPortal fetches your flexible asset types directly from IT Glue and displays them alongside the standard documentation categories:
+
+    | Category | Description |
+    |----------|-------------|
+    | **Documents** | Standard IT Glue documents |
+    | **Flexible Assets** | Custom flexible asset types defined in your IT Glue account |
+    | **Checklists** | IT Glue checklists and checklist templates |
+
+    <Note>
+      Password sharing is configured separately in Step 4. This step does not affect password visibility.
+    </Note>
+  </Step>
+
+  <Step title="Toggle Documentation Types">
+    Enable or disable sync for each documentation type using the toggle switches. Only enabled types will be synced to MSPortal.
+
+    <Note>
+      Flexible asset types are pulled live from your IT Glue account, so any custom types you have created will appear here automatically.
+    </Note>
+  </Step>
+
+  <Step title="Proceed">
+    Click **Next** to continue to password configuration.
+  </Step>
+</Steps>
+
+---
+
+### Step 4: Passwords
+
+Configure which password categories are accessible per company. This step is optional -- you can skip it and configure later.
+
+<Steps>
+  <Step title="Understand Password Security">
+    Before configuring password access, it is important to understand how MSPortal handles IT Glue passwords:
+
+    - **Passwords are never stored in MSPortal** -- they are fetched live from the IT Glue API each time a user reveals one
+    - **Every password reveal is audit-logged** with the user, timestamp, and password name
+    - **Users must have the `read_documentation_passwords` permission** to reveal passwords
+    - IT Glue's own password access gating is respected at all times
+  </Step>
+
+  <Step title="Enable Password Sharing">
+    Toggle password sharing **on** to allow team members with the appropriate permission to reveal passwords from IT Glue within MSPortal.
+
+    When enabled, users with the `read_documentation_passwords` permission can browse and reveal passwords for mapped organizations.
+  </Step>
+
+  <Step title="Configure Per-Company Settings (Later)">
+    After completing the wizard, per-company password category visibility and role-based access can be fine-tuned in **Settings > Documentation > Passwords**.
+
+    <Tip>
+      Use category-level sharing to restrict access to sensitive credentials. Only grant the `read_documentation_passwords` permission to users who need it.
+    </Tip>
+  </Step>
+
+  <Step title="Complete Setup">
+    Click **Complete Setup** to finish the wizard and return to the Integrations page.
+  </Step>
+</Steps>
+
+---
+
+## What Gets Synced
+
+IT Glue integration provides access to the following data types in MSPortal:
+
+| Data Type | Sync Behavior | Description |
+|-----------|---------------|-------------|
+| **Organizations** | Mapped to MSPortal companies | Links IT Glue organizations to your company records |
+| **Documents** | Synced on schedule | Standard IT Glue documentation |
+| **Flexible Assets** | Synced on schedule | Custom flexible asset types and their entries |
+| **Passwords** | Live-fetched on reveal | Credentials are never stored -- fetched in real time from IT Glue |
+| **Checklists** | Synced on schedule | Checklist templates and completion status |
+
+<Warning>
+  Passwords are the only data type that is **not** stored in MSPortal. They are fetched live from IT Glue every time a user reveals one. This ensures credentials remain under IT Glue's access control at all times.
+</Warning>
+
+---
+
+## Password Security
+
+Password handling in the IT Glue integration follows strict security practices:
+
+<AccordionGroup>
+  <Accordion title="Passwords are never stored locally">
+    MSPortal does not cache or persist IT Glue passwords in any form. Each time a user clicks to reveal a password, a live API call is made to IT Glue to fetch the current value. When the user navigates away, the password is discarded from memory.
+  </Accordion>
+
+  <Accordion title="Every reveal is audit-logged">
+    Each password reveal creates an audit log entry containing:
+    - The user who revealed the password
+    - The timestamp of the reveal
+    - The name of the password entry
+
+    Administrators can review these logs to track password access across the organization.
+  </Accordion>
+
+  <Accordion title="Permission-gated access">
+    Users must have the `read_documentation_passwords` permission assigned to their role in MSPortal to reveal passwords. Without this permission, password entries are visible in listings but cannot be revealed.
+  </Accordion>
+
+  <Accordion title="IT Glue access gating is respected">
+    If a password is restricted in IT Glue (e.g., through IT Glue's own access control), MSPortal respects those restrictions. The API key's access level determines what is retrievable.
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Managing Your Integration
+
+After setup, manage your integration from **Settings > Integrations**:
+
+| Action | Description |
+|--------|-------------|
+| **Configure** | Re-open the setup wizard to modify settings, update mappings, or change documentation and password configuration |
+| **Resync** | Trigger a manual data refresh (runs separate sync tasks for organizations, documents, passwords, flexible assets, and checklists) |
+| **Delete** | Remove the integration entirely, including all mappings and stored credentials |
+
+### Updating Your API Key
+
+If you need to rotate or replace your IT Glue API key:
+
+<Steps>
+  <Step title="Open Integration Settings">
+    Go to **Settings > Integrations** and click **Configure** on the IT Glue card.
+  </Step>
+  <Step title="Enter New API Key">
+    On the Connect step, enter your new API key and select the correct region.
+  </Step>
+  <Step title="Test Connection">
+    Click **Test Connection** to verify the new key works.
+  </Step>
+</Steps>
+
+### Adding More Organization Mappings
+
+As you onboard new clients in IT Glue:
+
+<Steps>
+  <Step title="Open Integration Settings">
+    Go to **Settings > Integrations** and click **Configure** on the IT Glue card.
+  </Step>
+  <Step title="Navigate to Map Step">
+    Click on Step 2 (Map Organizations) in the wizard stepper.
+  </Step>
+  <Step title="Map New Organizations">
+    New IT Glue organizations will appear in the list. Use Quick Match or manual mapping to connect them to MSPortal companies.
+  </Step>
+</Steps>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Connection test fails">
+    **Causes:**
+    - Incorrect API key
+    - Wrong region selected
+    - API key has been revoked or expired
+    - IT Glue account does not have API access enabled
+
+    **Solutions:**
+    1. Verify you selected the correct region (US or EU) matching your IT Glue URL
+    2. Check that the API key is copied exactly without extra spaces or missing characters
+    3. Generate a new API key in IT Glue if the current one may be revoked
+    4. Contact your IT Glue administrator to confirm API access is enabled for your account
+  </Accordion>
+
+  <Accordion title="No organizations appear in mapping step">
+    **Causes:**
+    - API key lacks organization read permissions
+    - Initial sync still in progress
+
+    **Solutions:**
+    1. Wait a few minutes for the initial fetch to complete
+    2. Verify your API key has sufficient permissions in IT Glue
+    3. Try clicking **Sync** to manually trigger a refresh
+  </Accordion>
+
+  <Accordion title="Quick Match did not match expected organizations">
+    **Causes:**
+    - Organization names differ between IT Glue and MSPortal
+    - PSA IDs are not configured in IT Glue
+
+    **Solutions:**
+    1. Use manual mapping for organizations with different names across systems
+    2. If your IT Glue organizations have PSA IDs set, Quick Match will use those for more accurate matching
+  </Accordion>
+
+  <Accordion title="Passwords are not visible">
+    **Causes:**
+    - Password sync is not enabled in the Documentation Config step
+    - Per-company password access is set to "No access"
+    - User does not have the `read_documentation_passwords` permission
+
+    **Solutions:**
+    1. Re-open the wizard and enable Passwords in Step 3 (Documentation Config)
+    2. Check the per-company password category settings in Step 4
+    3. Verify the user's role includes the `read_documentation_passwords` permission in **Settings > Users & Roles**
+  </Accordion>
+
+  <Accordion title="Flexible asset types are missing">
+    **Causes:**
+    - The flexible asset type was created in IT Glue after the last sync
+    - The type is not enabled in the Documentation Config step
+
+    **Solutions:**
+    1. Re-open the wizard and navigate to Step 3 (Documentation Config) to see the latest types
+    2. Enable the toggle for any new flexible asset types you want to sync
+  </Accordion>
+
+  <Accordion title="Rate limiting errors during sync">
+    **Causes:**
+    - IT Glue enforces a limit of 3,000 API requests per 5-minute window
+    - Large accounts with many organizations and assets may hit this limit during initial sync
+
+    **Solutions:**
+    1. Wait a few minutes and trigger the sync again -- MSPortal will resume where it left off
+    2. For very large accounts, the initial sync may take multiple cycles to complete fully
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Important Notes
+
+- **One Documentation Integration**: Only IT Glue or Hudu can be active at a time. Connecting IT Glue will require disconnecting Hudu first, and vice versa
+- **API Key Security**: Your API key is encrypted in vault storage and never exposed in logs or API responses. If you suspect it has been compromised, revoke it in IT Glue and generate a new one
+- **Password Privacy**: Passwords are never stored in MSPortal. They are fetched live from IT Glue on each reveal and every access is audit-logged
+- **Regional Endpoints**: Make sure you select the correct region (US or EU) during setup. Using the wrong region will cause connection failures even with a valid API key
+- **Rate Limits**: IT Glue allows 3,000 requests per 5-minute window. Large initial syncs may take multiple cycles if this limit is reached
+- **Organization Mapping**: Only data from mapped organizations is accessible in MSPortal. Unmapped organizations are ignored during sync
+
+---
+
+## Next Steps
+
+After setting up the IT Glue integration:
+
+<CardGroup cols={2}>
+  <Card title="Company Overview" icon="building" href="/user-guides/company-overview/index">
+    View IT Glue documentation and passwords from the company page
+  </Card>
+  <Card title="Manage Roles" icon="user-shield" href="/user-guides/settings/users-roles">
+    Configure which roles can access documentation passwords
+  </Card>
+  <Card title="Build Reports" icon="chart-bar" href="/user-guides/reporting/index">
+    Include documentation metrics in client reports
+  </Card>
+  <Card title="Other Integrations" icon="plug" href="/user-guides/integrations/index">
+    Explore additional integration options
+  </Card>
+</CardGroup>
+
+## Need Help?
+
+For assistance with the IT Glue integration, contact support@msportal.ai.

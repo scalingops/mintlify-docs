@@ -269,6 +269,36 @@
                 ]
               },
               {
+                "group": "Hudu",
+                "pages": [
+                  "user-guides/integrations/enable-hudu-integration"
+                ]
+              },
+              {
+                "group": "IT Glue",
+                "pages": [
+                  "user-guides/integrations/enable-itglue-integration"
+                ]
+              },
+              {
+                "group": "Acronis",
+                "pages": [
+                  "user-guides/integrations/enable-acronis-integration"
+                ]
+              },
+              {
+                "group": "Liongard",
+                "pages": [
+                  "user-guides/integrations/enable-liongard-integration"
+                ]
+              },
+              {
+                "group": "NinjaOne",
+                "pages": [
+                  "user-guides/integrations/enable-ninjaone-integration"
+                ]
+              },
+              {
                 "group": "Pax8",
                 "pages": [
                   "user-guides/licensing/setup"

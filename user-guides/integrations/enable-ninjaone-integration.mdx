@@ -1,0 +1,529 @@
+---
+title: 'Configure NinjaOne Integration'
+description: 'Connect your NinjaOne (NinjaRMM) instance to MSPortal.ai to sync organizations, locations, and devices'
+icon: 'plug'
+---
+
+This guide walks you through connecting your NinjaOne instance to MSPortal.ai using our streamlined 4-step setup wizard.
+
+## Overview
+
+The NinjaOne integration syncs your organizations, locations, and devices into MSPortal, allowing you to:
+
+- Import and manage devices from NinjaOne
+- Map NinjaOne organizations to your MSPortal companies
+- Map NinjaOne locations to your PSA locations for accurate site-level tracking
+- Keep device inventory synchronized automatically with daily syncs
+- Track device status, backup usage, and ownership details
+- View NinjaOne devices in reports and compliance tracking
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- Active NinjaOne account with administrative access
+- MSPortal.ai account with integration management permissions
+- Companies already set up in MSPortal (from your PSA integration or manually created)
+
+<Note>
+The NinjaOne integration maps organizations to existing companies in MSPortal. Import your companies from your PSA integration first, or create them manually before setting up NinjaOne.
+</Note>
+
+---
+
+## Part 1: Generate API Credentials in NinjaOne
+
+Before connecting to MSPortal, you need to create API credentials in NinjaOne.
+
+<Steps>
+  <Step title="Access the NinjaOne Dashboard">
+    Log into your NinjaOne portal and navigate to **Administration** from the left sidebar.
+  </Step>
+
+  <Step title="Navigate to API Settings">
+    Go to **Administration > Apps > API**.
+  </Step>
+
+  <Step title="Create a New API Application">
+    Click **Add** to create a new API application.
+  </Step>
+
+  <Step title="Configure the Application">
+    Fill in the following settings:
+
+    | Field | Value |
+    |-------|-------|
+    | **Name** | MSPortal Integration |
+    | **Application Platform** | API Services (Machine-to-Machine) |
+    | **Grant Type** | Client Credentials |
+    | **Redirect URI** | Not required for Machine-to-Machine |
+
+    <Warning>
+      Copy both the **Client ID** and **Client Secret** immediately after saving. The Client Secret cannot be retrieved once you close the dialog.
+    </Warning>
+  </Step>
+
+  <Step title="Note Your Region">
+    Identify which NinjaOne region your account uses. This is visible in your NinjaOne portal URL:
+
+    | Region | Portal URL |
+    |--------|-----------|
+    | United States (US) | `app.ninjarmm.com` |
+    | Europe (EU) | `eu.ninjarmm.com` |
+    | Oceania (OC) | `oc.ninjarmm.com` |
+    | Canada (CA) | `ca.ninjarmm.com` |
+
+    <Tip>
+    Check your browser address bar when logged into NinjaOne to identify your region.
+    </Tip>
+  </Step>
+</Steps>
+
+---
+
+## Part 2: MSPortal Setup Wizard
+
+MSPortal provides a guided 4-step wizard to connect and configure your NinjaOne integration.
+
+### Starting the Wizard
+
+<Steps>
+  <Step title="Navigate to Integrations">
+    In MSPortal, go to **Settings > Integrations**.
+  </Step>
+
+  <Step title="Start Setup">
+    Find the **NinjaOne** integration card and click **Configure** to launch the setup wizard.
+  </Step>
+</Steps>
+
+---
+
+### Step 1: Connect
+
+Enter your NinjaOne API credentials to establish the connection.
+
+<Steps>
+  <Step title="Select Your Region">
+    Choose your NinjaOne region from the dropdown:
+    - United States (US)
+    - Europe (EU)
+    - Oceania (OC)
+    - Canada (CA)
+    - Custom URL (for non-standard NinjaOne instances)
+
+    <Tip>
+    If you're unsure which region you're on, check your NinjaOne portal URL. For example, if you log in at `eu.ninjarmm.com`, select **EU**.
+    </Tip>
+  </Step>
+
+  <Step title="Enter API Credentials">
+    Fill in the following fields:
+
+    The Host URL is displayed below the region dropdown (e.g., `https://app.ninjarmm.com`) and is auto-populated based on your selection. Then fill in:
+
+    | Field | Description |
+    |-------|-------------|
+    | **Access Key ID** | The Client ID generated in NinjaOne |
+    | **Secret** | The Client Secret generated in NinjaOne |
+  </Step>
+
+  <Step title="Test Connection">
+    Click **Test Connection** to verify your credentials. You'll see a green "Connection tested successfully" message when successful.
+
+    If the connection fails:
+    - Verify your Client ID and Client Secret are copied correctly (no extra spaces)
+    - Confirm you selected the correct region
+    - Ensure the API application is set to **Client Credentials** grant type
+    - Check that the application platform is **API Services (Machine-to-Machine)**
+  </Step>
+
+  <Step title="Create Integration">
+    Once the connection test passes, click **Create Integration** to save your credentials and proceed.
+  </Step>
+</Steps>
+
+---
+
+### Step 2: Map Organizations
+
+Map your NinjaOne organizations to MSPortal companies. Only devices from mapped organizations will be available for import.
+
+<Steps>
+  <Step title="Wait for Initial Sync">
+    After creating the integration, MSPortal begins syncing your organizations from NinjaOne. This may take a few minutes depending on the number of organizations.
+
+    <Info>
+    If you see "No organizations found", wait a few minutes and refresh. The initial sync may take some time to complete.
+    </Info>
+  </Step>
+
+  <Step title="Review Organization List">
+    The mapping table displays all organizations from NinjaOne with:
+    - **Company Name**: The name of the organization in NinjaOne
+    - **Devices**: Number of devices in that organization
+    - **Mapped To**: The MSPortal company (if mapped), with confidence scores shown for pending matches
+    - **Status**: Whether the mapping is saved, pending, or unmapped
+  </Step>
+
+  <Step title="Use Quick Match (Recommended)">
+    Click **Quick Match** to automatically map organizations to companies with similar names. This uses fuzzy matching to find likely matches.
+
+    - Organizations matched with high confidence are automatically mapped
+    - Review the results and adjust any incorrect mappings
+  </Step>
+
+  <Step title="Manually Map Remaining Organizations">
+    For organizations that weren't auto-matched:
+
+    1. Find the organization in the list
+    2. Click the company dropdown in the "Mapped To" column
+    3. Search for and select the correct MSPortal company
+    4. The mapping is saved automatically
+  </Step>
+
+  <Step title="Unmap Organizations (Optional)">
+    To remove a mapping, click the **X** button next to the mapped company name.
+  </Step>
+
+  <Step title="Filter the List">
+    Use the filter dropdown to show:
+    - **All**: View all organizations
+    - **Mapped Only**: View only organizations with company mappings
+    - **Unmapped Only**: View organizations that still need mapping
+  </Step>
+</Steps>
+
+<Warning>
+You must map at least one organization before proceeding to device import. Devices from unmapped organizations will not appear in the import staging area.
+</Warning>
+
+---
+
+### Step 3: Map Locations
+
+Map your NinjaOne locations to PSA locations in MSPortal. This step preserves your organizational hierarchy from NinjaOne and ensures devices are assigned to the correct site within each company.
+
+<Info>
+This step is **optional**. If your organization does not use locations in NinjaOne or you do not need location-level tracking, you can skip this step and proceed to device import.
+</Info>
+
+<Steps>
+  <Step title="Review Location List">
+    The mapping table displays all locations from NinjaOne, organized by their parent organization:
+    - **NinjaOne Location**: The location name in NinjaOne
+    - **Organization**: The parent NinjaOne organization
+    - **Mapped To**: The MSPortal PSA location (if mapped)
+  </Step>
+
+  <Step title="Map Locations to PSA Locations">
+    For each NinjaOne location:
+
+    1. Find the location in the list
+    2. Click the location dropdown in the "Mapped To" column
+    3. Search for and select the corresponding PSA location in MSPortal
+    4. The mapping is saved automatically
+  </Step>
+
+  <Step title="Skip if Not Needed">
+    If you do not use locations, click **Next** to proceed without mapping any locations. You can always return to this step later to add location mappings.
+  </Step>
+</Steps>
+
+<Tip>
+Location mapping is most useful when your NinjaOne locations correspond to physical sites that are also tracked in your PSA. This keeps device site assignments consistent across both systems.
+</Tip>
+
+---
+
+### Step 4: Import Devices
+
+After mapping organizations (and optionally locations), import devices from NinjaOne into your MSPortal asset inventory.
+
+<Steps>
+  <Step title="Open Device Import">
+    Click **Open Device Import** to access the full device import interface. This opens a dedicated page for managing device imports.
+  </Step>
+
+  <Step title="Complete Setup">
+    Click **Complete Setup** to finish the wizard. You can always return to the device import page later.
+  </Step>
+</Steps>
+
+---
+
+## Part 3: Device Import
+
+The device import page lets you configure device type mappings and selectively import devices.
+
+### Device Type Mappings
+
+Before importing devices, map NinjaOne device types to your MSPortal device types.
+
+<Steps>
+  <Step title="Review Discovered Types">
+    The Device Type Mappings table shows all device types found in your NinjaOne environment:
+
+    | Column | Description |
+    |--------|-------------|
+    | **NinjaOne Type** | The device node class (e.g., WINDOWS_WORKSTATION, WINDOWS_SERVER, MAC, LINUX_WORKSTATION) |
+    | **Device Count** | Number of devices of this type |
+    | **Maps To** | The MSPortal device type to map to |
+    | **Auto-Sync** | Enable automatic import for this type |
+    | **Actions** | Import all devices of this type |
+  </Step>
+
+  <Step title="Use Quick Match or Quick Create">
+    Two options to speed up type mapping:
+
+    - **Quick Match**: Automatically maps NinjaOne types to existing MSPortal device types with similar names
+    - **Quick Create**: Creates new MSPortal device types for any NinjaOne types that don't have a match
+
+    <Tip>
+    Use Quick Match first to map types that already exist, then Quick Create for any remaining unmatched types.
+    </Tip>
+  </Step>
+
+  <Step title="Map Device Types Manually">
+    For each NinjaOne device type:
+
+    1. Click the "Maps To" dropdown
+    2. Select the corresponding MSPortal device type
+    3. The mapping is saved automatically
+  </Step>
+
+  <Step title="Enable Auto-Sync (Optional)">
+    Toggle the **Auto-Sync** switch for device types you want automatically imported. New devices of these types will be imported without manual intervention after each sync.
+
+    <Note>
+    Auto-sync requires a device type mapping. You must select a "Maps To" value before enabling auto-sync.
+    </Note>
+  </Step>
+
+  <Step title="Import by Type">
+    Click **Import All** on a row to import all unimported devices of that type at once.
+  </Step>
+</Steps>
+
+### Staged Devices
+
+The Staged Devices table shows devices ready for import from mapped organizations.
+
+<Steps>
+  <Step title="Trigger a Sync">
+    Click **Sync Now** in the page header to fetch the latest devices from NinjaOne.
+
+    <Info>
+    The initial sync may take several hours to complete for large environments due to NinjaOne API rate limits. Subsequent syncs are faster as they only process changes.
+    </Info>
+  </Step>
+
+  <Step title="Review Staged Devices">
+    The table displays:
+    - **Device Name**: Hostname of the device
+    - **Type**: NinjaOne device classification (node class)
+    - **Organization**: Which NinjaOne organization the device belongs to
+    - **Company**: The mapped MSPortal company
+    - **Status**: Whether the device has been imported
+  </Step>
+
+  <Step title="Search and Filter Devices">
+    Use the search bar to find specific devices by name. Toggle **Show only unimported** to hide devices that have already been imported.
+  </Step>
+
+  <Step title="Select and Import">
+    1. Check the boxes next to devices you want to import
+    2. Click **Import Selected** to import the selected devices
+    3. Imported devices will be created in your MSPortal asset inventory
+  </Step>
+</Steps>
+
+<Tip>
+For bulk imports, use the device type mapping's "Import All" button instead of selecting individual devices. This is much faster for large environments.
+</Tip>
+
+---
+
+## What Gets Synced
+
+| Data Type | Sync Direction | Description |
+|-----------|----------------|-------------|
+| Organizations | NinjaOne -> MSPortal | Organization data for mapping to companies |
+| Locations | NinjaOne -> MSPortal | Location data for mapping to PSA locations |
+| Devices | NinjaOne -> MSPortal | All managed devices from mapped organizations |
+| Device Details | NinjaOne -> MSPortal | Name, hostname, OS, manufacturer, model, serial number |
+| Network Info | NinjaOne -> MSPortal | IP address and MAC address |
+| Device Status | NinjaOne -> MSPortal | Online/offline status and last contact time |
+| Backup Usage | NinjaOne -> MSPortal | Backup status data from NinjaOne's backup feature |
+| Last Logged In User | NinjaOne -> MSPortal | Last user who logged into the device |
+| Assigned Owner | NinjaOne -> MSPortal | Device's assigned owner in NinjaOne |
+
+---
+
+## Sync Schedule
+
+Syncs run automatically on a daily schedule:
+
+| Sync Type | Schedule | Details |
+|-----------|----------|---------|
+| Organization Sync | Daily at 2:00 AM UTC | Refreshes organization and location data |
+| Device Sync | Daily at 3:15 AM UTC | Syncs all device data from mapped organizations |
+| Auto-Import | Immediately after device sync | Imports new devices for types with auto-sync enabled |
+
+<Note>
+Device syncs can take several hours for large environments due to NinjaOne's API rate limits. You can also trigger a manual sync at any time using the **Sync Now** button on the device import page.
+</Note>
+
+---
+
+## Managing Your Integration
+
+After setup, manage your integration from **Settings > Integrations**:
+
+- **Configure**: Re-open the setup wizard to modify settings, re-map organizations, or update location mappings
+- **Import Devices**: Access the device import page directly
+- **Sync Now**: Trigger a fresh sync of organizations and devices
+- **Delete**: Remove the integration and all associated mappings
+
+### Re-running the Wizard
+
+You can return to any step of the setup wizard at any time:
+
+1. Go to **Settings > Integrations**
+2. Click **Configure** on the NinjaOne card
+3. Navigate between steps using the step indicators or Back/Next buttons
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Connection test fails">
+    **Causes:**
+    - Incorrect Client ID or Client Secret
+    - Wrong region selected
+    - API application not configured as Machine-to-Machine
+    - Client Credentials grant type not selected
+
+    **Solutions:**
+    1. Verify your Client ID and Client Secret are copied exactly (no extra spaces)
+    2. Confirm you selected the correct region matching your NinjaOne portal URL
+    3. Check that the API application in NinjaOne uses **API Services (Machine-to-Machine)** platform
+    4. Ensure the grant type is set to **Client Credentials**
+    5. Generate new API credentials in NinjaOne if needed
+  </Accordion>
+
+  <Accordion title="No organizations appear in mapping step">
+    **Causes:**
+    - Initial sync still in progress
+    - API credentials lack organization read permissions
+
+    **Solutions:**
+    1. Wait a few minutes for the initial sync to complete
+    2. Click **Sync Now** to trigger a manual sync
+    3. Verify your API application has the necessary permissions in NinjaOne
+  </Accordion>
+
+  <Accordion title="No devices in staging area">
+    **Causes:**
+    - No organizations have been mapped to companies
+    - Device sync still in progress
+    - Organizations don't have any devices
+
+    **Solutions:**
+    1. Map at least one organization to a company in the Map Organizations step
+    2. Wait for the device sync to complete (can take several hours for large environments)
+    3. Click **Sync Now** to trigger a fresh sync
+  </Accordion>
+
+  <Accordion title="Device sync takes a very long time">
+    **Causes:**
+    - Large number of devices across many organizations
+    - NinjaOne API rate limits
+
+    **Solutions:**
+    1. This is expected behavior for large environments -- the sync processes devices in batches to respect rate limits
+    2. The daily sync runs overnight so it completes before business hours
+    3. No action is needed; the sync will complete automatically
+  </Accordion>
+
+  <Accordion title="Import fails for some devices">
+    **Causes:**
+    - Device type not mapped
+    - Organization mapping was removed
+
+    **Solutions:**
+    1. Ensure all device types have a "Maps To" value configured
+    2. Verify the organization is still mapped to a company
+    3. Check for error messages in the import results
+  </Accordion>
+
+  <Accordion title="Auto-sync not importing new devices">
+    **Causes:**
+    - Auto-sync not enabled for the device type
+    - Device type not mapped
+    - Organization not mapped to a company
+
+    **Solutions:**
+    1. Enable the Auto-Sync toggle for the device type
+    2. Ensure the device type has a "Maps To" mapping configured
+    3. Verify the device's organization is mapped to a company
+  </Accordion>
+
+  <Accordion title="Locations not appearing in mapping step">
+    **Causes:**
+    - NinjaOne organizations don't have locations defined
+    - Location sync has not completed yet
+
+    **Solutions:**
+    1. Verify that locations are configured in NinjaOne for your organizations
+    2. Wait for the sync to complete and check again
+    3. Location mapping is optional -- you can skip this step if you don't use locations
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Map Organizations First" icon="sitemap">
+    Always map your NinjaOne organizations to companies before trying to import devices. Unmapped organization devices won't appear in staging.
+  </Card>
+  <Card title="Use Quick Match" icon="wand-magic-sparkles">
+    Start with Quick Match for organization mapping, then manually adjust any incorrect matches. It saves significant time for large environments.
+  </Card>
+  <Card title="Enable Auto-Sync" icon="rotate">
+    For device types you always want imported (like workstations and servers), enable Auto-Sync to reduce manual work going forward.
+  </Card>
+  <Card title="Map Locations for Accuracy" icon="location-dot">
+    If your NinjaOne organizations use locations, map them to PSA locations for accurate site-level device tracking across systems.
+  </Card>
+  <Card title="Quick Match + Quick Create" icon="bolt">
+    Use Quick Match to map existing device types, then Quick Create to generate new types for any remaining unmatched NinjaOne categories.
+  </Card>
+  <Card title="Schedule Around Syncs" icon="clock">
+    Device syncs run daily at 3:15 AM UTC. For large environments, avoid triggering manual syncs during business hours as they can take several hours.
+  </Card>
+</CardGroup>
+
+---
+
+## Security and Privacy
+
+- **Credential Storage**: Your NinjaOne Client ID and Client Secret are encrypted using vault storage and never exposed in logs or responses
+- **Data Isolation**: All synced data is tenant-isolated and only visible to your organization
+- **Read-Only Access**: MSPortal only reads data from NinjaOne; it does not modify your NinjaOne configuration or device settings
+
+---
+
+## Related Resources
+
+- [Import Companies](/user-guides/integrations/import-companies) - General company import guide
+- [Devices Module](/user-guides/devices/index) - Managing devices in MSPortal
+- [Clear and Resync Integrations](/user-guides/integrations/clear-and-resync-integrations) - Troubleshooting sync issues
+- [Datto RMM Integration](/user-guides/integrations/enable-datto-rmm-integration) - Similar RMM integration guide
+
+## Need Help?
+
+For assistance with the NinjaOne integration, contact support@msportal.ai.
