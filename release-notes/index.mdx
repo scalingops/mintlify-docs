@@ -3,6 +3,73 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## March 6, 2026
+
+### Hudu Integration
+
+Connect your Hudu documentation platform to MSPortal and give your team and clients access to articles, procedures, passwords, and flexible assets without ever leaving the portal.
+
+**Key Features:**
+- **Articles & Procedures**: Sync knowledge base articles and runbooks with folder hierarchy, scoped by company and RBAC permissions
+- **Password Sharing**: Surface passwords to authorized users on-demand with click-to-reveal. Password values are never stored locally, always fetched live from Hudu with full audit logging
+- **Flexible Assets**: Access any Hudu flexible asset type you enable (servers, licenses, contracts, etc.) directly in MSPortal
+- **Per-Company Controls**: Configure exactly which companies can access passwords and which folders are visible
+- **Magic Dash**: Push compliance check results back to Hudu's Magic Dash widget for at-a-glance status
+
+### IT Glue Integration
+
+Bring your IT Glue documentation into MSPortal so your clients never need another portal, and you don't have to pay for MyGlue.
+
+**Key Features:**
+- **Documents & Checklists**: Sync IT Glue documents with inline images and checklists with task completion tracking
+- **Password Sharing**: On-demand password reveal with full audit logging. Values are never cached, always fetched live from IT Glue
+- **Flexible Assets**: Sync any enabled flexible asset type with all custom fields preserved as structured data
+- **Per-Company Controls**: Granular password sharing configuration with category-level visibility rules
+
+### NinjaOne Integration
+
+Sync devices, organizations, and backup status from NinjaOne RMM into MSPortal with automatic device type mapping and import.
+
+**Key Features:**
+- **Device Sync & Import**: Pull all devices from NinjaOne with detailed hardware info (manufacturer, model, serial number, OS, IP address)
+- **Auto-Sync Device Types**: Configure device type mappings (e.g., WINDOWS_WORKSTATION to Workstation) with auto-import so new devices are imported automatically on each sync
+- **Backup Monitoring**: Extract per-device backup status, last successful/failed timestamps, and storage breakdown (cloud, local, revisions) into the unified Backup dashboard
+- **Organization & Location Mapping**: NinjaOne organizations and locations map to MSPortal companies with smart name matching
+
+### Acronis Cyber Protect Integration (Beta)
+
+Sync backup infrastructure data from Acronis Cyber Protect Cloud into MSPortal's unified Backup dashboard.
+
+**Key Features:**
+- **Protected Resources**: Monitor machines, mailboxes, databases, and VMs with protection status, agent connectivity, and backup schedules
+- **Alert Monitoring**: Track critical, error, warning, and informational alerts with severity color-coding and resolution status
+- **Unified Backup Dashboard**: Acronis data feeds into the same backup dashboard alongside Cove and NinjaOne for a single view of all backup health
+
+<Note>Acronis is in Beta while we finalize deployment with production data. Core functionality is complete and available for early adopters.</Note>
+
+### Liongard Integration (Beta)
+
+Pull configuration audit data from Liongard into MSPortal with automatic compliance check updates based on metric results.
+
+**Key Features:**
+- **Metric Evaluation**: Automatically evaluate audit metrics and surface pass/fail/warning results per company
+- **Auto-Compliance Bridge**: Map Liongard metrics to MSPortal compliance checks so audit results automatically update compliance assignment statuses, no manual entry required
+- **Detection Tracking**: Monitor configuration change detections across all environments with severity classification
+
+<Note>Liongard is in Beta while we finalize deployment with production data. Core functionality is complete and available for early adopters.</Note>
+
+### Integration Checklist Linking
+
+Hudu procedures and IT Glue checklists now automatically sync into MSPortal's onboarding checklist template library. Use your existing documentation platform checklists as starting points for client onboarding portals without recreating them manually.
+
+### Improvements
+
+- **Customer Success Dashboard**: Fixed sorting across all dimension score columns including service quality, engagement, financial, and operational scores
+- **Financial Reporting**: Grade column now sorts by underlying numeric score instead of alphabetical letter order
+- **Company Ticketing Settings**: Fixed display issues on the per-company ticketing configuration page
+
+---
+
 ## February 27, 2026
 
 ### MSP Tools Suite

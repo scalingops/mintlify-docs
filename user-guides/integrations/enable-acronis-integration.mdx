@@ -1,0 +1,414 @@
+---
+title: 'Configure Acronis Cyber Protect Integration'
+description: 'Connect your Acronis Cyber Protect Cloud instance to MSPortal.ai to sync backup status, alerts, and protection data'
+icon: 'cloud-arrow-down'
+---
+
+This guide walks you through connecting your Acronis Cyber Protect Cloud instance to MSPortal.ai using our streamlined 2-step setup wizard.
+
+<Info>
+The Acronis integration is currently in **Beta**. Core functionality is complete and available for all users. You will see a "Beta" badge on the Acronis card in the Integrations page. If you encounter any issues, contact support@msportal.ai.
+</Info>
+
+## Overview
+
+Acronis Cyber Protect Cloud provides unified backup, disaster recovery, and cyber protection for MSPs. By integrating Acronis with MSPortal.ai, you can:
+
+- Sync backup status and protection data across all your managed clients
+- Monitor backup alerts and notifications in a centralized dashboard
+- Map Acronis tenants to MSPortal companies for organized data tracking
+- Include backup metrics in client reports
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+- Active Acronis Cyber Protect Cloud account with administrative access
+- MSPortal.ai account with integration management permissions
+- Companies already set up in MSPortal (from your PSA integration or manually created)
+
+<Note>
+The Acronis integration maps tenants to existing companies in MSPortal. Import your companies from your PSA integration first, or create them manually before setting up Acronis.
+</Note>
+
+---
+
+## Part 1: Generate API Credentials in Acronis
+
+Before connecting to MSPortal.ai, you need to create an API client in Acronis Cyber Protect Cloud.
+
+<Steps>
+  <Step title="Log into Acronis Management Console">
+    Access your Acronis Cyber Protect Cloud management console using your administrator credentials.
+  </Step>
+
+  <Step title="Navigate to API Clients">
+    Go to **Settings** > **API Clients** (this may also appear under **Manage your account** > **API clients** depending on your console version).
+  </Step>
+
+  <Step title="Create a New API Client">
+    Click **Create API Client** to begin generating your credentials.
+
+    Enter a descriptive name for the client:
+
+    | Field | Recommended Value |
+    |-------|-------------------|
+    | **Name** | `MSPortal Integration` |
+  </Step>
+
+  <Step title="Copy Client ID and Client Secret">
+    After creating the API client, the console will display your **Client ID** and **Client Secret**.
+
+    <Warning>
+      **Copy the Client Secret immediately!** It is only displayed once. If you close the dialog without copying it, you will need to create a new API client. Store both values securely for use in MSPortal.ai.
+    </Warning>
+  </Step>
+
+  <Step title="Note Your Datacenter URL">
+    Identify your Acronis datacenter URL. This is visible in the address bar of your Acronis portal and varies by region. Common examples include:
+
+    | Region | Example Datacenter URL |
+    |--------|------------------------|
+    | US | `https://us5-cloud.acronis.com` |
+    | EU | `https://eu2-cloud.acronis.com` |
+    | AU | `https://au-cloud.acronis.com` |
+
+    <Tip>
+      Your datacenter URL is the base URL you see when logged into the Acronis management console, without any trailing path segments. For example, if your browser shows `https://us5-cloud.acronis.com/mc/dashboard`, the datacenter URL is `https://us5-cloud.acronis.com`.
+    </Tip>
+  </Step>
+</Steps>
+
+### Required Information
+
+Before proceeding to MSPortal, ensure you have the following:
+
+| Information | Description |
+|-------------|-------------|
+| **Datacenter** | Your Acronis datacenter region (MSPortal provides a dropdown of known datacenters, with a custom URL option) |
+| **Client ID** | The client identifier generated when creating the API client |
+| **Client Secret** | The secret generated when creating the API client |
+
+---
+
+## Part 2: MSPortal Setup Wizard
+
+MSPortal.ai provides a guided 2-step wizard to connect and configure your Acronis integration.
+
+### Starting the Wizard
+
+<Steps>
+  <Step title="Navigate to Integrations">
+    In MSPortal.ai, go to **Settings** > **Integrations**.
+  </Step>
+
+  <Step title="Start Setup">
+    Find the **Acronis Cyber Protect** integration card and click **Configure** to launch the setup wizard.
+  </Step>
+</Steps>
+
+---
+
+### Step 1: Connect
+
+Enter your Acronis API credentials to establish the connection.
+
+<Steps>
+  <Step title="Enter API Credentials">
+    Fill in the following fields:
+
+    | Field | Description |
+    |-------|-------------|
+    | **Datacenter** | Select your Acronis datacenter from the dropdown. If your datacenter is not listed, choose **Custom URL** and enter the base URL manually. |
+    | **Client ID** | The client identifier from your Acronis API client |
+    | **Client Secret** | The secret from your Acronis API client |
+
+    <Note>
+      Your credentials are stored securely using encrypted vault storage. They are never exposed in logs or API responses.
+    </Note>
+  </Step>
+
+  <Step title="Test Connection">
+    Click **Test Connection** to verify your credentials. MSPortal will use your Client ID and Client Secret to authenticate with the Acronis API and retrieve your root tenant information. You will see a green "Connection successful" message when the test passes.
+
+    If the connection fails:
+    - Verify you selected the correct datacenter from the dropdown (or entered the correct custom URL)
+    - Check that the Client ID and Client Secret are copied exactly, without extra spaces
+    - Ensure the API client has not been revoked or deleted in Acronis
+    - Confirm your Acronis account has administrative access
+  </Step>
+
+  <Step title="Create Integration">
+    Once the connection test passes, click **Create Integration** to save your credentials and proceed to tenant mapping.
+  </Step>
+</Steps>
+
+---
+
+### Step 2: Map Tenants
+
+Map Acronis tenants (your customers/clients) to MSPortal companies. This determines which backup data syncs to which company.
+
+<Steps>
+  <Step title="Sync Tenants">
+    If no tenants appear, click **Sync** to fetch tenants from your Acronis account. The initial sync may take a few minutes depending on the number of tenants in your environment.
+
+    <Info>
+      The sync runs in the background. If tenants do not appear immediately, wait a few minutes and check again.
+    </Info>
+  </Step>
+
+  <Step title="Use Quick Match">
+    Click **Quick Match** to automatically match Acronis tenants to MSPortal companies based on name similarity. This saves significant time when you have many tenants with matching names.
+
+    <Tip>
+      Quick Match uses intelligent name matching to find likely matches. Review the results and make manual adjustments for any incorrect or missing matches.
+    </Tip>
+  </Step>
+
+  <Step title="Manual Mapping">
+    For tenants that were not automatically matched or need adjustment:
+
+    1. Find the tenant in the list
+    2. Click the **Select company** dropdown in the "Mapped To" column
+    3. Search for and select the correct MSPortal company
+
+    To remove a mapping, click the **X** button next to the company badge.
+  </Step>
+
+  <Step title="Filter Tenants">
+    Use the filter dropdown to view:
+    - **All Tenants** - Show all synced tenants
+    - **Mapped Only** - Show only tenants linked to companies
+    - **Unmapped Only** - Show tenants that still need mapping
+  </Step>
+
+  <Step title="Complete Setup">
+    Once you have mapped your tenants, click **Complete Setup** to finish the wizard.
+
+    <Info>
+      Only data from mapped tenants will sync to MSPortal. You can return to add more mappings at any time.
+    </Info>
+  </Step>
+</Steps>
+
+---
+
+## What Gets Synced
+
+The Acronis integration syncs the following data types to MSPortal:
+
+| Data Type | Sync Direction | Description |
+|-----------|----------------|-------------|
+| **Tenants** | Acronis -> MSPortal | Tenant and customer information used for company mapping |
+| **Resources** | Acronis -> MSPortal | Protected machines, backup agents, and managed resources |
+| **Alerts** | Acronis -> MSPortal | Backup alerts, status notifications, and protection warnings |
+
+### Tenants
+
+Customer and organization data from your Acronis environment, including:
+- Tenant name and identifier
+- Tenant hierarchy and relationships
+- Used for mapping to MSPortal companies
+
+### Resources
+
+Protected machine and backup resource data:
+- Machine names and identifiers
+- Protection plan assignments
+- Backup agent status
+- Associated tenant information
+
+### Alerts
+
+Backup and protection alert data:
+- Alert type and severity
+- Affected resource details
+- Alert status and timestamps
+- Protection status notifications
+
+---
+
+## Synchronization Schedule
+
+After initial setup, data syncs automatically:
+
+| Data Type | Sync Frequency |
+|-----------|----------------|
+| Tenants | Every 4 hours |
+| Resources | Every 30 minutes (at :10 and :40) |
+| Alerts | Every 30 minutes (at :05 and :35) |
+
+<Note>
+You can trigger a manual sync at any time from **Settings** > **Integrations** by clicking **Configure** on the Acronis card.
+</Note>
+
+---
+
+## Managing Your Integration
+
+After setup, manage your integration from **Settings** > **Integrations**:
+
+| Action | Description |
+|--------|-------------|
+| **Configure** | Re-open the setup wizard to modify settings or update tenant mappings |
+| **Sync Tenants** | Refresh the list of tenants from Acronis |
+| **Sync Resources** | Fetch the latest protected machines and backup agents |
+| **Sync Alerts** | Pull the latest backup alerts and status notifications |
+| **Delete** | Remove the integration and all stored credentials |
+
+### Updating Your Credentials
+
+If you need to update your Acronis API credentials (for example, after rotating your Client Secret):
+
+<Steps>
+  <Step title="Open Integration Settings">
+    Go to **Settings** > **Integrations** and click **Configure** on the Acronis card.
+  </Step>
+
+  <Step title="Enter New Credentials">
+    On the Connect step, select your updated Datacenter, Client ID, and/or Client Secret.
+  </Step>
+
+  <Step title="Test Connection">
+    Click **Test Connection** to verify the new credentials work correctly.
+  </Step>
+</Steps>
+
+### Adding More Tenant Mappings
+
+As you onboard new clients in Acronis:
+
+<Steps>
+  <Step title="Open Integration Settings">
+    Go to **Settings** > **Integrations** and click **Configure** on the Acronis card.
+  </Step>
+
+  <Step title="Navigate to Map Step">
+    Click on Step 2 (Map Tenants) in the wizard stepper.
+  </Step>
+
+  <Step title="Sync New Tenants">
+    Click **Sync** to fetch any new tenants from Acronis.
+  </Step>
+
+  <Step title="Map New Tenants">
+    Use Quick Match or manual mapping to connect new tenants to MSPortal companies.
+  </Step>
+</Steps>
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Connection test fails">
+    **Causes:**
+    - Incorrect Datacenter selection, Client ID, or Client Secret
+    - API client has been revoked or deleted in Acronis
+    - Insufficient account permissions
+
+    **Solutions:**
+    1. Verify you selected the correct datacenter from the dropdown, or entered the correct custom URL
+    2. Confirm the Client ID and Client Secret are copied exactly, without extra spaces or missing characters
+    3. Log into Acronis and verify the API client still exists under **Settings** > **API Clients**
+    4. Ensure your Acronis account has administrative privileges
+    5. If credentials are lost, create a new API client in Acronis and update the integration
+  </Accordion>
+
+  <Accordion title="No tenants appear in mapping step">
+    **Causes:**
+    - Initial sync still in progress
+    - API client lacks sufficient permissions
+
+    **Solutions:**
+    1. Click **Sync** and wait a few minutes for the background sync to complete
+    2. Verify that your Acronis account has access to view tenant information
+    3. Confirm that your Acronis environment has sub-tenants configured (if you only have a root tenant, there may be nothing to map)
+  </Accordion>
+
+  <Accordion title="Data not syncing after setup">
+    **Causes:**
+    - Tenants are not mapped to MSPortal companies
+    - Sync has not completed yet
+    - Credentials have expired or been revoked
+
+    **Solutions:**
+    1. Ensure at least one tenant is mapped to a company -- only data from mapped tenants will sync
+    2. Wait for the sync to complete, then check again
+    3. Return to the integration settings and test the connection to verify credentials are still valid
+  </Accordion>
+
+  <Accordion title="Missing alerts or resources">
+    **Causes:**
+    - The affected tenant is not mapped to a company
+    - Sync for that data type has not run yet
+
+    **Solutions:**
+    1. Verify the tenant is mapped in the integration wizard
+    2. Trigger a manual sync for the specific data type (Sync Resources or Sync Alerts) from the integration management page
+  </Accordion>
+
+  <Accordion title="Wrong datacenter selected">
+    **Causes:**
+    - Selected the wrong datacenter from the dropdown, or entered an incorrect custom URL
+
+    **Solutions:**
+    1. Log into your Acronis management console and check the URL in your browser address bar
+    2. Select the matching datacenter from the dropdown, or use **Custom URL** and enter the base domain only (e.g., `https://us5-cloud.acronis.com`), not a full page path
+    3. Test the connection again after updating
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Map Tenants First" icon="sitemap">
+    Always map your Acronis tenants to companies before expecting data to appear. Only mapped tenant data syncs to MSPortal.
+  </Card>
+  <Card title="Use Quick Match" icon="wand-magic-sparkles">
+    Start with Quick Match for tenant mapping, then manually adjust any incorrect matches. It saves significant time with large tenant lists.
+  </Card>
+  <Card title="Secure Your Credentials" icon="lock">
+    Store your Client ID and Client Secret securely. If you suspect they have been compromised, delete the API client in Acronis and create a new one.
+  </Card>
+  <Card title="Monitor Alerts Regularly" icon="bell">
+    Check backup alerts in MSPortal regularly to stay on top of failed backups and protection issues across your client base.
+  </Card>
+</CardGroup>
+
+---
+
+## Security and Privacy
+
+- **Credential Storage**: Your Client ID and Client Secret are encrypted using vault storage and never exposed in logs or responses
+- **Data Isolation**: All synced data is tenant-isolated and only visible to your organization
+- **Read-Only Access**: MSPortal only reads data from Acronis; it does not modify your Acronis configuration or protection plans
+- **Token Management**: Authentication tokens are automatically refreshed, so you do not need to manage token expiration manually
+
+---
+
+## Next Steps
+
+After setting up the Acronis integration:
+
+<CardGroup cols={2}>
+  <Card title="View Backup Data" icon="database" href="/user-guides/backup/index">
+    Monitor backup status and protection across your client base
+  </Card>
+  <Card title="Build Reports" icon="chart-bar" href="/user-guides/reporting/index">
+    Include backup metrics and alert summaries in client reports
+  </Card>
+  <Card title="Import Companies" icon="building" href="/user-guides/integrations/import-companies">
+    Set up companies if you have not done so already
+  </Card>
+  <Card title="Other Integrations" icon="plug" href="/user-guides/integrations/index">
+    Explore additional integration options
+  </Card>
+</CardGroup>
+
+## Need Help?
+
+For assistance with the Acronis integration, contact support@msportal.ai.

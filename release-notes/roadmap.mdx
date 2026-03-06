@@ -7,50 +7,52 @@ We're constantly working to improve MSPortal.ai. Here's what's on our roadmap:
 
 ## Recently Shipped
 
-### MSP Tools
+### Hudu & IT Glue Integrations
 
-A suite of tools purpose-built for MSP operations, giving you clear visibility into client health, financial performance, and tool stack coverage. [Read the full documentation](/user-guides/msp-tools/index).
+Deep integrations with Hudu and IT Glue so your clients never need another portal, and you don't have to pay for MyGlue.
 
-**Financial Reporting** - Clear visibility into the profitability of every client relationship.
-- **Managed Revenue** - Recurring revenue from managed service contracts
-- **Support Hours** - Time spent on reactive support from configured service boards
-- **Managed Endpoints** - Device or user counts based on your chosen endpoint model
-- **Reactive Hours per Endpoint (RHEM)** - See how much reactive work each endpoint generates
-- **Effective Hourly Rate (EHR)** - Know what you're actually earning per hour of support
-- **All-in Seat Price** - Your true per-seat economics
-- **Financial Grading** - A-F letter grades so you can instantly spot your most and least profitable accounts
-- **Flexible Reporting Periods** - Current month, trailing 3 months, year-to-date, or any specific historical month
+- **Articles & Procedures** - Sync and view knowledge base articles and runbooks directly within MSPortal
+- **Flexible Assets** - Access flexible asset data scoped by company and role permissions
+- **Passwords** - On-demand password reveal with full audit logging, values never stored locally
+- **Per-Company Controls** - Granular configuration for which companies see which content
 
-**Client Health** - A comprehensive health and success platform that tells you exactly where to focus your resources.
-- **Health Scoring Across 8 Dimensions** - Service Quality, Engagement, Financial Health, Sales Pipeline, Projects, Tool Stack, Environment, and Operational
-- **Risk Classification** - Every company categorized as Thriving, Healthy, At Risk, or Critical with trend indicators
-- **Portfolio Summary** - Your entire book of business at a glance with risk distribution, NPS trends, and engagement gaps
+### NinjaOne Integration
 
-**Tool Stack** - Understand tool deployment across your entire client base.
-- Track deployment percentage of required and recommended tools per company
-- Identify gaps where clients are missing critical tools
-- Automatic planner item creation for deployment tracking
-- Drive standardization and upsell opportunities across your managed environment
+Full RMM integration with device sync, auto-import by device type, backup monitoring, and organization/location mapping.
+
+### Acronis Cyber Protect (Beta)
+
+Backup monitoring with protected resource tracking, alert management, and tenant hierarchy support feeding into the unified Backup dashboard.
+
+### Liongard (Beta)
+
+Configuration audit sync with automatic compliance bridge that maps Liongard metric results to MSPortal compliance check statuses.
 
 ---
 
 ## In Development
 
-### New Integrations
+### Location-Based Ticket Display Groups
 
-- **Acronis Integration** - Sync backup and disaster recovery data from Acronis Cyber Protect Cloud
-- **Liongard Integration** - Pull configuration data from Liongard with automatic compliance checks that continuously validate your environments against expected configurations
+Organize ticket form templates by office location so end users see only the forms relevant to their site. Combined with permalink support, each location can have a direct link to its ticket submission page.
 
-### Hudu & IT Glue Integrations
+### ConnectWise User Type Permissions Mapping
 
-Deep integrations with Hudu and IT Glue so your clients never need another portal — and you don't have to pay for MyGlue.
+Map ConnectWise Manage contact types to MSPortal company-level permissions automatically. When users sync from CWM, their contact type determines what they can access in the portal.
 
-- **Articles** - Sync and view knowledge base articles directly within MSPortal with full RBAC control
-- **Flexible Assets** - Access flexible asset data from your documentation platform, scoped by company and role permissions
-- **Passwords** - Securely surface passwords to authorized users without leaving MSPortal, governed by role-based access controls
-- **Procedures** - View standard operating procedures and runbooks alongside the rest of your client data
+### Multi-Location MSP Tenant Support
 
-All synced data respects MSPortal's RBAC system, ensuring users only see what their role permits. Everything your clients need in one place — no separate documentation portal required.
+MSP tenants with multiple offices can now manage locations with distinct settings. AI-powered classification helps tag warehouses, headquarters, and satellite offices for smarter defaults across ticketing and reporting.
+
+### Google Workspace Integration
+
+Full Google Workspace integration mirroring our existing M365 capabilities. Each client's Google Workspace admin connects via OAuth, and MSPortal syncs their directory, licenses, domains, and security posture.
+
+- **Users & Groups** - Sync users and groups from the Google Admin Directory with org unit, admin status, 2FA enrollment, and last login
+- **License Management** - View Google Workspace license assignments across all SKUs with per-company breakdowns
+- **Domains** - Track verified domains across all connected Google Workspace tenants
+- **Security Reports** - Daily security snapshots showing 2FA adoption rates, enforcement status, admin counts, and 30-day trend charts
+- **Cloud Navigation** - Microsoft 365 and Google Workspace grouped under a unified "Cloud" sidebar section
 
 ---
 
@@ -79,7 +81,6 @@ New compliance and operational playbooks are coming soon:
 We're expanding our integration ecosystem:
 - **Azure Device Sync** - Sync device information from Azure AD/Entra ID
 - **Intune Settings Documentation** - Document and track Intune configuration policies
-- **NinjaOne Integration** - Connect with NinjaOne RMM
 - **Pia Integration** - Integrate with Pia for enhanced workflows
 
 ### User Statistics Dashboard
