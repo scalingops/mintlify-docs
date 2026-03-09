@@ -1,0 +1,70 @@
+---
+title: 'Connecting Companies to Microsoft 365'
+description: 'Sign in with Microsoft for each of your client companies to enable user sync, license management, and security monitoring.'
+icon: 'plug'
+---
+
+The **Company M365 Setup** page lets you connect each of your client companies to their Microsoft 365 tenant in one place. Once connected, MSPortal automatically syncs users, licenses, domains, and Secure Score data for that company.
+
+## Prerequisites
+
+- You must have **Settings** access in MSPortal
+- An administrator from each client's Microsoft 365 tenant must be available to approve permissions (or you must have admin credentials for their tenant)
+
+## Connecting a Company
+
+<Steps>
+  <Step title="Navigate to the M365 Companies page">
+    Go to **Settings > Integrations > Microsoft 365 > Companies**.
+
+    You'll see a list of all your companies with their current connection status. A progress bar at the top shows how many companies are connected out of your total.
+  </Step>
+  <Step title="Click Sign in with Microsoft">
+    Find the company you want to connect and click the **Sign in with Microsoft** button on its row.
+
+    A popup window will open with the Microsoft sign-in page.
+  </Step>
+  <Step title="Authenticate and grant permissions">
+    Sign in with an **administrator account** from the client's Microsoft 365 tenant and approve the requested permissions.
+
+    Once authentication succeeds, the popup will close automatically and the company will show a green **Connected** badge.
+  </Step>
+  <Step title="Repeat for each company">
+    Work through the list, clicking **Sign in with Microsoft** for each company you want to connect. Use the search bar to quickly find specific companies.
+  </Step>
+</Steps>
+
+<Note>
+  If your browser blocks the popup, you'll see an error message. Allow popups for MSPortal and try again.
+</Note>
+
+## Using the Generate Link Option
+
+If you sign into client Microsoft 365 tenants using a **separate browser profile**, a **different browser**, or need to send the authentication link to someone else, use the **Generate Link** option instead.
+
+<Steps>
+  <Step title="Click Generate Link">
+    Next to the company, click the **Generate Link** button. A shareable authentication URL will be generated and automatically copied to your clipboard.
+  </Step>
+  <Step title="Open the link in your preferred browser">
+    Paste the link into the browser or browser profile where you are signed into the client's Microsoft 365 admin account, and complete the authentication flow.
+  </Step>
+</Steps>
+
+<Warning>
+  Each generated link **expires in 7 days** and can only be **used once**. If the link expires or has already been used, click **Generate new link** to create a fresh one.
+</Warning>
+
+<Tip>
+  The Generate Link option is especially useful if you use tools like Chrome profiles or Firefox containers to manage multiple Microsoft 365 tenants. Generate the link in MSPortal, then paste it into the correct browser profile to authenticate.
+</Tip>
+
+## Reconnecting a Company
+
+If a company's Microsoft 365 connection needs to be refreshed (e.g., after a token expiry or permission change), click the **Reconnect** button on the company's row. This follows the same authentication flow as the initial connection.
+
+## Related Documentation
+
+- [Microsoft 365 Overview](/user-guides/microsoft-365/index) - Full M365 feature guide
+- [M365 Licenses](/user-guides/microsoft-365/licenses) - License management
+- [M365 Domains](/user-guides/microsoft-365/domains) - Domain configuration
