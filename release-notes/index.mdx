@@ -3,6 +3,65 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## March 13, 2026
+
+### Financial Reporting: Revenue Breakdown & Drilldowns
+
+Financial Reporting now gives you a complete picture of your revenue with two new columns — **Other Recurring Revenue** and **Non-Recurring Revenue** — alongside the existing Managed Revenue. MSPs using the hybrid endpoint model also get dedicated **AISP Device** and **AISP User** columns so you can compare per-device and per-user seat pricing side by side.
+
+Every numeric value in the table is now clickable. Click any revenue, support hours, or endpoint value to open a drilldown showing the underlying line items, devices, users, or time entries that make up that number. Drilldowns include pagination and totals so you can audit exactly where the numbers come from.
+
+- **Other Recurring Revenue**: Monthly average of contract items categorized as "other recurring" in your revenue category mappings
+- **Non-Recurring Revenue**: Monthly average of billing items categorized as "non-recurring"
+- **AISP Device / AISP User**: Managed revenue divided by device count or user count (hybrid model only)
+- **Revenue Drilldown**: Click any revenue cell to see every contract line item with provider, contract/agreement, product, quantity, unit price, and amount
+- **Endpoint Drilldown**: Click endpoints to see the device list or user list that makes up the count
+- **Support Hours Drilldown**: Click hours to see individual time entries with date, technician name, ticket, and service board/queue — with period totals and monthly averages for multi-month views
+- **Non-Recurring Revenue Drilldown**: Click non-recurring revenue to see billable labor entries with hours, rates, and amounts — with period totals and monthly averages
+- All new columns support sorting and range filtering
+- Drilldown queries optimized for sub-100ms response times across all PSA providers
+
+### Location Filtering on Tickets
+
+Tickets now display and filter by **location/site name** across all PSA integrations. A new Location column appears in the ticket list with a dropdown filter populated from your ticket data.
+
+- **Autotask**: Location now resolves from `companyLocationID` through the integration locations table
+- **Syncro**: Locations now link through integration locations for consistent site naming
+- **ConnectWise**: Fixed location resolution to use the correct site ID field
+
+### Quote Visibility Controls
+
+Company roles can now restrict which quotes users see. In **Settings > Users & Roles**, edit any company role and set Quote Visibility to control access:
+
+- **All Quotes** (default): Users see every quote for their company
+- **Own Only**: Users see only quotes where they are the billing contact
+
+This is useful for companies with multiple departments or contacts who should only see their own pricing.
+
+### M365 Multi-Tenant Support
+
+Companies can now connect multiple Microsoft 365 tenants. The M365 integration card shows all connected tenants with independent sync status and user/group counts for each.
+
+### PSA-Aware Terminology
+
+All PSA-related labels across the app now automatically adapt to your connected integration. ConnectWise users see "Agreement", "Service Board", and "Member". Autotask users see "Contract", "Queue", and "Resource". Halo users see "Contract", "Team", and "Agent". This applies across financial drilldowns, ticket lists, ticket settings, company ticketing, kanban boards, automation actions, and presentation mode.
+
+### Bug Fixes & Improvements
+
+- **M365 OAuth**: Fixed "auth_required" error that occurred when browser sessions expired during the Microsoft OAuth redirect flow
+- **M365 Disconnect**: Added a disconnect button to remove M365 connections from the company detail page
+- **M365 Callback Page**: Fixed garbled checkmark character on the OAuth success page
+- **User Import Linking**: Fixed an issue where ConnectWise user sync created duplicate imported profiles instead of linking to existing auth accounts, which broke team role assignments
+- **Imported User Status**: Users incorrectly marked as "imported" who already have active auth accounts are now automatically corrected to "active"
+- **Roles Tab**: Company security roles can now be created, edited, and deleted directly from the Users & Roles page without navigating to the Companies tab
+- **Settings Navigation**: Simplified the Companies settings page by removing redundant sub-tabs
+- **Company Column Filters**: Company dropdowns across all data tables now use universal server-side search, fixing issues where only current-page companies appeared in the filter
+- **Company Page Permissions**: Summary metric cards on the company overview now respect user permissions. Cards for modules the user can't access appear dimmed and non-clickable instead of linking to restricted pages
+- **Access Denied Page**: Navigating to a page you don't have permission for now shows a friendly "Access Denied" card with a link home instead of the generic error page
+- **Documentation Settings**: The Articles and Passwords visibility tabs now use the global company selector instead of separate inline dropdowns
+
+---
+
 ## March 6, 2026
 
 ### Hudu Integration
