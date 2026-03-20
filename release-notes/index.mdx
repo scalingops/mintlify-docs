@@ -38,6 +38,10 @@ Ticket form templates can now be organized by office location so end users see o
 
 Background sync tasks now run with smart concurrency limits per integration provider, preventing performance degradation during large sync operations. Each provider (Autotask, ConnectWise, and others) has tuned concurrency settings that balance sync speed with database stability. Cursor progress writes have been optimized, and transient errors now retry with exponential backoff.
 
+### Realtime Notifications & Approvals
+
+Notifications and approval counts now update instantly using Supabase Realtime. Previously, badge counts relied on polling, which meant delays before new notifications appeared. Now, notification badges and pending approval counts reflect changes the moment they happen, with no page refresh needed.
+
 ### Bug Fixes & Improvements
 
 - **Survey Wizard**: Added support for additional answer types and replaced the native range input with a polished slider component
