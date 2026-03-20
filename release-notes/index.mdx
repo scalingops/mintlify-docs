@@ -3,6 +3,53 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## March 20, 2026
+
+### Redesigned Meeting Presentation Mode
+
+Meeting presentation mode has been completely rebuilt for a more professional look. The previous design used colorful gradient blocks to display metadata like contact names, statuses, hours, and costs, creating a rainbow dashboard look that didn't feel polished enough for client-facing meetings. The new design uses clean, structured layouts with consistent typography and subtle borders, giving your QBR and review slides a presentation-ready appearance.
+
+- **Clean Slide Layouts**: Professional card-based designs replace colored gradient blocks across all slide types
+- **Improved Readability**: Metadata fields like status, hours, and cost use structured rows instead of scattered colored badges
+- **Consistent Styling**: Every agenda item type (tickets, invoices, projects, compliance, training) follows the same visual language
+- **Dedicated Presentation Theme**: Custom CSS theme ensures slides look great in both fullscreen and windowed modes
+
+### Meeting Private Notes
+
+Meetings now include a **Private Notes** field that persists across sessions. Private notes are saved alongside your meeting content and appear in all calendar views (list, recurring, and detail). Previously, private notes were visible in the UI but were not saved to the database.
+
+### Location-Scoped Dashboard Visibility
+
+Users with location-based ticket permissions now see accurate counts across all dashboard widgets and drilldowns. Previously, dashboard aggregation only handled "all" and "own" visibility modes, returning zero results for users scoped to specific locations. The v3 drilldown worker has also been updated to respect location visibility.
+
+### ConnectWise User Type Permissions Mapping
+
+ConnectWise Manage contact types now map automatically to MSPortal company-level permissions. When users sync from ConnectWise, their contact type determines what they can access in the portal, eliminating the need to manually assign permissions after every user import.
+
+### Multi-Location MSP Tenant Support
+
+MSP tenants with multiple offices can now manage locations with distinct settings. AI-powered classification helps tag warehouses, headquarters, and satellite offices for smarter defaults across ticketing and reporting.
+
+### Location-Based Ticket Display Groups
+
+Ticket form templates can now be organized by office location so end users see only the forms relevant to their site. Combined with permalink support, each location can have a direct link to its ticket submission page, making it easy to embed location-specific forms in bookmarks, intranets, or onboarding materials.
+
+### Improved Integration Sync Reliability
+
+Background sync tasks now run with smart concurrency limits per integration provider, preventing performance degradation during large sync operations. Each provider (Autotask, ConnectWise, and others) has tuned concurrency settings that balance sync speed with database stability. Cursor progress writes have been optimized, and transient errors now retry with exponential backoff.
+
+### Bug Fixes & Improvements
+
+- **Survey Wizard**: Added support for additional answer types and replaced the native range input with a polished slider component
+- **Custom Fields**: Fixed rendering issues with custom field displays
+- **Automation Rules**: Resolved stability issues with rule execution
+- **Compliance Performance**: Eliminated sequential scans on compliance assignment queries for faster page loads
+- **Session Handling**: Improved expired session detection and recovery flow
+- **Sign-in Page**: Added accessibility labels and improved status badge layout
+- **Impersonation**: Better client state cleanup when switching between impersonated users
+
+---
+
 ## March 13, 2026
 
 ### Financial Reporting: Revenue Breakdown & Drilldowns
