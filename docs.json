@@ -278,7 +278,8 @@
               {
                 "group": "IT Glue",
                 "pages": [
-                  "user-guides/integrations/enable-itglue-integration"
+                  "user-guides/integrations/enable-itglue-integration",
+                  "user-guides/integrations/itglue-sync-folders"
                 ]
               },
               {

@@ -3,6 +3,54 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## March 27, 2026
+
+### Security Dashboard & EDR Incidents
+
+The Security module now includes a **Dashboard** tab that aggregates key metrics across all connected security providers into a single view. At a glance you can see total endpoints, protection status, open incidents, and high-severity alerts from both Cork and Acronis without navigating between tabs.
+
+A new **EDR Incidents** tab surfaces Acronis EDR/MDR incident data directly in MSPortal. Each incident shows severity, state, category, affected device, and detection timestamps. Incidents can be added to meeting agendas or converted into planner items for follow-up, just like compliance and vulnerability findings.
+
+- **Unified Summary Cards**: Endpoint protection rates, incident counts by severity, online/offline device ratios, and unmitigated threat counts
+- **EDR Incidents Table**: Filterable by severity, state, category, and company with full detail side panel
+- **Acronis Endpoint Enrichment**: Endpoints page now pulls data from both Cork and Acronis, showing protection plan, agent version, and online status for Acronis-managed devices
+- **Provider-Aware Tabs**: Security tabs dynamically show or hide based on which providers (Cork, Acronis) are active for the tenant
+- **Background Sync**: New Trigger.dev scheduled task syncs Acronis incidents on a recurring basis with incremental cursor-based fetching
+
+### Bulk Company Creation in Integration Wizards
+
+All nine integration wizard flows (Acronis, Cork, Cove, Hudu, IT Glue, Liongard, Pax8, RMM, and ScalePad) now support batch company creation. Previously, creating companies for unmapped integration items happened one at a time, which was slow for large imports. The new bulk action inserts all selected companies in a single database call and auto-maps them to the corresponding integration items.
+
+- **Single Batch Insert**: Creating 50+ companies during an integration setup now completes in seconds instead of minutes
+- **Import All with Bulk Create**: The "Import All" action also uses batch creation, combining company creation and mapping saves into optimized bulk operations
+- **Automatic Tool Stack Sync**: Newly created companies automatically receive tool stack items via background task
+
+### Documentation: Folder Navigation & ITGlue Folder Import
+
+The Documentation module now features a **folder tree sidebar** for both Articles and Assets. Instead of scrolling through a flat list, you can navigate your documentation structure by folder hierarchy, with article and asset counts shown per folder.
+
+- **Folder Tree Sidebar**: Collapsible tree view with folder counts, "No Folder" filter for uncategorized articles, and company-scoped folder data
+- **Asset Layout Sidebar**: Assets tab replaces the previous card grid with a persistent sidebar listing all asset layouts with counts, making it faster to switch between layout types
+- **ITGlue Folder Import**: New tool in Documentation Settings generates a script you can run against your ITGlue instance to pull folder structures into MSPortal, preserving your existing organization
+- **Articles Visibility Settings**: Enhanced articles browser in Settings with folder-based filtering for controlling which articles are visible to end users
+
+### Integration Card Quick Links
+
+Connected integrations on the Settings page now display quick-link buttons that navigate directly to relevant pages. For example, a connected Cork integration shows "View Metrics" and "Vulnerabilities" buttons that link to the corresponding Security tabs, reducing the number of clicks to reach integration-specific data.
+
+### Improved Liongard Device Matching
+
+Liongard system data now includes device ID mapping, enabling direct correlation between Liongard inspectors and your device inventory. The sync task has been updated to extract and store device identifiers during data pull, improving accuracy when viewing Liongard metrics alongside device records.
+
+### Bug Fixes & Improvements
+
+- **ITGlue Document Sync**: Improved pagination handling and vendor API library for more reliable document imports across large ITGlue instances
+- **Autotask Opportunities Sync**: Added metadata tracking for sync cursor progress
+- **RLS Security Audit**: Applied company-scoping fixes to multiple database policies ensuring data isolation across tenants
+- **Documentation Loading Skeleton**: Updated to match the new sidebar + table layout, eliminating layout shift during page load
+
+---
+
 ## March 20, 2026
 
 ### Redesigned Meeting Presentation Mode

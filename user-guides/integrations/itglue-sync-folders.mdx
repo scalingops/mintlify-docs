@@ -1,0 +1,194 @@
+---
+title: 'Sync IT Glue Document Folders'
+description: 'Import your IT Glue document folder structure into MSPortal so documents inside folders sync automatically'
+icon: 'folder-tree'
+---
+
+IT Glue's API does not expose document folder IDs directly, which means documents stored inside folders are not included in the standard sync. The **Sync Folders** feature solves this by collecting your folder structure from IT Glue and importing it into MSPortal, so all documents (including those inside folders) sync automatically.
+
+## Why This Is Needed
+
+When IT Glue syncs documents to MSPortal, it can only retrieve documents that are at the root level of an organization by default. Documents stored inside folders require folder IDs to access via the API. The Sync Folders feature collects those IDs so MSPortal can reach every document in your IT Glue account.
+
+<Note>
+  You only need to run this once during initial setup, and again whenever you create new document folders in IT Glue. It does not need to run on every sync cycle.
+</Note>
+
+## Prerequisites
+
+- An active IT Glue integration with at least one mapped organization
+- The **manage_settings_documentation** permission in MSPortal
+- You must be logged into IT Glue in the same browser
+
+## How It Works
+
+The Sync Folders process uses a three-step workflow:
+
+1. MSPortal generates a small script tailored to your mapped organizations
+2. You run the script in your IT Glue browser console to collect folder data
+3. You paste the result back into MSPortal to import the folders
+
+After importing, MSPortal immediately triggers a document sync that includes the newly discovered folders. From that point on, all scheduled syncs will also include documents from those folders.
+
+---
+
+## Step-by-Step Guide
+
+<Steps>
+  <Step title="Open Documentation Settings">
+    Navigate to **Settings > Documentation**. Make sure you are on the **Articles** tab.
+
+    You will see a **Sync Folders** button in the top-right area of the articles section. Click it to open the Sync Folders dialog.
+  </Step>
+
+  <Step title="Generate the Script">
+    In the dialog, click **Generate Script**. MSPortal will create a script customized for your mapped IT Glue organizations. You will see a badge showing how many organizations are included.
+  </Step>
+
+  <Step title="Copy the Script">
+    Click **Copy Script** to copy the generated code to your clipboard. A checkmark will confirm the copy was successful.
+  </Step>
+
+  <Step title="Run the Script in IT Glue">
+    1. Open your IT Glue instance in the same browser (the URL shown in the dialog, e.g. `https://itglue.com`)
+    2. Press <kbd>F12</kbd> to open Developer Tools
+    3. Go to the **Console** tab
+    4. Paste the script and press **Enter**
+
+    The script will scan each mapped organization for document folders. You will see progress messages in the console as it processes each organization.
+
+    <Warning>
+      You must be logged into IT Glue for the script to work. The script uses your active IT Glue session to read folder data. It only reads folder names and IDs and does not modify anything in IT Glue.
+    </Warning>
+
+    When the script finishes, it copies the folder data to your clipboard and shows an alert with the number of folders found.
+  </Step>
+
+  <Step title="Paste the Result">
+    Go back to the MSPortal Sync Folders dialog. Paste the copied data into the text area under **Paste the result**.
+  </Step>
+
+  <Step title="Import Folders">
+    Click **Import Folders** to save the folder data. MSPortal will:
+
+    - Save all discovered folders with their names and parent-child relationships
+    - Map each folder to the correct company based on your organization mappings
+    - Trigger an immediate document sync so you do not have to wait for the next scheduled cycle
+
+    A success message will confirm how many folders were imported and from how many organizations.
+  </Step>
+</Steps>
+
+---
+
+## Browsing by Folder
+
+Once folders are imported, the **Documentation** page displays a folder tree sidebar on the left side of the Articles tab. You can:
+
+- Click **All Documents** to view every article across all folders
+- Click **Documents** to view only root-level documents (those not in any folder)
+- Click any **folder name** to filter articles to that specific folder
+- Expand folders with sub-folders by clicking the chevron arrow
+
+Folders are displayed in alphabetical order and support nested hierarchies. The folder tree respects company selector filtering, so only folders belonging to selected companies are shown.
+
+---
+
+## When to Re-Run Sync Folders
+
+You should re-run the Sync Folders process when:
+
+- You create new document folders in IT Glue
+- You reorganize your IT Glue folder structure
+- You map new organizations in the IT Glue integration settings
+- Documents you expect to see in MSPortal are missing (they may be inside an unsynced folder)
+
+<Tip>
+  The Sync Folders button is always available in **Settings > Documentation > Articles**. You can run it as many times as needed. Existing folders are updated, and new folders are added without affecting previously imported data.
+</Tip>
+
+---
+
+## Visibility Rules for Folders
+
+Administrators can control which folders are shared with company users through the Documentation Settings:
+
+1. Go to **Settings > Documentation > Articles**
+2. Browse the folder tree to find the folder you want to configure
+3. Set visibility rules per folder to control which company permission groups can see its contents
+
+Folder-level visibility rules apply to all documents within that folder. You can also set visibility rules on individual articles for more granular control.
+
+---
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="Script fails to run in the browser console">
+    **Causes:**
+    - Not logged into IT Glue in the same browser
+    - IT Glue session has expired
+
+    **Solutions:**
+    1. Make sure you are logged into IT Glue before running the script
+    2. If your session expired, log in again and re-run the script
+    3. Some browsers block clipboard access from the console. If the data is not copied automatically, look for the JSON output in the console and copy it manually
+  </Accordion>
+
+  <Accordion title="No folders found for some organizations">
+    **Causes:**
+    - Those organizations do not have any document folders in IT Glue
+    - The organizations are not mapped in MSPortal
+
+    **Solutions:**
+    1. Check IT Glue to confirm the organization has document folders
+    2. Verify the organization is mapped to a company in **Settings > Integrations > IT Glue > Map Organizations**
+    3. Only mapped organizations are included in the script
+  </Accordion>
+
+  <Accordion title="Documents still missing after folder sync">
+    **Causes:**
+    - The document sync has not completed yet
+    - The folder was created in IT Glue after the last Sync Folders run
+
+    **Solutions:**
+    1. After importing folders, a document sync starts automatically. Allow a few minutes for it to complete
+    2. If folders were recently created in IT Glue, run Sync Folders again to pick up the new folders
+    3. Check that the document's organization is mapped to a company in MSPortal
+  </Accordion>
+
+  <Accordion title="Import fails with 'Invalid folder data format'">
+    **Causes:**
+    - The pasted data was corrupted or incomplete
+    - Something other than the script output was pasted
+
+    **Solutions:**
+    1. Run the script again in IT Glue and wait for the completion alert
+    2. Copy the data from the clipboard immediately after the script finishes
+    3. Make sure you paste the entire output without modifications
+  </Accordion>
+
+  <Accordion title="Folder tree not appearing on Documentation page">
+    **Causes:**
+    - No folders have been imported yet
+    - The selected company has no folders
+
+    **Solutions:**
+    1. Run the Sync Folders process from **Settings > Documentation > Articles**
+    2. Check that the company selector is set to a company with IT Glue folders
+    3. The folder tree only appears when there are folders to display
+  </Accordion>
+</AccordionGroup>
+
+---
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Configure IT Glue" icon="plug" href="/user-guides/integrations/enable-itglue-integration">
+    Set up the IT Glue integration from scratch
+  </Card>
+  <Card title="Manage Roles" icon="user-shield" href="/user-guides/settings/users-roles">
+    Configure documentation access permissions
+  </Card>
+</CardGroup>
