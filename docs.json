@@ -393,10 +393,6 @@
   "navbar": {
     "links": [
       {
-        "label": "Release Notes",
-        "href": "https://docs.msportal.ai/release-notes"
-      },
-      {
         "label": "Support",
         "href": "mailto:support@msportal.ai"
       }
