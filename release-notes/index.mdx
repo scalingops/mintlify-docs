@@ -17,6 +17,19 @@ A new **EDR Incidents** tab surfaces Acronis EDR/MDR incident data directly in M
 - **Provider-Aware Tabs**: Security tabs dynamically show or hide based on which providers (Cork, Acronis) are active for the tenant
 - **Background Sync**: New Trigger.dev scheduled task syncs Acronis incidents on a recurring basis with incremental cursor-based fetching
 
+### NinjaOne Backup Support
+
+The Backup module now pulls data directly from NinjaOne's dedicated backup API, bringing device-level backup visibility into the unified Backup dashboard alongside Cove and Acronis. Each device shows its protection status, total storage consumed, and a detailed breakdown of cloud, local, and revision storage.
+
+- **Dedicated Backup Sync**: Daily sync from NinjaOne's backup usage endpoint captures per-device storage metrics across cloud image, file/folder, and network share backup types
+- **Backup Detail Sheet**: Click any NinjaOne device to open a detail panel with cloud, local, and revision storage breakdowns
+- **Server-Side Filtering**: The Backup Devices table now filters across the full dataset instead of only the current page, with status and search queries handled server-side
+- **Improved Status Display**: Devices without backup configured show "Not Configured" in a neutral badge instead of appearing as failures. The default view shows only devices with active backup.
+
+### Bug Fixes
+
+Over 30 bug fixes across the platform, including fixes to search functionality, company selector behavior, budget filters, survey exports, device categorization, M365 license table layouts, ticket attachment downloads, and meeting date handling.
+
 ### Bulk Company Creation in Integration Wizards
 
 All nine integration wizard flows (Acronis, Cork, Cove, Hudu, IT Glue, Liongard, Pax8, RMM, and ScalePad) now support batch company creation. Previously, creating companies for unmapped integration items happened one at a time, which was slow for large imports. The new bulk action inserts all selected companies in a single database call and auto-maps them to the corresponding integration items.
