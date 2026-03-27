@@ -5,6 +5,20 @@ description: "Product updates, improvements, and upcoming features for MSPortal.
 
 ## March 27, 2026
 
+### Liongard Compliance Metrics with Custom Rules
+
+Liongard metrics have moved from the integration settings page to a dedicated **Metrics** tab under **Settings > Compliance**, putting configuration audit data right alongside your compliance checks, groups, and runs.
+
+The biggest addition is **custom rule evaluation**. Instead of relying solely on Liongard's native pass/fail status, you can now define threshold-based rules that evaluate metric values against your own compliance requirements. Rules support numeric comparisons (greater than, less than), string matching (equals, contains), and empty checks, with a configurable default result when no rules match.
+
+- **Compliance Metrics Tab**: New tab in Settings > Compliance shows all Liongard metrics with Per Metric and Per Device views, search, and inspector/company filtering
+- **Custom Rules Engine**: Define rules like "fail if value is less than 12" or "pass if value equals Enabled" with first-match-wins evaluation
+- **Per-Device Compliance**: Metric-linked checks now create individual assignments per device instead of a single company-wide result, so Device A can pass while Device B fails for the same metric
+- **Active Run Sync**: The background sync only updates compliance assignments in active runs. Completed runs become frozen historical snapshots, giving you a point-in-time audit trail
+- **Rule Builder UI**: Visual rule builder in the Create Compliance Check dialog with operator, threshold, and pass/fail result for each condition
+
+[Documentation: Liongard Compliance Metrics](/user-guides/compliance/liongard-metrics)
+
 ### Security Dashboard & EDR Incidents
 
 The Security module now includes a **Dashboard** tab that aggregates key metrics across all connected security providers into a single view. At a glance you can see total endpoints, protection status, open incidents, and high-severity alerts from both Cork and Acronis without navigating between tabs.

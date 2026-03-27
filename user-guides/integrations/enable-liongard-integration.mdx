@@ -251,53 +251,29 @@ Review and configure which data types to sync, and set up compliance metric mapp
 
 ## Part 3: Map Metrics to Compliance Checks
 
-This is the key feature of the Liongard integration. After the initial sync completes, you can map individual Liongard metrics to MSPortal compliance checks, creating a direct link between automated configuration audits and your compliance reporting.
+This is the key feature of the Liongard integration. After the initial sync completes, you can map individual Liongard metrics to MSPortal compliance checks with custom evaluation rules, creating a direct link between automated configuration audits and your compliance reporting.
 
 ### Accessing the Metrics Page
 
-<Steps>
-  <Step title="Navigate to the Integration">
-    Go to **Settings > Integrations** and click **Configure** on the Liongard card.
-  </Step>
+Navigate to **Settings > Compliance > Metrics**. This dedicated tab shows all synced metrics from your Liongard instance with options to browse by metric or by device.
 
-  <Step title="Open the Metrics Page">
-    From the Liongard integration settings, navigate to the metrics page. This dedicated page shows all synced metrics from all mapped environments.
-  </Step>
-</Steps>
+<Info>
+For the full guide on creating compliance checks from metrics, custom rule evaluation, and how the auto-sync works with compliance runs, see [Liongard Compliance Metrics](/user-guides/compliance/liongard-metrics).
+</Info>
 
-### Working with Metrics
+### Quick Start
 
 <Steps>
-  <Step title="Browse Available Metrics">
-    The metrics page displays all configuration audit data points synced from Liongard, including:
-
-    - Metric name and description
-    - Current value and status
-    - The inspector type that generated the metric
-    - The environment (company) it belongs to
+  <Step title="Browse Metrics">
+    Go to **Settings > Compliance > Metrics** to see all synced configuration audit data from Liongard. Use the Per Metric or Per Device tabs to find what you need.
   </Step>
 
-  <Step title="Filter by Inspector Type">
-    Use the inspector type filter to narrow the list to specific categories. For example, filter to see only Active Directory metrics, Microsoft 365 metrics, or firewall configuration metrics.
+  <Step title="Create a Compliance Check">
+    Click any metric row, then click **Create Compliance Check** in the detail panel. Choose to use Liongard's native status or define custom rules with thresholds.
   </Step>
 
-  <Step title="Create a Compliance Check from a Metric">
-    For each metric you want to track in compliance:
-
-    1. Find the metric in the list
-    2. Click **Create Check** on the metric row
-    3. This creates a new compliance check linked to that Liongard metric
-    4. Once linked, the metric's value and status will automatically feed into that compliance check
-
-    Metrics that are already linked show a **Linked** badge.
-
-    <Info>
-      Linked metrics update automatically with every Liongard inspection cycle. This means your compliance checks stay current without manual reassessment.
-    </Info>
-  </Step>
-
-  <Step title="Review Linked Metrics">
-    After linking, you can see which metrics are connected to compliance checks. Navigate to **Compliance** in the sidebar to verify that your linked metrics are feeding data into the correct checks.
+  <Step title="Add to a Compliance Run">
+    Add the metric-linked check to a compliance run (directly or through a group). The sync will keep the assignment status current for active runs.
   </Step>
 </Steps>
 
@@ -307,14 +283,14 @@ This is the key feature of the Liongard integration. After the initial sync comp
   <Card title="Automated Evidence" icon="robot">
     Liongard metrics provide continuous, automated evidence for compliance checks. No more manual assessments for configuration-based requirements.
   </Card>
-  <Card title="Always Current" icon="arrows-rotate">
-    Mapped metrics update with every Liongard inspection cycle, keeping your compliance data fresh without manual intervention.
+  <Card title="Custom Rules" icon="sliders">
+    Define threshold-based rules like "fail if password length is below 12" instead of relying on Liongard's native pass/fail.
   </Card>
-  <Card title="Audit Ready" icon="clipboard-check">
-    When auditors ask for evidence, your compliance checks already have the latest configuration data attached from Liongard.
+  <Card title="Per-Device Tracking" icon="server">
+    Each device gets its own compliance status based on its individual metric value, not a company-wide average.
   </Card>
-  <Card title="Bridge the Gap" icon="bridge">
-    Connect Liongard's deep configuration visibility with MSPortal's compliance framework for a unified audit workflow.
+  <Card title="Historical Snapshots" icon="clock-rotate-left">
+    Completed compliance runs freeze as point-in-time snapshots. Start a new run to track ongoing changes.
   </Card>
 </CardGroup>
 
@@ -340,6 +316,7 @@ After setup, manage your integration from **Settings > Integrations**:
 | Action | Description |
 |--------|-------------|
 | **Configure** | Re-open the setup wizard to modify settings, update credentials, or adjust environment mappings |
+| **Import Devices** | Import Liongard systems into your MSPortal device inventory. Map inspector types to device types, enable auto-sync, and ignore categories you don't need. See [Import Devices](/user-guides/integrations/import-devices). |
 | **Resync** | Trigger a fresh sync of all data from Liongard |
 | **Delete** | Available inside the Configure wizard -- permanently removes the integration |
 
@@ -462,6 +439,7 @@ If you need to update your Liongard API credentials:
 
 ## Related Resources
 
+- [Liongard Compliance Metrics](/user-guides/compliance/liongard-metrics) - Custom rules, per-device tracking, and auto-sync details
 - [Compliance Module](/user-guides/compliance/index) - Manage compliance checks and assessments
 - [Import Companies](/user-guides/integrations/import-companies) - General company import guide
 - [Clear and Resync Integrations](/user-guides/integrations/clear-and-resync-integrations) - Troubleshooting sync issues

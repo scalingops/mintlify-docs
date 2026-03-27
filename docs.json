@@ -161,6 +161,7 @@
                 "group": "Compliance",
                 "pages": [
                   "user-guides/compliance/index",
+                  "user-guides/compliance/liongard-metrics",
                   "user-guides/compliance/adding-cis-benchmarks"
                 ]
               },
@@ -223,6 +224,7 @@
               "user-guides/integrations/faq",
               "user-guides/integrations/import-users",
               "user-guides/integrations/import-companies",
+              "user-guides/integrations/import-devices",
               "user-guides/integrations/clear-and-resync-integrations",
               {
                 "group": "ConnectWise",

@@ -224,6 +224,7 @@ Before importing devices, map Datto device types to your MSPortal device types.
     | **Device Count** | Number of devices of this type |
     | **Maps To** | The MSPortal device type to map to |
     | **Auto-Sync** | Enable automatic import for this type |
+    | **Ignore** | Exclude this entire category from pending imports |
     | **Actions** | Import all devices of this type |
   </Step>
 
@@ -241,6 +242,17 @@ Before importing devices, map Datto device types to your MSPortal device types.
     <Note>
     Auto-sync requires a device type mapping. You must select a "Maps To" value before enabling auto-sync.
     </Note>
+  </Step>
+
+  <Step title="Ignore a Category (Optional)">
+    Check the **Ignore** checkbox for device types you never want to import (e.g., printers, UPS devices, or sensors). Ignored categories:
+
+    - Are visually dimmed in the mappings table
+    - Have their mapping, auto-sync, and import controls disabled
+    - All unimported devices of that type are hidden from the staged devices list and pending import counts
+    - New devices synced from Datto RMM of an ignored type are automatically ignored
+
+    Uncheck the Ignore checkbox at any time to restore the category and its devices.
   </Step>
 
   <Step title="Import by Type">
@@ -394,8 +406,8 @@ You can return to any step of the setup wizard at any time:
   <Card title="Enable Auto-Sync" icon="rotate">
     For device types you always want imported (like workstations), enable Auto-Sync to reduce manual work.
   </Card>
-  <Card title="Regular Syncs" icon="clock">
-    Run manual syncs periodically if you're not using auto-sync, especially after adding new devices in Datto.
+  <Card title="Ignore Unwanted Types" icon="eye-slash">
+    Use the Ignore checkbox to permanently hide device types you never manage (printers, sensors, etc.). This keeps your pending import counts clean and accurate.
   </Card>
 </CardGroup>
 

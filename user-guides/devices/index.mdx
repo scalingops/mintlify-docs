@@ -18,7 +18,7 @@ The Devices module provides a centralized inventory of all IT assets across your
     Track warranty start and end dates with automatic status indicators for expired warranties.
   </Card>
   <Card title="Integration Sync" icon="rotate">
-    Automatically sync devices from Syncro, Asio, and Cisco Meraki integrations.
+    Automatically sync devices from Datto RMM, NinjaOne, ConnectWise, Halo, Syncro, Asio, Liongard, and Cisco Meraki integrations.
   </Card>
   <Card title="Custom Fields" icon="sliders">
     Add custom fields to track additional device information specific to your needs.
@@ -150,9 +150,24 @@ Devices can come from multiple sources:
 | Source | Description |
 |--------|-------------|
 | **Manual** | Devices added directly through the MSPortal interface |
+| **Datto RMM** | Devices synced from Datto RMM |
+| **NinjaOne** | Devices synced from NinjaOne |
+| **ConnectWise** | Configurations synced from ConnectWise Manage |
+| **Halo** | Assets synced from Halo PSA |
 | **Syncro** | Devices synced from Syncro RMM integration |
 | **Asio** | Devices synced from Asio network discovery |
+| **Liongard** | Systems synced from Liongard |
 | **Meraki** | Devices synced from Cisco Meraki dashboard |
+
+### Managing Device Imports
+
+Each RMM/PSA integration has a device import page where you can control how devices are brought into MSPortal:
+
+- **Device Type Mappings** - Map external device types to your normalized MSPortal device types
+- **Auto-Sync** - Automatically import new devices of specific types when they sync
+- **Ignore Categories** - Check the Ignore checkbox to permanently hide device types you don't manage (e.g., printers, UPS, sensors). Ignored categories won't count as pending imports and new devices of those types stay ignored during future syncs
+- **Import by Type** - Import all devices of a specific type at once
+- **Selective Import** - Cherry-pick individual devices from the staged list
 
 ### Meraki Devices
 

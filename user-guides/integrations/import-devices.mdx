@@ -1,0 +1,166 @@
+---
+title: 'Import Devices'
+description: 'Import and manage devices from your RMM and PSA integrations with device type mappings, auto-sync, and category ignore'
+icon: 'server'
+---
+
+After connecting an RMM or PSA integration, MSPortal syncs devices into a staging area. From there, you control which devices get imported into your asset inventory using device type mappings, auto-sync, and category ignore.
+
+This workflow applies to all integrations that sync devices:
+
+<CardGroup cols={3}>
+  <Card title="Datto RMM" icon="plug">Devices</Card>
+  <Card title="NinjaOne" icon="plug">Devices</Card>
+  <Card title="ConnectWise Manage" icon="plug">Configurations</Card>
+  <Card title="Halo PSA" icon="plug">Assets</Card>
+  <Card title="Syncro" icon="plug">Assets</Card>
+  <Card title="ConnectWise Asio" icon="plug">Devices</Card>
+  <Card title="Liongard" icon="plug">Systems</Card>
+</CardGroup>
+
+## Prerequisites
+
+- An active integration connected in **Settings > Integrations**
+- Companies/sites mapped to MSPortal companies (devices from unmapped companies won't appear)
+- At least one sync completed (the initial sync can take 1-2 hours)
+
+## Accessing the Device Import Page
+
+1. Navigate to **Settings > Integrations**
+2. Click on your integration
+3. Select the **Devices** (or **Configurations** / **Assets**) tab
+
+## Device Type Mappings
+
+The Device Type Mappings table is the control center for managing how external device types flow into MSPortal. Each row represents a device type discovered from your integration.
+
+| Column | Description |
+|--------|-------------|
+| **Provider Type** | The device type name from the integration (e.g., "Desktop", "Server", "Printer") |
+| **Device Count** | Number of staged devices of this type |
+| **Maps To** | The MSPortal device type to map to |
+| **Auto-Sync** | Automatically import new devices of this type during future syncs |
+| **Ignore** | Exclude this entire category from pending imports |
+| **Actions** | Import all unimported devices of this type |
+
+<Note>
+Datto RMM shows an additional **Category** column because Datto uses a two-level classification (e.g., Category: "Server", Type: "Virtual Machine").
+</Note>
+
+### Mapping Device Types
+
+<Steps>
+  <Step title="Use Quick Match (Recommended)">
+    Click **Quick Match** to automatically map external types to existing MSPortal device types with similar names. This handles most common types like Workstation, Server, and Laptop.
+  </Step>
+  <Step title="Use Quick Create for Remaining Types">
+    Click **Quick Create** to automatically create new MSPortal device types for any unmatched external types.
+  </Step>
+  <Step title="Manually Adjust">
+    For each row, click the **Maps To** dropdown to select or change the MSPortal device type. Select "None" to remove a mapping.
+  </Step>
+</Steps>
+
+### Enabling Auto-Sync
+
+Check the **Auto-Sync** checkbox for device types you want automatically imported. When enabled:
+
+- New devices of this type are automatically imported during each sync cycle
+- No manual review is needed for these device types
+- Requires a device type mapping to be set first
+
+<Tip>
+Enable Auto-Sync for device types you always want imported (workstations, servers). Leave it off for types you prefer to review manually.
+</Tip>
+
+Click **Enable All Auto-Sync** to turn on auto-sync for all mapped types at once.
+
+### Ignoring Categories
+
+Check the **Ignore** checkbox for device types you never want to import. This is useful for categories like printers, UPS devices, sensors, or other equipment you don't track in MSPortal.
+
+When a category is ignored:
+
+- The row is visually dimmed in the mappings table
+- The Maps To, Auto-Sync, and Import All controls are disabled
+- **All unimported devices** of that type are immediately hidden from the staged devices list
+- **Pending import counts** no longer include devices of that type
+- **Future syncs** automatically mark new devices of that type as ignored
+
+<Info>
+Ignoring a category does not affect devices that have already been imported. It only hides unimported devices from the staging area.
+</Info>
+
+To restore an ignored category, simply uncheck the **Ignore** checkbox. All previously hidden devices of that type will reappear in the staging list.
+
+### Import All Mapped
+
+Click **Import All Mapped** to import all unimported devices across all mapped (non-ignored) types in one action.
+
+## Staged Devices
+
+Below the type mappings table, the Staged Devices list shows individual devices ready for import.
+
+### Reviewing Staged Devices
+
+The table shows device details including name, type, company, manufacturer, model, and import status. Use the controls to:
+
+- **Filter**: Toggle **Show only unimported** to hide already-imported devices
+- **Search**: Search by device name, type, company, or other fields
+- **Paginate**: Navigate through large device lists
+
+### Importing Devices
+
+<Tabs>
+  <Tab title="Import by Type">
+    Click **Import All** on a device type mapping row to import all unimported devices of that type at once. This is the fastest approach for bulk imports.
+  </Tab>
+  <Tab title="Import Selected">
+    1. Check the boxes next to specific devices
+    2. Click **Import Selected** in the header
+  </Tab>
+  <Tab title="Auto-Sync">
+    Enable **Auto-Sync** on device type mappings to automatically import new devices of those types during each sync cycle. No manual action needed.
+  </Tab>
+</Tabs>
+
+### Ignoring Individual Devices
+
+In addition to ignoring entire categories, you can ignore individual devices:
+
+1. Select specific devices using the checkboxes
+2. Click **Ignore Selected** in the header
+3. The devices are hidden from the staging list and pending counts
+
+## Syncing New Devices
+
+Click **Sync Now** in the page header to trigger an immediate sync from the integration. New devices appear in the staging area after the sync completes.
+
+- **Auto-Synced types**: New devices are imported automatically
+- **Ignored types**: New devices are automatically marked as ignored
+- **Other types**: New devices appear in staging for manual review
+
+## Best Practices
+
+<CardGroup cols={2}>
+  <Card title="Map Types First" icon="diagram-project">
+    Set up device type mappings before importing individual devices. This ensures devices get the correct type classification.
+  </Card>
+  <Card title="Enable Auto-Sync for Common Types" icon="rotate">
+    Enable Auto-Sync for workstations and servers to reduce ongoing manual work.
+  </Card>
+  <Card title="Ignore Unwanted Categories" icon="eye-slash">
+    Use the Ignore checkbox for device types you never manage (printers, sensors, UPS). This keeps pending import counts accurate and avoids noise.
+  </Card>
+  <Card title="Review Before Bulk Import" icon="magnifying-glass">
+    Before clicking Import All Mapped, review the type mappings to ensure everything is mapped correctly. Incorrect mappings can be fixed after import but it's easier to get right the first time.
+  </Card>
+</CardGroup>
+
+## Related Resources
+
+- [Devices Module](/user-guides/devices) - Managing imported devices
+- [Datto RMM Integration](/user-guides/integrations/enable-datto-rmm-integration) - Datto-specific setup and device import
+- [NinjaOne Integration](/user-guides/integrations/enable-ninjaone-integration) - NinjaOne-specific setup and device import
+- [Import Companies](/user-guides/integrations/import-companies) - Company import guide
+- [Integrations Settings](/user-guides/settings/integrations) - Managing your integrations
