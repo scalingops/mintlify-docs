@@ -31,24 +31,22 @@ The Datto RMM integration maps sites to existing companies in MSPortal. Import y
 
 ## Part 1: Generate API Credentials in Datto RMM
 
-Before connecting to MSPortal, you need to create API credentials in Datto RMM.
+Before connecting to MSPortal, you need to create a dedicated API user in Datto RMM.
 
 <Steps>
-  <Step title="Access Datto RMM Settings">
-    Log into your Datto RMM portal and navigate to **Settings** (gear icon).
+  <Step title="Navigate to Users">
+    Log into your Datto RMM portal and go to **Users**.
   </Step>
 
-  <Step title="Navigate to API Keys">
-    Go to **Settings > API > API Keys**.
-  </Step>
+  <Step title="Create a New User">
+    Click **Create User** and fill in the details:
 
-  <Step title="Generate New API Key">
-    Click **Generate API Key** to create a new key pair.
-  </Step>
-
-  <Step title="Configure Key Details">
     1. **Name**: Enter a descriptive name (e.g., "MSPortal Integration")
-    2. Set an appropriate expiration or choose a long-lived key
+    2. **Security Level**: Select **API Access**
+  </Step>
+
+  <Step title="Generate API Key">
+    Once the user is created, generate an API key for it.
 
     <Warning>
       Copy both the **API Key** and **Secret Key** immediately after creation. The Secret Key cannot be retrieved once you close the dialog.
@@ -341,8 +339,8 @@ You can return to any step of the setup wizard at any time:
     **Solutions:**
     1. Verify your API Key and Secret Key are copied exactly (no extra spaces)
     2. Confirm you selected the correct platform from the dropdown
-    3. Generate new API credentials in Datto RMM if needed
-    4. Ensure your Datto user has API access permissions
+    3. Generate new API credentials by creating a new API user in Datto RMM if needed
+    4. Ensure the Datto user has the **API Access** security level
   </Accordion>
 
   <Accordion title="No sites appear in mapping step">
