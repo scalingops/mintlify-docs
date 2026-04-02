@@ -4,7 +4,7 @@ description: 'Track and manage IT assets across your organization'
 icon: 'computer'
 ---
 
-The Devices module provides a centralized inventory of all IT assets across your managed companies. Track devices, manage warranty information, and integrate with tools like Syncro, Asio, and Cisco Meraki.
+The Devices module provides a centralized inventory of all IT assets across your managed companies. Track devices, view detailed hardware and security information, manage warranty data, and integrate with tools like Addigy, Datto RMM, NinjaOne, Syncro, Asio, and Cisco Meraki.
 
 ![Devices Overview](/images/devices/devices-overview.png)
 
@@ -18,7 +18,7 @@ The Devices module provides a centralized inventory of all IT assets across your
     Track warranty start and end dates with automatic status indicators for expired warranties.
   </Card>
   <Card title="Integration Sync" icon="rotate">
-    Automatically sync devices from Datto RMM, NinjaOne, ConnectWise, Halo, Syncro, Asio, Liongard, and Cisco Meraki integrations.
+    Automatically sync devices from Addigy, Datto RMM, NinjaOne, ConnectWise, Halo, Syncro, Asio, Liongard, and Cisco Meraki integrations.
   </Card>
   <Card title="Custom Fields" icon="sliders">
     Add custom fields to track additional device information specific to your needs.
@@ -30,7 +30,7 @@ The Devices module provides a centralized inventory of all IT assets across your
 ### Prerequisites
 
 - Access to the Devices module (requires appropriate permissions)
-- Optional: Integration with Syncro, Asio, or Meraki for automatic device sync
+- Optional: Integration with Addigy, Datto RMM, NinjaOne, Syncro, Asio, or Meraki for automatic device sync
 
 ### Accessing Devices
 
@@ -128,6 +128,34 @@ Click the three-dot menu at the end of any device row to access actions:
 Devices synced from integrations (Syncro, Asio, Meraki) may have limited editing options for fields that are automatically synchronized.
 </Note>
 
+### Viewing Device Details
+
+Click any device row to open the **Device Detail** panel. This provides a comprehensive view of the device with extended data pulled from your RMM integration.
+
+The detail panel includes the following sections (sections only appear when data is available from your integration):
+
+| Section | Information Shown |
+|---------|-------------------|
+| **Overview** | OS, model, manufacturer, serial number, IP address, MAC address |
+| **Hardware** | Processor, RAM, CPU cores, total and free disk space with usage bar |
+| **Security** | FileVault, Firewall, Gatekeeper, SIP, MDM enrollment, antivirus, patch status |
+| **Network** | Hostname, domain, LAN IP, WAN IP, Wi-Fi and Ethernet MAC addresses |
+| **Battery** | Battery percentage with visual indicator, charging status, cycle count |
+| **User** | Current logged-in user, user email, last logged-in user |
+| **System** | Uptime, last boot time, OS build, architecture, agent version, pending reboot |
+| **Provider** | Integration-specific data and remote access links (TeamViewer, ScreenConnect, Splashtop) |
+| **Warranty** | Warranty start/end dates with active or expired badge |
+
+<Info>
+The data available depends on which RMM integration the device was imported from. Addigy devices include hardware, security, battery, and user data. Datto RMM and Syncro devices include security, network, user, and system data with remote access links.
+</Info>
+
+The detail panel also includes tabs for:
+
+- **Edit** - Update device metadata, company assignment, warranty dates, and custom fields
+- **Cork** - View Cork security data (if Cork integration is active and has data for this device)
+- **Liongard** - View Liongard configuration audit data (if Liongard integration is active and has data for this device)
+
 ### Bulk Actions
 
 Select multiple devices using the checkboxes to perform bulk operations:
@@ -150,6 +178,7 @@ Devices can come from multiple sources:
 | Source | Description |
 |--------|-------------|
 | **Manual** | Devices added directly through the MSPortal interface |
+| **Addigy** | Apple devices synced from Addigy MDM |
 | **Datto RMM** | Devices synced from Datto RMM |
 | **NinjaOne** | Devices synced from NinjaOne |
 | **ConnectWise** | Configurations synced from ConnectWise Manage |
@@ -226,7 +255,7 @@ Common custom fields for devices:
     Keep warranty dates updated and use the Planner integration to create renewal reminders 30-60 days before expiration.
   </Accordion>
   <Accordion title="Integration Setup">
-    Configure Syncro, Asio, or Meraki integrations to automatically populate device data and reduce manual entry.
+    Configure Addigy, Datto RMM, NinjaOne, Syncro, Asio, or Meraki integrations to automatically populate device data and reduce manual entry.
   </Accordion>
   <Accordion title="Custom Fields for Compliance">
     Use custom fields to track compliance-related information like purchase date, depreciation schedule, or disposal requirements.
@@ -235,6 +264,10 @@ Common custom fields for devices:
 
 ## Related Resources
 
+- [Import Devices](/user-guides/integrations/import-devices) - Device type mappings, auto-sync, and import workflow
+- [Addigy Integration](/user-guides/integrations/enable-addigy-integration) - Apple device management integration
+- [Datto RMM Integration](/user-guides/integrations/enable-datto-rmm-integration) - Datto RMM device sync
+- [Liongard Integration](/user-guides/integrations/enable-liongard-integration) - Configuration audit integration with device tab
 - [Planner](/user-guides/planner/index) - Schedule device maintenance and warranty renewals
 - [Calendar](/user-guides/calendar/index) - View scheduled device-related meetings
 - [Settings](/user-guides/settings/index) - Configure custom fields and integrations

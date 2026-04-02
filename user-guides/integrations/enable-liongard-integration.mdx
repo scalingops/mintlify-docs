@@ -13,6 +13,7 @@ The Liongard integration syncs configuration audit data into MSPortal, allowing 
 - Import environments, systems, and inspectors from Liongard
 - Sync configuration metrics and their current values across all clients
 - Track security detections and anomalies
+- **View per-device Liongard data** directly in the Device Detail panel with pass/fail/warning metrics and change history
 - **Map individual metrics to MSPortal compliance checks** for automated audit evidence
 
 <Info>
@@ -309,6 +310,79 @@ For the full guide on creating compliance checks from metrics, custom rule evalu
 
 ---
 
+## Part 4: Liongard Data on Devices
+
+Once Liongard environments are mapped and data is synced, you can view Liongard configuration audit data directly on individual devices in the Devices module.
+
+### Accessing the Liongard Tab
+
+<Steps>
+  <Step title="Open a Device">
+    Navigate to **Devices** and click on any device to open the Device Detail panel.
+  </Step>
+
+  <Step title="Select the Liongard Tab">
+    If Liongard has data for this device, a **Liongard** tab appears in the detail panel. Click it to view the device's configuration audit data.
+
+    <Info>
+    The Liongard tab only appears for devices that Liongard has inspected. MSPortal automatically matches devices to Liongard systems by name, IP address, or MAC address.
+    </Info>
+  </Step>
+</Steps>
+
+### What You See
+
+The Liongard tab displays three main sections:
+
+#### Summary Cards
+
+At the top, summary cards show the overall health of the device's configuration metrics:
+
+- **Passing** - Number of metrics with a passing status (green)
+- **Failing** - Number of metrics with a failing status (red)
+- **Warning** - Number of metrics with a warning status (orange)
+
+Click any summary card to filter the metrics list to only that status.
+
+#### System Overview
+
+Shows the Liongard system name, environment, inspector type, and when the device was last inspected.
+
+#### Configuration Metrics
+
+Metrics are organized into two collapsible sections:
+
+| Section | Description |
+|---------|-------------|
+| **Security** | Security-related metrics such as firewall status, encryption, MFA, and antivirus |
+| **Inspected Metrics** | All other configuration metrics from the inspector |
+
+Each metric row shows the metric name, current value, and pass/fail/warning status. Click a metric to expand it and see the previous value for comparison.
+
+Use the **search bar** to filter metrics by name or value. Click **Expand/Collapse** to toggle all metric details at once.
+
+#### Recent Changes
+
+The Recent Changes section shows configuration change detections from Liongard. Each entry shows:
+
+- The change description and inspector name
+- When the change was detected
+- A diff view showing what was added (+) or removed (-) in the configuration
+
+Click any detection to expand and see the full change diff.
+
+### How Device Matching Works
+
+MSPortal automatically matches your imported devices to Liongard systems using multiple strategies:
+
+1. **Direct link** - If the device was previously matched, it uses the stored link
+2. **Name match** - Matches by device hostname or name within the same company
+3. **IP/MAC fallback** - If no name match is found, attempts to match by IP address or MAC address
+
+Once matched, the link is saved so future lookups are instant.
+
+---
+
 ## Managing Your Integration
 
 After setup, manage your integration from **Settings > Integrations**:
@@ -439,9 +513,11 @@ If you need to update your Liongard API credentials:
 
 ## Related Resources
 
+- [Devices Module](/user-guides/devices) - Managing devices and viewing Liongard data in the device detail panel
 - [Liongard Compliance Metrics](/user-guides/compliance/liongard-metrics) - Custom rules, per-device tracking, and auto-sync details
 - [Compliance Module](/user-guides/compliance/index) - Manage compliance checks and assessments
 - [Import Companies](/user-guides/integrations/import-companies) - General company import guide
+- [Import Devices](/user-guides/integrations/import-devices) - Import Liongard systems as MSPortal devices
 - [Clear and Resync Integrations](/user-guides/integrations/clear-and-resync-integrations) - Troubleshooting sync issues
 - [Cork Integration](/user-guides/integrations/enable-cork-integration) - Another security-focused integration
 

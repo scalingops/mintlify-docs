@@ -184,6 +184,12 @@
                 ]
               },
               {
+                "group": "Documentation",
+                "pages": [
+                  "user-guides/documentation/index"
+                ]
+              },
+              {
                 "group": "Devices",
                 "pages": [
                   "user-guides/devices/index"
@@ -226,6 +232,12 @@
               "user-guides/integrations/import-companies",
               "user-guides/integrations/import-devices",
               "user-guides/integrations/clear-and-resync-integrations",
+              {
+                "group": "Addigy",
+                "pages": [
+                  "user-guides/integrations/enable-addigy-integration"
+                ]
+              },
               {
                 "group": "ConnectWise",
                 "pages": [

@@ -3,6 +3,87 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## April 4, 2026
+
+### Addigy Integration (Beta)
+
+MSPortal now integrates with **Addigy**, the cloud-based Apple device management platform. Connect your Addigy account to sync policies, import macOS devices, and view detailed hardware and security data for your entire Apple fleet, all from within MSPortal.
+
+- **One-Click Setup**: Connect with a single API token from Addigy. A guided wizard walks you through connecting, mapping policies to companies, and importing devices
+- **Policy-to-Company Mapping**: Map Addigy policies to MSPortal companies with Quick Match for automatic name-based matching
+- **Apple Device Import**: Import macOS devices with device type mappings, auto-sync for hands-free imports, and category ignore to filter out device types you don't manage
+- **Rich Device Details**: View extended hardware specs, security status (FileVault, Firewall, Gatekeeper, SIP), battery health, MDM enrollment, and current user info directly in the Device Detail panel
+- **Frequent Syncs**: Devices sync every 4 hours to keep your inventory current, with manual sync available anytime
+
+[Documentation: Addigy Integration](/user-guides/integrations/enable-addigy-integration)
+
+### Device Detail Panel
+
+A new **Device Detail** panel provides a comprehensive view of any device when you click on it in the Devices table. Instead of just the edit form, you now see a rich overview with extended data pulled from your RMM integration.
+
+- **Hardware**: Processor, RAM, disk space with visual usage bars
+- **Security**: FileVault, Firewall, Gatekeeper, SIP, antivirus, patch status, and MDM enrollment at a glance
+- **Network**: Hostname, LAN/WAN IPs, Wi-Fi and Ethernet MAC addresses
+- **Battery**: Battery percentage with color-coded indicator, charging status, and cycle count
+- **System**: Uptime, last boot, OS build, agent version, and pending reboot status
+- **User**: Current logged-in user, email, and last logged-in user
+- **Provider Links**: Quick access to remote tools like TeamViewer, ScreenConnect, and Splashtop where available
+
+Data availability depends on your RMM provider. Addigy, Datto RMM, Syncro, NinjaOne, and ConnectWise Asio all contribute extended data.
+
+[Documentation: Devices](/user-guides/devices)
+
+### Liongard Device Tab
+
+Devices inspected by Liongard now have a dedicated **Liongard** tab in the Device Detail panel, bringing configuration audit data directly alongside your device inventory.
+
+- **Health Summary**: Pass, fail, and warning counts at a glance with clickable cards to filter
+- **Security Metrics**: Dedicated section for security-related configuration checks like firewall, encryption, MFA, and antivirus
+- **All Inspected Metrics**: Browse every configuration metric with current and previous values, searchable and filterable by status
+- **Recent Changes**: View configuration change detections with inline diffs showing exactly what was added or removed
+- **Automatic Device Matching**: MSPortal links devices to Liongard systems by name, IP, or MAC address automatically
+
+[Documentation: Liongard Integration](/user-guides/integrations/enable-liongard-integration)
+
+### Liongard Inspectors in Documentation
+
+The Documentation module now includes an **Inspectors** tab for tenants with an active Liongard integration. Browse all of your non-device Liongard inspector data (Active Directory, Microsoft 365, firewalls, cloud platforms, and more), organized by type, without leaving MSPortal. Device-level inspectors appear on individual devices in the Devices module instead.
+
+- **Inspector Type Sidebar**: Browse non-device inspectors by type (Active Directory, Microsoft 365, Firewall, Duo, AWS, etc.) with system counts per type
+- **System Detail View**: Click any system to see its full configuration audit data with pass/fail/warning summary cards, security metrics, and all inspected metrics
+- **Change Detections**: View recent configuration changes with inline diffs showing exactly what changed
+- **Company Filtering**: Inspector data respects the company selector, so you can drill into a single client's inspectors
+
+### Compliance Metrics Tab
+
+The **Metrics** tab under **Settings > Compliance** provides a dedicated space to browse all Liongard configuration metrics and link them to compliance checks. View metrics per metric or per device, filter by inspector type and company, and create compliance checks directly from any metric with custom threshold rules.
+
+[Documentation: Liongard Compliance Metrics](/user-guides/compliance/liongard-metrics)
+
+### Autotask Sync Improvements
+
+- **Missing Sync Types**: Contracts, locations, notes, billing items, and project time entries now sync correctly for new Autotask integrations. Previously these five sync types were never triggered during setup
+- **Ticket Status Fix**: The `is_closed_status` field on Autotask tickets now sets correctly, fixing a bug where all tickets appeared as open
+- **Webhook Overhaul**: Autotask webhooks have been rebuilt with automatic re-provisioning if a webhook breaks
+
+### Halo PSA Improvements
+
+- **Device Assigned User**: Halo asset sync now pulls the assigned user from each asset and displays it in the Devices tab, so you can see which user is tied to each device at a glance
+- **Asset Permissions Required**: The Halo PSA integration now requires `read:assets` and `edit:assets` API permissions to support device sync. Update your API application permissions in Halo PSA if you haven't already
+- **Asset Import**: Halo asset sync now properly extracts manufacturer, model, serial number, OS, IP address, and warranty dates for device import
+- **Company Import Fix**: Resolved an issue preventing company imports from Halo in certain configurations
+
+### Bug Fixes & Improvements
+
+- **Company Page Performance**: Fixed loading issues on the company settings page that caused slow renders with large company lists
+- **Datto Device Sync**: Fixed auto-import to properly create device records, and mapping changes now trigger an immediate device sync for newly mapped sites
+- **Export Fixes**: Resolved issues with data exports across multiple modules
+- **Custom Email Domains**: All automated emails (surveys, NPS, release notifications) now send from your custom domain when configured
+- **Pagination Fixes**: Corrected pagination behavior on companies, users, and compliance tables
+- **Updated Integration Logos**: Refreshed logos for better visual consistency across the integrations page
+
+---
+
 ## March 27, 2026
 
 ### Liongard Compliance Metrics with Custom Rules
