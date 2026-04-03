@@ -56,35 +56,15 @@ Before connecting to MSPortal.ai, you need to create API credentials in your Lio
     Check your browser's address bar when logged into Liongard to find your instance name.
   </Step>
 
-  <Step title="Navigate to API Settings">
-    Go to **Admin > API > Access Keys** in the Liongard dashboard.
+  <Step title="Navigate to Account Settings">
+    Click your **name** in the top-right corner of the Liongard dashboard, then select **Account Settings**.
   </Step>
 
-  <Step title="Create a New API Key">
-    Click **Create API Key** or **Generate New Key**.
-
-    Configure the following:
-
-    | Field | Recommended Value |
-    |-------|-------------------|
-    | **Name** | `MSPortal Integration` |
-    | **Permissions** | Read-only access |
-
-    <Tip>
-      A read-only API key is sufficient for MSPortal to sync your audit data. This follows the principle of least privilege.
-    </Tip>
-  </Step>
-
-  <Step title="Copy Your Credentials">
-    After creating the key, you will receive two values:
-
-    | Credential | Description |
-    |------------|-------------|
-    | **Access Key ID** | Your API key identifier |
-    | **Access Key Secret** | Your API key secret |
+  <Step title="Create an Access Token">
+    Go to the **Access Tokens** section, then click **Create**. Set the **Expiration Date** to **Unlimited**, then click **Generate**.
 
     <Warning>
-      **Copy both values immediately!** The Access Key Secret cannot be retrieved again after you leave this page. Store both values securely for use in MSPortal.ai.
+      **Copy both the Access Key and Access Key Secret immediately!** These are only shown once and cannot be retrieved after you leave this page. Store both values securely for use in MSPortal.ai.
     </Warning>
   </Step>
 
@@ -432,7 +412,7 @@ If you need to update your Liongard API credentials:
     **Solutions:**
     1. Verify your Roar instance name matches exactly what appears in your Liongard URL (e.g., `us1`, `ca1`, or your custom name)
     2. Check that your Access Key ID and Access Key Secret are copied exactly, without extra spaces
-    3. Generate new API credentials in Liongard if the current ones are expired
+    3. Generate a new access token in Liongard (Account Settings > Access Tokens) if the current one is expired
     4. Confirm your Liongard account has API access permissions
   </Accordion>
 
