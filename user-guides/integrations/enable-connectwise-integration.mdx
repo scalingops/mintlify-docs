@@ -27,101 +27,23 @@ Before connecting to MSPortal.ai, you need to create an API member and security 
   <Step title="Create Security Role">
     Create a security role named "MSPortal" with the following permissions. These permissions enable MSPortal to sync companies, contacts, tickets, opportunities, agreements, and related data.
 
-    <AccordionGroup>
-      <Accordion title="Companies">
-        | Permission | Add | Edit | Delete | Inquire |
-        |------------|-----|------|--------|---------|
-        | Company Maintenance | All | None | None | All |
-        | Company/Contact Group Maintenance | All | All | None | All |
-        | Configurations | All | All | None | All |
-        | Contacts | All | All | None | All |
-        | CRM / Sales Activities | All | All | None | All |
-        | Manage Attachments | All | All | None | All |
-        | Notes | All | None | None | All |
-        | Reports | All | All | None | All |
-        | Surveys | All | All | None | All |
-        | Team Members | All | None | None | All |
-      </Accordion>
+    For **every category** listed below, set **Add Level**, **Edit Level**, and **Inquire Level** to **All**. Leave **Delete Level** as **None**.
 
-      <Accordion title="Finance">
-        | Permission | Add | Edit | Delete | Inquire |
-        |------------|-----|------|--------|---------|
-        | Agreement Invoicing | All | None | None | All |
-        | Agreements | All | All | None | All |
-        | Billing View Time | All | None | None | All |
-        | Invoice Approval | All | None | None | All |
-        | Invoicing | All | None | None | All |
-        | Reports | All | All | None | All |
-      </Accordion>
+    | Category | Add | Edit | Delete | Inquire |
+    |----------|-----|------|--------|---------|
+    | Companies | All | All | None | All |
+    | Finance | All | All | None | All |
+    | Marketing | All | All | None | All |
+    | Procurement | All | All | None | All |
+    | Project | All | All | None | All |
+    | Sales | All | All | None | All |
+    | Service Desk | All | All | None | All |
+    | System | All | All | None | All |
+    | Time & Expense | All | All | None | All |
 
-      <Accordion title="Procurement">
-        | Permission | Add | Edit | Delete | Inquire |
-        |------------|-----|------|--------|---------|
-        | Inventory Adjustments | None | None | None | All |
-        | Inventory Transfers | None | None | None | All |
-        | Product Billable Option | None | None | None | All |
-        | Product Catalog | All | All | None | All |
-        | Products | All | All | None | All |
-        | Purchase Orders | All | All | None | All |
-        | Purchasing Approvals | All | All | None | All |
-        | Purchasing Demand | All | All | None | All |
-        | Serial Number Search | None | None | None | All |
-      </Accordion>
-
-      <Accordion title="Projects">
-        | Permission | Add | Edit | Delete | Inquire |
-        |------------|-----|------|--------|---------|
-        | Project Finance | None | None | None | All |
-        | Project Headers | None | None | None | All |
-        | Project Notes | None | None | None | All |
-        | Project Phase | None | None | None | All |
-        | Project Product | None | None | None | All |
-        | Project Reports | None | None | None | All |
-        | Project Scheduling | None | None | None | All |
-        | Project Teams | None | None | None | All |
-        | Project Ticket Tasks | None | None | None | All |
-        | Project Tickets | All | All | None | All |
-      </Accordion>
-
-      <Accordion title="Sales">
-        | Permission | Add | Edit | Delete | Inquire |
-        |------------|-----|------|--------|---------|
-        | Closed Opportunity | All | All | All | All |
-        | Opportunity | All | All | All | All |
-        | Opportunity Finance | All | All | All | All |
-        | Sales Orders | All | All | None | All |
-      </Accordion>
-
-      <Accordion title="Service Desk">
-        | Permission | Add | Edit | Delete | Inquire |
-        |------------|-----|------|--------|---------|
-        | Change Approvals | All | All | None | All |
-        | Close Service Tickets | All | All | None | All |
-        | Reports | All | All | None | All |
-        | Resource Scheduling | All | All | None | All |
-        | Service Ticket - Dependencies | All | All | All | All |
-        | Service Tickets | All | All | None | All |
-        | Ticket Templates | None | None | None | All |
-      </Accordion>
-
-      <Accordion title="System">
-        | Permission | Add | Edit | Delete | Inquire |
-        |------------|-----|------|--------|---------|
-        | API Report | All | All | None | All |
-        | Custom Menu Entry | All | All | None | All |
-        | Data Import | All | All | None | All |
-        | Member Maintenance | All | All | None | All |
-        | My Company | All | All | None | All |
-        | Report Writer | None | None | None | All |
-        | Table Setup | All | All | None | All |
-      </Accordion>
-
-      <Accordion title="Time and Expense">
-        | Permission | Add | Edit | Delete | Inquire |
-        |------------|-----|------|--------|---------|
-        | Time Entry | All | All | None | All |
-      </Accordion>
-    </AccordionGroup>
+    <Tip>
+      The easiest way to configure this is to expand each category and set all sub-permissions to **All** for Add, Edit, and Inquire. You can leave Delete as **None** for all categories.
+    </Tip>
 
     Click **Save and Close** to finalize the security role settings.
   </Step>
@@ -263,6 +185,8 @@ Configure what data to sync from ConnectWise and set up company filters.
 
     <Info>
       When you proceed to the next step, data sync will begin in the background. This may take a few minutes depending on the amount of data in your ConnectWise instance.
+
+      Syncs are automatically deduplicated - if you navigate back and forth between steps, the same sync will not run multiple times within a 2-minute window.
     </Info>
   </Step>
 
