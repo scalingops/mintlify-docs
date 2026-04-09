@@ -3,6 +3,48 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## April 10, 2026
+
+### Client Onboarding: PSA Integration
+
+The Client Onboarding module now integrates directly with your PSA, turning your onboarding portal into a project-tracked workflow.
+
+- **Link to PSA Project**: Connect any onboarding portal to an existing PSA project, or create a new one directly from MSPortal. Supports Halo PSA, ConnectWise, Autotask, and Syncro
+- **Bulk Create PSA Tickets**: Select onboarding tasks and create corresponding PSA tickets in bulk. Each task gets linked to its PSA ticket with a clickable badge showing ticket status
+- **Time Entry Logging**: Log time against onboarding tasks directly from the admin portal. Time entries are created in your PSA under the linked project and ticket, with configurable billable defaults
+- **Portal Management in Settings**: A new **Portals** tab under Settings > Onboarding lists all portals with status, company, creation date, and direct links. Filter by status and search by name or company
+
+### Halo PSA Project Sync Overhaul
+
+Project sync for Halo PSA has been rebuilt for reliability and performance. Projects, milestones, child tickets, and ticket actions now sync correctly, with significantly fewer API calls.
+
+- **Split Sync Architecture**: Project sync is now two separate tasks (projects + milestones, then child tickets + actions), making syncs faster and easier to debug
+- **Milestone Extraction**: Milestones are now extracted from the embedded project detail response, fixing the previous approach that silently returned no results
+- **Action Syncing**: Ticket actions (notes, time entries, status changes) are now fetched alongside each child ticket, providing richer data for AI weekly update summaries
+- **Client-Level Filtering**: Projects are filtered by mapped client IDs at the API level, reducing unnecessary API calls by up to 20x for tenants with large Halo instances
+- **Fewer API Calls**: Child tickets are now fetched more efficiently, reducing redundant API requests per project
+
+### Ticket Trends (AI-Powered Analysis)
+
+A new **Ticket Trends** page provides AI-powered analysis of your ticket patterns over time, helping you spot recurring issues, forecast volume, and identify which companies or categories are driving ticket load.
+
+- **Weekly Snapshots**: View ticket volume, resolution times, and SLA compliance broken down by week across configurable time ranges (8, 12, 26, or 52 weeks)
+- **Company Metrics**: See which companies generate the most tickets week over week, with trend indicators and volume breakdowns
+- **Category Metrics**: Break down ticket volume by type or category to identify the most common issue areas
+- **AI Pattern Analysis**: Run an AI analysis that identifies ticket clusters, recurring patterns, seasonal trends, and actionable recommendations for reducing ticket volume
+- **Forecasting**: Statistical forecasting projects expected ticket volume for the coming weeks based on historical patterns
+- **Automated Weekly Reports**: A scheduled background task generates trend analysis weekly and surfaces insights in AI weekly update notes
+
+### Bug Fixes & Improvements
+
+- **Ticket Details Modal**: Improved layout and data display in the ticket detail view
+- **Device Enrichment**: Updated device data enrichment with better OS, RAM, and disk space extraction
+- **Halo Integration Wizard**: Fixed an issue in the Halo PSA setup wizard that prevented advancing past the sync step in certain configurations
+- **Project Performance**: Improved project data loading speed across multiple pages
+- **ConnectWise Manage**: Project tickets now display their checklists
+
+---
+
 ## April 3, 2026
 
 ### Addigy Integration (Beta)
