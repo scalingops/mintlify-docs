@@ -41,11 +41,19 @@ Before connecting to MSPortal, you need to create API credentials in NinjaOne.
   </Step>
 
   <Step title="Navigate to API Settings">
-    Go to **Administration > Apps > API**.
+    Go to **Administration > Apps > API**. You'll see three tabs at the top of the page:
+
+    - **OAuth Tokens**
+    - **Client App IDs**
+    - **Legacy**
+
+    <Warning>
+      Select the **Client App IDs** tab. Do **not** use the **Legacy** tab. Credentials created under Legacy will fail the connection test with a `Client app not exist` error, because MSPortal uses the modern Client Credentials OAuth flow which only works with apps created under Client App IDs.
+    </Warning>
   </Step>
 
   <Step title="Create a New API Application">
-    Click **Add** to create a new API application.
+    On the **Client App IDs** tab, click **Add** to create a new API application.
   </Step>
 
   <Step title="Configure the Application">
@@ -55,8 +63,17 @@ Before connecting to MSPortal, you need to create API credentials in NinjaOne.
     |-------|-------|
     | **Name** | MSPortal Integration |
     | **Application Platform** | API Services (Machine-to-Machine) |
-    | **Grant Type** | Client Credentials |
-    | **Redirect URI** | Not required for Machine-to-Machine |
+    | **Grant Type** | Client Credentials **only** |
+    | **Scopes** | `monitoring` |
+    | **Redirect URI** | `https://app.msportal.ai` (if the field is required) |
+
+    <Note>
+      Some NinjaOne instances require a Redirect URI even for Machine-to-Machine apps. If the field is mandatory, enter `https://app.msportal.ai`. It is not used by the Client Credentials flow but satisfies the form validation.
+    </Note>
+
+    <Warning>
+      **Only check `Client Credentials`.** Do **not** select `Authorization Code`, `Password`, `Refresh Token`, or any other grant type. Enabling additional grant types can cause NinjaOne to reject the token request and the connection test will fail.
+    </Warning>
 
     <Warning>
       Copy both the **Client ID** and **Client Secret** immediately after saving. The Client Secret cannot be retrieved once you close the dialog.
@@ -410,19 +427,35 @@ You can return to any step of the setup wizard at any time:
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Connection test fails">
+  <Accordion title="Connection test fails with 'Client app not exist'">
+    **Cause:** The API credentials were created under the **Legacy** tab in NinjaOne instead of the **Client App IDs** tab. Legacy credentials use an older authentication flow that MSPortal does not support.
+
+    **Solution:**
+    1. Log into NinjaOne and go to **Administration > Apps > API**
+    2. Click the **Client App IDs** tab (not Legacy)
+    3. Click **Add** and create a new application with:
+       - Application Platform: **API Services (Machine-to-Machine)**
+       - Grant Type: **Client Credentials**
+       - Scopes: **`monitoring`**
+    4. Copy the new Client ID and Client Secret into the MSPortal setup wizard
+    5. Click **Test Connection** again
+  </Accordion>
+
+  <Accordion title="Connection test fails (other errors)">
     **Causes:**
     - Incorrect Client ID or Client Secret
     - Wrong region selected
     - API application not configured as Machine-to-Machine
     - Client Credentials grant type not selected
+    - Missing `monitoring` scope
 
     **Solutions:**
     1. Verify your Client ID and Client Secret are copied exactly (no extra spaces)
     2. Confirm you selected the correct region matching your NinjaOne portal URL
     3. Check that the API application in NinjaOne uses **API Services (Machine-to-Machine)** platform
     4. Ensure the grant type is set to **Client Credentials**
-    5. Generate new API credentials in NinjaOne if needed
+    5. Confirm the `monitoring` scope is enabled on the app
+    6. Generate new API credentials in NinjaOne if needed
   </Accordion>
 
   <Accordion title="No organizations appear in mapping step">
