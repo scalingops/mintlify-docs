@@ -14,15 +14,13 @@ The Client Onboarding module now integrates directly with your PSA, turning your
 - **Time Entry Logging**: Log time against onboarding tasks directly from the admin portal. Time entries are created in your PSA under the linked project and ticket, with configurable billable defaults
 - **Portal Management in Settings**: A new **Portals** tab under Settings > Onboarding lists all portals with status, company, creation date, and direct links. Filter by status and search by name or company
 
-### Halo PSA Project Sync Overhaul
+### Halo PSA Project Sync Improvements
 
-Project sync for Halo PSA has been rebuilt for reliability and performance. Projects, milestones, child tickets, and ticket actions now sync correctly, with significantly fewer API calls.
+Halo PSA project sync is faster and more complete. Projects, milestones, child tickets, and ticket activity now flow into MSPortal reliably so your project views always reflect what's happening in Halo.
 
-- **Split Sync Architecture**: Project sync is now two separate tasks (projects + milestones, then child tickets + actions), making syncs faster and easier to debug
-- **Milestone Extraction**: Milestones are now extracted from the embedded project detail response, fixing the previous approach that silently returned no results
-- **Action Syncing**: Ticket actions (notes, time entries, status changes) are now fetched alongside each child ticket, providing richer data for AI weekly update summaries
-- **Client-Level Filtering**: Projects are filtered by mapped client IDs at the API level, reducing unnecessary API calls by up to 20x for tenants with large Halo instances
-- **Fewer API Calls**: Child tickets are now fetched more efficiently, reducing redundant API requests per project
+- **Complete Milestone Visibility**: Project milestones now appear correctly in the Projects module so you can track phase progress at a glance
+- **Richer Project Activity**: Notes, time entries, and status changes from child tickets are now captured, giving AI weekly update summaries the full picture of project progress
+- **Faster Syncs for Large Halo Instances**: Project syncs complete significantly faster, especially for MSPs with large Halo environments and many mapped clients
 
 ### Ticket Trends (AI-Powered Analysis)
 
@@ -33,7 +31,7 @@ A new **Ticket Trends** page provides AI-powered analysis of your ticket pattern
 - **Category Metrics**: Break down ticket volume by type or category to identify the most common issue areas
 - **AI Pattern Analysis**: Run an AI analysis that identifies ticket clusters, recurring patterns, seasonal trends, and actionable recommendations for reducing ticket volume
 - **Forecasting**: Statistical forecasting projects expected ticket volume for the coming weeks based on historical patterns
-- **Automated Weekly Reports**: A scheduled background task generates trend analysis weekly and surfaces insights in AI weekly update notes
+- **Automated Weekly Reports**: Trend analysis runs automatically each week and surfaces insights in AI weekly update notes
 
 ### Bug Fixes & Improvements
 
@@ -104,9 +102,9 @@ The **Metrics** tab under **Settings > Compliance** provides a dedicated space t
 
 ### Autotask Sync Improvements
 
-- **Missing Sync Types**: Contracts, locations, notes, billing items, and project time entries now sync correctly for new Autotask integrations. Previously these five sync types were never triggered during setup
-- **Ticket Status Fix**: The `is_closed_status` field on Autotask tickets now sets correctly, fixing a bug where all tickets appeared as open
-- **Webhook Overhaul**: Autotask webhooks have been rebuilt with automatic re-provisioning if a webhook breaks
+- **Complete Data Sync on Setup**: Contracts, locations, notes, billing items, and project time entries now sync automatically when you connect a new Autotask integration, so your data is fully populated from day one
+- **Accurate Ticket Status**: Closed Autotask tickets now correctly display as closed in MSPortal, restoring accurate open ticket counts and reporting
+- **More Reliable Real-Time Sync**: Autotask real-time updates now self-heal automatically if the connection is interrupted, keeping ticket changes flowing without manual intervention
 
 ### Halo PSA Improvements
 
@@ -152,16 +150,16 @@ A new **EDR Incidents** tab surfaces Acronis EDR/MDR incident data directly in M
 - **EDR Incidents Table**: Filterable by severity, state, category, and company with full detail side panel
 - **Acronis Endpoint Enrichment**: Endpoints page now pulls data from both Cork and Acronis, showing protection plan, agent version, and online status for Acronis-managed devices
 - **Provider-Aware Tabs**: Security tabs dynamically show or hide based on which providers (Cork, Acronis) are active for the tenant
-- **Background Sync**: New Trigger.dev scheduled task syncs Acronis incidents on a recurring basis with incremental cursor-based fetching
+- **Automatic Updates**: Acronis incidents sync into MSPortal on a recurring schedule so your security view stays current without manual refreshes
 
 ### NinjaOne Backup Support
 
 The Backup module now pulls data directly from NinjaOne's dedicated backup API, bringing device-level backup visibility into the unified Backup dashboard alongside Cove and Acronis. Each device shows its protection status, total storage consumed, and a detailed breakdown of cloud, local, and revision storage.
 
-- **Dedicated Backup Sync**: Daily sync from NinjaOne's backup usage endpoint captures per-device storage metrics across cloud image, file/folder, and network share backup types
+- **Daily Backup Updates**: Per-device storage metrics sync each day across cloud image, file/folder, and network share backup types
 - **Backup Detail Sheet**: Click any NinjaOne device to open a detail panel with cloud, local, and revision storage breakdowns
-- **Server-Side Filtering**: The Backup Devices table now filters across the full dataset instead of only the current page, with status and search queries handled server-side
-- **Improved Status Display**: Devices without backup configured show "Not Configured" in a neutral badge instead of appearing as failures. The default view shows only devices with active backup.
+- **Filter Across Your Full Fleet**: The Backup Devices table now filters and searches across your entire device list at once, not just the page you're viewing
+- **Cleaner Status Display**: Devices without backup configured now show "Not Configured" instead of appearing as failures, and the default view focuses on devices with active backup
 
 ### Bug Fixes
 
@@ -169,11 +167,11 @@ Over 30 bug fixes across the platform, including fixes to search functionality, 
 
 ### Bulk Company Creation in Integration Wizards
 
-All nine integration wizard flows (Acronis, Cork, Cove, Hudu, IT Glue, Liongard, Pax8, RMM, and ScalePad) now support batch company creation. Previously, creating companies for unmapped integration items happened one at a time, which was slow for large imports. The new bulk action inserts all selected companies in a single database call and auto-maps them to the corresponding integration items.
+All nine integration wizard flows (Acronis, Cork, Cove, Hudu, IT Glue, Liongard, Pax8, RMM, and ScalePad) now support batch company creation. Setting up an integration with dozens of unmapped companies used to be slow and tedious. You can now create and map all of them at once.
 
-- **Single Batch Insert**: Creating 50+ companies during an integration setup now completes in seconds instead of minutes
-- **Import All with Bulk Create**: The "Import All" action also uses batch creation, combining company creation and mapping saves into optimized bulk operations
-- **Automatic Tool Stack Sync**: Newly created companies automatically receive tool stack items via background task
+- **Bulk Create Companies**: Creating 50+ companies during an integration setup now completes in seconds instead of minutes
+- **One-Click Import All**: The "Import All" action creates and maps every unmapped company in a single step
+- **Automatic Tool Stack Sync**: Newly created companies automatically receive your tool stack items so they're ready for tracking right away
 
 ### Documentation: Folder Navigation & ITGlue Folder Import
 
@@ -194,10 +192,10 @@ Liongard system data now includes device ID mapping, enabling direct correlation
 
 ### Bug Fixes & Improvements
 
-- **ITGlue Document Sync**: Improved pagination handling and vendor API library for more reliable document imports across large ITGlue instances
-- **Autotask Opportunities Sync**: Added metadata tracking for sync cursor progress
-- **RLS Security Audit**: Applied company-scoping fixes to multiple database policies ensuring data isolation across tenants
-- **Documentation Loading Skeleton**: Updated to match the new sidebar + table layout, eliminating layout shift during page load
+- **ITGlue Document Sync**: More reliable document imports across large ITGlue instances
+- **Autotask Opportunities Sync**: Improved sync progress tracking for opportunities
+- **Security Hardening**: Strengthened tenant data isolation across multiple modules
+- **Documentation Loading**: Smoother loading experience for the new sidebar + table layout
 
 ---
 
@@ -214,7 +212,7 @@ Meeting presentation mode has been completely rebuilt for a more professional lo
 
 ### Location-Scoped Dashboard Visibility
 
-Users with location-based ticket permissions now see accurate counts across all dashboard widgets and drilldowns. Previously, dashboard aggregation only handled "all" and "own" visibility modes, returning zero results for users scoped to specific locations. The v3 drilldown worker has also been updated to respect location visibility.
+Users with location-based ticket permissions now see accurate counts across all dashboard widgets and drilldowns. If your team has technicians or contacts scoped to a specific office or site, their dashboard tiles and ticket lists now correctly reflect only the tickets they're allowed to see.
 
 ### ConnectWise User Type Permissions Mapping
 
@@ -230,21 +228,21 @@ Ticket form templates can now be organized by office location so end users see o
 
 ### Improved Integration Sync Reliability
 
-Background sync tasks now run with smart concurrency limits per integration provider, preventing performance degradation during large sync operations. Each provider (Autotask, ConnectWise, and others) has tuned concurrency settings that balance sync speed with database stability. Cursor progress writes have been optimized, and transient errors now retry with exponential backoff.
+Integration syncs now run more smoothly during large operations. Each provider (Autotask, ConnectWise, and others) is tuned for the right balance of speed and stability, and temporary failures recover automatically without losing progress.
 
 ### Realtime Notifications & Approvals
 
-Notifications and approval counts now update instantly using Supabase Realtime. Previously, badge counts relied on polling, which meant delays before new notifications appeared. Now, notification badges and pending approval counts reflect changes the moment they happen, with no page refresh needed.
+Notification badges and pending approval counts now update the moment something changes, with no page refresh needed. Previously there was a delay before new items appeared in your top-bar counters.
 
 ### Bug Fixes & Improvements
 
 - **Survey Wizard**: Added support for additional answer types and replaced the native range input with a polished slider component
 - **Custom Fields**: Fixed rendering issues with custom field displays
 - **Automation Rules**: Resolved stability issues with rule execution
-- **Compliance Performance**: Eliminated sequential scans on compliance assignment queries for faster page loads
+- **Compliance Performance**: Faster page loads when viewing large compliance assignment lists
 - **Session Handling**: Improved expired session detection and recovery flow
 - **Sign-in Page**: Added accessibility labels and improved status badge layout
-- **Impersonation**: Better client state cleanup when switching between impersonated users
+- **Impersonation**: Cleaner state when switching between impersonated users
 
 ---
 
@@ -264,15 +262,15 @@ Every numeric value in the table is now clickable. Click any revenue, support ho
 - **Support Hours Drilldown**: Click hours to see individual time entries with date, technician name, ticket, and service board/queue — with period totals and monthly averages for multi-month views
 - **Non-Recurring Revenue Drilldown**: Click non-recurring revenue to see billable labor entries with hours, rates, and amounts — with period totals and monthly averages
 - All new columns support sorting and range filtering
-- Drilldown queries optimized for sub-100ms response times across all PSA providers
+- Drilldowns load nearly instantly across all PSA providers
 
 ### Location Filtering on Tickets
 
 Tickets now display and filter by **location/site name** across all PSA integrations. A new Location column appears in the ticket list with a dropdown filter populated from your ticket data.
 
-- **Autotask**: Location now resolves from `companyLocationID` through the integration locations table
-- **Syncro**: Locations now link through integration locations for consistent site naming
-- **ConnectWise**: Fixed location resolution to use the correct site ID field
+- **Autotask**: Tickets now show the correct site/location for each company
+- **Syncro**: Site names now display consistently across tickets
+- **ConnectWise**: Site names now resolve correctly on every ticket
 
 ### Quote Visibility Controls
 
@@ -296,8 +294,8 @@ All PSA-related labels across the app now automatically adapt to your connected 
 - **M365 OAuth**: Fixed "auth_required" error that occurred when browser sessions expired during the Microsoft OAuth redirect flow
 - **M365 Disconnect**: Added a disconnect button to remove M365 connections from the company detail page
 - **M365 Callback Page**: Fixed garbled checkmark character on the OAuth success page
-- **User Import Linking**: Fixed an issue where ConnectWise user sync created duplicate imported profiles instead of linking to existing auth accounts, which broke team role assignments
-- **Imported User Status**: Users incorrectly marked as "imported" who already have active auth accounts are now automatically corrected to "active"
+- **User Import Linking**: Fixed an issue where ConnectWise user sync created duplicate profiles instead of linking to existing MSPortal accounts, which prevented team role assignments from sticking
+- **Imported User Status**: Users marked as "imported" who already have active MSPortal accounts are now automatically corrected to "active"
 - **Roles Tab**: Company security roles can now be created, edited, and deleted directly from the Users & Roles page without navigating to the Companies tab
 - **Settings Navigation**: Simplified the Companies settings page by removing redundant sub-tabs
 - **Company Column Filters**: Company dropdowns across all data tables now use universal server-side search, fixing issues where only current-page companies appeared in the filter
@@ -483,8 +481,8 @@ Toggle "Deep Search" to enable full-text search across all note content — tick
 
 **Built for speed:**
 - Keyboard navigation with arrow keys and Enter to select
-- Results appear as you type with smart debouncing
-- Client-side caching avoids redundant searches
+- Results appear as you type
+- Recent searches load instantly
 - Results respect your permissions and company scope automatically
 
 ---
@@ -580,7 +578,6 @@ ConnectWise ticket descriptions now display reliably in the ticket detail modal.
 
 ### Improvements
 
-- **AI SDK Compatibility**: Updated all AI calls to the latest Vercel AI SDK conventions for continued compatibility
 - **Time Entry Dates**: Fixed a timezone issue where time entry dates could shift by one day depending on your browser timezone
 - **Activity Feed**: Description note now pins to the bottom of the activity timeline for clearer reading order
 - **Report Pages**: Increased server timeout for report pages to prevent timeouts on complex reports
@@ -638,7 +635,7 @@ A flexible grouping system for organizing users across training and surveys, wit
 ### Improvements
 
 - **M365 License Blocks**: Free and trial licenses are now automatically filtered from license reporting blocks for cleaner data
-- **Report Data Performance**: All report data fetched in a single optimized database call for significantly faster generation
+- **Faster Report Generation**: Reports with multiple data sources now generate significantly faster
 - **Report Scheduling**: Improved reliability for scheduled report delivery
 
 ### Bug Fixes
@@ -1271,7 +1268,7 @@ The dashboard editor has been completely rebuilt with a more intuitive drag-and-
 - **Training Certificates**: Certificates are now easier to access after completing training—a congratulations dialog appears immediately upon completion with quick links to view, download, or share your certificate.
 - **NPS Survey UX**: Enhanced Net Promoter Score surveys with better mobile support, iOS fullscreen compatibility, improved anonymous access, and cleaner analytics display.
 - **Mobile Experience**: Improved mobile UX across the platform with better touch interactions and responsive layouts.
-- **Autotask Integration**: Upgraded sync functionality with improved incremental sync using cursor tracking for faster and more reliable company data synchronization.
+- **Autotask Integration**: Faster and more reliable company sync, with smarter incremental updates that only pull what's changed.
 - **Ticket Note Formatting**: Enhanced formatting for ticket notes sent to PSA systems for better readability.
 - **Navigation Performance**: Faster page transitions with optimized client-side navigation throughout the application.
 - **Planner Updates**: Various improvements to planner functionality and display.
