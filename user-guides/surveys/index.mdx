@@ -305,11 +305,47 @@ Create reusable email templates for survey invitations:
 From the survey list, use the action menu (three dots) to:
 
 - **View Analytics/Results**: See response data
+- **View Recipients**: See who was invited, their status, and scores (see below)
 - **Edit Survey**: Modify and create a new version
 - **Manage Recipients** (NPS only): Update who receives the survey
 - **Send Now** (NPS only): Immediately send to recipients
 - **Activate/Deactivate**: Toggle survey status
 - **Delete**: Permanently remove the survey
+
+### Viewing Survey Recipients
+
+The Recipients modal gives you a detailed view of every invitation sent for a survey, including delivery status, response scores, and direct survey links.
+
+<Steps>
+  <Step title="Open the Recipients Modal">
+    From the survey list, click the action menu (three dots) on any survey and select **View Recipients**.
+  </Step>
+  <Step title="Filter by Status">
+    Click the status badges at the top to filter the list:
+
+    - **Completed** — Recipient submitted a response
+    - **Sent** — Email delivered, awaiting response
+    - **Expired** — Invitation expired before a response was received
+    - **Pending** — Invitation created but not yet sent
+  </Step>
+  <Step title="Search and Sort">
+    Use the search bar to find recipients by name, email, or company. Click any column header to sort the list.
+  </Step>
+</Steps>
+
+Each row shows:
+
+| Field | Description |
+|-------|-------------|
+| **Recipient** | Name and email address |
+| **Company** | The recipient's company |
+| **Status** | Current invitation status with badge |
+| **Date/Score** | Sent date, or score if completed (NPS surveys show the numeric score) |
+| **Link** | Copy button to get the recipient's unique survey URL |
+
+<Tip>
+Use the **Copy Link** button to share a recipient's unique survey URL directly, for example when a client says they lost the email.
+</Tip>
 
 ### Survey Versions
 
