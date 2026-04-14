@@ -21,9 +21,14 @@ IT Glue is a leading IT documentation platform used by MSPs to centralize knowle
 
 ## Prerequisites
 
-- Active IT Glue account with administrative access to generate API keys
+- **IT Glue Enterprise subscription** (required for API access)
+- IT Glue account with administrative access to generate API keys
 - MSPortal.ai account with integration management permissions
 - Companies already set up in MSPortal (from your PSA integration or manually created)
+
+<Warning>
+  **The IT Glue API is only available on the Enterprise plan.** If your IT Glue account is on a lower tier (Basic, Select, or any non-Enterprise plan), API access is disabled and the connection test will fail with a **403 Forbidden** error. Contact your IT Glue account manager to confirm your plan tier before starting setup.
+</Warning>
 
 <Note>
   The IT Glue integration maps organizations to existing companies in MSPortal. Import your companies from your PSA integration first, or create them manually before setting up IT Glue.
@@ -55,6 +60,18 @@ Before connecting to MSPortal, you need to create an API key in IT Glue.
     <Tip>
       Use a descriptive name so you can identify this key later if you need to rotate or revoke it.
     </Tip>
+  </Step>
+
+  <Step title="Leave the IP Address Access List blank">
+    On the API key creation screen, **do not populate the IP Address Access List field**. Leave it empty.
+
+    <Warning>
+      MSPortal runs on serverless infrastructure with dynamic egress IPs. If you restrict the API key to specific IPs, IT Glue will return **403 Forbidden** on every request from MSPortal, even with a valid key.
+    </Warning>
+  </Step>
+
+  <Step title="Enable Password Access (if syncing passwords)">
+    If you plan to share passwords with your team through MSPortal, enable the **Password Access** option when creating the key. Without this setting, passwords cannot be retrieved even though the rest of the integration will work.
   </Step>
 
   <Step title="Copy the API Key">
@@ -121,11 +138,12 @@ Enter your IT Glue region and API key to establish the connection.
   <Step title="Test Connection">
     Click **Test Connection** to verify your credentials. You will see a green success message when the connection is established.
 
-    If the connection fails:
-    - Verify you selected the correct region for your IT Glue account
-    - Check that the API key is copied correctly without extra spaces
-    - Ensure the API key has not been revoked in IT Glue
-    - Confirm your IT Glue account has API access enabled
+    If the connection fails with **403 Forbidden**, jump to the [troubleshooting section](#troubleshooting) below. The three most common causes, in order, are:
+    1. Your IT Glue plan is not Enterprise (API access is Enterprise-only)
+    2. The API key has an IP Address Access List set in IT Glue (must be blank)
+    3. The key was created without the required access level
+
+    For **401 Unauthorized** or network errors, verify the region matches your IT Glue login URL and that the key was copied without extra whitespace.
   </Step>
 
   <Step title="Create Integration">
@@ -349,18 +367,53 @@ As you onboard new clients in IT Glue:
 ## Troubleshooting
 
 <AccordionGroup>
-  <Accordion title="Connection test fails">
-    **Causes:**
-    - Incorrect API key
-    - Wrong region selected
-    - API key has been revoked or expired
-    - IT Glue account does not have API access enabled
+  <Accordion title="Connection test returns 403 Forbidden (most common)">
+    A **403 Forbidden** response means IT Glue received your request and recognized the key, but refused to authorize it. This is different from a 401 (bad key). There are three common causes, in order of likelihood:
+
+    **1. Your IT Glue plan does not include API access (most common)**
+
+    The IT Glue API is only available on the **Enterprise subscription**. Accounts on Basic, Select, or any non-Enterprise plan will return 403 on every API call, even with a valid key.
+
+    - Log into IT Glue and check your plan tier under **Account > Subscription**
+    - If you are not on Enterprise, contact your IT Glue account manager to upgrade
+    - There is no workaround: the API is gated at the account level by IT Glue
+
+    **2. The API key has an IP Address Access List set**
+
+    When creating an API key, IT Glue lets you restrict usage to specific IP addresses. Because MSPortal runs on serverless infrastructure with dynamic egress IPs, any IP restriction will block MSPortal.
+
+    - Go to **Account > API Keys** in IT Glue
+    - Find the key you gave to MSPortal
+    - Clear the **IP Address Access List** field (or regenerate the key without it)
+    - Paste the key back into the MSPortal wizard and test again
+
+    **3. The key was created without the required access level**
+
+    Certain endpoints require specific access flags on the key. For syncing passwords, the key must have **Password Access** enabled. For most other operations, the default access level is sufficient.
+
+    - Regenerate the key in IT Glue with **Password Access** enabled if you want to sync passwords
+    - The basic organization fetch used to test the connection does not require Password Access
+  </Accordion>
+
+  <Accordion title="Connection test returns 401 Unauthorized">
+    A **401 Unauthorized** response means the key itself is invalid.
 
     **Solutions:**
-    1. Verify you selected the correct region (US or EU) matching your IT Glue URL
-    2. Check that the API key is copied exactly without extra spaces or missing characters
-    3. Generate a new API key in IT Glue if the current one may be revoked
-    4. Contact your IT Glue administrator to confirm API access is enabled for your account
+    1. Check that the API key was copied exactly, with no leading or trailing spaces
+    2. Verify the key has not been revoked in IT Glue (**Account > API Keys**)
+    3. Generate a fresh key and paste it into the wizard
+  </Accordion>
+
+  <Accordion title="Connection test fails with a network or timeout error">
+    **Causes:**
+    - Wrong region selected (the key is valid but the URL does not match)
+    - Temporary IT Glue outage
+    - Network issue reaching api.itglue.com or api.eu.itglue.com
+
+    **Solutions:**
+    1. Verify you selected the correct region (US or EU) matching your IT Glue login URL
+    2. Check [IT Glue's status page](https://status.itglue.com/) for any ongoing incidents
+    3. Wait a minute and retry
   </Accordion>
 
   <Accordion title="No organizations appear in mapping step">

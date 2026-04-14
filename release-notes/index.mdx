@@ -3,6 +3,26 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## April 14, 2026
+
+### Permissions Cleanup and Granular Ticket Write Controls
+
+We audited every permission in the role editor and cleaned up the list so the options you see in Settings > Users & Roles actually match what each feature does. Same pages, same access, just a clearer, shorter list.
+
+- **Removed unused permissions**: Permissions that were never actually checked anywhere in the app have been removed from role editing. This includes the Notifications read/write/manage rows (notifications are now visible to everyone who can access the page), plus dead entries for Admin Portal and Company Users that never gated anything.
+- **Read-only where it should be**: For pages that are read-only in MSPortal (Backup, Documentation, Security, Client Health, Quotes, Financial Reporting, Tool Stack, Ticket Trends, Documentation Passwords), the Write and Manage columns have been removed from the role editor because those levels had no effect. Only the Read column is shown.
+- **Settings-level permissions for sync and configuration**: Actions like syncing Tool Stack, saving Revenue Categories, and managing Tool Stack items are now controlled by the existing Settings permissions (Settings > Tool Stack, Settings > Financial Reporting), so the main page permission can focus on day-to-day read/write access.
+- **Granular Ticket Write permissions**: The ticket Write permission now has three sub-options accessible via a dropdown next to the Write checkbox. You can grant any combination to tailor what a role can do with tickets:
+  - **Create Tickets**: Allows creating new tickets and using the AI ticket assistant
+  - **Add Notes**: Allows adding notes and attachments to existing tickets
+  - **Update Statuses**: Allows changing ticket status on existing tickets
+- **New write-level permissions wired up**: Write Broadcasts, Write Devices, Write Meetings, and Write Tool Stack now actually gate their respective create and edit actions, so you can give someone permission to compose a broadcast or add a device without giving them full management rights.
+- **Manage Company Roles**: The Manage permission for Company Roles now properly gates deleting company role definitions, alongside the existing Manage Companies permission.
+
+Existing roles automatically inherit equivalent permissions. Any role that previously held Write Tickets or Manage Tickets receives all three new ticket sub-permissions. Nothing was downgraded or removed from a user's effective access.
+
+---
+
 ## April 10, 2026
 
 ### Client Onboarding: PSA Integration
