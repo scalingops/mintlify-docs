@@ -5,68 +5,43 @@ description: "Product updates, improvements, and upcoming features for MSPortal.
 
 ## April 17, 2026
 
-### Automation Rules: PSA-Aware Tickets, Custom Fields, and Expanded Targeting
+### Per-Tenant Brand Colors
 
-The automation rule builder got a major overhaul aimed at making rules faster to configure and far harder to misconfigure. Text fields that used to demand you paste in raw IDs are now guided dropdowns populated from your actual data, custom fields are now first-class citizens in both conditions and actions, and tickets are now an entity you can build rules around directly.
+Pick your primary brand color and MSPortal generates a full light and dark mode palette from it. The new color picker in **Settings > Tenant > Branding** live-previews buttons, sidebar highlights, badges, and links before you save. Once applied, the color flows to:
 
-**PSA-aware ticket creation:**
+- Primary buttons, focus rings, and selection highlights across the app
+- Sidebar active states and link colors
+- Chart primary colors
+- Every branded surface that previously used the default teal
 
-The **Open Ticket** action now adapts to your connected PSA. Instead of a generic text box for board, category, impact, urgency, priority, or status, you get dropdowns populated from what is actually configured in your PSA instance.
+The color also applies automatically to the public **client onboarding portal**, so when a client opens their onboarding link, the portal takes on your branding without any extra configuration.
 
-- **Halo PSA**: dropdowns for Category, Impact, and Urgency pulled from your Halo lookup lists
-- **Autotask**: dropdowns for Issue Type and Sub-Issue Type, with Sub-Issue Type filtered to valid children of the selected Issue Type
-- **ConnectWise**: dropdowns for Service Board and ticket Type
-- PSA terminology (Board vs Queue vs Team, Agreement vs Contract, Member vs Resource vs Agent) automatically matches your integration
+Click **Reset** at any time to revert to the MSPortal default.
 
-No more guessing at integer IDs or copying values out of your PSA admin screens. If a value is selectable in your PSA, it is selectable in the rule builder.
+[Documentation: Tenant Branding](/user-guides/settings/tenant)
 
-**Custom fields in conditions and actions:**
+### Automation Rules: A Smarter, Cleaner Wizard
 
-Every custom field you have defined for an entity is now available when building an automation rule:
+The automation rule builder is faster to configure and easier to get right. Less typing, more picking.
 
-- **In conditions**: Filter rules using any custom field. Text fields support contains/equals/starts-with, number and currency fields support greater/less than, date and datetime fields support date thresholds, and select, radio, priority, impact, and urgency fields populate a dropdown of their configured options
-- **In update actions**: The Update Field action now allows writing to `custom_fields` across devices, companies, compliance items, planner items, users, goals, tickets, and meetings
-- **As date triggers**: Custom date fields can drive date-threshold automations (e.g., "30 days before a Contract Renewal Date custom field")
-
-Multiselect and radio fields pull their options from your custom field definition, so dropdowns always reflect exactly what your team has configured.
-
-**Tickets are now a first-class entity type:**
-
-Automation rules can now target tickets directly. Build rules that watch ticket status, priority, age, or custom fields, then run update actions, send emails, create planner items, or hand off to the AI transform pipeline. Available across all triggers (date threshold, scheduled, field change, absence).
-
-**Expanded recipient options for Send Email and In-App Alert:**
-
-Previously recipients were limited to specific internal users. You can now target any of:
-
-- **Specific Users**: Pick internal MSP team members individually
-- **Company Teams**: Team members assigned to the affected company in selected roles (Account Manager, vCIO, etc., using the new PSA contact-type mapping)
-- **Company Contacts**: Contacts synced from the affected company's PSA record
-- **Meeting Attendees**: All participants of the triggering meeting
-- **Custom Email**: Enter any external email address
-
-Each option has a guided picker so you are never typing in role IDs or UUIDs by hand.
-
-**Dynamic dropdowns everywhere:**
-
-Status, device type, priority, impact, urgency, manufacturer, and other lookup fields now fetch their options from the database instead of being hardcoded. Values always match what is configured in your tenant, and when you add a new status or priority in settings, it shows up in the rule builder automatically.
-
-**Test-before-enable Review step:**
-
-The final step of the rule builder now runs a dry-run test against your live data and shows exactly which entities would match, with a breakdown of the fields the rule inspected. Catch mistakes before the rule ever fires.
-
-**Approval workflow:**
-
-Actions can now require approval before execution. When turned on, the rule generates a pending approval (with the rendered email body, planner item, or field changes it would apply), notifies the selected users or role, and waits. Approvers review the exact generated content, then approve or reject. Useful for AI-generated content, high-impact field updates, and anything you want a human check on before it goes live.
+- **Guided PSA dropdowns for ticket actions**: The Open Ticket action reads straight from your connected PSA. Pick your category, impact, urgency, issue type, or service board from dropdowns populated with your real values, whether you use Halo, Autotask, or ConnectWise.
+- **Custom fields are first-class**: Use any custom field in conditions, update actions, and as date-threshold triggers. Select and multiselect options pull from your field definitions automatically.
+- **Tickets as a rule target**: Build automations directly on tickets. Watch status, priority, age, or any ticket field and run actions like any other entity.
+- **Richer recipient options for emails and alerts**: Target internal team members by role, client contacts from your PSA, meeting attendees, or a custom email, all through guided pickers.
+- **Dynamic dropdowns everywhere**: Statuses, device types, priorities, and other lookups reflect your live tenant data, so new values you add in settings appear in the rule builder automatically.
+- **Test before you enable**: A new Review step dry-runs the rule against live data and shows exactly which records would match.
 
 <Info>
-**More automation updates shipping next week.** A second batch of automation improvements is already in flight for the next release, including:
-
-- **Dynamic recipient resolution** — target the user assigned to the triggering record (training assignee, ticket owner, task owner, etc.) without picking specific users by hand at rule-creation time
-- **Additional ticket template variables** including ticket number and assignee
-- **Weekly day-of-week selector** for Scheduled rules so you can pin a weekly run to a specific weekday
-
-We ran out of runway to land these in the April 17 release, but they are active development work and should land in the next release.
+**More automation improvements are landing in the next release**, including dynamic recipient resolution (target the user assigned to the triggering record), additional ticket template variables, and a day-of-week selector for weekly scheduled rules.
 </Info>
+
+### Surveys: Granular Permissions, Inline Editing, and Automation
+
+Three upgrades to how you manage surveys and their responses.
+
+- **Granular view permissions**: The Surveys permission now splits into **View all surveys** and **View own surveys**, so you can give users access to just the surveys they created without exposing the full tenant inventory.
+- **Cleaner respondent view with inline answer editing**: The Respondents tab has a redesigned layout — the modal drawer is gone and everything lives on the page. A new **Edit Responses** write sub-permission lets authorized users correct submitted answers directly from the list, with an audit trail of who updated each answer.
+- **Send Survey from automation rules**: A new **Send Survey** action in the automation builder dispatches a survey to a targeted audience when any trigger fires. Wire it to ticket close, onboarding milestone completion, scheduled check-ins, or any rule you already have.
 
 ### Hide Items From Company Users (Behind-the-Scenes Mode)
 
@@ -82,20 +57,16 @@ Dashboards now have a **Visibility** setting with two options: **Internal and Ex
 
 [Documentation: Dashboards](/user-guides/dashboards/index)
 
-### Per-Tenant Brand Colors
+### Auto-Map Halo and Autotask Contact Types to Team Roles
 
-Pick your primary brand color and MSPortal generates a full light and dark mode palette from it. The new color picker in **Settings > Tenant > Branding** live-previews buttons, sidebar highlights, badges, and links before you save. Once applied, the color flows to:
+If you use **Halo PSA** or **Autotask**, MSPortal now extracts the manager and contact-type assignments on each synced company and maps them directly to your MSPortal **company roles**. The Roles tab in **Settings > Companies** gains a slot column showing which PSA fields are in use across your tenant, and you can map each PSA slot to the MSPortal role it should grant.
 
-- Primary buttons, focus rings, and selection highlights across the app
-- Sidebar active states and link colors
-- Chart primary colors
-- Every branded surface that previously used the default teal
+- **Autotask** exposes the Company owner resource as a single Account Manager slot
+- **Halo PSA** exposes up to eight slots including Primary Agent, Secondary Agent, Account Manager, Regional Manager, Logistics Manager, Sales Representative, Account Owner, and CXM Lead
 
-The color also applies automatically to the public **client onboarding portal**, so when a client opens their onboarding link, the portal takes on your branding without any extra configuration.
+Once mapped, every sync automatically assigns the matching MSP user to each company in the correct role. When someone changes roles in your PSA, MSPortal updates to match. This replaces the tedious step of assigning "Primary Tech" or "Account Manager" by hand after every new client import.
 
-Click **Reset** at any time to revert to the MSPortal default.
-
-[Documentation: Tenant Branding](/user-guides/settings/tenant)
+[Documentation: Auto-Mapping PSA Contact Types to Roles](/user-guides/settings/companies#auto-mapping-psa-contact-types-to-roles)
 
 ### Onboarding Portal Countdowns and Custom Dates
 
@@ -119,17 +90,6 @@ Because this flips Liongard to rule-based visibility, you need to add at least o
 </Warning>
 
 [Documentation: Liongard Documentation Visibility](/user-guides/settings/liongard-visibility)
-
-### Auto-Map Halo and Autotask Contact Types to Team Roles
-
-If you use **Halo PSA** or **Autotask**, MSPortal now extracts the manager and contact-type assignments on each synced company and maps them directly to your MSPortal **company roles**. The Roles tab in **Settings > Companies** gains a slot column showing which PSA fields are in use across your tenant, and you can map each PSA slot to the MSPortal role it should grant.
-
-- **Autotask** exposes the Company owner resource as a single Account Manager slot
-- **Halo PSA** exposes up to eight slots including Primary Agent, Secondary Agent, Account Manager, Regional Manager, Logistics Manager, Sales Representative, Account Owner, and CXM Lead
-
-Once mapped, every sync automatically assigns the matching MSP user to each company in the correct role. When someone changes roles in your PSA, MSPortal updates to match. This replaces the tedious step of assigning "Primary Tech" or "Account Manager" by hand after every new client import.
-
-[Documentation: Auto-Mapping PSA Contact Types to Roles](/user-guides/settings/companies#auto-mapping-psa-contact-types-to-roles)
 
 ### Duplicate Role
 
