@@ -1,0 +1,76 @@
+---
+title: 'Hiding Items from Client Users'
+description: 'Mark planner items, goals, compliance items, onboarding tasks, custom fields, and dashboards as internal so company users cannot see them'
+icon: 'eye-slash'
+---
+
+MSPortal distinguishes between your MSP team (tenant users) and your client contacts (company users). Most records are visible to both, but some items are for internal MSP use only, such as a planner item tracking an internal discussion about a client, a draft compliance check, or a goal meant for your team's eyes.
+
+The **Hide from company users** toggle keeps individual records behind the scenes. When turned on, the item is filtered out of every surface a company user can see, including their dashboard widgets, list pages, detail panels, and the client onboarding portal.
+
+## Where the Toggle Appears
+
+The same toggle is available on the following record types:
+
+| Record type | Where to find the toggle |
+|-------------|--------------------------|
+| **Planner items** | Planner item edit dialog, in the footer next to Save |
+| **Goals** | Goal edit dialog, next to the action buttons |
+| **Compliance items** | Compliance check detail dialog footer |
+| **Custom field definitions** | Settings > Custom Fields, in the Visibility column on each row |
+| **Onboarding template items** | Template editor, labeled **Visible to client portal** |
+| **Onboarding portal items** | Active portal task editor, labeled **Visible to client portal** |
+| **Dashboards** | Dashboard create/edit dialog, via the **Visibility** dropdown |
+
+<Note>
+The toggle is only shown to MSP tenant users. Company users never see it.
+</Note>
+
+## Default Behavior
+
+All items default to **visible to clients**. You must explicitly turn on "Hide from company users" for a record to become internal.
+
+## What Company Users See
+
+When an item is hidden:
+
+- It is excluded from every list, search, count, widget, and export that a company user can access
+- In the client onboarding portal, the task, document, or phase is filtered out entirely
+- Custom field values are not returned for the owning record
+
+Items you hide still appear normally for your MSP team.
+
+## Onboarding: Template vs Portal
+
+Onboarding items expose the toggle at two levels:
+
+- **Template** sets the default for any portal launched from that template
+- **Portal** lets you override the template default on a per-portal basis, so the same template can behave differently for different clients
+
+## Custom Fields
+
+In **Settings > Custom Fields**, each field row has a Visibility column. Edit a field to flip the "Hide from company users" toggle. When hidden, company users still see the owning record but not the field itself or its value.
+
+## Dashboards
+
+Dashboards use a slightly different control, a **Visibility** dropdown with two options:
+
+- **Internal and External (clients can see)** is the default and shows the dashboard to both MSP and company users
+- **Internal only (MSP team)** hides the dashboard entirely from company users
+
+See [Dashboards](/user-guides/dashboards/index) for more detail.
+
+## Use Cases
+
+- **Draft compliance checks** you are still writing
+- **Planner items** tracking internal MSP discussion about a client
+- **Goals** for MSP team alignment that should not be shared externally
+- **Onboarding tasks** that only your team performs in the background
+- **Dashboards** exposing internal metrics or margin data
+- **Custom fields** storing private notes or MSP-only flags
+
+## Related Resources
+
+- [Custom Fields](/user-guides/settings/index)
+- [Client Onboarding](/user-guides/client-onboarding/index)
+- [Dashboards](/user-guides/dashboards/index)

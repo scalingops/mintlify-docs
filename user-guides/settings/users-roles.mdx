@@ -93,6 +93,28 @@ The **Primary Admin** role is a system role that cannot be deleted or modified. 
   </Step>
 </Steps>
 
+### Duplicating a Role
+
+When an existing role is close to what you need, you can duplicate it as a starting point instead of rebuilding from scratch.
+
+<Steps>
+  <Step title="Open the Row Actions">
+    On the role you want to copy, click the actions menu (three dots) at the end of the row.
+  </Step>
+  <Step title="Click Duplicate">
+    Select **Duplicate**. A new role is created immediately, named **Copy of [original role name]**.
+  </Step>
+  <Step title="Edit the Copy">
+    Click the new role to rename it, edit the description, and adjust permissions as needed before assigning it to users.
+  </Step>
+</Steps>
+
+<Note>
+Duplicating a role copies the role name, description, all permission assignments, and role configuration flags such as bypass-company-restrictions and update-email opt-in. Company roles also carry over their ticket display group. It does not copy user assignments, so no users receive the new role until you assign it explicitly.
+</Note>
+
+Duplicate is available for both tenant roles and company roles, and requires the **Manage > Users & Roles** permission (or the Primary Admin role).
+
 ### RBAC Permissions
 
 Roles use a granular Role-Based Access Control (RBAC) system. Each role has three permission levels for every resource:

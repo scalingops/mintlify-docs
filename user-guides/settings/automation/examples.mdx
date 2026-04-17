@@ -1,0 +1,253 @@
+---
+title: 'Example Automation Rules'
+description: 'Real-world automation recipes: warranty alerts, meeting agendas, ticket surveys, stale tasks, and more.'
+icon: 'book-open'
+---
+
+Concrete setups you can copy. Each example lists the Trigger, Conditions, and Actions exactly as they appear in the wizard. Pick one that matches your use case, swap in your own templates, and save.
+
+## Use Case Pattern
+
+Most MSP automations fall into two categories:
+
+| Pattern | Trigger | When to use |
+|---------|---------|-------------|
+| **Date-driven** | Date Threshold | You care about something happening N days before or after a specific date (warranty end, meeting start, training due, contract renewal) |
+| **State-driven** | Scheduled + Conditions | You care about records sitting in a particular state long enough to need action (tickets in Resolved &gt; 4 hours, goals overdue, compliance controls past due, meetings finished without notes) |
+
+The examples below are grouped by pattern.
+
+## Date-Driven Examples
+
+### 1. Warranty Expiration Alert
+
+Email the account manager 30 days before any device's warranty expires, and create a planner task for the tech team.
+
+<Steps>
+  <Step title="Basic Information">
+    - **Name**: Warranty 30-Day Alert
+    - **Priority**: 50
+    - **Scope**: All Companies
+    - **Description**: Notify AM and open a planner task 30 days before device warranty ends.
+  </Step>
+  <Step title="Trigger">
+    - **Entity**: Device
+    - **Trigger**: Date Threshold
+    - **Date Field**: Warranty End Date
+    - **Days**: 30
+    - **Direction**: Before date (approaching)
+    - **Match**: Exactly 30 days
+
+    Exact match fires once per device, on the day that hits the 30-day mark.
+  </Step>
+  <Step title="Conditions">
+    Add a condition group:
+
+    - **Is Active** equals **True**
+
+    This skips retired devices whose warranty dates are no longer relevant.
+  </Step>
+  <Step title="Action 1: Send Email">
+    - **Send To**: Company Teams &rarr; Account Manager role
+    - **Subject**: `Warranty expiring: {{entity.name}} at {{entity.company_name}}`
+    - **Body**:
+      ```
+      Device {{entity.name}} (Serial: {{entity.serial_number}}) at {{entity.company_name}}
+      has a warranty ending on {{entity.warranty_end}}. Please reach out to the client
+      to discuss renewal or replacement.
+      ```
+  </Step>
+  <Step title="Action 2: Add to Planner">
+    - **Task Title**: `Warranty renewal: {{entity.name}} ({{entity.company_name}})`
+    - **Business Value**: Medium
+    - **Due Offset (days)**: 30
+
+      The task is created with "Not Started" status by default. Description and estimated hours are not part of the action form; edit the task after it is created if you need to fill them in.
+  </Step>
+</Steps>
+
+<Tip>
+Want 60-day and 7-day reminders too? Duplicate the rule and change **Days** to 60 and 7 on each copy. Each rule fires independently.
+</Tip>
+
+### 2. Meeting Agenda Generation
+
+One day before any QBR, use AI to draft a full agenda based on the client's recent tickets, compliance status, and goals, then send it to the attendees.
+
+<Steps>
+  <Step title="Basic Information">
+    - **Name**: QBR Agenda Draft
+    - **Scope**: All Companies
+    - **Description**: AI-drafted agenda sent to QBR attendees 1 day before the meeting.
+  </Step>
+  <Step title="Trigger">
+    - **Entity**: Meeting
+    - **Trigger**: Date Threshold
+    - **Date Field**: Start Time
+    - **Days**: 1
+    - **Direction**: Before date (approaching)
+    - **Match**: Exactly 1 day
+  </Step>
+  <Step title="Conditions">
+    - **Event Type** equals **Quarterly Business Review**
+    - **Status** equals **Scheduled** (or **Confirmed**)
+
+    AND logic so both must match. Skips canceled and completed meetings.
+  </Step>
+  <Step title="Action 1: AI Transform">
+    - **AI Template**: Pick a meeting-agenda template from the list (for Meeting-entity rules the dropdown is filtered to meeting templates).
+
+    The prompt is loaded from the template and cannot be edited inline. Output always lands in `{{ai_output}}`.
+  </Step>
+  <Step title="Action 2: Send Email">
+    - **Send To**: Meeting Attendees
+    - **Subject**: `Agenda for tomorrow's QBR: {{entity.title}}`
+    - **Body**:
+      ```
+      Hi team,
+
+      Here is the proposed agenda for tomorrow's QBR with {{entity.company_name}}:
+
+      {{ai_output}}
+
+      See you in the meeting.
+      ```
+
+    Meeting emails always require approval, so the draft is held for your review before it goes out. The **Require Approval** toggle is replaced with an enforced "Approval Required" notice for Meeting-entity rules.
+  </Step>
+</Steps>
+
+### 3. Training Due Reminder
+
+Remind users 7 days before assigned training expires.
+
+- **Entity**: Training
+- **Trigger**: Date Threshold &rarr; **Due Date**, **7 days**, **Before**, **Exactly 7 days**
+- **Conditions**: **Status** is one of **Not Started**, **In Progress** (picked by label in the dropdown; the rule stores the internal values `not_started` and `in_progress`)
+- **Action**: In-App Alert
+  - **Alert Type**: Warning
+  - **Title**: `Training due in 7 days: {{entity.name}}`
+  - **Message**: `Please complete "{{entity.name}}" by {{entity.due_date}}.`
+  - **Send To**: Specific Users — use the user picker to target the assigned user directly. The current UI requires picking users from a list; templated user IDs like `{{entity.assigned_to}}` are not resolved by the recipient selector.
+
+## State-Driven Examples
+
+These use a **Scheduled** trigger so the rule checks for a condition on a repeating interval. Useful when the thing you want to act on is a state (status, field value) rather than a date.
+
+### 4. CSAT Survey for Resolved Tickets
+
+Check every hour for tickets that have been in **Resolved** status for more than 1 hour, and send the customer a CSAT survey. This is the classic "status X for long enough, then act" pattern.
+
+<Steps>
+  <Step title="Basic Information">
+    - **Name**: CSAT Survey on Resolved Tickets
+    - **Scope**: All Companies
+    - **Description**: Send CSAT survey 1 hour after ticket is resolved.
+  </Step>
+  <Step title="Trigger">
+    - **Entity**: Ticket
+    - **Trigger**: Scheduled
+    - **Frequency**: Every Hour
+    - **Time**: Not used for hourly frequency
+
+    The rule evaluates every hour and acts on whatever currently matches the conditions.
+  </Step>
+  <Step title="Conditions">
+    Add a condition group with AND logic:
+
+    - **Status** equals **Resolved**
+    - **custom_fields.survey_sent** is **False**
+
+    The `survey_sent` custom checkbox field acts as the "have we already done this?" gate. Set it up once under **Settings > Custom Fields** for the Ticket entity. Because the rule only sends when the flag is False, the hourly check is safe to repeat.
+  </Step>
+  <Step title="Action 1: Send Email">
+    - **Send To**: Client Contacts (PSA) &rarr; check **Primary Contact**
+    - **Subject**: `Quick favor: how did we do on this ticket?`
+    - **Body**:
+      ```
+      Hi {{entity.company_name}} team,
+
+      We just resolved your ticket: {{entity.summary}}.
+
+      Would you take 30 seconds to rate how we handled it?
+      [Survey link here, or pair with your survey module]
+
+      Thanks!
+      ```
+
+    Use the Template Variables helper to see exactly which chips are available for Ticket — `{{entity.summary}}`, `{{entity.status}}`, `{{entity.priority}}`, `{{entity.due_date}}`, and `{{entity.company_name}}` are the reliable ones. There is no `{{entity.number}}` variable in the helper today.
+  </Step>
+  <Step title="Action 2: Update Field (flag it)">
+    - **Field**: `custom_fields.survey_sent`
+    - **Value**: `true`
+
+    This prevents the rule from firing again on the same ticket on the next hourly cycle.
+  </Step>
+</Steps>
+
+<Warning>
+State-driven rules need a "done" flag to stop firing. The pattern is: **Condition that checks the flag is not yet set** &rarr; **Action that does the work** &rarr; **Update Field action that sets the flag**. Without the flag, your hourly rule will re-send the survey every hour until the ticket moves out of Resolved.
+</Warning>
+
+### 5. Stale Goal Nudge
+
+Once a week at 9 AM, email account managers about any client goals that have been **In Progress** for more than 60 days without a progress update.
+
+- **Entity**: Goal
+- **Trigger**: Scheduled &rarr; Frequency **Weekly**, Time **09:00** (the weekly run is anchored to a fixed day of the week managed by the system; there is no day-of-week picker)
+- **Dedup**: **Once per entity** (default) — each stale goal only fires once per rule
+- **Conditions**:
+  - **Status** equals **In Progress** (goal statuses are tenant-customizable — pick whichever value your status list uses for in-progress goals)
+  - **Progress (%)** less than **50**
+  - **Target Date** is older than (days) **60**
+- **Action**: In-App Alert to Company Teams &rarr; Account Manager role
+  - **Alert Type**: Warning
+  - **Title**: `Goal stalled: {{entity.name}}`
+  - **Message**: `{{entity.name}} at {{entity.company_name}} has been in progress for 60+ days with under 50% progress.`
+
+### 6. Overdue Compliance Control
+
+Every day at 7 AM, create a planner task for any compliance control that is past due and not yet assigned a remediation task.
+
+- **Entity**: Compliance Control
+- **Trigger**: Scheduled &rarr; Frequency **Daily**, Time **07:00**
+- **Conditions**:
+  - **Status** is not one of your "done" statuses (compliance statuses are tenant-customizable via **Settings &rarr; Custom Fields / Status Lists**. Pick whichever values represent finished or not-applicable controls in your tenant — common ones are `Passed`, `Compliant`, or `Not Applicable`)
+  - **Due Date** is older than (days) **0** (past due)
+  - **custom_fields.remediation_task_created** is **False**
+- **Actions**:
+  1. Add to Planner &rarr; Task Title: `Remediate: {{entity.name}} ({{entity.company_name}})`, Business Value: High, Due Offset: 14
+  2. Update Field &rarr; Field `custom_fields.remediation_task_created`, Value `true` (flag it so this doesn't re-create tomorrow)
+
+### 7. Meeting Without Notes Follow-Up
+
+Every evening, check for any meeting that ended today without notes and ping the meeting owner.
+
+- **Entity**: Meeting
+- **Trigger**: Scheduled &rarr; Frequency **Daily**, Time **18:00**
+- **Conditions**:
+  - **Status** equals **Pending Notes**
+  - **Has Meeting Agenda Items** is **True**
+- **Action**: In-App Alert
+  - **Alert Type**: Info
+  - **Title**: `Add notes to today's meeting: {{entity.title}}`
+  - **Send To**: Specific Users — pick the meeting organizer(s) from the user list. Templated user IDs are not resolved in the recipient selector today.
+
+## Tips for Building Your Own
+
+1. **Start in the AI Designer.** Describe the outcome you want ("remind the AM 60 days before warranty ends") and review the diff. It is faster than picking every field from scratch.
+2. **Always test.** Use the **Run Test** button on the Review step. It shows exactly which records match under current data. Fix conditions before saving.
+3. **Use a "done" flag for state-driven rules.** A custom checkbox field flipped to true by an **Update Field** action is the cleanest way to prevent repeated firing.
+4. **Layer multiple rules.** Instead of one rule with complex logic, split into focused rules (60-day warning, 30-day warning, 7-day escalation). Each is easier to edit and test.
+5. **Duplicate before changing.** The **Duplicate** row action on the rules list creates a disabled copy. Edit the copy, test it, flip it on, then disable or delete the old one.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Rule Wizard Walkthrough" icon="list-check" href="/user-guides/settings/automation/wizard">
+    Every option explained in order.
+  </Card>
+  <Card title="Automation Overview" icon="robot" href="/user-guides/settings/automation">
+    Accessing Automation, list view, permissions, and logs.
+  </Card>
+</CardGroup>

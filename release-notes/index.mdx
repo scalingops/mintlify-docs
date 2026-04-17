@@ -3,6 +3,134 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## April 17, 2026
+
+### Automation Rules: PSA-Aware Tickets, Custom Fields, and Expanded Targeting
+
+The automation rule builder got a major overhaul aimed at making rules faster to configure and far harder to misconfigure. Text fields that used to demand you paste in raw IDs are now guided dropdowns populated from your actual data, custom fields are now first-class citizens in both conditions and actions, and tickets are now an entity you can build rules around directly.
+
+**PSA-aware ticket creation:**
+
+The **Open Ticket** action now adapts to your connected PSA. Instead of a generic text box for board, category, impact, urgency, priority, or status, you get dropdowns populated from what is actually configured in your PSA instance.
+
+- **Halo PSA**: dropdowns for Category, Impact, and Urgency pulled from your Halo lookup lists
+- **Autotask**: dropdowns for Issue Type and Sub-Issue Type, with Sub-Issue Type filtered to valid children of the selected Issue Type
+- **ConnectWise**: dropdowns for Service Board and ticket Type
+- PSA terminology (Board vs Queue vs Team, Agreement vs Contract, Member vs Resource vs Agent) automatically matches your integration
+
+No more guessing at integer IDs or copying values out of your PSA admin screens. If a value is selectable in your PSA, it is selectable in the rule builder.
+
+**Custom fields in conditions and actions:**
+
+Every custom field you have defined for an entity is now available when building an automation rule:
+
+- **In conditions**: Filter rules using any custom field. Text fields support contains/equals/starts-with, number and currency fields support greater/less than, date and datetime fields support date thresholds, and select, radio, priority, impact, and urgency fields populate a dropdown of their configured options
+- **In update actions**: The Update Field action now allows writing to `custom_fields` across devices, companies, compliance items, planner items, users, goals, tickets, and meetings
+- **As date triggers**: Custom date fields can drive date-threshold automations (e.g., "30 days before a Contract Renewal Date custom field")
+
+Multiselect and radio fields pull their options from your custom field definition, so dropdowns always reflect exactly what your team has configured.
+
+**Tickets are now a first-class entity type:**
+
+Automation rules can now target tickets directly. Build rules that watch ticket status, priority, age, or custom fields, then run update actions, send emails, create planner items, or hand off to the AI transform pipeline. Available across all triggers (date threshold, scheduled, field change, absence).
+
+**Expanded recipient options for Send Email and In-App Alert:**
+
+Previously recipients were limited to specific internal users. You can now target any of:
+
+- **Specific Users**: Pick internal MSP team members individually
+- **Company Teams**: Team members assigned to the affected company in selected roles (Account Manager, vCIO, etc., using the new PSA contact-type mapping)
+- **Company Contacts**: Contacts synced from the affected company's PSA record
+- **Meeting Attendees**: All participants of the triggering meeting
+- **Custom Email**: Enter any external email address
+
+Each option has a guided picker so you are never typing in role IDs or UUIDs by hand.
+
+**Dynamic dropdowns everywhere:**
+
+Status, device type, priority, impact, urgency, manufacturer, and other lookup fields now fetch their options from the database instead of being hardcoded. Values always match what is configured in your tenant, and when you add a new status or priority in settings, it shows up in the rule builder automatically.
+
+**Test-before-enable Review step:**
+
+The final step of the rule builder now runs a dry-run test against your live data and shows exactly which entities would match, with a breakdown of the fields the rule inspected. Catch mistakes before the rule ever fires.
+
+**Approval workflow:**
+
+Actions can now require approval before execution. When turned on, the rule generates a pending approval (with the rendered email body, planner item, or field changes it would apply), notifies the selected users or role, and waits. Approvers review the exact generated content, then approve or reject. Useful for AI-generated content, high-impact field updates, and anything you want a human check on before it goes live.
+
+### Hide Items From Company Users (Behind-the-Scenes Mode)
+
+You can now keep specific records out of sight from your client (company) users. A new **Hide from company users** toggle is available on planner items, goals, compliance items, custom field definitions, and onboarding template and portal items. When turned on, the item is filtered out of every list, widget, export, and client portal view a company user sees. All items stay visible to your MSP team as before.
+
+Use it for draft compliance checks, internal planner notes about a client, MSP-only goals, backstage onboarding tasks, or private custom fields. The toggle defaults to off so existing records are unchanged, and only MSP tenant users ever see the control.
+
+[Documentation: Hiding Items from Client Users](/user-guides/getting-started/hiding-items-from-clients)
+
+### MSP-Only Dashboards
+
+Dashboards now have a **Visibility** setting with two options: **Internal and External (clients can see)** or **Internal only (MSP team)**. Switch any dashboard to Internal only to hide it entirely from company users, useful for margin reporting, bench utilization, internal SLA metrics, or any other view you do not want your clients looking at. Both system and custom dashboards support the setting, and all existing dashboards default to Internal and External so nothing changes unless you opt in.
+
+[Documentation: Dashboards](/user-guides/dashboards/index)
+
+### Per-Tenant Brand Colors
+
+Pick your primary brand color and MSPortal generates a full light and dark mode palette from it. The new color picker in **Settings > Tenant > Branding** live-previews buttons, sidebar highlights, badges, and links before you save. Once applied, the color flows to:
+
+- Primary buttons, focus rings, and selection highlights across the app
+- Sidebar active states and link colors
+- Chart primary colors
+- Every branded surface that previously used the default teal
+
+The color also applies automatically to the public **client onboarding portal**, so when a client opens their onboarding link, the portal takes on your branding without any extra configuration.
+
+Click **Reset** at any time to revert to the MSPortal default.
+
+[Documentation: Tenant Branding](/user-guides/settings/tenant)
+
+### Onboarding Portal Countdowns and Custom Dates
+
+Onboarding portals now have a dedicated **Dates** tab for capturing the key milestones on each engagement. Each date has a label, optional description, and optional target date. Mark one of them as the **countdown** and both your admin view and the client portal show a live days-remaining timer at the top, counting down to the target date (or showing "Today" or "X days overdue" once it arrives).
+
+You can also define custom dates on an onboarding **template** using day offsets from the portal start, for example Kickoff = day 0, Hardware = day 14, Go-Live = day 45. Every new portal you launch from that template is pre-populated with those milestones resolved against its own start date.
+
+[Documentation: Custom Dates and Countdowns](/user-guides/client-onboarding/custom-dates)
+
+### Liongard Documentation Visibility Rules
+
+Liongard documentation access is now rule-based instead of "everyone on the MSP side sees everything". A new **Liongard** tab in **Settings > Documentation** lets you define explicit visibility rules at two levels:
+
+- **Inspector Types** grant visibility for an entire inspector family, for example every Windows Server Inspector
+- **Individual Systems** grant visibility for a single system, useful when you want to expose one host from an inspector without exposing the rest
+
+Rules can target specific company roles or apply to all roles at a company. Both MSP staff and company users now require a matching rule before Liongard content appears, bringing Liongard in line with how the rest of the Documentation module handles visibility.
+
+<Warning>
+Because this flips Liongard to rule-based visibility, you need to add at least one rule after upgrading before any Liongard content appears on the Documentation page, including for your own team.
+</Warning>
+
+[Documentation: Liongard Documentation Visibility](/user-guides/settings/liongard-visibility)
+
+### Auto-Map Halo and Autotask Contact Types to Team Roles
+
+If you use **Halo PSA** or **Autotask**, MSPortal now extracts the manager and contact-type assignments on each synced company and maps them directly to your MSPortal **company roles**. The Roles tab in **Settings > Companies** gains a slot column showing which PSA fields are in use across your tenant, and you can map each PSA slot to the MSPortal role it should grant.
+
+- **Autotask** exposes the Company owner resource as a single Account Manager slot
+- **Halo PSA** exposes up to eight slots including Primary Agent, Secondary Agent, Account Manager, Regional Manager, Logistics Manager, Sales Representative, Account Owner, and CXM Lead
+
+Once mapped, every sync automatically assigns the matching MSP user to each company in the correct role. When someone changes roles in your PSA, MSPortal updates to match. This replaces the tedious step of assigning "Primary Tech" or "Account Manager" by hand after every new client import.
+
+[Documentation: Auto-Mapping PSA Contact Types to Roles](/user-guides/settings/companies#auto-mapping-psa-contact-types-to-roles)
+
+### Duplicate Role
+
+Building a new role from scratch can be tedious, especially when an existing role has most of what you need. The Roles tab in **Settings > Users & Roles** now has a **Duplicate** action on every row that instantly creates a copy named "Copy of [original role]". The copy carries over the description, every permission, and configuration flags like bypass-company-restrictions and update-email opt-in. For company roles, it also copies the assigned ticket display group.
+
+User assignments are **not** copied, so the new role has no users until you assign it.
+
+[Documentation: Users & Roles, Duplicating a Role](/user-guides/settings/users-roles#duplicating-a-role)
+
+---
+
 ## April 14, 2026
 
 ### Permissions Cleanup and Granular Ticket Write Controls

@@ -22,6 +22,7 @@
               "user-guides/getting-started/keyboard-shortcuts",
               "user-guides/getting-started/Onboarding-checklist",
               "user-guides/getting-started/how-to-create-a-new-user-role",
+              "user-guides/getting-started/hiding-items-from-clients",
               {
                 "group": "Onboarding Wizard",
                 "pages": [
@@ -129,6 +130,7 @@
                   "user-guides/client-onboarding/quick-start",
                   "user-guides/client-onboarding/templates",
                   "user-guides/client-onboarding/managing-portals",
+                  "user-guides/client-onboarding/custom-dates",
                   "user-guides/client-onboarding/client-portal"
                 ]
               },
@@ -350,6 +352,15 @@
                   "user-guides/settings/tool-stack",
                   "user-guides/settings/financial-reporting",
                   "user-guides/settings/integrations",
+                  "user-guides/settings/liongard-visibility",
+                  {
+                    "group": "Automation",
+                    "pages": [
+                      "user-guides/settings/automation/index",
+                      "user-guides/settings/automation/wizard",
+                      "user-guides/settings/automation/examples"
+                    ]
+                  },
                   "user-guides/settings/import-export",
                   "user-guides/settings/tenant",
                   "user-guides/settings/billing"

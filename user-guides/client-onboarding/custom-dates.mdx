@@ -1,0 +1,85 @@
+---
+title: 'Custom Dates and Countdowns'
+description: 'Track onboarding milestones with custom dates and show a live countdown timer at the top of the client portal'
+icon: 'stopwatch'
+---
+
+Custom dates let you capture the key milestones for an onboarding portal, such as the kickoff, hardware delivery, go-live, or the end of a trial period. Mark one date as the countdown and both you and the client see a live countdown of days remaining at the top of the portal.
+
+## Why Use Custom Dates
+
+- **Anchor the onboarding to a deadline** so clients know when it must be complete
+- **Track milestones** beyond the built-in portal status
+- **Set expectations** with a visible days-remaining counter
+- **Pre-populate standard milestones** from your onboarding templates
+
+## Accessing the Dates Tab
+
+<Steps>
+  <Step title="Open the Company Onboarding Tab">
+    Navigate to the company, then click the **Onboarding** tab.
+  </Step>
+  <Step title="Open the Dates Tab">
+    Inside the portal, click the **Dates** tab in the header.
+  </Step>
+</Steps>
+
+The Dates tab lists every custom date on the portal, with the countdown-marked date highlighted by a **Countdown** badge.
+
+## Adding a Date
+
+<Steps>
+  <Step title="Click Add Date">
+    Click **Add Date** in the top right of the Dates tab.
+  </Step>
+  <Step title="Fill in the Fields">
+    - **Label** (required), the display name, for example "Go-Live" or "Hardware Delivery"
+    - **Description** (optional), additional context for your team and the client
+    - **Target Date** (optional), leave empty if you have not committed to a date yet
+  </Step>
+  <Step title="Toggle Show Countdown">
+    Turn on **Show countdown** to display this date as the active countdown at the top of the portal. Only one date can be the countdown at a time.
+  </Step>
+  <Step title="Save">
+    Click **Save** to add the date. It appears immediately on both the admin view and the client portal.
+  </Step>
+</Steps>
+
+## How the Countdown Displays
+
+When a date has **Show countdown** enabled, a box appears at the top of the portal showing:
+
+- The label and optional description
+- The target date
+- A live calculation of days remaining, or **Today** on the target date, or **X days overdue** once it has passed
+
+Both your admin view and the client's view of the portal show the same countdown.
+
+## Template-Level Dates
+
+You can also define custom dates on an onboarding **template**. Template dates use an **offset in days** from the portal start date rather than an absolute target date.
+
+When you launch a portal from that template, offsets are resolved against the portal's start date to produce target dates automatically. If a template date has no offset, the target date is left empty for you to fill in on the Dates tab.
+
+This lets you set up a standard sequence once, for example "Kickoff = day 0, Hardware = day 14, Go-Live = day 45", and have every new portal start with those milestones pre-populated.
+
+## Editing and Deleting Dates
+
+- Click a date row to edit its label, description, target date, or countdown setting
+- Toggle countdown on a different date to switch which one shows at the top of the portal
+- Delete a date with the row actions menu. Deleting a date does not affect tasks or phases
+
+## What the Client Sees
+
+Clients see custom dates in the portal header area:
+
+- The label, description, and target date for each date
+- A live countdown if one date is marked as the countdown
+
+Clients do not see internal fields like template references, created timestamps, or edit controls.
+
+## Related Resources
+
+- [Managing Portals](/user-guides/client-onboarding/managing-portals)
+- [Onboarding Templates](/user-guides/client-onboarding/templates)
+- [Hiding Items from Client Users](/user-guides/getting-started/hiding-items-from-clients)

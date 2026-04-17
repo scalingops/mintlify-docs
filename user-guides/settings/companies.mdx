@@ -202,6 +202,54 @@ Roles help you categorize and organize company users by their job function. They
 
 Roles can be edited or deleted from the actions column in the table.
 
+### Auto-Mapping PSA Contact Types to Roles
+
+If you use **Halo PSA** or **Autotask**, MSPortal automatically extracts the manager and contact-type assignments on each synced company and can map them straight to your company roles. This saves you from manually assigning "Account Manager", "Primary Tech", or similar roles to the right MSP users on every company after a sync.
+
+**What gets extracted on sync:**
+
+<Tabs>
+  <Tab title="Autotask">
+    - **Account Manager** from the Company owner resource (`ownerResourceID`)
+
+    Autotask exposes a single owner per company, so one role slot is available per synced company.
+  </Tab>
+  <Tab title="Halo PSA">
+    Halo exposes up to eight manager slots from each client record. MSPortal reads the following fields:
+
+    - **Primary Agent** (`pritech`)
+    - **Secondary Agent** (`sectech`)
+    - **Account Manager** (`accountmanagertech`)
+    - **Regional Manager** (`regmanagertech`)
+    - **Logistics Manager** (`logmanagertech`)
+    - **Sales Representative** (`salesreptech`)
+    - **Account Owner** (`accountownertech`)
+    - **CXM Lead** (`cxmleadtech`)
+  </Tab>
+</Tabs>
+
+**How to set up the mapping:**
+
+<Steps>
+  <Step title="Sync Your PSA">
+    After your next Halo or Autotask sync, the Roles tab displays a slot column ("Halo Slots" or "Autotask Slots") showing which PSA slots have been detected.
+  </Step>
+  <Step title="Map Each Slot to a Role">
+    For every MSPortal role, open the slot column and pick the PSA manager slots that should grant this role. For example, map **Account Manager (Halo)** to your **Account Manager** role in MSPortal. You can map more than one slot to a single role.
+  </Step>
+  <Step title="Let the Sync Apply Assignments">
+    After you save, the next sync automatically assigns the matching MSP users to each company in that role. Every future sync reapplies and reconciles assignments, so if someone moves roles in your PSA, MSPortal updates to match.
+  </Step>
+</Steps>
+
+<Note>
+Contacts with no matching slot on a company are skipped, no role is assigned. A single user can hold multiple slots on the same company, each mapped slot yields a separate role assignment. Unmapped slots are ignored so you can adopt the feature incrementally.
+</Note>
+
+<Tip>
+The slot list only shows slots currently in use in your tenant, so you can see exactly which PSA fields are populated across your clients before deciding how to map them.
+</Tip>
+
 ---
 
 ## Permissions Tab

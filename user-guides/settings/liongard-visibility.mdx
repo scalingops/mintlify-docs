@@ -1,0 +1,88 @@
+---
+title: 'Liongard Documentation Visibility'
+description: 'Control which Liongard inspector types and individual systems are visible on the Documentation page, per role and company'
+icon: 'radar'
+---
+
+Once your Liongard integration is connected, you can choose exactly which inspector types and which individual systems are visible on the **Documentation** page, both to your MSP team and to your clients. Visibility is now controlled by explicit rules, not by default exposure, so Liongard data only appears where you have granted access.
+
+<Note>
+This tab replaces the earlier behavior where all MSP staff could see every Liongard inspector automatically. All users, including your internal team, now need a matching visibility rule for content to appear.
+</Note>
+
+## Accessing Liongard Visibility Rules
+
+<Steps>
+  <Step title="Open Documentation Settings">
+    Navigate to **Settings > Documentation**.
+  </Step>
+  <Step title="Open the Liongard Tab">
+    Click the **Liongard** tab in the header. The tab only appears when the Liongard integration is active.
+  </Step>
+</Steps>
+
+The page has two sections:
+
+- **Inspector Types** controls visibility for entire inspector families, for example "Windows-Server-Inspector". Sharing a type shares all of its systems.
+- **Individual Systems** controls visibility per system, useful when you only want to expose specific hosts from an inspector type.
+
+## Creating a Visibility Rule
+
+<Steps>
+  <Step title="Choose a Scope">
+    Decide whether the rule covers an entire **inspector type** or a single **system**. Use inspector-type rules for broad access and system rules for targeted exposure.
+  </Step>
+  <Step title="Select the Content">
+    Pick the inspector type or system from the dropdown. Only inspector types actually in use in your tenant are listed.
+  </Step>
+  <Step title="Pick a Role">
+    Select which **company role** the rule applies to. Leave blank to make the content visible to all roles within the matched company.
+  </Step>
+  <Step title="Save the Rule">
+    The rule takes effect immediately. Documentation pages re-check visibility on every load.
+  </Step>
+</Steps>
+
+## Default Behavior
+
+**No rules, no visibility.** If you have not defined any rules, neither your MSP team nor your clients see any Liongard content on the Documentation page. Add at least one inspector-type or system rule to expose data.
+
+## How Rules Apply to MSP Staff
+
+MSP tenant staff skip the role match: they see any inspector type or system that has at least one visibility rule in place. They do not need a role assigned.
+
+## How Rules Apply to Company Users
+
+Company users see content only when two conditions match:
+
+1. A visibility rule exists for the inspector type or system, and
+2. The rule's role matches the company user's assigned role (or the rule has no role restriction).
+
+## Inspector Types vs Individual Systems
+
+| Scope | When to use it |
+|-------|----------------|
+| **Inspector Type** | You want all systems of a given inspector (for example every Windows Server) visible with the same rule |
+| **Individual System** | You only want to expose a specific system, such as a single domain controller, without exposing the rest of the inspector output |
+
+A system inherits visibility from any matching inspector-type rule plus any per-system rule. You do not need both, but you can combine them.
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="A Liongard inspector I expect to see is missing">
+    Check that a visibility rule exists for the inspector type or for at least one of its systems. With no matching rule, the content is hidden from everyone.
+  </Accordion>
+  <Accordion title="A company user reports missing content">
+    Verify that the rule applies to the user's company role. Rules with a role set only match users in that role, rules with no role match all roles in the same company.
+  </Accordion>
+  <Accordion title="The Liongard tab does not appear in Documentation Settings">
+    The tab is only shown when a Liongard integration is active. Connect Liongard first, see [Configure Liongard Integration](/user-guides/integrations/enable-liongard-integration).
+  </Accordion>
+</AccordionGroup>
+
+## Related Resources
+
+- [Configure Liongard Integration](/user-guides/integrations/enable-liongard-integration)
+- [Hiding Items from Client Users](/user-guides/getting-started/hiding-items-from-clients)
+- [Company Roles and Permissions](/user-guides/settings/companies)

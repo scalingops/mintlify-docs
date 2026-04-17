@@ -1,0 +1,97 @@
+---
+title: 'Automation Rules'
+description: 'Automate routine work across devices, companies, meetings, tickets, and more with triggers, conditions, and actions.'
+icon: 'robot'
+---
+
+Automation rules run repeatable work for you on a schedule or when specific data conditions are met. A rule combines three things:
+
+1. A **trigger** (when to run)
+2. Optional **conditions** (which records to match)
+3. One or more **actions** (what to do)
+
+Rules can target any of nine entity types: Devices, Companies, Compliance Controls, Planner Tasks, Users, Goals, Training, Tickets, or Meetings. Most selectors are guided dropdowns, including PSA values like service boards, ticket categories, and issue types which populate from your connected PSA integration. A few fields (the Update Field `field`/`value` pair, Custom Email, ConnectWise issue-type IDs, and template bodies) are free-text inputs.
+
+<CardGroup cols={2}>
+  <Card title="Create a Rule" icon="wand-magic-sparkles" href="/user-guides/settings/automation/wizard">
+    Step-by-step walkthrough of every option in the rule wizard.
+  </Card>
+  <Card title="Example Rules" icon="lightbulb" href="/user-guides/settings/automation/examples">
+    Ready-to-copy setups for warranty alerts, meeting agendas, ticket surveys, and more.
+  </Card>
+</CardGroup>
+
+## Accessing Automation
+
+Navigate to **Settings > Automation** from the sidebar. The main page lists every rule in your tenant.
+
+Each row shows:
+
+- **Rule Name** and description
+- **Trigger** type badge (Date Threshold or Scheduled — the list filter may also show Field Change and Data Absence for rules created via the API or internal tools)
+- **Entity** type badge (Device, Ticket, Meeting, etc.)
+- **Actions** summary (either the single action label or "N actions")
+- **Scope** badge (All Companies or Specific)
+- **Enabled toggle** to turn the rule on or off without deleting it
+
+## Row Actions
+
+Hover over any rule row for the action menu:
+
+| Action | What it does |
+|--------|--------------|
+| **Edit** | Opens the wizard for that rule |
+| **Run Now** | Executes the rule once against current data, outside the normal schedule |
+| **Duplicate** | Creates a copy of the rule named "Copy of {original}", disabled by default |
+| **Delete** | Permanently removes the rule and its execution history |
+
+The **enabled toggle** on each row takes effect immediately. A disabled rule keeps its configuration and history but will not fire.
+
+## Permissions
+
+Three permissions control access to Automation:
+
+| Permission | Grants |
+|------------|--------|
+| **Read Settings Automation** | View rules and their execution history |
+| **Write Settings Automation** | Create, edit, and run rules |
+| **Manage Settings Automation** | Full access including delete and approval routing |
+
+Set these under **Settings > Users & Roles** on the role you want to grant access to. Users without Write or Manage permission open the wizard in read-only mode.
+
+## Execution Logs
+
+Click **Logs** in the top-right of the rules page to open the execution history. Every rule run is logged with:
+
+- Timestamp and rule name
+- How many entities were matched
+- Which actions ran and whether each succeeded
+- Any error messages if an action failed
+
+Logs are scoped by the company selector, so switching companies filters logs to only those executions that touched companies in scope.
+
+## AI Rule Designer
+
+While editing or creating a rule, click the purple **Sparkles** tab on the right edge of the screen to open the **AI Rule Designer**. Describe what you want the rule to do in plain English, for example:
+
+> Remind account managers 30 days before each company's warranty expires, and send them the device list.
+
+The designer proposes a complete rule (trigger, conditions, actions, templates) as a diff against your current configuration. Review each section, accept the parts you want, and reject the rest. Useful for getting started quickly on complex rules or for generating email and planner templates.
+
+## How Rules Fire
+
+- **Date Threshold** rules check every date on the chosen field and fire when it matches the configured window (for example, 30 days before warranty expiration). They evaluate hourly.
+- **Scheduled** rules run on a fixed frequency: every hour, every 6 hours, every 12 hours, daily, or weekly. You set the time of day for daily and weekly runs. Weekly runs are anchored to a fixed day managed by the system; there is no day-of-week picker.
+
+Both trigger types respect the rule's **scope**. A rule scoped to specific companies only evaluates records belonging to those companies.
+
+## Next Steps
+
+<CardGroup cols={2}>
+  <Card title="Wizard Walkthrough" icon="list-check" href="/user-guides/settings/automation/wizard">
+    Every option in the two-step wizard explained.
+  </Card>
+  <Card title="Example Rules" icon="book-open" href="/user-guides/settings/automation/examples">
+    Warranty alerts, meeting agendas, ticket surveys, and more.
+  </Card>
+</CardGroup>

@@ -1,0 +1,317 @@
+---
+title: 'Rule Wizard Walkthrough'
+description: 'Every option in the automation rule wizard, from basic info through review and test.'
+icon: 'list-check'
+---
+
+The rule wizard is a two-step flow: **Setup** (where you configure everything) and **Review** (where you preview matches and save). This page walks through every option in order.
+
+<Steps>
+  <Step title="Start a new rule">
+    From **Settings > Automation**, click **New Rule** in the top-right. The wizard opens on the **Setup** step.
+  </Step>
+  <Step title="Configure Setup">
+    Fill in Basic Information, choose a Trigger, optionally add Conditions, and add at least one Action. See the sections below for each.
+  </Step>
+  <Step title="Review and save">
+    Click **Next** to reach the Review step, run a test against live data, then click **Create Rule** to save.
+  </Step>
+</Steps>
+
+## Basic Information
+
+The Basic Information section is at the top left of the Setup step.
+
+| Field | Purpose |
+|-------|---------|
+| **Rule Name** (required) | A short name shown on the list. Example: "Warranty 30-Day Alert" |
+| **Priority** | Number from 1 to 100. When multiple rules match the same record, higher priority runs first. Default: 50 |
+| **Scope** | **All Companies** runs the rule tenant-wide. **Specific Companies** limits it to a selected list |
+| **Companies** | Only shown when Scope is "Specific Companies". Multi-select of client companies |
+| **Description** | Optional free text explaining what the rule does. Shown on the list view |
+
+<Tip>
+Use **Specific Companies** scope for customer-specific workflows (a VIP client's custom SLA, a regulated industry compliance rule). Use **All Companies** for anything that applies across your book of business.
+</Tip>
+
+## Trigger Configuration
+
+The Trigger section is directly below Basic Information. Pick the **Entity** you want the rule to watch, then pick a **Trigger** type.
+
+### Entity Types
+
+| Entity | What it represents |
+|--------|---------------------|
+| **Device** | Hardware devices, workstations, servers, equipment |
+| **Company** | Client companies and organizations |
+| **Compliance Control** | Compliance controls, audits, certifications |
+| **Planner Task** | Tasks and projects in the Planner module |
+| **User** | User accounts and team members |
+| **Goal** | Business goals and objectives |
+| **Training** | Training courses and assignments |
+| **Ticket** | Support tickets from your PSA integration |
+| **Meeting** | Calendar meetings, QBRs, client calls |
+
+The entity you choose determines which fields are available in conditions and as date fields for a Date Threshold trigger.
+
+### Trigger Types
+
+There are two trigger types. Pick based on when the rule should evaluate.
+
+<Tabs>
+  <Tab title="Date Threshold">
+    Fires when a date field on the entity is within (or past) a specified number of days.
+
+    **Configuration fields:**
+
+    | Field | What it does |
+    |-------|--------------|
+    | **Date Field** | The field the threshold is measured against. Only date-typed fields show here (e.g., Warranty End Date, Due Date, Completion Date, Last Login) |
+    | **Days** | A number from 1 to 3650. The size of the window |
+    | **Direction** | **Before date (approaching)** fires as the date approaches. **After date (past)** fires once the date has passed |
+    | **Match** | **Within X days** (or **X or more days** when direction is "after") fires every qualifying day. **Exactly X days** fires only on the single matching day |
+
+    A **Preview** panel shows a plain-English description of what you configured, for example: "When warranty_end is within 30 days".
+
+    Date Threshold rules evaluate hourly so they pick up matching records within an hour of crossing the threshold.
+  </Tab>
+  <Tab title="Scheduled">
+    Fires on a fixed frequency regardless of any date field.
+
+    **Configuration fields:**
+
+    | Field | What it does |
+    |-------|--------------|
+    | **Frequency** | Every Hour, Every 6 Hours, Every 12 Hours, Daily, or Weekly |
+    | **Time** | Time of day the rule runs. Most relevant for Daily and Weekly frequencies; ignored for hourly schedules |
+    | **Dedup** | **Once per entity (recommended)** skips any entity that has already matched this rule on a previous run. **Every run (may send duplicates)** fires for every match every time; use for heartbeat-style alerts |
+
+    Use Scheduled when you want to check some condition repeatedly (for example, "any ticket sitting in Resolved for more than 4 hours") rather than waiting on a specific date. Pair it with Conditions to narrow down which records the rule acts on each run.
+
+    Weekly frequency runs at the configured time on a fixed day determined by the system. There is no day-of-week picker in the UI.
+  </Tab>
+</Tabs>
+
+## Conditions (Optional)
+
+Conditions filter which records the rule acts on. The Conditions section sits at the top right of the Setup step. **A rule with no conditions matches every record of the chosen entity type** within the rule's scope.
+
+### Condition Groups
+
+Each condition group is a set of conditions joined by either **AND** or **OR** logic. Click the AND/OR badge on a group to flip it. Click **Add** to add another group. Multiple groups are always joined by AND.
+
+### Fields Available
+
+The field dropdown lists every field defined on the entity type, plus every custom field your tenant has defined for that entity. Custom field types (text, number, date, datetime, boolean, select, multiselect, currency, priority, impact, urgency) map to the correct operator list automatically. Options for select and multiselect custom fields come from the definition you set up in **Settings > Custom Fields**.
+
+### Operators by Field Type
+
+| Field type | Operators |
+|------------|-----------|
+| **Text** | equals, does not equal, contains, does not contain, starts with, ends with, is empty, is not empty |
+| **Number** | equals, does not equal, greater than, less than, &ge;, &le;, is empty, is not empty |
+| **Date / Datetime** | equals, does not equal, greater than, less than, &ge;, &le;, is within (days), is older than (days), is empty, is not empty |
+| **Boolean** | is true, is false |
+| **Select / Dropdown** | equals, does not equal, is one of, is not one of, is empty, is not empty |
+| **UUID (Company, User)** | equals, does not equal, is empty, is not empty |
+
+### Value Input
+
+The value input adapts to the field type:
+
+- Text and number fields show a text box
+- Date fields show a date picker (or a days input for "within days" / "older than days")
+- Boolean fields have no value (the operator supplies it)
+- Dropdown fields show a select populated with real values from your tenant (for example, ticket statuses, priorities, device types, custom field options)
+- **Is one of / is not one of** operators show a multi-select
+
+<Note>
+Dynamic dropdowns pull their options from your live data. If you add a new ticket status in your PSA or a new priority in Settings, it shows up in the rule builder automatically.
+</Note>
+
+## Actions (Required)
+
+Every rule needs at least one action. The Actions section is below Conditions. Click **Add** to open the action type menu.
+
+### Action Types
+
+There are seven action types. Each one has its own configuration form that opens in an accordion when you add it.
+
+<AccordionGroup>
+  <Accordion title="Add to Planner" icon="list-check">
+    Creates a planner task when the rule fires.
+
+    | Field | Purpose |
+    |-------|---------|
+    | **Task Title** | Task title. Supports template variables (see below) |
+    | **Business Value** | Low, Medium, or High |
+    | **Due Offset (days)** | Days from the rule firing. Positive for future, negative for past |
+
+    The created task defaults to "Not Started" status. Description, status, and estimated hours are not exposed in the action form today; use an Update Field action later in the rule or edit the task manually if you need to set them.
+  </Accordion>
+
+  <Accordion title="Update Field" icon="pen-to-square">
+    Writes a new value to a field on the matched entity.
+
+    | Field | Purpose |
+    |-------|---------|
+    | **Field** | The field key to update (text input). Example: `status`, `notes`, `tier`, `custom_fields.survey_sent` |
+    | **Value** | The new value (text input). For booleans use `true` / `false`; for JSON or numbers type the literal value |
+
+    Writable fields depend on the entity type and are validated against a server-side allowlist when the rule is saved. If you enter a field that is not allowed for the entity, the save will fail with a validation error. Most entities allow `notes`, `custom_fields`, and their primary business columns (`status`, `priority`, `tier`, `description`, etc.). Tickets additionally allow `resolution`; training allows `status`, `notes`, and `completed_at`; meetings allow `status`, `notes`, `summary`, and `custom_fields`.
+  </Accordion>
+
+  <Accordion title="Send Email" icon="envelope">
+    Sends a templated email to one or more recipients.
+
+    **Subject** is a text input and **Body** is a rich-text editor. Both support template variables.
+
+    **Recipients** are picked using the Recipient Selector (shown as the **Send To** dropdown):
+
+    | Recipient Type | Who receives the email |
+    |----------------|------------------------|
+    | **Specific Users** | Internal MSP team members chosen one at a time |
+    | **Company Teams** | Team members assigned to the affected company in selected roles (for example, Account Manager, vCIO) |
+    | **Client Contacts (PSA)** | Contacts synced from the affected company's PSA record, filterable by Primary, Technical, or Billing contact type |
+    | **Meeting Attendees** | All participants of the triggering meeting (Meeting entity only) |
+    | **Custom Email** | Type in any external email address |
+
+    **Require Approval** (toggle, shown below the email fields) holds the email for review before sending. Approvers are notified and can approve or reject from the Approvals page. Meeting emails always require approval; the toggle is replaced with an enforced "Approval Required" notice for Meeting-entity rules.
+  </Accordion>
+
+  <Accordion title="In-App Alert" icon="bell">
+    Creates a notification badge inside MSPortal for the chosen recipients.
+
+    | Field | Purpose |
+    |-------|---------|
+    | **Alert Type** | Info, Warning, Error, or Success. Controls the badge color |
+    | **Title Template** | Short title shown in the notification list |
+    | **Message Template** | Longer body. Optional |
+    | **Recipients** | Same picker as Send Email (specific users, company teams, etc.) |
+
+    Recipients see the alert in their notification bell. Great for "heads up" workflows that don't need an email.
+  </Accordion>
+
+  <Accordion title="Open Ticket" icon="ticket">
+    Creates a ticket in your connected PSA. The configuration form adapts to your PSA integration.
+
+    **Common fields** (all PSAs):
+
+    | Field | Purpose |
+    |-------|---------|
+    | **Ticket Summary** | Ticket summary. Supports template variables |
+    | **Description** | Ticket body. Supports template variables |
+    | **Include entity details in description** | Checkbox, on by default. Appends a block of entity field values to the description |
+    | **Use tenant default PSA settings** | Checkbox, on by default. When on, the ticket uses the PSA defaults configured in Settings &rarr; Integrations. When off, the PSA-specific dropdowns below become visible |
+    | **Due Date (days after triggered)** | Optional offset in days. Leave empty for no due date |
+
+    When **Use tenant default PSA settings** is off, the common PSA dropdowns appear (Board / Queue, Priority, Status, Ticket Type) populated from your PSA. Below those, PSA-specific fields render:
+
+    <Tabs>
+      <Tab title="Halo PSA">
+        - **Category** (from your Halo categories)
+        - **Impact** (from your Halo impact list)
+        - **Urgency** (from your Halo urgency list)
+      </Tab>
+      <Tab title="Autotask">
+        - **Issue Type**
+        - **Sub-Issue Type** (filtered to valid children of the selected Issue Type)
+      </Tab>
+      <Tab title="ConnectWise">
+        - **Issue Type ID** (text input; copy the numeric ID from ConnectWise)
+        - **Sub-Issue Type ID** (text input)
+
+        ConnectWise service board and ticket type are selected via the common PSA **Board** and **Ticket Type** dropdowns above, not from a ConnectWise-specific section.
+      </Tab>
+    </Tabs>
+
+    Halo and Autotask dropdowns populate from your PSA automatically. ConnectWise issue-type IDs must be typed in manually.
+  </Accordion>
+
+  <Accordion title="Send Survey" icon="clipboard-check">
+    Sends a survey invitation to matched recipients. Uses the same Recipient Selector as Send Email.
+
+    | Field | Purpose |
+    |-------|---------|
+    | **Send To** | Same recipient picker as Send Email (Specific Users, Company Teams, Client Contacts (PSA), Meeting Attendees for Meeting rules, Custom Email) |
+    | **Survey** | Dropdown of active surveys in your tenant. Inactive surveys are hidden because the action would fail to send. If the list is empty, create a survey under **Surveys** first |
+    | **Invite note** (optional) | Short message shown above the survey link in the invite email. Max 2000 characters |
+  </Accordion>
+
+  <Accordion title="AI Transform" icon="sparkles">
+    Uses AI to generate content (summaries, agendas, drafts) that can then be passed to a Send Email or Open Ticket action in the same rule.
+
+    | Field | Purpose |
+    |-------|---------|
+    | **AI Template** | Pick from a library of pre-built AI templates (meeting agenda, ticket summary, warranty renewal email, etc.). For Meeting-entity rules, the list is filtered to meeting-related templates |
+
+    There is no inline prompt editor in the action form: the prompt comes from the selected template. The output is always stored in `{{ai_output}}` — the variable name is fixed, not user-configurable. Reference `{{ai_output}}` in any downstream Send Email, In-App Alert, or Open Ticket action to include the AI-generated content.
+
+    Place AI Transform earlier in the actions list than any action that consumes its output.
+  </Accordion>
+</AccordionGroup>
+
+### Template Variables
+
+Any text input that accepts template variables can reference fields on the matched entity. Click the **Template Variables** helper above the Actions section to expand the list of available variables for the current entity. Click any variable to insert it at the cursor in the last-focused input.
+
+The helper groups variables into four sections:
+
+- **{Entity} Fields** — every field defined on the selected entity (for example, Device has `{{entity.warranty_end}}`, Meeting has `{{entity.title}}`, Ticket has `{{entity.summary}}`). The exact chips shown are derived from the entity's field list, so they match the condition field dropdown.
+- **Meeting Variables** — only shown for Meeting-entity rules. Includes meeting-specific fields like attendees and agenda items.
+- **AI Output** — `{{ai_output}}` is populated by an upstream AI Transform action in the same rule.
+- **Common Variables** — `{{entity.id}}`, `{{entity.company_name}}`, `{{rule.name}}` are available on every entity type.
+
+Examples:
+
+```
+{{entity.company_name}}   → The company name of the matched entity
+{{entity.warranty_end}}   → A date field value (on Device)
+{{entity.summary}}        → The summary of the matched ticket (on Ticket)
+{{entity.title}}          → The title of the matched meeting (on Meeting)
+{{rule.name}}             → The name of this rule
+{{ai_output}}             → Output from an upstream AI Transform action
+```
+
+Not every entity has a `{{entity.name}}` variable — use the Template Variables helper to see the exact chips available for your selected entity.
+
+### Action Order
+
+Actions run top-to-bottom. Drag is not supported, but you can remove and re-add actions to reorder. AI Transform should be earlier in the list than any action that uses `{{ai_output}}`.
+
+## Review Step
+
+Click **Next** in the bottom-right to move to the Review step. This page has two sections.
+
+### Rule Summary
+
+A plain-English summary of the rule: trigger, conditions, and actions. Verify this matches your intent before saving.
+
+### Test Rule
+
+Click **Run Test** to dry-run the rule against live data. The test returns a table of every entity that currently matches, so you can confirm:
+
+- The conditions match the records you expected (and only those records)
+- The field values look right for templating
+- No unexpected matches slipped through
+
+<Warning>
+**Run Test** does not execute actions. It only evaluates the trigger and conditions to show what would match. Safe to run as many times as you need while tuning the rule.
+</Warning>
+
+## Saving the Rule
+
+When you are satisfied with the test results, click **Create Rule** in the bottom-right. The rule is saved and appears on the list. By default new rules are **enabled**, so they start firing on their next evaluation cycle.
+
+Click **Run Now** on the list view if you want to fire the rule once immediately rather than waiting for the schedule.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Example Rules" icon="book-open" href="/user-guides/settings/automation/examples">
+    Concrete walkthroughs for warranty alerts, meeting agendas, and more.
+  </Card>
+  <Card title="Custom Fields" icon="table-columns" href="/user-guides/settings/templates">
+    Define custom fields to use in automation conditions and updates.
+  </Card>
+</CardGroup>

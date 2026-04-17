@@ -182,6 +182,37 @@ Configure your dashboard properties:
 - **Display Order** - Position in the sidebar navigation
 - **Default** - Set as the dashboard shown when entering the module
 - **Active** - Enable or disable visibility
+- **Visibility** - Control who can see this dashboard (see [Internal vs External Dashboards](#internal-vs-external-dashboards) below)
+
+## Internal vs External Dashboards
+
+Each dashboard has a **Visibility** setting that controls whether your client (company) users can see it. Use this to build dashboards that surface MSP-only metrics such as margin, internal SLA performance, or bench utilization without exposing them externally.
+
+| Option | Who sees the dashboard |
+|--------|------------------------|
+| **Internal and External (clients can see)** | Both MSP team members and company users. This is the default for new dashboards. |
+| **Internal only (MSP team)** | Only MSP tenant users. The dashboard is hidden entirely from company users, including from their dashboard sidebar. |
+
+To change a dashboard's visibility:
+
+<Steps>
+  <Step title="Open Dashboard Settings">
+    Navigate to **Settings > Dashboards**.
+  </Step>
+  <Step title="Edit the Dashboard">
+    Click the dashboard in the list to open its edit dialog.
+  </Step>
+  <Step title="Select Visibility">
+    Choose **Internal and External** or **Internal only** from the **Visibility** dropdown.
+  </Step>
+  <Step title="Save">
+    Save the change. Company users will immediately stop seeing any dashboard switched to **Internal only**.
+  </Step>
+</Steps>
+
+<Note>
+Visibility applies to both system dashboards and custom dashboards. All existing dashboards default to **Internal and External** to preserve the behavior clients are used to.
+</Note>
 
 ## Company Filtering
 
