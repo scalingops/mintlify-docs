@@ -3,6 +3,24 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## April 20, 2026
+
+### Reporting Block Refresh
+
+Every reporting block has been rebuilt on a shared responsive system, so blocks now adapt cleanly to any grid size from 1x1 up to 4x8 without cramped labels, overlapping legends, or awkward cutoffs. Typography, spacing, and chart tooltips are standardized across the library for a consistent look in every report.
+
+**Key Features:**
+- **Score by Assessment Run and Group**: A new compliance block that cross-tabulates scores by assessment run and group, with configurable exclusions and a matrix layout tuned for both compact and full-width placements.
+- **Consistent responsive breakpoints**: Blocks resize predictably, switching to narrow or wide layouts at the right grid widths. No more dashboards that looked fine at design time and broke when resized.
+- **Integration-aware block palette**: Blocks that depend on integrations like Cork, Liongard, and Microsoft 365 now only appear in the block picker when those integrations are actually connected. Previously they would show up for every tenant and fail to load.
+- **Empty-state clarity**: When a block is placed in a report but the required integration is not connected, it now displays a clear empty state with a prompt to connect the integration instead of rendering a broken chart.
+
+### Improvements
+
+- **Report Builder**: Chart tooltips, colors, and grid spacing now pull from shared tokens, so reports look identical whether you build them from scratch or from a template.
+- **Company scope**: Blocks no longer carry stale saved company IDs; the company scope now flows purely from the report's context, so reports always reflect the company selector.
+- **Error visibility**: Server action and API route failures in the reporting stack are now reported to Sentry with proper tagging.
+
 ## April 17, 2026
 
 ### Per-Tenant Brand Colors
