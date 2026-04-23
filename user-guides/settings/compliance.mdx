@@ -1,122 +1,248 @@
 ---
-title: Compliance Checks Settings
-description: Manage security compliance checks across frameworks and standards
+title: Compliance Settings
+description: Build your compliance check library, organize it with folders and groups, and schedule runs
 icon: shield-check
 ---
 
-Compliance Checks Settings allows you to manage the security compliance checks available in MSPortal.ai. Configure which checks are active, customize check parameters, and align with your clients' compliance requirements.
+Compliance Settings is where you curate the catalog of checks your team uses when assessing clients. It has three tabs: **Checks** for the check library, **Groups** for bundling related checks, and **Runs** for the templates that schedule those bundles against your companies.
 
-## Accessing Compliance Checks Settings
+## Accessing Compliance Settings
 
 1. Click **Settings** in the sidebar
-2. Select the **Compliance Checks** icon from the settings navigation
+2. Select **Compliance**
+3. Use the tabs at the top of the page to switch between **Checks**, **Groups**, and **Runs**
 
-## Compliance Checks Overview
+<Tip>
+Every tab in Compliance Settings uses a split-pane layout: the list on the left, the detail on the right. You can collapse the left sidebar with the panel-close button at the top of the list to make more room for the detail view.
+</Tip>
 
-The Compliance Checks page displays all available security checks.
+## Checks Tab
 
-<Frame>
-  <img src="/images/settings/settings-compliance-checks.png" alt="Compliance Checks" />
-</Frame>
+The Checks tab manages every compliance question your tenant can ask. Checks are organized in folders, and each check can be wired up to auto-populate notes when an assessor picks a particular answer.
 
-### Check Information
+### Layout
 
-Each compliance check shows:
+- **Left sidebar** - Folder tree, an **Uncategorized** bucket at the bottom, and a search box. Click the panel icon at the top to collapse the sidebar.
+- **Right pane** - Details for the selected check: title, description, guidance, criticality, priority, frequency, status list, compliance type, group assignments, and per-status note template links.
 
-| Field | Description |
-|-------|-------------|
-| **Name** | Check name and description |
-| **Framework** | Associated compliance framework (CIS, NIST, etc.) |
-| **Category** | Check category (Identity, Data, Device, etc.) |
-| **Severity** | Impact level (Critical, High, Medium, Low) |
-| **Status** | Active or disabled |
+### Folders
 
-## Filtering Checks
-
-Use filters to find specific checks:
-
-- **Framework** - Filter by compliance standard
-- **Category** - Filter by check type
-- **Severity** - Filter by impact level
-- **Status** - Show only active or disabled checks
-- **Search** - Find checks by name or keyword
-
-## Compliance Frameworks
-
-MSPortal supports multiple compliance frameworks:
-
-| Framework | Description |
-|-----------|-------------|
-| **CIS Controls** | Center for Internet Security benchmarks |
-| **NIST CSF** | Cybersecurity Framework |
-| **CMMC** | Cybersecurity Maturity Model Certification |
-| **SOC 2** | Service Organization Control |
-| **ISO 27001** | Information Security Management |
-| **HIPAA** | Healthcare data protection |
-| **PCI DSS** | Payment card security |
-
-## Managing Checks
-
-### Enabling/Disabling Checks
+Folders are a settings-only organizational tool. They do not change how checks behave during a run, they just make a large check library easier to browse.
 
 <Steps>
-  <Step title="Find the Check">
-    Use search or filters to locate the check
+  <Step title="Create a folder">
+    Click the **folder-plus** icon at the top of the sidebar to create a root folder, or open the menu on any folder row and choose **New subfolder** to nest inside it.
   </Step>
-  <Step title="Toggle Status">
-    Click the toggle to enable or disable
+  <Step title="Name it">
+    Give the folder a descriptive name like "Microsoft 365" or "CIS Controls v8" and click **Create**.
   </Step>
-  <Step title="Save Changes">
-    Changes are saved automatically
+  <Step title="Add checks">
+    Create a new check inside the folder with the **New check here** menu item, or move existing checks in using drag and drop.
   </Step>
 </Steps>
 
-### Bulk Actions
+<Note>
+Deleting a folder removes its subfolders, but any checks in it move to **Uncategorized**. No check data is lost.
+</Note>
 
-For managing multiple checks:
+### Moving checks with drag and drop
 
-1. Use filters to show relevant checks
-2. Select multiple checks using checkboxes
-3. Choose bulk action (Enable All, Disable All)
-4. Confirm the action
+<Steps>
+  <Step title="Select one or many checks">
+    Click any check row to open it on the right. Hold **Cmd** (macOS) or **Ctrl** (Windows) and click additional rows to add them to a multi-select. Hold **Shift** and click to range-select between two rows. Selected rows get a teal ring and the sidebar shows "N selected".
+  </Step>
+  <Step title="Drag to a folder">
+    Click and drag any selected row onto a folder. The target folder highlights in teal while you hover. Drop to move every selected check into that folder at once.
+  </Step>
+  <Step title="Drop on Uncategorized">
+    To take a check out of its current folder without picking a new one, drag it onto the **Uncategorized** row at the bottom of the sidebar.
+  </Step>
+</Steps>
+
+<Tip>
+If you drag a check that isn't in the current multi-select, only that one check is moved. The multi-select set is preserved so you can keep selecting and moving in batches.
+</Tip>
+
+### Search
+
+Type in the sidebar search box to filter. Folders that contain a matching check auto-expand in place, and clearing the search restores your previous expanded/collapsed state.
+
+### Editing a check
+
+Click any check to open it in the detail pane. The form covers everything about the check:
+
+| Section | Fields |
+|---------|--------|
+| **Identity** | Title, description, how to check, why it matters |
+| **Remediation** | Remediation steps, remediation impact, references, default value |
+| **Assessment** | Criticality (1-5), priority, frequency (Daily through Annually) |
+| **Classification** | Status list, compliance type |
+| **Note templates by status** | Per-answer template links (see below) |
+| **Group assignments** | Which groups this check belongs to |
+
+Click **Save** to persist changes. The **Improve with AI** button in the header uses AI to suggest a better description, how-to-check, remediation, and references based on the title.
+
+### Linking note templates to statuses
+
+Each check uses a **status list** that defines its answer choices (for example, **Pass / Fail / Needs review**). You can link a different note template to each answer, and that template's content will be auto-applied to the assessor's public notes when they pick that answer.
+
+<Steps>
+  <Step title="Assign a status list">
+    In the check detail pane, pick a **Status list** from the dropdown. This reveals the **Note templates by status** section.
+  </Step>
+  <Step title="Pick a template for each status">
+    Every status option in the list gets a template picker. Choose a note template for any status where you want auto-population. Leave others as **No template**.
+  </Step>
+  <Step title="Assessor picks the status">
+    In the check dialog during a run, when the assessor picks a status that has a linked template, that template's content is appended to their **Public notes**. If the notes already have content, the template goes underneath it with a blank line in between.
+  </Step>
+</Steps>
+
+<Note>
+Only templates categorized as **Compliance Check Note** appear in the picker. Create those under **Settings > Templated Notes** first. Auto-apply runs once per (status, template) pair in a single dialog session, so toggling between statuses does not duplicate the template text.
+</Note>
+
+### Creating checks
+
+Click the **+** icon on the checks tab header (or **New check here** on a folder's menu) to open the new-check form. New checks default to the currently selected folder, or Uncategorized if none is selected. The **Bulk generate** option is also available from the page header if you want AI to draft multiple checks at once.
+
+### Deleting checks
+
+Open the three-dot menu on any check row in the sidebar and choose **Delete**. Delete requires the **manage_compliance** permission. Deletion is permanent — the check is removed from every group it was in.
+
+## Groups Tab
+
+Groups bundle related checks together so you can assign a whole category (for example, "Microsoft 365 security baseline") to a run with one action. A check can belong to any number of groups.
+
+### Layout
+
+- **Left sidebar** - List of every group. Search by name or description, filter by compliance type, collapse the sidebar with the panel icon.
+- **Right pane** - Group metadata header and two transfer columns: **Available checks** (left) and **Members** (right).
+
+### Creating a group
+
+<Steps>
+  <Step title="Click New">
+    Click the **+** icon at the top of the groups sidebar.
+  </Step>
+  <Step title="Fill in the details">
+    Enter a **Name**, an optional **Description**, and pick a **Compliance type**. The compliance type is important: if you pick one, only checks that match that type can be added to the group. Leave it as **None** to allow any check.
+  </Step>
+  <Step title="Save">
+    Click **Create**. The new group appears at the top of the sidebar and is selected in the detail pane.
+  </Step>
+</Steps>
+
+### Adding and removing checks
+
+The right pane shows two columns — **Available checks** on the left and **Members** on the right. Moving a check between them is always drag and drop.
+
+<Steps>
+  <Step title="Search and select">
+    Each column has its own search box. Click any check to select it. Hold **Cmd/Ctrl** to multi-select, or **Shift** to range-select.
+  </Step>
+  <Step title="Drag across">
+    Drag from **Available checks** onto **Members** to add them to the group. Drag from **Members** onto **Available checks** to remove them. The target column gets a colored glow as you hover and the number badge at the top updates when you drop.
+  </Step>
+</Steps>
+
+<Tip>
+Dropping a check back onto the same column is a no-op, so you don't have to be precise — the system only counts the items that actually cross over.
+</Tip>
+
+### Compliance-type filtering
+
+If the group has a compliance type set, only checks with a matching type appear in **Available checks**. This prevents mismatched checks from being added. If you later clear the compliance type (by editing the group), every check becomes available.
+
+### Editing or deleting a group
+
+Use the three-dot menu on a sidebar row, or the **Edit** and **Delete** buttons in the detail pane header. Deleting a group does not delete its checks — it only removes the group itself.
+
+## Runs Tab
+
+Run templates bundle groups and individual checks into reusable assessment packages. When you run a template against a company, every check in every member group (plus every individually-added check) gets assigned as a compliance run.
+
+### Layout
+
+- **Left sidebar** - List of every template. Each row shows the group count and individual-check count at a glance. Search, filter by active/inactive, collapse the sidebar.
+- **Right pane** - Template metadata header with an **Active** toggle, and two tabs: **Groups** and **Individual checks**. Each tab is its own two-column transfer.
+
+### Creating a template
+
+<Steps>
+  <Step title="Click New">
+    Click the **+** icon at the top of the templates sidebar.
+  </Step>
+  <Step title="Fill in the basics">
+    Enter a **Name** (for example, "Quarterly security review"), an optional **Description**, and the **Active** toggle. Inactive templates are hidden from quick-assign dropdowns but still visible here.
+  </Step>
+  <Step title="Save">
+    Click **Create**. The new template opens on the right with empty Groups and Individual Checks tabs.
+  </Step>
+</Steps>
+
+### Adding groups to a template
+
+<Steps>
+  <Step title="Open the Groups tab">
+    On the detail pane, click the **Groups** tab. It shows **Available groups** on the left and **Groups in this template** on the right.
+  </Step>
+  <Step title="Drag to add">
+    Drag one or more groups from Available onto Groups in this template. Every check inside those groups will run whenever this template is used.
+  </Step>
+  <Step title="Drag back to remove">
+    Drag a group from the members column back to Available to remove it. Cmd/Ctrl-click and Shift-click work the same way as in Checks and Groups.
+  </Step>
+</Steps>
+
+### Adding individual checks
+
+Switch to the **Individual checks** tab for one-off checks that aren't part of a group. These run in addition to any group membership. The same drag-and-drop transfer UI applies.
+
+<Note>
+Groups and individual checks are independent. You can use either, both, or neither. Many teams use groups for the bulk of a template and drop in a few individual checks for unusual one-off requirements.
+</Note>
+
+### Activating, editing, and deleting
+
+- **Active toggle** - Each template has an **Active** switch in the header. Inactive templates are hidden from run-assignment UIs throughout the app but preserved in settings.
+- **Edit** - Opens the name/description/active dialog.
+- **Delete** - Removes the template. Runs already created from the template are not affected — they keep their original check assignments.
 
 <Warning>
-Disabling compliance checks will affect compliance scores for all companies. Review impact before making bulk changes.
+Deleting a run template does not stop or modify in-flight runs. It only prevents new runs from being created from that template.
 </Warning>
 
-## Check Categories
+## Permissions
 
-Checks are organized by security domain:
+| Action | Required permission |
+|--------|---------------------|
+| View checks / groups / templates | **read_compliance** |
+| Create, edit, move, add/remove members | **write_compliance** |
+| Delete checks, groups, or templates | **manage_compliance** |
 
-| Category | Examples |
-|----------|----------|
-| **Identity** | MFA, password policies, privileged access |
-| **Data** | Encryption, DLP, backup policies |
-| **Device** | Endpoint protection, patch management |
-| **Network** | Firewall rules, segmentation |
-| **Application** | App permissions, secure configuration |
-| **Governance** | Policies, training, incident response |
+## Keyboard and mouse reference
 
-## Custom Checks
+| Action | How |
+|--------|-----|
+| Open a check/group/template | Single click the row |
+| Multi-select | **Cmd/Ctrl + Click** additional rows |
+| Range-select | **Shift + Click** a second row |
+| Clear selection | Click **Clear** in the sidebar, or click a row without a modifier |
+| Drag and drop | Hold and drag any selected row; drop targets glow teal |
+| Collapse the sidebar | Click the panel-close icon at the top of any list |
 
-You can create custom compliance checks:
+## Best practices
 
-1. Click **Add Custom Check**
-2. Define the check name and description
-3. Assign to appropriate framework and category
-4. Set severity level
-5. Configure check criteria
-6. Save and activate
+- **Start with folders** - Organize your check library by framework (CIS, NIST, SOC 2) or by domain (Microsoft 365, networking, physical security) before you have a lot of checks.
+- **Use note templates for repetitive findings** - If most "Fail" answers on a given check need the same remediation write-up, link a template to that status once instead of typing it every assessment.
+- **Keep groups compliance-type-aware** - Set a compliance type on groups whose checks all target the same scope (device, location, company). This prevents accidentally adding mismatched checks.
+- **Build templates around groups, not individual checks** - Groups are easier to maintain than long flat lists of checks in a template.
+- **Disable instead of delete** - Use the **Active** toggle on run templates rather than deleting them. Keeps the history without cluttering pickers.
 
-## Best Practices
+## Related resources
 
-- **Align with client needs** - Enable frameworks your clients require
-- **Start conservative** - Enable core checks first, expand gradually
-- **Review regularly** - Update checks as frameworks evolve
-- **Document exceptions** - Track why specific checks are disabled
-
-## Related Resources
-
-- [Compliance Module](/user-guides/compliance/index) - Using compliance features
-- [Playbooks Settings](/user-guides/settings/playbooks) - CIS benchmarks and guides
-- [Adding CIS Benchmarks](/user-guides/compliance/adding-cis-benchmarks) - Benchmark setup guide
+- [Compliance module](/user-guides/compliance/index) - Running checks and reviewing results
+- [Templated Notes](/user-guides/settings/templates) - Create the note templates that auto-populate on status change
+- [Playbooks](/user-guides/settings/playbooks) - CIS and other pre-built benchmark content
+- [Adding CIS Benchmarks](/user-guides/compliance/adding-cis-benchmarks) - Seed your library from a standard framework

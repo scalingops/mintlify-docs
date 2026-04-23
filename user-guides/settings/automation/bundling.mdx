@@ -1,0 +1,126 @@
+---
+title: 'Bundling Expirations'
+description: 'Combine multiple matching records into a single ticket or planner item, grouped by month or quarter.'
+icon: 'layer-group'
+---
+
+Bundling turns a rule that would otherwise create one ticket or planner item per matching device (or contract, license, etc.) into **one ticket or planner item per company, per period**. It is designed for expiration-style workflows where getting forty warranty tickets on a single morning is worse than getting one ticket that lists forty devices.
+
+<Warning>
+Bundling applies to the **Create Ticket** and **Add to Planner** actions only. Other actions on the same rule (update field, send email, in-app alert, survey, AI transform) still run once per matching record.
+</Warning>
+
+## When to use it
+
+Enable bundling when **all** of the following are true:
+
+- The trigger is a **Date Threshold** (warranty end, purchase date, contract end, renewal date, training due date, etc.).
+- Many records can match the same window, usually because you manage many devices or contracts per company.
+- The resulting ticket or planner item only needs to summarize "these items expire soon," not act on each one individually.
+
+Typical examples:
+
+| Scenario | Period | Why |
+|----------|--------|-----|
+| Warranty expirations approaching | Month | One ticket per company listing every device expiring that month |
+| Annual contract renewals | Quarter | One planner task per company per quarter aggregating renewals |
+| Software license expirations | Month | One reminder per company per month with the full list |
+| Training certifications expiring | Quarter | One planner task per company per quarter with the affected users |
+
+## How devices are grouped
+
+When bundling is enabled, MSPortal groups matching records **by company and by the period their expiration falls into**. Each group becomes its own ticket or planner item. So if you run bundling by month on warranty expirations:
+
+- Two Acme devices expiring in April → **one ticket** for Acme covering April
+- One Acme device expiring in May → a **separate ticket** for Acme covering May
+- One Globex device expiring in April → a **separate ticket** for Globex covering April
+
+Each company gets its own ticket, and each month (or quarter) gets its own ticket. Devices from different companies are never combined, and a device expiring in one month never shows up in another month's ticket.
+
+## What the ticket or planner item says
+
+The ticket's **Summary** and **Description** (or the planner item's **Title** and **Description**) come from the templates you write in the action, with three new placeholders you can use:
+
+| Placeholder | What it shows | Example |
+|-------------|---------------|---------|
+| `{{entity_count}}` | How many records are in the bundle | `12` |
+| `{{entity_list}}` | The full list, one line per record with its expiry date | `- Device A — expires 2026-04-15`<br/>`- Device B — expires 2026-04-22` |
+| `{{group_period}}` | A friendly label for the period | `April 2026` or `Q2 2026` |
+
+Because a bundled ticket covers many records at once, single-record placeholders like `{{entity.name}}` or `{{entity.serial_number}}` don't apply and will render as blank. Use the three placeholders above instead.
+
+## If you leave the templates blank
+
+You don't have to fill in the Summary, Title, or Description. If you leave them blank, MSPortal uses a sensible default:
+
+> **Warranty Expiration Alert**: 12 devices expiring April 2026
+
+If you fill in a Description but forget to include `{{entity_list}}`, MSPortal appends the device list automatically so your ticket always has enough context to act on.
+
+## Enabling bundling
+
+1. Open **Settings → Automation** and create or edit a rule.
+2. Set the trigger type to **Date Threshold** and pick the date field (e.g. `warranty_end`).
+3. Check **Bundle expirations into a single ticket or planner item**.
+4. Choose **By month** or **By quarter** for the grouping period.
+5. Under Actions, add either **Create Ticket** or **Add to Planner** (or both).
+6. Optionally reference `{{entity_count}}`, `{{entity_list}}`, or `{{group_period}}` in your templates to control the wording.
+
+The checkbox only appears on **Date Threshold** rules. Scheduled and field-change rules do not bundle.
+
+<Tip>
+Name your rule something like "Warranty Expirations — Bundled" so it is clear at a glance that ticket counts will differ from rules without bundling.
+</Tip>
+
+## Example template
+
+**Summary:**
+```
+{{entity_count}} {{rule.entity_type}}s expiring {{group_period}}
+```
+
+**Description:**
+```
+The following devices at this company have warranties expiring in {{group_period}}:
+
+{{entity_list}}
+
+Please review and plan replacements or renewals.
+```
+
+Result for a 4-device Acme bundle in April 2026:
+
+> **4 devices expiring April 2026**
+>
+> The following devices at this company have warranties expiring in April 2026:
+>
+> - Dell OptiPlex 7090 (SN: ABC123) — expires 2026-04-05
+> - Lenovo ThinkPad T14 (SN: DEF456) — expires 2026-04-12
+> - Dell Latitude 5420 (SN: GHI789) — expires 2026-04-20
+> - HP EliteBook 840 (SN: JKL012) — expires 2026-04-28
+>
+> Please review and plan replacements or renewals.
+
+## If ticket creation fails
+
+If the ticket or planner item can't be created (for example, your PSA is briefly unavailable), MSPortal won't mark the devices in that bundle as processed. On the next run of the rule, those devices match again and the bundle is retried automatically. You don't lose anything.
+
+If one bundle fails but others succeed in the same run (say April's Acme ticket creates fine but May's Globex ticket fails), only the failed group is retried. The successful ones are left alone.
+
+## Good to know
+
+- Bundling applies to **Create Ticket** and **Add to Planner** actions only. If your rule also sends emails, alerts, or surveys, those still run once per device.
+- Groups are always **by company and by period**. There's no option to group by location, device type, or any other field.
+- You can choose **By month** or **By quarter** as the period.
+- Each run processes up to 100 matching records at a time. If you have a large backlog on the first run, the rest are picked up on subsequent runs.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Create a Rule" icon="wand-magic-sparkles" href="/user-guides/settings/automation/wizard">
+    Full walkthrough of the rule wizard.
+  </Card>
+  <Card title="Example Rules" icon="lightbulb" href="/user-guides/settings/automation/examples">
+    Warranty alerts, training reminders, and other ready-to-copy setups.
+  </Card>
+</CardGroup>

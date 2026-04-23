@@ -3,6 +3,78 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## April 24, 2026
+
+### Automation Updates
+
+A wave of upgrades to the automation rule builder covering bundling, survey responses, smarter recipients, and richer conditions.
+
+**Rule Bundling**
+
+Automation rules with a date-threshold trigger can now **bundle** every matching record into a single grouped output instead of creating one ticket or planner item per match. Warranty expirations, contract renewals, license expirations, compliance deadlines, any recurring date-driven scan benefits.
+
+Turn on bundling in the rule's trigger settings, pick **Monthly** or **Quarterly** grouping, and the automation will:
+
+- **Collect all matching records** for a group period (e.g. every laptop whose warranty expires in May) before firing
+- **Create one ticket or planner item** for each group, populated with the list of affected entities via `{{entity_list}}`, `{{entity_count}}`, and `{{group_period}}` template variables
+- **Dedupe safely**: dedup only marks records as processed after the bundle action succeeds, so a PSA outage does not silently drop a month of expirations
+- **Work across entities**: currently supported for Open Ticket and Add to Planner actions on warranty-style rules; other bundle targets are on the list
+
+Without bundling, an MSP running a single warranty rule across 300 clients could wake up to 100 open tickets on the first of the month. With bundling enabled, that is one grouped ticket per month, ready to triage.
+
+[Documentation: Automation Bundling](/user-guides/settings/automation/bundling)
+
+**Survey ↔ Ticket Loop**
+
+A new **Survey Response Received** trigger type completes the survey-to-ticket loop. You could already send a survey from an automation rule; now the rest of the loop is wired end to end.
+
+- **Trigger on submission**: fires the moment a recipient finishes a survey
+- **Per-survey filter**: scope the rule to a single survey, or leave it open to react to any response
+- **Branch on numeric answers**: NPS scores, quiz results, and any numeric answer are exposed as conditions so you can route based on the value (e.g. a low rating opens a ticket assigned to the Customer Success team)
+- **Branch on text answers**: the answer text is available in conditions so you can look for specific keywords in open-ended replies
+- **Ticket linkage both directions**: When a Send Survey action fires from a ticket-based rule (e.g. ticket-closed → send satisfaction survey), an internal note is posted on the source PSA ticket listing who received the survey, so technicians can see the dispatch without leaving the ticket. When the client responds, the follow-up rule has full context to open a new ticket, comment on the original, or alert an account manager.
+- **Composes with existing actions**: pair it with Open Ticket, Add to Planner, In-App Alert, Send Email, or AI Transform
+
+**PSA User Defined Fields (Including Ticket UDFs) Are Now First-Class Data**
+
+MSPortal now pulls **User Defined Fields (UDFs) directly from your PSA** and makes them actionable across the app. Most importantly, **ticket UDFs from Autotask, Halo, and ConnectWise are now fully supported**, something we have been asked for repeatedly, alongside UDFs on projects, quotes, configurations, opportunities, companies, and contacts.
+
+A new background task syncs every UDF definition from your PSA into a dedicated **Synced UDFs** tab on each integration, and the automation rule editor surfaces them automatically wherever they apply.
+
+- **Ticket UDFs, finally**: every UDF you have defined on tickets in Autotask, Halo, or ConnectWise is synced into MSPortal and available as a condition in automation rules. Route tickets by "Severity Tier", "Escalation Contact", "Contract SKU", or any custom field your techs already rely on in the PSA
+- **Covers all the other PSA entities too**: projects, quotes/opportunities, configurations, companies, and contacts also have their UDFs synced and exposed in the rule builder, tagged `[Autotask UDF]`, `[Halo UDF]`, or `[ConnectWise UDF]` so the source is obvious
+- **Typed operators**: UDFs are synced with their data type (string, number, boolean, date, datetime, enum, multiselect) and the condition builder picks the right operator set automatically. Picklist UDFs get a dropdown populated with the real values from your PSA
+- **Drive email recipients from a ticket UDF**: the new **Ticket UDF Email** recipient strategy resolves an email address stored on a specific ticket UDF at runtime (e.g. the "Escalation Contact" email on a managed client's ticket), so notifications go to the right person without hard-coding them per rule
+- **Stable when UDFs change**: removed UDFs stay in the definitions table as inactive so existing rules that reference them can flag "this UDF no longer exists" instead of silently breaking
+
+**Smarter Recipients and Conditions**
+
+- **Planner item-type condition**: Automation rules that watch planner items can now filter by item type, so a rule can target only "Project" items, only "Task" items, or any specific custom item type.
+- **Documentation link**: The Automation Rules page got a Documentation link in its menu so the setup guide is always one click away.
+
+### Smarter Financial Revenue Classification
+
+Financial Reporting's revenue classification was reworked so your managed, non-recurring, and other-recurring splits actually match how you bill. Instead of categorizing one line item at a time, the new engine walks through your setup in order:
+
+- **Contract-type defaults**: Map each contract type (e.g. "Fixed Price Managed Services" → Managed Recurring, "T&M" → Non-Recurring) so every line under that contract inherits the right category by default
+- **Period divisors**: Contracts billed annually, quarterly, or up-front automatically get divided into monthly revenue, so a $12,000 annual contract shows as $1,000/month instead of a spike
+- **Line-type overrides**: Flag specific line types as non-recurring (e.g. one-off products or T&M lines on an otherwise managed contract) without changing the contract's overall category
+- **Per-contract overrides**: When a specific contract does not follow your type default, pin it to a different category without breaking every other contract of that type
+
+The **Revenue Categories** settings page now shows three clear sections: contract-type defaults, service and item category mappings, and per-contract overrides. Rules come pre-seeded with sensible defaults for Autotask, ConnectWise, and Halo, and any row you customize is flagged so future defaults never overwrite your changes.
+
+[Documentation: Financial Reporting](/user-guides/msp-tools/financial-reporting)
+
+### Improvements
+
+- **Unified date and time pickers**: Every date and time input across the app (calendars, filters, custom device fields, surveys, reports, onboarding, admin pages) now uses the same picker. It is branded to your tenant color, behaves identically across browsers, and has a built-in clear button so you can remove a selected date with one click.
+- **Refreshed meeting agenda cards**: Every agenda item card in the meeting builder and presentation view was rebuilt for a cleaner, client-ready look with consistent layouts, typography, and spacing across tickets, projects, invoices, licenses, budgets, planner items, and action items.
+- **Narrative reports**: When an AI generation comes back empty, the editor now shows a detailed error explaining the cause instead of a generic "empty response" message, making failed runs easy to diagnose.
+- **Autotask ticket hours**: Elapsed hours now reconcile from time-entry totals rather than the cached ticket summary, so completed-work reporting matches what billing sees.
+- **Budgets**: The status filter and badge labels (Draft, Pending Approval, Approved, Archived) now show friendly labels everywhere instead of internal status codes.
+- **Quotes**: Quotes now link to companies through the billing organization on the quote, and the quote list sorts on the server so ordering holds across pages. Quote revisions are also de-duplicated in the list so only the latest revision appears per quote.
+- **Projects list**: Fixed an edge case where the projects page could fail to load when a tenant had multiple integrations active, by resolving an ambiguity in how the project feed scoped its queries.
+
 ## April 20, 2026
 
 ### Reporting Block Refresh
