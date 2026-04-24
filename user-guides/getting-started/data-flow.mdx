@@ -20,12 +20,19 @@ Think of the flow as three stages: **collect → plan → present.** You collect
          ▼                 ▼                 ▼                 ▼                 │
    ┌─────────┐       ┌──────────────────────────────┐                            │
    │  Goals  │──────▶│           Planner            │◀───────────────────────────┘
-   └─────────┘       └──────────┬───────────┬───────┘
-                                │           │
-                                ▼           ▼
-                          ┌─────────┐  ┌──────────┐
-                          │ Budgets │  │ Meetings │
-                          └─────────┘  └──────────┘
+   └─────────┘       └──────────┬───────────────────┘
+                                │
+                                ▼
+                          ┌─────────┐
+                          │ Budgets │ (+ Forecast widget)
+                          └────┬────┘
+                               │
+                ┌──────────────┼──────────────┐
+                ▼              ▼              ▼
+          ┌──────────┐  ┌──────────────┐  ┌────────────┐
+          │ Meetings │  │ Block Reports│  │  Narrative │
+          │ (live)   │  │  (widgets)   │  │  Reports   │
+          └──────────┘  └──────────────┘  └────────────┘
 ```
 
 ## Stage 1: Collect — Where Data Enters the System
@@ -237,7 +244,7 @@ A typical client journey looks like this:
     Build the annual or quarterly budget by rolling up planner costs into line items. Share with the client for approval.
   </Step>
   <Step title="Present">
-    Build a QBR meeting agenda with goals, planner progress, compliance gaps, and budget status. Present it live with the client.
+    Build a QBR meeting agenda with goals, planner progress, compliance gaps, and budget status (including the forecast). Present it live with the client, then send a block-based or narrative report as the written follow-up.
   </Step>
   <Step title="Repeat">
     Send a follow-up survey. Automations flag new risks. Planner items close out. Next quarter starts.
@@ -258,3 +265,4 @@ The result is a single pane of glass: every conversation, assessment, integratio
 - [Devices](/user-guides/devices/index)
 - [Meetings](/user-guides/calendar/meetings)
 - [Presenting Meetings](/user-guides/calendar/presenting)
+- [Reporting](/user-guides/reporting/index)
