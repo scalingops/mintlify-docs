@@ -1,71 +1,156 @@
 ---
-title: "Onboarding Wizard"
+title: "Onboarding & Setup Playbook"
 sidebarTitle: "Overview"
-description: "Get your MSPortal account fully configured with the step-by-step onboarding wizard"
+description: "Get MSPortal configured and rolled out — first the wizard, then the playbook that takes you from empty tenant to first QBR."
 icon: "rocket"
 ---
 
-When you first sign up for MSPortal, the **Onboarding Wizard** appears in the bottom-right corner of your screen. This guided setup walks you through configuring all the essential settings for your MSP portal.
-
-## How It Works
-
-The wizard tracks your progress across multiple setup steps. As you complete each step, the wizard automatically detects your progress and moves you forward.
+Onboarding has two halves. The **Onboarding Wizard** walks you through the one-time technical setup — integrations, roles, branding, billing. The **Setup Playbook** is the recommended order for rolling MSPortal out operationally, so your first client engagement reaches the QBR meeting on time.
 
 <CardGroup cols={2}>
-  <Card title="Guided Navigation" icon="compass">
-    Click **Go to Settings** on any step to navigate directly to the relevant configuration page.
+  <Card title="Onboarding Wizard" icon="list-check" href="#onboarding-wizard">
+    Guided, in-app steps. Auto-detects progress. You can minimize it, dismiss it, or pick it back up later.
   </Card>
-  <Card title="Auto-Detection" icon="wand-magic-sparkles">
-    Many steps automatically mark as complete when you've configured the required settings.
-  </Card>
-  <Card title="Skip Steps" icon="forward">
-    Don't need a feature? Skip optional steps and come back to them later.
-  </Card>
-  <Card title="Persistent Progress" icon="cloud-check">
-    Your progress is saved automatically. Pick up where you left off anytime.
+  <Card title="Setup Playbook" icon="map" href="#setup-playbook">
+    Six-stage rollout, in the order that works. Run it once per MSP, and use it as a checklist for each new client.
   </Card>
 </CardGroup>
 
-## Setup Steps
+## Before you begin
 
-The onboarding wizard guides you through these configuration areas:
+<AccordionGroup>
+  <Accordion title="Who needs to do this?">
+    The primary tenant admin runs the initial setup. Invite co-admins once **Tenant Roles** is configured so you can split the work.
+  </Accordion>
+  <Accordion title="How long does it take?">
+    Expect **30–60 minutes** for the wizard itself, plus integration-specific configuration time (PSA mapping is usually the longest). The Setup Playbook plays out over **2–4 weeks** as you onboard your first client.
+  </Accordion>
+  <Accordion title="What do I need on hand?">
+    - PSA API credentials (ConnectWise, Autotask, HaloPSA, or SyncroMSP)
+    - RMM API credentials (Datto RMM, NinjaOne, Asio, Syncro, Addigy, or Meraki)
+    - Microsoft 365 global admin consent on your own tenant (and each client tenant you want to connect)
+    - A logo file and a primary brand color for branding
+    - A domain you can add DNS records to, for sending email
+  </Accordion>
+</AccordionGroup>
 
-### Foundation Setup
-1. [Tenant Details](/user-guides/getting-started/onboarding/tenant-details) - Company address, timezone, and basic information
-2. [AI Settings](/user-guides/getting-started/onboarding/ai-settings) - Configure the AI assistant for your business
-3. [Branding](/user-guides/getting-started/onboarding/branding) - Upload your logo and customize appearance
+## Onboarding Wizard
 
-### User & Permission Management
-4. [Tenant Roles](/user-guides/getting-started/onboarding/tenant-roles) - Define roles for your team members
-5. [Company Permission Groups](/user-guides/getting-started/onboarding/company-permission-groups) - Set up permission groups for client users
-6. [Company Roles](/user-guides/getting-started/onboarding/company-roles) - Create roles for your clients' users
+When you first sign up, the **Onboarding Wizard** appears in the bottom-right corner of your screen. The wizard tracks your progress across the setup areas below and automatically detects when a step is complete.
 
-### Integrations
-7. [Integration Selection](/user-guides/getting-started/onboarding/integration-selection) - Choose your PSA and RMM tools
-8. [PSA Integration](/user-guides/getting-started/onboarding/psa-setup) - Connect your PSA system
-9. [Ticket Settings](/user-guides/getting-started/onboarding/ticket-settings) - Configure ticket sync and status mappings
-10. [RMM Integration](/user-guides/getting-started/onboarding/rmm-setup) - Connect your RMM system
-11. [Device Import](/user-guides/getting-started/onboarding/device-import) - Import devices from your RMM
+<CardGroup cols={2}>
+  <Card title="Guided navigation" icon="compass">
+    Click **Go to Settings** on any step to jump directly to the matching configuration page.
+  </Card>
+  <Card title="Auto-detection" icon="wand-magic-sparkles">
+    Most steps flip to complete on their own once you save the required settings.
+  </Card>
+  <Card title="Skip steps" icon="forward">
+    Optional steps (for example, Training) can be skipped and revisited later.
+  </Card>
+  <Card title="Persistent progress" icon="cloud-check">
+    Progress is saved to your tenant. Close the wizard and come back any time.
+  </Card>
+</CardGroup>
 
-### Additional Configuration
-12. [Email Domain](/user-guides/getting-started/onboarding/email-domain) - Set up email sending from your domain
-13. [Training](/user-guides/getting-started/onboarding/training) - Configure training courses for clients
-14. [Billing](/user-guides/getting-started/onboarding/billing) - Set up your subscription and payment
+### Setup steps, in order
 
-### Client Company Setup
-15. [Company M365 Setup](/user-guides/getting-started/onboarding/company-m365) - Connect Microsoft 365 for your clients
-16. [Company Users](/user-guides/getting-started/onboarding/company-users) - Import and manage client users
+**Foundation**
 
-## Minimizing the Wizard
+1. [Tenant Details](/user-guides/getting-started/onboarding/tenant-details) — company address, timezone, and basics
+2. [AI Settings](/user-guides/getting-started/onboarding/ai-settings) — configure the AI assistant for your business
+3. [Branding](/user-guides/getting-started/onboarding/branding) — upload your logo and set brand colors
 
-If you need more screen space, you can minimize the wizard by clicking the minimize button in the header. Click it again to expand.
+**Users &amp; permissions**
 
-You can also temporarily dismiss the wizard using the menu, which will hide it until your next session.
+4. [Tenant Roles](/user-guides/getting-started/onboarding/tenant-roles) — roles for your internal team
+5. [Company Permission Groups](/user-guides/getting-started/onboarding/company-permission-groups) — permission bundles for client users
+6. [Company Roles](/user-guides/getting-started/onboarding/company-roles) — roles assigned to your clients' users
 
-## Completing Onboarding
+**Integrations**
 
-Once you've completed all the required steps, the wizard will offer to mark your onboarding as complete. After completion, the wizard will no longer appear, though you can always access these settings through the Settings menu.
+7. [Integration Selection](/user-guides/getting-started/onboarding/integration-selection) — pick your PSA and RMM
+8. [PSA Integration](/user-guides/getting-started/onboarding/psa-setup) — connect the PSA
+9. [Ticket Settings](/user-guides/getting-started/onboarding/ticket-settings) — sync and status mappings
+10. [RMM Integration](/user-guides/getting-started/onboarding/rmm-setup) — connect the RMM
+11. [Device Import](/user-guides/getting-started/onboarding/device-import) — pull devices in from the RMM
+
+**Additional configuration**
+
+12. [Email Domain](/user-guides/getting-started/onboarding/email-domain) — send email from your own domain
+13. [Training](/user-guides/getting-started/onboarding/training) — configure training courses for clients
+14. [Billing](/user-guides/getting-started/onboarding/billing) — subscription and payment
+
+**Client company setup**
+
+15. [Company M365 Setup](/user-guides/getting-started/onboarding/company-m365) — connect Microsoft 365 for a client
+16. [Company Users](/user-guides/getting-started/onboarding/company-users) — import and manage client users
+
+### Minimizing or dismissing the wizard
+
+Need more screen space? Click the minimize button in the wizard header to collapse it, or use the menu to dismiss it until your next session. Progress is preserved either way.
+
+### Completing onboarding
+
+Once every required step is complete, the wizard offers to mark onboarding as done. After completion, the wizard stops appearing, but you can always revisit the same settings through **Settings** in the sidebar.
 
 <Tip>
-  You don't need to complete every step right away. Focus on the essentials first—Tenant Details, Roles, and your primary integration—then come back to configure additional features as needed.
+Focus on the essentials first: **Tenant Details**, **Tenant Roles**, **Branding**, and your primary PSA and RMM integrations. Come back for Training, Email Domain, and the per-client steps as you onboard your first account.
 </Tip>
+
+---
+
+## Setup Playbook
+
+Recommended order to roll MSPortal out — both for your MSP as a whole, and for each new client. These six stages turn an empty tenant into a signed, presented QBR.
+
+<Steps>
+  <Step title="1 · Integrations">
+    Connect PSA, RMM, M365, and Backup &amp; Security so devices, licenses, contracts, and assets flow in automatically. This is the same work the Onboarding Wizard guides you through — the goal here is to finish it all the way (including ticket status mappings and device import) before you move on, because every downstream stage depends on the data these integrations bring in.
+
+    See: [Integration Selection](/user-guides/getting-started/onboarding/integration-selection), [PSA](/user-guides/getting-started/onboarding/psa-setup), [RMM](/user-guides/getting-started/onboarding/rmm-setup), [Device Import](/user-guides/getting-started/onboarding/device-import), [Company M365 Setup](/user-guides/getting-started/onboarding/company-m365).
+  </Step>
+
+  <Step title="2 · Seed planner & compliance">
+    Pre-load the [Planner](/user-guides/planner/index) with what you already know — your standard roadmap items, existing client commitments, and work that's already scheduled. Build [Compliance](/user-guides/compliance/index) checks against your MSP's own standards so every client is scored on the same baseline.
+
+    If you have an onboarding in the next two months, build it out with your standards now so the kickoff survey has something to link against.
+  </Step>
+
+  <Step title="3 · Surveys → goals">
+    Brief the client on what to expect. Build or reuse a [Survey](/user-guides/surveys/index) template — MSPortal ships standard kickoff and QBR templates you can start from. Run the kickoff survey, then turn the responses into client [Goals](/user-guides/goals/index). Link the planner items you seeded in Stage 2 to the matching goals so every piece of work has a reason.
+  </Step>
+
+  <Step title="4 · Budget & forecast">
+    Import products from your PSA. Build a sample [Budget](/user-guides/budgets/index) from the planner items' hours and cost estimates, then use the forecast view to project it forward. The forecast also surfaces as a reporting widget you can drop into meetings and reports.
+  </Step>
+
+  <Step title="5 · Report & QBR meeting">
+    Build a test [narrative report](/user-guides/reporting/index) with real client data and add a budget widget. Create the upcoming QBR [meeting](/user-guides/calendar/meetings) and attach the budget and report. Turn on agenda automation so Claude drafts the agenda from live data. Approve the draft about a week before the meeting so the client gets the pre-read on time.
+  </Step>
+
+  <Step title="6 · Present & loop">
+    Run the QBR live in MSPortal's [presentation mode](/user-guides/calendar/presenting). Take notes in-meeting as action items — they flow straight into the Planner. Send the meeting summary when you're done. As you close out compliance checks during the quarter, the planner updates automatically. Next quarter, start again at the kickoff survey.
+  </Step>
+</Steps>
+
+<Info>
+The playbook is the **operational** counterpart to the [data flow](/user-guides/getting-started/data-flow) map. Data flow explains what happens to a record; the playbook tells you which records to create first.
+</Info>
+
+## What to do next
+
+<CardGroup cols={2}>
+  <Card title="Follow the data flow" icon="diagram-project" href="/user-guides/getting-started/data-flow">
+    See how records move through MSPortal once you have the integrations connected.
+  </Card>
+  <Card title="Run the compliance checklist" icon="clipboard-check" href="/user-guides/getting-started/Onboarding-checklist">
+    A guided checklist inside the Compliance module that mirrors this setup.
+  </Card>
+  <Card title="Invite your team" icon="user-plus" href="/user-guides/getting-started/how-to-create-a-new-user-role">
+    Create tenant roles and invite co-admins so the setup isn't a one-person job.
+  </Card>
+  <Card title="Hide items from clients" icon="eye-slash" href="/user-guides/getting-started/hiding-items-from-clients">
+    Tighten what client-portal users see before you invite them in.
+  </Card>
+</CardGroup>

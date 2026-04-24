@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 -80 1960 1010" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="diagTitle">
+      <title id="diagTitle">MSPortal proactive data flow architecture</title>
+
+      <defs><style>
+.n-title { font: 600 13px/16px Inter, sans-serif; fill: rgb(24,29,39); }
+.n-sub   { font: 400 11px/14px Inter, sans-serif; fill: rgb(113,118,128); }
+.n-icon  { fill: rgb(16,117,105); }
+.hub-title { font: 600 15px/18px Inter, sans-serif; fill: #fff; }
+.hub-sub   { font: 400 11px/14px Inter, sans-serif; fill: rgba(255,255,255,0.82); }
+.node-bg-integration { fill: rgb(245,245,245); stroke: rgb(213,215,218); stroke-width: 1; }
+.node-bg-source      { fill: #ffffff; stroke: rgb(213,215,218); stroke-width: 1; }
+.node-bg-external    { fill: #fff8ec; stroke: rgb(247,144,9); stroke-width: 1; stroke-dasharray: 4 3; }
+.node-bg-goal        { fill: rgb(240,253,249); stroke: rgb(153,246,224); stroke-width: 1; }
+.node-bg-hub         { fill: rgb(14,147,132); stroke: rgb(16,117,105); stroke-width: 1; }
+.node-bg-budget      { fill: #ffffff; stroke: rgb(14,147,132); stroke-width: 1.5; }
+.node-bg-output      { fill: #ffffff; stroke: rgb(213,215,218); stroke-width: 1; }
+.flow-primary { stroke: rgb(14,147,132); stroke-width: 1.75; fill: none; }
+.flow-data    { stroke: rgb(164,167,174); stroke-width: 1.25; fill: none; }
+.flow-ext     { stroke: rgb(220,104,3); stroke-width: 1.25; fill: none; stroke-dasharray: 4 3; }
+.flow-integration { stroke: rgb(164,167,174); stroke-width: 1; fill: none; stroke-dasharray: 1 2; }
+.flow-writeback   { stroke: rgb(14,147,132); stroke-width: 1.25; fill: none; stroke-dasharray: 6 3; }
+.ext-eyebrow { font: 500 10px/12px Inter, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; fill: rgb(220,104,3); }
+</style>
+
+        <marker id="arrow-primary" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="rgb(14, 147, 132)"/>
+        </marker>
+        <marker id="arrow-data" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="rgb(164, 167, 174)"/>
+        </marker>
+        <marker id="arrow-ext" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="rgb(220, 104, 3)"/>
+        </marker>
+        <marker id="arrow-writeback" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="rgb(14, 147, 132)"/>
+        </marker>
+
+        <symbol id="i-survey" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2" width="11" height="12" rx="1.5"/><path d="M5 5.5h6M5 8h6M5 10.5h4"/></g></symbol>
+        <symbol id="i-m365" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 4.5l5.5-2 5.5 2v6l-5.5 3-5.5-3v-6z"/><path d="M2.5 4.5L8 7l5.5-2.5M8 7v6.5"/></g></symbol>
+        <symbol id="i-shield" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l5 2v4.5c0 3-2 5-5 5.5-3-.5-5-2.5-5-5.5V4l5-2z"/><path d="M5.8 8.2l1.6 1.6 2.8-2.8"/></g></symbol>
+        <symbol id="i-tools" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="5" height="5" rx="1"/><rect x="9" y="3.5" width="5" height="5" rx="1"/><rect x="2" y="10" width="5" height="3.5" rx="1"/><rect x="9" y="10" width="5" height="3.5" rx="1"/></g></symbol>
+        <symbol id="i-device" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="3" width="13" height="8" rx="1"/><path d="M6 13.5h4M8 11v2.5"/></g></symbol>
+        <symbol id="i-goal" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.5"/><circle cx="8" cy="8" r="2.5"/><path d="M8 2.5v2M8 11.5v2M2.5 8h2M11.5 8h2"/></g></symbol>
+        <symbol id="i-planner" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="3.5" height="10" rx="0.5"/><rect x="6.25" y="3" width="3.5" height="7" rx="0.5"/><rect x="10.5" y="3" width="3.5" height="5" rx="0.5"/></g></symbol>
+        <symbol id="i-budget" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12.5l3.5-4 3 2.5 5-6"/><path d="M10.5 5h3v3"/></g></symbol>
+        <symbol id="i-meeting" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="3" width="9" height="7" rx="1"/><path d="M10.5 5.5l4-2v7l-4-2z"/></g></symbol>
+        <symbol id="i-report-block" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2.5" width="5" height="5" rx="0.5"/><rect x="9" y="2.5" width="5" height="5" rx="0.5"/><rect x="2" y="9" width="5" height="5" rx="0.5"/><rect x="9" y="9" width="5" height="5" rx="0.5"/></g></symbol>
+        <symbol id="i-report-narrative" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5h7l3 3V13a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1z"/><path d="M9.5 2.5v3.5H13"/><path d="M5 9h6M5 11.5h4"/></g></symbol>
+        <symbol id="i-forecast" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h12"/><path d="M4 10l2-3 2.5 1.5L14 3"/><path d="M11 3h3v3" stroke-dasharray="2 1.5"/></g></symbol>
+        <symbol id="i-plug" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v3M10 2v3"/><path d="M4 5h8v3a4 4 0 01-8 0V5z"/><path d="M8 12v2.5"/></g></symbol>
+        <symbol id="i-ticket" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5a1 1 0 011-1h10a1 1 0 011 1V7a1.5 1.5 0 000 3v1.5a1 1 0 01-1 1H3a1 1 0 01-1-1V10a1.5 1.5 0 000-3V5.5z"/><path d="M9 5v7"/></g></symbol>
+        <symbol id="i-project" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M2 6h12M5 9h4"/></g></symbol>
+
+        <!-- Reusable "in Reports" badge (document icon matches Reports & Dashboards). -->
+        <symbol id="report-badge" viewBox="0 0 22 22" overflow="visible">
+          <rect x="1" y="1" width="20" height="20" rx="10" fill="rgb(14, 147, 132)" stroke="#ffffff" stroke-width="1.5"/>
+          <g transform="translate(6,5)" fill="none" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 0 H7 L10 3 V11 A0.8 0.8 0 0 1 9.2 11.8 H1 A0.8 0.8 0 0 1 0.2 11 V0.8 A0.8 0.8 0 0 1 1 0 Z"/>
+            <path d="M7 0 V3 H10"/>
+            <path d="M3 6.5 H7 M3 9 H7"/>
+          </g>
+          <title>Included in Reports &amp; Dashboards</title>
+        </symbol>
+        <!-- Reusable "in Meetings" badge. -->
+        <symbol id="meeting-badge" viewBox="0 0 22 22" overflow="visible">
+          <rect x="1" y="1" width="20" height="20" rx="10" fill="rgb(220, 104, 3)" stroke="#ffffff" stroke-width="1.5"/>
+          <g transform="translate(5,6)" fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="0" y="1" width="8" height="7" rx="1"/>
+            <path d="M8 3.5 L11 2 V7 L8 5.5 Z" fill="#ffffff" stroke="none"/>
+          </g>
+          <title>Included in Meetings</title>
+        </symbol>
+      </defs>
+
+      <!-- ============ STAGE PILLS (left gutter, vertically centered on each row) ============ -->
+      <g font-family=""Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif">
+        <!-- Stage −1 · row y=−80..−16 : ONBOARDING -->
+        <g transform="translate(20,-47)">
+          <rect x="0" y="0" width="130" height="22" rx="11" fill="rgb(240, 253, 249)" stroke="rgb(153, 246, 224)"/>
+          <g transform="translate(6,6)" fill="rgb(14, 147, 132)"><use href="#i-survey" width="10" height="10"/></g>
+          <text x="20" y="14.5" font-size="9.5" font-weight="600" fill="rgb(16, 117, 105)" letter-spacing="0.08em">ONBOARDING</text>
+        </g>
+        <!-- Stage 0 · row y=80..144 -->
+        <g transform="translate(20,102)">
+          <rect x="0" y="0" width="120" height="22" rx="11" fill="rgb(245, 245, 245)" stroke="rgb(213, 215, 218)"/>
+          <circle cx="13" cy="11" r="7" fill="rgb(113, 118, 128)"/>
+          <text x="13" y="14.5" text-anchor="middle" font-size="9" font-weight="600" fill="#fff" font-family=""Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">0</text>
+          <text x="26" y="14.5" font-size="9.5" font-weight="600" fill="rgb(65, 70, 81)" letter-spacing="0.08em">INTEGRATIONS</text>
+        </g>
+        <!-- Stage 1 · row y=214..306 -->
+        <g transform="translate(20,249)">
+          <rect x="0" y="0" width="130" height="22" rx="11" fill="rgb(240, 253, 249)" stroke="rgb(153, 246, 224)"/>
+          <circle cx="13" cy="11" r="7" fill="rgb(14, 147, 132)"/>
+          <text x="13" y="14.5" text-anchor="middle" font-size="9" font-weight="600" fill="#fff" font-family=""Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">1</text>
+          <text x="26" y="14.5" font-size="9.5" font-weight="600" fill="rgb(16, 117, 105)" letter-spacing="0.08em">COLLECT</text>
+        </g>
+        <!-- Stage 2 · row y=352..428 -->
+        <g transform="translate(20,379)">
+          <rect x="0" y="0" width="120" height="22" rx="11" fill="rgb(240, 253, 249)" stroke="rgb(153, 246, 224)"/>
+          <circle cx="13" cy="11" r="7" fill="rgb(14, 147, 132)"/>
+          <text x="13" y="14.5" text-anchor="middle" font-size="9" font-weight="600" fill="#fff" font-family=""Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">2</text>
+          <text x="26" y="14.5" font-size="9.5" font-weight="600" fill="rgb(16, 117, 105)" letter-spacing="0.08em">REFINE</text>
+        </g>
+        <!-- Stage 3 · row y=482..610 -->
+        <g transform="translate(20,535)">
+          <rect x="0" y="0" width="120" height="22" rx="11" fill="rgb(240, 253, 249)" stroke="rgb(153, 246, 224)"/>
+          <circle cx="13" cy="11" r="7" fill="rgb(14, 147, 132)"/>
+          <text x="13" y="14.5" text-anchor="middle" font-size="9" font-weight="600" fill="#fff" font-family=""Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">3</text>
+          <text x="26" y="14.5" font-size="9.5" font-weight="600" fill="rgb(16, 117, 105)" letter-spacing="0.08em">PLAN</text>
+        </g>
+        <!-- Stage 4 · row y=636..720 -->
+        <g transform="translate(20,667)">
+          <rect x="0" y="0" width="120" height="22" rx="11" fill="rgb(240, 253, 249)" stroke="rgb(153, 246, 224)"/>
+          <circle cx="13" cy="11" r="7" fill="rgb(14, 147, 132)"/>
+          <text x="13" y="14.5" text-anchor="middle" font-size="9" font-weight="600" fill="#fff" font-family=""Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">4</text>
+          <text x="26" y="14.5" font-size="9.5" font-weight="600" fill="rgb(16, 117, 105)" letter-spacing="0.08em">BUDGET</text>
+        </g>
+        <!-- Stage 5 · row y=770..890 -->
+        <g transform="translate(20,819)">
+          <rect x="0" y="0" width="120" height="22" rx="11" fill="rgb(240, 253, 249)" stroke="rgb(153, 246, 224)"/>
+          <circle cx="13" cy="11" r="7" fill="rgb(14, 147, 132)"/>
+          <text x="13" y="14.5" text-anchor="middle" font-size="9" font-weight="600" fill="#fff" font-family=""Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">5</text>
+          <text x="26" y="14.5" font-size="9.5" font-weight="600" fill="rgb(16, 117, 105)" letter-spacing="0.08em">PRESENT</text>
+        </g>
+      </g>
+
+      <!-- ============ CONTENT GROUP (shifted right to clear the stage-pill gutter at x=20..160) ============ -->
+      <g transform="translate(180,0)">
+
+      <!-- ============ ONBOARDING row (above integrations) ============ -->
+      <g transform="translate(60,-80)">
+        <rect width="180" height="64" rx="8" fill="rgb(240, 253, 249)" stroke="rgb(95, 233, 208)" stroke-width="1"/>
+        <g transform="translate(14,12)" fill="rgb(16, 117, 105)"><use href="#i-survey" width="14" height="14"/></g>
+        <text x="34" y="23" class="n-title" style="fill:rgb(18, 93, 86)">Onboarding Portal</text>
+        <text x="14" y="44" class="n-sub" style="fill:rgb(16, 117, 105)">Kickoff intake · client setup</text>
+        <text x="166" y="58" text-anchor="end" class="n-sub" style="fill:rgb(14, 147, 132); font-weight:600;">MSPortal</text>
+      </g>
+
+      <!-- ============ STAGE 0: INTEGRATIONS (only real external integrations) ============ -->
+      <!-- Backup & Security integration (col 2, x=460) — above its module -->
+      <g transform="translate(460,80)">
+        <rect width="180" height="64" rx="8" class="node-bg-integration"/>
+        <g transform="translate(14,12)" fill="rgb(83, 88, 98)"><use href="#i-plug" width="14" height="14"/></g>
+        <text x="34" y="23" class="n-title" style="fill:rgb(65, 70, 81)">Backup &amp; Security</text>
+        <text x="14" y="44" class="n-sub">Cove · Acronis · Datto</text>
+        <text x="14" y="58" class="n-sub">Cork · Liongard</text>
+      </g>
+      <!-- RMM above Devices (col 3, x=660) -->
+      <g transform="translate(660,80)">
+        <rect width="180" height="64" rx="8" class="node-bg-integration"/>
+        <g transform="translate(14,12)" fill="rgb(83, 88, 98)"><use href="#i-plug" width="14" height="14"/></g>
+        <text x="34" y="23" class="n-title" style="fill:rgb(65, 70, 81)">RMM</text>
+        <text x="14" y="44" class="n-sub">Datto · NinjaOne · Asio · Syncro</text>
+        <text x="14" y="58" class="n-sub">Addigy · Meraki</text>
+      </g>
+      <!-- M365 tenant above Microsoft 365 source (col 1, x=260) -->
+      <g transform="translate(260,80)">
+        <rect width="180" height="64" rx="8" class="node-bg-integration"/>
+        <g transform="translate(14,12)" fill="rgb(83, 88, 98)"><use href="#i-plug" width="14" height="14"/></g>
+        <text x="34" y="23" class="n-title" style="fill:rgb(65, 70, 81)">M365 tenant</text>
+        <text x="14" y="44" class="n-sub">Graph API · Secure Score</text>
+        <text x="14" y="58" class="n-sub">Entra · Exchange</text>
+      </g>
+      <!-- PSA — single block spanning both proactive (Tool Stack) and reactive (Projects/Tickets) sections -->
+      <g transform="translate(860,80)">
+        <rect width="540" height="64" rx="8" fill="rgb(250, 250, 250)" stroke="rgb(213, 215, 218)" stroke-width="1"/>
+        <g transform="translate(14,12)" fill="rgb(83, 88, 98)"><use href="#i-plug" width="14" height="14"/></g>
+        <text x="34" y="23" class="n-title" style="fill:rgb(65, 70, 81)">PSA</text>
+        <text x="14" y="44" class="n-sub">ConnectWise · Autotask · HaloPSA · SyncroMSP</text>
+        <text x="14" y="58" class="n-sub">Feeds Tool Stack reconciliation (proactive) and Projects &amp; Tickets (reactive)</text>
+        <!-- subtle vertical divider at the proactive/reactive boundary (x=240 within this block → overall x=1100) -->
+        <line x1="240" y1="10" x2="240" y2="54" stroke="rgb(213, 215, 218)" stroke-dasharray="2 3"/>
+      </g>
+
+      <!-- ============ STAGE 1: Five input sources ============ -->
+      <!-- Column order: Surveys | M365 | Compliance | Devices | Tool Stack -->
+      <!-- Surveys (col 0: 60) -->
+      <g transform="translate(60,214)">
+        <rect width="180" height="92" rx="10" class="node-bg-source"/>
+        <g transform="translate(14,14)" class="n-icon"><use href="#i-survey" width="16" height="16"/></g>
+        <text x="38" y="26" class="n-title">Surveys</text>
+        <text x="14" y="54" class="n-sub">Stakeholder responses</text>
+        <text x="14" y="70" class="n-sub">grouped by question</text>
+        <use href="#report-badge" x="130" y="-8" width="22" height="22"/>
+        <use href="#meeting-badge" x="156" y="-8" width="22" height="22"/>
+      </g>
+
+      <!-- Microsoft 365 (col 1: 260) -->
+      <g transform="translate(260,214)">
+        <rect width="180" height="92" rx="10" class="node-bg-source"/>
+        <g transform="translate(14,14)" class="n-icon"><use href="#i-m365" width="16" height="16"/></g>
+        <text x="38" y="26" class="n-title">Microsoft 365</text>
+        <text x="14" y="54" class="n-sub">Licenses · users · mailboxes</text>
+        <text x="14" y="70" class="n-sub">Secure Score · roles</text>
+        <use href="#report-badge" x="130" y="-8" width="22" height="22"/>
+        <use href="#meeting-badge" x="156" y="-8" width="22" height="22"/>
+      </g>
+
+      <!-- (Onboarding Portal moved to dedicated ONBOARDING row above) -->
+      <!-- (Compliance moved to Stage 2 / REFINE) -->
+
+      <!-- Backup & Security module (col 2: 460) -->
+      <g transform="translate(460,214)">
+        <rect width="180" height="92" rx="10" class="node-bg-source"/>
+        <g transform="translate(14,14)" class="n-icon"><use href="#i-shield" width="16" height="16"/></g>
+        <text x="38" y="26" class="n-title">Backup &amp; Security</text>
+        <text x="14" y="54" class="n-sub">Backup jobs · vuln findings</text>
+        <text x="14" y="70" class="n-sub">SaaS alerts · asset posture</text>
+        <use href="#report-badge" x="130" y="-8" width="22" height="22"/>
+        <use href="#meeting-badge" x="156" y="-8" width="22" height="22"/>
+      </g>
+
+      <!-- Devices (col 3: 660) — moved left of Tool Stack -->
+      <g transform="translate(660,214)">
+        <rect width="180" height="92" rx="10" class="node-bg-source"/>
+        <g transform="translate(14,14)" class="n-icon"><use href="#i-device" width="16" height="16"/></g>
+        <text x="38" y="26" class="n-title">Devices</text>
+        <text x="14" y="54" class="n-sub">RMM + M365 feeds</text>
+        <text x="14" y="70" class="n-sub">Warranty · EOL · health</text>
+        <use href="#report-badge" x="130" y="-8" width="22" height="22"/>
+        <use href="#meeting-badge" x="156" y="-8" width="22" height="22"/>
+      </g>
+
+      <!-- Tool Stack — moved to MSP Tools row (right side), below Client Health -->
+
+      <!-- ============ STAGE 2 / REFINE: Goals + Compliance ============ -->
+      <g transform="translate(60,352)">
+        <rect width="280" height="76" rx="10" class="node-bg-goal"/>
+        <g transform="translate(16,16)" class="n-icon"><use href="#i-goal" width="16" height="16"/></g>
+        <text x="40" y="28" class="n-title">Goals</text>
+        <text x="16" y="52" class="n-sub">What you want to achieve, and why.</text>
+        <text x="16" y="66" class="n-sub">From surveys or added manually.</text>
+        <use href="#report-badge" x="230" y="-8" width="22" height="22"/>
+        <use href="#meeting-badge" x="256" y="-8" width="22" height="22"/>
+      </g>
+
+      <!-- Compliance — now a Refine node alongside Goals -->
+      <g transform="translate(500,352)">
+        <rect width="280" height="76" rx="10" class="node-bg-goal"/>
+        <g transform="translate(16,16)" class="n-icon"><use href="#i-shield" width="16" height="16"/></g>
+        <text x="40" y="28" class="n-title">Compliance</text>
+        <text x="16" y="52" class="n-sub">Controls scored against frameworks.</text>
+        <text x="16" y="66" class="n-sub">Findings become planner items.</text>
+        <use href="#report-badge" x="230" y="-8" width="22" height="22"/>
+        <use href="#meeting-badge" x="256" y="-8" width="22" height="22"/>
+      </g>
+
+      <!-- ============ STAGE 3: Planner hub ============ -->
+      <g transform="translate(60,482)">
+        <rect width="980" height="128" rx="12" class="node-bg-hub"/>
+        <g transform="translate(20,22)" fill="#fff"><use href="#i-planner" width="20" height="20"/></g>
+        <text x="50" y="38" class="hub-title">Planner · the center of the system</text>
+        <text x="20" y="66" class="hub-sub">Every planner item carries title, status, priority, start/due dates, estimated hours and cost,</text>
+        <text x="20" y="82" class="hub-sub">linked devices, linked source (goal / compliance / tool / survey), assignee, and company.</text>
+        <text x="860" y="38" text-anchor="end" style="font: 500 10px/12px "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; fill: rgba(255,255,255,0.92);">STAGE 3</text>
+        <use href="#report-badge" x="896" y="-8" width="22" height="22"/>
+        <use href="#meeting-badge" x="922" y="-8" width="22" height="22"/>
+
+        <!-- Attribute chips — widened and spaced -->
+        <g transform="translate(20,102)" font-family=""Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif" font-size="10.5" fill="rgba(255,255,255,0.9)">
+          <rect x="0"   y="0" width="88"  height="18" rx="9" fill="rgba(255,255,255,0.14)"/>
+          <text x="44"  y="13" text-anchor="middle">Title &amp; status</text>
+          <rect x="100" y="0" width="96"  height="18" rx="9" fill="rgba(255,255,255,0.14)"/>
+          <text x="148" y="13" text-anchor="middle">Dates &amp; hours</text>
+          <rect x="208" y="0" width="100" height="18" rx="9" fill="rgba(255,255,255,0.14)"/>
+          <text x="258" y="13" text-anchor="middle">Cost estimate</text>
+          <rect x="320" y="0" width="112" height="18" rx="9" fill="rgba(255,255,255,0.14)"/>
+          <text x="376" y="13" text-anchor="middle">Linked devices</text>
+          <rect x="444" y="0" width="108" height="18" rx="9" fill="rgba(255,255,255,0.14)"/>
+          <text x="498" y="13" text-anchor="middle">Linked source</text>
+          <rect x="564" y="0" width="80"  height="18" rx="9" fill="rgba(255,255,255,0.14)"/>
+          <text x="604" y="13" text-anchor="middle">Assignee</text>
+        </g>
+      </g>
+
+      <!-- ============ STAGE 4: Budgets ============ -->
+      <g transform="translate(200,636)">
+        <rect width="700" height="84" rx="10" class="node-bg-budget"/>
+        <g transform="translate(16,16)" class="n-icon"><use href="#i-budget" width="16" height="16"/></g>
+        <text x="40" y="28" class="n-title">Budgets</text>
+        <text x="16" y="54" class="n-sub">Labor rolls up from planner hours.</text>
+        <text x="16" y="70" class="n-sub">Projects and products roll up from planner cost estimates and PSA items.</text>
+        <use href="#report-badge" x="616" y="-8" width="22" height="22"/>
+        <use href="#meeting-badge" x="642" y="-8" width="22" height="22"/>
+
+
+        <g transform="translate(596,44)">
+          <rect x="0" y="0" width="84" height="30" rx="15" fill="rgb(240, 253, 249)" stroke="rgb(95, 233, 208)" stroke-width="1"/>
+          <g transform="translate(10,7)" class="n-icon"><use href="#i-forecast" width="16" height="16"/></g>
+          <text x="32" y="19" font-size="11" font-weight="600" fill="rgb(16, 117, 105)">Forecast</text>
+        </g>
+      </g>
+
+      <!-- ============ STAGE 5: Meetings + unified Reports & Dashboards ============ -->
+      <!-- Meetings stays as its own client-facing output -->
+      <g transform="translate(60,770)">
+        <rect width="280" height="120" rx="10" class="node-bg-output"/>
+        <g transform="translate(16,16)" class="n-icon"><use href="#i-meeting" width="16" height="16"/></g>
+        <text x="40" y="28" class="n-title">Meetings</text>
+        <text x="16" y="58" class="n-sub">Live agenda pulled from every</text>
+        <text x="16" y="74" class="n-sub">module. Present mode renders</text>
+        <text x="16" y="90" class="n-sub">each item as a live slide.</text>
+      </g>
+
+      <!-- Unified Reports & Dashboards — spans under both proactive and reactive pipelines -->
+      <g transform="translate(360,770)">
+        <rect width="1380" height="120" rx="12" fill="#ffffff" stroke="rgb(14, 147, 132)" stroke-width="1.5"/>
+        <g transform="translate(20,20)" class="n-icon"><use href="#i-report-block" width="20" height="20"/></g>
+        <text x="50" y="36" class="n-title" style="font: 600 15px/18px "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;">Reports &amp; Dashboards</text>
+        <text x="20" y="58" class="n-sub">The single reporting surface. Pulls from the full proactive pipeline (goals, planner, budgets) and from reactive PSA data (projects, tickets). Three formats:</text>
+
+        <!-- Three format chips as inline sub-blocks -->
+        <g transform="translate(20,72)">
+          <rect x="0" y="0" width="320" height="38" rx="8" fill="rgb(240, 253, 249)" stroke="rgb(153, 246, 224)"/>
+          <g transform="translate(12,12)" class="n-icon"><use href="#i-report-block" width="14" height="14"/></g>
+          <text x="34" y="16" style="font: 600 12px/14px "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: rgb(24, 29, 39);">Block-based reports</text>
+          <text x="34" y="30" class="n-sub">Widget grid · template + reuse</text>
+        </g>
+        <g transform="translate(356,72)">
+          <rect x="0" y="0" width="320" height="38" rx="8" fill="rgb(240, 253, 249)" stroke="rgb(153, 246, 224)"/>
+          <g transform="translate(12,12)" class="n-icon"><use href="#i-forecast" width="14" height="14"/></g>
+          <text x="34" y="16" style="font: 600 12px/14px "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: rgb(24, 29, 39);">Dashboards</text>
+          <text x="34" y="30" class="n-sub">Live metrics · real-time views</text>
+        </g>
+        <g transform="translate(692,72)">
+          <rect x="0" y="0" width="330" height="38" rx="8" fill="rgb(240, 253, 249)" stroke="rgb(153, 246, 224)"/>
+          <g transform="translate(12,12)" class="n-icon"><use href="#i-report-narrative" width="14" height="14"/></g>
+          <text x="34" y="16" style="font: 600 12px/14px "Inter", -apple-system, "Segoe UI", Roboto, Arial, sans-serif; fill: rgb(24, 29, 39);">Narrative reports</text>
+          <image href="assets/claude-wordmark.svg" x="170" y="6" width="70" height="15" preserveAspectRatio="xMinYMid meet"/>
+          <text x="34" y="30" class="n-sub">Long-form QBRs · executive summaries</text>
+        </g>
+      </g>
+
+      <!-- ============ EXTERNAL RAIL (right column): PSA → Projects / Tickets → Reports ============ -->
+      <g>
+        <!-- Section header -->
+        <g transform="translate(1100,40)">
+          <rect x="0" y="0" width="300" height="26" rx="13" fill="#fff8ec" stroke="rgb(247, 144, 9)" stroke-dasharray="4 3"/>
+          <text x="14" y="17" class="ext-eyebrow">Reactive · Operational data</text>
+        </g>
+
+        <!-- MSP Tools section header (far right) -->
+        <g transform="translate(1440,40)">
+          <rect x="0" y="0" width="300" height="26" rx="13" fill="rgb(240, 253, 249)" stroke="rgb(46, 211, 183)" stroke-dasharray="4 3"/>
+          <text x="14" y="17" class="ext-eyebrow" style="fill:rgb(16, 117, 105)">MSP Tools · Analytics &amp; financials</text>
+        </g>
+
+        <!-- Ticket Trends -->
+        <g transform="translate(1440,214)">
+          <rect width="140" height="92" rx="10" fill="rgb(240, 253, 249)" stroke="rgb(95, 233, 208)"/>
+          <g transform="translate(14,14)" style="color: rgb(16, 117, 105)"><use href="#i-forecast" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+          <text x="38" y="26" class="n-title" style="fill:rgb(18, 93, 86)">Ticket Trends</text>
+          <text x="14" y="54" class="n-sub">Weekly · company</text>
+          <text x="14" y="70" class="n-sub">and category analytics</text>
+        </g>
+
+        <!-- Financial Reporting -->
+        <g transform="translate(1600,214)">
+          <rect width="160" height="92" rx="10" fill="rgb(240, 253, 249)" stroke="rgb(95, 233, 208)"/>
+          <g transform="translate(14,14)" style="color: rgb(16, 117, 105)"><use href="#i-budget" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+          <text x="38" y="26" class="n-title" style="fill:rgb(18, 93, 86); font-size: 12px;">Financial Reporting</text>
+          <text x="14" y="54" class="n-sub">Revenue efficiency ·</text>
+          <text x="14" y="70" class="n-sub">seat pricing · support cost</text>
+        </g>
+
+        <!-- (PSA block is now merged with proactive PSA above; see integrations row) -->
+
+        <!-- Projects -->
+        <g transform="translate(1100,214)">
+          <rect width="140" height="92" rx="10" class="node-bg-external"/>
+          <g transform="translate(14,14)" style="color: rgb(220, 104, 3)"><use href="#i-project" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+          <text x="38" y="26" class="n-title" style="fill:rgb(220, 104, 3)">Projects</text>
+          <text x="14" y="54" class="n-sub">Live PSA projects</text>
+          <text x="14" y="70" class="n-sub">and milestones</text>
+          <use href="#report-badge" x="90" y="-8" width="22" height="22"/>
+          <use href="#meeting-badge" x="116" y="-8" width="22" height="22"/>
+        </g>
+
+        <!-- Tickets -->
+        <g transform="translate(1260,214)">
+          <rect width="140" height="92" rx="10" class="node-bg-external"/>
+          <g transform="translate(14,14)" style="color: rgb(220, 104, 3)"><use href="#i-ticket" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+          <text x="38" y="26" class="n-title" style="fill:rgb(220, 104, 3)">Tickets</text>
+          <text x="14" y="54" class="n-sub">Live PSA ticket</text>
+          <text x="14" y="70" class="n-sub">volume and SLAs</text>
+          <use href="#report-badge" x="90" y="-8" width="22" height="22"/>
+          <use href="#meeting-badge" x="116" y="-8" width="22" height="22"/>
+        </g>
+
+        <!-- Client Health (spans under Ticket Trends + Financial Reporting) -->
+        <g transform="translate(1440,352)">
+          <rect width="320" height="76" rx="10" fill="#ffffff" stroke="rgb(14, 147, 132)" stroke-width="1.5"/>
+          <g transform="translate(16,16)" style="color: rgb(16, 117, 105)"><use href="#i-goal" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+          <text x="40" y="28" class="n-title">Client Health</text>
+          <text x="16" y="52" class="n-sub">Rolled-up portfolio view across all MSP clients.</text>
+          <text x="16" y="66" class="n-sub">Trend signals + financial signals, scored per client.</text>
+        </g>
+
+        <!-- Tool Stack (MSP Tools row, under Client Health) -->
+        <g transform="translate(1440,468)">
+          <rect width="320" height="76" rx="10" fill="rgb(240, 253, 249)" stroke="rgb(95, 233, 208)"/>
+          <g transform="translate(16,16)" style="color: rgb(16, 117, 105)"><use href="#i-tools" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/></g>
+          <text x="40" y="28" class="n-title" style="fill:rgb(18, 93, 86)">Tool Stack</text>
+          <text x="16" y="52" class="n-sub">MSP standard products · every-client essentials.</text>
+          <text x="16" y="66" class="n-sub">Reference catalog used during planning.</text>
+        </g>
+      </g>
+
+      <!-- ============ FLOWS (proactive) ============ -->
+      <!-- Integrations → Sources
+           M365 tenant (x=260..440) → Microsoft 365 source (x=260..440) -->
+      <path class="flow-integration" d="M 350,144 L 350,214"/>
+      <!-- RMM (x=660..840) → Devices (x=660..840) -->
+      <path class="flow-integration" d="M 750,144 L 750,214"/>
+      <!-- PSA → Devices (angled in from PSA left portion) -->
+      <path class="flow-integration" d="M 880,144 L 880,180 L 810,180 L 810,214"/>
+
+      <!-- Onboarding Portal → PSA (writeback — creates project in PSA) -->
+      <path class="flow-writeback" d="M 240,-58 L 400,-58 L 400,60 L 870,60 L 870,80" marker-end="url(#arrow-writeback)"/>
+
+      <!-- Surveys → Onboarding Portal (survey responses feed kickoff; routed along left edge) -->
+      <path class="flow-data" d="M 60,240 L 40,240 L 40,-48 L 60,-48" marker-end="url(#arrow-data)"/>
+
+      <!-- Devices → PSA (writeback — device records sync back to PSA assets, warranties; enters PSA mid-block at x=1030, between left edge and PSA→Projects at x=1170) -->
+      <path class="flow-writeback" d="M 840,260 L 1030,260 L 1030,144" marker-end="url(#arrow-writeback)"/>
+      <g transform="translate(935,257)">
+        <rect x="-44" y="-9" width="88" height="16" rx="8" fill="#fff" stroke="rgb(233, 234, 235)"/>
+        <text x="0" y="3" text-anchor="middle" font-size="10" font-weight="500" fill="rgb(16, 117, 105)">Warranties</text>
+      </g>
+
+      <!-- Backup &amp; Security integration → Backup &amp; Security module (straight down) -->
+      <path class="flow-integration" d="M 550,144 L 550,214"/>
+
+      <!-- Surveys → Goals (only Surveys feeds Goals) -->
+      <path class="flow-data" d="M 150,306 L 150,352" marker-end="url(#arrow-data)"/>
+
+      <!-- M365 → Planner (straight down at x=350, clears Goals right edge 340 and Compliance left edge 500) -->
+      <path class="flow-data" d="M 350,306 L 350,482" marker-end="url(#arrow-data)"/>
+
+      <!-- Devices → Compliance (enter Compliance top at x=700 so it doesn't collide with Devices→Planner at x=870) -->
+      <path class="flow-data" d="M 750,306 L 750,325 L 700,325 L 700,352" marker-end="url(#arrow-data)"/>
+
+      <!-- Backup & Security module → Planner (routes through gap between Goals and Compliance at y=470) -->
+      <path class="flow-primary" d="M 550,306 L 550,335 L 450,335 L 450,470 L 500,470 L 500,482" marker-end="url(#arrow-primary)"/>
+
+      <!-- Compliance → Planner (straight down from Compliance center) -->
+      <path class="flow-primary" d="M 640,428 L 640,482" marker-end="url(#arrow-primary)"/>
+
+      <!-- Devices → Planner (straight down from Devices right side at x=820, clearing Compliance which ends at x=780) -->
+      <path class="flow-primary" d="M 820,306 L 820,482" marker-end="url(#arrow-primary)"/>
+
+      <!-- Tool Stack (MSP Tools row) → Planner (straight horizontal from Tool Stack left edge into Planner right edge) -->
+      <path class="flow-primary" d="M 1440,506 L 1040,506" marker-end="url(#arrow-primary)"/>
+
+      <!-- Goals → Planner (primary, straight down from Goals bottom) -->
+      <path class="flow-primary" d="M 200,428 L 200,482" marker-end="url(#arrow-primary)"/>
+
+      <!-- Goals → Budgets (secondary, routes around left of Planner) -->
+      <path class="flow-primary" d="M 100,428 L 100,450 L 40,450 L 40,670 L 200,670" marker-end="url(#arrow-primary)"/>
+
+      <!-- Planner → Budgets (primary) -->
+      <path class="flow-primary" d="M 550,610 L 550,636" marker-end="url(#arrow-primary)"/>
+
+      <!-- Budgets → Meetings (straight down from Budgets bottom-left, x=200) -->
+      <path class="flow-primary" d="M 200,720 L 200,770" marker-end="url(#arrow-primary)"/>
+
+      <!-- Reports & Dashboards → Meetings (short sibling link) -->
+      <path class="flow-primary" d="M 360,830 L 340,830" marker-end="url(#arrow-primary)"/>
+
+      <!-- ============ FLOWS (external / reactive) ============ -->
+      <!-- PSA (merged block) → Projects (center x=1170) -->
+      <path class="flow-ext" d="M 1170,144 L 1170,214" marker-end="url(#arrow-ext)"/>
+      <!-- PSA (merged block) → Tickets (center x=1330) -->
+      <path class="flow-ext" d="M 1330,144 L 1330,214" marker-end="url(#arrow-ext)"/>
+      <!-- (Projects/Tickets → Reports arrows replaced by report-badge on each block) -->
+
+      <!-- Tickets → Ticket Trends (sideways into MSP Tools column) -->
+      <path class="flow-data" d="M 1400,260 L 1440,260" marker-end="url(#arrow-data)"/>
+      <!-- PSA invoices/contracts → Financial Reporting (route down right side of PSA block) -->
+      <path class="flow-data" d="M 1400,112 L 1670,112 L 1670,214" marker-end="url(#arrow-data)"/>
+      <!-- Ticket Trends → Client Health (down into shared block) -->
+      <path class="flow-primary" d="M 1510,306 L 1510,352" marker-end="url(#arrow-primary)"/>
+      <!-- Financial Reporting → Client Health (down into shared block) -->
+      <path class="flow-primary" d="M 1670,306 L 1670,352" marker-end="url(#arrow-primary)"/>
+
+      <!-- ============ Labels ============ -->
+      <g transform="translate(560,624)">
+        <rect x="-80" y="-11" width="160" height="18" rx="9" fill="#fff" stroke="rgb(233, 234, 235)"/>
+        <text x="0" y="2" text-anchor="middle" font-size="10.5" font-weight="500" fill="rgb(16, 117, 105)">Hours &amp; cost estimates</text>
+      </g>
+      <g transform="translate(550,758)">
+        <rect x="-64" y="-11" width="128" height="18" rx="9" fill="#fff" stroke="rgb(233, 234, 235)"/>
+        <text x="0" y="2" text-anchor="middle" font-size="10.5" font-weight="500" fill="rgb(16, 117, 105)">Client-facing output</text>
+      </g>
+      <!-- External pipeline label removed — unified reports make it unnecessary -->
+
+      </g><!-- end content group -->
+
+    </svg>

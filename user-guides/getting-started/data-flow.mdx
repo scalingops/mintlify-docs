@@ -1,260 +1,141 @@
 ---
 title: How Data Flows Through MSPortal
-description: A step-by-step guide to how client information moves from surveys, integrations, and assessments into goals, planner items, budgets, and meetings.
+description: The map of how integrations and assessments become goals, planner items, budgets, meetings, and reports.
 icon: diagram-project
 ---
 
-MSPortal is built around a single idea: every piece of information you collect about a client should end up helping you have a better conversation in your next meeting. This guide walks through that journey, step by step, so you can see how the modules connect and where your data lives at each stage.
-
 <Info>
-Think of the flow as three stages: **collect → plan → present.** You collect insights from many sources, turn them into planned work, then present that work in meetings with the client.
+**Architecture reference: proactive data flow.** This map shows the **proactive** side of MSPortal — how insights from integrations and assessments become Goals, Planner items, Budgets, Meetings and Reports. Reactive and operational data (PSA tickets and projects) flow to reporting through a separate pipeline, shown on the right side of the diagram.
 </Info>
 
-## The Big Picture
+## The diagram
 
-```
-  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
-  │   Surveys    │  │ Microsoft 365│  │  Compliance  │  │  Tool Stack  │  │   Devices    │
-  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘
-         │                 │                 │                 │                 │
-         ▼                 ▼                 ▼                 ▼                 │
-   ┌─────────┐       ┌──────────────────────────────┐                            │
-   │  Goals  │──────▶│           Planner            │◀───────────────────────────┘
-   └─────────┘       └──────────┬───────────────────┘
-                                │
-                                ▼
-                          ┌─────────┐
-                          │ Budgets │ (+ Forecast widget)
-                          └────┬────┘
-                               │
-                ┌──────────────┼──────────────┐
-                ▼              ▼              ▼
-          ┌──────────┐  ┌──────────────┐  ┌────────────┐
-          │ Meetings │  │ Block Reports│  │  Narrative │
-          │ (live)   │  │  (widgets)   │  │  Reports   │
-          └──────────┘  └──────────────┘  └────────────┘
-```
+<Frame>
+  <img src="/images/getting-started/data-flow-diagram.svg" alt="MSPortal proactive data flow architecture" />
+</Frame>
 
-## Stage 1: Collect — Where Data Enters the System
+### Legend
 
-Every client engagement starts with gathering information. MSPortal pulls that information from five primary sources.
+| Marker | Meaning |
+|--------|---------|
+| Gray block with plug icon | **Integration** — external system MSPortal syncs from (PSA, RMM, M365, Backup &amp; Security) |
+| White block | **MSPortal module** — a native feature built on top of the integration data |
+| Dashed amber block | **External / reactive** — PSA-sourced projects and tickets that flow straight to reporting |
+| Solid teal arrow | **Primary flow** — the main path a record takes through the pipeline |
+| Gray arrow | **Data feed** — supporting data that enriches a downstream module |
+| Dashed amber arrow | **External pipeline** — reactive PSA data routed to reports and MSP Tools |
+| Dashed teal arrow | **Writeback to integration** — a record MSPortal creates or updates in the source system (for example, a PSA project created from the Onboarding Portal) |
+| Teal circle badge | Item appears in **Reports &amp; Dashboards** |
+| Amber circle badge | Item can be added to a **Meeting** agenda |
 
-### Surveys
+## Reading the diagram
 
-Surveys are how you capture the client's own words — their frustrations, priorities, risks, and wishlist.
-
-- Send a survey to a stakeholder at the client company
-- Responses arrive in the **Surveys** module, grouped by question
-- Each answer becomes a row you can review, tag, and act on
-
-See the [Surveys guide](/user-guides/surveys/index) for how to build and send surveys.
-
-### Microsoft 365
-
-When a client connects their Microsoft 365 tenant, MSPortal continuously pulls in:
-
-- **Licenses** — who has what, where you're overspending, where you're at risk
-- **Users and mailboxes** — account hygiene and sign-in activity
-- **Secure Score controls** — Microsoft's recommendations for tightening security
-- **Domains and admin roles** — configuration drift and risk indicators
-
-See the [Microsoft 365 guide](/user-guides/microsoft-365/index) for connecting a tenant.
-
-### Compliance
-
-The Compliance module turns frameworks like CIS, NIST, Essential 8, and HIPAA into checklists you can run against each client.
-
-- Apply a template to a company
-- Mark each control as pass, fail, partial, or not applicable
-- Failing controls become the raw material for remediation work
-
-See the [Compliance guide](/user-guides/compliance/index) for running assessments.
-
-### Tool Stack
-
-The Tool Stack module is the client's inventory of software and services, with costs, renewal dates, and your recommendations.
-
-- Every tool has a status (keep, replace, upgrade, remove)
-- Renewal dates and contract terms are tracked
-- Recommendations you make here are candidates for the planner
-
-See the [Tool Stack guide](/user-guides/msp-tools/tool-stack) for managing tools.
-
-### Devices
-
-Devices come in from your RMM (Datto, Syncro, Addigy, NinjaOne, and others) and from Microsoft 365.
-
-- Each device has a serial, model, warranty end date, and health signals
-- Devices can be attached to planner items, compliance checks, and meeting agendas
-- Warranty and end-of-life dates drive proactive replacement planning
-
-See the [Devices guide](/user-guides/devices/index) for device management.
-
-## Stage 2: Refine — From Insight to Goal
-
-Raw data from Stage 1 needs a human to decide what matters. Goals are where you commit to a specific outcome.
-
-<Steps>
-  <Step title="Review survey responses">
-    Open a survey in the Surveys module. For any response that reveals a real need, click **Create Goal**. The response text becomes the goal's starting description, and the goal is linked back to the survey answer so you can always trace the source.
-  </Step>
-  <Step title="Create goals from multiple answers">
-    When several responses point to the same theme, select them together and choose **Create Combined Goal**. MSPortal merges the responses into a single strategic goal.
-  </Step>
-  <Step title="Let AI propose goals">
-    Run AI analysis on a survey to surface themes across all responses. Each theme can be accepted as a goal with one click.
-  </Step>
-  <Step title="Add goals manually">
-    Not every goal comes from a survey. Add goals directly for strategic initiatives, compliance gaps, or opportunities the client mentioned in conversation.
-  </Step>
-</Steps>
-
-A goal captures **what** you want to achieve and **why**. The how lives in the Planner.
-
-## Stage 3: Plan — Turning Goals Into Work
-
-The Planner is the center of the system. Almost everything from Stage 1 and Stage 2 can become a planner item.
-
-### What feeds the Planner
-
-| Source | How it gets to Planner |
-|--------|------------------------|
-| **Goals** | Click **Add to Planner** on any goal to create a task that delivers it |
-| **Compliance findings** | Failed controls can be linked to planner items that track the remediation |
-| **Microsoft 365 Secure Score** | Select a Secure Score control and link it to a planner item to track the fix |
-| **Tool Stack** | Tool renewals and replacement decisions link to planner items for scheduling |
-| **Devices** | Attach devices to planner items (warranty replacements, upgrades, reimaging) |
-| **Automation rules** | Rules can create planner items automatically when conditions are met |
-| **Manual** | Add any planner item directly with the **+ New Item** button |
-
-### What a planner item carries
-
-Every planner item can hold:
-
-- **Title, description, status, and priority**
-- **Start and due dates** for the timeline view
-- **Estimated hours and cost estimate** for budgeting
-- **Linked devices** (which machines this work affects)
-- **Linked source** (the originating goal, compliance check, tool, or survey)
-- **Assigned team member** and company
-
-See the [Planner guide](/user-guides/planner/index) for timeline views and editing.
-
-## Stage 4: Budget — Cost Planning From Planner Items
-
-Once planner items have cost estimates and hours, the Budgets module rolls them up into a financial view the client can approve.
-
-<Steps>
-  <Step title="Planner items contribute costs">
-    Any planner item with a **cost estimate** or **hours** becomes a line item candidate for the budget.
-  </Step>
-  <Step title="Budget line items reference planner work">
-    In the Budgets module, you build line items that pull from planned work. Labor rolls up from planner hours, and projects and products roll up from planner cost estimates.
-  </Step>
-  <Step title="Forecast forward">
-    Use the **Budget Forecast** function to project the budget into future periods. The forecast models upcoming renewals, planned replacements, and recurring work so the client sees where spending is headed, not just where it is today.
-  </Step>
-  <Step title="Approve and track">
-    The client approves the budget. As planner work is completed, actuals are compared to the budget in Financial Reporting. The forecast surfaces as a **reporting widget** so you can drop it into any dashboard or report.
-  </Step>
-</Steps>
-
-See the [Budgets guide](/user-guides/budgets/index) for building and sharing budgets.
-
-## Stage 5: Present — Meetings and Reporting
-
-There are two ways to bring everything together for the client: live in a **Meeting** and on paper in a **Report**. Both pull from the same underlying data, so nothing has to be copied or kept in sync.
-
-### Meetings
-
-Meetings are where you close the loop with the client in real time. The Meetings module lets you assemble an agenda from anything in the system.
-
-From any meeting, click **Add to Agenda** or use the **Add to Meeting** row action on any list page. The following item types are supported:
-
-- **Goals** — strategic objectives for review
-- **Planner items** — work in flight, upcoming milestones
-- **Compliance findings** — gaps that need client decisions
-- **Secure Score controls** — Microsoft 365 security posture
-- **Tool Stack** — tools under review, renewals coming up
-- **Budgets** — spending review and upcoming approvals, including the forecast widget
-- **Devices** — warranty replacements, end-of-life upgrades
-- **Training** — assigned training and completion status
-- **Free-form notes** — anything that does not live in another module
-
-Click **Present** on any meeting to enter presentation mode. Each agenda item renders as a full-screen slide with its live data from the source module. Nothing is copied; the meeting pulls the current state from Goals, Planner, Compliance, Budgets, and the rest in real time.
-
-See the [Presenting Meetings guide](/user-guides/calendar/presenting) for presentation mode details.
-
-### Reporting
-
-Reports give the client a durable artifact they can read, forward, and reference later. MSPortal supports two report styles, and both can mix and match data from every module.
+The diagram is laid out in stages, left-to-right on integrations and top-to-bottom on flow.
 
 <CardGroup cols={2}>
-  <Card title="Block-based reports" icon="grid-2">
-    Built in the **Report Builder** from reusable widgets. Drop in compliance scores, planner timelines, budget summaries, the **budget forecast widget**, device lists, Secure Score charts, and more. Arrange them on a responsive grid and save as a template to reuse for every client.
+  <Card title="Onboarding" icon="rocket">
+    Kickoff intake and client setup. The Onboarding Portal writes a project back to your PSA and pulls survey responses in for the first engagement.
   </Card>
-  <Card title="Narrative reports" icon="file-lines">
-    Long-form, written reports generated from the same data. Use these for QBR write-ups, executive summaries, and compliance attestations where the client needs context and commentary around the numbers, not just the charts.
+  <Card title="Stage 0 — Integrations" icon="plug">
+    M365, RMM, Backup &amp; Security, and PSA connect once and continuously feed the rest of the pipeline. The PSA block spans both the proactive side (Tool Stack reconciliation) and the reactive side (Projects and Tickets).
+  </Card>
+  <Card title="Stage 1 — Collect" icon="inbox">
+    Five input sources land data in MSPortal: **Surveys**, **Microsoft 365**, **Backup &amp; Security**, **Devices**, and **Tool Stack**. Each is its own module with its own views and filters.
+  </Card>
+  <Card title="Stage 2 — Refine" icon="filter">
+    **Goals** capture what the client wants to achieve. **Compliance** scores controls against frameworks. Both feed the Planner.
+  </Card>
+  <Card title="Stage 3 — Plan" icon="list-check">
+    The **Planner** is the center of the system. Every item carries title, status, priority, start/due dates, estimated hours and cost, linked devices, linked source, assignee, and company.
+  </Card>
+  <Card title="Stage 4 — Budget" icon="calculator">
+    **Budgets** roll labor up from planner hours and roll projects and products up from planner cost estimates and PSA items. A **Forecast** widget projects the budget forward.
+  </Card>
+  <Card title="Stage 5 — Present" icon="presentation-screen">
+    **Meetings** are the live client-facing output. **Reports &amp; Dashboards** is the single reporting surface — three formats: block-based reports, dashboards, and narrative reports.
+  </Card>
+  <Card title="Reactive rail" icon="ticket">
+    On the right, **Projects** and **Tickets** flow from PSA directly into Reports &amp; Dashboards without passing through Planner. **Ticket Trends** and **Financial Reporting** roll up into **Client Health** for a portfolio view.
   </Card>
 </CardGroup>
 
-The **Budget Forecast** surfaces as a reporting widget you can include in either style, so future-looking spend projections live side by side with current-state data.
+## What lives on the Planner
 
-See the [Reporting guide](/user-guides/reporting/index) for building and scheduling reports.
+Every planner item carries the same core attributes, no matter where it came from:
 
-## Automations: Shortcuts Across the Flow
+<CardGroup cols={3}>
+  <Card title="Title & status" icon="tag">Name, status, priority.</Card>
+  <Card title="Dates & hours" icon="calendar">Start date, due date, estimated hours.</Card>
+  <Card title="Cost estimate" icon="dollar-sign">Dollar cost used by Budgets.</Card>
+  <Card title="Linked devices" icon="laptop">Which machines this work affects.</Card>
+  <Card title="Linked source" icon="link">Goal, compliance control, tool, or survey that originated the item.</Card>
+  <Card title="Assignee & company" icon="user">Who owns it, which client.</Card>
+</CardGroup>
 
-Automation rules let you skip the manual steps for repeatable patterns. Rules listen for events and run actions, so Stage 1 data can arrive in Stage 3 or 5 automatically.
+## The unified reporting surface
 
-Examples:
+Reports &amp; Dashboards is one surface that pulls from the full proactive pipeline **and** from reactive PSA data. It offers three formats:
 
-- **Survey response arrives** → create a planner item for the account manager to follow up
-- **Device warranty within 60 days** → add a planner item for replacement planning
-- **Compliance control fails** → add to the next client meeting agenda
-- **Tool Stack renewal within 90 days** → notify the team and create a review task
+<CardGroup cols={3}>
+  <Card title="Block-based reports" icon="grid-2">
+    Widget grid. Build once as a template, reuse across clients.
+  </Card>
+  <Card title="Dashboards" icon="chart-line">
+    Live metrics, real-time views. Drop them into the meeting or the client portal.
+  </Card>
+  <Card title="Narrative reports" icon="file-lines">
+    Long-form QBRs and executive summaries. Claude generates the narrative from the same data.
+  </Card>
+</CardGroup>
 
-See the [Automations guide](/user-guides/settings/automation) for building rules.
+## Writebacks: MSPortal updates the source system
 
-## Where Devices Fit Everywhere
+A handful of flows write **back** to the integration they came from. These appear as dashed teal arrows in the diagram.
 
-Devices are special because they can attach to almost anything. A single laptop might be:
+- **Onboarding Portal → PSA.** When a client completes the kickoff intake, MSPortal creates a project in your PSA so the onboarding work lives where your team already operates.
+- **Devices → PSA.** Warranty dates, end-of-life status, and other device fields sync back to PSA assets so your techs see the same numbers on a ticket as your AM sees in Budgets.
 
-- Linked to a **planner item** tracking its replacement
-- Flagged in a **compliance** check for missing encryption
-- Listed on a **meeting agenda** for the client to approve the replacement
-- Mentioned in **Microsoft 365** data for the user assigned to it
+## The reactive rail
 
-This is intentional. The device is the physical object; every other module is a different lens on what needs to happen to it.
+The right-hand side of the diagram is a separate pipeline. PSA-sourced **Projects** and **Tickets** do not pass through Planner. They land directly in Reports &amp; Dashboards, and they aggregate into two MSP-wide views:
 
-## Putting It All Together
+- **Ticket Trends** — weekly, per-company, and per-category analytics.
+- **Financial Reporting** — revenue efficiency, seat pricing, support cost.
 
-A typical client journey looks like this:
+Both roll up into **Client Health**, the portfolio view across every client in your book.
 
-<Steps>
-  <Step title="Kickoff">
-    Send an onboarding survey. Connect Microsoft 365. Import devices from the RMM. Run the first compliance assessment.
-  </Step>
-  <Step title="Analyze">
-    Review survey responses and turn the important ones into goals. Review compliance failures and Secure Score recommendations.
-  </Step>
-  <Step title="Plan">
-    Create planner items from each goal, compliance finding, and tool stack recommendation. Attach affected devices. Set costs and hours.
-  </Step>
-  <Step title="Budget">
-    Build the annual or quarterly budget by rolling up planner costs into line items. Share with the client for approval.
-  </Step>
-  <Step title="Present">
-    Build a QBR meeting agenda with goals, planner progress, compliance gaps, and budget status (including the forecast). Present it live with the client, then send a block-based or narrative report as the written follow-up.
-  </Step>
-  <Step title="Repeat">
-    Send a follow-up survey. Automations flag new risks. Planner items close out. Next quarter starts.
-  </Step>
-</Steps>
+## The typical client journey
 
-The result is a single pane of glass: every conversation, assessment, integration, and recommendation funnels into the same pipeline, and nothing falls through the cracks.
+The same pipeline runs quarter after quarter.
 
-## Related Guides
+<CardGroup cols={3}>
+  <Card title="1. Kickoff" icon="flag">
+    Onboarding survey. Connect M365. Import devices from the RMM. First compliance assessment.
+  </Card>
+  <Card title="2. Analyze" icon="magnifying-glass-chart">
+    Turn survey responses into goals. Review compliance failures and Secure Score recommendations.
+  </Card>
+  <Card title="3. Plan" icon="list-check">
+    Create planner items from goals, compliance findings, and tool recommendations. Attach devices. Set costs and hours.
+  </Card>
+  <Card title="4. Budget" icon="calculator">
+    Roll planner costs into line items. Forecast forward. Share with the client for approval.
+  </Card>
+  <Card title="5. Present" icon="presentation-screen">
+    Build a QBR agenda with goals, planner, compliance, and budgets. Present live, then send a report.
+  </Card>
+  <Card title="6. Repeat" icon="arrows-rotate">
+    Follow-up survey. Planner items close out. New goals open. Next quarter starts.
+  </Card>
+</CardGroup>
 
+<Tip>
+New to MSPortal? The data flow is **what** happens; the [Setup Playbook](/user-guides/getting-started/onboarding/index#setup-playbook) is the **recommended order** to roll it out for the first time.
+</Tip>
+
+## Related guides
+
+- [Onboarding Wizard](/user-guides/getting-started/onboarding/index) — connect integrations and get your tenant configured
 - [Surveys](/user-guides/surveys/index)
 - [Goals](/user-guides/goals/index)
 - [Planner](/user-guides/planner/index)
