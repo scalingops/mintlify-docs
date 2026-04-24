@@ -1,0 +1,260 @@
+---
+title: How Data Flows Through MSPortal
+description: A step-by-step guide to how client information moves from surveys, integrations, and assessments into goals, planner items, budgets, and meetings.
+icon: diagram-project
+---
+
+MSPortal is built around a single idea: every piece of information you collect about a client should end up helping you have a better conversation in your next meeting. This guide walks through that journey, step by step, so you can see how the modules connect and where your data lives at each stage.
+
+<Info>
+Think of the flow as three stages: **collect → plan → present.** You collect insights from many sources, turn them into planned work, then present that work in meetings with the client.
+</Info>
+
+## The Big Picture
+
+```
+  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
+  │   Surveys    │  │ Microsoft 365│  │  Compliance  │  │  Tool Stack  │  │   Devices    │
+  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘
+         │                 │                 │                 │                 │
+         ▼                 ▼                 ▼                 ▼                 │
+   ┌─────────┐       ┌──────────────────────────────┐                            │
+   │  Goals  │──────▶│           Planner            │◀───────────────────────────┘
+   └─────────┘       └──────────┬───────────┬───────┘
+                                │           │
+                                ▼           ▼
+                          ┌─────────┐  ┌──────────┐
+                          │ Budgets │  │ Meetings │
+                          └─────────┘  └──────────┘
+```
+
+## Stage 1: Collect — Where Data Enters the System
+
+Every client engagement starts with gathering information. MSPortal pulls that information from five primary sources.
+
+### Surveys
+
+Surveys are how you capture the client's own words — their frustrations, priorities, risks, and wishlist.
+
+- Send a survey to a stakeholder at the client company
+- Responses arrive in the **Surveys** module, grouped by question
+- Each answer becomes a row you can review, tag, and act on
+
+See the [Surveys guide](/user-guides/surveys/index) for how to build and send surveys.
+
+### Microsoft 365
+
+When a client connects their Microsoft 365 tenant, MSPortal continuously pulls in:
+
+- **Licenses** — who has what, where you're overspending, where you're at risk
+- **Users and mailboxes** — account hygiene and sign-in activity
+- **Secure Score controls** — Microsoft's recommendations for tightening security
+- **Domains and admin roles** — configuration drift and risk indicators
+
+See the [Microsoft 365 guide](/user-guides/microsoft-365/index) for connecting a tenant.
+
+### Compliance
+
+The Compliance module turns frameworks like CIS, NIST, Essential 8, and HIPAA into checklists you can run against each client.
+
+- Apply a template to a company
+- Mark each control as pass, fail, partial, or not applicable
+- Failing controls become the raw material for remediation work
+
+See the [Compliance guide](/user-guides/compliance/index) for running assessments.
+
+### Tool Stack
+
+The Tool Stack module is the client's inventory of software and services, with costs, renewal dates, and your recommendations.
+
+- Every tool has a status (keep, replace, upgrade, remove)
+- Renewal dates and contract terms are tracked
+- Recommendations you make here are candidates for the planner
+
+See the [Tool Stack guide](/user-guides/msp-tools/tool-stack) for managing tools.
+
+### Devices
+
+Devices come in from your RMM (Datto, Syncro, Addigy, NinjaOne, and others) and from Microsoft 365.
+
+- Each device has a serial, model, warranty end date, and health signals
+- Devices can be attached to planner items, compliance checks, and meeting agendas
+- Warranty and end-of-life dates drive proactive replacement planning
+
+See the [Devices guide](/user-guides/devices/index) for device management.
+
+## Stage 2: Refine — From Insight to Goal
+
+Raw data from Stage 1 needs a human to decide what matters. Goals are where you commit to a specific outcome.
+
+<Steps>
+  <Step title="Review survey responses">
+    Open a survey in the Surveys module. For any response that reveals a real need, click **Create Goal**. The response text becomes the goal's starting description, and the goal is linked back to the survey answer so you can always trace the source.
+  </Step>
+  <Step title="Create goals from multiple answers">
+    When several responses point to the same theme, select them together and choose **Create Combined Goal**. MSPortal merges the responses into a single strategic goal.
+  </Step>
+  <Step title="Let AI propose goals">
+    Run AI analysis on a survey to surface themes across all responses. Each theme can be accepted as a goal with one click.
+  </Step>
+  <Step title="Add goals manually">
+    Not every goal comes from a survey. Add goals directly for strategic initiatives, compliance gaps, or opportunities the client mentioned in conversation.
+  </Step>
+</Steps>
+
+A goal captures **what** you want to achieve and **why**. The how lives in the Planner.
+
+## Stage 3: Plan — Turning Goals Into Work
+
+The Planner is the center of the system. Almost everything from Stage 1 and Stage 2 can become a planner item.
+
+### What feeds the Planner
+
+| Source | How it gets to Planner |
+|--------|------------------------|
+| **Goals** | Click **Add to Planner** on any goal to create a task that delivers it |
+| **Compliance findings** | Failed controls can be linked to planner items that track the remediation |
+| **Microsoft 365 Secure Score** | Select a Secure Score control and link it to a planner item to track the fix |
+| **Tool Stack** | Tool renewals and replacement decisions link to planner items for scheduling |
+| **Devices** | Attach devices to planner items (warranty replacements, upgrades, reimaging) |
+| **Automation rules** | Rules can create planner items automatically when conditions are met |
+| **Manual** | Add any planner item directly with the **+ New Item** button |
+
+### What a planner item carries
+
+Every planner item can hold:
+
+- **Title, description, status, and priority**
+- **Start and due dates** for the timeline view
+- **Estimated hours and cost estimate** for budgeting
+- **Linked devices** (which machines this work affects)
+- **Linked source** (the originating goal, compliance check, tool, or survey)
+- **Assigned team member** and company
+
+See the [Planner guide](/user-guides/planner/index) for timeline views and editing.
+
+## Stage 4: Budget — Cost Planning From Planner Items
+
+Once planner items have cost estimates and hours, the Budgets module rolls them up into a financial view the client can approve.
+
+<Steps>
+  <Step title="Planner items contribute costs">
+    Any planner item with a **cost estimate** or **hours** becomes a line item candidate for the budget.
+  </Step>
+  <Step title="Budget line items reference planner work">
+    In the Budgets module, you build line items that pull from planned work. Labor rolls up from planner hours, and projects and products roll up from planner cost estimates.
+  </Step>
+  <Step title="Forecast forward">
+    Use the **Budget Forecast** function to project the budget into future periods. The forecast models upcoming renewals, planned replacements, and recurring work so the client sees where spending is headed, not just where it is today.
+  </Step>
+  <Step title="Approve and track">
+    The client approves the budget. As planner work is completed, actuals are compared to the budget in Financial Reporting. The forecast surfaces as a **reporting widget** so you can drop it into any dashboard or report.
+  </Step>
+</Steps>
+
+See the [Budgets guide](/user-guides/budgets/index) for building and sharing budgets.
+
+## Stage 5: Present — Meetings and Reporting
+
+There are two ways to bring everything together for the client: live in a **Meeting** and on paper in a **Report**. Both pull from the same underlying data, so nothing has to be copied or kept in sync.
+
+### Meetings
+
+Meetings are where you close the loop with the client in real time. The Meetings module lets you assemble an agenda from anything in the system.
+
+From any meeting, click **Add to Agenda** or use the **Add to Meeting** row action on any list page. The following item types are supported:
+
+- **Goals** — strategic objectives for review
+- **Planner items** — work in flight, upcoming milestones
+- **Compliance findings** — gaps that need client decisions
+- **Secure Score controls** — Microsoft 365 security posture
+- **Tool Stack** — tools under review, renewals coming up
+- **Budgets** — spending review and upcoming approvals, including the forecast widget
+- **Devices** — warranty replacements, end-of-life upgrades
+- **Training** — assigned training and completion status
+- **Free-form notes** — anything that does not live in another module
+
+Click **Present** on any meeting to enter presentation mode. Each agenda item renders as a full-screen slide with its live data from the source module. Nothing is copied; the meeting pulls the current state from Goals, Planner, Compliance, Budgets, and the rest in real time.
+
+See the [Presenting Meetings guide](/user-guides/calendar/presenting) for presentation mode details.
+
+### Reporting
+
+Reports give the client a durable artifact they can read, forward, and reference later. MSPortal supports two report styles, and both can mix and match data from every module.
+
+<CardGroup cols={2}>
+  <Card title="Block-based reports" icon="grid-2">
+    Built in the **Report Builder** from reusable widgets. Drop in compliance scores, planner timelines, budget summaries, the **budget forecast widget**, device lists, Secure Score charts, and more. Arrange them on a responsive grid and save as a template to reuse for every client.
+  </Card>
+  <Card title="Narrative reports" icon="file-lines">
+    Long-form, written reports generated from the same data. Use these for QBR write-ups, executive summaries, and compliance attestations where the client needs context and commentary around the numbers, not just the charts.
+  </Card>
+</CardGroup>
+
+The **Budget Forecast** surfaces as a reporting widget you can include in either style, so future-looking spend projections live side by side with current-state data.
+
+See the [Reporting guide](/user-guides/reporting/index) for building and scheduling reports.
+
+## Automations: Shortcuts Across the Flow
+
+Automation rules let you skip the manual steps for repeatable patterns. Rules listen for events and run actions, so Stage 1 data can arrive in Stage 3 or 5 automatically.
+
+Examples:
+
+- **Survey response arrives** → create a planner item for the account manager to follow up
+- **Device warranty within 60 days** → add a planner item for replacement planning
+- **Compliance control fails** → add to the next client meeting agenda
+- **Tool Stack renewal within 90 days** → notify the team and create a review task
+
+See the [Automations guide](/user-guides/settings/automation) for building rules.
+
+## Where Devices Fit Everywhere
+
+Devices are special because they can attach to almost anything. A single laptop might be:
+
+- Linked to a **planner item** tracking its replacement
+- Flagged in a **compliance** check for missing encryption
+- Listed on a **meeting agenda** for the client to approve the replacement
+- Mentioned in **Microsoft 365** data for the user assigned to it
+
+This is intentional. The device is the physical object; every other module is a different lens on what needs to happen to it.
+
+## Putting It All Together
+
+A typical client journey looks like this:
+
+<Steps>
+  <Step title="Kickoff">
+    Send an onboarding survey. Connect Microsoft 365. Import devices from the RMM. Run the first compliance assessment.
+  </Step>
+  <Step title="Analyze">
+    Review survey responses and turn the important ones into goals. Review compliance failures and Secure Score recommendations.
+  </Step>
+  <Step title="Plan">
+    Create planner items from each goal, compliance finding, and tool stack recommendation. Attach affected devices. Set costs and hours.
+  </Step>
+  <Step title="Budget">
+    Build the annual or quarterly budget by rolling up planner costs into line items. Share with the client for approval.
+  </Step>
+  <Step title="Present">
+    Build a QBR meeting agenda with goals, planner progress, compliance gaps, and budget status. Present it live with the client.
+  </Step>
+  <Step title="Repeat">
+    Send a follow-up survey. Automations flag new risks. Planner items close out. Next quarter starts.
+  </Step>
+</Steps>
+
+The result is a single pane of glass: every conversation, assessment, integration, and recommendation funnels into the same pipeline, and nothing falls through the cracks.
+
+## Related Guides
+
+- [Surveys](/user-guides/surveys/index)
+- [Goals](/user-guides/goals/index)
+- [Planner](/user-guides/planner/index)
+- [Budgets](/user-guides/budgets/index)
+- [Compliance](/user-guides/compliance/index)
+- [Microsoft 365](/user-guides/microsoft-365/index)
+- [Tool Stack](/user-guides/msp-tools/tool-stack)
+- [Devices](/user-guides/devices/index)
+- [Meetings](/user-guides/calendar/meetings)
+- [Presenting Meetings](/user-guides/calendar/presenting)
