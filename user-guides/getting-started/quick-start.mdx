@@ -1,224 +1,113 @@
 ---
-title: 'Quick Start Guide'
-description: 'Get up and running with MSPortal.ai in minutes'
+title: 'Quick Start'
+description: 'Sign in, find your way around, and run the wizard.'
 icon: 'rocket'
 ---
 
-## Welcome to MSPortal.ai
+MSPortal is the operating system for an MSP's account management work: surveys, goals, the planner, budgets, compliance, meetings, and the unified reporting surface. This page gets you oriented in the app. For setup, run the [Onboarding Wizard](/user-guides/getting-started/onboarding/index).
 
-MSPortal.ai is a comprehensive platform designed for Managed Service Providers to manage client relationships, track compliance, plan IT roadmaps, and deliver exceptional service. This guide will help you get oriented and productive quickly.
+## Sign in
 
-## Initial Setup
+Go to your tenant URL (typically `https://app.msportal.ai` or your custom subdomain) and sign in. New users get an invitation email from a tenant admin with a link to set their password.
 
-<Steps>
-  <Step title="Sign In">
-    Navigate to your organization's MSPortal.ai URL and sign in with your credentials. First-time users will receive an invitation email with login instructions.
-  </Step>
-  <Step title="Select a Company">
-    Use the company selector in the top navigation bar to choose which client company you want to work with. The selected company determines what data you see throughout the platform.
-  </Step>
-  <Step title="Explore the Sidebar">
-    The collapsible sidebar on the left provides access to all modules. Click the chevron icon to expand or collapse it, or use the keyboard shortcut `Ctrl+B` (Windows) or `Cmd+B` (Mac).
-  </Step>
-</Steps>
+## The layout
 
-## Understanding the Interface
+There are three regions:
 
-### Main Navigation Areas
+- **Top bar.** The company selector sits center-left. To the right are global search, notifications, and your profile menu.
+- **Sidebar.** Collapsible (toggle with `Cmd+B` / `Ctrl+B`). Grouped into Planning, Operations, Protection, and (for tenant staff) MSP Tools. Settings is pinned at the bottom of the sidebar.
+- **Main content.** Whatever module you've clicked into.
 
-<CardGroup cols={3}>
-  <Card title="Sidebar" icon="bars">
-    Collapsible navigation organized into two sections: Planning and Operations
-  </Card>
-  <Card title="Top Bar" icon="window-maximize">
-    Company selector, search, notifications, and quick actions
-  </Card>
-  <Card title="Main Content" icon="square">
-    The primary workspace that changes based on the selected module
-  </Card>
-</CardGroup>
+### Sidebar groups
 
-### Sidebar Structure
-
-The sidebar is organized into two main categories:
+The sidebar items you see depend on which integrations are connected. Anything marked **(integration-gated)** below only appears once the relevant integration is active.
 
 **Planning**
-- **Company Overview** - Dashboard with company health metrics, compliance status, and upcoming items
-- **Surveys** - Client satisfaction surveys and feedback collection
-- **Goals** - Strategic objectives and action items derived from surveys and planning
-- **Planner** - Timeline view of IT roadmap items, projects, and device refresh cycles
-- **Budgets** - Financial planning and budget tracking for client projects
+
+- Overview
+- Dashboards (integration-gated: PSA)
+- Surveys
+- Goals
+- Planner
+- Budgets
+- Calendar
 
 **Operations**
-- **Calendar** - Meeting scheduling, QBR planning, and calendar management
-- **Microsoft 365** - M365 security scores and compliance (requires M365 integration)
-- **Tickets** - Service desk tickets and requests (requires PSA integration)
-- **Compliance** - Compliance frameworks, policies, and tracking
-- **Training** - Security awareness training and course management
-- **Devices** - Asset management and device inventory
-- **External Resources** - Links to external tools and resources
-- **Reporting** - Reports and analytics generation
-- **Settings** - User preferences, integrations, and configuration
 
-<Tip>
-Modules requiring integrations (Microsoft 365, Tickets) only appear after the relevant integrations are configured.
-</Tip>
+- Tickets (integration-gated: PSA)
+- Training
+- Projects (integration-gated: PSA)
+- Compliance
+- Documentation (integration-gated: Hudu, IT Glue, or Liongard)
+- Invoices (integration-gated: ConnectWise, Autotask, or HaloPSA)
+- Storefront (integration-gated: Pax8)
+- Quotes (integration-gated: Quoter)
+- Reports
 
-## Your First Tasks
+**Protection**
 
-### 1. Review the Company Overview
+- Microsoft 365 (integration-gated: M365)
+- Devices
+- Security (integration-gated: Cork or Acronis)
+- Backup (integration-gated: Cove, NinjaOne, or Acronis)
 
-Start by visiting **Company Overview** to get a snapshot of:
-- Compliance status and scores
-- Recent activity and issues
-- Upcoming planner items
-- Key health metrics
+**MSP Tools** (visible to your internal MSP staff only, not to client users)
 
-### 2. Explore the Planner
+- Client Health
+- Tool Stack
+- Financial Reporting
+- Emergency Broadcast
+- Ticket Trends (integration-gated: PSA)
 
-Navigate to **Planner** to see the IT roadmap:
-- Upcoming projects and tasks
-- Device refresh schedules
-- Milestone tracking
-- Timeline visualization
+**Settings** is pinned at the bottom of the sidebar and opens a settings drawer with nested navigation.
 
-Use the view controls to switch between Monthly, Quarterly, and Yearly views. You can also adjust the display density for more or less detail.
+### The company selector
 
-### 3. Configure Settings
+The selector in the top bar controls scope for everything you see.
 
-Click **Settings** in the sidebar to access the settings drawer where you can:
-- Update your user profile and avatar
-- Configure notification preferences
-- Set up integrations (requires appropriate permissions)
-- Customize your experience
-
-## Key Features
-
-### Company Context
+- **Global view.** All companies you have access to. Use it to scan across your book.
+- **Single company.** Pick one client; every page filters to them.
+- **Parent mode** (parent-company users only). The parent and its children together.
 
 <Warning>
-Always verify you have the correct company selected before making changes. The company selector in the top bar determines which client's data you're viewing and editing.
+Always check the company selector before you make changes. The selector decides which client's data your action lands on.
 </Warning>
 
-### Global vs Company View
+## Your first 30 minutes
 
-Many modules offer a "Global" view toggle that lets you see data across all companies at once. This is useful for:
-- Identifying trends across your client base
-- Finding items that need attention
-- Generating cross-company reports
+1. **Run the [Onboarding Wizard](/user-guides/getting-started/onboarding/index).** It pops up bottom-right on first sign-in. Set tenant details, branding, and tenant roles before anything else.
+2. **Connect your PSA and RMM** in the wizard's integration steps. Tickets, Projects, Dashboards, Invoices, and Ticket Trends only appear once a PSA is active.
+3. **Pick a pilot client** in the company selector and visit **Overview** to see what loaded. From there walk through Planner, Compliance, and Reports to see how the data lines up.
+4. **Read the [Setup Playbook](/user-guides/getting-started/onboarding/index#setup-playbook).** It's the recommended order to take a real client from kickoff survey to first QBR.
 
-### Filtering and Search
+## Keyboard shortcuts
 
-Most modules include powerful filtering capabilities:
-- Click the filter icon to access filter options
-- Use search bars for quick text searches
-- Filters persist within your session
+| Action | Windows / Linux | Mac |
+|--------|-----------------|-----|
+| Toggle sidebar | `Ctrl+B` | `Cmd+B` |
+| Save in forms | `Ctrl+S` | `Cmd+S` |
+| Submit form | `Ctrl+Enter` | `Cmd+Enter` |
+| Cancel / close dialog | `Esc` | `Esc` |
 
-### AI-Powered Features
+Full list: [Keyboard Shortcuts](/user-guides/getting-started/keyboard-shortcuts).
 
-<Info>
-Look for AI-powered features throughout the platform, including intelligent recommendations in the Planner and Compliance modules.
-</Info>
+## Common workflows by role
 
-## Common Workflows
+**vCIO / Account Manager.** Live in **Planner**, **Goals**, **Budgets**, and **Calendar**. The Planner is where you build the multi-year client roadmap; Goals capture intent from surveys; Budgets roll planner items into spend forecasts; Calendar runs the QBR meeting.
 
-### For Account Managers
+**Service Manager / Owner.** Live in **MSP Tools**: Client Health for portfolio-wide signals, Ticket Trends for week-over-week ticket motion, Financial Reporting for margin and seat pricing.
 
-1. **Client Preparation**
-   - Review Company Overview before client meetings
-   - Check survey results and satisfaction scores
-   - Review goals and their progress
+**Compliance / Security Lead.** Compliance for framework scoring; Security and Backup for posture data flowing in from Cork, Acronis, Cove, or NinjaOne.
 
-2. **QBR Planning**
-   - Use Calendar to schedule quarterly business reviews
-   - Generate reports for meeting presentations
-   - Track action items in Goals
+**Tenant Admin.** Settings drawer for tenant configuration, integrations, users, roles, and automation rules.
 
-### For Technical Staff
+## Where to go next
 
-1. **Daily Operations**
-   - Check assigned planner items
-   - Review compliance status and alerts
-   - Monitor device inventory
-
-2. **Client Work**
-   - Access client-specific compliance requirements
-   - Generate technical reports
-   - Update device information
-
-### For Team Leads & Managers
-
-1. **Platform Setup**
-   - Configure user accounts and permissions
-   - Set up PSA and M365 integrations
-   - Manage company settings and branding
-
-2. **Ongoing Management**
-   - Monitor integration health
-   - Review team activity
-   - Manage training assignments
-
-## Keyboard Shortcuts
-
-Speed up your workflow with these shortcuts:
-
-| Action | Windows/Linux | Mac |
-|--------|--------------|-----|
-| Toggle Sidebar | `Ctrl+B` | `Cmd+B` |
-| Save (in forms) | `Ctrl+S` | `Cmd+S` |
-| Submit Form | `Ctrl+Enter` | `Cmd+Enter` |
-| Cancel/Close | `Esc` | `Esc` |
-
-For more shortcuts, see the [Keyboard Shortcuts Guide](/user-guides/getting-started/keyboard-shortcuts).
-
-## Getting Help
-
-### In-Platform Resources
-
-- Hover over elements for helpful tooltips
-- Check the Help & Support link in the user menu
-- Contact support for access issues
-
-### Documentation
-
-<CardGroup cols={2}>
-  <Card title="User Guides" icon="book" href="/user-guides/getting-started/index">
-    Detailed guides for each module
-  </Card>
-  <Card title="Onboarding Checklist" icon="list-check" href="/user-guides/getting-started/Onboarding-checklist">
-    Step-by-step setup checklist
-  </Card>
-</CardGroup>
-
-## Next Steps
-
-Now that you're oriented with MSPortal.ai:
-
-1. **Complete the Onboarding Checklist** - Follow the [Onboarding Checklist](/user-guides/getting-started/Onboarding-checklist) for a structured setup process
-2. **Explore Each Module** - Visit the modules relevant to your role
-3. **Set Up Integrations** - Connect your PSA and Microsoft 365 (requires appropriate permissions)
-4. **Create Your First Items** - Add goals, planner items, or compliance checks
-5. **Generate a Report** - Try creating your first client report
-
-## Quick Tips
-
-<AccordionGroup>
-  <Accordion title="Use Global View for Overview">
-    Toggle to global view in Company Overview to see metrics across all companies at once - great for identifying which clients need attention.
-  </Accordion>
-  <Accordion title="Leverage Templates">
-    Use templates in Surveys, Reports, and Tickets to save time and ensure consistency across clients.
-  </Accordion>
-  <Accordion title="Schedule Automated Reports">
-    Set up automated report generation and email distribution to keep clients informed without manual effort.
-  </Accordion>
-  <Accordion title="Keyboard Navigation">
-    Use `Ctrl+B` / `Cmd+B` to quickly toggle the sidebar when you need more screen space.
-  </Accordion>
-</AccordionGroup>
-
-## Ready for More?
+- [Data flow](/user-guides/getting-started/data-flow). The architecture map: how integrations and assessments become goals, planner items, budgets, meetings, and reports.
+- [Onboarding Wizard](/user-guides/getting-started/onboarding/index). Step-by-step setup, plus the Setup Playbook for the first real client.
+- [Universal search](/user-guides/getting-started/universal-search). The fastest way to jump anywhere.
+- [Hide items from clients](/user-guides/getting-started/hiding-items-from-clients). Tighten what client-portal users see before you invite them.
 
 <Note>
-This quick start covered the essentials. For detailed information about specific modules, explore our comprehensive [User Guides](/user-guides/getting-started/index) or dive into individual module documentation.
+Modules requiring an integration only show up once that integration is connected. If you don't see Tickets, Projects, or Microsoft 365 yet, that's why; finish the wizard's integration steps and they'll appear.
 </Note>
