@@ -1,62 +1,77 @@
 ---
 title: "Branding"
 sidebarTitle: "3. Branding"
-description: "Upload your logo and customize the portal appearance"
+description: "Set the brand color, upload logos for light and dark mode, the small icon, the favicon, and the reporting logo."
 icon: "palette"
 ---
 
-The Branding step lets you customize MSPortal with your company's visual identity. Your logo and branding appear throughout the portal and in client-facing reports.
+Branding sets your colors and logos once. They flow into the sidebar, buttons, links, focus rings, the client portal, the favicon, and any PDF reports MSPortal generates.
 
-## What You'll Configure
+Open it from the wizard, or from **Settings &rarr; Tenant &rarr; Branding**.
 
-- **Primary Logo** - Your main company logo (used in the sidebar and reports)
-- **Small Logo** - A compact version for smaller spaces
-- **Light/Dark Variants** - Logo versions optimized for different backgrounds
-- **Favicon** - The icon that appears in browser tabs
-- **Reporting Logo** - A specific logo for generated reports
+## What you can set
 
-## Steps to Complete
+The page has five tabs.
 
-<Steps>
-  <Step title="Navigate to Branding Settings">
-    Click **Go to Settings** in the onboarding wizard, or go to **Settings > Tenant** and click the **Branding** tab.
-  </Step>
-  <Step title="Upload Your Primary Logo">
-    Click the upload area and select your company logo. For best results, use a PNG or SVG file with a transparent background.
-  </Step>
-  <Step title="Add Logo Variants (Optional)">
-    Upload light and dark versions of your logo if you have them. These ensure your logo looks good regardless of the user's theme preference.
-  </Step>
-  <Step title="Upload a Favicon (Optional)">
-    Add a small icon (typically 32x32 or 16x16 pixels) that appears in browser tabs.
-  </Step>
-  <Step title="Save Changes">
-    Click **Save Changes** to apply your branding.
-  </Step>
-</Steps>
+### Colors
 
-## Logo Recommendations
+A single **Primary brand color** picker (hex input or color wheel). MSPortal generates the full 12-step color scale from this one value, including the dark-mode variant. The color drives:
 
-<CardGroup cols={2}>
-  <Card title="Primary Logo" icon="image">
-    **Recommended size:** 200x60 pixels or larger
-    **Format:** PNG or SVG with transparent background
-  </Card>
-  <Card title="Small Logo" icon="minimize">
-    **Recommended size:** 40x40 pixels
-    **Format:** Square PNG or SVG
-  </Card>
-</CardGroup>
+- Primary and secondary buttons
+- Links
+- Active sidebar item
+- Focus rings and accent badges
 
-## Auto-Completion
+The live preview to the right shows the desktop view (light and dark side by side) and a mobile view, so you can see a button, a badge, an active sidebar item, and a link before saving.
 
-This step is **automatically marked as complete** when you have:
-- Uploaded at least one logo (primary logo)
+Click **Save color** when you're happy with it. The button stays disabled until the value is dirty and valid.
 
-<Note>
-  Your logo appears in client-facing areas of the portal. Make sure to use a high-quality image that represents your brand well.
-</Note>
+### Light mode
 
-## Related Documentation
+Two uploads, each with an in-browser crop dialog:
 
-- [Tenant Settings](/user-guides/settings/tenant) - Full tenant settings reference
+- **Primary logo** &ndash; horizontal logo for the expanded sidebar. Recommended 140&times;32.
+- **Small icon** &ndash; square mark for the collapsed sidebar. Recommended 32&times;32.
+
+### Dark mode
+
+Same two uploads as Light mode, but the dark variants. If you don't upload a dark version, MSPortal falls back to the light one.
+
+### Favicon
+
+The icon that appears in the browser tab. Recommended 32&times;32. PNG or ICO only. No crop dialog.
+
+### Reports &amp; Certs
+
+The logo MSPortal embeds on generated PDF reports and compliance certificates. Flexible dimensions; no crop dialog.
+
+## File limits
+
+| Asset | Formats | Max size |
+|-------|---------|----------|
+| Primary logo, small icon, reporting logo | PNG, JPG, SVG | 1.5 MB |
+| Favicon | PNG, ICO | 256 KB |
+
+If you exceed the limit the upload is rejected with an error.
+
+## Save behavior
+
+- **Color**: manual save via the **Save color** button.
+- **Logos and favicon**: each upload auto-saves the moment the crop dialog closes (or, for the favicon and reporting logo, the moment the file is selected). You don't need a separate save click.
+
+## When the wizard step marks complete
+
+The wizard ticks this step off as soon as you have a primary logo uploaded. Setting only the color is not enough; the auto-detection looks for a logo before it considers the step done.
+
+## Tips
+
+- Use SVG for the primary logo if you have one; it scales cleanly into the sidebar at any density.
+- The crop dialog is mandatory for the primary and small logos. You'll always end up with the recommended aspect ratio, so pick a source image with some breathing room around the wordmark to avoid clipping it.
+- Test the dark variant. If your logo has a dark background or thin black strokes, it will disappear against the dark sidebar; upload a contrasting version under the **Dark mode** tab.
+- The brand color is per-tenant and applies to every user in your tenant. There's no per-user override.
+
+## Related
+
+- [Tenant Settings](/user-guides/settings/tenant) &ndash; the rest of the tenant configuration page.
+- [AI Settings](/user-guides/getting-started/onboarding/ai-settings) &ndash; the previous wizard step.
+- [Tenant Roles](/user-guides/getting-started/onboarding/tenant-roles) &ndash; the next wizard step.
