@@ -147,6 +147,7 @@
                 "pages": [
                   "user-guides/microsoft-365/index",
                   "user-guides/microsoft-365/connecting-companies",
+                  "user-guides/microsoft-365/users",
                   "user-guides/microsoft-365/licenses",
                   "user-guides/microsoft-365/domains"
                 ]
@@ -352,6 +353,7 @@
                   "user-guides/settings/tool-stack",
                   "user-guides/settings/financial-reporting",
                   "user-guides/settings/integrations",
+                  "user-guides/settings/integration-company-mapping",
                   "user-guides/settings/liongard-visibility",
                   {
                     "group": "Automation",

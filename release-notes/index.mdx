@@ -3,6 +3,139 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## May 1, 2026
+
+### Customer Satisfaction (CSAT)
+
+A full multi-campaign CSAT system, wired into your PSA's ticket-close email so every closed ticket can capture a rating in one click, and rolled up into reports, dashboards, and a public trust badge.
+
+**One-click PSA snippet.** Pick your PSA (ConnectWise, Halo, Autotask, Syncro, Kaseya, or "other") and MSPortal generates the exact HTML to drop into your ticket-close email template. The snippet supports 5- or 3-point scales rendered as faces, stars, thumbs, numeric, or even dogs, and uses your PSA's native merge fields so the rating arrives back already attached to the right ticket, company, and contact.
+
+**Multi-campaign.** Run a "support ticket close" campaign and a separate "project close" or "onboarding wrap-up" campaign side by side. Each campaign has its own name, scale, image style, follow-up question, and notification recipients. Responses are tagged to the campaign they came from so reports stay clean.
+
+**Public trust widget.** Each tenant gets a `/embed/csat/{slug}` page styled in your tenant brand color that shows your rolling 30-day, 90-day, 12-month, or all-time CSAT score and response count. Embed it as a badge on your marketing site to turn happy clients into social proof.
+
+**Dashboard rollup.** The Your Companies dashboard now has a Client Feedback widget that combines CSAT and NPS scores into a single tile with the most recent responses, so account managers see how clients are feeling without leaving the home page.
+
+**Reporting blocks.** Four new reporting blocks ship with the release: CSAT Overview (KPI tile), CSAT Trend (time series), CSAT by Company (ranked table with low-score counts), and Recent CSAT Feedback (verbatim comments). Drop them onto any client report or dashboard.
+
+**Low-score alerts.** Set a threshold (default: rating ≤ 2) and MSPortal emails the addresses you choose the moment a low score lands, with the rating, ticket reference, contact, and any free-text feedback inline.
+
+**Available in 14 languages** alongside the English source.
+
+[Documentation: Surveys](/user-guides/surveys)
+
+### Microsoft 365 Users
+
+A new page at **M365 → Users** brings every Microsoft 365 user across every connected tenant into one searchable list. See the user's company, office, department, job title, account type (member or guest), enabled/disabled state, and the friendly names of every license assigned, on one screen.
+
+- **Filter by company, office, department, or licenses**, with a range filter on license count for quick "who has more than three licenses" or "who has zero licenses" coverage reporting
+- **Per-license badges with hover-to-expand**: The first three license badges show inline. A "+N more" badge reveals the rest in a tooltip on hover or keyboard focus, so the table stays compact while the full picture is one second away
+- **Smart Type filter**: The Type dropdown only appears when your tenant actually has both Members and Guests. Single-type tenants no longer see a filter that returns nothing
+- **CSV export** of the full filtered list, including every license assignment for every user, gated by the manage M365 permission so it is safe to expose to senior techs
+
+### Quarterly Roadmap Reporting Block
+
+A new reporting block builds a quarterly roadmap directly from your planner items, grouped by fiscal year and quarter.
+
+- **Configurable columns**: Show recommendation, description, type, status, priority, and value, in any combination
+- **Filter by year, quarter, type, status, or priority**: Useful for splitting "this year's plan" from "completed work" or for excluding cancelled items
+- **Density controls**: Pick a text size (extra small, small, base, large) so the same block fits compact at 2x2 or full-detail at 4x8
+- **Pagination support**: For client-ready PDF exports, the block can be split across multiple pages with offset/limit settings
+
+### Users List Reporting Block
+
+A new reporting block lists every user across the tenant alongside the systems each one shows up in.
+
+- **Coverage at a glance**: Columns for Microsoft 365, PSA, and the MSPortal client portal so you can spot users who are missing from any of those systems
+- **Filter modes**: Show every user, only users with M365, only users with a PSA contact, only portal users, or only users with both M365 and a PSA contact, depending on the report you are building
+- **Active-only toggle**: Hide disabled or terminated users with one click, so coverage reports do not include people who have already left
+- **Per-column visibility**: Toggle each system column on or off so the same block doubles as a slim "who has portal access" list or a wide "full coverage matrix"
+
+### Unified Company Mapping
+
+A new page at **Settings → Integrations → Companies** brings every PSA and RMM company link into a single grid. Companies run down the rows, and every active integration (ConnectWise, Autotask, Halo, Syncro, ConnectWise Asio, NinjaOne, Addigy) gets its own column, so you can see which MSPortal company is linked to which external company across every tool you use, on one screen.
+
+- **Per-cell linking**: Each cell shows the integration companies currently linked to that MSPortal company, with controls to add another link, swap to a different one, or unlink without leaving the page
+- **Advanced Quick Match across every integration at once**: One button scans every active integration, proposes name-based matches for every unlinked integration company, and shows them in a single review dialog with confidence scores. Pick a confidence threshold with the slider (40-100%, default 70%), accept or reject each match individually, and apply the whole batch in one click. Replaces the old per-integration matching loop where you had to repeat the same workflow for every PSA, RMM, and Asio install
+- **Sticky company column**: The first column stays pinned as you scroll horizontally through provider columns, so you always know which company a row belongs to even with seven integrations connected
+- **Live refresh**: Linking, unlinking, or applying quick-match results refreshes the grid in place, no page reload needed
+
+### Unified Company Types (replaces Groups)
+
+Company **groups** and **types** were two separate features doing the same job: groups were created by hand inside MSPortal, types came in from your PSA, and neither talked to the other. This release merges them into one concept.
+
+- **One Types column on Settings → Companies, showing every type a company belongs to.** The previous version only showed the first PSA-synced type per company, which is why a company with seven types in ConnectWise looked like it had only one. Every type now appears as a badge.
+- **Manual types and PSA-synced types live side by side.** PSA-synced types come in from ConnectWise, Halo, Autotask, ConnectWise Asio, and Syncro; manual types are created inline from the bulk-types dialog. Synced types render with a thin outline and a "Synced from {provider}" tooltip; manual types are filled.
+- **Many types per company.** Companies can be in any number of types simultaneously, manual or synced. The multiselect filter at the top of the Settings → Companies page filters across all of them.
+- **Bulk add, replace, or remove on selected companies.** "Manage Types" works on a single company or hundreds at once. Replace mode only affects manual types so it never strips a PSA-managed type out from under your sync.
+- **Ticket templates can be gated to specific types.** A template restricted to types like "Managed Services Client" or "App - 1Password" only shows up on the new ticket page when the selected company is in one of those types. Works whether the type was created manually or synced from your PSA.
+- **PSA syncs keep memberships current automatically.** Whenever ConnectWise (or any other PSA) updates a company's type list, MSPortal mirrors the change into the unified type table, including additions and removals, so template gating stays accurate without anyone touching it.
+- **Existing groups carry over.** Every group you previously created is migrated as a manual type with the same memberships and ticket-template wiring intact. Nothing to redo.
+
+### Restrict Ticket Templates by Type, Industry, or Market
+
+Ticket templates now support three independent restriction filters — company **type** (manual or PSA-synced), **industry**, and **market** — that combine. A template can be scoped to "Healthcare clients in the Northeast on the Managed Services plan", and it will only show up in the new-ticket picker when every selected filter matches the chosen company.
+
+- **Type filters use the unified type list**, so PSA-synced tags (ConnectWise types, Halo top-level categories, Autotask classifications, ConnectWise Asio types, Syncro categories) are first-class gating filters alongside any manual types you create. No more re-creating PSA tags inside MSPortal just so you can use them.
+- **Industry and market filters** read each company's profile and let you separate, say, retail-only templates from healthcare-only templates without having to maintain a separate type for each.
+- **Filters combine with AND**, so a template restricted by both type and industry only appears when the chosen company is in both. Leaving a filter empty means "any" for that axis.
+- **Existing template settings carry over.** Templates that were gated by groups before this release continue to work; the underlying gating moved onto the unified type system without anyone needing to re-pick anything.
+
+### Compliance Ticket Defaults
+
+Each PSA integration's settings now has a Compliance Ticket Defaults card. Pick the queue, priority, status, type, subtype, and category that compliance-driven tickets should land in, and every ticket created from a compliance check (manual or automation-driven) inherits those defaults. No more compliance tickets defaulting to whatever board the PSA picked.
+
+### Easier-to-Read Ticket Notes
+
+The ticket detail modal got three readability controls based on customer feedback that the activity feed was too small and the composer crowded the notes.
+
+- **Collapsible Add Note composer**: A chevron in the composer header tucks the entire reply form away when you just want to read history, freeing up the right pane for the activity feed.
+- **Fullscreen toggle**: A button in the modal header expands the dialog to fill the browser window, useful for long ticket histories or PSA-formatted notes with embedded images.
+- **A- / A+ font scaling**: Step the activity-feed font size from 87.5% up to 175% with a percentage badge that resets to 100% on click. Works on both plain-text and rich PSA notes, so headings, lists, and quoted replies scale together.
+
+All three preferences stick per browser, so once you set your preferred view it follows you across tickets and sessions.
+
+### Smart Review Links After Surveys
+
+NPS and CSAT thank-you pages now share a refreshed review-links panel that turns happy respondents into public reviews on the platforms you choose.
+
+- **Six platforms** to choose from: Google, Yelp, Facebook, Trustpilot, G2, and Capterra (up from three previously)
+- **Per-survey-type score threshold** controls when the panel appears, so promoters and high-CSAT respondents see the call to action while detractors stay on the internal feedback path
+
+### Per-Company Auto-Import Role
+
+The role assigned to PSA contacts during auto-sync can now be overridden per company. The Company Defaults manager has a new Default Import Role dropdown that overrides the integration-level default for that one company, and the UI shows which provider's default the company is currently inheriting.
+
+Combined with the existing contact-type to role mapping (ConnectWise, Autotask types 1-5, and Halo user types), this makes role assignment fully deterministic: a "Primary Contact" pseudo-type catches any PSA's primary flag, contact-type rules catch the typed cases, and per-company overrides catch the exceptions. The autotask, ConnectWise, and Halo user-sync background tasks use the same resolver, with shared unit tests.
+
+### Project Agenda View in Meetings
+
+Adding a project to a meeting agenda now surfaces a rich card with project health (on track, at risk, off track), milestone progress, the next client action, and the next milestone, plus links to status updates and notes. Both meeting builder and presentation modes use the same view, so the picture you saw while preparing matches what your client sees on screen.
+
+A new Add Item command palette in meeting agenda search lets you find tickets, projects, opportunities, training records, devices, budgets, and more from a single keyboard-driven prompt, replacing the per-type sub-menus.
+
+### NPS Low-Score Alerts
+
+A dedicated card on the NPS Defaults tab lets you opt in to email alerts the moment a low NPS response arrives. Configure the threshold and recipients separately from CSAT, so account managers see detractors immediately without waiting for the weekly digest.
+
+### Import Opportunities into Planner
+
+A new **Import Opportunities** dialog on the Planner page lets you pull existing PSA opportunities into MSPortal as planner items in one click — no more re-entering deals you already track in your PSA.
+
+- **Search across every connected PSA at once** (Halo, ConnectWise, Autotask), filter by company, and multi-select the opportunities you want to track. Already-imported opportunities are flagged in the dialog so you cannot double-add the same deal.
+- **PSA opportunity sync auto-imports matching opps** as planner items when an integration has auto-import enabled. Existing PSA-managed planner items are kept in sync (title, description, due date, estimated value) on every sync, so a renamed opportunity in your PSA shows up renamed in MSPortal without anyone touching it.
+- **One-way link (PSA -> planner)** with a unique constraint per opportunity so overlapping syncs cannot create duplicates. Sync runs cover Halo, ConnectWise, and Autotask.
+- **Quarterly Roadmap reporting block** groups planner items by fiscal year and quarter with configurable columns, density, and pagination — makes the imported opportunities client-presentable in one drop.
+
+### Improvements
+
+- **Halo opportunity errors surfaced in the UI**: When Halo rejects an opportunity (missing Category 4, required fields, validation errors), the planner now shows the real error message from Halo instead of failing silently. The Halo setup wizard also gained native pickers for all four opportunity category lists.
+- **Create Opportunity available everywhere it should be**: Companies that came into MSPortal through a PSA sync (rather than a direct integration setup) now show the Create Opportunity action correctly, the option is only offered for PSA providers (so RMM-only links no longer see it), and the opportunity search returns the right matches in a few edge cases where it previously came back empty.
+- **Surveys settings**: Survey wizard's Create Survey step gained richer schedule and audience options, and the wizard's settings panel was reorganized so CSAT, NPS, and survey defaults each get a dedicated tab.
+- **Compliance**: The Create Ticket modal in the compliance flow now respects the new compliance ticket defaults so the PSA fields are pre-filled for the technician.
+- **Calendar**: Meeting agenda's project view replaces a static link with a live data card; opening a project agenda item no longer requires navigating away from the meeting.
+
 ## April 24, 2026
 
 ### Automation Updates

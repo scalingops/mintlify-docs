@@ -1,0 +1,146 @@
+---
+title: Integration Company Mapping
+description: Link MSPortal companies to the matching companies in every connected PSA, RMM, documentation, and security integration from one grid
+icon: diagram-project
+---
+
+The **Settings → Integrations → Companies** page is a single grid that shows every MSPortal company on the rows and every active integration on the columns. Each cell shows the integration company currently linked, with controls to swap, unlink, or add a new link without leaving the page.
+
+This replaces the old per-integration mapping workflow where you had to repeat the same drill on each PSA, RMM, and documentation integration to keep client lists aligned across systems.
+
+## Accessing the Page
+
+1. Click **Settings** in the sidebar
+2. Open the **Integrations** section
+3. Select **Companies**
+
+The page is available once at least one integration has been connected. Each connected integration adds its own column to the grid; disconnected or paused integrations still appear so existing mappings stay visible while you reconnect.
+
+## Page Layout
+
+The grid follows a standard table shape:
+
+| Element | Description |
+|---------|-------------|
+| **Sticky Company column** | The first column shows the MSPortal company name. It stays pinned as you scroll horizontally so you always know which row you are working with |
+| **Provider columns** | One column per active integration (ConnectWise, Autotask, Halo, Syncro, ConnectWise Asio, NinjaOne, Addigy, Cove, Acronis, Datto RMM, Hudu, IT Glue, Cork, Pax8). Only providers your tenant has actually connected appear |
+| **Cells** | Each cell shows the integration company linked to the MSPortal company in that row, or a blank cell if no link exists. Click a cell to add, swap, or unlink |
+| **Header tools** | Search, company count, and the **Missing values** filter live above the table |
+
+<Note>
+Tenants without a particular integration (for example, no Hudu) simply do not see that column. Adding a new integration adds its column to the grid the next time the page loads.
+</Note>
+
+## Linking a Company
+
+<Steps>
+  <Step title="Open the Cell">
+    Click the cell where the MSPortal company row meets the integration column you want to link.
+  </Step>
+  <Step title="Pick the Integration Company">
+    A popover opens with a search box and the integration's company list. Type to filter, then click the company you want to link to.
+  </Step>
+  <Step title="Confirm">
+    The link is saved immediately and the cell updates with the integration company name.
+  </Step>
+</Steps>
+
+To swap an existing link to a different integration company, click the cell and pick a different company from the list. To remove a link entirely, click the cell and choose **Unlink**.
+
+<Tip>
+Every provider on the page is writable. The same dispatcher behind each cell calls the same link, unlink, and quick-match action your provider's setup wizard already uses, so writes are consistent whether you make them on this page or in the per-provider wizard.
+</Tip>
+
+## Advanced Quick Match
+
+**Advanced Quick Match** scans every active integration in one pass, proposes name-based matches for every unlinked integration company, and lets you accept or reject the whole batch in a single review.
+
+<Steps>
+  <Step title="Click Advanced Quick Match">
+    Click the **Advanced Quick Match** button above the grid.
+  </Step>
+  <Step title="Set the Confidence Threshold">
+    Drag the slider to set the minimum match confidence (40 to 100 percent, default 70 percent). Higher thresholds yield fewer but more reliable suggestions; lower thresholds catch fuzzier matches at the cost of more false positives to review.
+  </Step>
+  <Step title="Review Suggestions">
+    The dialog lists every proposed match with the integration name, the suggested MSPortal company, and the confidence score. Use the search bar to filter by integration name, integration subtitle, MSPortal company name, or company subtitle.
+  </Step>
+  <Step title="Accept or Reject Each Match">
+    Tick the matches you want to accept and untick any that look wrong. Use **Select All** or **Clear All** to flip the visible subset (when a search is active, the buttons act on the filtered rows only).
+  </Step>
+  <Step title="Apply">
+    Click **Apply** to write every accepted match in one operation. The grid refreshes in place.
+  </Step>
+</Steps>
+
+<Info>
+Quick Match preserves the per-provider scoring tweaks each integration's wizard already uses (for example Hudu and IT Glue cross-reference PSA IDs, ConnectWise filters by active flag), so the suggestions match what each provider's own dialog would have shown.
+</Info>
+
+## Search and Filter
+
+The header above the grid offers two ways to narrow the table:
+
+- **Search** filters companies by name. Combine with the column filters built into the table to drill down faster.
+- **Missing values** dropdown filters to companies missing any link or missing a link for a specific provider. Useful for "show me every company that does not have a Cove backup link yet" coverage reports.
+
+<Tip>
+Use the **Missing values** filter together with **Advanced Quick Match** to find companies without coverage on a specific provider, then run Quick Match scoped to that provider only.
+</Tip>
+
+## Company Selector and Scope
+
+The page respects the global Company Selector in the top bar:
+
+- **Global view** (no specific company selected) shows every company in the tenant. The Company column collapses out of view since each row already represents one company.
+- **Single company view** narrows the grid to one row, making it easier to review every integration link for one client at a time.
+- **Assigned scope** narrows to the companies the selector is filtered to.
+
+Switching the company selector refreshes the grid in place.
+
+## Read-Only vs Writable Providers
+
+Every provider on this page is writable, but a few have caveats worth knowing:
+
+| Provider | Writable here | Notes |
+|----------|---------------|-------|
+| ConnectWise | Yes | Full link, unlink, quick-match |
+| Autotask | Yes | Full link, unlink, quick-match |
+| Halo PSA | Yes | Full link, unlink, quick-match |
+| Syncro | Yes | Full link, unlink, quick-match |
+| ConnectWise Asio | Yes | Full link, unlink, quick-match |
+| NinjaOne | Yes | Full link, unlink, quick-match |
+| Addigy | Yes | Full link, unlink, quick-match |
+| Cove Backup | Yes | Full link, unlink, quick-match |
+| Acronis | Yes | Full link, unlink, quick-match |
+| Datto RMM | Yes | Saves through the same flow the Datto site mapping uses |
+| Hudu | Yes | Saves through the Hudu organization mapping flow |
+| IT Glue | Yes | Saves through the IT Glue organization mapping flow |
+| Cork | Yes | Saves through the Cork client mapping flow |
+| Pax8 | Yes | Saves through the Pax8 link/unlink flow |
+
+## When to Use This Page vs Setup Wizards
+
+| Scenario | Use this page | Use the setup wizard |
+|----------|---------------|----------------------|
+| Reviewing coverage across every integration | Yes | No |
+| Mapping a handful of newly imported companies in a single integration | Yes (Quick Match scoped to that provider) | Either |
+| First-time setup of a new integration's company import | Either | Yes (setup wizard walks you through other configuration too) |
+| Bulk auto-matching across every connected tool at once | Yes (Advanced Quick Match) | No |
+| Fixing a single mismatched company link | Yes | Either |
+
+<Note>
+Both flows write the same fields the same way, so changes made on this page show up in the per-integration wizards and vice versa.
+</Note>
+
+## Required Permissions
+
+To open this page, your tenant role needs the **Read** permission for Settings → Integrations. To create or remove links, you need the **Write** permission. Quick Match apply requires the same Write permission as cell-level linking.
+
+## Related Resources
+
+- [Integrations Overview](/user-guides/integrations/index)
+- [Import Companies](/user-guides/integrations/import-companies)
+- [Companies Settings](/user-guides/settings/companies)
+- [ConnectWise Integration](/user-guides/integrations/enable-connectwise-integration)
+- [Halo PSA Integration](/user-guides/integrations/enable-halo-integration)

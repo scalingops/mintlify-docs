@@ -1,0 +1,121 @@
+---
+title: Microsoft 365 Users
+description: View every Microsoft 365 user across every connected tenant in one searchable list, with company, license, and account details
+icon: users
+---
+
+The **Microsoft 365 → Users** page lists every user across every connected M365 tenant on a single searchable table. See the user's company, office, department, job title, account type, enabled state, and the friendly names of every license assigned, all without exporting.
+
+## Accessing the Users Page
+
+1. Click **Microsoft 365** in the sidebar
+2. Open the **Users** tab in the page header (between **Licenses** and **Domains**)
+
+The tab only appears for tenants with the M365 integration connected and at least one synced user.
+
+## What the Table Shows
+
+Each row represents one Microsoft 365 user:
+
+| Column | Description |
+|--------|-------------|
+| **Display Name** | The user's full name as set in Microsoft 365 |
+| **Email** | Primary email address |
+| **Company** | The MSPortal company the user belongs to (resolved from the M365 tenant link) |
+| **Office** | Office location from the M365 user profile |
+| **Department** | Department from the M365 user profile |
+| **Job Title** | Job title from the M365 user profile |
+| **Type** | Member or Guest |
+| **Status** | Enabled or Disabled |
+| **Licenses** | Friendly names of every license SKU assigned to the user (see [License Badges](#license-badges) below) |
+
+<Note>
+The table opens with the **Status = Enabled** filter applied so disabled accounts stay out of the way. Clear the filter to show every user, or pick **Disabled** to audit account hygiene.
+</Note>
+
+## License Badges
+
+The Licenses column shows up to three license badges inline. When a user has more than three licenses, a **+N more** badge appears at the end.
+
+- **Hover or keyboard-focus the +N more badge** and a tooltip lists every additional license assigned to that user
+- **Tab to the badge** for keyboard-only access; the same tooltip opens on focus
+- **CSV export** always includes every license, even when the table only shows the first three
+
+<Tip>
+Friendly license names come from Microsoft's published SKU mapping (for example, "Microsoft 365 Business Premium" instead of `O365_BUSINESS_PREMIUM`), so the column is readable for non-technical reviewers.
+</Tip>
+
+## Filtering
+
+The table supports server-side filtering on every key field:
+
+| Filter | Type | Notes |
+|--------|------|-------|
+| **Search** | Free text | Matches display name, email, and job title |
+| **Company** | Multiselect | Lists every company that has at least one M365 user |
+| **Office** | Multiselect | Lists offices in use across the tenant |
+| **Department** | Multiselect | Lists departments in use across the tenant |
+| **Type** | Single select | Member or Guest. **Hidden** when the tenant has only one type, so customers with zero Guests do not see a filter that returns nothing |
+| **Status** | Single select | Enabled or Disabled |
+| **Licenses** | Multiselect | Filter to users assigned a specific license SKU |
+| **License count** | Range | Useful for "who has more than three licenses" or "who has zero licenses" coverage reporting |
+
+Filters compose. Combine **Company = Acme** with **Licenses = Microsoft 365 Business Premium** and **Status = Disabled** to find disabled Acme users still consuming a Business Premium license.
+
+## Smart Type Filter
+
+The Type filter dropdown only appears when your tenant actually has both Members and Guests. If every M365 user in your tenant is a Member, the filter is hidden. This avoids the common confusion where a Guest filter pill returned zero rows because no Guests existed.
+
+## CSV Export
+
+Click **Export CSV** above the table to download the current filtered view as a CSV. The export:
+
+- Respects every active filter and the current sort order
+- Includes every license assignment per user (not just the first three)
+- Names the file using the active company filter, the date, and a row count for traceability
+
+<Note>
+CSV export is gated by the **manage M365** permission so it is safe to expose to senior techs. Users without the permission see the table but no Export button.
+</Note>
+
+## Company Selector and Scope
+
+The Users page respects the global Company Selector in the top bar:
+
+- **Global view** shows every user across every connected M365 tenant
+- **Single company view** narrows the table to the M365 users at that one company
+- **Assigned scope** narrows to the companies the selector is filtered to
+
+Switching the selector refreshes the table in place.
+
+## Common Use Cases
+
+<CardGroup cols={2}>
+  <Card title="License Reclamation" icon="recycle">
+    Filter by **Status = Disabled** and any license SKU to find disabled users still consuming licenses you can reclaim.
+  </Card>
+  <Card title="Coverage Audit" icon="user-check">
+    Filter by **Company** and **License count = 0** to find users at a managed client who have no M365 license assigned.
+  </Card>
+  <Card title="Guest Account Review" icon="user-clock">
+    Filter by **Type = Guest** for tenants that have any, then sort by Created date to spot stale external collaborators.
+  </Card>
+  <Card title="Department Reporting" icon="building">
+    Filter by **Department** and export to CSV for finance or HR reports on M365 spend by department.
+  </Card>
+</CardGroup>
+
+## Required Permissions
+
+| Permission | Capabilities |
+|------------|-------------|
+| **Read** (`read_m365`) | View the Users page and apply filters |
+| **Write** (`write_m365`) | Same as Read for this page; license modifications happen in the Licenses tab |
+| **Manage** (`manage_m365`) | All of the above plus CSV export |
+
+## Related Resources
+
+- [M365 Licenses](/user-guides/microsoft-365/licenses) - License usage and consumption monitoring
+- [M365 Domains](/user-guides/microsoft-365/domains) - Domain management
+- [M365 Secure Score](/user-guides/microsoft-365/index) - Security posture and recommendations
+- [Connecting Companies](/user-guides/microsoft-365/connecting-companies) - Linking MSPortal companies to M365 tenants

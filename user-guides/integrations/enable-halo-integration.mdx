@@ -248,15 +248,22 @@ Set up ticket status mapping and opportunity defaults.
 
 <Steps>
   <Step title="Configure Opportunity Defaults">
-    Set default values for opportunities created from MSPortal:
+    Set default values for opportunities created from MSPortal. Halo requires several fields on every opportunity, so configuring defaults here means the planner Create Opportunity action can post a complete opportunity to Halo without prompting for them every time.
 
     | Setting | Description |
     |---------|-------------|
-    | **Default Workflow** | The Halo workflow to use for new opportunities |
-    | **Default Conversion Probability** | Starting probability percentage for new opportunities |
+    | **Default Workflow** | The Halo workflow new opportunities are placed into |
+    | **Default Stage** | The starting stage within the chosen workflow |
+    | **Default Type** | Halo opportunity type assigned to new opportunities |
+    | **Default Conversion Probability** | Starting probability percentage |
+    | **Categories 1 - 4** | Halo's four required category fields, each picked from a native dropdown populated from your Halo instance |
+
+    <Tip>
+      All six pickers read directly from your Halo instance, so the values you see are the same ones a Halo agent would see in the native UI. Any new workflow, stage, type, or category you add in Halo appears here on the next sync.
+    </Tip>
 
     <Note>
-      Opportunity sync can be enabled or disabled in the Sync step. These settings only apply when opportunity sync is enabled.
+      Opportunity sync can be enabled or disabled in the Sync step. These settings only apply when opportunity sync is enabled. When the planner posts a new opportunity, real Halo errors (missing Category 4, validation failures, etc.) now surface in the planner UI instead of failing silently, so misconfigured defaults are easy to spot.
     </Note>
   </Step>
 
@@ -264,6 +271,18 @@ Set up ticket status mapping and opportunity defaults.
     Click **Next** to continue to the import step.
   </Step>
 </Steps>
+
+#### Auto-Import Opportunities (Optional)
+
+If you want Halo opportunities to auto-create planner items as new ones land in Halo, enable opportunity auto-import on the Opportunity Settings card. Two related controls scope which opportunities flow through:
+
+| Setting | Description |
+|---------|-------------|
+| **Enable opportunity auto-import** | Master toggle. When off, opportunities only come into the planner via the manual Import Opportunities dialog |
+| **Minimum value** | Skip opportunities below a dollar threshold (useful for filtering out noise from small stub deals) |
+| **Opportunity types to auto-import** | Multi-select list of Halo opportunity types. The picker is populated from the distinct `opp_type` values that have actually appeared in your Halo data, since Halo's `opptype` is free-text rather than a managed picklist |
+
+Once enabled, every Halo sync auto-creates planner items for new matching opportunities and keeps existing PSA-managed planner items in sync (title, description, due date, estimated value). See [Importing PSA Opportunities](/user-guides/planner/index#importing-psa-opportunities) in the Planner guide for the full sync behavior.
 
 ---
 

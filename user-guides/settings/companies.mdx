@@ -15,7 +15,7 @@ Companies Settings is the central hub for managing your client companies and the
 
 <CardGroup cols={2}>
   <Card title="Companies" icon="building">
-    Manage your client company list, details, integrations, and company groups.
+    Manage your client company list, details, integrations, and company types.
   </Card>
   <Card title="Users" icon="users">
     View and manage all company users across every company in one place.
@@ -44,7 +44,7 @@ Each company entry shows:
 | **Status** | Active or Inactive |
 | **Industry** | Business sector |
 | **Integrations** | Connected PSA/RMM badges (ConnectWise, Halo, Autotask, Syncro, Asio, Cove) |
-| **Groups** | Assigned company groups |
+| **Types** | Every type the company belongs to, manual and PSA-synced (see [Company Types](#company-types) below) |
 | **Training** | Premium or Standard training tier |
 | **M365** | Microsoft 365 connection status |
 | **Contact** | Primary contact name or email |
@@ -57,7 +57,7 @@ Use the built-in filters to narrow down companies:
 - **Status** - Active or Inactive
 - **Industry** - Business sector
 - **Integrations** - Filter by connected integration (multi-select)
-- **Groups** - Filter by company group (multi-select)
+- **Types** - Filter by one or more company types (multi-select). The picker lists every type in use across the tenant, both manual and PSA-synced
 
 ### Adding a New Company
 
@@ -90,7 +90,7 @@ Select multiple companies using the checkboxes to perform bulk operations:
 
 - **Assign Roles** - Set account manager or other staff roles for selected companies
 - **Set Parent Company** - Establish parent/child company relationships
-- **Set Company Groups** - Organize companies into groups
+- **Manage Types** - Add, replace, or remove types on the selected companies (see [Company Types](#company-types) below)
 - **Enable/Disable Premium Training** - Toggle Bigger Brains premium training access
 
 ### Per-Company Actions
@@ -100,8 +100,58 @@ Click the actions menu on any company row to:
 - **View Details & Users** - Open the company detail page
 - **Edit Company** - Update company information
 - **Create Location** - Add a physical location
+- **Manage Types** - Add or remove types on this single company
 - **Import Users** - Pull users from connected integrations
 - **Delete Company** - Remove the company (requires manage permission)
+
+### Company Types
+
+Company **Types** classify each company so reports, ticket templates, and bulk actions can target specific groups of clients. The Types column on the Companies tab shows every type a company belongs to as a badge stack.
+
+<Note>
+Types replace the older **Groups** feature. Any group you previously created carries over as a manual type with the same memberships and template wiring intact. The bulk action and row-level menu now read **Manage Types**.
+</Note>
+
+#### Manual vs PSA-Synced Types
+
+| Source | How it's created | Visual cue | Editable |
+|--------|------------------|------------|----------|
+| **Manual** | Created inside MSPortal from the bulk dialog or a row action | Filled badge | Yes |
+| **PSA-synced** | Imported from your PSA's company-type list (ConnectWise, Halo, Autotask, ConnectWise Asio, Syncro) | Outline badge with a "Synced from your PSA" tooltip naming the provider | Read-only here, managed in your PSA |
+
+Companies can hold any number of types simultaneously. A single company can be both a "Managed Services Client" (manual) and a "Production - High Priority" (PSA-synced) at the same time, and template gating, reports, and bulk actions all see both.
+
+#### Adding or Removing Types in Bulk
+
+<Steps>
+  <Step title="Select Companies">
+    Tick the checkboxes next to the companies you want to update. Use the search bar or column filters first to narrow the list.
+  </Step>
+  <Step title="Open Manage Types">
+    Click the **Manage Types** button in the bulk actions bar.
+  </Step>
+  <Step title="Pick a Mode">
+    - **Add** appends the selected types to each company's existing type list
+    - **Remove** strips the selected types from each company
+    - **Replace** replaces every manual type on each company with the selected list. PSA-synced types are never touched by Replace, so your sync still owns them
+  </Step>
+  <Step title="Pick or Create Types">
+    Choose existing types from the picker, or type a new name and click **Create** to add a new manual type inline.
+  </Step>
+  <Step title="Apply">
+    Click **Apply** to update every selected company in one operation.
+  </Step>
+</Steps>
+
+#### Filtering by Type
+
+Open the **Types** filter in the column header to filter the table to companies that belong to one or more types. The filter is multiselect, so picking three types shows companies that are in any of them.
+
+#### Why Types Matter
+
+- **Ticket templates can be gated by type.** A template for "Managed Services" only appears on the new ticket page when the selected company is in that type. See [Creating Ticket Templates](/user-guides/ticketing/how-to-create-a-ticket-template) for the gating dialog.
+- **PSA syncs keep memberships current automatically.** When ConnectWise (or any other PSA) adds, removes, or renames a company's type, MSPortal mirrors the change on the next sync, so reports and template gating stay accurate without anyone touching the settings page.
+- **Manual types live alongside synced types.** Use manual types for groupings your PSA does not track (for example "QBR Tier A", "Legacy On-Premise", or internal segmentation) without affecting the PSA-driven types.
 
 ---
 

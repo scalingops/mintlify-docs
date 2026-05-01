@@ -65,9 +65,11 @@ For NPS surveys, configure these additional options:
   Enable review prompts to encourage promoters (high scorers) to leave public reviews:
 
   1. Toggle **Enable Review Prompts**
-  2. Set the **Minimum Score** to show links (default: 9)
-  3. Add URLs for review platforms:
+  2. Set the **Minimum Score** to show links (default: 9 for NPS). The threshold is configured per survey type so promoters and high-CSAT respondents see the call to action while detractors stay on the internal feedback path
+  3. Add URLs for the public review platforms you want listed. MSPortal supports six platforms out of the box:
      - Google Reviews
+     - Yelp
+     - Facebook Reviews
      - Trustpilot
      - G2
      - Capterra
@@ -264,6 +266,35 @@ Settings that apply to new NPS surveys by default:
 - **Require Comment for Detractors**: Force feedback from low scorers (0-6)
 - **Default Follow-up Delay**: Hours before sending follow-up emails
 - **Default Thank You Message**: Standard completion message
+
+### NPS Low-Score Alerts
+
+A dedicated card on the NPS Defaults tab opts you in to email alerts the moment a low NPS response arrives, so account managers see detractors immediately without waiting for the weekly digest.
+
+<Steps>
+  <Step title="Enable Alerts">
+    Toggle **Enable Low-Score Alerts** on the NPS Defaults tab.
+  </Step>
+  <Step title="Set the Threshold">
+    Pick the score that triggers the alert (default: 6 or below, the standard NPS detractor band).
+  </Step>
+  <Step title="Choose Recipients">
+    Add email addresses that should receive each alert. Add as many as you need; alerts deliver to all of them on every qualifying response.
+  </Step>
+  <Step title="Save">
+    Click **Save**. The next NPS response at or below the threshold sends a notification email to every recipient.
+  </Step>
+</Steps>
+
+Each alert email includes:
+- The numeric score
+- The respondent's name, email, and company (when not anonymous)
+- The free-text comment, if the respondent left one
+- A direct link to the survey response in MSPortal
+
+<Note>
+NPS Low-Score Alerts are configured separately from any other survey alert mechanism. Recipients and threshold settings are independent so you can route NPS detractors to the account team without flooding the same inbox with other survey alerts.
+</Note>
 
 ### Default Review Platform Links
 

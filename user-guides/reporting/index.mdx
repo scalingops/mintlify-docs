@@ -140,6 +140,18 @@ Configure basic report information:
 | **Roadmap Timeline** | Visual timeline of planned items |
 | **Planner Table** | Table view of planner tasks |
 | **Planner Summary** | AI-generated executive summary |
+| **Quarterly Roadmap** | Planner items grouped by fiscal year and quarter, sized to fit any grid from 2x2 to 4x8 |
+
+#### Quarterly Roadmap
+
+A roadmap-style block that groups planner items by fiscal year and quarter, ready for QBR slides and client-facing PDFs.
+
+| Setting | Description |
+|---------|-------------|
+| **Columns** | Show recommendation, description, type, status, priority, and value, in any combination |
+| **Filters** | Filter by year, quarter, type, status, or priority. Useful for splitting "this year's plan" from "completed work", or excluding cancelled items |
+| **Density** | Pick a text size (extra small, small, base, or large) so the same block fits compact at 2x2 or full-detail at 4x8 |
+| **Pagination** | Split the block across multiple pages with offset and limit settings, useful for client-ready PDF exports of long roadmaps |
 
 ### Compliance Blocks
 
@@ -171,6 +183,22 @@ Configure basic report information:
 | **Device Warranties** | Warranty status summary |
 | **Device Inventory** | Device list and counts |
 | **Warranty Timeline** | Upcoming warranty expirations |
+
+### User Coverage Blocks
+
+| Block | Description |
+|-------|-------------|
+| **Users List** | Lists every user across the tenant alongside the systems each one shows up in (M365, PSA, MSPortal client portal) |
+
+#### Users List
+
+A coverage matrix that exposes which systems each user is present in. Useful for finding M365 licenses without a PSA contact, PSA contacts without portal access, or any other coverage gap.
+
+| Setting | Description |
+|---------|-------------|
+| **Filter mode** | Show every user, only users with M365, only users with a PSA contact, only portal users, or only users with both M365 and a PSA contact |
+| **Active-only toggle** | Hide disabled or terminated users with one click, so coverage reports don't include people who have already left |
+| **Column visibility** | Toggle each system column on or off so the same block doubles as a slim "who has portal access" list or a wide "full coverage matrix" |
 
 ## Working with Pages
 

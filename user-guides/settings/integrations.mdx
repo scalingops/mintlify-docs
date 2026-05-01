@@ -68,6 +68,42 @@ MSPortal.ai supports integration with major PSA platforms:
 - **Initial import** - Import existing records on first connect
 - **Selective sync** - Choose which record types to sync
 
+### Per-Company Auto-Import Role Override
+
+When PSA contacts are auto-imported, they are assigned a portal role from a fallback chain. You can override that role per company without touching the integration-wide default.
+
+**The fallback chain (highest to lowest priority):**
+
+1. **Per-company override**: a Default Import Role chosen on the Company Defaults manager for that company
+2. **Contact-type rule**: a role mapped from the contact's named type in the PSA (for example "Billing Contact", "Technical Contact", or any custom type your PSA exposes; Halo user types are mapped the same way)
+3. **Primary contact pseudo-type**: a role mapped from each PSA's primary-contact flag, applied when the contact is marked as the company's primary
+4. **Integration default**: the role chosen during integration setup
+
+To set the per-company override:
+
+<Steps>
+  <Step title="Open Company Settings">
+    Go to **Settings → Companies**, find the company you want to override, and open the actions menu on its row.
+  </Step>
+  <Step title="Open Company Defaults">
+    Click **Manage Defaults** to open the Company Defaults manager.
+  </Step>
+  <Step title="Pick a Default Import Role">
+    Find the **Default Import Role** dropdown. The label below it shows which provider's default the company is currently inheriting (e.g. "Inheriting from ConnectWise: Standard User"). Pick a different role to override that for this one company.
+  </Step>
+  <Step title="Save">
+    Click **Save**. The next sync that imports new contacts at this company uses the override role.
+  </Step>
+</Steps>
+
+<Note>
+The override only affects users imported automatically. Manually-created users are unaffected, and existing users keep whatever role was assigned when they were imported.
+</Note>
+
+### Unified Company Mapping
+
+Once you have at least one PSA or RMM connected, the **Settings → Integrations → Companies** page shows every MSPortal company on the rows and every active integration on the columns. Use it to link, unlink, and quick-match companies across every connected tool from one grid. See the [Integration Company Mapping](/user-guides/settings/integration-company-mapping) guide for the full workflow.
+
 ## Integration Status
 
 Each integration shows:

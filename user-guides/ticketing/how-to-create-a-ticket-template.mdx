@@ -109,6 +109,40 @@ When using company branches, click **Enable All Except Branched** to ensure comp
 Companies with branches are shown with an orange branch badge. These companies will use their branch version regardless of whether the parent template is enabled for them.
 </Note>
 
+### Company Gating (Types and Industries)
+
+For more flexible access control than per-company toggles, restrict a template to companies that match specific **types** or **industries**. Gating is checked everywhere a template is offered: the new ticket page, the AI ticket assistant, and the browser extension.
+
+<Steps>
+  <Step title="Open the Company Gating Dialog">
+    From the template editor, click **Manage Gating** in the Company Visibility section.
+  </Step>
+  <Step title="Pick Allowed Types">
+    Under the **Types** header, select one or more company types this template should be available for. The picker lists every type in your tenant, both manual and PSA-synced. Leave it empty if you don't want to gate by type.
+  </Step>
+  <Step title="Pick Allowed Industries">
+    Under the **Industries** header, select one or more company industries. The picker lists every distinct industry in use across your tenant (sourced from manual edits or PSA syncs).
+  </Step>
+  <Step title="Save">
+    Click **Save**. The template now appears only for companies that match the gating rules.
+  </Step>
+</Steps>
+
+**How Type and Industry Gating Combine:**
+
+- Types and industries are ANDed together. A template gated to type "Managed Services" AND industry "Healthcare" only shows for companies that are both
+- Within a single axis, the values are ORed. Picking three types means the template shows for any company in any of the three
+- Industry comparisons are case-insensitive, so PSA capitalization differences ("healthcare" vs "Healthcare") do not matter
+- A template with no gating rules behaves as before: visible to every company unless toggled off in per-company controls
+
+<Tip>
+Use **types** for service-tier gating ("Managed Services Client" only) and **industries** for compliance gating ("Healthcare" or "Financial Services" only). The two axes compose well: type gating handles your service contracts, industry gating handles regulatory variations.
+</Tip>
+
+<Warning>
+Gating is enforced everywhere the template is offered. If you remove a company from a gated type or change its industry, the template stops appearing for that company on the next page load. Existing tickets created from the template are not affected.
+</Warning>
+
 ### Company Branches
 
 Create company-specific versions of a template with customized fields and settings.

@@ -94,6 +94,50 @@ Planner items can be categorized by type:
 - Other
 - Custom types defined in settings
 
+## Importing PSA Opportunities
+
+The **Import Opportunities** dialog pulls existing PSA opportunities into MSPortal as planner items in one click, so you do not have to re-enter deals you already track in your PSA.
+
+<Warning>
+**Importing opportunities requires the Manage Planner permission.** Users with only Read or Write access to the Planner can view and edit existing items but cannot run the bulk import. The button is hidden when the permission is missing, and the server action rejects calls from users without it.
+</Warning>
+
+<Steps>
+  <Step title="Click Import Opportunities">
+    Click the **Import Opportunities** button in the planner toolbar. The button only appears when you have the **Manage Planner** permission AND at least one PSA with opportunities is connected (Halo, ConnectWise, or Autotask).
+  </Step>
+  <Step title="Search Across PSAs">
+    The dialog searches across every connected PSA at once (Halo, ConnectWise, and Autotask). Type to filter by name, or use the company filter to narrow to a single client's opportunities.
+  </Step>
+  <Step title="Multi-Select Opportunities">
+    Tick the opportunities you want to bring in. Already-imported opportunities are flagged in the dialog so you cannot accidentally add the same deal twice.
+  </Step>
+  <Step title="Import">
+    Click **Import**. MSPortal creates a planner item for each selected opportunity, populated with the title, description, due date, and estimated value pulled from the PSA.
+  </Step>
+</Steps>
+
+<Tip>
+Combine **Import Opportunities** with the **Quarterly Roadmap** reporting block to drop imported opportunities into a client-presentable QBR slide in seconds.
+</Tip>
+
+### Auto-Import on PSA Sync
+
+If your PSA integration has **opportunity auto-import** turned on, MSPortal automatically creates planner items as new opportunities show up in the PSA, so you never have to open the Import dialog manually. The auto-import path runs as a background sync task and is not gated by the user-level Manage Planner permission, since no individual user is making the request.
+
+- The link is one-way (PSA to planner) with a per-opportunity unique constraint, so overlapping syncs cannot create duplicates
+- On every sync, MSPortal keeps the linked planner item in sync with the PSA opportunity. Title, description, due date, and estimated value updates flow through automatically. A renamed opportunity in your PSA shows up renamed in MSPortal without anyone touching it
+- Sync runs cover Halo PSA, ConnectWise, and Autotask
+- An **Opportunity types to auto-import** filter on the integration's setup wizard lets you scope auto-import to specific opportunity types (for example "Managed Services Contract" only) so unrelated sales pipeline noise stays out of your planner
+
+<Note>
+Set up auto-import in **Settings → Integrations → [your PSA]** under the Opportunity Settings section. The toggle, minimum value, and type filter all save automatically.
+</Note>
+
+### Creating a New Opportunity
+
+You can also create a new PSA opportunity directly from a planner item. Open any planner item, and the **Create Opportunity** action posts a new opportunity to the PSA the company is linked to. The action is only offered for companies that are linked to a PSA (ConnectWise, Halo, or Autotask), since RMM-only links cannot host opportunities.
+
 ## Editing Planner Items
 
 Click on any planner item to open the edit dialog with full details.

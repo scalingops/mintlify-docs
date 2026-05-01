@@ -111,6 +111,42 @@ Statuses are typically organized by workflow stage:
 Restricting statuses affects all users. Ensure your team understands which statuses are available before making changes.
 </Warning>
 
+## Compliance Ticket Defaults
+
+Each PSA integration's settings tab has a **Compliance Ticket Defaults** card that controls which queue, priority, status, type, subtype, and category compliance-driven tickets land in. Tickets created from a compliance check (manually or by an automation rule) inherit these defaults, so compliance work no longer falls into whatever board your PSA picks at random.
+
+<Steps>
+  <Step title="Open the PSA Tab">
+    From **Settings → Tickets**, open the tab for your PSA (ConnectWise, Halo, Autotask, or Syncro).
+  </Step>
+  <Step title="Find the Compliance Ticket Defaults Card">
+    Scroll to the **Compliance Ticket Defaults** card. The fields available match what your PSA exposes for tickets.
+  </Step>
+  <Step title="Pick the Defaults">
+    Choose the queue or service board, priority, status, type, subtype, and category that compliance tickets should default to. Leave a field blank to fall back to the integration-wide default.
+  </Step>
+  <Step title="Save">
+    Click **Save**. The next compliance ticket created in your tenant inherits the new defaults.
+  </Step>
+</Steps>
+
+### Halo Required Fields
+
+Halo PSA requires **category, impact, and urgency** to create a ticket. The Compliance Ticket Defaults card on the Halo tab persists those three values alongside the others so your defaults stick across saves and the create flow does not silently fall back to Halo's API defaults.
+
+### Coverage by Provider
+
+| Provider | Queue / Board | Priority | Status | Type | Subtype | Category | Impact | Urgency |
+|----------|---------------|----------|--------|------|---------|----------|--------|---------|
+| ConnectWise | Service Board | Yes | Yes | Yes | Yes | - | - | - |
+| Autotask | Queue | Yes | Yes | Yes | Yes | Yes | - | - |
+| Halo PSA | Team / Queue | Yes | Yes | Yes | - | Yes | Yes | Yes |
+| Syncro | - | Yes | Yes | Yes | - | - | - | - |
+
+<Tip>
+The same card pattern appears as a **Ticket Defaults** card for non-compliance tickets right above it. Configure both if you want compliance tickets routed differently from the rest of your service work.
+</Tip>
+
 ## PSA Integration Notes
 
 Ticket settings work in conjunction with your PSA integration:
