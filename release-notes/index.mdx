@@ -17,43 +17,6 @@ Ticket templates can now embed another template inside a field, so a single pare
 
 [Documentation: How to create a ticket template](/user-guides/ticketing/how-to-create-a-ticket-template)
 
-### Budget Forecast Now Pulls Real Numbers from Planner
-
-The "Sync from planner" button on **Budgets, Forecast** now populates the forecast table from your planner items, and recurring items project correctly through the years ahead.
-
-- **Monthly costs annualize correctly**: A planner item priced at \$200 per month shows as \$2,400 in each forecast year. Annual recurring items contribute their value once per year. One-time costs appear only in the year they are scheduled.
-- **Recurring items project across the whole forecast horizon**: A subscription that started in 2025 appears in 2026, 2027, and 2028 if those years are in your forecast window.
-- **Mixed cost lines work end-to-end**: A planner item with both a one-time setup fee and a monthly recurring cost (for example, \$5,000 setup + \$200/month) contributes both lines correctly. The setup lands in the year of the due date, and the monthly line annualizes and repeats through the forecast.
-
-### Add to Budget Preserves Recurrence
-
-The "Add to budget" button on the planner sidebar inside the budget editor now keeps the planner item's recurrence (Monthly, Annual, or One-Time) instead of always defaulting to One-Time. A \$200/month subscription on the planner page becomes a Monthly line item with an annualized cost of \$2,400 in the budget, exactly as you would expect. Items with multiple cost lines (one-time plus recurring) create one budget line per cost, each labeled with its recurrence.
-
-[Documentation: Budgets](/user-guides/budgets#budget-forecast)
-
-### Microsoft 365 License Groups
-
-A new **License Groups** tab on **M365, Licenses** groups users by the exact set of license SKUs they hold and shows a User Count per combination, so you can answer questions like "how many users have Power Apps + Logic Flows + Fabric Free?" at a glance.
-
-- **Per-group drill-down**: Each row's **View Users** button opens a side sheet listing every user with that exact license set, including name, email, company, and disabled state
-- **CSV export of the drill-down**: The side sheet's Export button paginates through every user in the group and downloads a CSV with name, UPN, email, company, status, and license group, capped at 10,000 users to keep exports safe
-- **Free and trial filter carries through**: The existing Free/Trial toggle from the All Licenses tab also applies to License Groups, so trial-only SKUs do not fragment the grouping
-- **Company selector aware**: Counts respect the company filter, so a single-company view shows only that client's SKU combinations
-
-[Documentation: M365 Licenses](/user-guides/microsoft-365/licenses)
-
-### Per-Company-Type Ticketing Defaults
-
-Settings, Tickets, Companies tab now lets you set PSA routing defaults once per company type instead of per company.
-
-- **New "Manage type mappings" header button**: Opens a modal where you set the same board, priority, status, type, and Halo fields per company type, with a per-row "Apply to all companies of this type" action that wipes company-level overrides for the fields the type defines
-- **Auto-resolution per cell**: Each PSA routing cell now displays "Auto: [type-default-label]" in italics when the company has no override but a single matching type has a default, so the inherited value is visible without clicking through
-- **Ambiguity is surfaced, not hidden**: Companies that belong to multiple types with conflicting defaults show a yellow "Multiple types, set value" indicator that forces the admin to pick a company-level override, instead of silently picking one
-- **New Types column with multi-select filter**: Every type a company belongs to is shown as a badge; manual types render filled and PSA-synced types render outlined; the column filters by any selected type
-- **Manual-over-PSA tiebreaker**: When both a manual type and a PSA-synced type provide a default for the same field, the manual type wins
-
-[Documentation: Ticketing defaults](/user-guides/settings/tickets)
-
 ### Compliance Schedules: Targeting and Cadence Rebuild
 
 Settings, Compliance, Schedule has a brand-new "Create Schedule" experience built for the way compliance work actually runs. Reviews span days or weeks, never a single day, so the schedule form now matches that reality.
@@ -75,23 +38,17 @@ Settings, Compliance, Checks gained the filtering, bulk actions, and at-a-glance
 - **Shift-click range selection**: Hold Shift and click a check to select every check between an anchor and the click in render order. Honors collapsed folders, the search filter, and the uncategorized toggle, so the selection only includes what is actually visible
 - **Bulk Approve and Bulk Delete**: The multi-select pill now has both Approve and Delete actions behind a confirmation, so admins can prune or batch-approve a whole folder of checks in one pass instead of one at a time. Cmd/Ctrl-click toggling and drag-to-folder bulk move continue to work the same way
 
-### Compliance Group Memberships Round-Trip Through CSV
+### Per-Company-Type Ticketing Defaults
 
-Compliance check CSV exports now include a **Compliance Groups** column listing every group each check belongs to, and the importer reads it back when you re-upload. Edit the spreadsheet, add groups by name (separated by semicolons), and re-upload — MSPortal looks up each group, auto-creates any that don't exist yet with the same compliance type as the check, and adds or removes memberships to match. Leaving the column empty on a row leaves that check's existing memberships untouched, so partial spreadsheets never wipe data unintentionally.
+Settings, Tickets, Companies tab now lets you set PSA routing defaults once per company type instead of per company.
 
-### Run Compliance Checks: Clearer Scope and Approved-Only Notice
+- **New "Manage type mappings" header button**: Opens a modal where you set the same board, priority, status, type, and Halo fields per company type, with a per-row "Apply to all companies of this type" action that wipes company-level overrides for the fields the type defines
+- **Auto-resolution per cell**: Each PSA routing cell now displays "Auto: [type-default-label]" in italics when the company has no override but a single matching type has a default, so the inherited value is visible without clicking through
+- **Ambiguity is surfaced, not hidden**: Companies that belong to multiple types with conflicting defaults show a yellow "Multiple types, set value" indicator that forces the admin to pick a company-level override, instead of silently picking one
+- **New Types column with multi-select filter**: Every type a company belongs to is shown as a badge; manual types render filled and PSA-synced types render outlined; the column filters by any selected type
+- **Manual-over-PSA tiebreaker**: When both a manual type and a PSA-synced type provide a default for the same field, the manual type wins
 
-The Run Compliance Checks dialog now shows an info banner at the top reminding you that "Only checks with status Approved will be generated. Pending or rejected checks are skipped, even when they belong to a selected template or group." If you pick a template whose checks are all still in pending review, you'll know up front why the run produces zero assignments rather than wondering after the fact.
-
-### Block Auto-Import After Deleting a Company
-
-Deleting a company in MSPortal now blocks the next PSA sync from auto-importing it again, mirroring the existing contact behavior.
-
-- **Automatic on delete**: Every linked PSA company is automatically marked as blocked before the company is removed, so PSA syncs (ConnectWise, Halo, Autotask, Syncro, ConnectWise Asio) skip the row going forward
-- **New Blocked Companies dialog**: A "Blocked Companies" header button on Settings, Companies opens a list of every previously-deleted company that is currently blocked, with one-click unblock to restore auto-import on the next sync
-- **No more zombie companies**: Removes the long-standing surprise where a company you intentionally deleted re-appeared the morning after the next PSA sync ran
-
-[Documentation: Companies](/user-guides/settings/companies)
+[Documentation: Ticketing defaults](/user-guides/settings/tickets)
 
 ### Standards (Renamed from Tool Stack)
 
@@ -104,6 +61,49 @@ Tool Stack is now **Standards**, with a new category-level "Require one of group
 - **Why it matters**: Previously, the only way to handle "any one of these tools is fine" was to mark every item optional, which left the company stuck at 0 of N required for the category and forced admins to choose between an inaccurate score and a misleading "X/X optional" indicator. The new toggle makes the rule explicit.
 
 [Documentation: Standards](/user-guides/msp-tools/standards)
+
+### Block Auto-Import After Deleting a Company
+
+Deleting a company in MSPortal now blocks the next PSA sync from auto-importing it again, mirroring the existing contact behavior.
+
+- **Automatic on delete**: Every linked PSA company is automatically marked as blocked before the company is removed, so PSA syncs (ConnectWise, Halo, Autotask, Syncro, ConnectWise Asio) skip the row going forward
+- **New Blocked Companies dialog**: A "Blocked Companies" header button on Settings, Companies opens a list of every previously-deleted company that is currently blocked, with one-click unblock to restore auto-import on the next sync
+- **No more zombie companies**: Removes the long-standing surprise where a company you intentionally deleted re-appeared the morning after the next PSA sync ran
+
+[Documentation: Companies](/user-guides/settings/companies)
+
+### Budget Forecast Now Pulls Real Numbers from Planner
+
+The "Sync from planner" button on **Budgets, Forecast** now populates the forecast table from your planner items, and recurring items project correctly through the years ahead.
+
+- **Monthly costs annualize correctly**: A planner item priced at \$200 per month shows as \$2,400 in each forecast year. Annual recurring items contribute their value once per year. One-time costs appear only in the year they are scheduled.
+- **Recurring items project across the whole forecast horizon**: A subscription that started in 2025 appears in 2026, 2027, and 2028 if those years are in your forecast window.
+- **Mixed cost lines work end-to-end**: A planner item with both a one-time setup fee and a monthly recurring cost (for example, \$5,000 setup + \$200/month) contributes both lines correctly. The setup lands in the year of the due date, and the monthly line annualizes and repeats through the forecast.
+
+### Microsoft 365 License Groups
+
+A new **License Groups** tab on **M365, Licenses** groups users by the exact set of license SKUs they hold and shows a User Count per combination, so you can answer questions like "how many users have Power Apps + Logic Flows + Fabric Free?" at a glance.
+
+- **Per-group drill-down**: Each row's **View Users** button opens a side sheet listing every user with that exact license set, including name, email, company, and disabled state
+- **CSV export of the drill-down**: The side sheet's Export button paginates through every user in the group and downloads a CSV with name, UPN, email, company, status, and license group, capped at 10,000 users to keep exports safe
+- **Free and trial filter carries through**: The existing Free/Trial toggle from the All Licenses tab also applies to License Groups, so trial-only SKUs do not fragment the grouping
+- **Company selector aware**: Counts respect the company filter, so a single-company view shows only that client's SKU combinations
+
+[Documentation: M365 Licenses](/user-guides/microsoft-365/licenses)
+
+### Compliance Group Memberships Round-Trip Through CSV
+
+Compliance check CSV exports now include a **Compliance Groups** column listing every group each check belongs to, and the importer reads it back when you re-upload. Edit the spreadsheet, add groups by name (separated by semicolons), and re-upload — MSPortal looks up each group, auto-creates any that don't exist yet with the same compliance type as the check, and adds or removes memberships to match. Leaving the column empty on a row leaves that check's existing memberships untouched, so partial spreadsheets never wipe data unintentionally.
+
+### Add to Budget Preserves Recurrence
+
+The "Add to budget" button on the planner sidebar inside the budget editor now keeps the planner item's recurrence (Monthly, Annual, or One-Time) instead of always defaulting to One-Time. A \$200/month subscription on the planner page becomes a Monthly line item with an annualized cost of \$2,400 in the budget, exactly as you would expect. Items with multiple cost lines (one-time plus recurring) create one budget line per cost, each labeled with its recurrence.
+
+[Documentation: Budgets](/user-guides/budgets#budget-forecast)
+
+### Run Compliance Checks: Clearer Scope and Approved-Only Notice
+
+The Run Compliance Checks dialog now shows an info banner at the top reminding you that "Only checks with status Approved will be generated. Pending or rejected checks are skipped, even when they belong to a selected template or group." If you pick a template whose checks are all still in pending review, you'll know up front why the run produces zero assignments rather than wondering after the fact.
 
 ### Improvements
 
