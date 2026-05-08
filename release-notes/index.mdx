@@ -3,6 +3,134 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## May 8, 2026
+
+### Budget Forecast Now Pulls Real Numbers from Planner
+
+The "Sync from planner" button on **Budgets, Forecast** now actually populates the forecast table, and recurring planner items finally project the right way through the years ahead. Three issues that were quietly making the sync produce nothing useful are all fixed in one go.
+
+- **Sync from planner now fills in values**: A category-key mismatch was causing the forecast page to ignore everything the planner returned, even when there was clearly planner data for the company. Click "Sync from planner" again and the rows actually populate now.
+- **Monthly costs annualize correctly**: A planner item priced at $200 per month now shows as $2,400 in each forecast year instead of $200. Annual recurring items contribute their value once per year. One-time costs still appear only in the year they are scheduled.
+- **Recurring items project across the whole forecast horizon**: A subscription that started in 2025 still appears in 2026, 2027, and 2028 if those years are in your forecast window. Previously it only showed up in the year of the planner item's due date.
+- **Mixed cost lines work end-to-end**: A planner item with both a one-time setup fee and a monthly recurring cost (for example, $5,000 setup + $200/month) now contributes both lines correctly. The setup lands in the year of the due date, and the monthly line annualizes and repeats through the forecast.
+
+### Add to Budget Preserves Recurrence
+
+The "Add to budget" button on the planner sidebar inside the budget editor now keeps the planner item's recurrence (Monthly, Annual, or One-Time) instead of always defaulting to One-Time. This means a $200/month subscription on the planner page becomes a Monthly line item with annualized cost $2,400 in the budget, exactly as you would expect. Items with multiple cost lines (one-time plus recurring) create one budget line per cost, each labeled with its recurrence.
+
+[Documentation: Budgets](/user-guides/budgets#budget-forecast)
+
+### AI Narrative Reports Use Your Company's Currency
+
+AI-generated narrative reports now render every monetary value in the report subject's currency instead of always defaulting to USD. A report on a Canadian client shows CAD, a UK client shows GBP, and a German client shows EUR, resolved automatically from the company's country (with your tenant's country as a fallback). The figures you read in the narrative match the figures your client sees in their own accounting system, with no surprise conversions. Applies to manual generation, scheduled reports, and retries.
+
+### New Budgets Default to the Company's Currency
+
+Creating a new budget for a Canadian client now opens with the currency pre-set to CAD; a UK client opens to GBP; a German client to EUR. The currency picker resolves from the selected company's country (with the tenant's country as a fallback) instead of unconditionally starting at USD, so you stop catching the wrong currency after the first row of data has already been typed in.
+
+### Embedded Ticket Templates
+
+Ticket templates can now embed another template inside a field, so a single parent intake form can branch into a fully separate child workflow without copy-pasting questions or managing two unrelated templates.
+
+**How it works.** Add a field of the new "Embedded Template" type, pick the child template, and use the existing conditional logic to control when it appears (for example, "Do you need a new computer? = Yes"). When the condition is true, the child template's questions render inline as a sub-card on the new-ticket page.
+
+**Each template fires its own ticket.** On submit, the parent ticket is created using its own board, priority, status, and PSA routing. Each visible child template fires a separate ticket using its own routing, with a "Related to ticket #N" reference back to the parent so support staff can navigate between them. If the parent fails, no children are created. If a child fails, the parent still succeeds and the failure is reported per-child so you know exactly which one to retry.
+
+**Safe by design.** Embeds are capped at one level deep, so an embedded template cannot itself contain embedded templates. JSON export and import of templates handles embedded references cleanly across tenants.
+
+[Documentation: How to create a ticket template](/user-guides/ticketing/how-to-create-a-ticket-template)
+
+### Microsoft 365 License Groups
+
+A new **License Groups** tab on **M365, Licenses** groups users by the exact set of license SKUs they hold and shows a User Count per combination, so you can answer questions like "how many users have Power Apps + Logic Flows + Fabric Free?" at a glance.
+
+- **Per-group drill-down**: Each row's **View Users** button opens a side sheet listing every user with that exact license set, including name, email, company, and disabled state
+- **CSV export of the drill-down**: The side sheet's Export button paginates through every user in the group and downloads a CSV with name, UPN, email, company, status, and license group, capped at 10,000 users to keep exports safe
+- **Free and trial filter carries through**: The existing Free/Trial toggle from the All Licenses tab also applies to License Groups, so trial-only SKUs do not fragment the grouping
+- **Company selector aware**: Counts respect the company filter, so a single-company view shows only that client's SKU combinations
+
+[Documentation: M365 Licenses](/user-guides/microsoft-365/licenses)
+
+### Per-Company-Type Ticketing Defaults
+
+Settings, Tickets, Companies tab now lets you set PSA routing defaults once per company type instead of per company.
+
+- **New "Manage type mappings" header button**: Opens a modal where you set the same board, priority, status, type, and Halo fields per company type, with a per-row "Apply to all companies of this type" action that wipes company-level overrides for the fields the type defines
+- **Auto-resolution per cell**: Each PSA routing cell now displays "Auto: [type-default-label]" in italics when the company has no override but a single matching type has a default, so the inherited value is visible without clicking through
+- **Ambiguity is surfaced, not hidden**: Companies that belong to multiple types with conflicting defaults show a yellow "Multiple types, set value" indicator that forces the admin to pick a company-level override, instead of silently picking one
+- **New Types column with multi-select filter**: Every type a company belongs to is shown as a badge; manual types render filled and PSA-synced types render outlined; the column filters by any selected type
+- **Manual-over-PSA tiebreaker**: When both a manual type and a PSA-synced type provide a default for the same field, the manual type wins
+
+[Documentation: Ticketing defaults](/user-guides/settings/tickets)
+
+### Compliance Schedules: Targeting and Cadence Rebuild
+
+Settings, Compliance, Schedule has a brand-new "Create Schedule" experience built for the way compliance work actually runs. Reviews span days or weeks, never a single day, so the schedule form now matches that reality.
+
+- **Pick exactly which companies are in scope**: Choose **All companies**, a hand-picked list of **specific companies**, one or more **company groups** (the same groups managed under Settings, Companies), or by **industry** (sourced from the industry tag on each company so you only see industries with real companies behind them)
+- **Frequency in plain language**: The cron expression dropdown is gone. Pick **Weekly**, **Semi-monthly**, **Monthly**, **Quarterly**, **Semi-annual**, **Annual**, or **One-time**, and the dialog shows the exact day controls that matter for that cadence (day of week, day of month, two days a month, starting month, and so on, including a "Last day of month" option)
+- **No more daily default, no more timezone field**: Compliance reviews don't run daily, so daily was removed from the picker. The timezone field is gone too: schedules describe a cadence, not a wall-clock fire time
+- **Live preview**: A summary chip in the dialog shows exactly what the schedule will read like before you save (for example, "Quarterly (Jan/Apr/Jul/Oct, 1st)")
+- **At-a-glance schedule list**: The list view now has a **Targets** column that shows scope plus the actual company, group, or industry names, so admins can scan their schedules without opening each one
+
+[Documentation: Compliance settings](/user-guides/settings/compliance)
+
+### Compliance Check Management Upgrades
+
+Settings, Compliance, Checks gained the filtering, bulk actions, and at-a-glance status cues that the table view used to have, plus faster multi-select for tenants with hundreds of checks.
+
+- **New Filters popover**: Filter the sidebar by approval status, priority, criticality, frequency, status list, or compliance type. Active-filter chips appear under the search box, the popover trigger shows a count badge, and matching folders auto-expand so you can see what survives the filter without manually walking the tree
+- **Approval-status dots on every row**: Non-approved checks show a small colored dot next to their name (amber for pending, red for rejected, slate for draft) so admins can spot checks that still need review without opening each one
+- **Shift-click range selection**: Hold Shift and click a check to select every check between an anchor and the click in render order. Honors collapsed folders, the search filter, and the uncategorized toggle, so the selection only includes what is actually visible
+- **Bulk Approve and Bulk Delete**: The multi-select pill now has both Approve and Delete actions behind a confirmation, so admins can prune or batch-approve a whole folder of checks in one pass instead of one at a time. Cmd/Ctrl-click toggling and drag-to-folder bulk move continue to work the same way
+
+### Compliance Group Memberships Round-Trip Through CSV
+
+Compliance check CSV exports now include a **Compliance Groups** column listing every group each check belongs to, and the importer reads it back when you re-upload. Edit the spreadsheet, add groups by name (separated by semicolons), and re-upload — MSPortal looks up each group, auto-creates any that don't exist yet with the same compliance type as the check, and adds or removes memberships to match. Leaving the column empty on a row leaves that check's existing memberships untouched, so partial spreadsheets never wipe data unintentionally.
+
+### Run Compliance Checks: Clearer Scope and Approved-Only Notice
+
+The Run Compliance Checks dialog now shows an info banner at the top reminding you that "Only checks with status Approved will be generated. Pending or rejected checks are skipped, even when they belong to a selected template or group." If you pick a template whose checks are all still in pending review, you'll know up front why the run produces zero assignments rather than wondering after the fact.
+
+### Block Auto-Import After Deleting a Company
+
+Deleting a company in MSPortal now blocks the next PSA sync from auto-importing it again, mirroring the existing contact behavior.
+
+- **Automatic on delete**: Every linked PSA company is automatically marked as blocked before the company is removed, so PSA syncs (ConnectWise, Halo, Autotask, Syncro, ConnectWise Asio) skip the row going forward
+- **New Blocked Companies dialog**: A "Blocked Companies" header button on Settings, Companies opens a list of every previously-deleted company that is currently blocked, with one-click unblock to restore auto-import on the next sync
+- **No more zombie companies**: Removes the long-standing surprise where a company you intentionally deleted re-appeared the morning after the next PSA sync ran
+
+[Documentation: Companies](/user-guides/settings/companies)
+
+### Standards (Renamed from Tool Stack)
+
+Tool Stack is now **Standards**, with a new category-level "Require one of group" option for cases where any one item in the group satisfies the requirement.
+
+- **Renamed everywhere**: The MSP Tools sidebar entry, the page itself, and the settings page now live at /standards and /settings/standards. Old /tool-stack and /settings/tool-stack URLs continue to work and redirect, so existing bookmarks and shared links keep functioning.
+- **New "Require one of group" toggle**: Open a category in Settings, Standards and flip the new toggle in the category popover. The category now counts as a single required check satisfied when any item is deployed, so a "Backup" group with Datto, Cove, and Veeam scores 1/1 once any one of them is deployed instead of penalizing the company for the other two.
+- **Per-item indicators stay consistent**: Turning the toggle on automatically marks every item in the category optional and disables the per-item Required switch, replacing it with a "Group" pill so the row never displays a "Required" indicator that contradicts the group rule. New items added to a one-of category default to optional.
+- **Compliance matrix and Client Health stay in sync**: The matrix shows a "1 of N" badge on the category header and stops rendering the optional asterisk on each cell. Client Health's Tool Stack dimension treats one-of categories as one required check rather than counting each item individually, so the score reflects what the admin actually configured.
+- **Why it matters**: Previously, the only way to handle "any one of these tools is fine" was to mark every item optional, which left the company stuck at 0 of N required for the category and forced admins to choose between an inaccurate score and a misleading "X/X optional" indicator. The new toggle makes the rule explicit.
+
+[Documentation: Standards](/user-guides/msp-tools/standards)
+
+### Improvements
+
+- **Contact Type column on Settings, Users**: The Company Users tab now shows a Contact Type column populated from each user's contact type in your linked PSA (ConnectWise, Autotask, Halo, etc.), with a multiselect filter and the ability to bulk-update the permissions group on every user matching the filter in one pass
+- **Ticket Trends label resolution**: Category Breakdown and Company Patterns no longer collapse every ConnectWise ticket onto a single "Uncategorized" bucket; CW tickets now surface under their type, sub-type, or item label correctly
+- **M365 pages respect company impersonation**: When you impersonate a company user, the Microsoft 365 licenses, users, domains, and secure score pages now scope the Company filter to that user's company, matching what they would see when signed in directly
+- **Template branches show accurate company counts**: Branch rows on Settings, Tickets, Templates now show the real count of enabled companies. Tenants with many companies and templates were previously seeing every branch reported as "X of X" instead of the actual configured count
+- **Compliance check status changes work for default statuses**: Changing a check's status in the compliance check dialog now works correctly for tenants whose checks use the built-in default statuses, not just custom configured statuses
+- **Compliance bulk "Set Status" uses your real statuses**: The bulk-action menu's Set Status submenu (visible when checks are selected on the Compliance page) now lists every status configured for your tenant instead of a hardcoded "Not Started / In Progress / Completed / Failed" list, and applying a status correctly updates the row's color, completion flag, and positive/negative state
+- **Run Compliance Checks creates assignments reliably**: An issue that could cause a compliance run to complete without producing the expected assignments has been resolved end to end, and any runs that were stuck have been reprocessed
+- **Run Compliance Checks works with only locations or devices selected**: Running compliance checks against a specific list of locations or devices (without picking any companies explicitly) now works correctly; the affected companies are inferred from the selected locations and devices automatically
+- **Compliance Metrics page loads for compliance-only users**: Settings, Compliance, Metrics now opens for users who have compliance access but not the broader integrations permission, matching how every other page in the Compliance section behaves
+- **Compliance page shows every check after a refresh**: Switching companies, toggling the run filter, or applying a bulk action on the Compliance page no longer caps the visible tree at the first batch of checks. Tenants with large check sets see the full set every time
+- **AI report editor opens existing narrative reports**: Editing an AI-generated narrative report no longer fails with a server error. Reports created with earlier versions of the AI prompt now load and edit cleanly without needing to be re-generated from scratch
+- **Autotask company sync imports the MSP's own house account**: The Autotask company sync now also imports the MSP's internal "house" company, so MSPs can map themselves on Settings, Integrations, Companies for internal time tracking
+- **Revenue Categories page loads on Autotask tenants**: The Per-Contract Overrides table on Settings, Revenue Categories now opens correctly for Autotask-connected tenants
+- **Last login date**: Fixed the last login date showing incorrectly for new users
+
 ## May 1, 2026
 
 ### Customer Satisfaction (CSAT)
@@ -107,7 +235,7 @@ NPS and CSAT thank-you pages now share a refreshed review-links panel that turns
 
 The role assigned to PSA contacts during auto-sync can now be overridden per company. The Company Defaults manager has a new Default Import Role dropdown that overrides the integration-level default for that one company, and the UI shows which provider's default the company is currently inheriting.
 
-Combined with the existing contact-type to role mapping (ConnectWise, Autotask types 1-5, and Halo user types), this makes role assignment fully deterministic: a "Primary Contact" pseudo-type catches any PSA's primary flag, contact-type rules catch the typed cases, and per-company overrides catch the exceptions. The autotask, ConnectWise, and Halo user-sync background tasks use the same resolver, with shared unit tests.
+Combined with the existing contact-type to role mapping (ConnectWise contact types, Autotask contact types, and Halo user types), this makes role assignment fully deterministic: a "Primary Contact" rule catches any PSA's primary flag, contact-type rules catch the typed cases, and per-company overrides catch the exceptions. ConnectWise, Autotask, and Halo user syncs all use the same logic so behaviour is consistent across PSAs.
 
 ### Project Agenda View in Meetings
 
@@ -178,7 +306,7 @@ A new background task syncs every UDF definition from your PSA into a dedicated 
 - **Covers all the other PSA entities too**: projects, quotes/opportunities, configurations, companies, and contacts also have their UDFs synced and exposed in the rule builder, tagged `[Autotask UDF]`, `[Halo UDF]`, or `[ConnectWise UDF]` so the source is obvious
 - **Typed operators**: UDFs are synced with their data type (string, number, boolean, date, datetime, enum, multiselect) and the condition builder picks the right operator set automatically. Picklist UDFs get a dropdown populated with the real values from your PSA
 - **Drive email recipients from a ticket UDF**: the new **Ticket UDF Email** recipient strategy resolves an email address stored on a specific ticket UDF at runtime (e.g. the "Escalation Contact" email on a managed client's ticket), so notifications go to the right person without hard-coding them per rule
-- **Stable when UDFs change**: removed UDFs stay in the definitions table as inactive so existing rules that reference them can flag "this UDF no longer exists" instead of silently breaking
+- **Stable when UDFs change**: when a UDF is removed in your PSA, MSPortal flags any rule that referenced it instead of breaking quietly, so you know to update the rule
 
 **Smarter Recipients and Conditions**
 
@@ -224,8 +352,8 @@ Every reporting block has been rebuilt on a shared responsive system, so blocks 
 ### Improvements
 
 - **Report Builder**: Chart tooltips, colors, and grid spacing now pull from shared tokens, so reports look identical whether you build them from scratch or from a template.
-- **Company scope**: Blocks no longer carry stale saved company IDs; the company scope now flows purely from the report's context, so reports always reflect the company selector.
-- **Error visibility**: Server action and API route failures in the reporting stack are now reported to Sentry with proper tagging.
+- **Company scope**: Reporting blocks now always reflect the company selector at the top of the page instead of carrying over a stale company filter from when the block was first added to the report.
+- **Error visibility**: Failures in the reporting stack are now captured in our internal monitoring so the team can spot and fix them faster.
 
 ## April 17, 2026
 
@@ -317,7 +445,7 @@ Because this flips Liongard to rule-based visibility, you need to add at least o
 
 ### Duplicate Role
 
-Building a new role from scratch can be tedious, especially when an existing role has most of what you need. The Roles tab in **Settings > Users & Roles** now has a **Duplicate** action on every row that instantly creates a copy named "Copy of [original role]". The copy carries over the description, every permission, and configuration flags like bypass-company-restrictions and update-email opt-in. For company roles, it also copies the assigned ticket display group.
+Building a new role from scratch can be tedious, especially when an existing role has most of what you need. The Roles tab in **Settings > Users & Roles** now has a **Duplicate** action on every row that instantly creates a copy named "Copy of [original role]". The copy carries over the description, every permission, and any role-level configuration flags. For company roles, it also copies the assigned ticket display group.
 
 User assignments are **not** copied, so the new role has no users until you assign it.
 

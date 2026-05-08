@@ -116,7 +116,7 @@
             "pages": [
               "user-guides/msp-tools/index",
               "user-guides/msp-tools/client-health",
-              "user-guides/msp-tools/tool-stack",
+              "user-guides/msp-tools/standards",
               "user-guides/msp-tools/financial-reporting"
             ]
           },
@@ -350,7 +350,7 @@
                   "user-guides/settings/templates",
                   "user-guides/settings/email",
                   "user-guides/settings/scoring",
-                  "user-guides/settings/tool-stack",
+                  "user-guides/settings/standards",
                   "user-guides/settings/financial-reporting",
                   "user-guides/settings/integrations",
                   "user-guides/settings/integration-company-mapping",
@@ -440,6 +440,14 @@
     {
       "source": "/user-guides/enable-connectwise-integration",
       "destination": "/user-guides/integrations/enable-connectwise-integration"
+    },
+    {
+      "source": "/user-guides/msp-tools/tool-stack",
+      "destination": "/user-guides/msp-tools/standards"
+    },
+    {
+      "source": "/user-guides/settings/tool-stack",
+      "destination": "/user-guides/settings/standards"
     }
   ]
 }

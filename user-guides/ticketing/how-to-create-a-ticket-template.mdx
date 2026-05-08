@@ -316,6 +316,7 @@ Within each section, click **Add Field** to create a new field.
 | **Checkbox** | Yes/No toggle |
 | **User Select** | Choose from users list |
 | **File Upload** | File attachment |
+| **Embedded Template** | Pull another template's questions inline as a sub-card. Each embedded template fires its own separate ticket on submit. See [Embedded Templates](#embedded-templates) below. |
 
 **Field Properties:**
 
@@ -349,6 +350,120 @@ Make fields appear based on other field values:
 - **Drag sections** to reorder their position
 - **Drag fields** within sections to reorder
 - Click **Collapse All** to minimize sections while organizing
+
+## Embedded Templates
+
+The **Embedded Template** field type lets one template pull in another template's questions inline, gated by the parent field's conditional logic. Each embedded template fires its own separate ticket on submit using its own PSA routing.
+
+<Info>
+Use embedded templates when a single user request can spawn multiple PSA tickets that need different routing. Classic example: a "New Hire" parent template asks "Will this person need a new computer?" and "Will this person need software access?" — each "Yes" reveals an embedded template (New Computer Request, Software Access Request) and each lands a separate ticket on its own service board with its own approver workflow.
+</Info>
+
+### How Embedded Templates Behave
+
+| Behavior | Detail |
+|----------|--------|
+| **Visibility** | The parent field's conditional logic gates the embed. If the parent field isn't visible, the embed doesn't render and no child ticket fires. |
+| **One ticket per embed** | Every visible embedded template field creates exactly one separate PSA ticket. Two embed fields pointing at the same target template create two tickets. |
+| **PSA routing** | Each embed uses the **embedded template's** own service board, priority, status, ticket type, ticket subtype, and category — not the parent's. |
+| **Same PSA integration** | Both parent and embed land in the tenant's currently selected PSA integration. There is one selected PSA per tenant. |
+| **Attachments** | File uploads, screenshots, and attachment fields placed inside an embedded template are uploaded to that embed's PSA ticket, not the parent's. |
+| **Company gating inheritance** | Embedded templates do **not** need to be enabled for every company the parent applies to. The parent's gating rules already govern visibility; the embed is treated as part of the parent flow. |
+| **Parent ticket reference** | Every child ticket prepends "Related to ticket #N in template Foo" to its description so support staff can trace the relationship in the PSA. |
+| **Parent ticket summary note** | After the embed loop runs, MSPortal posts an internal note on the parent PSA ticket listing every related ticket number, fallback-emailed embed, and any failures. |
+
+### Adding an Embedded Template Field
+
+<Steps>
+  <Step title="Add a Field">
+    Click **Add Field** in the section that should host the embed, then click the field row to expand the editor.
+  </Step>
+  <Step title="Set the Type to Embedded Template">
+    Open the **Type** dropdown and select **Embedded Template**.
+  </Step>
+  <Step title="Pick the Child Template">
+    A teal **Embedded template** picker appears below the field's Help Text. Choose the template you want to embed. The picker lists every other active template in your tenant. Templates that already contain their own embedded templates are disabled in the picker (depth-1 cap, see below).
+  </Step>
+  <Step title="Configure the Conditional (Recommended)">
+    Set **Required** to **Conditional** so the embed only renders when a specific parent field has the right value. For example: parent field "Need a new computer?" equals "Yes". Without a conditional, the embed always renders and always fires a child ticket.
+  </Step>
+  <Step title="Save">
+    Click **Save Template**. MSPortal validates the embed reference before saving and surfaces clean inline errors if anything is wrong (missing target, cross-tenant reference, depth-1 violation).
+  </Step>
+</Steps>
+
+### The Depth-1 Cap
+
+An embedded template **cannot** itself contain embedded templates. This is enforced at three layers so it cannot be bypassed:
+
+- The picker disables any candidate template that already has an embed reference, with a `(contains embeds)` label so admins know why
+- The save flow blocks the upsert with a clear inline error if the picker is bypassed
+- The runtime renderer drops nested embeds defensively, surfacing a soft-warning card so the issue is visible
+
+<Tip>
+If you need a deeper hierarchy, model it with conditional fields inside the embedded template instead of trying to nest a third level. Conditional fields support arbitrary depth and don't change the ticket count.
+</Tip>
+
+### Embedded Templates and PSA Routing
+
+Each embedded template is a normal ticket template, so all of its PSA settings apply when the embed fires:
+
+- **Service board / queue** — the embed's `default_board` is used. If the parent goes to "Service Desk" and the embed's default board is "Procurement", the parent ticket lands on Service Desk and the embed lands on Procurement.
+- **Priority and status** — the embed's `default_priority` and `default_status` are used.
+- **Ticket type / subtype / category** — the embed's defaults are used.
+- **Halo Category / Impact / Urgency** — the embed's Halo-specific routing is used.
+- **Use client's PSA defaults toggle** — if the embed has this toggle on, the embed reads board/priority/status from the client's company-level defaults instead of the embed's own template defaults.
+- **Per-company branches on the embed** — if the embed has a branch for the parent's company, the branch's overrides apply.
+
+<Warning>
+**ConnectWise specifically:** the embed's default status must be active on the embed's default board. If they don't match, the embed throws a clear error like "Template status X is not active on the selected ConnectWise board" and the child ticket fails. The parent ticket still succeeds. Verify each embed's board+status combination in the editor's PSA Integration Settings.
+</Warning>
+
+### Attachments Inside Embeds
+
+File Upload, Screenshot, and Attachment fields placed inside an embedded template attach their files to the **embed's** PSA ticket — not the parent's. This lets you capture supporting documents per child request:
+
+- Parent: "New Hire" template — no attachments
+- Embed 1: "New Computer Request" — attach the approved hardware quote
+- Embed 2: "Software Access Request" — attach the user's training certificate
+
+Each PSA ticket receives only the attachments uploaded to its corresponding form section.
+
+### Form Preview Renders Embeds
+
+The Form Preview pane (right-side preview button in the template editor) renders embedded templates inline as teal-bordered sub-cards. The preview runs the embed's own conditional engine against the values you fill in, so you can verify show/hide behavior before saving.
+
+If the embed reference can't be resolved (deleted target, depth-1 cap drop, cross-tenant), the preview shows a clear warning instead of silently rendering nothing.
+
+### What Happens on Submit
+
+When a user submits a parent ticket form:
+
+1. The parent ticket is validated and created in the PSA first.
+2. For each embedded template whose parent field's conditional is satisfied, MSPortal fires a separate `submitTicketFromTemplate` call using the embed's templateId.
+3. Each child ticket is created with its own routing, attachments, and "Related to ticket #N" prefix on the description.
+4. After the embed loop completes, MSPortal posts a single internal note on the parent ticket summarizing each child:
+   - Successes with their PSA ticket numbers
+   - Embeds that fell back to email (when the PSA call failed)
+   - Embeds that failed to create (with the error so support can manually retry)
+5. The submitter sees a toast indicating how many related tickets were created, fell back, or failed.
+
+<Tip>
+If only some embeds succeed, the parent ticket is still created and tracked. Use the parent's summary note to find which embeds need manual follow-up.
+</Tip>
+
+### Validation Errors When Saving
+
+When you save a template with embedded fields, MSPortal validates each embed reference and shows clean inline errors next to the offending field if anything is wrong:
+
+| Reason | What it means | Fix |
+|--------|---------------|-----|
+| **Missing target** | The referenced template no longer exists or was deleted | Pick a different template |
+| **Self-reference** | The field tries to embed the template into itself | Pick a different template |
+| **Depth-1 violation** | The referenced template itself contains embedded templates | Pick a non-embedding template, or restructure the deeper template |
+| **Cross-tenant** | The referenced template is in a different tenant (rare; usually only seen during template imports) | Pick a template from your own tenant |
+
+The error appears as a red banner inside the embed picker card and clears optimistically as soon as you pick a different template.
 
 ## Using AI to Generate Templates
 
@@ -396,6 +511,12 @@ The AI designer works iteratively. You can request changes like "Add a section f
   <Accordion title="Use Branches Sparingly">
     Only create company branches when there are significant differences. Minor variations can often be handled with conditional fields.
   </Accordion>
+  <Accordion title="Use Embedded Templates for Multi-Ticket Workflows">
+    Reach for **Embedded Template** fields when one user request should spawn multiple PSA tickets that need different routing (different boards, priorities, or assignees). For variations that share routing, conditional fields inside a single template are simpler and create only one ticket.
+  </Accordion>
+  <Accordion title="Verify Embed Routing Before Activating">
+    Each embed's default board, priority, status, and type must form a valid PSA combination — especially for ConnectWise, where the status must be active on the chosen board. Use the Form Preview to walk through the conditional path that triggers each embed and review the embed template's PSA Integration Settings before going live.
+  </Accordion>
 </AccordionGroup>
 
 ## Troubleshooting
@@ -407,6 +528,9 @@ The AI designer works iteratively. You can request changes like "Add a section f
 | **PSA fields not loading** | Verify your PSA integration is connected and synced |
 | **Branch not saving** | Ensure you have permission to manage templates |
 | **Import fails** | Check JSON format matches export format; CSV requires existing template |
+| **Embedded template option disabled in picker** | The candidate template already contains its own embedded templates (depth-1 cap). Pick a non-embedding template, or restructure the deeper one |
+| **"Embedded template references need attention" on save** | One or more embed fields point to a missing, cross-tenant, or self-referencing template. The red banner inside each embed picker explains which one. Pick a different target and save again |
+| **Embed ticket failed but parent succeeded** | Open the parent ticket in your PSA; MSPortal posts a summary note listing each embed's fate. Common cause for ConnectWise is a default status that isn't active on the embed's default board. Fix the embed's PSA Integration Settings and re-fire the missing ticket manually |
 
 ## Related Resources
 

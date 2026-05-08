@@ -14,7 +14,7 @@ The Client Health dashboard shows all your companies in a sortable, filterable t
 
 <CardGroup cols={2}>
   <Card title="8-Dimension Scoring" icon="chart-radar">
-    Health scores computed across Service Quality, Engagement, Financial, Sales, Projects, Tool Stack, Environment, and Operational dimensions.
+    Health scores computed across Service Quality, Engagement, Financial, Sales, Projects, Standards, Environment, and Operational dimensions.
   </Card>
   <Card title="Risk Classification" icon="shield">
     Companies automatically categorized as Thriving, Healthy, At Risk, or Critical based on their overall health score.
@@ -37,7 +37,7 @@ At the top of the dashboard, summary cards provide a portfolio-wide snapshot:
 
 - **Avg Health Score** - The average health score across all companies
 - **Avg NPS** - Average Net Promoter Score from surveys
-- **Tool Stack** - Average tool stack deployment percentage
+- **Standards** - Average standards deployment percentage
 - **Companies** - Total number of companies being tracked
 
 Below the averages, colored pills show the distribution of companies across risk levels:
@@ -69,12 +69,12 @@ The main table shows one row per company with the following default columns:
 | **Financial** | Dimension score based on profitability and payment behavior |
 | **Sales** | Dimension score based on pipeline and win rates |
 | **Projects** | Dimension score based on project activity |
-| **Tool Stack** | Dimension score based on deployment percentage |
+| **Standards** | Dimension score based on deployment percentage |
 | **Environment** | Dimension score based on device and user metrics |
 | **Operational** | Dimension score based on planner tasks and goal completion |
 
 <Tip>
-Click the column visibility button to show additional columns including Trend, Days Since Contact, Tickets (90d), NPS, Overdue Invoices, Tool Stack %, and 20+ other detailed metrics.
+Click the column visibility button to show additional columns including Trend, Days Since Contact, Tickets (90d), NPS, Overdue Invoices, Standards %, and 20+ other detailed metrics.
 </Tip>
 
 ### Refreshing Scores
@@ -97,7 +97,7 @@ Four cards at the top show key indicators:
 1. **Health Score** - Current score with a progress bar and breakdown tooltip
 2. **Risk Level** - Current classification with colored badge
 3. **Days Since Contact** - Days since the last interaction (highlights red when over 30 days)
-4. **Tool Stack Compliance** - Deployment percentage of tracked tools
+4. **Standards Compliance** - Deployment percentage of tracked tools
 
 ### Dimension Breakdown
 
@@ -203,16 +203,16 @@ Measures project engagement and activity.
 | Project Count (365d) | Number of projects in the last year |
 | Project Recency | How recently the last project was active |
 
-### Tool Stack
+### Standards
 
 Measures how completely the company has adopted your recommended tools.
 
 | Metric | What It Measures |
 |--------|-----------------|
-| Deployment Percentage | Ratio of deployed required tools to total required tools |
+| Deployment Percentage | Ratio of deployed required tools to total required tools (one-of-group categories count as a single check satisfied by any deployed item) |
 
 <Tip>
-The Tool Stack dimension score is a direct linear mapping of deployment percentage. A company with 80% of required tools deployed scores 80 on this dimension.
+The Standards dimension score is a direct linear mapping of deployment percentage. A company with 80% of required checks deployed scores 80 on this dimension. For categories with **Require one of group** enabled in Settings, the entire category counts as a single required check, so a company that has any one of Datto, Cove, or Veeam deployed in a Backup group scores the same as a company with only Datto.
 </Tip>
 
 ### Environment
@@ -283,8 +283,8 @@ Consider disabling a dimension when:
   <Card title="MSP Tools Overview" icon="heart-pulse" href="./index">
     Overview of all MSP Tools features
   </Card>
-  <Card title="Tool Stack" icon="wrench" href="./tool-stack">
-    Manage tool deployments that feed into the Tool Stack dimension
+  <Card title="Standards" icon="wrench" href="./standards">
+    Manage tool deployments that feed into the Standards dimension
   </Card>
   <Card title="Financial Reporting" icon="dollar-sign" href="./financial-reporting">
     Revenue analysis that feeds into the Financial dimension

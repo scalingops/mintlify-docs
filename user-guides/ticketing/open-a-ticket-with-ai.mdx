@@ -26,9 +26,25 @@ The AI system:
 1. Analyzes your problem description
 2. Selects the most appropriate ticket template
 3. Extracts relevant information from your description
-4. Pre-fills form fields where possible
+4. Pre-fills form fields where possible — **including fields inside embedded templates** when the parent template uses them
 5. Highlights fields that need review
 6. Validates data before submission
+
+### Embedded Template Awareness
+
+If the selected template includes [Embedded Template](/user-guides/ticketing/how-to-create-a-ticket-template#embedded-templates) fields, the AI also considers each embed's inner questions when pre-filling. For example, if you describe "I need a new computer for John starting Monday — a Lenovo ThinkPad with 32 GB of RAM", the AI may:
+
+- Select the **New Hire** parent template
+- Set the parent's "Need a new computer?" field to **Yes**
+- Pre-fill the embedded **New Computer Request** template's inner fields (Model, RAM) with values from your description
+
+The AI returns a nested object for each embedded template field; defaults configured on the embed's inner fields are merged in afterwards so dropdowns with sensible defaults still apply when the AI didn't supply a value.
+
+The AI Generation Summary on the new-ticket page lists embed inner fields using a `Parent Label > Inner Label` notation so you can see at a glance which embed inner questions were filled, which still need input, and which optional fields are available. Click any unfilled required field to jump straight to it inside the embed sub-card.
+
+<Note>
+Each embedded template still creates its own separate PSA ticket on submit, with its own service board, priority, and status. The AI only assists with **filling** the embed's questions; it doesn't change how embeds route or how many tickets are created.
+</Note>
 
 ## Steps to Create an AI Ticket
 
@@ -202,6 +218,11 @@ If AI doesn't select the right template:
 - AI struggles with relative dates ("next Monday")
 - Always verify and correct date fields
 - Use calendar picker for accuracy
+
+### Embedded Template Inner Fields Empty
+- The AI only fills embedded template inner fields when your description provides specific information for them
+- If an embed sub-card appeared but its fields are blank, expand the embed and fill the questions directly — the embed will fire its own ticket on submit either way
+- Required inner fields are surfaced in the AI Generation Summary as `Parent Label > Inner Label`; click them to jump to the field inside the embed
 
 ## Best Practices
 

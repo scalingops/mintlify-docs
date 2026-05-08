@@ -147,6 +147,30 @@ Halo PSA requires **category, impact, and urgency** to create a ticket. The Comp
 The same card pattern appears as a **Ticket Defaults** card for non-compliance tickets right above it. Configure both if you want compliance tickets routed differently from the rest of your service work.
 </Tip>
 
+## Ticket Templates
+
+Ticket templates live under **Settings → Tickets → Templates** and govern the structured forms users fill out on the new-ticket page, the AI ticket assistant, and the browser extension. Each template defines fields, sections, conditional logic, PSA routing, company visibility, and (when needed) per-company branches and embedded child templates.
+
+### Embedded Templates
+
+A field of type **Embedded Template** pulls another template's questions inline as a sub-card. When the parent field is visible (driven by the parent's conditional logic), the embedded template renders inline and, on submit, fires its own separate PSA ticket using its **own** board, priority, status, ticket type, and category.
+
+**Why use embedded templates:**
+- One user request should spawn multiple PSA tickets with **different routing** (e.g. a "New Hire" parent splits into a Procurement ticket for hardware and an IT ticket for software access)
+- You want to keep each child ticket scoped to a single team's responsibilities, with its own SLA, approver, and PSA fields
+- You need to capture per-child attachments (file uploads inside an embed attach to the embed's PSA ticket)
+
+**Key constraints:**
+- An embedded template cannot itself contain embedded templates (depth-1 cap, enforced in the editor and on save)
+- Embeds inherit the parent's company gating — admins do **not** need to enable each embed for every company the parent applies to
+- Both parent and embed land in the tenant's currently selected PSA integration
+
+After every multi-ticket submission, MSPortal posts an internal note on the parent PSA ticket listing every related embed ticket number, so support staff can trace the full chain without leaving the parent record.
+
+<Card title="Full How-To" icon="file-lines" href="/user-guides/ticketing/how-to-create-a-ticket-template#embedded-templates">
+  Learn how to add an Embedded Template field, configure its conditional, and verify the routing in the Form Preview pane.
+</Card>
+
 ## PSA Integration Notes
 
 Ticket settings work in conjunction with your PSA integration:
