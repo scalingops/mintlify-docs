@@ -5,29 +5,6 @@ description: "Product updates, improvements, and upcoming features for MSPortal.
 
 ## May 8, 2026
 
-### Budget Forecast Now Pulls Real Numbers from Planner
-
-The "Sync from planner" button on **Budgets, Forecast** now actually populates the forecast table, and recurring planner items finally project the right way through the years ahead. Three issues that were quietly making the sync produce nothing useful are all fixed in one go.
-
-- **Sync from planner now fills in values**: A category-key mismatch was causing the forecast page to ignore everything the planner returned, even when there was clearly planner data for the company. Click "Sync from planner" again and the rows actually populate now.
-- **Monthly costs annualize correctly**: A planner item priced at $200 per month now shows as $2,400 in each forecast year instead of $200. Annual recurring items contribute their value once per year. One-time costs still appear only in the year they are scheduled.
-- **Recurring items project across the whole forecast horizon**: A subscription that started in 2025 still appears in 2026, 2027, and 2028 if those years are in your forecast window. Previously it only showed up in the year of the planner item's due date.
-- **Mixed cost lines work end-to-end**: A planner item with both a one-time setup fee and a monthly recurring cost (for example, $5,000 setup + $200/month) now contributes both lines correctly. The setup lands in the year of the due date, and the monthly line annualizes and repeats through the forecast.
-
-### Add to Budget Preserves Recurrence
-
-The "Add to budget" button on the planner sidebar inside the budget editor now keeps the planner item's recurrence (Monthly, Annual, or One-Time) instead of always defaulting to One-Time. This means a $200/month subscription on the planner page becomes a Monthly line item with annualized cost $2,400 in the budget, exactly as you would expect. Items with multiple cost lines (one-time plus recurring) create one budget line per cost, each labeled with its recurrence.
-
-[Documentation: Budgets](/user-guides/budgets#budget-forecast)
-
-### AI Narrative Reports Use Your Company's Currency
-
-AI-generated narrative reports now render every monetary value in the report subject's currency instead of always defaulting to USD. A report on a Canadian client shows CAD, a UK client shows GBP, and a German client shows EUR, resolved automatically from the company's country (with your tenant's country as a fallback). The figures you read in the narrative match the figures your client sees in their own accounting system, with no surprise conversions. Applies to manual generation, scheduled reports, and retries.
-
-### New Budgets Default to the Company's Currency
-
-Creating a new budget for a Canadian client now opens with the currency pre-set to CAD; a UK client opens to GBP; a German client to EUR. The currency picker resolves from the selected company's country (with the tenant's country as a fallback) instead of unconditionally starting at USD, so you stop catching the wrong currency after the first row of data has already been typed in.
-
 ### Embedded Ticket Templates
 
 Ticket templates can now embed another template inside a field, so a single parent intake form can branch into a fully separate child workflow without copy-pasting questions or managing two unrelated templates.
@@ -39,6 +16,20 @@ Ticket templates can now embed another template inside a field, so a single pare
 **Safe by design.** Embeds are capped at one level deep, so an embedded template cannot itself contain embedded templates. JSON export and import of templates handles embedded references cleanly across tenants.
 
 [Documentation: How to create a ticket template](/user-guides/ticketing/how-to-create-a-ticket-template)
+
+### Budget Forecast Now Pulls Real Numbers from Planner
+
+The "Sync from planner" button on **Budgets, Forecast** now populates the forecast table from your planner items, and recurring items project correctly through the years ahead.
+
+- **Monthly costs annualize correctly**: A planner item priced at \$200 per month shows as \$2,400 in each forecast year. Annual recurring items contribute their value once per year. One-time costs appear only in the year they are scheduled.
+- **Recurring items project across the whole forecast horizon**: A subscription that started in 2025 appears in 2026, 2027, and 2028 if those years are in your forecast window.
+- **Mixed cost lines work end-to-end**: A planner item with both a one-time setup fee and a monthly recurring cost (for example, \$5,000 setup + \$200/month) contributes both lines correctly. The setup lands in the year of the due date, and the monthly line annualizes and repeats through the forecast.
+
+### Add to Budget Preserves Recurrence
+
+The "Add to budget" button on the planner sidebar inside the budget editor now keeps the planner item's recurrence (Monthly, Annual, or One-Time) instead of always defaulting to One-Time. A \$200/month subscription on the planner page becomes a Monthly line item with an annualized cost of \$2,400 in the budget, exactly as you would expect. Items with multiple cost lines (one-time plus recurring) create one budget line per cost, each labeled with its recurrence.
+
+[Documentation: Budgets](/user-guides/budgets#budget-forecast)
 
 ### Microsoft 365 License Groups
 
@@ -116,6 +107,8 @@ Tool Stack is now **Standards**, with a new category-level "Require one of group
 
 ### Improvements
 
+- **New budgets default to the company's currency**: Creating a new budget for a Canadian client opens pre-set to CAD, a UK client to GBP, a German client to EUR, resolved from the selected company's country (with the tenant's country as a fallback) instead of always starting at USD
+- **AI narrative reports use the company's currency**: AI-generated narrative reports render every monetary value in the report subject's currency, so a report on a Canadian client shows CAD, a UK client GBP, and a German client EUR; applies to manual generation, scheduled reports, and retries
 - **Contact Type column on Settings, Users**: The Company Users tab now shows a Contact Type column populated from each user's contact type in your linked PSA (ConnectWise, Autotask, Halo, etc.), with a multiselect filter and the ability to bulk-update the permissions group on every user matching the filter in one pass
 - **Ticket Trends label resolution**: Category Breakdown and Company Patterns no longer collapse every ConnectWise ticket onto a single "Uncategorized" bucket; CW tickets now surface under their type, sub-type, or item label correctly
 - **M365 pages respect company impersonation**: When you impersonate a company user, the Microsoft 365 licenses, users, domains, and secure score pages now scope the Company filter to that user's company, matching what they would see when signed in directly
