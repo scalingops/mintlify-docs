@@ -1,0 +1,249 @@
+---
+title: 'Ticket Trends'
+description: 'AI-powered ticket analysis that reads like a senior consultant brief: what changed, why it matters, what to do, and the evidence behind every recommendation.'
+icon: 'chart-line'
+---
+
+Ticket Trends turns weeks of PSA ticket history into an executive-ready report. It tells you what changed in the period, why it matters, what to do about it, and shows the evidence behind every conclusion. The output is designed to be read top-to-bottom in a few minutes, or pasted straight into a QBR.
+
+## Who This Is For
+
+- **MSP owners and service leaders** who need a fast read on whether the service desk is healthy this week, this month, or this quarter.
+- **Account managers** preparing for client check-ins or QBRs who want ready-to-read talking points per company.
+- **Operations leads** who need to spot recurring issues, backlog trends, and category drift before they turn into client escalations.
+
+## Prerequisites
+
+| Requirement | Detail |
+|-------------|--------|
+| **Permission** | `read_ticket_trends` (granted by default to MSP technician and admin roles, not company users) |
+| **Integration** | At least one PSA connected: ConnectWise, Halo, Syncro, or Autotask |
+| **Ticket history** | Enough historical data to fill the chosen lookback window (8, 12, 26, or 52 weeks) |
+
+<Note>
+Ticket Trends is hidden from company portal users. It is an internal MSP tool only.
+</Note>
+
+## Running an Analysis
+
+<Steps>
+  <Step title="Open Ticket Trends">
+    Click **Ticket Trends** in the sidebar.
+  </Step>
+  <Step title="Pick a lookback window">
+    Use the **Weeks** dropdown to choose 8, 12, 26, or 52 weeks of history. 12 is the default and is the right starting point for most monthly reviews; pick 26 or 52 for QBR-grade trend visibility.
+  </Step>
+  <Step title="Pick a company scope (optional)">
+    Use the global Company selector in the top bar to scope the report to a single client, a group of clients, or all companies. The analysis re-runs against whatever is selected. Leave it on **All** for tenant-wide service desk health; switch to a single client for QBR prep.
+  </Step>
+  <Step title="Run the analysis">
+    Click **Analyze**. The AI typically takes one to two minutes to read the period and generate the report. When the analysis finishes, the report renders in place and is cached so the next visit loads instantly until you change the scope or the lookback window.
+  </Step>
+  <Step title="Re-run when needed">
+    Click **Re-run Analysis** at the top of the report to refresh after new tickets have synced from the PSA or after you change the scope. The "Last analyzed" timestamp under the header tells you how fresh the current view is.
+  </Step>
+</Steps>
+
+<Tip>
+While an analysis is running, you can still click ticket rows in the underlying tables. MSPortal will show a brief "AI analysis is running" toast and queue the drill-down until the analysis finishes, so the page never gets stuck on a spinner.
+</Tip>
+
+## How to Read the Report
+
+The report is organized top-to-bottom from the highest-level synthesis down to the raw evidence. Read it like a brief: the top half tells you what to do, the bottom half lets you verify.
+
+### Top of report: the brief
+
+#### Executive Summary
+
+A three-paragraph narrative at the very top of the page:
+
+- **What happened** in the period (volume, resolution, backlog, recurring themes)
+- **Primary concern** the AI wants to flag for you
+- **Recommended focus** for the next period
+
+The scope chips on the right show exactly which date range, companies, and categories the analysis covers, so there is no ambiguity about what the narrative is describing.
+
+#### Key Metrics Row
+
+Four status-coded cards summarizing the period:
+
+| Metric | What it tells you |
+|--------|-------------------|
+| **Volume** | Ticket volume for the period and whether it is up, down, or steady vs the prior comparable window |
+| **Resolution** | Resolution time and resolution rate, with a status color when SLAs are slipping |
+| **Backlog** | Open ticket count and aging, with a status color when the backlog is growing |
+| **Recurring Issues** | Number of repeating issues the AI identified, with a status color when the same problem keeps coming back |
+
+Each card turns **critical**, **warning**, **healthy**, or **info** based on how the metric is trending. The colors are designed so you can see at a glance whether the period is on track, without reading a single chart.
+
+#### Recommended Actions
+
+A numbered list of the actions the AI is recommending right now, ordered by priority. Each action carries:
+
+| Field | What it means |
+|-------|---------------|
+| **Impact** | How much this is expected to move the needle on service desk health |
+| **Effort** | Rough size of the work (small, medium, large) |
+| **Suggested owner** | The role or function that should pick this up (service desk manager, account manager, vCIO, etc.) |
+| **Why** | The specific signal in the data that triggered this recommendation |
+| **Next step** | The concrete first move you can take this week |
+
+Every recommendation is tied to a signal in the data, not generic advice. If you cannot see why a recommendation was made, the **Why** line will name the trend, company, or category that triggered it.
+
+#### What Changed
+
+A short delta section comparing the current period to the prior comparable period. Use it to answer "what is different now vs last time?" without doing the math yourself.
+
+#### Top Risks and Opportunities
+
+A two-column split.
+
+- **Top Risks**: highest-severity issues the AI wants you to act on, each with a one-line headline and the evidence behind it.
+- **Top Opportunities**: improvement bets where small effort is likely to produce outsized impact (process tweaks, automation candidates, training gaps).
+
+#### Per-Client Talking Points
+
+A card per affected company, written so an Account Manager can paste it straight into a QBR deck, a client email, or a check-in agenda. Each card shows:
+
+- The client's current status (critical, warning, healthy, info)
+- The primary issue affecting the client this period
+- A read-aloud talking point that names the issue, the trend, and the path forward
+
+<Tip>
+This is the highest-leverage section for AM prep. Pull the page up the morning of a QBR and you have a per-client narrative ready to go.
+</Tip>
+
+### Middle of report: forecast and watchlist
+
+#### Forecast Outlook
+
+The AI's projection of where ticket volume, backlog, and resolution are headed over the next period if no changes are made. Use this to set expectations with leadership and clients before the period actually plays out.
+
+#### Category Watchlist
+
+Categories the AI thinks are worth keeping an eye on, with a short explanation of why each one is on the list. A category lands here either because volume is climbing, resolution is slipping, or the AI sees repeated patterns within it.
+
+### Bottom of report: the evidence
+
+The detailed tables that used to dominate the middle of the report now live in collapsible **Evidence** sections at the bottom. They are closed by default; open the ones you want to dig into.
+
+| Section | What is inside |
+|---------|----------------|
+| **Identified Trends** | The discrete trends the AI surfaced for the period, with affected companies and tickets per trend |
+| **Company Patterns** | Per-company metric table: ticket counts, resolution time, open backlog, and any AI signal flags |
+| **Category Breakdown** | Ticket distribution by category, including the categories that drove the period's biggest changes |
+| **Weekly Metrics** | Week-by-week ticket data so you can spot the exact week a trend started |
+
+Your open and closed state is remembered between visits, so you can leave the sections you reference often expanded.
+
+#### Report Confidence
+
+Pinned at the bottom of the report. Three signals tell you how much weight to put on the AI's conclusions:
+
+- **Analysis confidence**: how confident the AI is in the synthesis it produced
+- **Data completeness percentage**: how much of the expected data was actually available for the period
+- **Known gaps**: specific things the AI noticed were missing or thin (for example, a category with too few tickets to draw conclusions from)
+
+Treat Report Confidence as a check before you make a big decision off the report. If completeness is low or known gaps are long, narrow the scope or extend the lookback window and re-run.
+
+## Section Navigation
+
+A floating navigation rail on the right side of the report lets you jump directly to any section. Each entry in the rail matches a labeled section above, so you can move from Recommended Actions straight to Company Patterns without scrolling.
+
+## Acting on the Output
+
+The report is designed to drive specific actions. The most common workflows:
+
+<AccordionGroup>
+  <Accordion title="Service desk health review (weekly or monthly)">
+    1. Open Ticket Trends with the default 12-week window and **All companies** selected.
+    2. Read the Executive Summary and the four Key Metrics cards. If everything is healthy or info, you are done in two minutes.
+    3. If any card is warning or critical, scroll to **Recommended Actions** and pick the top one or two to take to your service desk standup this week.
+    4. Open the relevant Evidence section to see exactly which companies, weeks, or categories triggered the recommendation, and assign owners from there.
+  </Accordion>
+  <Accordion title="QBR prep (per client)">
+    1. Open Ticket Trends and select the client in the Company selector.
+    2. Switch the lookback to 26 or 52 weeks for QBR-grade trend visibility.
+    3. Click **Re-run Analysis** so the report is scoped to that single client.
+    4. The **Per-Client Talking Points** section is your starting point. The narrative is written to be read out loud and references the actual ticket history.
+    5. The **Forecast Outlook** gives you a forward-looking statement to close the meeting with.
+    6. Use **Print** in the report header or `?screenshot=1` in the URL to capture a full-page export for the deck or for the meeting record.
+  </Accordion>
+  <Accordion title="Spotting recurring issues">
+    1. In the Key Metrics row, watch the **Recurring Issues** card. A warning or critical status means the AI has identified the same problem hitting multiple companies or repeating in the same company across weeks.
+    2. Open the **Identified Trends** evidence section to see the trends the AI clustered. Each trend lists affected companies and a sample of tickets.
+    3. Use this to feed automation work, knowledge base entries, or proactive outreach. A trend that hits five clients is usually worth a one-time fix rather than five repeat tickets.
+  </Accordion>
+  <Accordion title="Category drift">
+    1. Read the **Category Watchlist** section. The AI lists the categories it thinks are worth attention with a short rationale per category.
+    2. Open the **Category Breakdown** evidence section to confirm the underlying numbers.
+    3. If a category is growing for reasons other than work-from-home spikes or seasonal events, treat it as a process or tooling gap and escalate accordingly.
+  </Accordion>
+</AccordionGroup>
+
+## Exporting
+
+Two ways to capture a snapshot:
+
+| Method | Use case |
+|--------|----------|
+| **Print** | Click the printer icon in the report header. Uses the browser's print dialog, which can save to PDF. Best for ad-hoc shares. |
+| **Screenshot mode** | Append `?screenshot=1` to the report URL. This flattens the page so the browser's full-page capture (Edge or Chrome **Capture whole page**) stitches the entire report into a single image, header to footer. Best for QBR decks. |
+
+The cached analysis lasts until the scope or lookback window changes, so the export and the on-screen view are the same thing.
+
+## Troubleshooting
+
+<Warning>
+**If anything looks wrong, missing, or incomplete, start by checking your PSA integration's sync settings.** Ticket Trends only sees what your PSA integration is configured to bring across. If ticket sync is disabled, scoped to a subset of boards or statuses, or only pulling certain companies, the report will faithfully reflect that limited view — it cannot analyze data that was never synced.
+
+Go to **Settings, Integrations**, open your PSA (ConnectWise, Halo, Syncro, or Autotask), and review the sync configuration:
+
+- **Is ticket sync enabled?** A disabled toggle means no tickets are coming in at all.
+- **Are all the boards, queues, or work types you care about included?** Many PSAs let you scope the sync to specific boards. A board left out of the sync is a board missing from Ticket Trends.
+- **Are the right ticket statuses included?** Some configurations only sync open tickets, which produces misleading resolution metrics.
+- **Are companies mapped correctly?** Check [Integration Company Mapping](/user-guides/settings/integration-company-mapping) to confirm every PSA company you expect to see is linked to a MSPortal company. Unmapped companies are excluded from the report.
+- **When did the integration last sync?** A long gap means recent tickets aren't in the report yet. Trigger a manual sync and re-run the analysis once it completes.
+</Warning>
+
+### "Not enough data to run an analysis"
+
+The AI needs a minimum amount of ticket history to produce a useful report. First, confirm ticket sync is enabled and pulling the boards you expect (see the warning above). If sync is healthy, extend the lookback window (try 26 or 52 weeks) or broaden the company scope.
+
+### Numbers look wrong vs the PSA
+
+Ticket data is pulled from MSPortal's local copy of PSA tickets, which is kept in sync by the integration. If a number disagrees with what you see directly in the PSA, the most likely causes are:
+
+1. **A board, status, or work type is excluded from sync.** Open **Settings, Integrations** and review the sync configuration for your PSA. Anything not included in the sync will not appear in Ticket Trends.
+2. **Sync lag.** Check the last sync time on the integration card and re-run the analysis after the next sync completes.
+3. **Company mapping gaps.** Tickets for a PSA company that isn't mapped to a MSPortal company are excluded from per-company sections. See [Integration Company Mapping](/user-guides/settings/integration-company-mapping).
+
+### A specific company is missing from the report
+
+The company is most likely either unmapped or excluded by the sync configuration. Open **Settings, Integrations**, confirm the company is mapped, and confirm its tickets are included in the boards or queues being synced. Re-run the analysis after fixing either.
+
+### Analysis taking longer than expected
+
+A first analysis on a wide scope (52 weeks, all companies) can take two to three minutes. The page will continue to show the spinner; you do not need to refresh. If the analysis never returns, re-run from the toolbar.
+
+### The report does not show every category I expect
+
+Two possible causes:
+
+1. **The category is below the AI's surfacing threshold.** The AI only highlights categories with enough ticket volume to draw conclusions from. Tiny categories are deliberately suppressed in the narrative sections but still appear in the **Category Breakdown** evidence section.
+2. **The category isn't syncing from the PSA at all.** If a category is missing from the **Category Breakdown** evidence section entirely (not just the narrative), the underlying tickets are not being synced. Check the PSA integration's sync settings as described above.
+
+## Best Practices
+
+1. **Re-run after every PSA sync** if you are making decisions off the report this week. Stale data leads to stale recommendations.
+2. **Use 12 weeks for monthly reviews, 26 to 52 weeks for QBRs.** The lookback window should match the cadence you are reporting against.
+3. **Read top to bottom, do not skip to the evidence.** The brief is the product. The evidence is verification.
+4. **Trust Report Confidence.** If completeness is low, narrow the scope before acting on the recommendations.
+5. **Paste the Per-Client Talking Points verbatim.** They are written to be read out loud. Editing for tone usually adds friction without adding value.
+
+## Related Resources
+
+- [Client Health](/user-guides/msp-tools/client-health) - Per-client scoring including ticket signals
+- [Reporting](/user-guides/reporting/index) - Report builder for QBR decks and client-ready exports
+- [Compliance](/user-guides/compliance/index) - Compliance signals that complement service desk health

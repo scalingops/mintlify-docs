@@ -7,6 +7,29 @@ We're constantly working to improve MSPortal.ai. Here's what's on our roadmap:
 
 ## In Active Development
 
+### Microsoft Teams App
+
+Announced in the May 15, 2026 release notes. Rolling out tenant-by-tenant over the two weeks following the announcement.
+
+Ship MSPortal as a **per-tenant branded Microsoft Teams app** for your clients. Your tenant gets its own manifest carrying your name, your logo, your accent color, and your vanity domain. You sideload the generated `.zip` or publish it through your tenant's Teams app catalog so the install appears under your brand, not MSPortal's.
+
+- **Per-tenant manifest + package generator** - Download a ready-to-upload `.zip` for your tenant from Settings, Integrations, Microsoft Teams. Manifest is regenerated on demand whenever you tweak branding so re-publishing is a one-click operation.
+- **Vanity-domain aware** - The manifest emits your vanity domain (e.g. portal.yourmsp.com) so end users see your URL, not ours, when they tap a tab.
+- **Single sign-on through Microsoft 365** - End users sign in through their existing M365 identity and land on the MSPortal home tab without a second login prompt. OAuth handoff is built on the standard Microsoft Teams app SDK.
+- **Phased rollout** - Gated behind a tenant-level `teams_app` feature flag so we can enable interested tenants in week 1 and broaden to general availability in week 2.
+
+### CSAT Surveys
+
+Announced in the May 15, 2026 release notes. Rolling out tenant-by-tenant over the two weeks following the announcement.
+
+Customer satisfaction campaigns driven straight off PSA ticket close events. CSAT shares the campaign engine with NPS surveys but is built around the short, transactional rating you fire after every closed ticket instead of the periodic relationship survey.
+
+- **PSA-triggered ratings** - Fire a survey automatically when a ticket closes in Halo, ConnectWise, or Autotask. Thumbs-up/thumbs-down or 1-5 stars, configurable per campaign.
+- **Signature-embed widgets** - Drop a one-line embed into your techs' email signatures so the rating prompt arrives in the reply email itself. Clicks bypass a separate survey email entirely.
+- **Public widget** - Same widget embedded on your client portal or marketing site for ungated public feedback.
+- **Dashboard reporting** - Aggregate scores by tech, queue, client, or category, with drill-down to the underlying tickets. Ties into the existing Surveys reporting blocks.
+- **Phased rollout** - Gated behind a tenant-level `csat` feature flag (the broader Surveys product is GA; CSAT is the piece still in validation).
+
 ### Automation: Next Wave of Improvements
 
 Still on deck after the April 24 bundling, survey, and recipient updates.

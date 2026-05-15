@@ -3,6 +3,46 @@ title: "Release Notes"
 description: "Product updates, improvements, and upcoming features for MSPortal.ai"
 ---
 
+## May 15, 2026
+
+### Ticket Trends: Executive-First AI Analysis
+
+The AI analysis page on **Ticket Trends** has been redesigned around the way a senior consultant would brief you on a client. Instead of one long vertical stream where every section has the same weight, the page now reads top-to-bottom as "here is what changed, here is why it matters, here is what to do, here is the evidence if you want to verify."
+
+**New at the top of the report:**
+
+- **Executive Summary**: A three-paragraph narrative that opens with what happened in the period, calls out the primary concern, and ends with a recommended focus. Scope chips on the right show exactly which date range, companies, and categories the analysis covers.
+- **Key Metrics Row**: Four status-coded cards (Volume, Resolution, Backlog, Recurring Issues) that turn critical, warning, healthy, or info based on how each metric is trending. You can see at a glance whether the period is on track or needs intervention without reading a single chart.
+- **Recommended Actions**: A numbered list of actions the AI is recommending right now. Each action carries an impact rating, an effort estimate, a suggested owner, the reason it is being recommended, and the suggested next step. Every recommendation is tied to a specific signal in the data, not generic advice.
+- **Top Risks and Opportunities**: A two-column split showing the highest-severity risks alongside the most promising opportunities, each with a one-line headline and the evidence behind it.
+- **Per-Client Talking Points**: A read-aloud paragraph per affected company, written so an Account Manager can paste it straight into a QBR or client check-in. Each card calls out the primary issue and the client's current status.
+- **Report Confidence**: Pinned at the bottom, this trust signal shows the AI's confidence in the analysis, the data completeness percentage, and any known gaps so you know how much weight to give the conclusions.
+
+**Evidence sections, now collapsible.** The detailed tables that used to live in the middle of the report (Identified Trends, Company Patterns, Category Breakdown, Weekly and Company and Category metric tables) are still there, but collapsed by default and grouped into a clearly labeled "Evidence" section. Open the ones you want to dig into; leave the rest closed. Your open/closed state is remembered between visits.
+
+**Why it matters.** The previous layout asked the reader to do the synthesis. The new layout does the synthesis for you and keeps the evidence one click away. Re-run an analysis to see the new executive layer.
+
+[Documentation: Ticket Trends](/user-guides/msp-tools/ticket-trends)
+
+### Budgets: Excel Export
+
+Budgets now export to Excel in addition to PDF. The view-page action menu and the budget editor's header both show a dropdown with "Export PDF" and "Export Excel".
+
+- **Single-sheet, fully formatted workbook**: Branded title row, formatted currency columns, items grouped by category with a subtotal per category, a grand-total row, and an optional notes block at the bottom.
+- **Tenant-branded automatically**: Header rows, banners, grand-total fill, and accent text colors all pull from your tenant's primary brand color, so the workbook matches the rest of MSPortal. Foreground text on the brand fill is picked automatically for readability whether your brand is light or dark.
+- **Drop-in for finance teams**: The .xlsx is editable, so finance can pivot, re-sort, or paste the data straight into a master spreadsheet without retyping anything from a PDF.
+
+[Documentation: Budgets](/user-guides/budgets)
+
+### Coming Soon (Next 2 Weeks)
+
+Two features are wrapping up validation and will roll out tenant-by-tenant over the two weeks following this release. Both are gated behind tenant-level feature flags so you'll see them appear when we flip your tenant on.
+
+- **Microsoft Teams App** — Ship MSPortal as a per-tenant **branded Microsoft Teams app** for your clients. Your tenant gets its own manifest with your name, your logo, your accent color, and your vanity domain; you sideload the generated `.zip` or publish it through your tenant's Teams app catalog. End users sign in through their existing Microsoft 365 account and land directly on the home tab without a second login. Built on the standard Microsoft Teams app SDK with OAuth handoff, embedded tabs, and per-tenant manifest versioning.
+- **CSAT Surveys** — Customer satisfaction campaigns driven straight off PSA ticket close events. Thumbs-up/thumbs-down or 1-5 ratings, **signature-embed widgets** your techs can drop into their reply email signatures, a **public widget** for your portal or marketing site, and dashboard reporting that ties scores back to specific techs, queues, and clients. Powered by the same campaign engine as NPS surveys.
+
+If you want early access to either feature before the broader rollout, [reach out to support](mailto:support@msportal.ai) and we'll enable the flag for your tenant.
+
 ## May 8, 2026
 
 ### Embedded Ticket Templates
